@@ -1,5 +1,6 @@
 export interface Region {
-    name: string;
+  name: string;
 }
 
-export type Regions = Record<string, Region>;
+export type RegionKey = "fontaine" | "inazuma" | "liyue" | "mondstadt" | "natlan" | "snezhnaya" | "sumeru";
+export type Regions = Record<RegionKey, Region>;

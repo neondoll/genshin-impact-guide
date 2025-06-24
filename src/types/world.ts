@@ -1,5 +1,6 @@
 export interface World {
-    name: string;
+  name: string;
 }
 
-export type Worlds = Record<string, World>;
+export type WorldKey = "another" | "teyvat";
+export type Worlds = Record<WorldKey, World>;
