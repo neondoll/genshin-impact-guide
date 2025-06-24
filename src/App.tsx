@@ -1,37 +1,24 @@
 import characters from "@/database/characters.ts";
 import regions from "@/database/regions.ts";
-import { cn } from "@/lib/utils.ts";
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import "./App.css";
+import { ModeToggle } from "@/components/mode-toggle.tsx";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs.tsx";
+import { ThemeProvider } from "@/components/theme-provider.tsx";
 
-const TabClassName = cn([
-  "inline-flex flex-1 gap-1.5 justify-center items-center px-2 py-1 h-[calc(100%-1px)] text-sm font-medium",
-  "text-neutral-950 whitespace-nowrap rounded-md border border-transparent transition-[color,box-shadow]",
-  "focus-visible:border-neutral-400 focus-visible:outline-1 focus-visible:outline-neutral-400 focus-visible:ring-3",
-  "focus-visible:ring-neutral-400/50 disabled:opacity-50 disabled:pointer-events-none data-selected:bg-white",
-  "data-selected:shadow-sm [&_svg]:shrink-0 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
-  "dark:text-neutral-400 dark:focus-visible:border-neutral-500 dark:focus-visible:outline-neutral-500",
-  "dark:focus-visible:ring-neutral-500/50 dark:data-selected:text-neutral-50 dark:data-selected:bg-white/4.5",
-  "dark:data-selected:border-white/15",
-]);
-const TabGroupClassName = "flex flex-col gap-2";
-const TabListClassName = cn([
-  "inline-flex justify-center items-center p-[3px] w-fit h-9 rounded-lg text-neutral-500 bg-neutral-100",
-  "dark:text-neutral-400 dark:bg-neutral-800",
-]);
-const TabPanelClassName = "outline-none";
-const TabPanelsClassName = "flex-1";
+import "./App.css";
 
 function App() {
   return (
-    <div className="container p-10 mx-auto">
-      <TabGroup className={TabGroupClassName}>
-        <TabList className={TabListClassName}>
-          <Tab className={TabClassName}>Персонажи</Tab>
-          <Tab className={TabClassName}>Регионы</Tab>
-        </TabList>
-        <TabPanels className={TabPanelsClassName}>
-          <TabPanel className={TabPanelClassName}>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="container px-10 py-4 mx-auto">
+        <ModeToggle />
+      </div>
+      <div className="container p-10 mx-auto">
+        <Tabs defaultValue="characters">
+          <TabsList>
+            <TabsTrigger value="characters">Персонажи</TabsTrigger>
+            <TabsTrigger value="regions">Регионы</TabsTrigger>
+          </TabsList>
+          <TabsContent value="characters">
             <ul className="grid grid-cols-[repeat(auto-fill,calc(var(--spacing)*27.5))] gap-2 justify-center">
               {Object.entries(characters).map(([key, character]) => (
                 <li className="flex flex-col p-0.5 h-37.5 rounded-sm" key={key}>
@@ -49,17 +36,17 @@ function App() {
                 </li>
               ))}
             </ul>
-          </TabPanel>
-          <TabPanel className={TabPanelClassName}>
+          </TabsContent>
+          <TabsContent value="regions">
             <ul className="list-inside list-disc">
               {Object.entries(regions).map(([key, region]) => (
                 <li key={key}>{region.name}</li>
               ))}
             </ul>
-          </TabPanel>
-        </TabPanels>
-      </TabGroup>
-    </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </ThemeProvider>
   );
 }
 
