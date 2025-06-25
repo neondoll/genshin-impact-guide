@@ -1,11 +1,11 @@
 type World = { name: string };
-type Worlds = Record<WorldKey, World>;
+type Worlds = Record<WorldUid, World>;
 
-export const WorldEnum = { Another: "Another", Teyvat: "Teyvat" } as const;
+export const WorldUidEnum = { Another: "Another", Teyvat: "Teyvat" } as const;
 
-export type WorldKey = typeof WorldEnum[keyof typeof WorldEnum];
+export type WorldUid = typeof WorldUidEnum[keyof typeof WorldUidEnum];
 
 export default {
-  [WorldEnum.Teyvat]: { name: "Тейват" },
-  [WorldEnum.Another]: { name: "Другой мир" },
+  [WorldUidEnum.Teyvat]: { name: "Тейват" },
+  [WorldUidEnum.Another]: { name: "Другой мир" },
 } as Worlds;

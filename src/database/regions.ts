@@ -1,7 +1,9 @@
 type Region = { name: string };
-type Regions = Record<RegionKey, Region>;
+type Regions = Record<RegionUid, Region>;
 
-export const RegionEnum = {
+export type RegionUid = typeof RegionUidEnum[keyof typeof RegionUidEnum];
+
+export const RegionUidEnum = {
   Fontaine: "Fontaine",
   Inazuma: "Inazuma",
   Liyue: "Liyue",
@@ -11,14 +13,16 @@ export const RegionEnum = {
   Sumeru: "Sumeru",
 } as const;
 
-export type RegionKey = typeof RegionEnum[keyof typeof RegionEnum];
-
-export default {
-  [RegionEnum.Mondstadt]: { name: "Мондштадт" },
-  [RegionEnum.Liyue]: { name: "Ли Юэ" },
-  [RegionEnum.Inazuma]: { name: "Инадзума" },
-  [RegionEnum.Sumeru]: { name: "Сумеру" },
-  [RegionEnum.Fontaine]: { name: "Фонтейн" },
-  [RegionEnum.Natlan]: { name: "Натлан" },
-  [RegionEnum.Snezhnaya]: { name: "Снежная" },
+const regions = {
+  [RegionUidEnum.Mondstadt]: { name: "Мондштадт" },
+  [RegionUidEnum.Liyue]: { name: "Ли Юэ" },
+  [RegionUidEnum.Inazuma]: { name: "Инадзума" },
+  [RegionUidEnum.Sumeru]: { name: "Сумеру" },
+  [RegionUidEnum.Fontaine]: { name: "Фонтейн" },
+  [RegionUidEnum.Natlan]: { name: "Натлан" },
+  [RegionUidEnum.Snezhnaya]: { name: "Снежная" },
 } as Regions;
+
+export async function getRegions() {
+  return regions;
+}

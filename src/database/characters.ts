@@ -1,97 +1,138 @@
-import { RegionEnum, type RegionKey } from "./regions.ts";
-import { WorldEnum, type WorldKey } from "./worlds.ts";
+import { type RegionUid, RegionUidEnum } from "./regions";
+import { type TalentUid, TalentUidEnum } from "./talents";
+import { type WorldUid, WorldUidEnum } from "./worlds";
 
-type Character = { name: string; world_key: WorldKey; region_key?: RegionKey; small_image_src: string };
-type CharacterKeys = "arlecchino" | "bennett" | "chevreuse" | "escoffier" | "fischl" | "furina" | "iansan"
+type Character = {
+  name: string;
+  quality: 4 | 5;
+  world_uid: WorldUid;
+  region_uid?: RegionUid;
+  small_image_src: string;
+  upgrading_talents?: Record<TalentUid, string>;
+};
+type Characters = Record<CharacterUid, Character>;
+
+export type CharacterUid = "arlecchino" | "bennett" | "chevreuse" | "escoffier" | "fischl" | "furina" | "iansan"
   | "kuki_shinobu" | "neuvillette" | "skirk" | "sucrose" | "varesa" | "xiangling" | "xilonen" | "xingqiu";
-type Characters = Record<CharacterKeys, Character>;
 
 const imageSrc = (name: string) => `/images/characters/${name}`;
 
-export default {
+const characters = {
   arlecchino: {
     name: "Арлекино",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Snezhnaya,
+    quality: 5,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Snezhnaya,
     small_image_src: imageSrc("arlecchino-small-106x106.png"),
+    upgrading_talents: {
+      [TalentUidEnum.NormalAttack]: "Высокий приоритет (10)",
+      [TalentUidEnum.ElementalSkill]: "Ситуативно (6 / 8)",
+      [TalentUidEnum.ElementalBurst]: "Ситуативно (6 / 8)",
+    },
   },
   bennett: {
     name: "Беннет",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Mondstadt,
+    quality: 4,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Mondstadt,
     small_image_src: imageSrc("bennett-small-106x106.png"),
   },
   varesa: {
     name: "Вареса",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Natlan,
+    quality: 5,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Natlan,
     small_image_src: imageSrc("varesa-small-106x106.png"),
   },
   iansan: {
     name: "Иансан",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Natlan,
+    quality: 4,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Natlan,
     small_image_src: imageSrc("iansan-small-106x106.png"),
   },
   kuki_shinobu: {
     name: "Куки Синобу",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Inazuma,
+    quality: 4,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Inazuma,
     small_image_src: imageSrc("kuki_shinobu-small-106x106.png"),
   },
   neuvillette: {
     name: "Нёвиллет",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Fontaine,
+    quality: 5,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("neuvillette-small-106x106.png"),
   },
   sucrose: {
     name: "Сахароза",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Mondstadt,
+    quality: 4,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Mondstadt,
     small_image_src: imageSrc("sucrose-small-106x106.png"),
   },
   xingqiu: {
     name: "Син Цю",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Liyue,
+    quality: 4,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Liyue,
     small_image_src: imageSrc("xingqiu-small-106x106.png"),
   },
-  skirk: { name: "Скирк", world_key: WorldEnum.Another, small_image_src: imageSrc("skirk-small-106x106.png") },
+  skirk: {
+    name: "Скирк",
+    quality: 5,
+    world_uid: WorldUidEnum.Another,
+    small_image_src: imageSrc("skirk-small-106x106.png"),
+  },
   xiangling: {
     name: "Сян Лин",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Liyue,
+    quality: 4,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Liyue,
     small_image_src: imageSrc("xiangling-small-106x106.png"),
   },
   fischl: {
     name: "Фишль",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Mondstadt,
+    quality: 4,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Mondstadt,
     small_image_src: imageSrc("fischl-small-106x106.png"),
   },
   furina: {
     name: "Фурина",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Fontaine,
+    quality: 5,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("furina-small-106x106.png"),
   },
   chevreuse: {
     name: "Шеврёз",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Fontaine,
+    quality: 4,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("chevreuse-small-106x106.png"),
   },
   xilonen: {
     name: "Шилонен",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Natlan,
+    quality: 5,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Natlan,
     small_image_src: imageSrc("xilonen-small-106x106.png"),
   },
   escoffier: {
     name: "Эскофье",
-    world_key: WorldEnum.Teyvat,
-    region_key: RegionEnum.Fontaine,
+    quality: 5,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("escoffier-small-106x106.png"),
   },
 } as Characters;
+
+export async function getCharacter(uid: CharacterUid) {
+  return characters[uid];
+}
+
+export async function getCharacters() {
+  return characters;
+}
