@@ -47,13 +47,26 @@ function SuitableWeapons({ guideWeapons, signatureWeaponUid, weapons }: {
                       )}
                       key={guideWeapon.uid + (guideWeapon.refinement === undefined ? "" : `-r${guideWeapon.refinement}`)}
                     >
-                      <TableHead>
-                        {weapons[guideWeapon.uid].name}
-                        {guideWeapon.uid === signatureWeaponUid && " (сигна)"}
-                        {guideWeapon.refinement !== undefined && ` R${guideWeapon.refinement}`}
+                      <TableHead className="flex gap-2 items-center">
+                        <img
+                          alt={weapons[guideWeapon.uid].name}
+                          className="shrink-0 size-10"
+                          src={weapons[guideWeapon.uid].small_image_src}
+                        />
+                        <span>
+                          {weapons[guideWeapon.uid].name}
+                          {guideWeapon.uid === signatureWeaponUid && " (сигна)"}
+                          {guideWeapon.refinement !== undefined && ` R${guideWeapon.refinement}`}
+                        </span>
                       </TableHead>
                       {guideWeapon.percent !== undefined && (
-                        <TableCell>
+                        <TableCell
+                          className={cn({
+                            "text-green-500": guideWeapon.percent > 1,
+                            "text-yellow-500": guideWeapon.percent >= 0.99 && guideWeapon.percent <= 1,
+                            "text-red-500": guideWeapon.percent < 0.99,
+                          })}
+                        >
                           {new Intl.NumberFormat(undefined, {
                             style: "percent",
                             minimumFractionDigits: 1,

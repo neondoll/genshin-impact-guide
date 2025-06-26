@@ -6,7 +6,7 @@ import { type WorldUid, WorldUidEnum } from "./worlds";
 type Character = {
   name: string;
   quality: 4 | 5;
-  weapon_type?: WeaponTypeUid;
+  weapon_type_uid: WeaponTypeUid;
   world_uid: WorldUid;
   region_uid?: RegionUid;
   signature_weapon_uid?: WeaponUid;
@@ -14,12 +14,24 @@ type Character = {
 };
 type Characters = Record<CharacterUid, Character>;
 
-export type CharacterUid = "arlecchino" | "bennett" | "chevreuse" | "escoffier" | "fischl" | "furina" | "iansan"
-  | "kuki_shinobu" | "neuvillette" | "skirk" | "sucrose" | "varesa" | "xiangling" | "xilonen" | "xingqiu";
+export type CharacterUid = typeof CharacterUidEnum[keyof typeof CharacterUidEnum];
 
 export const CharacterUidEnum = {
-  /* Арлекино */ Arlecchino: "arlecchino",
-  /* Беннет   */ Bennett: "bennett",
+  /* Арлекино    */ Arlecchino: "arlecchino",
+  /* Беннет      */ Bennett: "bennett",
+  /* Шеврёз      */ Chevreuse: "chevreuse",
+  /* Эскофье     */ Escoffier: "escoffier",
+  /* Фишль       */ Fischl: "fischl",
+  /* Фурина      */ Furina: "furina",
+  /* Иансан      */ Iansan: "iansan",
+  /* Куки Синобу */ KukiShinobu: "kuki_shinobu",
+  /* Нёвиллет    */ Neuvillette: "neuvillette",
+  /* Скирк       */ Skirk: "skirk",
+  /* Сахароза    */ Sucrose: "sucrose",
+  /* Вареса      */ Varesa: "varesa",
+  /* Сян Лин     */ Xiangling: "xiangling",
+  /* Шилонен     */ Xilonen: "xilonen",
+  /* Син Цю      */ Xingqiu: "xingqiu",
 } as const;
 
 const imageSrc = (name: string) => {
@@ -32,7 +44,7 @@ const characters = {
   [CharacterUidEnum.Arlecchino]: {
     name: "Арлекино",
     quality: 5,
-    weapon_type: WeaponTypeUidEnum.Polearm,
+    weapon_type_uid: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Snezhnaya,
     signature_weapon_uid: WeaponUidEnum.CrimsonMoonsSemblance,
@@ -41,100 +53,110 @@ const characters = {
   [CharacterUidEnum.Bennett]: {
     name: "Беннет",
     quality: 4,
+    weapon_type_uid: WeaponTypeUidEnum.Sword,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Mondstadt,
     small_image_src: imageSrc("bennett-small-106x106.png"),
   },
-  varesa: {
+  [CharacterUidEnum.Varesa]: {
     name: "Вареса",
     quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Natlan,
     small_image_src: imageSrc("varesa-small-106x106.png"),
   },
-  iansan: {
+  [CharacterUidEnum.Iansan]: {
     name: "Иансан",
     quality: 4,
-    weapon_type: WeaponTypeUidEnum.Polearm,
+    weapon_type_uid: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Natlan,
     small_image_src: imageSrc("iansan-small-106x106.png"),
   },
-  kuki_shinobu: {
+  [CharacterUidEnum.KukiShinobu]: {
     name: "Куки Синобу",
     quality: 4,
+    weapon_type_uid: WeaponTypeUidEnum.Sword,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Inazuma,
     small_image_src: imageSrc("kuki_shinobu-small-106x106.png"),
   },
-  neuvillette: {
+  [CharacterUidEnum.Neuvillette]: {
     name: "Нёвиллет",
     quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("neuvillette-small-106x106.png"),
   },
-  sucrose: {
+  [CharacterUidEnum.Sucrose]: {
     name: "Сахароза",
     quality: 4,
+    weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Mondstadt,
     small_image_src: imageSrc("sucrose-small-106x106.png"),
   },
-  xingqiu: {
+  [CharacterUidEnum.Xingqiu]: {
     name: "Син Цю",
     quality: 4,
+    weapon_type_uid: WeaponTypeUidEnum.Sword,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Liyue,
     small_image_src: imageSrc("xingqiu-small-106x106.png"),
   },
-  skirk: {
+  [CharacterUidEnum.Skirk]: {
     name: "Скирк",
     quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Sword,
     world_uid: WorldUidEnum.Another,
     small_image_src: imageSrc("skirk-small-106x106.png"),
   },
-  xiangling: {
+  [CharacterUidEnum.Xiangling]: {
     name: "Сян Лин",
     quality: 4,
-    weapon_type: WeaponTypeUidEnum.Polearm,
+    weapon_type_uid: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Liyue,
     small_image_src: imageSrc("xiangling-small-106x106.png"),
   },
-  fischl: {
+  [CharacterUidEnum.Fischl]: {
     name: "Фишль",
     quality: 4,
+    weapon_type_uid: WeaponTypeUidEnum.Bow,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Mondstadt,
     small_image_src: imageSrc("fischl-small-106x106.png"),
   },
-  furina: {
+  [CharacterUidEnum.Furina]: {
     name: "Фурина",
     quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Sword,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("furina-small-106x106.png"),
   },
-  chevreuse: {
+  [CharacterUidEnum.Chevreuse]: {
     name: "Шеврёз",
     quality: 4,
-    weapon_type: WeaponTypeUidEnum.Polearm,
+    weapon_type_uid: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("chevreuse-small-106x106.png"),
   },
-  xilonen: {
+  [CharacterUidEnum.Xilonen]: {
     name: "Шилонен",
     quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Sword,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Natlan,
     small_image_src: imageSrc("xilonen-small-106x106.png"),
   },
-  escoffier: {
+  [CharacterUidEnum.Escoffier]: {
     name: "Эскофье",
     quality: 5,
-    weapon_type: WeaponTypeUidEnum.Polearm,
+    weapon_type_uid: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("escoffier-small-106x106.png"),
