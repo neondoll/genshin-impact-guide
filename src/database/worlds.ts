@@ -1,7 +1,7 @@
 type World = { name: string };
 type Worlds = Record<WorldUid, World>;
 
-export const WorldUidEnum = { Another: "Another", Teyvat: "Teyvat" } as const;
+export const WorldUidEnum = { Another: "another", Teyvat: "teyvat" } as const;
 
 export type WorldUid = typeof WorldUidEnum[keyof typeof WorldUidEnum];
 

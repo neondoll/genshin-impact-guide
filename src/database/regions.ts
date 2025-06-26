@@ -4,13 +4,13 @@ type Regions = Record<RegionUid, Region>;
 export type RegionUid = typeof RegionUidEnum[keyof typeof RegionUidEnum];
 
 export const RegionUidEnum = {
-  Fontaine: "Fontaine",
-  Inazuma: "Inazuma",
-  Liyue: "Liyue",
-  Mondstadt: "Mondstadt",
-  Natlan: "Natlan",
-  Snezhnaya: "Snezhnaya",
-  Sumeru: "Sumeru",
+  /* Фонтейн   */ Fontaine: "fontaine",
+  /* Инадзума  */ Inazuma: "inazuma",
+  /* Ли Юэ     */ Liyue: "liyue",
+  /* Мондштадт */ Mondstadt: "mondstadt",
+  /* Натлан    */ Natlan: "natlan",
+  /* Снежная   */ Snezhnaya: "snezhnaya",
+  /* Сумеру    */ Sumeru: "sumeru",
 } as const;
 
 const regions = {
@@ -24,5 +24,7 @@ const regions = {
 } as Regions;
 
 export async function getRegions() {
+  console.log("getRegions");
+
   return regions;
 }

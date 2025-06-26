@@ -38,7 +38,7 @@ export default function Home() {
             {Object.entries(characters).map(([characterUid, character]) => (
               <li
                 className={cn(
-                  "relative flex flex-col h-37 rounded-xl border shadow-sm transition-shadow has-focus-visible:ring-3",
+                  "relative flex flex-col min-h-37 rounded-xl border shadow-sm transition-shadow has-focus-visible:ring-3",
                   "has-focus-visible:ring-ring/50",
                 )}
                 key={characterUid}
@@ -67,7 +67,7 @@ export default function Home() {
             {Object.entries(weapons).map(([weaponUid, weapon]) => (
               <li
                 className={cn(
-                  "relative flex flex-col h-37 rounded-xl border shadow-sm transition-shadow has-focus-visible:ring-3",
+                  "relative flex flex-col min-h-37 rounded-xl border shadow-sm transition-shadow has-focus-visible:ring-3",
                   "has-focus-visible:ring-ring/50",
                 )}
                 key={weaponUid}

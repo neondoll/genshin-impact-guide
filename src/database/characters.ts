@@ -1,36 +1,44 @@
 import { type RegionUid, RegionUidEnum } from "./regions";
-import { type TalentUid, TalentUidEnum } from "./talents";
+import { type WeaponTypeUid, WeaponTypeUidEnum } from "./weapon-types";
+import { type WeaponUid, WeaponUidEnum } from "./weapons";
 import { type WorldUid, WorldUidEnum } from "./worlds";
 
 type Character = {
   name: string;
   quality: 4 | 5;
+  weapon_type?: WeaponTypeUid;
   world_uid: WorldUid;
   region_uid?: RegionUid;
+  signature_weapon_uid?: WeaponUid;
   small_image_src: string;
-  upgrading_talents?: Record<TalentUid, string>;
 };
 type Characters = Record<CharacterUid, Character>;
 
 export type CharacterUid = "arlecchino" | "bennett" | "chevreuse" | "escoffier" | "fischl" | "furina" | "iansan"
   | "kuki_shinobu" | "neuvillette" | "skirk" | "sucrose" | "varesa" | "xiangling" | "xilonen" | "xingqiu";
 
-const imageSrc = (name: string) => `/images/characters/${name}`;
+export const CharacterUidEnum = {
+  /* Арлекино */ Arlecchino: "arlecchino",
+  /* Беннет   */ Bennett: "bennett",
+} as const;
+
+const imageSrc = (name: string) => {
+  console.log("imageSrc", name);
+
+  return `/images/characters/${name}`;
+};
 
 const characters = {
-  arlecchino: {
+  [CharacterUidEnum.Arlecchino]: {
     name: "Арлекино",
     quality: 5,
+    weapon_type: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Snezhnaya,
+    signature_weapon_uid: WeaponUidEnum.CrimsonMoonsSemblance,
     small_image_src: imageSrc("arlecchino-small-106x106.png"),
-    upgrading_talents: {
-      [TalentUidEnum.NormalAttack]: "Высокий приоритет (10)",
-      [TalentUidEnum.ElementalSkill]: "Ситуативно (6 / 8)",
-      [TalentUidEnum.ElementalBurst]: "Ситуативно (6 / 8)",
-    },
   },
-  bennett: {
+  [CharacterUidEnum.Bennett]: {
     name: "Беннет",
     quality: 4,
     world_uid: WorldUidEnum.Teyvat,
@@ -47,6 +55,7 @@ const characters = {
   iansan: {
     name: "Иансан",
     quality: 4,
+    weapon_type: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Natlan,
     small_image_src: imageSrc("iansan-small-106x106.png"),
@@ -88,6 +97,7 @@ const characters = {
   xiangling: {
     name: "Сян Лин",
     quality: 4,
+    weapon_type: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Liyue,
     small_image_src: imageSrc("xiangling-small-106x106.png"),
@@ -109,6 +119,7 @@ const characters = {
   chevreuse: {
     name: "Шеврёз",
     quality: 4,
+    weapon_type: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("chevreuse-small-106x106.png"),
@@ -123,6 +134,7 @@ const characters = {
   escoffier: {
     name: "Эскофье",
     quality: 5,
+    weapon_type: WeaponTypeUidEnum.Polearm,
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Fontaine,
     small_image_src: imageSrc("escoffier-small-106x106.png"),
@@ -130,9 +142,13 @@ const characters = {
 } as Characters;
 
 export async function getCharacter(uid: CharacterUid) {
+  console.log("getCharacter", uid);
+
   return characters[uid];
 }
 
 export async function getCharacters() {
+  console.log("getCharacters");
+
   return characters;
 }
