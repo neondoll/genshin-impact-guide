@@ -281,6 +281,13 @@ const guideSkirk = {
     [TalentUidEnum.ElementalBurst]: "Максимальный приоритет \n(10)",
   },
 } as GuideCharacter;
+const guideVaresa = {
+  talents: {
+    [TalentUidEnum.NormalAttack]: "Высокий приоритет \n(10)",
+    [TalentUidEnum.ElementalSkill]: "Средний приоритет \n(8)",
+    [TalentUidEnum.ElementalBurst]: "Высокий приоритет \n(10)",
+  },
+} as GuideCharacter;
 const guideXiangling = {
   level: 90,
   weapons: [{ uid: WeaponUidEnum.EngulfingLightning }],
@@ -359,6 +366,7 @@ const guideCharacters = {
   [CharacterUidEnum.KukiShinobu]: guideKukiShinobu,
   [CharacterUidEnum.Layla]: guideLayla,
   [CharacterUidEnum.Skirk]: guideSkirk,
+  [CharacterUidEnum.Varesa]: guideVaresa,
   [CharacterUidEnum.Xiangling]: guideXiangling,
   [CharacterUidEnum.Xingqiu]: guideXingqiu,
 } as GuideCharacters;
