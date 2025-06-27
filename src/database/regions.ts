@@ -1,3 +1,5 @@
+import { publicImageSrc } from "@/lib/utils";
+
 type Region = { name: string; emblem_image_src?: string };
 type Regions = Record<RegionUid, Region>;
 
@@ -13,10 +15,10 @@ export const RegionUidEnum = {
   /* Сумеру    */ Sumeru: "sumeru",
 } as const;
 
-const imageSrc = (name: string) => {
-  console.log("imageSrc", name);
+const imageSrc: typeof publicImageSrc = (src) => {
+  console.log("imageSrc", src);
 
-  return `/images/regions/${name}`;
+  return publicImageSrc(`regions/${src}`);
 };
 
 const regions = {
@@ -29,7 +31,7 @@ const regions = {
   [RegionUidEnum.Snezhnaya]: { name: "Снежная" },
 } as Regions;
 
-export async function getRegions() {
+export function getRegions() {
   console.log("getRegions");
 
   return regions;

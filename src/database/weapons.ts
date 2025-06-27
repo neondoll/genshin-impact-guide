@@ -1,3 +1,4 @@
+import { publicImageSrc } from "@/lib/utils";
 import { type WeaponTypeUid, WeaponTypeUidEnum } from "./weapon-types";
 import type { QualityUid } from "./qualities";
 
@@ -31,10 +32,10 @@ export const WeaponUidEnum = {
   /* Лунное сияние ксифоса */ XiphosMoonlight: "xiphos_moonlight",
 } as const;
 
-const imageSrc = (name: string) => {
-  console.log("imageSrc", name);
+const imageSrc: typeof publicImageSrc = (src) => {
+  console.log("imageSrc", src);
 
-  return `/images/weapons/${name}`;
+  return publicImageSrc(`weapons/${src}`);
 };
 
 const weapons = {
@@ -172,7 +173,7 @@ const weapons = {
   },
 } as Weapons;
 
-export async function getWeapons() {
+export function getWeapons() {
   console.log("getWeapons");
 
   return weapons;

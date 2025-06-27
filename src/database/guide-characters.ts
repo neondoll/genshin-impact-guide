@@ -363,7 +363,7 @@ const guideCharacters = {
   [CharacterUidEnum.Xingqiu]: guideXingqiu,
 } as GuideCharacters;
 
-export async function getGuideCharacter(characterUid: CharacterUid) {
+export function getGuideCharacter(characterUid: CharacterUid) {
   console.log("getGuideCharacter", characterUid);
 
   return characterUid in guideCharacters ? guideCharacters[characterUid] : undefined;

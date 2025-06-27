@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       { path: Paths.Character(":characterUid"), element: <Character />, loader: characterLoader },
     ],
   },
-]);
+], { basename: "/genshin-impact-guide/" });
 
 function App() {
   return (

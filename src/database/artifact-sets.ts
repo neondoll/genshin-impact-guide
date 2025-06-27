@@ -1,3 +1,4 @@
+import { publicImageSrc } from "@/lib/utils";
 import { type ArtifactTypeUid, ArtifactTypeUidEnum } from "./artifact-types";
 import type { QualityUid } from "./qualities";
 
@@ -19,10 +20,10 @@ export const ArtifactSetUidEnum = {
   /* Стойкость Миллелита             */ TenacityOfTheMillelith: "tenacity_of_the_millelith",
 } as const;
 
-const imageSrc = (name: string) => {
-  console.log("imageSrc", name);
+const imageSrc: typeof publicImageSrc = (src) => {
+  console.log("imageSrc", src);
 
-  return `/images/artifact-sets/${name}`;
+  return publicImageSrc(`artifact-sets/${src}`);
 };
 
 const artifactSets = {

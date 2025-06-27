@@ -1,3 +1,4 @@
+import { publicImageSrc } from "@/lib/utils";
 import { type RegionUid, RegionUidEnum } from "./regions";
 
 type Element = { name: string; region_uid: RegionUid; image_src: string };
@@ -15,10 +16,10 @@ export const ElementUidEnum = {
   /* Пиро    */ Pyro: "pyro",
 } as const;
 
-const imageSrc = (name: string) => {
-  console.log("imageSrc", name);
+const imageSrc: typeof publicImageSrc = (src) => {
+  console.log("imageSrc", src);
 
-  return `/images/elements/${name}`;
+  return publicImageSrc(`elements/${src}`);
 };
 
 const elements = {
@@ -43,7 +44,7 @@ const elements = {
   [ElementUidEnum.Cryo]: { name: "Крио", region_uid: RegionUidEnum.Snezhnaya, image_src: imageSrc("cryo-64x64.png") },
 } as Elements;
 
-export async function getElements() {
+export function getElements() {
   console.log("getElements");
 
   return elements;

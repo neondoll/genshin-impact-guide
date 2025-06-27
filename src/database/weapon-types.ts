@@ -1,5 +1,9 @@
+import { publicImageSrc } from "@/lib/utils";
+
 type WeaponType = { name: string; image_src: string };
 type WeaponTypes = Record<WeaponTypeUid, WeaponType>;
+
+export type WeaponTypeUid = typeof WeaponTypeUidEnum[keyof typeof WeaponTypeUidEnum];
 
 export const WeaponTypeUidEnum = {
   /* Стрелковое  */ Bow: "bow",
@@ -9,12 +13,10 @@ export const WeaponTypeUidEnum = {
   /* Одноручное  */ Sword: "sword",
 } as const;
 
-export type WeaponTypeUid = typeof WeaponTypeUidEnum[keyof typeof WeaponTypeUidEnum];
+const imageSrc: typeof publicImageSrc = (src) => {
+  console.log("imageSrc", src);
 
-const imageSrc = (name: string) => {
-  console.log("imageSrc", name);
-
-  return `/images/weapon-types/${name}`;
+  return publicImageSrc(`weapon-types/${src}`);
 };
 
 const weaponTypes = {
@@ -25,7 +27,7 @@ const weaponTypes = {
   [WeaponTypeUidEnum.Bow]: { name: "Стрелковое", image_src: imageSrc("bow-128x128.png") },
 } as WeaponTypes;
 
-export async function getWeaponTypes() {
+export function getWeaponTypes() {
   console.log("getWeaponTypes");
 
   return weaponTypes;

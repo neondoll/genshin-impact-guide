@@ -1,11 +1,13 @@
+import { publicImageSrc } from "@/lib/utils";
 import { type RegionUid, RegionUidEnum } from "./regions";
 import { type WeaponTypeUid, WeaponTypeUidEnum } from "./weapon-types";
 import { type WeaponUid, WeaponUidEnum } from "./weapons";
 import { type WorldUid, WorldUidEnum } from "./worlds";
+import type { QualityUid } from "./qualities";
 
 type Character = {
   name: string;
-  quality: 4 | 5;
+  quality: QualityUid;
   weapon_type_uid: WeaponTypeUid;
   world_uid: WorldUid;
   region_uid?: RegionUid;
@@ -35,10 +37,10 @@ export const CharacterUidEnum = {
   /* Син Цю      */ Xingqiu: "xingqiu",
 } as const;
 
-const imageSrc = (name: string) => {
-  console.log("imageSrc", name);
+const imageSrc: typeof publicImageSrc = (src) => {
+  console.log("imageSrc", src);
 
-  return `/images/characters/${name}`;
+  return publicImageSrc(`characters/${src}`);
 };
 
 const characters = {
@@ -172,13 +174,13 @@ const characters = {
   },
 } as Characters;
 
-export async function getCharacter(uid: CharacterUid) {
+export function getCharacter(uid: CharacterUid) {
   console.log("getCharacter", uid);
 
   return characters[uid];
 }
 
-export async function getCharacters() {
+export function getCharacters() {
   console.log("getCharacters");
 
   return characters;

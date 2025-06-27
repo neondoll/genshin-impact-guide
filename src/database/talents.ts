@@ -1,13 +1,13 @@
 type Talent = { name: string };
 type Talents = Record<TalentUid, Talent>;
 
+export type TalentUid = typeof TalentUidEnum[keyof typeof TalentUidEnum];
+
 export const TalentUidEnum = {
   /* Взрыв стихии        */ ElementalBurst: "elemental_burst",
   /* Элементальный навык */ ElementalSkill: "elemental_skill",
   /* Обычная атака       */ NormalAttack: "normal_attack",
 } as const;
-
-export type TalentUid = typeof TalentUidEnum[keyof typeof TalentUidEnum];
 
 const talents = {
   [TalentUidEnum.NormalAttack]: { name: "Обычная атака" },
@@ -15,7 +15,7 @@ const talents = {
   [TalentUidEnum.ElementalBurst]: { name: "Взрыв стихии" },
 } as Talents;
 
-export async function getTalents() {
+export function getTalents() {
   console.log("getTalents");
 
   return talents;
