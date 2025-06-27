@@ -25,6 +25,7 @@ export const CharacterUidEnum = {
   /* Фурина      */ Furina: "furina",
   /* Иансан      */ Iansan: "iansan",
   /* Куки Синобу */ KukiShinobu: "kuki_shinobu",
+  /* Лайла       */ Layla: "layla",
   /* Нёвиллет    */ Neuvillette: "neuvillette",
   /* Скирк       */ Skirk: "skirk",
   /* Сахароза    */ Sucrose: "sucrose",
@@ -81,6 +82,14 @@ const characters = {
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Inazuma,
     small_image_src: imageSrc("kuki_shinobu-small-106x106.png"),
+  },
+  [CharacterUidEnum.Layla]: {
+    name: "Лайла",
+    quality: 4,
+    weapon_type_uid: WeaponTypeUidEnum.Sword,
+    world_uid: WorldUidEnum.Teyvat,
+    region_uid: RegionUidEnum.Sumeru,
+    small_image_src: imageSrc("layla-small-106x106.png"),
   },
   [CharacterUidEnum.Neuvillette]: {
     name: "Нёвиллет",

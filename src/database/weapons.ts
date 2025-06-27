@@ -1,27 +1,35 @@
 import { type WeaponTypeUid, WeaponTypeUidEnum } from "./weapon-types";
+import type { QualityUid } from "./qualities";
 
-type Weapon = { name: string; quality: 3 | 4 | 5; type: WeaponTypeUid; small_image_src: string };
+type Weapon = { name: string; quality: QualityUid; type: WeaponTypeUid; small_image_src: string };
 type Weapons = Record<WeaponUid, Weapon>;
 
+export type WeaponUid = typeof WeaponUidEnum[keyof typeof WeaponUidEnum];
+
 export const WeaponUidEnum = {
+  /* Лазурное сияние       */ Azurelight: "azurelight",
   /* Баллада фьордов       */ BalladOfTheFjords: "ballad_of_the_fjords",
   /* Черногорская пика     */ BlackcliffPole: "blackcliff_pole",
   /* Усмиритель бед        */ CalamityQueller: "calamity_queller",
   /* Очертания алой луны   */ CrimsonMoonsSemblance: "crimson_moons_semblance",
   /* Смертельный бой       */ Deathmatch: "deathmatch",
   /* Гроза драконов        */ DragonsBane: "dragons_bane",
+  /* Сияющая жатва         */ EngulfingLightning: "engulfing_lightning",
+  /* Меч Фавония           */ FavoniusSword: "favonius_sword",
   /* Каменное копье        */ LithicSpear: "lithic_spear",
   /* Элегия Люмидус        */ LumidouceElegy: "lumidouce_elegy",
   /* Копьё послания ветров */ MissiveWindspear: "missive_windspear",
   /* Нефритовый коршун     */ PrimordialJadeWingedSpear: "primordial_jade_winged_spear",
+  /* Церемониальный меч    */ SacrificialSword: "sacrificial_sword",
+  /* Деревянный клинок     */ SapwoodBlade: "sapwood_blade",
   /* Небесная ось          */ SkywardSpine: "skyward_spine",
   /* Посох Хомы            */ StaffOfHoma: "staff_of_homa",
   /* Посох алых песков     */ StaffOfTheScarletSands: "staff_of_the_scarlet_sands",
+  /* Бесструнный           */ TheStringless: "the_stringless",
   /* Покоритель вихря      */ VortexVanquisher: "vortex_vanquisher",
   /* Белая кисть           */ WhiteTassel: "white_tassel",
+  /* Лунное сияние ксифоса */ XiphosMoonlight: "xiphos_moonlight",
 } as const;
-
-export type WeaponUid = typeof WeaponUidEnum[keyof typeof WeaponUidEnum];
 
 const imageSrc = (name: string) => {
   console.log("imageSrc", name);
@@ -42,11 +50,23 @@ const weapons = {
     type: WeaponTypeUidEnum.Polearm,
     small_image_src: imageSrc("white_tassel-small-256x256.png"),
   },
+  [WeaponUidEnum.TheStringless]: {
+    name: "Бесструнный",
+    quality: 4,
+    type: WeaponTypeUidEnum.Bow,
+    small_image_src: imageSrc("the_stringless-small-256x256.png"),
+  },
   [WeaponUidEnum.DragonsBane]: {
     name: "Гроза драконов",
     quality: 4,
     type: WeaponTypeUidEnum.Polearm,
     small_image_src: imageSrc("dragons_bane-small-256x256.png"),
+  },
+  [WeaponUidEnum.SapwoodBlade]: {
+    name: "Деревянный клинок",
+    quality: 4,
+    type: WeaponTypeUidEnum.Sword,
+    small_image_src: imageSrc("sapwood_blade-small-256x256.png"),
   },
   [WeaponUidEnum.LithicSpear]: {
     name: "Каменное копье",
@@ -59,6 +79,24 @@ const weapons = {
     quality: 4,
     type: WeaponTypeUidEnum.Polearm,
     small_image_src: imageSrc("missive_windspear-small-256x256.png"),
+  },
+  [WeaponUidEnum.Azurelight]: {
+    name: "Лазурное сияние",
+    quality: 5,
+    type: WeaponTypeUidEnum.Sword,
+    small_image_src: imageSrc("azurelight-small-256x256.png"),
+  },
+  [WeaponUidEnum.XiphosMoonlight]: {
+    name: "Лунное сияние ксифоса",
+    quality: 4,
+    type: WeaponTypeUidEnum.Sword,
+    small_image_src: imageSrc("xiphos_moonlight-small-256x256.png"),
+  },
+  [WeaponUidEnum.FavoniusSword]: {
+    name: "Меч Фавония",
+    quality: 4,
+    type: WeaponTypeUidEnum.Sword,
+    small_image_src: imageSrc("favonius_sword-small-256x256.png"),
   },
   [WeaponUidEnum.SkywardSpine]: {
     name: "Небесная ось",
@@ -90,6 +128,12 @@ const weapons = {
     type: WeaponTypeUidEnum.Polearm,
     small_image_src: imageSrc("staff_of_the_scarlet_sands-small-256x256.png"),
   },
+  [WeaponUidEnum.EngulfingLightning]: {
+    name: "Сияющая жатва",
+    quality: 5,
+    type: WeaponTypeUidEnum.Polearm,
+    small_image_src: imageSrc("engulfing_lightning-small-256x256.png"),
+  },
   [WeaponUidEnum.StaffOfHoma]: {
     name: "Посох Хомы",
     quality: 5,
@@ -107,6 +151,12 @@ const weapons = {
     quality: 5,
     type: WeaponTypeUidEnum.Polearm,
     small_image_src: imageSrc("calamity_queller-small-256x256.png"),
+  },
+  [WeaponUidEnum.SacrificialSword]: {
+    name: "Церемониальный меч",
+    quality: 4,
+    type: WeaponTypeUidEnum.Sword,
+    small_image_src: imageSrc("sacrificial_sword-small-256x256.png"),
   },
   [WeaponUidEnum.BlackcliffPole]: {
     name: "Черногорская пика",
