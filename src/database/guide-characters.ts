@@ -202,6 +202,20 @@ const guideFischl = {
     [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(8)",
   },
 } as GuideCharacter;
+const guideFurina = {
+  talents: {
+    [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
+    [TalentUidEnum.ElementalSkill]: "Высокий приоритет \n(10)",
+    [TalentUidEnum.ElementalBurst]: "Высокий приоритет \n(10)",
+  },
+} as GuideCharacter;
+const guideIansan = {
+  talents: {
+    [TalentUidEnum.NormalAttack]: "Игнорируем \n(1 - 6)",
+    [TalentUidEnum.ElementalSkill]: "Игнорируем \n(1 - 6)",
+    [TalentUidEnum.ElementalBurst]: "Высокий приоритет \n(10)",
+  },
+} as GuideCharacter;
 const guideKukiShinobu = {
   level: 90,
   weapons: [{ uid: WeaponUidEnum.XiphosMoonlight }],
@@ -263,6 +277,13 @@ const guideLayla = {
     [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(7)",
   },
 } as GuideCharacter;
+const guideNeuvillette = {
+  talents: {
+    [TalentUidEnum.NormalAttack]: "Высокий приоритет \n(10)",
+    [TalentUidEnum.ElementalSkill]: "Ситуативно \n(6 / 8)",
+    [TalentUidEnum.ElementalBurst]: "Ситуативно \n(6 / 8)",
+  },
+} as GuideCharacter;
 const guideSkirk = {
   level: 90,
   weapons: [{ uid: WeaponUidEnum.Azurelight }],
@@ -322,6 +343,13 @@ const guideXiangling = {
     [TalentUidEnum.ElementalBurst]: "Главный приоритет (10)",
   },
 } as GuideCharacter;
+const guideXilonen = {
+  talents: {
+    [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
+    [TalentUidEnum.ElementalSkill]: "Высокий приоритет \n(10)",
+    [TalentUidEnum.ElementalBurst]: "Ситуативно \n(8)",
+  },
+} as GuideCharacter;
 const guideXingqiu = {
   level: 90,
   weapons: [{ uid: WeaponUidEnum.SacrificialSword }],
@@ -363,11 +391,15 @@ const guideCharacters = {
   [CharacterUidEnum.Chevreuse]: guideChevreuse,
   [CharacterUidEnum.Escoffier]: guideEscoffier,
   [CharacterUidEnum.Fischl]: guideFischl,
+  [CharacterUidEnum.Furina]: guideFurina,
+  [CharacterUidEnum.Iansan]: guideIansan,
   [CharacterUidEnum.KukiShinobu]: guideKukiShinobu,
   [CharacterUidEnum.Layla]: guideLayla,
+  [CharacterUidEnum.Neuvillette]: guideNeuvillette,
   [CharacterUidEnum.Skirk]: guideSkirk,
   [CharacterUidEnum.Varesa]: guideVaresa,
   [CharacterUidEnum.Xiangling]: guideXiangling,
+  [CharacterUidEnum.Xilonen]: guideXilonen,
   [CharacterUidEnum.Xingqiu]: guideXingqiu,
 } as GuideCharacters;
 
