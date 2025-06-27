@@ -11,7 +11,5 @@ const worlds = {
 } as Worlds;
 
 export function getWorlds() {
-  console.log("getWorlds");
-
   return worlds;
 }

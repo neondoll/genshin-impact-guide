@@ -48,7 +48,5 @@ const attributes = {
 } as Attributes;
 
 export function getAttributes() {
-  console.log("getAttributes");
-
   return attributes;
 }

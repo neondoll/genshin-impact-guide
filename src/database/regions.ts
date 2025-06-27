@@ -15,11 +15,7 @@ export const RegionUidEnum = {
   /* Сумеру    */ Sumeru: "sumeru",
 } as const;
 
-const imageSrc: typeof publicImageSrc = (src) => {
-  console.log("imageSrc", src);
-
-  return publicImageSrc(`regions/${src}`);
-};
+const imageSrc: typeof publicImageSrc = src => publicImageSrc(`regions/${src}`);
 
 const regions = {
   [RegionUidEnum.Mondstadt]: { name: "Мондштадт", emblem_image_src: imageSrc("mondstadt-emblem-256x256.png") },
@@ -32,7 +28,5 @@ const regions = {
 } as Regions;
 
 export function getRegions() {
-  console.log("getRegions");
-
   return regions;
 }

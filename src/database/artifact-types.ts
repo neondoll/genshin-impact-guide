@@ -20,7 +20,5 @@ const artifactTypes = {
 } as ArtifactTypes;
 
 export function getArtifactTypes() {
-  console.log("getArtifactTypes");
-
   return artifactTypes;
 }

@@ -6,7 +6,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function publicImageSrc(src: string) {
-  console.log("publicImageSrc", src);
-
   return `/genshin-impact-guide/images/${src}`;
 }

@@ -16,11 +16,7 @@ export const ElementUidEnum = {
   /* Пиро    */ Pyro: "pyro",
 } as const;
 
-const imageSrc: typeof publicImageSrc = (src) => {
-  console.log("imageSrc", src);
-
-  return publicImageSrc(`elements/${src}`);
-};
+const imageSrc: typeof publicImageSrc = src => publicImageSrc(`elements/${src}`);
 
 const elements = {
   [ElementUidEnum.Anemo]: {
@@ -45,7 +41,5 @@ const elements = {
 } as Elements;
 
 export function getElements() {
-  console.log("getElements");
-
   return elements;
 }

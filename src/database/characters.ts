@@ -37,11 +37,7 @@ export const CharacterUidEnum = {
   /* Син Цю      */ Xingqiu: "xingqiu",
 } as const;
 
-const imageSrc: typeof publicImageSrc = (src) => {
-  console.log("imageSrc", src);
-
-  return publicImageSrc(`characters/${src}`);
-};
+const imageSrc: typeof publicImageSrc = src => publicImageSrc(`characters/${src}`);
 
 const characters = {
   [CharacterUidEnum.Arlecchino]: {
@@ -175,13 +171,9 @@ const characters = {
 } as Characters;
 
 export function getCharacter(uid: CharacterUid) {
-  console.log("getCharacter", uid);
-
   return characters[uid];
 }
 
 export function getCharacters() {
-  console.log("getCharacters");
-
   return characters;
 }

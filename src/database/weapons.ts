@@ -32,11 +32,7 @@ export const WeaponUidEnum = {
   /* Лунное сияние ксифоса */ XiphosMoonlight: "xiphos_moonlight",
 } as const;
 
-const imageSrc: typeof publicImageSrc = (src) => {
-  console.log("imageSrc", src);
-
-  return publicImageSrc(`weapons/${src}`);
-};
+const imageSrc: typeof publicImageSrc = src => publicImageSrc(`weapons/${src}`);
 
 const weapons = {
   [WeaponUidEnum.BalladOfTheFjords]: {
@@ -174,7 +170,5 @@ const weapons = {
 } as Weapons;
 
 export function getWeapons() {
-  console.log("getWeapons");
-
   return weapons;
 }

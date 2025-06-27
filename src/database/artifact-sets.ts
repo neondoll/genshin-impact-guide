@@ -20,11 +20,7 @@ export const ArtifactSetUidEnum = {
   /* Стойкость Миллелита             */ TenacityOfTheMillelith: "tenacity_of_the_millelith",
 } as const;
 
-const imageSrc: typeof publicImageSrc = (src) => {
-  console.log("imageSrc", src);
-
-  return publicImageSrc(`artifact-sets/${src}`);
-};
+const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-sets/${src}`);
 
 const artifactSets = {
   [ArtifactSetUidEnum.GoldenTroupe]: {
@@ -246,7 +242,5 @@ const artifactSets = {
 } as ArtifactSets;
 
 export function getArtifactSets() {
-  console.log("getArtifactSets");
-
   return artifactSets;
 }

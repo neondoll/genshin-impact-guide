@@ -13,11 +13,7 @@ export const WeaponTypeUidEnum = {
   /* Одноручное  */ Sword: "sword",
 } as const;
 
-const imageSrc: typeof publicImageSrc = (src) => {
-  console.log("imageSrc", src);
-
-  return publicImageSrc(`weapon-types/${src}`);
-};
+const imageSrc: typeof publicImageSrc = src => publicImageSrc(`weapon-types/${src}`);
 
 const weaponTypes = {
   [WeaponTypeUidEnum.Claymore]: { name: "Двуручное", image_src: imageSrc("claymore-128x128.png") },
@@ -28,7 +24,5 @@ const weaponTypes = {
 } as WeaponTypes;
 
 export function getWeaponTypes() {
-  console.log("getWeaponTypes");
-
   return weaponTypes;
 }

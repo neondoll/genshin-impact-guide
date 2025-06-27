@@ -16,7 +16,5 @@ const talents = {
 } as Talents;
 
 export function getTalents() {
-  console.log("getTalents");
-
   return talents;
 }

@@ -364,7 +364,5 @@ const guideCharacters = {
 } as GuideCharacters;
 
 export function getGuideCharacter(characterUid: CharacterUid) {
-  console.log("getGuideCharacter", characterUid);
-
   return characterUid in guideCharacters ? guideCharacters[characterUid] : undefined;
 }
