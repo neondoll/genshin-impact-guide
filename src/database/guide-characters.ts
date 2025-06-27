@@ -165,7 +165,7 @@ const guideEscoffier = {
   talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
     [TalentUidEnum.ElementalSkill]: "Максимальный приоритет \n(10)",
-    [TalentUidEnum.ElementalBurst]: "Второстепенно \n(8)",
+    [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(9)",
   },
 } as GuideCharacter;
 const guideFischl = {
