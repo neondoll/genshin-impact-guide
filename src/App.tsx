@@ -1,31 +1,58 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Character, { loader as characterLoader } from "@/routes/character";
+import Character, { type CharacterLoaderData } from "@/routes/character";
 import ErrorPage from "./error-page";
-import Home, { loader as homeLoader } from "@/routes/home";
+import Home, { type HomeLoaderData } from "@/routes/home";
 import Paths from "./paths";
 import Root from "./routes/root";
+import { getArtifactSets } from "./database/artifact-sets";
+import { getElements } from "./database/elements";
+import { getGuideCharacter } from "./database/guide-characters";
+import { getRegions } from "./database/regions";
+import { getWeapons } from "./database/weapons";
+import { getWeaponTypes } from "./database/weapon-types";
 import { ThemeProvider } from "./components/theme-provider";
+import { type CharacterUid, getCharacter, getCharacters } from "./database/characters";
 import "./App.css";
 
 const router = createBrowserRouter([
   {
     path: Paths.Root,
+    children: [
+      {
+        loader: (): HomeLoaderData => {
+          const artifactSets = getArtifactSets();
+          const characters = getCharacters();
+          const elements = getElements();
+          const regions = getRegions();
+          const weapons = getWeapons();
+          const weaponTypes = getWeaponTypes();
+
+          return { artifactSets, characters, elements, regions, weapons, weaponTypes };
+        },
+        index: true,
+        element: <Home />,
+      },
+      {
+        loader: ({ params }): CharacterLoaderData => {
+          const character = getCharacter(params.characterUid as CharacterUid);
+          const guideCharacter = getGuideCharacter(params.characterUid as CharacterUid);
+
+          return { character, guideCharacter };
+        },
+        path: Paths.Character(":characterUid"),
+        element: <Character />,
+      },
+    ],
     element: <Root />,
     errorElement: <ErrorPage />,
-    children: [
-      { index: true, element: <Home />, loader: homeLoader },
-      { path: Paths.Character(":characterUid"), element: <Character />, loader: characterLoader },
-    ],
   },
 ], { basename: "/genshin-impact-guide/" });
 
-function App() {
+export default function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <RouterProvider router={router} />
     </ThemeProvider>
   );
 }
-
-export default App;

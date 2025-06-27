@@ -12,28 +12,24 @@ import { getWeapons } from "@/database/weapons";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-type CharacterLoaderData = {
-  character: Awaited<ReturnType<typeof getCharacter>>;
-  guideCharacter: Awaited<ReturnType<typeof getGuideCharacter>>;
-  talents: Awaited<ReturnType<typeof getTalents>>;
-  weapons: Awaited<ReturnType<typeof getWeapons>>;
-};
-type CharacterSuitableArtifactsProps = {
+type SuitableArtifactsProps = {
   guideArtifacts: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["artifacts"]>;
 };
-type CharacterSuitableWeaponsProps = {
+type SuitableWeaponsProps = {
   guideWeapons: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["weapons"]>;
   signatureWeaponUid: CharacterLoaderData["character"]["signature_weapon_uid"];
-  weapons: CharacterLoaderData["weapons"];
 };
-type CharacterSuitableWeaponsTableProps = {
+type SuitableWeaponsTableProps = {
   guideWeapons: GuideCharacterWeapons;
-  signatureWeaponUid: CharacterLoaderData["character"]["signature_weapon_uid"];
-  weapons: CharacterLoaderData["weapons"];
+  signatureWeaponUid: SuitableWeaponsProps["signatureWeaponUid"];
 };
-type CharacterUpgradingTalentsProps = {
+type UpgradingTalentsProps = {
   guideTalents: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["talents"]>;
-  talents: CharacterLoaderData["talents"];
+};
+
+export type CharacterLoaderData = {
+  character: Awaited<ReturnType<typeof getCharacter>>;
+  guideCharacter: Awaited<ReturnType<typeof getGuideCharacter>>;
 };
 
 const TableRowClassName = cn([
@@ -41,7 +37,7 @@ const TableRowClassName = cn([
   "last:[&>*]:last:rounded-br-lg",
 ]);
 
-function CharacterSuitableArtifacts({ guideArtifacts }: CharacterSuitableArtifactsProps) {
+function SuitableArtifacts({ guideArtifacts }: SuitableArtifactsProps) {
   const artifactSets = getArtifactSets();
   const attributes = getAttributes();
 
@@ -122,14 +118,10 @@ function CharacterSuitableArtifacts({ guideArtifacts }: CharacterSuitableArtifac
   );
 }
 
-function CharacterSuitableWeapons({ guideWeapons, signatureWeaponUid, weapons }: CharacterSuitableWeaponsProps) {
+function SuitableWeapons({ guideWeapons, signatureWeaponUid }: SuitableWeaponsProps) {
   if (Array.isArray(guideWeapons)) {
     return (
-      <CharacterSuitableWeaponsTable
-        guideWeapons={guideWeapons}
-        signatureWeaponUid={signatureWeaponUid}
-        weapons={weapons}
-      />
+      <SuitableWeaponsTable guideWeapons={guideWeapons} signatureWeaponUid={signatureWeaponUid} />
     );
   }
 
@@ -144,22 +136,16 @@ function CharacterSuitableWeapons({ guideWeapons, signatureWeaponUid, weapons }:
       </TabsList>
       {suitableWeapons.map(([value, guideWeapons]) => (
         <TabsContent key={value} value={value}>
-          <CharacterSuitableWeaponsTable
-            guideWeapons={guideWeapons}
-            signatureWeaponUid={signatureWeaponUid}
-            weapons={weapons}
-          />
+          <SuitableWeaponsTable guideWeapons={guideWeapons} signatureWeaponUid={signatureWeaponUid} />
         </TabsContent>
       ))}
     </Tabs>
   );
 }
 
-function CharacterSuitableWeaponsTable({
-  guideWeapons,
-  signatureWeaponUid,
-  weapons,
-}: CharacterSuitableWeaponsTableProps) {
+function SuitableWeaponsTable({ guideWeapons, signatureWeaponUid }: SuitableWeaponsTableProps) {
+  const weapons = getWeapons();
+
   return (
     <Table>
       <TableBody>
@@ -204,7 +190,9 @@ function CharacterSuitableWeaponsTable({
   );
 }
 
-function CharacterUpgradingTalents({ guideTalents, talents }: CharacterUpgradingTalentsProps) {
+function UpgradingTalents({ guideTalents }: UpgradingTalentsProps) {
+  const talents = getTalents();
+
   return (
     <Table>
       <TableBody>
@@ -225,18 +213,8 @@ function CharacterUpgradingTalents({ guideTalents, talents }: CharacterUpgrading
   );
 }
 
-/* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader({ params }) {
-  const character = await getCharacter(params.characterUid);
-  const guideCharacter = await getGuideCharacter(params.characterUid);
-  const talents = await getTalents();
-  const weapons = await getWeapons();
-
-  return { character, guideCharacter, talents, weapons } as CharacterLoaderData;
-}
-
 export default function Character() {
-  const { character, guideCharacter, talents, weapons } = useLoaderData<CharacterLoaderData>();
+  const { character, guideCharacter } = useLoaderData<CharacterLoaderData>();
 
   return (
     <div className="container flex flex-col gap-2 px-4 py-4 mx-auto md:gap-4 md:py-6 lg:px-6">
@@ -271,10 +249,9 @@ export default function Character() {
                 <CardTitle>Оружие</CardTitle>
               </CardHeader>
               <CardContent>
-                <CharacterSuitableWeapons
+                <SuitableWeapons
                   guideWeapons={guideCharacter.weapons}
                   signatureWeaponUid={character.signature_weapon_uid}
-                  weapons={weapons}
                 />
               </CardContent>
             </Card>
@@ -285,7 +262,7 @@ export default function Character() {
                 <CardTitle>Артефакты</CardTitle>
               </CardHeader>
               <CardContent>
-                <CharacterSuitableArtifacts guideArtifacts={guideCharacter.artifacts} />
+                <SuitableArtifacts guideArtifacts={guideCharacter.artifacts} />
               </CardContent>
             </Card>
           )}
@@ -295,7 +272,7 @@ export default function Character() {
                 <CardTitle>Прокачивание талантов</CardTitle>
               </CardHeader>
               <CardContent>
-                <CharacterUpgradingTalents guideTalents={guideCharacter.talents} talents={talents} />
+                <UpgradingTalents guideTalents={guideCharacter.talents} />
               </CardContent>
             </Card>
           )}

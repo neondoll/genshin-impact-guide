@@ -19,7 +19,8 @@ type HomeListItemProps = {
   key?: React.ComponentProps<"li">["key"];
 };
 type HomeListProps = React.ComponentProps<"ul">;
-type HomeLoaderData = {
+
+export type HomeLoaderData = {
   artifactSets: Awaited<ReturnType<typeof getArtifactSets>>;
   characters: Awaited<ReturnType<typeof getCharacters>>;
   elements: Awaited<ReturnType<typeof getElements>>;
@@ -71,18 +72,6 @@ function HomeListItem({ className, imageSrc, label, ...props }: HomeListItemProp
       </a>
     </li>
   );
-}
-
-/* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader() {
-  const artifactSets = await getArtifactSets();
-  const characters = await getCharacters();
-  const elements = await getElements();
-  const regions = await getRegions();
-  const weapons = await getWeapons();
-  const weaponTypes = await getWeaponTypes();
-
-  return { artifactSets, characters, elements, regions, weapons, weaponTypes } as HomeLoaderData;
 }
 
 export default function Home() {
