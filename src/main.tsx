@@ -8,11 +8,12 @@ import Home, { type HomeLoaderData } from "@/routes/home";
 import Paths from "@/paths";
 import Root from "@/routes/root";
 import { getArtifactSets } from "@/database/artifact-sets";
-import { getElements } from "@/database/elements";
+import { getCharacterRole } from "@/database/character-roles";
+import { getElement, getElements } from "@/database/elements";
 import { getGuideCharacter } from "@/database/guide-characters";
 import { getRegions } from "@/database/regions";
 import { getWeapons } from "@/database/weapons";
-import { getWeaponTypes } from "@/database/weapon-types";
+import { getWeaponType, getWeaponTypes } from "@/database/weapon-types";
 import { ThemeProvider } from "@/components/theme-provider";
 import { type CharacterUid, getCharacter, getCharacters } from "@/database/characters";
 import "./index.css";
@@ -38,9 +39,12 @@ const router = createHashRouter([
       {
         loader: ({ params }): CharacterLoaderData => {
           const character = getCharacter(params.characterUid as CharacterUid);
+          const characterElement = getElement(character.element_uid);
+          const characterRoles = character.roles_uid.map(characterRoleUid => getCharacterRole(characterRoleUid));
+          const characterWeaponType = getWeaponType(character.weapon_type_uid);
           const guideCharacter = getGuideCharacter(params.characterUid as CharacterUid);
 
-          return { character, guideCharacter };
+          return { character, characterElement, characterRoles, characterWeaponType, guideCharacter };
         },
         path: Paths.Character(":characterUid"),
         element: <Character />,

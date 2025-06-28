@@ -6,9 +6,13 @@ import { cn } from "@/lib/utils";
 import { getArtifactSets } from "@/database/artifact-sets";
 import { getAttributes } from "@/database/attributes";
 import { getCharacter } from "@/database/characters";
+import { getCharacterRole } from "@/database/character-roles";
+import { ElementUidEnum, getElement } from "@/database/elements";
 import { getGuideCharacter, type GuideCharacterWeapons } from "@/database/guide-characters";
 import { getTalents, type TalentUid } from "@/database/talents";
 import { getWeapons } from "@/database/weapons";
+import { getWeaponType } from "@/database/weapon-types";
+import { qualityImageSrc } from "@/database/qualities";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -29,6 +33,9 @@ type UpgradingTalentsProps = {
 
 export type CharacterLoaderData = {
   character: Awaited<ReturnType<typeof getCharacter>>;
+  characterElement: Awaited<ReturnType<typeof getElement>>;
+  characterRoles: Awaited<ReturnType<typeof getCharacterRole>>[];
+  characterWeaponType: Awaited<ReturnType<typeof getWeaponType>>;
   guideCharacter: Awaited<ReturnType<typeof getGuideCharacter>>;
 };
 
@@ -110,7 +117,7 @@ function SuitableArtifacts({ guideArtifacts }: SuitableArtifactsProps) {
               </TableHead>
             )}
             <TableCell className="whitespace-normal">{attributes[guideArtifactAttribute.uid].name}</TableCell>
-            <TableCell className="whitespace-pre-line md:whitespace-normal">{guideArtifactAttribute.description}</TableCell>
+            <TableCell className="whitespace-pre-line">{guideArtifactAttribute.description}</TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -214,36 +221,102 @@ function UpgradingTalents({ guideTalents }: UpgradingTalentsProps) {
 }
 
 export default function Character() {
-  const { character, guideCharacter } = useLoaderData<CharacterLoaderData>();
+  const {
+    character, characterElement, characterRoles, characterWeaponType, guideCharacter,
+  } = useLoaderData<CharacterLoaderData>();
 
   return (
     <div className="container flex flex-col gap-2 px-4 py-4 mx-auto md:gap-4 md:py-6 lg:px-6">
-      <h1 className="text-base">{character.name}</h1>
+      <Card>
+        <CardContent className="flex gap-6 items-start">
+          <img
+            alt={character.name}
+            className={cn("shrink-0 rounded-xl", {
+              "bg-red-500": character.element_uid === ElementUidEnum.Pyro,
+              "bg-purple-500": character.element_uid === ElementUidEnum.Electro,
+            })}
+            src={character.small_image_src}
+          />
+          <div className="flex-1">
+            <h1 className="text-base">{character.name}</h1>
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableHead>Качество</TableHead>
+                  <TableCell>
+                    <img alt={`${character.quality} Starts`} src={qualityImageSrc(character.quality)} />
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableHead>Оружие</TableHead>
+                  <TableCell>
+                    <div className="flex gap-1 items-center">
+                      <img
+                        alt={`${characterWeaponType.name} Icon`}
+                        className="shrink-0 size-5"
+                        src={characterWeaponType.icon_src}
+                      />
+                      <span>{characterWeaponType.name}</span>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableHead>Элемент</TableHead>
+                  <TableCell>
+                    <div className="flex gap-1 items-center">
+                      <img
+                        alt={characterElement.name}
+                        className="shrink-0 size-5"
+                        src={characterElement.image_src}
+                      />
+                      <span>{characterElement.name}</span>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableHead>Роли</TableHead>
+                  <TableCell>
+                    {characterRoles.map((characterRole, index) => (
+                      <div className="flex gap-1 items-center" key={character.roles_uid[index]}>
+                        <img
+                          alt={characterRole.name}
+                          className="shrink-0 size-5"
+                          src={characterRole.icon_src}
+                        />
+                        <span>{characterRole.name}</span>
+                      </div>
+                    ))}
+                  </TableCell>
+                </TableRow>
+                {guideCharacter?.required_level !== undefined && (
+                  <TableRow>
+                    <TableHead>Требуемый уровень</TableHead>
+                    <TableCell>{guideCharacter.required_level}</TableCell>
+                  </TableRow>
+                )}
+                {guideCharacter?.first_constellation_or_signature_weapon !== undefined && (
+                  <TableRow>
+                    <TableHead>C1 или Сигна?</TableHead>
+                    <TableCell>{guideCharacter.first_constellation_or_signature_weapon}</TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+        </CardContent>
+      </Card>
       {guideCharacter !== undefined && (
         <>
-          <Card>
-            <CardHeader>
-              <CardTitle>Основное</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableBody>
-                  {guideCharacter.level !== undefined && (
-                    <TableRow className={TableRowClassName}>
-                      <TableHead>Требуемый уровень</TableHead>
-                      <TableCell>{guideCharacter.level}</TableCell>
-                    </TableRow>
-                  )}
-                  {guideCharacter.first_constellation_or_signature_weapon !== undefined && (
-                    <TableRow className={TableRowClassName}>
-                      <TableHead>C1 или Сигна?</TableHead>
-                      <TableCell>{guideCharacter.first_constellation_or_signature_weapon}</TableCell>
-                    </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
+          {guideCharacter.talents !== undefined && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Прокачивание талантов</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <UpgradingTalents guideTalents={guideCharacter.talents} />
+              </CardContent>
+            </Card>
+          )}
           {guideCharacter.weapons !== undefined && (
             <Card>
               <CardHeader>
@@ -264,16 +337,6 @@ export default function Character() {
               </CardHeader>
               <CardContent>
                 <SuitableArtifacts guideArtifacts={guideCharacter.artifacts} />
-              </CardContent>
-            </Card>
-          )}
-          {guideCharacter.talents !== undefined && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Прокачивание талантов</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <UpgradingTalents guideTalents={guideCharacter.talents} />
               </CardContent>
             </Card>
           )}

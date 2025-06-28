@@ -6,7 +6,7 @@ import { type TalentUid, TalentUidEnum } from "./talents";
 import { type WeaponUid, WeaponUidEnum } from "./weapons";
 
 type GuideCharacter = {
-  level?: 80 | 90;
+  required_level?: 80 | 90;
   first_constellation_or_signature_weapon?: string;
   weapons?: GuideCharacterWeapons | Record<string, GuideCharacterWeapons>;
   artifacts?: {
@@ -93,7 +93,7 @@ const guideArlecchino = {
   },
 } as unknown as GuideCharacter;
 const guideBennett = {
-  level: 90,
+  required_level: 90,
   weapons: [{ uid: WeaponUidEnum.SapwoodBlade }],
   artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.NoblesseOblige }],
@@ -127,7 +127,7 @@ const guideBennett = {
   },
 } as GuideCharacter;
 const guideChevreuse = {
-  level: 90,
+  required_level: 90,
   weapons: [{ uid: WeaponUidEnum.Deathmatch }],
   talents: {
     [TalentUidEnum.NormalAttack]: "По необходимости \n(6)",
@@ -136,7 +136,7 @@ const guideChevreuse = {
   },
 } as GuideCharacter;
 const guideEscoffier = {
-  level: 90,
+  required_level: 90,
   weapons: [{ uid: WeaponUidEnum.StaffOfHoma }],
   artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe, description: "Лучше" }],
@@ -171,7 +171,7 @@ const guideEscoffier = {
   },
 } as GuideCharacter;
 const guideFischl = {
-  level: 90,
+  required_level: 90,
   weapons: [{ uid: WeaponUidEnum.TheStringless }],
   artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
@@ -212,6 +212,29 @@ const guideFurina = {
   },
 } as GuideCharacter;
 const guideIansan = {
+  weapons: [
+    { uid: WeaponUidEnum.SkywardSpine },
+    { uid: WeaponUidEnum.TamayurateiNoOhanashi },
+    { uid: WeaponUidEnum.FavoniusLance },
+  ],
+  artifacts: {
+    sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
+    attributes: {
+      [ArtifactTypeUidEnum.SandsOfEon]: [
+        { uid: AttributeUidEnum.PercentageOfAttackPower },
+        { uid: AttributeUidEnum.EnergyRestoration },
+      ],
+      [ArtifactTypeUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PercentageOfAttackPower }],
+      [ArtifactTypeUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.PercentageOfAttackPower }],
+      additional: [
+        { uid: AttributeUidEnum.EnergyRestoration, description: "Приоритетно. 160% - 200%" },
+        {
+          uid: AttributeUidEnum.PercentageOfAttackPower,
+          description: "2556 Силы атаки для 10 Ур. Ульты \n3000 Силы атаки для 13 Ур. Ульты",
+        },
+      ],
+    },
+  },
   talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1 - 6)",
     [TalentUidEnum.ElementalSkill]: "Игнорируем \n(1 - 6)",
@@ -219,7 +242,7 @@ const guideIansan = {
   },
 } as GuideCharacter;
 const guideKukiShinobu = {
-  level: 90,
+  required_level: 90,
   weapons: [{ uid: WeaponUidEnum.XiphosMoonlight }],
   artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GildedDreams }, { uid: ArtifactSetUidEnum.FlowerOfParadiseLost }],
@@ -250,7 +273,7 @@ const guideKukiShinobu = {
   },
 } as GuideCharacter;
 const guideLayla = {
-  level: 80,
+  required_level: 80,
   weapons: [{ uid: WeaponUidEnum.FavoniusSword }],
   artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.TenacityOfTheMillelith }],
@@ -287,7 +310,7 @@ const guideNeuvillette = {
   },
 } as GuideCharacter;
 const guideSkirk = {
-  level: 90,
+  required_level: 90,
   weapons: [{ uid: WeaponUidEnum.Azurelight }],
   artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.FinaleOfTheDeepGalleries }],
@@ -305,6 +328,38 @@ const guideSkirk = {
   },
 } as GuideCharacter;
 const guideVaresa = {
+  first_constellation_or_signature_weapon: "Однозначно Сигна",
+  weapons: [
+    { uid: WeaponUidEnum.VividNotions, percent: 1.28 },
+    { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, percent: 1.06 },
+    { uid: WeaponUidEnum.KagurasVerity, percent: 1.05 },
+    { uid: WeaponUidEnum.TomeOfTheEternalFlow, percent: 1.04 },
+    { uid: WeaponUidEnum.CashflowSupervision, percent: 1.04 },
+    { uid: WeaponUidEnum.SurfsUp, percent: 1.03 },
+    { uid: WeaponUidEnum.TheWidsith, refinement: 5, percent: 1 },
+    { uid: WeaponUidEnum.SacrificialJade, refinement: 5, percent: 0.92 },
+    { uid: WeaponUidEnum.FlowingPurity, refinement: 5, percent: 0.92 },
+  ],
+  artifacts: {
+    sets: [{ uid: ArtifactSetUidEnum.LongNightsOath }, { uid: ArtifactSetUidEnum.ObsidianCodex }],
+    attributes: {
+      [ArtifactTypeUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttackPower }],
+      [ArtifactTypeUidEnum.GobletOfEonothem]: [
+        { uid: AttributeUidEnum.ElectroDamageBonus, description: "Лучше с Цаплей всегда" },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Лучше с Фуриной или в сете на планжи" },
+      ],
+      [ArtifactTypeUidEnum.CircletOfLogos]: [
+        { uid: AttributeUidEnum.CriticalHitChance },
+        { uid: AttributeUidEnum.CriticalDamage },
+      ],
+      additional: [
+        { uid: AttributeUidEnum.PercentageOfAttackPower },
+        { uid: AttributeUidEnum.CriticalHitChance },
+        { uid: AttributeUidEnum.CriticalDamage },
+        { uid: AttributeUidEnum.EnergyRestoration, description: "115% - 135% ВЭ для Ульты" },
+      ],
+    },
+  },
   talents: {
     [TalentUidEnum.NormalAttack]: "Высокий приоритет \n(10)",
     [TalentUidEnum.ElementalSkill]: "Средний приоритет \n(8)",
@@ -312,7 +367,7 @@ const guideVaresa = {
   },
 } as GuideCharacter;
 const guideXiangling = {
-  level: 90,
+  required_level: 90,
   weapons: [{ uid: WeaponUidEnum.EngulfingLightning }],
   artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
@@ -353,7 +408,7 @@ const guideXilonen = {
   },
 } as GuideCharacter;
 const guideXingqiu = {
-  level: 90,
+  required_level: 90,
   weapons: [{ uid: WeaponUidEnum.SacrificialSword }],
   artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],

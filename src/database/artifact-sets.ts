@@ -16,7 +16,10 @@ export const ArtifactSetUidEnum = {
   /* Позолоченные сны                */ GildedDreams: "gilded_dreams",
   /* Конец гладиатора                */ GladiatorsFinale: "gladiators_finale",
   /* Золотая труппа                  */ GoldenTroupe: "golden_troupe",
+  /* Клятва долгой ночи              */ LongNightsOath: "long_nights_oath",
   /* Церемония древней знати         */ NoblesseOblige: "noblesse_oblige",
+  /* Обсидиановый фолиант            */ ObsidianCodex: "obsidian_codex",
+  /* Свиток героя сожжённого города  */ ScrollOfTheHeroOfCinderCity: "scroll_of_the_hero_of_cinder_city",
   /* Стойкость Миллелита             */ TenacityOfTheMillelith: "tenacity_of_the_millelith",
 } as const;
 
@@ -47,6 +50,30 @@ const artifactSets = {
       image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/golden_troupes_reward-256x256.png`),
     },
   },
+  [ArtifactSetUidEnum.LongNightsOath]: {
+    name: "Клятва долгой ночи",
+    quality: [4, 5],
+    [ArtifactTypeUidEnum.FlowerOfLife]: {
+      name: "Lightkeeper's Pledge",
+      image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/lightkeepers_pledge-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.PlumeOfDeath]: {
+      name: "Nightingale's Tail Feather",
+      image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/nightingales_tail_feather-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.SandsOfEon]: {
+      name: "Undying One's Mourning Bell",
+      image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/undying_ones_mourning_bell-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.GobletOfEonothem]: {
+      name: "A Horn Unwinded",
+      image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/a_horn_unwinded-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.CircletOfLogos]: {
+      name: "Dyed Tassel",
+      image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/dyed_tassel-256x256.png`),
+    },
+  },
   [ArtifactSetUidEnum.GladiatorsFinale]: {
     name: "Конец гладиатора",
     quality: [4, 5],
@@ -71,6 +98,30 @@ const artifactSets = {
       image_src: imageSrc(`${ArtifactSetUidEnum.GladiatorsFinale}/gladiators_triumphus-256x256.png`),
     },
   },
+  [ArtifactSetUidEnum.ObsidianCodex]: {
+    name: "Обсидиановый фолиант",
+    quality: [4, 5],
+    [ArtifactTypeUidEnum.FlowerOfLife]: {
+      name: "Reckoning of the Xenogenic",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/reckoning_of_the_xenogenic-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.PlumeOfDeath]: {
+      name: "Root of the Spirit-Marrow",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/root_of_the_spirit_marrow-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.SandsOfEon]: {
+      name: "Myths of the Night Realm",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/myths_of_the_night_realm-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.GobletOfEonothem]: {
+      name: "Pre-Banquet of the Contenders",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/pre_banquet_of_the_contenders-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.CircletOfLogos]: {
+      name: "Crown of the Saints",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/crown_of_the_saints-256x256.png`),
+    },
+  },
   [ArtifactSetUidEnum.GildedDreams]: {
     name: "Позолоченные сны",
     quality: [4, 5],
@@ -93,6 +144,30 @@ const artifactSets = {
     [ArtifactTypeUidEnum.CircletOfLogos]: {
       name: "Тень Короля песков",
       image_src: imageSrc(`${ArtifactSetUidEnum.GildedDreams}/shadow_of_the_sand_king-256x256.png`),
+    },
+  },
+  [ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity]: {
+    name: "Свиток героя сожжённого города",
+    quality: [4, 5],
+    [ArtifactTypeUidEnum.FlowerOfLife]: {
+      name: "Beast Tamer's Talisman",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/beast_tamers_talisman-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.PlumeOfDeath]: {
+      name: "Mountain Ranger's Marker",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/mountain_rangers_marker-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.SandsOfEon]: {
+      name: "Mystic's Gold Dial",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/mystics_gold_dial-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.GobletOfEonothem]: {
+      name: "Wandering Scholar's Claw Cup",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/wandering_scholars_claw_cup-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.CircletOfLogos]: {
+      name: "Demon-Warrior's Feather Mask",
+      image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/demon_warriors_feather_mask-256x256.png`),
     },
   },
   [ArtifactSetUidEnum.TenacityOfTheMillelith]: {

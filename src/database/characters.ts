@@ -1,14 +1,18 @@
 import { publicImageSrc } from "@/lib/utils";
+import { type ElementUid, ElementUidEnum } from "./elements";
 import { type RegionUid, RegionUidEnum } from "./regions";
 import { type WeaponTypeUid, WeaponTypeUidEnum } from "./weapon-types";
 import { type WeaponUid, WeaponUidEnum } from "./weapons";
 import { type WorldUid, WorldUidEnum } from "./worlds";
+import { type CharacterRoleUid, CharacterRoleUidEnum } from "./character-roles";
 import type { QualityUid } from "./qualities";
 
 type Character = {
   name: string;
   quality: QualityUid;
   weapon_type_uid: WeaponTypeUid;
+  element_uid: ElementUid;
+  roles_uid: CharacterRoleUid[];
   world_uid: WorldUid;
   region_uid?: RegionUid;
   signature_weapon_uid?: WeaponUid;
@@ -44,6 +48,8 @@ const characters = {
     name: "Арлекино",
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
+    element_uid: ElementUidEnum.Pyro,
+    roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Snezhnaya,
     signature_weapon_uid: WeaponUidEnum.CrimsonMoonsSemblance,
@@ -53,6 +59,8 @@ const characters = {
     name: "Беннет",
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
+    element_uid: ElementUidEnum.Pyro,
+    roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Mondstadt,
     small_image_src: imageSrc("bennett-small-106x106.png"),
@@ -61,14 +69,19 @@ const characters = {
     name: "Вареса",
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
+    element_uid: ElementUidEnum.Electro,
+    roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Natlan,
+    signature_weapon_uid: WeaponUidEnum.VividNotions,
     small_image_src: imageSrc("varesa-small-106x106.png"),
   },
   [CharacterUidEnum.Iansan]: {
     name: "Иансан",
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
+    element_uid: ElementUidEnum.Electro,
+    roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Natlan,
     small_image_src: imageSrc("iansan-small-106x106.png"),

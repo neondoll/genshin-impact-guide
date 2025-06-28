@@ -40,6 +40,10 @@ const elements = {
   [ElementUidEnum.Cryo]: { name: "Крио", region_uid: RegionUidEnum.Snezhnaya, image_src: imageSrc("cryo-64x64.png") },
 } as Elements;
 
+export function getElement(uid: ElementUid) {
+  return elements[uid];
+}
+
 export function getElements() {
   return elements;
 }
