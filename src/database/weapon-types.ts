@@ -32,7 +32,11 @@ const weaponTypes = {
     image_src: imageSrc("sword-128x128.png"),
     icon_src: imageSrc("sword-icon-20x20.png"),
   },
-  [WeaponTypeUidEnum.Bow]: { name: "Стрелковое", image_src: imageSrc("bow-128x128.png") },
+  [WeaponTypeUidEnum.Bow]: {
+    name: "Стрелковое",
+    image_src: imageSrc("bow-128x128.png"),
+    icon_src: imageSrc("bow-icon-20x20.png"),
+  },
 } as WeaponTypes;
 
 export function getWeaponType(uid: WeaponTypeUid) {

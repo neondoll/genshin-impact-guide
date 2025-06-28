@@ -3,11 +3,11 @@ import { useLoaderData } from "react-router-dom";
 import { ArtifactTypeUidEnum } from "@/database/artifact-types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { ElementUidEnum, getElement } from "@/database/elements";
 import { getArtifactSets } from "@/database/artifact-sets";
 import { getAttributes } from "@/database/attributes";
 import { getCharacter } from "@/database/characters";
 import { getCharacterRole } from "@/database/character-roles";
-import { ElementUidEnum, getElement } from "@/database/elements";
 import { getGuideCharacter, type GuideCharacterWeapons } from "@/database/guide-characters";
 import { getTalents, type TalentUid } from "@/database/talents";
 import { getWeapon } from "@/database/weapons";
@@ -188,14 +188,25 @@ function SuitableWeaponsTable({ guideWeapons, signatureWeaponUid }: SuitableWeap
                 "text-center first:[&>*]:first:rounded-tl-xl first:[&>*]:last:rounded-tr-xl",
                 "last:[&>*]:first:rounded-bl-lg last:[&>*]:last:rounded-br-lg",
               )}
-              key={guideWeapon.uid + (guideWeapon.refinement === undefined ? "" : `-r${guideWeapon.refinement}`)}
+              key={
+                guideWeapon.uid
+                + (guideWeapon.refinement === undefined ? "" : `-r${guideWeapon.refinement}`)
+                + (guideWeapon.postfix === undefined ? "" : `-${guideWeapon.postfix}`)
+              }
             >
               <TableHead className="flex gap-2 items-center whitespace-normal">
                 <img alt={weapon.name} className="shrink-0 size-10" src={weapon.small_image_src} />
                 <span>
                   {weapon.name}
-                  {guideWeapon.uid === signatureWeaponUid && " (сигна)"}
                   {guideWeapon.refinement !== undefined && ` R${guideWeapon.refinement}`}
+                  {` [${weapon.quality}⭐]`}
+                  {guideWeapon.uid === signatureWeaponUid && " (сигна)"}
+                  {guideWeapon.postfix !== undefined && (
+                    <>
+                      {" "}
+                      <sub>{guideWeapon.postfix}</sub>
+                    </>
+                  )}
                 </span>
               </TableHead>
               {guideWeapon.percent !== undefined && (
@@ -208,7 +219,7 @@ function SuitableWeaponsTable({ guideWeapons, signatureWeaponUid }: SuitableWeap
                 >
                   {new Intl.NumberFormat(undefined, {
                     style: "percent",
-                    minimumFractionDigits: 1,
+                    minimumFractionDigits: 2,
                   }).format(guideWeapon.percent)}
                 </TableCell>
               )}
@@ -364,6 +375,25 @@ export default function Character() {
               </CardHeader>
               <CardContent>
                 <SuitableArtifacts guideArtifacts={guideCharacter.artifacts} />
+              </CardContent>
+            </Card>
+          )}
+          {guideCharacter.reference_point !== undefined && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Ориентир</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableBody>
+                    {Object.entries(guideCharacter.reference_point).map(([referencePointKey, referencePointValue]) => (
+                      <TableRow key={referencePointKey}>
+                        <TableHead className="text-left">{referencePointKey}</TableHead>
+                        <TableCell className="text-right">{referencePointValue}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
               </CardContent>
             </Card>
           )}

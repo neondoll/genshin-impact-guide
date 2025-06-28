@@ -180,6 +180,7 @@ const characters = {
     ],
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Fontaine,
+    signature_weapon_uid: WeaponUidEnum.SplendorOfTranquilWaters,
     small_image_src: imageSrc("furina-small-106x106.png"),
   },
   [CharacterUidEnum.Chevreuse]: {
