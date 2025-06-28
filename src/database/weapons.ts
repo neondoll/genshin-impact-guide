@@ -8,39 +8,45 @@ type Weapons = Record<WeaponUid, Weapon>;
 export type WeaponUid = typeof WeaponUidEnum[keyof typeof WeaponUidEnum];
 
 export const WeaponUidEnum = {
-  /* Лазурное сияние       */ Azurelight: "azurelight",
-  /* Баллада фьордов       */ BalladOfTheFjords: "ballad_of_the_fjords",
-  /* Черногорская пика     */ BlackcliffPole: "blackcliff_pole",
-  /* Усмиритель бед        */ CalamityQueller: "calamity_queller",
-  /* Казначейский надзор   */ CashflowSupervision: "cashflow_supervision",
-  /* Очертания алой луны   */ CrimsonMoonsSemblance: "crimson_moons_semblance",
-  /* Смертельный бой       */ Deathmatch: "deathmatch",
-  /* Гроза драконов        */ DragonsBane: "dragons_bane",
-  /* Сияющая жатва         */ EngulfingLightning: "engulfing_lightning",
-  /* Копьё Фавония         */ FavoniusLance: "favonius_lance",
-  /* Меч Фавония           */ FavoniusSword: "favonius_sword",
-  /* Сверкание чистых вод  */ FlowingPurity: "flowing_purity",
-  /* Истина кагура         */ KagurasVerity: "kaguras_verity",
-  /* Каменное копье        */ LithicSpear: "lithic_spear",
-  /* Молитва святым ветрам */ LostPrayerToTheSacredWinds: "lost_prayer_to_the_sacred_winds",
-  /* Элегия Люмидус        */ LumidouceElegy: "lumidouce_elegy",
-  /* Копьё послания ветров */ MissiveWindspear: "missive_windspear",
-  /* Нефритовый коршун     */ PrimordialJadeWingedSpear: "primordial_jade_winged_spear",
-  /* Жертвенный нефрит     */ SacrificialJade: "sacrificial_jade",
-  /* Церемониальный меч    */ SacrificialSword: "sacrificial_sword",
-  /* Деревянный клинок     */ SapwoodBlade: "sapwood_blade",
-  /* Небесная ось          */ SkywardSpine: "skyward_spine",
-  /* Посох Хомы            */ StaffOfHoma: "staff_of_homa",
-  /* Посох алых песков     */ StaffOfTheScarletSands: "staff_of_the_scarlet_sands",
-  /* Лови волну            */ SurfsUp: "surfs_up",
-  /* Тамаюратэй но оханаси */ TamayurateiNoOhanashi: "tamayuratei_no_ohanashi",
-  /* Бесструнный           */ TheStringless: "the_stringless",
-  /* Песнь странника       */ TheWidsith: "the_widsith",
-  /* Обряд вечного течения */ TomeOfTheEternalFlow: "tome_of_the_eternal_flow",
-  /* Переливающиеся чаяния */ VividNotions: "vivid_notions",
-  /* Покоритель вихря      */ VortexVanquisher: "vortex_vanquisher",
-  /* Белая кисть           */ WhiteTassel: "white_tassel",
-  /* Лунное сияние ксифоса */ XiphosMoonlight: "xiphos_moonlight",
+  /* Пепельный рог               */ AshGravenDrinkingHorn: "ash_graven_drinking_horn",
+  /* Лазурное сияние             */ Azurelight: "azurelight",
+  /* Баллада фьордов             */ BalladOfTheFjords: "ballad_of_the_fjords",
+  /* Черногорская пика           */ BlackcliffPole: "blackcliff_pole",
+  /* Усмиритель бед              */ CalamityQueller: "calamity_queller",
+  /* Казначейский надзор         */ CashflowSupervision: "cashflow_supervision",
+  /* Очертания алой луны         */ CrimsonMoonsSemblance: "crimson_moons_semblance",
+  /* Смертельный бой             */ Deathmatch: "deathmatch",
+  /* Гроза драконов              */ DragonsBane: "dragons_bane",
+  /* Сияющая жатва               */ EngulfingLightning: "engulfing_lightning",
+  /* Вечное лунное сияние        */ EverlastingMoonglow: "everlasting_moonglow",
+  /* Копьё Фавония               */ FavoniusLance: "favonius_lance",
+  /* Меч Фавония                 */ FavoniusSword: "favonius_sword",
+  /* Сверкание чистых вод        */ FlowingPurity: "flowing_purity",
+  /* Великолепие лазурного свода */ JadefallsSplendor: "jadefalls_splendor",
+  /* Истина кагура               */ KagurasVerity: "kaguras_verity",
+  /* Каменное копье              */ LithicSpear: "lithic_spear",
+  /* Молитва святым ветрам       */ LostPrayerToTheSacredWinds: "lost_prayer_to_the_sacred_winds",
+  /* Элегия Люмидус              */ LumidouceElegy: "lumidouce_elegy",
+  /* Копьё послания ветров       */ MissiveWindspear: "missive_windspear",
+  /* Нефритовый коршун           */ PrimordialJadeWingedSpear: "primordial_jade_winged_spear",
+  /* Прототип: Янтарь            */ PrototypeAmber: "prototype_amber",
+  /* Кольцо Яшче                 */ RingOfYaxche: "Ring of Yaxche",
+  /* Жертвенный нефрит           */ SacrificialJade: "sacrificial_jade",
+  /* Церемониальный меч          */ SacrificialSword: "sacrificial_sword",
+  /* Деревянный клинок           */ SapwoodBlade: "sapwood_blade",
+  /* Небесная ось                */ SkywardSpine: "skyward_spine",
+  /* Посох Хомы                  */ StaffOfHoma: "staff_of_homa",
+  /* Посох алых песков           */ StaffOfTheScarletSands: "staff_of_the_scarlet_sands",
+  /* Лови волну                  */ SurfsUp: "surfs_up",
+  /* Тамаюратэй но оханаси       */ TamayurateiNoOhanashi: "tamayuratei_no_ohanashi",
+  /* Бесструнный                 */ TheStringless: "the_stringless",
+  /* Песнь странника             */ TheWidsith: "the_widsith",
+  /* Обряд вечного течения       */ TomeOfTheEternalFlow: "tome_of_the_eternal_flow",
+  /* Воспоминания Тулайтуллы     */ TulaytullahsRemembrance: "tulaytullahs_remembrance",
+  /* Переливающиеся чаяния       */ VividNotions: "vivid_notions",
+  /* Покоритель вихря            */ VortexVanquisher: "vortex_vanquisher",
+  /* Белая кисть                 */ WhiteTassel: "white_tassel",
+  /* Лунное сияние ксифоса       */ XiphosMoonlight: "xiphos_moonlight",
 } as const;
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`weapons/${src}`);
@@ -63,6 +69,24 @@ const weapons = {
     type: WeaponTypeUidEnum.Bow,
     quality: 4,
     small_image_src: imageSrc("the_stringless-small-256x256.png"),
+  },
+  [WeaponUidEnum.JadefallsSplendor]: {
+    name: "Великолепие лазурного свода",
+    type: WeaponTypeUidEnum.Catalyst,
+    quality: 5,
+    small_image_src: imageSrc("jadefalls_splendor-256x256.png"),
+  },
+  [WeaponUidEnum.EverlastingMoonglow]: {
+    name: "Вечное лунное сияние",
+    type: WeaponTypeUidEnum.Catalyst,
+    quality: 5,
+    small_image_src: imageSrc("everlasting_moonglow-256x256.png"),
+  },
+  [WeaponUidEnum.TulaytullahsRemembrance]: {
+    name: "Воспоминания Тулайтуллы",
+    type: WeaponTypeUidEnum.Catalyst,
+    quality: 5,
+    small_image_src: imageSrc("tulaytullahs_remembrance-256x256.png"),
   },
   [WeaponUidEnum.DragonsBane]: {
     name: "Гроза драконов",
@@ -99,6 +123,12 @@ const weapons = {
     type: WeaponTypeUidEnum.Polearm,
     quality: 4,
     small_image_src: imageSrc("lithic_spear-small-256x256.png"),
+  },
+  [WeaponUidEnum.RingOfYaxche]: {
+    name: "Кольцо Яшче",
+    type: WeaponTypeUidEnum.Catalyst,
+    quality: 4,
+    small_image_src: imageSrc("ring_of_yaxche-256x256.png"),
   },
   [WeaponUidEnum.MissiveWindspear]: {
     name: "Копьё послания ветров",
@@ -166,6 +196,12 @@ const weapons = {
     quality: 5,
     small_image_src: imageSrc("crimson_moons_semblance-small-256x256.png"),
   },
+  [WeaponUidEnum.AshGravenDrinkingHorn]: {
+    name: "Пепельный рог",
+    type: WeaponTypeUidEnum.Catalyst,
+    quality: 4,
+    small_image_src: imageSrc("ash_graven_drinking_horn-256x256.png"),
+  },
   [WeaponUidEnum.VividNotions]: {
     name: "Переливающиеся чаяния",
     type: WeaponTypeUidEnum.Catalyst,
@@ -195,6 +231,12 @@ const weapons = {
     type: WeaponTypeUidEnum.Polearm,
     quality: 5,
     small_image_src: imageSrc("staff_of_homa-small-256x256.png"),
+  },
+  [WeaponUidEnum.PrototypeAmber]: {
+    name: "Прототип: Янтарь",
+    type: WeaponTypeUidEnum.Catalyst,
+    quality: 4,
+    small_image_src: imageSrc("prototype_amber-256x256.png"),
   },
   [WeaponUidEnum.FlowingPurity]: {
     name: "Сверкание чистых вод",
@@ -245,6 +287,10 @@ const weapons = {
     small_image_src: imageSrc("lumidouce_elegy-small-512x512.png"),
   },
 } as Weapons;
+
+export function getWeapon(uid: WeaponUid) {
+  return weapons[uid];
+}
 
 export function getWeapons() {
   return weapons;

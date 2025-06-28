@@ -303,10 +303,50 @@ const guideLayla = {
   },
 } as GuideCharacter;
 const guideNeuvillette = {
+  first_constellation_or_signature_weapon: "Сигна > C1, Сигна > C2. Лучше Сигна и С1",
+  weapons: [
+    { uid: WeaponUidEnum.TomeOfTheEternalFlow, percent: 1 },
+    { uid: WeaponUidEnum.SacrificialJade, refinement: 5, percent: 0.998 },
+    { uid: WeaponUidEnum.SurfsUp, percent: 0.917 },
+    { uid: WeaponUidEnum.SacrificialJade, refinement: 1, percent: 0.914 },
+    { uid: WeaponUidEnum.AshGravenDrinkingHorn, refinement: 5, percent: 0.874 },
+    { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, percent: 0.847 },
+    { uid: WeaponUidEnum.CashflowSupervision, percent: 0.831 },
+    { uid: WeaponUidEnum.AshGravenDrinkingHorn, refinement: 1, percent: 0.808 },
+    { uid: WeaponUidEnum.KagurasVerity, percent: 0.807 },
+    { uid: WeaponUidEnum.TheWidsith, refinement: 5, percent: 0.805 },
+    { uid: WeaponUidEnum.JadefallsSplendor, percent: 0.796 },
+    { uid: WeaponUidEnum.TheWidsith, refinement: 1, percent: 0.791 },
+    { uid: WeaponUidEnum.EverlastingMoonglow, percent: 0.765 },
+    { uid: WeaponUidEnum.TulaytullahsRemembrance, percent: 0.752 },
+    { uid: WeaponUidEnum.PrototypeAmber, percent: 0.745 },
+    { uid: WeaponUidEnum.RingOfYaxche, percent: 0.745 },
+  ],
   talents: {
     [TalentUidEnum.NormalAttack]: "Высокий приоритет \n(10)",
     [TalentUidEnum.ElementalSkill]: "Ситуативно \n(6 / 8)",
     [TalentUidEnum.ElementalBurst]: "Ситуативно \n(6 / 8)",
+  },
+  artifacts: {
+    sets: [{ uid: ArtifactSetUidEnum.MarechausseeHunter }],
+    attributes: {
+      [ArtifactTypeUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfHP }],
+      [ArtifactTypeUidEnum.GobletOfEonothem]: [
+        { uid: AttributeUidEnum.PercentageOfHP, description: "Если в команде Фурина" },
+        { uid: AttributeUidEnum.HydroDamageBonus },
+      ],
+      [ArtifactTypeUidEnum.CircletOfLogos]: [
+        { uid: AttributeUidEnum.CriticalHitChance },
+        { uid: AttributeUidEnum.CriticalDamage, description: "Чаще всего" },
+        { uid: AttributeUidEnum.PercentageOfHP, description: "Иногда, особенно с Сигной" },
+      ],
+      additional: [
+        { uid: AttributeUidEnum.PercentageOfHP },
+        { uid: AttributeUidEnum.CriticalHitChance, description: "Стремимся к 64% Крит шанса" },
+        { uid: AttributeUidEnum.CriticalDamage },
+        { uid: AttributeUidEnum.EnergyRestoration, description: "Специально не охотиться" },
+      ],
+    },
   },
 } as GuideCharacter;
 const guideSkirk = {

@@ -10,11 +10,12 @@ import { getCharacterRole } from "@/database/character-roles";
 import { ElementUidEnum, getElement } from "@/database/elements";
 import { getGuideCharacter, type GuideCharacterWeapons } from "@/database/guide-characters";
 import { getTalents, type TalentUid } from "@/database/talents";
-import { getWeapons } from "@/database/weapons";
+import { getWeapon } from "@/database/weapons";
 import { getWeaponType } from "@/database/weapon-types";
 import { qualityImageSrc } from "@/database/qualities";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useEffect, useState } from "react";
 
 type SuitableArtifactsProps = {
   guideArtifacts: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["artifacts"]>;
@@ -151,47 +152,69 @@ function SuitableWeapons({ guideWeapons, signatureWeaponUid }: SuitableWeaponsPr
 }
 
 function SuitableWeaponsTable({ guideWeapons, signatureWeaponUid }: SuitableWeaponsTableProps) {
-  const weapons = getWeapons();
+  const [diffPercent, setDiffPercent] = useState(0);
+  const [minPercent, setMinPercent] = useState(0);
+
+  useEffect(() => {
+    let maxPercent = -Infinity, minPercent = Infinity;
+
+    guideWeapons.map((guideWeapon) => {
+      if (guideWeapon.percent) {
+        if (guideWeapon.percent > maxPercent) {
+          maxPercent = guideWeapon.percent;
+        }
+
+        if (guideWeapon.percent < minPercent) {
+          minPercent = guideWeapon.percent;
+        }
+      }
+    });
+
+    if (maxPercent !== -Infinity && minPercent !== Infinity) {
+      setDiffPercent((maxPercent - minPercent) / 3);
+      setMinPercent(minPercent);
+    }
+  }, [guideWeapons]);
 
   return (
     <Table>
       <TableBody>
-        {guideWeapons.map(guideWeapon => (
-          <TableRow
-            className={cn(
-              "text-center first:[&>*]:first:rounded-tl-xl first:[&>*]:last:rounded-tr-xl",
-              "last:[&>*]:first:rounded-bl-lg last:[&>*]:last:rounded-br-lg",
-            )}
-            key={guideWeapon.uid + (guideWeapon.refinement === undefined ? "" : `-r${guideWeapon.refinement}`)}
-          >
-            <TableHead className="flex gap-2 items-center whitespace-normal">
-              <img
-                alt={weapons[guideWeapon.uid].name}
-                className="shrink-0 size-10"
-                src={weapons[guideWeapon.uid].small_image_src}
-              />
-              <span>
-                {weapons[guideWeapon.uid].name}
-                {guideWeapon.uid === signatureWeaponUid && " (сигна)"}
-                {guideWeapon.refinement !== undefined && ` R${guideWeapon.refinement}`}
-              </span>
-            </TableHead>
-            {guideWeapon.percent !== undefined && (
-              <TableCell
-                className={cn({
-                  "text-green-500": guideWeapon.percent > 1,
-                  "text-yellow-500": guideWeapon.percent >= 0.99 && guideWeapon.percent <= 1,
-                  "text-red-500": guideWeapon.percent < 0.99,
-                })}
-              >
-                {new Intl.NumberFormat(undefined, {
-                  style: "percent",
-                  minimumFractionDigits: 1,
-                }).format(guideWeapon.percent)}
-              </TableCell>
-            )}
-          </TableRow>
-        ))}
+        {guideWeapons.map((guideWeapon) => {
+          const weapon = getWeapon(guideWeapon.uid);
+
+          return (
+            <TableRow
+              className={cn(
+                "text-center first:[&>*]:first:rounded-tl-xl first:[&>*]:last:rounded-tr-xl",
+                "last:[&>*]:first:rounded-bl-lg last:[&>*]:last:rounded-br-lg",
+              )}
+              key={guideWeapon.uid + (guideWeapon.refinement === undefined ? "" : `-r${guideWeapon.refinement}`)}
+            >
+              <TableHead className="flex gap-2 items-center whitespace-normal">
+                <img alt={weapon.name} className="shrink-0 size-10" src={weapon.small_image_src} />
+                <span>
+                  {weapon.name}
+                  {guideWeapon.uid === signatureWeaponUid && " (сигна)"}
+                  {guideWeapon.refinement !== undefined && ` R${guideWeapon.refinement}`}
+                </span>
+              </TableHead>
+              {guideWeapon.percent !== undefined && (
+                <TableCell
+                  className={cn({
+                    "text-green-500": guideWeapon.percent >= (minPercent + (diffPercent * 2)),
+                    "text-yellow-500": guideWeapon.percent >= (minPercent + diffPercent) && guideWeapon.percent < (minPercent + (diffPercent * 2)),
+                    "text-red-500": guideWeapon.percent < (minPercent + diffPercent),
+                  })}
+                >
+                  {new Intl.NumberFormat(undefined, {
+                    style: "percent",
+                    minimumFractionDigits: 1,
+                  }).format(guideWeapon.percent)}
+                </TableCell>
+              )}
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );
@@ -232,8 +255,12 @@ export default function Character() {
           <img
             alt={character.name}
             className={cn("shrink-0 rounded-xl", {
-              "bg-red-500": character.element_uid === ElementUidEnum.Pyro,
+              "bg-teal-500": character.element_uid === ElementUidEnum.Anemo,
+              "bg-cyan-500": character.element_uid === ElementUidEnum.Cryo,
               "bg-purple-500": character.element_uid === ElementUidEnum.Electro,
+              "bg-amber-500": character.element_uid === ElementUidEnum.Geo,
+              "bg-blue-500": character.element_uid === ElementUidEnum.Hydro,
+              "bg-red-500": character.element_uid === ElementUidEnum.Pyro,
             })}
             src={character.small_image_src}
           />

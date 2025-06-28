@@ -17,6 +17,7 @@ export const ArtifactSetUidEnum = {
   /* Конец гладиатора                */ GladiatorsFinale: "gladiators_finale",
   /* Золотая труппа                  */ GoldenTroupe: "golden_troupe",
   /* Клятва долгой ночи              */ LongNightsOath: "long_nights_oath",
+  /* Охотник Сумеречного двора       */ MarechausseeHunter: "marechaussee_hunter",
   /* Церемония древней знати         */ NoblesseOblige: "noblesse_oblige",
   /* Обсидиановый фолиант            */ ObsidianCodex: "obsidian_codex",
   /* Свиток героя сожжённого города  */ ScrollOfTheHeroOfCinderCity: "scroll_of_the_hero_of_cinder_city",
@@ -120,6 +121,30 @@ const artifactSets = {
     [ArtifactTypeUidEnum.CircletOfLogos]: {
       name: "Crown of the Saints",
       image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/crown_of_the_saints-256x256.png`),
+    },
+  },
+  [ArtifactSetUidEnum.MarechausseeHunter]: {
+    name: "Охотник Сумеречного двора",
+    quality: [4, 5],
+    [ArtifactTypeUidEnum.FlowerOfLife]: {
+      name: "Hunter's Brooch",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/hunters_brooch-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.PlumeOfDeath]: {
+      name: "Masterpiece's Overture",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/masterpieces_overture-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.SandsOfEon]: {
+      name: "Moment of Judgment",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/moment_of_judgment-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.GobletOfEonothem]: {
+      name: "Forgotten Vessel",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/forgotten_vessel-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.CircletOfLogos]: {
+      name: "Veteran's Visage",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/veterans_visage-256x256.png`),
     },
   },
   [ArtifactSetUidEnum.GildedDreams]: {
