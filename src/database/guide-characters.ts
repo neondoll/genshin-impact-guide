@@ -16,7 +16,7 @@ type GuideCharacter = {
       description?: string;
     }[]>;
   };
-  talents?: Record<TalentUid, string>;
+  talents: Record<TalentUid, string>;
 };
 type GuideCharacters = Record<CharacterUid, GuideCharacter>;
 type GuideCharacterWeapon = { uid: WeaponUid; refinement?: 1 | 5; percent?: number };
