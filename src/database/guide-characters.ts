@@ -7,6 +7,7 @@ import { type WeaponUid, WeaponUidEnum } from "./weapons";
 
 type GuideCharacter = {
   level?: 80 | 90;
+  first_constellation_or_signature_weapon?: string;
   weapons?: GuideCharacterWeapons | Record<string, GuideCharacterWeapons>;
   artifacts?: {
     sets: { uid: ArtifactSetUid; description?: string }[];
@@ -23,6 +24,7 @@ type GuideCharacterWeapon = { uid: WeaponUid; refinement?: 1 | 5; percent?: numb
 export type GuideCharacterWeapons = GuideCharacterWeapon[];
 
 const guideArlecchino = {
+  first_constellation_or_signature_weapon: "С1 и Сигна",
   weapons: {
     "Гиперкери | Прожарка | отр. Шеврёз": [
       { uid: WeaponUidEnum.CrimsonMoonsSemblance, percent: 1.316 },

@@ -221,28 +221,29 @@ export default function Character() {
       <h1 className="text-base">{character.name}</h1>
       {guideCharacter !== undefined && (
         <>
-          {guideCharacter.level !== undefined && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Характеристики</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Table>
-                  <TableBody>
-                    <TableRow
-                      className={cn(
-                        "text-center first:[&>*]:first:rounded-tl-xl first:[&>*]:last:rounded-tr-xl",
-                        "last:[&>*]:first:rounded-bl-lg last:[&>*]:last:rounded-br-lg",
-                      )}
-                    >
+          <Card>
+            <CardHeader>
+              <CardTitle>Основное</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableBody>
+                  {guideCharacter.level !== undefined && (
+                    <TableRow className={TableRowClassName}>
                       <TableHead>Требуемый уровень</TableHead>
                       <TableCell>{guideCharacter.level}</TableCell>
                     </TableRow>
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-          )}
+                  )}
+                  {guideCharacter.first_constellation_or_signature_weapon !== undefined && (
+                    <TableRow className={TableRowClassName}>
+                      <TableHead>C1 или Сигна?</TableHead>
+                      <TableCell>{guideCharacter.first_constellation_or_signature_weapon}</TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
           {guideCharacter.weapons !== undefined && (
             <Card>
               <CardHeader>
