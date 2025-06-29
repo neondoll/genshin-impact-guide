@@ -91,29 +91,29 @@ function ReferencePointTable({ items }: ReferencePointTableProps) {
 }
 
 function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps) {
-  const [diffPercent, setDiffPercent] = useState(0);
-  const [minPercent, setMinPercent] = useState(0);
+  const [setsDiffPercent, setSetsDiffPercent] = useState(0);
+  const [setsMinPercent, setSetsMinPercent] = useState(0);
 
   useEffect(() => {
-    let maxPercent = -Infinity, minPercent = Infinity;
+    let setsMaxPercent = -Infinity, setsMinPercent = Infinity;
 
     guideArtifacts.sets.map((guideArtifactSet) => {
       if (guideArtifactSet.percent) {
-        if (guideArtifactSet.percent > maxPercent) {
-          maxPercent = guideArtifactSet.percent;
+        if (guideArtifactSet.percent > setsMaxPercent) {
+          setsMaxPercent = guideArtifactSet.percent;
         }
 
-        if (guideArtifactSet.percent < minPercent) {
-          minPercent = guideArtifactSet.percent;
+        if (guideArtifactSet.percent < setsMinPercent) {
+          setsMinPercent = guideArtifactSet.percent;
         }
       }
     });
 
-    if (maxPercent !== -Infinity && minPercent !== Infinity) {
-      setDiffPercent((maxPercent - minPercent) / 3);
-      setMinPercent(minPercent);
+    if (setsMaxPercent !== -Infinity && setsMinPercent !== Infinity) {
+      setSetsDiffPercent((setsMaxPercent - setsMinPercent) / 3);
+      setSetsMinPercent(setsMinPercent);
     }
-  }, [guideArtifacts.sets]);
+  }, [guideArtifacts]);
 
   return (
     <Table>
@@ -142,9 +142,9 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
               {guideArtifactSet.percent !== undefined && (
                 <TableCell
                   className={cn({
-                    "text-green-500": guideArtifactSet.percent >= (minPercent + (diffPercent * 2)),
-                    "text-yellow-500": guideArtifactSet.percent >= (minPercent + diffPercent) && guideArtifactSet.percent < (minPercent + (diffPercent * 2)),
-                    "text-red-500": guideArtifactSet.percent < (minPercent + diffPercent),
+                    "text-green-500": guideArtifactSet.percent >= (setsMinPercent + (setsDiffPercent * 2)),
+                    "text-yellow-500": guideArtifactSet.percent >= (setsMinPercent + setsDiffPercent) && guideArtifactSet.percent < (setsMinPercent + (setsDiffPercent * 2)),
+                    "text-red-500": guideArtifactSet.percent < (setsMinPercent + setsDiffPercent),
                   })}
                 >
                   {new Intl.NumberFormat(undefined, {
@@ -185,7 +185,24 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
                 <TableCell className="whitespace-normal">
                   {attribute.name}
                 </TableCell>
-                <TableCell className="whitespace-pre-line" colSpan={2}>
+                {guideArtifactAttribute.percent !== undefined && (
+                  <TableCell
+                    className={cn({
+                      "text-green-500": guideArtifactAttribute.percent >= 0.5,
+                      "text-yellow-500": guideArtifactAttribute.percent >= 0.25 && guideArtifactAttribute.percent < 0.5,
+                      "text-red-500": guideArtifactAttribute.percent < 0.25,
+                    })}
+                  >
+                    {new Intl.NumberFormat(undefined, {
+                      style: "percent",
+                      minimumFractionDigits: 1,
+                    }).format(guideArtifactAttribute.percent)}
+                  </TableCell>
+                )}
+                <TableCell
+                  className="whitespace-pre-line"
+                  colSpan={guideArtifactAttribute.percent === undefined ? 2 : 1}
+                >
                   {guideArtifactAttribute.description}
                 </TableCell>
               </TableRow>
@@ -342,6 +359,7 @@ export default function Character() {
             className={cn("shrink-0 rounded-xl", {
               "bg-teal-500": character.element_uid === ElementUidEnum.Anemo,
               "bg-cyan-500": character.element_uid === ElementUidEnum.Cryo,
+              "bg-lime-500": character.element_uid === ElementUidEnum.Dendro,
               "bg-purple-500": character.element_uid === ElementUidEnum.Electro,
               "bg-amber-500": character.element_uid === ElementUidEnum.Geo,
               "bg-blue-500": character.element_uid === ElementUidEnum.Hydro,

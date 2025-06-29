@@ -89,19 +89,19 @@ const guideBennett = {
     sets: [{ uid: ArtifactSetUidEnum.NoblesseOblige }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.EnergyRestoration, description: "Коэффициент выбора: \n70,3%" },
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n18,7%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n8,9%" },
+        { uid: AttributeUidEnum.EnergyRestoration, percent: 0.703 },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.187 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.089 },
       ],
       [ArtifactTypeUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n74,9%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n10,9%" },
-        { uid: AttributeUidEnum.PyroDamageBonus, description: "Коэффициент выбора: \n10,5%" },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.749 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.109 },
+        { uid: AttributeUidEnum.PyroDamageBonus, percent: 0.105 },
       ],
       [ArtifactTypeUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.TreatmentBonus, description: "Коэффициент выбора: \n54,3%" },
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n22,4%" },
-        { uid: AttributeUidEnum.CriticalHitChance, description: "Коэффициент выбора: \n11,1%" },
+        { uid: AttributeUidEnum.TreatmentBonus, percent: 0.543 },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.224 },
+        { uid: AttributeUidEnum.CriticalHitChance, percent: 0.111 },
       ],
       additional: [
         { uid: AttributeUidEnum.PercentageOfHP, description: "Приоритетно" },
@@ -167,19 +167,19 @@ const guideFischl = {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n78,5%" },
-        { uid: AttributeUidEnum.MasteryOfElements, description: "Коэффициент выбора: \n12,5%" },
-        { uid: AttributeUidEnum.EnergyRestoration, description: "Коэффициент выбора: \n6,2%" },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.785 },
+        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.125 },
+        { uid: AttributeUidEnum.EnergyRestoration, percent: 0.062 },
       ],
       [ArtifactTypeUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.ElectroDamageBonus, description: "Коэффициент выбора: \n83,0%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n11,9%" },
-        { uid: AttributeUidEnum.MasteryOfElements, description: "Коэффициент выбора: \n1,8%" },
+        { uid: AttributeUidEnum.ElectroDamageBonus, percent: 0.830 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.119 },
+        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.018 },
       ],
       [ArtifactTypeUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalHitChance, description: "Коэффициент выбора: \n66,9%" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Коэффициент выбора: \n26,6%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n3,4%" },
+        { uid: AttributeUidEnum.CriticalHitChance, percent: 0.669 },
+        { uid: AttributeUidEnum.CriticalDamage, percent: 0.266 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.034 },
       ],
       additional: [
         { uid: AttributeUidEnum.CriticalHitChance, description: "Приоритетно" },
@@ -331,19 +331,19 @@ const guideKukiShinobu = {
     sets: [{ uid: ArtifactSetUidEnum.GildedDreams }, { uid: ArtifactSetUidEnum.FlowerOfParadiseLost }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.MasteryOfElements, description: "Коэффициент выбора: \n89,4%" },
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n7,3%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n1,6%" },
+        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.894 },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.073 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.016 },
       ],
       [ArtifactTypeUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.MasteryOfElements, description: "Коэффициент выбора: \n81,0%" },
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n11,4%" },
-        { uid: AttributeUidEnum.ElectroDamageBonus, description: "Коэффициент выбора: \n4,4%" },
+        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.810 },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.114 },
+        { uid: AttributeUidEnum.ElectroDamageBonus, percent: 0.044 },
       ],
       [ArtifactTypeUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.MasteryOfElements, description: "Коэффициент выбора: \n80,7%" },
-        { uid: AttributeUidEnum.TreatmentBonus, description: "Коэффициент выбора: \n7,1%" },
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n5,6%" },
+        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.807 },
+        { uid: AttributeUidEnum.TreatmentBonus, percent: 0.071 },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.056 },
       ],
       additional: [{ uid: AttributeUidEnum.MasteryOfElements, description: "Приоритетно" }],
     },
@@ -362,19 +362,19 @@ const guideLayla = {
     sets: [{ uid: ArtifactSetUidEnum.TenacityOfTheMillelith }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n90,7%" },
-        { uid: AttributeUidEnum.EnergyRestoration, description: "Коэффициент выбора: \n5,1%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n2,5%" },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.907 },
+        { uid: AttributeUidEnum.EnergyRestoration, percent: 0.051 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.025 },
       ],
       [ArtifactTypeUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n90,2%" },
-        { uid: AttributeUidEnum.CryoDamageBonus, description: "Коэффициент выбора: \n5,8%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n1,5%" },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.902 },
+        { uid: AttributeUidEnum.CryoDamageBonus, percent: 0.058 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.015 },
       ],
       [ArtifactTypeUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n86,0%" },
-        { uid: AttributeUidEnum.CriticalHitChance, description: "Коэффициент выбора: \n8,0%" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Коэффициент выбора: \n3,5%" },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.860 },
+        { uid: AttributeUidEnum.CriticalHitChance, percent: 0.080 },
+        { uid: AttributeUidEnum.CriticalDamage, percent: 0.035 },
       ],
       additional: [{ uid: AttributeUidEnum.PercentageOfHP, description: "Приоритетно" }],
     },
@@ -554,19 +554,19 @@ const guideXiangling = {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.EnergyRestoration, description: "Коэффициент выбора: \n74,8%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n17,1%" },
-        { uid: AttributeUidEnum.MasteryOfElements, description: "Коэффициент выбора: \n5,5%" },
+        { uid: AttributeUidEnum.EnergyRestoration, percent: 0.748 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.171 },
+        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.055 },
       ],
       [ArtifactTypeUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PyroDamageBonus, description: "Коэффициент выбора: \n84,1%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n11,8%" },
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n1,3%" },
+        { uid: AttributeUidEnum.PyroDamageBonus, percent: 0.841 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.118 },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.013 },
       ],
       [ArtifactTypeUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalHitChance, description: "Коэффициент выбора: \n64,2%" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Коэффициент выбора: \n29,1%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n4,2%" },
+        { uid: AttributeUidEnum.CriticalHitChance, percent: 0.642 },
+        { uid: AttributeUidEnum.CriticalDamage, percent: 0.291 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.042 },
       ],
       additional: [
         { uid: AttributeUidEnum.CriticalHitChance, description: "Приоритетно" },
@@ -595,19 +595,19 @@ const guideXingqiu = {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n52,5%" },
-        { uid: AttributeUidEnum.EnergyRestoration, description: "Коэффициент выбора: \n41,0%" },
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n3,0%" },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.525 },
+        { uid: AttributeUidEnum.EnergyRestoration, percent: 0.410 },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.030 },
       ],
       [ArtifactTypeUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HydroDamageBonus, description: "Коэффициент выбора: \n84,4%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n10,8%" },
-        { uid: AttributeUidEnum.PercentageOfHP, description: "Коэффициент выбора: \n2,5%" },
+        { uid: AttributeUidEnum.HydroDamageBonus, percent: 0.844 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.108 },
+        { uid: AttributeUidEnum.PercentageOfHP, percent: 0.025 },
       ],
       [ArtifactTypeUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalHitChance, description: "Коэффициент выбора: \n65,0%" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Коэффициент выбора: \n25,8%" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Коэффициент выбора: \n5,5%" },
+        { uid: AttributeUidEnum.CriticalHitChance, percent: 0.650 },
+        { uid: AttributeUidEnum.CriticalDamage, percent: 0.258 },
+        { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.055 },
       ],
       additional: [
         { uid: AttributeUidEnum.CriticalHitChance, description: "Приоритетно" },

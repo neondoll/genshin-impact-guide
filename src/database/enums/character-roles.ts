@@ -1,7 +1,7 @@
 export const CharacterRoleUidEnum = {
-  /* ДПС       */ DPS: "dps",
+  /* Урон      */ DPS: "dps",
   /* Вне поля  */ OffField: "off_field",
   /* На поле   */ OnField: "on_field",
   /* Поддержка */ Support: "support",
-  /* Живучесть */ Survivability: "survivability",
+  /* Выживание */ Survivability: "survivability",
 } as const;

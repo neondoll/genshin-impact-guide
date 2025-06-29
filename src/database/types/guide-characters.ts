@@ -5,6 +5,7 @@ import type { CharacterUid } from "./characters";
 import type { TalentUid } from "./talents";
 import type { WeaponUid } from "./weapons";
 
+type GuideCharacterArtifactAttribute = { uid: AttributeUid; percent?: number; description?: string };
 type GuideCharacterArtifactSet = { uid: ArtifactSetUid; percent?: number; description?: string };
 type GuideCharacterWeapon = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
 
@@ -17,10 +18,7 @@ export type GuideCharacter = {
   weapons?: GuideCharacterWeapons | Record<string, GuideCharacterWeapons>;
   artifacts?: {
     sets: GuideCharacterArtifactSet[];
-    attributes: Record<typeof ArtifactTypeUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", {
-      uid: AttributeUid;
-      description?: string;
-    }[]>;
+    attributes: Record<typeof ArtifactTypeUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", GuideCharacterArtifactAttribute[]>;
   };
   reference_point?: GuideCharacterReferencePoint | Record<string, GuideCharacterReferencePoint>;
 };

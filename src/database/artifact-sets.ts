@@ -34,23 +34,23 @@ export const artifactSets = {
     name: "Клятва долгой ночи",
     qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
-      name: "Lightkeeper's Pledge",
+      name: "Клятва светоносца",
       image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/lightkeepers_pledge-256x256.png`),
     },
     [ArtifactTypeUidEnum.PlumeOfDeath]: {
-      name: "Nightingale's Tail Feather",
+      name: "Соловьиное перо",
       image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/nightingales_tail_feather-256x256.png`),
     },
     [ArtifactTypeUidEnum.SandsOfEon]: {
-      name: "Undying One's Mourning Bell",
+      name: "Скорбный колокольчик бессмертного",
       image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/undying_ones_mourning_bell-256x256.png`),
     },
     [ArtifactTypeUidEnum.GobletOfEonothem]: {
-      name: "A Horn Unwinded",
+      name: "Умолкнувший рог",
       image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/a_horn_unwinded-256x256.png`),
     },
     [ArtifactTypeUidEnum.CircletOfLogos]: {
-      name: "Dyed Tassel",
+      name: "Окрашенный шлем",
       image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/dyed_tassel-256x256.png`),
     },
   },
@@ -82,23 +82,23 @@ export const artifactSets = {
     name: "Обсидиановый фолиант",
     qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
-      name: "Reckoning of the Xenogenic",
+      name: "Ожидания инородцев",
       image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/reckoning_of_the_xenogenic-256x256.png`),
     },
     [ArtifactTypeUidEnum.PlumeOfDeath]: {
-      name: "Root of the Spirit-Marrow",
+      name: "Корень костного мозга души",
       image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/root_of_the_spirit_marrow-256x256.png`),
     },
     [ArtifactTypeUidEnum.SandsOfEon]: {
-      name: "Myths of the Night Realm",
+      name: "Мифы владений ночи",
       image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/myths_of_the_night_realm-256x256.png`),
     },
     [ArtifactTypeUidEnum.GobletOfEonothem]: {
-      name: "Pre-Banquet of the Contenders",
+      name: "Банкет перед состязанием",
       image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/pre_banquet_of_the_contenders-256x256.png`),
     },
     [ArtifactTypeUidEnum.CircletOfLogos]: {
-      name: "Crown of the Saints",
+      name: "Корона святых",
       image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/crown_of_the_saints-256x256.png`),
     },
   },
@@ -106,23 +106,23 @@ export const artifactSets = {
     name: "Охотник Сумеречного двора",
     qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
-      name: "Hunter's Brooch",
+      name: "Брошь охотника",
       image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/hunters_brooch-256x256.png`),
     },
     [ArtifactTypeUidEnum.PlumeOfDeath]: {
-      name: "Masterpiece's Overture",
+      name: "Увертюра шедевра",
       image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/masterpieces_overture-256x256.png`),
     },
     [ArtifactTypeUidEnum.SandsOfEon]: {
-      name: "Moment of Judgment",
+      name: "Мгновение правосудия",
       image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/moment_of_judgment-256x256.png`),
     },
     [ArtifactTypeUidEnum.GobletOfEonothem]: {
-      name: "Forgotten Vessel",
+      name: "Забытый сосуд",
       image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/forgotten_vessel-256x256.png`),
     },
     [ArtifactTypeUidEnum.CircletOfLogos]: {
-      name: "Veteran's Visage",
+      name: "Лик старого солдата",
       image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/veterans_visage-256x256.png`),
     },
   },
@@ -154,23 +154,23 @@ export const artifactSets = {
     name: "Свиток героя сожжённого города",
     qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
-      name: "Beast Tamer's Talisman",
+      name: "Талисман укротителя зверей",
       image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/beast_tamers_talisman-256x256.png`),
     },
     [ArtifactTypeUidEnum.PlumeOfDeath]: {
-      name: "Mountain Ranger's Marker",
+      name: "Маячок горного патрульного",
       image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/mountain_rangers_marker-256x256.png`),
     },
     [ArtifactTypeUidEnum.SandsOfEon]: {
-      name: "Mystic's Gold Dial",
+      name: "Золотые часы мистика",
       image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/mystics_gold_dial-256x256.png`),
     },
     [ArtifactTypeUidEnum.GobletOfEonothem]: {
-      name: "Wandering Scholar's Claw Cup",
+      name: "Кубок бродячего исследователя",
       image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/wandering_scholars_claw_cup-256x256.png`),
     },
     [ArtifactTypeUidEnum.CircletOfLogos]: {
-      name: "Demon-Warrior's Feather Mask",
+      name: "Перьевая маска воина-демона",
       image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/demon_warriors_feather_mask-256x256.png`),
     },
   },
