@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, type LinkProps, useLoaderData } from "react-router-dom";
 
 import Paths from "@/paths";
 import { ArtifactTypeUidEnum } from "@/database/artifact-types";
@@ -17,6 +17,7 @@ type HomeListItemProps = {
   imageSrc?: React.ComponentProps<"img">["src"];
   label: string;
   key?: React.ComponentProps<"li">["key"];
+  to: LinkProps["to"];
 };
 type HomeListProps = React.ComponentProps<"ul">;
 
@@ -33,7 +34,7 @@ function HomeList({ className, ...props }: HomeListProps) {
   return (
     <ul
       className={cn(
-        "grid grid-cols-[repeat(auto-fill,calc(var(--spacing)*29))] gap-2 justify-center md:gap-4",
+        "grid grid-cols-[repeat(auto-fill,calc(var(--spacing)*27))] gap-2 justify-center md:gap-4",
         className,
       )}
       {...props}
@@ -41,7 +42,7 @@ function HomeList({ className, ...props }: HomeListProps) {
   );
 }
 
-function HomeListItem({ className, imageSrc, label, ...props }: HomeListItemProps) {
+function HomeListItem({ className, imageSrc, label, to, ...props }: HomeListItemProps) {
   return (
     <li
       className={cn(
@@ -61,15 +62,15 @@ function HomeListItem({ className, imageSrc, label, ...props }: HomeListItemProp
           <img alt={label} className="rounded-t-xl" draggable={false} src={imageSrc} />
         )}
       </span>
-      <a
+      <Link
         className={cn(
           "inline-flex flex-1 justify-center items-center text-xs text-center text-card-foreground bg-card",
           "rounded-b-xl outline-none before:absolute before:inset-0",
         )}
-        href="#"
+        to={to}
       >
         {label}
-      </a>
+      </Link>
     </li>
   );
 }
@@ -95,64 +96,48 @@ export default function Home() {
                 imageSrc={artifactSet[ArtifactTypeUidEnum.FlowerOfLife].image_src}
                 key={artifactSetUid}
                 label={artifactSet.name}
+                to="#"
               />
             ))}
           </HomeList>
         </TabsContent>
         <TabsContent value="characters">
-          <ul className="grid grid-cols-[repeat(auto-fill,calc(var(--spacing)*27))] gap-2 justify-center md:gap-4">
+          <HomeList>
             {Object.entries(characters).map(([characterUid, character]) => (
-              <li
-                className={cn(
-                  "relative flex flex-col min-h-37 rounded-xl border shadow-sm transition-shadow has-focus-visible:ring-3",
-                  "has-focus-visible:ring-ring/50",
-                )}
+              <HomeListItem
+                imageSrc={character.small_image_src}
                 key={characterUid}
-              >
-                <img
-                  alt={character.name}
-                  className="object-scale-down object-center shrink-0 w-full h-auto bg-linear-to-br from-muted to-muted-foreground rounded-t-xl"
-                  draggable={false}
-                  src={character.small_image_src}
-                />
-                <Link
-                  className={cn(
-                    "inline-flex flex-1 justify-center items-center text-sm text-center text-card-foreground bg-card",
-                    "rounded-b-xl outline-none before:absolute before:inset-0",
-                  )}
-                  to={Paths.Character(characterUid)}
-                >
-                  {character.name}
-                </Link>
-              </li>
+                label={character.name}
+                to={Paths.Character(characterUid)}
+              />
             ))}
-          </ul>
+          </HomeList>
         </TabsContent>
         <TabsContent value="elements">
           <HomeList>
             {Object.entries(elements).map(([elementUid, element]) => (
-              <HomeListItem imageSrc={element.image_src} key={elementUid} label={element.name} />
+              <HomeListItem imageSrc={element.image_src} key={elementUid} label={element.name} to="#" />
             ))}
           </HomeList>
         </TabsContent>
         <TabsContent value="regions">
           <HomeList>
             {Object.entries(regions).map(([regionUid, region]) => (
-              <HomeListItem imageSrc={region.emblem_image_src} key={regionUid} label={region.name} />
+              <HomeListItem imageSrc={region.emblem_image_src} key={regionUid} label={region.name} to="#" />
             ))}
           </HomeList>
         </TabsContent>
         <TabsContent value="weapons">
           <HomeList>
             {Object.entries(weapons).map(([weaponUid, weapon]) => (
-              <HomeListItem imageSrc={weapon.small_image_src} key={weaponUid} label={weapon.name} />
+              <HomeListItem imageSrc={weapon.small_image_src} key={weaponUid} label={weapon.name} to="#" />
             ))}
           </HomeList>
         </TabsContent>
         <TabsContent value="weapon-types">
           <HomeList>
             {Object.entries(weaponTypes).map(([weaponTypeUid, weaponType]) => (
-              <HomeListItem imageSrc={weaponType.image_src} key={weaponTypeUid} label={weaponType.name} />
+              <HomeListItem imageSrc={weaponType.image_src} key={weaponTypeUid} label={weaponType.name} to="#" />
             ))}
           </HomeList>
         </TabsContent>
