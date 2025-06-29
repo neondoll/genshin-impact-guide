@@ -185,7 +185,7 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
                 <TableCell className="whitespace-normal">
                   {attribute.name}
                 </TableCell>
-                <TableCell className="whitespace-pre-line md:whitespace-normal" colSpan={2}>
+                <TableCell className="whitespace-pre-line" colSpan={2}>
                   {guideArtifactAttribute.description}
                 </TableCell>
               </TableRow>
