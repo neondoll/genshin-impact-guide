@@ -1,0 +1,15 @@
+export const ArtifactSetUidEnum = {
+  /* Эмблема рассечённой судьбы      */ EmblemOfSeveredFate: "emblem_of_severed_fate",
+  /* Финал галерей глубин            */ FinaleOfTheDeepGalleries: "finale_of_the_deep_galleries",
+  /* Цветок потерянного рая          */ FlowerOfParadiseLost: "flower_of_paradise_lost",
+  /* Фрагмент гармонической фантазии */ FragmentOfHarmonicWhimsy: "fragment_of_harmonic_whimsy",
+  /* Позолоченные сны                */ GildedDreams: "gilded_dreams",
+  /* Конец гладиатора                */ GladiatorsFinale: "gladiators_finale",
+  /* Золотая труппа                  */ GoldenTroupe: "golden_troupe",
+  /* Клятва долгой ночи              */ LongNightsOath: "long_nights_oath",
+  /* Охотник Сумеречного двора       */ MarechausseeHunter: "marechaussee_hunter",
+  /* Церемония древней знати         */ NoblesseOblige: "noblesse_oblige",
+  /* Обсидиановый фолиант            */ ObsidianCodex: "obsidian_codex",
+  /* Свиток героя сожжённого города  */ ScrollOfTheHeroOfCinderCity: "scroll_of_the_hero_of_cinder_city",
+  /* Стойкость Миллелита             */ TenacityOfTheMillelith: "tenacity_of_the_millelith",
+} as const;

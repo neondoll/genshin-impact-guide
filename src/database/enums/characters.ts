@@ -1,0 +1,18 @@
+export const CharacterUidEnum = {
+  /* Арлекино    */ Arlecchino: "arlecchino",
+  /* Беннет      */ Bennett: "bennett",
+  /* Шеврёз      */ Chevreuse: "chevreuse",
+  /* Эскофье     */ Escoffier: "escoffier",
+  /* Фишль       */ Fischl: "fischl",
+  /* Фурина      */ Furina: "furina",
+  /* Иансан      */ Iansan: "iansan",
+  /* Куки Синобу */ KukiShinobu: "kuki_shinobu",
+  /* Лайла       */ Layla: "layla",
+  /* Нёвиллет    */ Neuvillette: "neuvillette",
+  /* Скирк       */ Skirk: "skirk",
+  /* Сахароза    */ Sucrose: "sucrose",
+  /* Вареса      */ Varesa: "varesa",
+  /* Сян Лин     */ Xiangling: "xiangling",
+  /* Шилонен     */ Xilonen: "xilonen",
+  /* Син Цю      */ Xingqiu: "xingqiu",
+} as const;

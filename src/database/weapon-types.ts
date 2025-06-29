@@ -1,21 +1,10 @@
 import { publicImageSrc } from "@/lib/utils";
-
-type WeaponType = { name: string; image_src: string; icon_src?: string };
-type WeaponTypes = Record<WeaponTypeUid, WeaponType>;
-
-export type WeaponTypeUid = typeof WeaponTypeUidEnum[keyof typeof WeaponTypeUidEnum];
-
-export const WeaponTypeUidEnum = {
-  /* Стрелковое  */ Bow: "bow",
-  /* Катализатор */ Catalyst: "catalyst",
-  /* Двуручное   */ Claymore: "claymore",
-  /* Древковое   */ Polearm: "polearm",
-  /* Одноручное  */ Sword: "sword",
-} as const;
+import { WeaponTypeUidEnum } from "./enums/weapon-types";
+import type { WeaponTypes } from "./types/weapon-types";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`weapon-types/${src}`);
 
-const weaponTypes = {
+export const weaponTypes = {
   [WeaponTypeUidEnum.Claymore]: { name: "Двуручное", image_src: imageSrc("claymore-128x128.png") },
   [WeaponTypeUidEnum.Polearm]: {
     name: "Древковое",
@@ -38,11 +27,3 @@ const weaponTypes = {
     icon_src: imageSrc("bow-icon-20x20.png"),
   },
 } as WeaponTypes;
-
-export function getWeaponType(uid: WeaponTypeUid) {
-  return weaponTypes[uid];
-}
-
-export function getWeaponTypes() {
-  return weaponTypes;
-}

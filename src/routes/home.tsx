@@ -1,15 +1,11 @@
 import * as React from "react";
-import { Link, type LinkProps, useLoaderData } from "react-router-dom";
+import { Link, type LinkProps, useLoaderData, useNavigate, useParams } from "react-router-dom";
 
+import Container from "@/components/container";
 import Paths from "@/paths";
-import { ArtifactTypeUidEnum } from "@/database/artifact-types";
+import { ArtifactTypeUidEnum } from "@/database/enums/artifact-types";
 import { cn } from "@/lib/utils";
-import { getArtifactSets } from "@/database/artifact-sets";
-import { getCharacters } from "@/database/characters";
-import { getElements } from "@/database/elements";
-import { getRegions } from "@/database/regions";
-import { getWeapons } from "@/database/weapons";
-import { getWeaponTypes } from "@/database/weapon-types";
+import { getArtifactSets, getCharacters, getElements, getRegions, getWeapons, getWeaponTypes } from "@/database";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type HomeListItemProps = {
@@ -32,13 +28,7 @@ export type HomeLoaderData = {
 
 function HomeList({ className, ...props }: HomeListProps) {
   return (
-    <ul
-      className={cn(
-        "grid grid-cols-[repeat(auto-fill,calc(var(--spacing)*27))] gap-2 justify-center md:gap-4",
-        className,
-      )}
-      {...props}
-    />
+    <ul className={cn("flex flex-wrap gap-2 justify-center md:gap-4", className)} {...props} />
   );
 }
 
@@ -46,7 +36,7 @@ function HomeListItem({ className, imageSrc, label, to, ...props }: HomeListItem
   return (
     <li
       className={cn(
-        "relative flex flex-col min-h-37 rounded-xl border shadow-sm transition-shadow has-focus-visible:ring-3",
+        "relative flex flex-col w-27 min-h-37 rounded-xl border shadow-sm transition-shadow has-focus-visible:ring-3",
         "has-focus-visible:ring-ring/50",
         className,
       )}
@@ -54,7 +44,7 @@ function HomeListItem({ className, imageSrc, label, to, ...props }: HomeListItem
     >
       <span
         className={cn(
-          "aspect-square inline-flex shrink-0 justify-center items-center w-full h-auto bg-linear-to-br from-muted",
+          "inline-flex shrink-0 justify-center items-center w-full h-26.5 bg-linear-to-br from-muted",
           "to-muted-foreground rounded-t-xl",
         )}
       >
@@ -64,7 +54,7 @@ function HomeListItem({ className, imageSrc, label, to, ...props }: HomeListItem
       </span>
       <Link
         className={cn(
-          "inline-flex flex-1 justify-center items-center text-xs text-center text-card-foreground bg-card",
+          "inline-flex flex-1 justify-center items-center p-0.5 text-xs text-center text-card-foreground bg-card",
           "rounded-b-xl outline-none before:absolute before:inset-0",
         )}
         to={to}
@@ -77,10 +67,17 @@ function HomeListItem({ className, imageSrc, label, to, ...props }: HomeListItem
 
 export default function Home() {
   const { artifactSets, characters, elements, regions, weapons, weaponTypes } = useLoaderData<HomeLoaderData>();
+  const navigate = useNavigate();
+  const params = useParams();
 
   return (
-    <div className="container px-4 py-4 mx-auto md:py-6 lg:px-6">
-      <Tabs className="md:gap-4" defaultValue="characters">
+    <Container>
+      <Tabs
+        className="md:gap-4"
+        defaultValue="characters"
+        onValueChange={value => navigate(`/${value}`)}
+        value={params.tabValue}
+      >
         <TabsList className="flex w-full">
           <TabsTrigger value="artifact-sets">Наборы артефактов</TabsTrigger>
           <TabsTrigger value="characters">Персонажи</TabsTrigger>
@@ -96,7 +93,7 @@ export default function Home() {
                 imageSrc={artifactSet[ArtifactTypeUidEnum.FlowerOfLife].image_src}
                 key={artifactSetUid}
                 label={artifactSet.name}
-                to="#"
+                to={Paths.ArtifactSet(artifactSetUid)}
               />
             ))}
           </HomeList>
@@ -130,7 +127,7 @@ export default function Home() {
         <TabsContent value="weapons">
           <HomeList>
             {Object.entries(weapons).map(([weaponUid, weapon]) => (
-              <HomeListItem imageSrc={weapon.small_image_src} key={weaponUid} label={weapon.name} to="#" />
+              <HomeListItem className="w-29" imageSrc={weapon.image_src} key={weaponUid} label={weapon.name} to="#" />
             ))}
           </HomeList>
         </TabsContent>
@@ -142,6 +139,6 @@ export default function Home() {
           </HomeList>
         </TabsContent>
       </Tabs>
-    </div>
+    </Container>
   );
 }

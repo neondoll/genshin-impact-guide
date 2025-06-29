@@ -1,28 +1,12 @@
-import { ArtifactTypeUidEnum } from "./artifact-types";
-import { type ArtifactSetUid, ArtifactSetUidEnum } from "./artifact-sets";
-import { type AttributeUid, AttributeUidEnum } from "./attributes";
-import { type CharacterUid, CharacterUidEnum } from "./characters";
-import { type TalentUid, TalentUidEnum } from "./talents";
-import { type WeaponUid, WeaponUidEnum } from "./weapons";
-
-type GuideCharacter = {
-  required_level?: 80 | 90;
-  first_constellation_or_signature_weapon?: string;
-  talents: Record<TalentUid, string>;
-  weapons?: GuideCharacterWeapons | Record<string, GuideCharacterWeapons>;
-  artifacts?: {
-    sets: { uid: ArtifactSetUid; description?: string }[];
-    attributes: Record<typeof ArtifactTypeUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", {
-      uid: AttributeUid;
-      description?: string;
-    }[]>;
-  };
-  reference_point?: Record<string, string>;
-};
-type GuideCharacters = Record<CharacterUid, GuideCharacter>;
-type GuideCharacterWeapon = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
-
-export type GuideCharacterWeapons = GuideCharacterWeapon[];
+import { artifactSets } from "./artifact-sets";
+import { ArtifactSetUidEnum } from "./enums/artifact-sets";
+import { ArtifactTypeUidEnum } from "./enums/artifact-types";
+import { AttributeUidEnum } from "./enums/attributes";
+import { CharacterUidEnum } from "./enums/characters";
+import { TalentUidEnum } from "./enums/talents";
+import { weapons } from "./weapons";
+import { WeaponUidEnum } from "./enums/weapons";
+import type { GuideCharacter, GuideCharacters } from "./types/guide-characters";
 
 const guideArlecchino = {
   first_constellation_or_signature_weapon: "С1 и Сигна",
@@ -92,7 +76,7 @@ const guideArlecchino = {
       ],
     },
   },
-} as unknown as GuideCharacter;
+} as GuideCharacter;
 const guideBennett = {
   required_level: 90,
   talents: {
@@ -303,7 +287,7 @@ const guideFurina = {
       ],
     },
   },
-  reference_point: { "Макс. HP": "33000", "Восст. энергии": "170%", "Крит. шанс": "60%", "Крит. урон": "140%" },
+  reference_point: [["Макс. HP", "33 000"], ["Восст. энергии", "170%"], ["Крит. шанс", "60%"], ["Крит. урон", "140%"]],
 } as GuideCharacter;
 const guideIansan = {
   talents: {
@@ -445,20 +429,78 @@ const guideNeuvillette = {
 } as GuideCharacter;
 const guideSkirk = {
   required_level: 90,
+  required_squad: "Гидро и Крио персонажи, особенно Фурина и Эскофье",
+  key_constellations: [1, 2, 5, 6],
+  first_constellation_or_signature_weapon: "Сигна > C1, C2 > Сигна",
   talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
     [TalentUidEnum.ElementalSkill]: "Максимальный приоритет \n(10)",
     [TalentUidEnum.ElementalBurst]: "Максимальный приоритет \n(10)",
   },
-  weapons: [{ uid: WeaponUidEnum.Azurelight }],
+  weapons: [
+    { uid: WeaponUidEnum.Azurelight, percent: 1.4256 },
+    { uid: WeaponUidEnum.HaranGeppakuFutsu, percent: 1.2239 },
+    { uid: WeaponUidEnum.PrimordialJadeCutter, percent: 1.2238 },
+    { uid: WeaponUidEnum.CalamityOfEshu, postfix: "(щит)", percent: 1.1844 },
+    { uid: WeaponUidEnum.MistsplitterReforged, percent: 1.1639 },
+    { uid: WeaponUidEnum.SummitShaper, postfix: "(щит)", percent: 1.1500 },
+    { uid: WeaponUidEnum.Absolution, percent: 1.1291 },
+    { uid: WeaponUidEnum.UrakuMisugiri, percent: 1.1264 },
+    { uid: WeaponUidEnum.LightOfFoliarIncision, percent: 1.1176 },
+    { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.1023 },
+    { uid: WeaponUidEnum.TheBlackSword, percent: 1.0728 },
+    { uid: WeaponUidEnum.FinaleOfTheDeep, percent: 1 },
+    { uid: WeaponUidEnum.BlackcliffLongsword, percent: 0.9451 },
+  ],
   artifacts: {
-    sets: [{ uid: ArtifactSetUidEnum.FinaleOfTheDeepGalleries }],
+    sets: [
+      {
+        uid: ArtifactSetUidEnum.MarechausseeHunter,
+        percent: 1,
+        description: "Лучше, когда Скирк играет как мейн ДД. Работает только с Фуриной",
+      },
+      {
+        uid: ArtifactSetUidEnum.FinaleOfTheDeepGalleries,
+        percent: 0.9761,
+        description: "Лучше, когда Скирк играет от Взрыва стихии",
+      },
+    ],
     attributes: {
-      [ArtifactTypeUidEnum.SandsOfEon]: [],
-      [ArtifactTypeUidEnum.GobletOfEonothem]: [],
-      [ArtifactTypeUidEnum.CircletOfLogos]: [],
-      additional: [],
+      [ArtifactTypeUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttackPower }],
+      [ArtifactTypeUidEnum.GobletOfEonothem]: [
+        { uid: AttributeUidEnum.CryoDamageBonus, description: "Лучше" },
+        { uid: AttributeUidEnum.PercentageOfAttackPower },
+      ],
+      [ArtifactTypeUidEnum.CircletOfLogos]: [
+        { uid: AttributeUidEnum.CriticalHitChance },
+        { uid: AttributeUidEnum.CriticalDamage },
+      ],
+      additional: [
+        { uid: AttributeUidEnum.CriticalHitChance },
+        { uid: AttributeUidEnum.CriticalDamage },
+        { uid: AttributeUidEnum.PercentageOfAttackPower },
+      ],
     },
+  },
+  reference_point: {
+    [`${artifactSets[ArtifactSetUidEnum.MarechausseeHunter].name} + ${weapons[WeaponUidEnum.FinaleOfTheDeep].name}`]: [
+      ["Макс. HP", "22 041"],
+      ["Сила атаки", "2 136"],
+      ["Защита", "946"],
+      ["МС", "40"],
+      ["Крит. шанс", "44.7%"],
+      ["Крит. урон", "216.8%"],
+      ["Восст. энергии", "111.0%"],
+    ],
+    [`${artifactSets[ArtifactSetUidEnum.FinaleOfTheDeepGalleries].name} + ${weapons[WeaponUidEnum.CalamityOfEshu].name}`]: [
+      ["Макс. HP", "22 041"],
+      ["Сила атаки", "2 136"],
+      ["Защита", "946"],
+      ["МС", "40"],
+      ["Крит. шанс", "69.2%"],
+      ["Крит. урон", "167.8%"],
+      ["Восст. энергии", "111.0%"],
+    ],
   },
 } as GuideCharacter;
 const guideVaresa = {
@@ -576,7 +618,7 @@ const guideXingqiu = {
   },
 } as GuideCharacter;
 
-const guideCharacters = {
+export const guideCharacters = {
   [CharacterUidEnum.Arlecchino]: guideArlecchino,
   [CharacterUidEnum.Bennett]: guideBennett,
   [CharacterUidEnum.Chevreuse]: guideChevreuse,
@@ -593,7 +635,3 @@ const guideCharacters = {
   [CharacterUidEnum.Xilonen]: guideXilonen,
   [CharacterUidEnum.Xingqiu]: guideXingqiu,
 } as GuideCharacters;
-
-export function getGuideCharacter(characterUid: CharacterUid) {
-  return characterUid in guideCharacters ? guideCharacters[characterUid] : undefined;
-}

@@ -1,49 +1,17 @@
+import { ArtifactSetUidEnum } from "./enums/artifact-sets";
+import { CharacterRoleUidEnum } from "./enums/character-roles";
+import { CharacterUidEnum } from "./enums/characters";
+import { ElementUidEnum } from "./enums/elements";
 import { publicImageSrc } from "@/lib/utils";
-import { type ElementUid, ElementUidEnum } from "./elements";
-import { type RegionUid, RegionUidEnum } from "./regions";
-import { type WeaponTypeUid, WeaponTypeUidEnum } from "./weapon-types";
-import { type WeaponUid, WeaponUidEnum } from "./weapons";
-import { type WorldUid, WorldUidEnum } from "./worlds";
-import { type CharacterRoleUid, CharacterRoleUidEnum } from "./character-roles";
-import type { QualityUid } from "./qualities";
-
-type Character = {
-  name: string;
-  quality: QualityUid;
-  weapon_type_uid: WeaponTypeUid;
-  element_uid: ElementUid;
-  roles_uid: CharacterRoleUid[];
-  world_uid: WorldUid;
-  region_uid?: RegionUid;
-  signature_weapon_uid?: WeaponUid;
-  small_image_src: string;
-};
-type Characters = Record<CharacterUid, Character>;
-
-export type CharacterUid = typeof CharacterUidEnum[keyof typeof CharacterUidEnum];
-
-export const CharacterUidEnum = {
-  /* Арлекино    */ Arlecchino: "arlecchino",
-  /* Беннет      */ Bennett: "bennett",
-  /* Шеврёз      */ Chevreuse: "chevreuse",
-  /* Эскофье     */ Escoffier: "escoffier",
-  /* Фишль       */ Fischl: "fischl",
-  /* Фурина      */ Furina: "furina",
-  /* Иансан      */ Iansan: "iansan",
-  /* Куки Синобу */ KukiShinobu: "kuki_shinobu",
-  /* Лайла       */ Layla: "layla",
-  /* Нёвиллет    */ Neuvillette: "neuvillette",
-  /* Скирк       */ Skirk: "skirk",
-  /* Сахароза    */ Sucrose: "sucrose",
-  /* Вареса      */ Varesa: "varesa",
-  /* Сян Лин     */ Xiangling: "xiangling",
-  /* Шилонен     */ Xilonen: "xilonen",
-  /* Син Цю      */ Xingqiu: "xingqiu",
-} as const;
+import { RegionUidEnum } from "./enums/regions";
+import { WeaponTypeUidEnum } from "./enums/weapon-types";
+import { WeaponUidEnum } from "./enums/weapons";
+import { WorldUidEnum } from "./enums/worlds";
+import type { Characters } from "./types/characters";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`characters/${src}`);
 
-const characters = {
+export const characters = {
   [CharacterUidEnum.Arlecchino]: {
     name: "Арлекино",
     quality: 5,
@@ -145,6 +113,7 @@ const characters = {
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
     world_uid: WorldUidEnum.Another,
     signature_weapon_uid: WeaponUidEnum.Azurelight,
+    signature_artifact_set_uid: ArtifactSetUidEnum.FinaleOfTheDeepGalleries,
     small_image_src: imageSrc("skirk-small-106x106.png"),
   },
   [CharacterUidEnum.Xiangling]: {
@@ -219,11 +188,3 @@ const characters = {
     small_image_src: imageSrc("escoffier-small-106x106.png"),
   },
 } as Characters;
-
-export function getCharacter(uid: CharacterUid) {
-  return characters[uid];
-}
-
-export function getCharacters() {
-  return characters;
-}

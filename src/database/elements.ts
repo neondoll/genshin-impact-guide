@@ -1,24 +1,11 @@
+import { ElementUidEnum } from "./enums/elements";
 import { publicImageSrc } from "@/lib/utils";
-import { type RegionUid, RegionUidEnum } from "./regions";
-
-type Element = { name: string; region_uid: RegionUid; image_src: string };
-type Elements = Record<ElementUid, Element>;
-
-export type ElementUid = typeof ElementUidEnum[keyof typeof ElementUidEnum];
-
-export const ElementUidEnum = {
-  /* Анемо   */ Anemo: "anemo",
-  /* Крио    */ Cryo: "cryo",
-  /* Дендро  */ Dendro: "dendro",
-  /* Электро */ Electro: "electro",
-  /* Гео     */ Geo: "geo",
-  /* Гидро   */ Hydro: "hydro",
-  /* Пиро    */ Pyro: "pyro",
-} as const;
+import { RegionUidEnum } from "./enums/regions";
+import type { Elements } from "./types/elements";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`elements/${src}`);
 
-const elements = {
+export const elements = {
   [ElementUidEnum.Anemo]: {
     name: "Анемо",
     region_uid: RegionUidEnum.Mondstadt,
@@ -39,11 +26,3 @@ const elements = {
   [ElementUidEnum.Pyro]: { name: "Пиро", region_uid: RegionUidEnum.Natlan, image_src: imageSrc("pyro-64x64.png") },
   [ElementUidEnum.Cryo]: { name: "Крио", region_uid: RegionUidEnum.Snezhnaya, image_src: imageSrc("cryo-64x64.png") },
 } as Elements;
-
-export function getElement(uid: ElementUid) {
-  return elements[uid];
-}
-
-export function getElements() {
-  return elements;
-}

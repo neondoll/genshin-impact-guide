@@ -1,15 +1,7 @@
-type World = { name: string };
-type Worlds = Record<WorldUid, World>;
+import { WorldUidEnum } from "./enums/worlds";
+import type { Worlds } from "./types/worlds";
 
-export type WorldUid = typeof WorldUidEnum[keyof typeof WorldUidEnum];
-
-export const WorldUidEnum = { Another: "another", Teyvat: "teyvat" } as const;
-
-const worlds = {
+export const worlds = {
   [WorldUidEnum.Teyvat]: { name: "Тейват" },
   [WorldUidEnum.Another]: { name: "Другой мир" },
 } as Worlds;
-
-export function getWorlds() {
-  return worlds;
-}

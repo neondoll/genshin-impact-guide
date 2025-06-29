@@ -1,35 +1,14 @@
+import { ArtifactSetUidEnum } from "./enums/artifact-sets";
+import { ArtifactTypeUidEnum } from "./enums/artifact-types";
 import { publicImageSrc } from "@/lib/utils";
-import { type ArtifactTypeUid, ArtifactTypeUidEnum } from "./artifact-types";
-import type { QualityUid } from "./qualities";
-
-type ArtifactSet = { name: string; quality: QualityUid | QualityUid[] }
-  & Record<ArtifactTypeUid, { name: string; image_src: string }>;
-type ArtifactSets = Record<ArtifactSetUid, ArtifactSet>;
-
-export type ArtifactSetUid = typeof ArtifactSetUidEnum[keyof typeof ArtifactSetUidEnum];
-
-export const ArtifactSetUidEnum = {
-  /* Эмблема рассечённой судьбы      */ EmblemOfSeveredFate: "emblem_of_severed_fate",
-  /* Финал галерей глубин            */ FinaleOfTheDeepGalleries: "finale_of_the_deep_galleries",
-  /* Цветок потерянного рая          */ FlowerOfParadiseLost: "flower_of_paradise_lost",
-  /* Фрагмент гармонической фантазии */ FragmentOfHarmonicWhimsy: "fragment_of_harmonic_whimsy",
-  /* Позолоченные сны                */ GildedDreams: "gilded_dreams",
-  /* Конец гладиатора                */ GladiatorsFinale: "gladiators_finale",
-  /* Золотая труппа                  */ GoldenTroupe: "golden_troupe",
-  /* Клятва долгой ночи              */ LongNightsOath: "long_nights_oath",
-  /* Охотник Сумеречного двора       */ MarechausseeHunter: "marechaussee_hunter",
-  /* Церемония древней знати         */ NoblesseOblige: "noblesse_oblige",
-  /* Обсидиановый фолиант            */ ObsidianCodex: "obsidian_codex",
-  /* Свиток героя сожжённого города  */ ScrollOfTheHeroOfCinderCity: "scroll_of_the_hero_of_cinder_city",
-  /* Стойкость Миллелита             */ TenacityOfTheMillelith: "tenacity_of_the_millelith",
-} as const;
+import type { ArtifactSets } from "./types/artifact-sets";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-sets/${src}`);
 
-const artifactSets = {
+export const artifactSets = {
   [ArtifactSetUidEnum.GoldenTroupe]: {
     name: "Золотая труппа",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Вариация золотой песни",
       image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/golden_songs_variation-256x256.png`),
@@ -53,7 +32,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.LongNightsOath]: {
     name: "Клятва долгой ночи",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Lightkeeper's Pledge",
       image_src: imageSrc(`${ArtifactSetUidEnum.LongNightsOath}/lightkeepers_pledge-256x256.png`),
@@ -77,7 +56,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.GladiatorsFinale]: {
     name: "Конец гладиатора",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Ностальгия гладиатора",
       image_src: imageSrc(`${ArtifactSetUidEnum.GladiatorsFinale}/gladiators_nostalgia-256x256.png`),
@@ -101,7 +80,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.ObsidianCodex]: {
     name: "Обсидиановый фолиант",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Reckoning of the Xenogenic",
       image_src: imageSrc(`${ArtifactSetUidEnum.ObsidianCodex}/reckoning_of_the_xenogenic-256x256.png`),
@@ -125,7 +104,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.MarechausseeHunter]: {
     name: "Охотник Сумеречного двора",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Hunter's Brooch",
       image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/hunters_brooch-256x256.png`),
@@ -149,7 +128,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.GildedDreams]: {
     name: "Позолоченные сны",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Сон железного цветка",
       image_src: imageSrc(`${ArtifactSetUidEnum.GildedDreams}/dreaming_steelbloom-256x256.png`),
@@ -173,7 +152,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity]: {
     name: "Свиток героя сожжённого города",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Beast Tamer's Talisman",
       image_src: imageSrc(`${ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity}/beast_tamers_talisman-256x256.png`),
@@ -197,7 +176,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.TenacityOfTheMillelith]: {
     name: "Стойкость Миллелита",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Цветок почестей",
       image_src: imageSrc(`${ArtifactSetUidEnum.TenacityOfTheMillelith}/flower_of_accolades-256x256.png`),
@@ -221,7 +200,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.FinaleOfTheDeepGalleries]: {
     name: "Финал галерей глубин",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Отголоски песни галерей глубин",
       image_src: imageSrc(`${ArtifactSetUidEnum.FinaleOfTheDeepGalleries}/deep_gallerys_echoing_song-256x256.png`),
@@ -245,7 +224,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.FragmentOfHarmonicWhimsy]: {
     name: "Фрагмент гармонической фантазии",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Увертюра стройной симфонии",
       image_src: imageSrc(`${ArtifactSetUidEnum.FragmentOfHarmonicWhimsy}/harmonious_symphony_prelude-256x256.png`),
@@ -269,7 +248,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.FlowerOfParadiseLost]: {
     name: "Цветок потерянного рая",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Великолепие Ай-Ханум",
       image_src: imageSrc(`${ArtifactSetUidEnum.FlowerOfParadiseLost}/ay_khanoums_myriad-256x256.png`),
@@ -293,7 +272,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.NoblesseOblige]: {
     name: "Церемония древней знати",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Королевский цветок",
       image_src: imageSrc(`${ArtifactSetUidEnum.NoblesseOblige}/royal_flora-256x256.png`),
@@ -317,7 +296,7 @@ const artifactSets = {
   },
   [ArtifactSetUidEnum.EmblemOfSeveredFate]: {
     name: "Эмблема рассечённой судьбы",
-    quality: [4, 5],
+    qualities: [4, 5],
     [ArtifactTypeUidEnum.FlowerOfLife]: {
       name: "Великолепная цуба",
       image_src: imageSrc(`${ArtifactSetUidEnum.EmblemOfSeveredFate}/magnificent_tsuba-256x256.png`),
@@ -340,7 +319,3 @@ const artifactSets = {
     },
   },
 } as ArtifactSets;
-
-export function getArtifactSets() {
-  return artifactSets;
-}

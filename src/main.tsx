@@ -2,39 +2,47 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
 
+import ArtifactSet, { type ArtifactSetLoaderData } from "@/routes/artifact-set";
 import Character, { type CharacterLoaderData } from "@/routes/character";
 import ErrorPage from "@/error-page";
 import Home, { type HomeLoaderData } from "@/routes/home";
 import Paths from "@/paths";
 import Root from "@/routes/root";
-import { getArtifactSets } from "@/database/artifact-sets";
-import { getCharacterRole } from "@/database/character-roles";
-import { getElement, getElements } from "@/database/elements";
-import { getGuideCharacter } from "@/database/guide-characters";
-import { getRegions } from "@/database/regions";
-import { getWeapons } from "@/database/weapons";
-import { getWeaponType, getWeaponTypes } from "@/database/weapon-types";
+import {
+  getArtifactSet, getArtifactSetCharactersUid, getArtifactSets, getArtifactTypes, getCharacter, getCharacterRole,
+  getCharacters, getElement, getElements, getGuideCharacter, getRegions, getWeapons, getWeaponType, getWeaponTypes,
+} from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
-import { type CharacterUid, getCharacter, getCharacters } from "@/database/characters";
+import type { ArtifactSetUid } from "@/database/types/artifact-sets";
+import type { CharacterUid } from "@/database/types/characters";
 import "./index.css";
+
+const homeLoader = (): HomeLoaderData => {
+  const artifactSets = getArtifactSets();
+  const characters = getCharacters();
+  const elements = getElements();
+  const regions = getRegions();
+  const weapons = getWeapons();
+  const weaponTypes = getWeaponTypes();
+
+  return { artifactSets, characters, elements, regions, weapons, weaponTypes };
+};
 
 const router = createHashRouter([
   {
     path: Paths.Root,
     children: [
+      { loader: homeLoader, index: true, element: <Home /> },
       {
-        loader: (): HomeLoaderData => {
-          const artifactSets = getArtifactSets();
-          const characters = getCharacters();
-          const elements = getElements();
-          const regions = getRegions();
-          const weapons = getWeapons();
-          const weaponTypes = getWeaponTypes();
+        loader: ({ params }): ArtifactSetLoaderData => {
+          const artifactSet = getArtifactSet(params.artifactSetUid as ArtifactSetUid);
+          const artifactSetCharactersUid = getArtifactSetCharactersUid(params.artifactSetUid as ArtifactSetUid);
+          const artifactTypes = getArtifactTypes();
 
-          return { artifactSets, characters, elements, regions, weapons, weaponTypes };
+          return { artifactSet, artifactSetCharactersUid, artifactTypes };
         },
-        index: true,
-        element: <Home />,
+        path: Paths.ArtifactSet(":artifactSetUid"),
+        element: <ArtifactSet />,
       },
       {
         loader: ({ params }): CharacterLoaderData => {
@@ -49,6 +57,7 @@ const router = createHashRouter([
         path: Paths.Character(":characterUid"),
         element: <Character />,
       },
+      { loader: homeLoader, path: "/:tabValue", element: <Home /> },
     ],
     element: <Root />,
     errorElement: <ErrorPage />,

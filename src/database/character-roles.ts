@@ -1,21 +1,10 @@
+import { CharacterRoleUidEnum } from "./enums/character-roles";
 import { publicImageSrc } from "@/lib/utils";
-
-type CharacterRole = { name: string; description: string; icon_src: string };
-type CharacterRoles = Record<CharacterRoleUid, CharacterRole>;
-
-export type CharacterRoleUid = typeof CharacterRoleUidEnum[keyof typeof CharacterRoleUidEnum];
-
-export const CharacterRoleUidEnum = {
-  /* ДПС       */ DPS: "dps",
-  /* Вне поля  */ OffField: "off_field",
-  /* На поле   */ OnField: "on_field",
-  /* Поддержка */ Support: "support",
-  /* Живучесть */ Survivability: "survivability",
-} as const;
+import type { CharacterRoles } from "./types/character-roles";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`character-roles/${src}`);
 
-const characterRoles = {
+export const characterRoles = {
   [CharacterRoleUidEnum.OnField]: {
     name: "На поле",
     description: "Рекомендуется выделить этим персонажам как можно больше времени для сражений на поле боя, чтобы в полной мере использовать их сильные стороны.",
@@ -42,11 +31,3 @@ const characterRoles = {
     icon_src: imageSrc("survivability-64x64.png"),
   },
 } as CharacterRoles;
-
-export function getCharacterRole(uid: CharacterRoleUid) {
-  return characterRoles[uid];
-}
-
-export function getCharacterRoles() {
-  return characterRoles;
-}
