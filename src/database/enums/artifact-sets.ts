@@ -11,5 +11,6 @@ export const ArtifactSetUidEnum = {
   /* Церемония древней знати         */ NoblesseOblige: "noblesse_oblige",
   /* Обсидиановый фолиант            */ ObsidianCodex: "obsidian_codex",
   /* Свиток героя сожжённого города  */ ScrollOfTheHeroOfCinderCity: "scroll_of_the_hero_of_cinder_city",
+  /* Песнь былых времён              */ SongOfDaysPast: "song_of_days_past",
   /* Стойкость Миллелита             */ TenacityOfTheMillelith: "tenacity_of_the_millelith",
 } as const;

@@ -122,22 +122,24 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
           const artifactSet = getArtifactSet(guideArtifactSet.uid);
 
           return (
-            <TableRow key={guideArtifactSet.uid}>
+            <TableRow className="hover:bg-inherit" key={guideArtifactSet.uid}>
               {index === 0 && (
-                <TableHead className="p-2" rowSpan={guideArtifacts.sets.length}>Набор</TableHead>
+                <TableHead className="p-2 w-min text-right" rowSpan={guideArtifacts.sets.length}>Набор</TableHead>
               )}
-              <TableCell className="p-2 whitespace-normal">
-                <div className="relative flex gap-2 items-center">
-                  <img
-                    alt={artifactSet.name}
-                    className="shrink-0 size-10"
-                    src={artifactSet[ArtifactTypeUidEnum.FlowerOfLife].image_src}
-                  />
-                  <Link className="flex-1 before:absolute before:inset-0" to={Paths.ArtifactSet(guideArtifactSet.uid)}>
-                    {artifactSet.name}
-                    {guideArtifactSet.uid === character.signature_artifact_set_uid && " (сигнатурное)"}
+              <TableCell className="p-2 min-w-42.5">
+                <Badge asChild className="flex justify-start w-full text-balance whitespace-normal" variant="secondary">
+                  <Link to={Paths.ArtifactSet(guideArtifactSet.uid)}>
+                    <img
+                      alt={artifactSet.name}
+                      className="shrink-0 size-8 rounded-md"
+                      src={artifactSet[ArtifactTypeUidEnum.FlowerOfLife].image_src}
+                    />
+                    <span>
+                      {artifactSet.name}
+                      {guideArtifactSet.uid === character.signature_artifact_set_uid && " (сигнатурное)"}
+                    </span>
                   </Link>
-                </div>
+                </Badge>
               </TableCell>
               {guideArtifactSet.percent !== undefined && (
                 <TableCell
@@ -154,7 +156,7 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
                 </TableCell>
               )}
               <TableCell
-                className="whitespace-pre-line md:whitespace-normal"
+                className="text-balance whitespace-pre-line"
                 colSpan={guideArtifactSet.percent === undefined ? 2 : 1}
               >
                 {guideArtifactSet.description}
@@ -167,10 +169,13 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
             const attribute = getAttribute(guideArtifactAttribute.uid);
 
             return (
-              <TableRow key={`${guideArtifactAttributesKey}-${guideArtifactAttribute.uid}`}>
+              <TableRow
+                className="hover:bg-inherit"
+                key={`${guideArtifactAttributesKey}-${guideArtifactAttribute.uid}`}
+              >
                 {index === 0 && (
                   <TableHead
-                    className="whitespace-normal"
+                    className="p-2 w-min text-right"
                     rowSpan={guideArtifacts.attributes[guideArtifactAttributesKey].length}
                   >
                     {guideArtifactAttributesKey === ArtifactTypeUidEnum.SandsOfEon && "Часы"}
@@ -179,8 +184,10 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
                     {guideArtifactAttributesKey === "additional" && "Доп."}
                   </TableHead>
                 )}
-                <TableCell className="whitespace-normal">
-                  {attribute.name}
+                <TableCell className="p-2 min-w-39.5">
+                  <Badge className="flex justify-start w-full text-balance whitespace-normal" variant="secondary">
+                    {attribute.name}
+                  </Badge>
                 </TableCell>
                 {guideArtifactAttribute.percent !== undefined && (
                   <TableCell
@@ -197,7 +204,7 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
                   </TableCell>
                 )}
                 <TableCell
-                  className="whitespace-pre-line"
+                  className="text-balance whitespace-pre-line"
                   colSpan={guideArtifactAttribute.percent === undefined ? 2 : 1}
                 >
                   {guideArtifactAttribute.description}
@@ -414,7 +421,7 @@ export default function Character() {
         </CardContent>
       </Card>
       {guideCharacter !== undefined && (
-        <Collapsible asChild>
+        <Collapsible open asChild>
           <Card>
             <CardHeader>
               <CollapsibleTrigger asChild>
@@ -426,82 +433,96 @@ export default function Character() {
             </CardHeader>
             <CollapsibleContent asChild>
               <CardContent>
-                <Table className="table-fixed">
-                  <TableBody
-                    className={cn({
-                      "[&_tr:last-child]:border-b": guideCharacter.upgrading_talents !== undefined
-                        || guideCharacter.suitable_weapons !== undefined
-                        || guideCharacter.suitable_artifacts !== undefined
-                        || guideCharacter.reference_point !== undefined,
-                    })}
-                  >
-                    {guideCharacter?.required_level !== undefined && (
-                      <TableRow>
-                        <TableHead className="p-2 text-right whitespace-normal">Требуемый уровень</TableHead>
-                        <TableCell className="p-2 whitespace-normal">{guideCharacter.required_level}</TableCell>
-                      </TableRow>
+                {(
+                  guideCharacter?.required_level !== undefined
+                  || guideCharacter?.required_squad !== undefined
+                  || guideCharacter?.key_constellations !== undefined
+                  || guideCharacter?.first_constellation_or_signature_weapon !== undefined
+                ) && (
+                  <Table className="table-fixed">
+                    <TableBody
+                      className={cn({
+                        "[&_tr:last-child]:border-b": guideCharacter.upgrading_talents !== undefined
+                          || guideCharacter.suitable_weapons !== undefined
+                          || guideCharacter.suitable_artifacts !== undefined
+                          || guideCharacter.reference_point !== undefined,
+                      })}
+                    >
+                      {guideCharacter?.required_level !== undefined && (
+                        <TableRow>
+                          <TableHead className="p-2 text-right whitespace-normal">Требуемый уровень</TableHead>
+                          <TableCell className="p-2 whitespace-normal">{guideCharacter.required_level}</TableCell>
+                        </TableRow>
+                      )}
+                      {guideCharacter?.required_squad !== undefined && (
+                        <TableRow>
+                          <TableHead className="p-2 text-right whitespace-normal">Требуемый отряд</TableHead>
+                          <TableCell
+                            className="p-2 whitespace-pre-line sm:whitespace-normal"
+                            dangerouslySetInnerHTML={{ __html: guideCharacter.required_squad }}
+                          />
+                        </TableRow>
+                      )}
+                      {guideCharacter?.key_constellations !== undefined && (
+                        <TableRow>
+                          <TableHead className="p-2 text-right whitespace-normal">Ключевые созвездия</TableHead>
+                          <TableCell className="p-2 whitespace-normal">
+                            {guideCharacter.key_constellations.join(", ")}
+                          </TableCell>
+                        </TableRow>
+                      )}
+                      {guideCharacter?.first_constellation_or_signature_weapon !== undefined && (
+                        <TableRow>
+                          <TableHead className="p-2 text-right whitespace-normal">C1 или Сигна?</TableHead>
+                          <TableCell className="p-2 whitespace-pre-line sm:whitespace-normal">
+                            {guideCharacter.first_constellation_or_signature_weapon}
+                          </TableCell>
+                        </TableRow>
+                      )}
+                    </TableBody>
+                  </Table>
+                )}
+                {(
+                  guideCharacter.upgrading_talents !== undefined
+                  || guideCharacter.suitable_weapons !== undefined
+                  || guideCharacter.suitable_artifacts !== undefined
+                  || guideCharacter.reference_point !== undefined
+                ) && (
+                  <Accordion className="w-full" type="multiple">
+                    {guideCharacter.upgrading_talents !== undefined && (
+                      <AccordionItem value="upgrading_talents">
+                        <AccordionTrigger>Прокачивание талантов</AccordionTrigger>
+                        <AccordionContent>
+                          <UpgradingTalents guideTalents={guideCharacter.upgrading_talents} />
+                        </AccordionContent>
+                      </AccordionItem>
                     )}
-                    {guideCharacter?.required_squad !== undefined && (
-                      <TableRow>
-                        <TableHead className="p-2 text-right whitespace-normal">Требуемый отряд</TableHead>
-                        <TableCell
-                          className="p-2 whitespace-pre-line sm:whitespace-normal"
-                          dangerouslySetInnerHTML={{ __html: guideCharacter.required_squad }}
-                        />
-                      </TableRow>
+                    {guideCharacter.suitable_weapons !== undefined && (
+                      <AccordionItem value="suitable_weapons">
+                        <AccordionTrigger>Оружие</AccordionTrigger>
+                        <AccordionContent>
+                          <SuitableWeapons character={character} guideWeapons={guideCharacter.suitable_weapons} />
+                        </AccordionContent>
+                      </AccordionItem>
                     )}
-                    {guideCharacter?.key_constellations !== undefined && (
-                      <TableRow>
-                        <TableHead className="p-2 text-right whitespace-normal">Ключевые созвездия</TableHead>
-                        <TableCell className="p-2 whitespace-normal">
-                          {guideCharacter.key_constellations.join(", ")}
-                        </TableCell>
-                      </TableRow>
+                    {guideCharacter.suitable_artifacts !== undefined && (
+                      <AccordionItem value="suitable_artifacts">
+                        <AccordionTrigger>Артефакты</AccordionTrigger>
+                        <AccordionContent>
+                          <SuitableArtifacts character={character} guideArtifacts={guideCharacter.suitable_artifacts} />
+                        </AccordionContent>
+                      </AccordionItem>
                     )}
-                    {guideCharacter?.first_constellation_or_signature_weapon !== undefined && (
-                      <TableRow>
-                        <TableHead className="p-2 text-right whitespace-normal">C1 или Сигна?</TableHead>
-                        <TableCell className="p-2 whitespace-pre-line sm:whitespace-normal">
-                          {guideCharacter.first_constellation_or_signature_weapon}
-                        </TableCell>
-                      </TableRow>
+                    {guideCharacter.reference_point !== undefined && (
+                      <AccordionItem value="reference_point">
+                        <AccordionTrigger>Ориентир</AccordionTrigger>
+                        <AccordionContent>
+                          <ReferencePoint items={guideCharacter.reference_point} />
+                        </AccordionContent>
+                      </AccordionItem>
                     )}
-                  </TableBody>
-                </Table>
-                <Accordion className="w-full" type="multiple">
-                  {guideCharacter.upgrading_talents !== undefined && (
-                    <AccordionItem value="upgrading_talents">
-                      <AccordionTrigger>Прокачивание талантов</AccordionTrigger>
-                      <AccordionContent>
-                        <UpgradingTalents guideTalents={guideCharacter.upgrading_talents} />
-                      </AccordionContent>
-                    </AccordionItem>
-                  )}
-                  {guideCharacter.suitable_weapons !== undefined && (
-                    <AccordionItem value="suitable_weapons">
-                      <AccordionTrigger>Оружие</AccordionTrigger>
-                      <AccordionContent>
-                        <SuitableWeapons character={character} guideWeapons={guideCharacter.suitable_weapons} />
-                      </AccordionContent>
-                    </AccordionItem>
-                  )}
-                  {guideCharacter.suitable_artifacts !== undefined && (
-                    <AccordionItem value="suitable_artifacts">
-                      <AccordionTrigger>Артефакты</AccordionTrigger>
-                      <AccordionContent>
-                        <SuitableArtifacts character={character} guideArtifacts={guideCharacter.suitable_artifacts} />
-                      </AccordionContent>
-                    </AccordionItem>
-                  )}
-                  {guideCharacter.reference_point !== undefined && (
-                    <AccordionItem value="reference_point">
-                      <AccordionTrigger>Ориентир</AccordionTrigger>
-                      <AccordionContent>
-                        <ReferencePoint items={guideCharacter.reference_point} />
-                      </AccordionContent>
-                    </AccordionItem>
-                  )}
-                </Accordion>
+                  </Accordion>
+                )}
               </CardContent>
             </CollapsibleContent>
           </Card>

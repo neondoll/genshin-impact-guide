@@ -2,8 +2,8 @@ import { Link, useLoaderData } from "react-router-dom";
 
 import Container from "@/components/container";
 import Paths from "@/paths";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import {
   getArtifactSet, getArtifactSetCharactersUid, getArtifactTypes, getCharacter, qualityImageSrc,
 } from "@/database";
@@ -22,74 +22,56 @@ export default function ArtifactSet() {
     <Container className="flex flex-col gap-2 md:gap-4">
       <Card>
         <CardHeader>
-          <CardTitle>{artifactSet.name}</CardTitle>
+          <CardTitle className="text-balance">{artifactSet.name}</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableBody>
-              <TableRow>
-                <TableHead>Качество</TableHead>
-                <TableCell>
-                  <div className="flex gap-1 items-center">
-                    {artifactSet.qualities.map((quality, index) => (
-                      <>
-                        {index !== 0 && "|"}
-                        <img
-                          alt={`${quality} Starts`}
-                          className="shrink-0"
-                          key={quality}
-                          src={qualityImageSrc(quality)}
-                        />
-                      </>
+              <TableRow className="hover:bg-inherit">
+                <TableHead className="p-2 text-balance whitespace-normal">Качество</TableHead>
+                <TableCell className="p-2 min-w-48.5">
+                  <div className="flex flex-wrap gap-2 items-center">
+                    {artifactSet.qualities.map(quality => (
+                      <Badge key={quality} variant="secondary">
+                        <img alt={`${quality} Starts`} className="shrink-0 rounded-md" src={qualityImageSrc(quality)} />
+                      </Badge>
                     ))}
                   </div>
                 </TableCell>
               </TableRow>
               {(Object.entries(artifactTypes) as [keyof typeof artifactTypes, typeof artifactTypes[keyof typeof artifactTypes]][]).map(([artifactTypeUid, artifactType]) => (
-                <TableRow key={artifactTypeUid}>
-                  <TableHead>{artifactType.name}</TableHead>
-                  <TableCell className="py-0">
-                    <div className="flex gap-2 items-center">
+                <TableRow className="hover:bg-inherit" key={artifactTypeUid}>
+                  <TableHead className="p-2 text-balance whitespace-normal">{artifactType.name}</TableHead>
+                  <TableCell className="p-2 min-w-48.5">
+                    <Badge className="text-balance whitespace-normal" variant="secondary">
                       <img
                         alt={artifactSet[artifactTypeUid].name}
-                        className="shrink-0 size-10"
+                        className="shrink-0 size-8 rounded-md"
                         src={artifactSet[artifactTypeUid].image_src}
                       />
                       <span>{artifactSet[artifactTypeUid].name}</span>
-                    </div>
+                    </Badge>
                   </TableCell>
                 </TableRow>
               ))}
-              <TableRow>
-                <TableHead>На кого собирают</TableHead>
-                <TableCell>
-                  <div className="flex gap-2 items-center">
+              <TableRow className="hover:bg-inherit">
+                <TableHead className="p-2 text-balance whitespace-normal">На кого собирают</TableHead>
+                <TableCell className="p-2 min-w-48.5">
+                  <div className="flex flex-wrap gap-2 items-center">
                     {artifactSetCharactersUid.map((characterUid) => {
                       const character = getCharacter(characterUid);
 
                       return (
-                        <div
-                          className={cn(
-                            "relative flex flex-col rounded-xl border shadow-sm transition-shadow",
-                            "has-focus-visible:ring-3 has-focus-visible:ring-ring/50",
-                          )}
-                          key={characterUid}
-                        >
-                          <img
-                            alt={character.name}
-                            className="shrink-0 size-23 bg-linear-to-br from-muted to-muted-foreground rounded-t-xl"
-                            src={character.small_image_src}
-                          />
-                          <Link
-                            className={cn(
-                              "inline-flex flex-1 justify-center items-center p-1 text-xs text-center",
-                              "text-card-foreground bg-card rounded-b-xl outline-none before:absolute before:inset-0",
-                            )}
-                            to={Paths.Character(characterUid)}
-                          >
-                            {character.name}
+                        <Badge asChild className="text-balance whitespace-normal" key={characterUid} variant="secondary">
+                          <Link to={Paths.Character(characterUid)}>
+                            <img
+                              alt={character.name}
+                              className="shrink-0 size-8 rounded-md"
+                              src={character.small_image_src}
+                            />
+                            <span>{character.name}</span>
                           </Link>
-                        </div>
+                        </Badge>
                       );
                     })}
                   </div>

@@ -121,7 +121,35 @@ const guideChevreuse = {
     [TalentUidEnum.ElementalSkill]: "Главный приоритет \n(9)",
     [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(9)",
   },
-  suitable_weapons: [{ uid: WeaponUidEnum.Deathmatch }],
+  suitable_weapons: [
+    { uid: WeaponUidEnum.DialoguesOfTheDesertSages },
+    { uid: WeaponUidEnum.FavoniusLance },
+    { uid: WeaponUidEnum.Deathmatch },
+    { uid: WeaponUidEnum.RightfulReward },
+  ],
+  suitable_artifacts: {
+    sets: [
+      { uid: ArtifactSetUidEnum.NoblesseOblige },
+      {
+        uid: ArtifactSetUidEnum.SongOfDaysPast,
+        description: "Не рекомендуется, слишком нестабильна и требует овер хил",
+      },
+      {
+        uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity,
+        description: `Если ${artifactSets[ArtifactSetUidEnum.NoblesseOblige].name} занята`,
+      },
+      {
+        uid: ArtifactSetUidEnum.EmblemOfSeveredFate,
+        description: `Если ${artifactSets[ArtifactSetUidEnum.NoblesseOblige].name} и ${artifactSets[ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity].name} заняты`,
+      },
+    ],
+    attributes: {
+      [ArtifactTypeUidEnum.SandsOfEon]: [],
+      [ArtifactTypeUidEnum.GobletOfEonothem]: [],
+      [ArtifactTypeUidEnum.CircletOfLogos]: [],
+      additional: [],
+    },
+  },
 } as GuideCharacter;
 const guideEscoffier = {
   required_level: 90,
@@ -387,8 +415,8 @@ const guideNeuvillette = {
   first_constellation_or_signature_weapon: "Сигна > C1, Сигна > C2. Лучше Сигна и С1",
   upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Высокий приоритет \n(10)",
-    [TalentUidEnum.ElementalSkill]: "Ситуативно \n(6 / 8)",
-    [TalentUidEnum.ElementalBurst]: "Ситуативно \n(6 / 8)",
+    [TalentUidEnum.ElementalSkill]: "Ситуативно \n(6 | 8)",
+    [TalentUidEnum.ElementalBurst]: "Ситуативно \n(6 | 8)",
   },
   suitable_weapons: [
     { uid: WeaponUidEnum.TomeOfTheEternalFlow, percent: 1 },

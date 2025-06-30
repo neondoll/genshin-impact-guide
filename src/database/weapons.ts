@@ -84,6 +84,12 @@ export const weapons = {
     quality: 4,
     image_src: imageSrc("sapwood_blade-256x256.png"),
   },
+  [WeaponUidEnum.DialoguesOfTheDesertSages]: {
+    name: "Диалог пустынных мудрецов",
+    type: WeaponTypeUidEnum.Polearm,
+    quality: 4,
+    image_src: imageSrc("dialogues_of_the_desert_sages-256x256.png"),
+  },
   [WeaponUidEnum.PrimordialJadeCutter]: {
     name: "Драгоценный омут",
     type: WeaponTypeUidEnum.Sword,
@@ -293,6 +299,12 @@ export const weapons = {
     type: WeaponTypeUidEnum.Polearm,
     quality: 4,
     image_src: imageSrc("deathmatch-256x256.png"),
+  },
+  [WeaponUidEnum.RightfulReward]: {
+    name: "Справедливая награда",
+    type: WeaponTypeUidEnum.Polearm,
+    quality: 4,
+    image_src: imageSrc("rightful_reward-256x256.png"),
   },
   [WeaponUidEnum.TamayurateiNoOhanashi]: {
     name: "Тамаюратэй но оханаси",

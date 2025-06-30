@@ -126,6 +126,30 @@ export const artifactSets = {
       image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/veterans_visage-256x256.png`),
     },
   },
+  [ArtifactSetUidEnum.SongOfDaysPast]: {
+    name: "Песнь былых времён",
+    qualities: [4, 5],
+    [ArtifactTypeUidEnum.FlowerOfLife]: {
+      name: "Забытая клятва былых времён",
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/forgotten_oath_of_days_past-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.PlumeOfDeath]: {
+      name: "Воспоминания о былых временах",
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/recollection_of_days_past-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.SandsOfEon]: {
+      name: "Отзвуки былых времён",
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/echoing_sound_from_days_past-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.GobletOfEonothem]: {
+      name: "Обещанный сон былых времён",
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/promised_dream_of_days_past-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.CircletOfLogos]: {
+      name: "Поэзия былых времён",
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/poetry_of_days_past-256x256.png`),
+    },
+  },
   [ArtifactSetUidEnum.GildedDreams]: {
     name: "Позолоченные сны",
     qualities: [4, 5],
