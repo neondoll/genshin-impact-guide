@@ -119,13 +119,12 @@ const guideChevreuse = {
   upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "По необходимости \n(6)",
     [TalentUidEnum.ElementalSkill]: "Главный приоритет \n(9)",
-    [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(9)",
+    [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(8)",
   },
   suitable_weapons: [
+    { uid: WeaponUidEnum.RightfulReward },
     { uid: WeaponUidEnum.DialoguesOfTheDesertSages },
     { uid: WeaponUidEnum.FavoniusLance },
-    { uid: WeaponUidEnum.Deathmatch },
-    { uid: WeaponUidEnum.RightfulReward },
   ],
   suitable_artifacts: {
     sets: [
@@ -144,10 +143,16 @@ const guideChevreuse = {
       },
     ],
     attributes: {
-      [ArtifactTypeUidEnum.SandsOfEon]: [],
-      [ArtifactTypeUidEnum.GobletOfEonothem]: [],
-      [ArtifactTypeUidEnum.CircletOfLogos]: [],
-      additional: [],
+      [ArtifactTypeUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfHP }],
+      [ArtifactTypeUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PercentageOfHP }],
+      [ArtifactTypeUidEnum.CircletOfLogos]: [
+        { uid: AttributeUidEnum.PercentageOfHP },
+        {
+          uid: AttributeUidEnum.CriticalHitChance,
+          description: `Если в руках ${weapons[WeaponUidEnum.FavoniusLance].name}`,
+        },
+      ],
+      additional: [{ uid: AttributeUidEnum.PercentageOfHP }, { uid: AttributeUidEnum.EnergyRestoration }],
     },
   },
 } as GuideCharacter;
