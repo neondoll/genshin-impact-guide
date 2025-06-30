@@ -80,7 +80,7 @@ function ReferencePointTable({ items }: ReferencePointTableProps) {
     <Table className="table-fixed">
       <TableBody>
         {items.map(([referencePointKey, referencePointValue], index) => (
-          <TableRow key={index}>
+          <TableRow className="hover:bg-inherit" key={index}>
             <TableHead className="text-left">{referencePointKey}</TableHead>
             <TableCell className="text-right">{referencePointValue}</TableCell>
           </TableRow>
@@ -276,6 +276,7 @@ function SuitableWeaponsTable({ character, guideWeapons }: SuitableWeaponsTableP
 
           return (
             <TableRow
+              className="hover:bg-inherit"
               key={
                 guideWeapon.uid
                 + (guideWeapon.refinement === undefined ? "" : `-r${guideWeapon.refinement}`)
@@ -328,7 +329,7 @@ function UpgradingTalents({ guideTalents }: UpgradingTalentsProps) {
     <Table className="table-fixed">
       <TableBody>
         {(Object.entries(guideTalents) as [keyof typeof guideTalents, typeof guideTalents[keyof typeof guideTalents]][]).map(([guideTalentUid, guideTalent]) => (
-          <TableRow key={guideTalentUid}>
+          <TableRow className="hover:bg-inherit" key={guideTalentUid}>
             <TableHead className="p-2 whitespace-normal">{talents[guideTalentUid].name}</TableHead>
             <TableCell className="p-2 text-center whitespace-pre-line md:whitespace-normal">{guideTalent}</TableCell>
           </TableRow>
@@ -358,13 +359,13 @@ export default function Character() {
           </div>
           <Table className="table-fixed">
             <TableBody>
-              <TableRow>
+              <TableRow className="hover:bg-inherit">
                 <TableHead className="p-2 text-right">Качество</TableHead>
                 <TableCell className="p-2">
                   <img alt={`${character.quality} Starts`} src={qualityImageSrc(character.quality)} />
                 </TableCell>
               </TableRow>
-              <TableRow>
+              <TableRow className="hover:bg-inherit">
                 <TableHead className="p-2 text-right">Оружие</TableHead>
                 <TableCell className="p-2">
                   <div className="flex gap-1 items-center">
@@ -377,7 +378,7 @@ export default function Character() {
                   </div>
                 </TableCell>
               </TableRow>
-              <TableRow>
+              <TableRow className="hover:bg-inherit">
                 <TableHead className="p-2 text-right">Элемент</TableHead>
                 <TableCell className="p-2">
                   <div className="flex gap-1 items-center">
@@ -386,7 +387,7 @@ export default function Character() {
                   </div>
                 </TableCell>
               </TableRow>
-              <TableRow>
+              <TableRow className="hover:bg-inherit">
                 <TableHead className="p-2 text-right">Роли</TableHead>
                 <TableCell className="p-2">
                   <div className="flex flex-wrap gap-2">
@@ -449,13 +450,13 @@ export default function Character() {
                       })}
                     >
                       {guideCharacter?.required_level !== undefined && (
-                        <TableRow>
+                        <TableRow className="hover:bg-inherit">
                           <TableHead className="p-2 text-right whitespace-normal">Требуемый уровень</TableHead>
                           <TableCell className="p-2 whitespace-normal">{guideCharacter.required_level}</TableCell>
                         </TableRow>
                       )}
                       {guideCharacter?.required_squad !== undefined && (
-                        <TableRow>
+                        <TableRow className="hover:bg-inherit">
                           <TableHead className="p-2 text-right whitespace-normal">Требуемый отряд</TableHead>
                           <TableCell
                             className="p-2 whitespace-pre-line sm:whitespace-normal"
@@ -464,7 +465,7 @@ export default function Character() {
                         </TableRow>
                       )}
                       {guideCharacter?.key_constellations !== undefined && (
-                        <TableRow>
+                        <TableRow className="hover:bg-inherit">
                           <TableHead className="p-2 text-right whitespace-normal">Ключевые созвездия</TableHead>
                           <TableCell className="p-2 whitespace-normal">
                             {guideCharacter.key_constellations.join(", ")}
@@ -472,7 +473,7 @@ export default function Character() {
                         </TableRow>
                       )}
                       {guideCharacter?.first_constellation_or_signature_weapon !== undefined && (
-                        <TableRow>
+                        <TableRow className="hover:bg-inherit">
                           <TableHead className="p-2 text-right whitespace-normal">C1 или Сигна?</TableHead>
                           <TableCell className="p-2 whitespace-pre-line sm:whitespace-normal">
                             {guideCharacter.first_constellation_or_signature_weapon}

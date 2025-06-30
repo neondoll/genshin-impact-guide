@@ -36,6 +36,12 @@ export const weapons = {
     quality: 5,
     image_src: imageSrc("splendor_of_tranquil_waters-256x256.png"),
   },
+  [WeaponUidEnum.ProspectorsDrill]: {
+    name: "Бур рудоискателя",
+    type: WeaponTypeUidEnum.Polearm,
+    quality: 4,
+    image_src: imageSrc("prospectors_drill-256x256.png"),
+  },
   [WeaponUidEnum.JadefallsSplendor]: {
     name: "Великолепие лазурного свода",
     type: WeaponTypeUidEnum.Catalyst,
@@ -144,6 +150,12 @@ export const weapons = {
     quality: 4,
     image_src: imageSrc("favonius_lance-256x256.png"),
   },
+  [WeaponUidEnum.KitainCrossSpear]: {
+    name: "Крест-копьё Китаин",
+    type: WeaponTypeUidEnum.Polearm,
+    quality: 4,
+    image_src: imageSrc("kitain_cross_spear-256x256.png"),
+  },
   [WeaponUidEnum.SummitShaper]: {
     name: "Кромсатель пиков",
     type: WeaponTypeUidEnum.Sword,
@@ -234,6 +246,12 @@ export const weapons = {
     quality: 5,
     image_src: imageSrc("vivid_notions-256x256.png"),
   },
+  [WeaponUidEnum.PeakPatrolSong]: {
+    name: "Песнь патруля пиков",
+    type: WeaponTypeUidEnum.Sword,
+    quality: 5,
+    image_src: imageSrc("peak_patrol_song-256x256.png"),
+  },
   [WeaponUidEnum.TheWidsith]: {
     name: "Песнь странника",
     type: WeaponTypeUidEnum.Catalyst,
@@ -287,6 +305,12 @@ export const weapons = {
     type: WeaponTypeUidEnum.Sword,
     quality: 5,
     image_src: imageSrc("light_of_foliar_incision-256x256.png"),
+  },
+  [WeaponUidEnum.SymphonistOfScents]: {
+    name: "Симфонист ароматов",
+    type: WeaponTypeUidEnum.Polearm,
+    quality: 5,
+    image_src: imageSrc("symphonist_of_scents-256x256.png"),
   },
   [WeaponUidEnum.EngulfingLightning]: {
     name: "Сияющая жатва",

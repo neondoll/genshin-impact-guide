@@ -6,6 +6,30 @@ import type { ArtifactSets } from "./types/artifact-sets";
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-sets/${src}`);
 
 export const artifactSets = {
+  [ArtifactSetUidEnum.BlizzardStrayer]: {
+    name: "Заблудший в метели",
+    qualities: [4, 5],
+    [ArtifactTypeUidEnum.FlowerOfLife]: {
+      name: "Snowswept Memory",
+      image_src: imageSrc(`${ArtifactSetUidEnum.BlizzardStrayer}/snowswept_memory-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.PlumeOfDeath]: {
+      name: "Icebreaker's Resolve",
+      image_src: imageSrc(`${ArtifactSetUidEnum.BlizzardStrayer}/icebreakers_resolve-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.SandsOfEon]: {
+      name: "Frozen Homeland's Demise",
+      image_src: imageSrc(`${ArtifactSetUidEnum.BlizzardStrayer}/frozen_homelands_demise-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.GobletOfEonothem]: {
+      name: "Frost-Weaved Dignity",
+      image_src: imageSrc(`${ArtifactSetUidEnum.BlizzardStrayer}/frost_weaved_dignity-256x256.png`),
+    },
+    [ArtifactTypeUidEnum.CircletOfLogos]: {
+      name: "Broken Rime's Echo",
+      image_src: imageSrc(`${ArtifactSetUidEnum.BlizzardStrayer}/broken_rimes_echo-256x256.png`),
+    },
+  },
   [ArtifactSetUidEnum.GoldenTroupe]: {
     name: "Золотая труппа",
     qualities: [4, 5],

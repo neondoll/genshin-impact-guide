@@ -220,6 +220,7 @@ export const characters = {
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Natlan,
+    signature_weapon_uid: WeaponUidEnum.PeakPatrolSong,
     small_image_src: imageSrc("xilonen-small-106x106.png"),
   },
   [CharacterUidEnum.Escoffier]: {
@@ -235,6 +236,7 @@ export const characters = {
     ],
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Fontaine,
+    signature_weapon_uid: WeaponUidEnum.SymphonistOfScents,
     small_image_src: imageSrc("escoffier-small-106x106.png"),
   },
 } as Characters;

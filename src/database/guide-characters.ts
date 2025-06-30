@@ -158,14 +158,34 @@ const guideChevreuse = {
 } as GuideCharacter;
 const guideEscoffier = {
   required_level: 90,
+  first_constellation_or_signature_weapon: "С1 лучше",
   upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
     [TalentUidEnum.ElementalSkill]: "Максимальный приоритет \n(10)",
     [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(9)",
   },
-  suitable_weapons: [{ uid: WeaponUidEnum.StaffOfHoma }],
+  suitable_weapons: [
+    { uid: WeaponUidEnum.SymphonistOfScents, percent: 1.2991 },
+    { uid: WeaponUidEnum.StaffOfHoma, percent: 1.2247 },
+    { uid: WeaponUidEnum.LumidouceElegy, percent: 1.1820 },
+    { uid: WeaponUidEnum.Deathmatch, refinement: 5, percent: 1.1568 },
+    { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.1435 },
+    { uid: WeaponUidEnum.CrimsonMoonsSemblance, percent: 1.1126 },
+    { uid: WeaponUidEnum.StaffOfTheScarletSands, percent: 1.0994 },
+    { uid: WeaponUidEnum.Deathmatch, refinement: 1, percent: 1.0637 },
+    { uid: WeaponUidEnum.SkywardSpine, percent: 1.0356 },
+    { uid: WeaponUidEnum.ProspectorsDrill, refinement: 5, percent: 1.0309 },
+    { uid: WeaponUidEnum.LithicSpear, refinement: 5, percent: 1.0118 },
+    { uid: WeaponUidEnum.BlackcliffPole, percent: 1 },
+    { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 5, percent: 0.9927 },
+    { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 1, percent: 0.9926 },
+    { uid: WeaponUidEnum.ProspectorsDrill, refinement: 1, percent: 0.9819 },
+    { uid: WeaponUidEnum.MissiveWindspear, percent: 0.9801 },
+    { uid: WeaponUidEnum.KitainCrossSpear, refinement: 5, percent: 0.8818 },
+    { uid: WeaponUidEnum.FavoniusLance, refinement: 5, percent: 0.8526 },
+  ],
   suitable_artifacts: {
-    sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe, description: "Лучше" }],
+    sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe, description: "Лучше" }, { uid: ArtifactSetUidEnum.BlizzardStrayer }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Личный урон важнее, чем ульта по откату" },
@@ -190,6 +210,14 @@ const guideEscoffier = {
       ],
     },
   },
+  reference_point: [
+    ["Оружие", `${weapons[WeaponUidEnum.Deathmatch].name} R1 [${weapons[WeaponUidEnum.Deathmatch].quality}⭐]`],
+    ["Атака", "2 100"],
+    ["Восст. энергии", "110% - 115%"],
+    ["Крит. шанс", "80%"],
+    ["Крит. урон", "175%"],
+    ["Артефакты", artifactSets[ArtifactSetUidEnum.GoldenTroupe].name],
+  ],
 } as GuideCharacter;
 const guideFischl = {
   required_level: 90,
@@ -613,10 +641,31 @@ const guideXiangling = {
   },
 } as GuideCharacter;
 const guideXilonen = {
+  first_constellation_or_signature_weapon: "Сигна > С1, но С2 > Сигна",
   upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
-    [TalentUidEnum.ElementalSkill]: "Высокий приоритет \n(10)",
+    [TalentUidEnum.ElementalSkill]: "Главный приоритет \n(10)",
     [TalentUidEnum.ElementalBurst]: "Ситуативно \n(8)",
+  },
+  suitable_weapons: [{ uid: WeaponUidEnum.PeakPatrolSong }, { uid: WeaponUidEnum.FavoniusSword }],
+  suitable_artifacts: {
+    sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
+    attributes: {
+      [ArtifactTypeUidEnum.SandsOfEon]: [
+        { uid: AttributeUidEnum.PercentageOfProtection },
+        { uid: AttributeUidEnum.EnergyRestoration },
+      ],
+      [ArtifactTypeUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PercentageOfProtection }],
+      [ArtifactTypeUidEnum.CircletOfLogos]: [
+        { uid: AttributeUidEnum.PercentageOfProtection },
+        { uid: AttributeUidEnum.CriticalHitChance },
+        { uid: AttributeUidEnum.TreatmentBonus },
+      ],
+      additional: [
+        { uid: AttributeUidEnum.PercentageOfProtection },
+        { uid: AttributeUidEnum.EnergyRestoration, description: "~160% ВЭ для стабильной ульты" },
+      ],
+    },
   },
 } as GuideCharacter;
 const guideXingqiu = {

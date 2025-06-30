@@ -1,4 +1,5 @@
 export const ArtifactSetUidEnum = {
+  /* Заблудший в метели              */ BlizzardStrayer: "blizzard_strayer",
   /* Эмблема рассечённой судьбы      */ EmblemOfSeveredFate: "emblem_of_severed_fate",
   /* Финал галерей глубин            */ FinaleOfTheDeepGalleries: "finale_of_the_deep_galleries",
   /* Цветок потерянного рая          */ FlowerOfParadiseLost: "flower_of_paradise_lost",
