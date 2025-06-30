@@ -2,7 +2,10 @@ import { artifactSets } from "./artifact-sets";
 import { ArtifactSetUidEnum } from "./enums/artifact-sets";
 import { ArtifactTypeUidEnum } from "./enums/artifact-types";
 import { AttributeUidEnum } from "./enums/attributes";
+import { characters } from "./characters";
 import { CharacterUidEnum } from "./enums/characters";
+import { elements } from "./elements";
+import { ElementUidEnum } from "./enums/elements";
 import { TalentUidEnum } from "./enums/talents";
 import { weapons } from "./weapons";
 import { WeaponUidEnum } from "./enums/weapons";
@@ -10,12 +13,12 @@ import type { GuideCharacter, GuideCharacters } from "./types/guide-characters";
 
 const guideArlecchino = {
   first_constellation_or_signature_weapon: "С1 и Сигна",
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Высокий приоритет \n(10)",
-    [TalentUidEnum.ElementalSkill]: "Ситуативно \n(6 / 8)",
-    [TalentUidEnum.ElementalBurst]: "Ситуативно \n(6 / 8)",
+    [TalentUidEnum.ElementalSkill]: "Ситуативно \n(6 | 8)",
+    [TalentUidEnum.ElementalBurst]: "Ситуативно \n(6 | 8)",
   },
-  weapons: {
+  suitable_weapons: {
     "Гиперкери | Прожарка | отр. Шеврёз": [
       { uid: WeaponUidEnum.CrimsonMoonsSemblance, percent: 1.316 },
       { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.124 },
@@ -52,7 +55,7 @@ const guideArlecchino = {
       { uid: WeaponUidEnum.BlackcliffPole, percent: 0.938 },
     ],
   },
-  artifacts: {
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.FragmentOfHarmonicWhimsy }, { uid: ArtifactSetUidEnum.GladiatorsFinale }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttackPower }],
@@ -79,13 +82,13 @@ const guideArlecchino = {
 } as GuideCharacter;
 const guideBennett = {
   required_level: 90,
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "По необходимости \n(6)",
     [TalentUidEnum.ElementalSkill]: "Вторичный приоритет \n(8)",
     [TalentUidEnum.ElementalBurst]: "Главный приоритет \n(10)",
   },
-  weapons: [{ uid: WeaponUidEnum.SapwoodBlade }],
-  artifacts: {
+  suitable_weapons: [{ uid: WeaponUidEnum.SapwoodBlade }],
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.NoblesseOblige }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
@@ -113,22 +116,22 @@ const guideBennett = {
 } as GuideCharacter;
 const guideChevreuse = {
   required_level: 90,
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "По необходимости \n(6)",
     [TalentUidEnum.ElementalSkill]: "Главный приоритет \n(9)",
     [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(9)",
   },
-  weapons: [{ uid: WeaponUidEnum.Deathmatch }],
+  suitable_weapons: [{ uid: WeaponUidEnum.Deathmatch }],
 } as GuideCharacter;
 const guideEscoffier = {
   required_level: 90,
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
     [TalentUidEnum.ElementalSkill]: "Максимальный приоритет \n(10)",
     [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(9)",
   },
-  weapons: [{ uid: WeaponUidEnum.StaffOfHoma }],
-  artifacts: {
+  suitable_weapons: [{ uid: WeaponUidEnum.StaffOfHoma }],
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe, description: "Лучше" }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
@@ -157,13 +160,13 @@ const guideEscoffier = {
 } as GuideCharacter;
 const guideFischl = {
   required_level: 90,
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "По необходимости \n(6)",
     [TalentUidEnum.ElementalSkill]: "Главный приоритет \n(10)",
     [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(8)",
   },
-  weapons: [{ uid: WeaponUidEnum.TheStringless }],
-  artifacts: {
+  suitable_weapons: [{ uid: WeaponUidEnum.TheStringless }],
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
@@ -190,12 +193,12 @@ const guideFischl = {
   },
 } as GuideCharacter;
 const guideFurina = {
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
     [TalentUidEnum.ElementalSkill]: "Высокий приоритет \n(10)",
     [TalentUidEnum.ElementalBurst]: "Высокий приоритет \n(10)",
   },
-  weapons: {
+  suitable_weapons: {
     "Без реакций - 120% ВЭ+": [
       { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.3648 },
       { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(с гео)", percent: 1.3306 },
@@ -261,7 +264,7 @@ const guideFurina = {
       { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(не работает)", percent: 0.8743 },
     ],
   },
-  artifacts: {
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
@@ -290,17 +293,17 @@ const guideFurina = {
   reference_point: [["Макс. HP", "33 000"], ["Восст. энергии", "170%"], ["Крит. шанс", "60%"], ["Крит. урон", "140%"]],
 } as GuideCharacter;
 const guideIansan = {
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1 - 6)",
     [TalentUidEnum.ElementalSkill]: "Игнорируем \n(1 - 6)",
     [TalentUidEnum.ElementalBurst]: "Высокий приоритет \n(10)",
   },
-  weapons: [
+  suitable_weapons: [
     { uid: WeaponUidEnum.SkywardSpine },
     { uid: WeaponUidEnum.TamayurateiNoOhanashi },
     { uid: WeaponUidEnum.FavoniusLance },
   ],
-  artifacts: {
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
@@ -321,13 +324,13 @@ const guideIansan = {
 } as GuideCharacter;
 const guideKukiShinobu = {
   required_level: 90,
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
     [TalentUidEnum.ElementalSkill]: "Максимальный приоритет \n(10)",
     [TalentUidEnum.ElementalBurst]: "Максимальный приоритет \n(10)",
   },
-  weapons: [{ uid: WeaponUidEnum.XiphosMoonlight }],
-  artifacts: {
+  suitable_weapons: [{ uid: WeaponUidEnum.XiphosMoonlight }],
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GildedDreams }, { uid: ArtifactSetUidEnum.FlowerOfParadiseLost }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
@@ -352,13 +355,13 @@ const guideKukiShinobu = {
 } as GuideCharacter;
 const guideLayla = {
   required_level: 80,
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
     [TalentUidEnum.ElementalSkill]: "Главный приоритет \n(8)",
     [TalentUidEnum.ElementalBurst]: "Вторичный приоритет \n(7)",
   },
-  weapons: [{ uid: WeaponUidEnum.FavoniusSword }],
-  artifacts: {
+  suitable_weapons: [{ uid: WeaponUidEnum.FavoniusSword }],
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.TenacityOfTheMillelith }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
@@ -382,12 +385,12 @@ const guideLayla = {
 } as GuideCharacter;
 const guideNeuvillette = {
   first_constellation_or_signature_weapon: "Сигна > C1, Сигна > C2. Лучше Сигна и С1",
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Высокий приоритет \n(10)",
     [TalentUidEnum.ElementalSkill]: "Ситуативно \n(6 / 8)",
     [TalentUidEnum.ElementalBurst]: "Ситуативно \n(6 / 8)",
   },
-  weapons: [
+  suitable_weapons: [
     { uid: WeaponUidEnum.TomeOfTheEternalFlow, percent: 1 },
     { uid: WeaponUidEnum.SacrificialJade, refinement: 5, percent: 0.998 },
     { uid: WeaponUidEnum.SurfsUp, percent: 0.917 },
@@ -405,7 +408,7 @@ const guideNeuvillette = {
     { uid: WeaponUidEnum.PrototypeAmber, percent: 0.745 },
     { uid: WeaponUidEnum.RingOfYaxche, percent: 0.745 },
   ],
-  artifacts: {
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.MarechausseeHunter }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfHP }],
@@ -429,15 +432,15 @@ const guideNeuvillette = {
 } as GuideCharacter;
 const guideSkirk = {
   required_level: 90,
-  required_squad: "Гидро и Крио персонажи, особенно Фурина и Эскофье",
+  required_squad: `<span style="color:var(${elements[ElementUidEnum.Hydro].color_var})">${elements[ElementUidEnum.Hydro].name}</span> и <span style="color:var(${elements[ElementUidEnum.Cryo].color_var})">${elements[ElementUidEnum.Cryo].name}</span> персонажи,\nособенно <span style="color:var(${elements[characters[CharacterUidEnum.Furina].element_uid].color_var})">${characters[CharacterUidEnum.Furina].name}</span> и <span style="color:var(${elements[characters[CharacterUidEnum.Escoffier].element_uid].color_var})">${characters[CharacterUidEnum.Escoffier].name}</span>`,
   key_constellations: [1, 2, 5, 6],
-  first_constellation_or_signature_weapon: "Сигна > C1, C2 > Сигна",
-  talents: {
+  first_constellation_or_signature_weapon: "Сигна > C1,\nC2 > Сигна",
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
     [TalentUidEnum.ElementalSkill]: "Максимальный приоритет \n(10)",
     [TalentUidEnum.ElementalBurst]: "Максимальный приоритет \n(10)",
   },
-  weapons: [
+  suitable_weapons: [
     { uid: WeaponUidEnum.Azurelight, percent: 1.4256 },
     { uid: WeaponUidEnum.HaranGeppakuFutsu, percent: 1.2239 },
     { uid: WeaponUidEnum.PrimordialJadeCutter, percent: 1.2238 },
@@ -452,7 +455,7 @@ const guideSkirk = {
     { uid: WeaponUidEnum.FinaleOfTheDeep, percent: 1 },
     { uid: WeaponUidEnum.BlackcliffLongsword, percent: 0.9451 },
   ],
-  artifacts: {
+  suitable_artifacts: {
     sets: [
       {
         uid: ArtifactSetUidEnum.MarechausseeHunter,
@@ -483,7 +486,7 @@ const guideSkirk = {
     },
   },
   reference_point: {
-    [`${artifactSets[ArtifactSetUidEnum.MarechausseeHunter].name} + ${weapons[WeaponUidEnum.FinaleOfTheDeep].name}`]: [
+    [`${artifactSets[ArtifactSetUidEnum.MarechausseeHunter].name}\n+\n${weapons[WeaponUidEnum.FinaleOfTheDeep].name}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -492,7 +495,7 @@ const guideSkirk = {
       ["Крит. урон", "216.8%"],
       ["Восст. энергии", "111.0%"],
     ],
-    [`${artifactSets[ArtifactSetUidEnum.FinaleOfTheDeepGalleries].name} + ${weapons[WeaponUidEnum.CalamityOfEshu].name}`]: [
+    [`${artifactSets[ArtifactSetUidEnum.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponUidEnum.CalamityOfEshu].name}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -505,12 +508,12 @@ const guideSkirk = {
 } as GuideCharacter;
 const guideVaresa = {
   first_constellation_or_signature_weapon: "Однозначно Сигна",
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Высокий приоритет \n(10)",
     [TalentUidEnum.ElementalSkill]: "Средний приоритет \n(8)",
     [TalentUidEnum.ElementalBurst]: "Высокий приоритет \n(10)",
   },
-  weapons: [
+  suitable_weapons: [
     { uid: WeaponUidEnum.VividNotions, percent: 1.28 },
     { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, percent: 1.06 },
     { uid: WeaponUidEnum.KagurasVerity, percent: 1.05 },
@@ -521,7 +524,7 @@ const guideVaresa = {
     { uid: WeaponUidEnum.SacrificialJade, refinement: 5, percent: 0.92 },
     { uid: WeaponUidEnum.FlowingPurity, refinement: 5, percent: 0.92 },
   ],
-  artifacts: {
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.LongNightsOath }, { uid: ArtifactSetUidEnum.ObsidianCodex }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttackPower }],
@@ -544,13 +547,13 @@ const guideVaresa = {
 } as GuideCharacter;
 const guideXiangling = {
   required_level: 90,
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "По необходимости (6)",
     [TalentUidEnum.ElementalSkill]: "Вторичный приоритет (8)",
     [TalentUidEnum.ElementalBurst]: "Главный приоритет (10)",
   },
-  weapons: [{ uid: WeaponUidEnum.EngulfingLightning }],
-  artifacts: {
+  suitable_weapons: [{ uid: WeaponUidEnum.EngulfingLightning }],
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
@@ -577,7 +580,7 @@ const guideXiangling = {
   },
 } as GuideCharacter;
 const guideXilonen = {
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "Игнорируем \n(1)",
     [TalentUidEnum.ElementalSkill]: "Высокий приоритет \n(10)",
     [TalentUidEnum.ElementalBurst]: "Ситуативно \n(8)",
@@ -585,13 +588,13 @@ const guideXilonen = {
 } as GuideCharacter;
 const guideXingqiu = {
   required_level: 90,
-  talents: {
+  upgrading_talents: {
     [TalentUidEnum.NormalAttack]: "По необходимости (6)",
     [TalentUidEnum.ElementalSkill]: "Вторичный приоритет (10)",
     [TalentUidEnum.ElementalBurst]: "Главный приоритет (10)",
   },
-  weapons: [{ uid: WeaponUidEnum.SacrificialSword }],
-  artifacts: {
+  suitable_weapons: [{ uid: WeaponUidEnum.SacrificialSword }],
+  suitable_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [

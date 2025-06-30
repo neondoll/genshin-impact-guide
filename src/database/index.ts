@@ -27,11 +27,11 @@ export function getArtifactSet(uid: ArtifactSetUid) {
 export function getArtifactSetCharactersUid(uid: ArtifactSetUid) {
   return (Object.entries(guideCharacters) as [keyof typeof guideCharacters, typeof guideCharacters[keyof typeof guideCharacters]][])
     .filter(([, guideCharacter]) => {
-      if (guideCharacter.artifacts === undefined) {
+      if (guideCharacter.suitable_artifacts === undefined) {
         return false;
       }
 
-      return guideCharacter.artifacts.sets.map(artifactSet => artifactSet.uid).includes(uid);
+      return guideCharacter.suitable_artifacts.sets.map(artifactSet => artifactSet.uid).includes(uid);
     })
     .map(([guideCharacterUid]) => guideCharacterUid);
 }

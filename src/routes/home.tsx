@@ -78,7 +78,7 @@ export default function Home() {
         onValueChange={value => navigate(`/${value}`)}
         value={params.tabValue}
       >
-        <TabsList className="flex w-full">
+        <TabsList className="flex flex-wrap w-full h-auto min-h-9">
           <TabsTrigger value="artifact-sets">Наборы артефактов</TabsTrigger>
           <TabsTrigger value="characters">Персонажи</TabsTrigger>
           <TabsTrigger value="elements">Стихии</TabsTrigger>

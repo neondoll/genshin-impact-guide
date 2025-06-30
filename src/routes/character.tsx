@@ -1,19 +1,24 @@
+import { ChevronsUpDown } from "lucide-react";
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Container from "@/components/container";
 import Paths from "@/paths";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArtifactTypeUidEnum } from "@/database/enums/artifact-types";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { ElementUidEnum } from "@/database/enums/elements";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   getArtifactSet, getAttribute, getCharacter, getCharacterRole, getElement, getGuideCharacter, getTalents, getWeapon,
   getWeaponType, qualityImageSrc,
 } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { GuideCharacterReferencePoint, GuideCharacterWeapons } from "@/database/types/guide-characters";
+import type { GuideCharacterReferencePoint, GuideCharacterSuitableWeapons } from "@/database/types/guide-characters";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip.tsx";
+import { Badge } from "@/components/ui/badge.tsx";
 
 type ReferencePointProps = {
   items: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["reference_point"]>;
@@ -23,18 +28,18 @@ type ReferencePointTableProps = {
 };
 type SuitableArtifactsProps = {
   character: CharacterLoaderData["character"];
-  guideArtifacts: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["artifacts"]>;
+  guideArtifacts: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["suitable_artifacts"]>;
 };
 type SuitableWeaponsProps = {
   character: CharacterLoaderData["character"];
-  guideWeapons: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["weapons"]>;
+  guideWeapons: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["suitable_weapons"]>;
 };
 type SuitableWeaponsTableProps = {
   character: SuitableWeaponsProps["character"];
-  guideWeapons: GuideCharacterWeapons;
+  guideWeapons: GuideCharacterSuitableWeapons;
 };
 type UpgradingTalentsProps = {
-  guideTalents: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["talents"]>;
+  guideTalents: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["upgrading_talents"]>;
 };
 
 export type CharacterLoaderData = {
@@ -44,11 +49,6 @@ export type CharacterLoaderData = {
   characterWeaponType: Awaited<ReturnType<typeof getWeaponType>>;
   guideCharacter: Awaited<ReturnType<typeof getGuideCharacter>>;
 };
-
-const TableRowClassName = cn([
-  "text-center first:[&>*]:first:rounded-tl-xl first:[&>*]:last:rounded-tr-xl last:[&>*]:first:rounded-bl-lg",
-  "last:[&>*]:last:rounded-br-lg",
-]);
 
 function ReferencePoint({ items }: ReferencePointProps) {
   if (Array.isArray(items)) {
@@ -63,7 +63,7 @@ function ReferencePoint({ items }: ReferencePointProps) {
     <Tabs defaultValue={referencePoints[0][0]}>
       <TabsList className="flex flex-wrap w-full h-auto min-h-9">
         {referencePoints.map(([value]) => (
-          <TabsTrigger key={value} value={value}>{value}</TabsTrigger>
+          <TabsTrigger className="whitespace-pre" key={value} value={value}>{value}</TabsTrigger>
         ))}
       </TabsList>
       {referencePoints.map(([value, referencePoint]) => (
@@ -77,7 +77,7 @@ function ReferencePoint({ items }: ReferencePointProps) {
 
 function ReferencePointTable({ items }: ReferencePointTableProps) {
   return (
-    <Table>
+    <Table className="table-fixed">
       <TableBody>
         {items.map(([referencePointKey, referencePointValue], index) => (
           <TableRow key={index}>
@@ -122,18 +122,18 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
           const artifactSet = getArtifactSet(guideArtifactSet.uid);
 
           return (
-            <TableRow className={cn(TableRowClassName, "text-left")} key={guideArtifactSet.uid}>
+            <TableRow key={guideArtifactSet.uid}>
               {index === 0 && (
-                <TableHead rowSpan={guideArtifacts.sets.length}>Набор</TableHead>
+                <TableHead className="p-2" rowSpan={guideArtifacts.sets.length}>Набор</TableHead>
               )}
-              <TableCell className="relative">
-                <div className="flex gap-2 items-center whitespace-normal">
+              <TableCell className="p-2 whitespace-normal">
+                <div className="relative flex gap-2 items-center">
                   <img
                     alt={artifactSet.name}
                     className="shrink-0 size-10"
                     src={artifactSet[ArtifactTypeUidEnum.FlowerOfLife].image_src}
                   />
-                  <Link className="before:absolute before:inset-0" to={Paths.ArtifactSet(guideArtifactSet.uid)}>
+                  <Link className="flex-1 before:absolute before:inset-0" to={Paths.ArtifactSet(guideArtifactSet.uid)}>
                     {artifactSet.name}
                     {guideArtifactSet.uid === character.signature_artifact_set_uid && " (сигнатурное)"}
                   </Link>
@@ -167,10 +167,7 @@ function SuitableArtifacts({ character, guideArtifacts }: SuitableArtifactsProps
             const attribute = getAttribute(guideArtifactAttribute.uid);
 
             return (
-              <TableRow
-                className={cn(TableRowClassName, "text-left")}
-                key={`${guideArtifactAttributesKey}-${guideArtifactAttribute.uid}`}
-              >
+              <TableRow key={`${guideArtifactAttributesKey}-${guideArtifactAttribute.uid}`}>
                 {index === 0 && (
                   <TableHead
                     className="whitespace-normal"
@@ -265,41 +262,39 @@ function SuitableWeaponsTable({ character, guideWeapons }: SuitableWeaponsTableP
   }, [guideWeapons]);
 
   return (
-    <Table>
+    <Table className="sm:table-fixed">
       <TableBody>
         {guideWeapons.map((guideWeapon) => {
           const weapon = getWeapon(guideWeapon.uid);
 
           return (
             <TableRow
-              className={cn(
-                "text-center first:[&>*]:first:rounded-tl-xl first:[&>*]:last:rounded-tr-xl",
-                "last:[&>*]:first:rounded-bl-lg last:[&>*]:last:rounded-br-lg",
-              )}
               key={
                 guideWeapon.uid
                 + (guideWeapon.refinement === undefined ? "" : `-r${guideWeapon.refinement}`)
                 + (guideWeapon.postfix === undefined ? "" : `-${guideWeapon.postfix}`)
               }
             >
-              <TableHead className="flex gap-2 items-center whitespace-normal">
-                <img alt={weapon.name} className="shrink-0 size-10" src={weapon.image_src} />
-                <span>
-                  {weapon.name}
-                  {guideWeapon.refinement !== undefined && ` R${guideWeapon.refinement}`}
-                  {` [${weapon.quality}⭐]`}
-                  {guideWeapon.uid === character.signature_weapon_uid && " (сигнатурное)"}
-                  {guideWeapon.postfix !== undefined && (
-                    <>
-                      {" "}
-                      <sub>{guideWeapon.postfix}</sub>
-                    </>
-                  )}
-                </span>
+              <TableHead className="whitespace-normal">
+                <div className="flex gap-2 items-center">
+                  <img alt={weapon.name} className="shrink-0 size-10" src={weapon.image_src} />
+                  <span className="py-2">
+                    {weapon.name}
+                    {guideWeapon.refinement !== undefined && ` R${guideWeapon.refinement}`}
+                    {` [${weapon.quality}⭐]`}
+                    {guideWeapon.uid === character.signature_weapon_uid && " (сигнатурное)"}
+                    {guideWeapon.postfix !== undefined && (
+                      <>
+                        {" "}
+                        <sub>{guideWeapon.postfix}</sub>
+                      </>
+                    )}
+                  </span>
+                </div>
               </TableHead>
               {guideWeapon.percent !== undefined && (
                 <TableCell
-                  className={cn({
+                  className={cn("text-center", {
                     "text-green-500": guideWeapon.percent >= (minPercent + (diffPercent * 2)),
                     "text-yellow-500": guideWeapon.percent >= (minPercent + diffPercent) && guideWeapon.percent < (minPercent + (diffPercent * 2)),
                     "text-red-500": guideWeapon.percent < (minPercent + diffPercent),
@@ -323,18 +318,12 @@ function UpgradingTalents({ guideTalents }: UpgradingTalentsProps) {
   const talents = getTalents();
 
   return (
-    <Table>
+    <Table className="table-fixed">
       <TableBody>
         {(Object.entries(guideTalents) as [keyof typeof guideTalents, typeof guideTalents[keyof typeof guideTalents]][]).map(([guideTalentUid, guideTalent]) => (
-          <TableRow
-            className={cn(
-              "text-center first:[&>*]:first:rounded-tl-xl first:[&>*]:last:rounded-tr-xl",
-              "last:[&>*]:first:rounded-bl-lg last:[&>*]:last:rounded-br-lg",
-            )}
-            key={guideTalentUid}
-          >
-            <TableHead className="whitespace-normal">{talents[guideTalentUid].name}</TableHead>
-            <TableCell className="whitespace-pre-line md:whitespace-nowrap">{guideTalent}</TableCell>
+          <TableRow key={guideTalentUid}>
+            <TableHead className="p-2 whitespace-normal">{talents[guideTalentUid].name}</TableHead>
+            <TableCell className="p-2 text-center whitespace-pre-line md:whitespace-normal">{guideTalent}</TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -350,34 +339,27 @@ export default function Character() {
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
       <Card>
-        <CardHeader>
-          <CardTitle>{character.name}</CardTitle>
-        </CardHeader>
-        <CardContent className="flex gap-6 items-start">
-          <img
-            alt={character.name}
-            className={cn("shrink-0 rounded-xl", {
-              "bg-teal-500": character.element_uid === ElementUidEnum.Anemo,
-              "bg-cyan-500": character.element_uid === ElementUidEnum.Cryo,
-              "bg-lime-500": character.element_uid === ElementUidEnum.Dendro,
-              "bg-purple-500": character.element_uid === ElementUidEnum.Electro,
-              "bg-amber-500": character.element_uid === ElementUidEnum.Geo,
-              "bg-blue-500": character.element_uid === ElementUidEnum.Hydro,
-              "bg-red-500": character.element_uid === ElementUidEnum.Pyro,
-            })}
-            src={character.small_image_src}
-          />
-          <Table className="flex-1">
+        <CardContent>
+          <div className="flex gap-6">
+            <img
+              alt={character.name}
+              className="shrink-0 size-20 rounded-xl"
+              src={character.small_image_src}
+              style={{ backgroundColor: `var(${characterElement.color_var})` }}
+            />
+            <CardTitle className="self-center">{character.name}</CardTitle>
+          </div>
+          <Table className="table-fixed">
             <TableBody>
               <TableRow>
-                <TableHead>Качество</TableHead>
-                <TableCell>
+                <TableHead className="p-2 text-right">Качество</TableHead>
+                <TableCell className="p-2">
                   <img alt={`${character.quality} Starts`} src={qualityImageSrc(character.quality)} />
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableHead>Оружие</TableHead>
-                <TableCell>
+                <TableHead className="p-2 text-right">Оружие</TableHead>
+                <TableCell className="p-2">
                   <div className="flex gap-1 items-center">
                     <img
                       alt={`${characterWeaponType.name} Icon`}
@@ -389,8 +371,8 @@ export default function Character() {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableHead>Элемент</TableHead>
-                <TableCell>
+                <TableHead className="p-2 text-right">Элемент</TableHead>
+                <TableCell className="p-2">
                   <div className="flex gap-1 items-center">
                     <img alt={characterElement.name} className="shrink-0 size-5" src={characterElement.image_src} />
                     <span>{characterElement.name}</span>
@@ -398,87 +380,132 @@ export default function Character() {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableHead>Роли</TableHead>
-                <TableCell>
-                  {characterRoles.map((characterRole, index) => (
-                    <div className="flex gap-1 items-center" key={character.roles_uid[index]}>
-                      <img alt={characterRole.name} className="shrink-0 size-5" src={characterRole.icon_src} />
-                      <span>{characterRole.name}</span>
-                    </div>
-                  ))}
+                <TableHead className="p-2 text-right">Роли</TableHead>
+                <TableCell className="p-2">
+                  <div className="flex flex-wrap gap-2">
+                    {characterRoles.map((characterRole, index) => (
+                      <Tooltip key={character.roles_uid[index]}>
+                        <TooltipTrigger asChild>
+                          <Badge className="rounded-full">
+                            <img alt={characterRole.name} className="shrink-0 size-5" src={characterRole.icon_src} />
+                            <span>{characterRole.name}</span>
+                          </Badge>
+                        </TooltipTrigger>
+                        <TooltipContent
+                          className={cn(
+                            "max-w-[calc(var(--container-width)-(var(--container-padding-x)*2))] text-pretty",
+                            "[--container-width:var(--radix-popper-available-width)]",
+                            "[--container-padding-x:calc(var(--spacing)*4)]",
+                            "sm:[--container-width:var(--breakpoint-sm)] md:[--container-width:var(--breakpoint-md)]",
+                            "lg:[--container-width:var(--breakpoint-lg)]",
+                            "lg:[--container-padding-x:calc(var(--spacing)*6)]",
+                            "xl:[--container-width:var(--breakpoint-xl)] 2xl:[--container-width:var(--breakpoint-2xl)]",
+                          )}
+                        >
+                          <p dangerouslySetInnerHTML={{ __html: characterRole.description }} />
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
+                  </div>
                 </TableCell>
               </TableRow>
-              {guideCharacter?.required_level !== undefined && (
-                <TableRow>
-                  <TableHead>Требуемый уровень</TableHead>
-                  <TableCell>{guideCharacter.required_level}</TableCell>
-                </TableRow>
-              )}
-              {guideCharacter?.required_squad !== undefined && (
-                <TableRow>
-                  <TableHead>Требуемый отряд</TableHead>
-                  <TableCell>{guideCharacter.required_squad}</TableCell>
-                </TableRow>
-              )}
-              {guideCharacter?.key_constellations !== undefined && (
-                <TableRow>
-                  <TableHead>Ключевые созвездия</TableHead>
-                  <TableCell>{guideCharacter.key_constellations.join(", ")}</TableCell>
-                </TableRow>
-              )}
-              {guideCharacter?.first_constellation_or_signature_weapon !== undefined && (
-                <TableRow>
-                  <TableHead>C1 или Сигна?</TableHead>
-                  <TableCell>{guideCharacter.first_constellation_or_signature_weapon}</TableCell>
-                </TableRow>
-              )}
             </TableBody>
           </Table>
         </CardContent>
       </Card>
       {guideCharacter !== undefined && (
-        <>
-          {guideCharacter.talents !== undefined && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Прокачивание талантов</CardTitle>
-              </CardHeader>
+        <Collapsible asChild>
+          <Card>
+            <CardHeader>
+              <CollapsibleTrigger asChild>
+                <Button className="flex justify-between w-full" variant="secondary">
+                  Гайд
+                  <ChevronsUpDown />
+                </Button>
+              </CollapsibleTrigger>
+            </CardHeader>
+            <CollapsibleContent asChild>
               <CardContent>
-                <UpgradingTalents guideTalents={guideCharacter.talents} />
+                <Table className="table-fixed">
+                  <TableBody
+                    className={cn({
+                      "[&_tr:last-child]:border-b": guideCharacter.upgrading_talents !== undefined
+                        || guideCharacter.suitable_weapons !== undefined
+                        || guideCharacter.suitable_artifacts !== undefined
+                        || guideCharacter.reference_point !== undefined,
+                    })}
+                  >
+                    {guideCharacter?.required_level !== undefined && (
+                      <TableRow>
+                        <TableHead className="p-2 text-right whitespace-normal">Требуемый уровень</TableHead>
+                        <TableCell className="p-2 whitespace-normal">{guideCharacter.required_level}</TableCell>
+                      </TableRow>
+                    )}
+                    {guideCharacter?.required_squad !== undefined && (
+                      <TableRow>
+                        <TableHead className="p-2 text-right whitespace-normal">Требуемый отряд</TableHead>
+                        <TableCell
+                          className="p-2 whitespace-pre-line sm:whitespace-normal"
+                          dangerouslySetInnerHTML={{ __html: guideCharacter.required_squad }}
+                        />
+                      </TableRow>
+                    )}
+                    {guideCharacter?.key_constellations !== undefined && (
+                      <TableRow>
+                        <TableHead className="p-2 text-right whitespace-normal">Ключевые созвездия</TableHead>
+                        <TableCell className="p-2 whitespace-normal">
+                          {guideCharacter.key_constellations.join(", ")}
+                        </TableCell>
+                      </TableRow>
+                    )}
+                    {guideCharacter?.first_constellation_or_signature_weapon !== undefined && (
+                      <TableRow>
+                        <TableHead className="p-2 text-right whitespace-normal">C1 или Сигна?</TableHead>
+                        <TableCell className="p-2 whitespace-pre-line sm:whitespace-normal">
+                          {guideCharacter.first_constellation_or_signature_weapon}
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+                <Accordion className="w-full" type="multiple">
+                  {guideCharacter.upgrading_talents !== undefined && (
+                    <AccordionItem value="upgrading_talents">
+                      <AccordionTrigger>Прокачивание талантов</AccordionTrigger>
+                      <AccordionContent>
+                        <UpgradingTalents guideTalents={guideCharacter.upgrading_talents} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                  {guideCharacter.suitable_weapons !== undefined && (
+                    <AccordionItem value="suitable_weapons">
+                      <AccordionTrigger>Оружие</AccordionTrigger>
+                      <AccordionContent>
+                        <SuitableWeapons character={character} guideWeapons={guideCharacter.suitable_weapons} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                  {guideCharacter.suitable_artifacts !== undefined && (
+                    <AccordionItem value="suitable_artifacts">
+                      <AccordionTrigger>Артефакты</AccordionTrigger>
+                      <AccordionContent>
+                        <SuitableArtifacts character={character} guideArtifacts={guideCharacter.suitable_artifacts} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                  {guideCharacter.reference_point !== undefined && (
+                    <AccordionItem value="reference_point">
+                      <AccordionTrigger>Ориентир</AccordionTrigger>
+                      <AccordionContent>
+                        <ReferencePoint items={guideCharacter.reference_point} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                </Accordion>
               </CardContent>
-            </Card>
-          )}
-          {guideCharacter.weapons !== undefined && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Оружие</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <SuitableWeapons character={character} guideWeapons={guideCharacter.weapons} />
-              </CardContent>
-            </Card>
-          )}
-          {guideCharacter.artifacts !== undefined && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Артефакты</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <SuitableArtifacts character={character} guideArtifacts={guideCharacter.artifacts} />
-              </CardContent>
-            </Card>
-          )}
-          {guideCharacter.reference_point !== undefined && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Ориентир</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ReferencePoint items={guideCharacter.reference_point} />
-              </CardContent>
-            </Card>
-          )}
-        </>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
       )}
     </Container>
   );
