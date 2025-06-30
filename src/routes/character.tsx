@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 
 import Container from "@/components/container";
 import Paths from "@/paths";
+import VK from "@/icons/VK";
+import Youtube from "@/icons/Youtube";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArtifactTypeUidEnum } from "@/database/enums/artifact-types";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -16,9 +19,8 @@ import {
 } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { GuideCharacterReferencePoint, GuideCharacterSuitableWeapons } from "@/database/types/guide-characters";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip.tsx";
-import { Badge } from "@/components/ui/badge.tsx";
 
 type ReferencePointProps = {
   items: NonNullable<NonNullable<CharacterLoaderData["guideCharacter"]>["reference_point"]>;
@@ -488,6 +490,7 @@ export default function Character() {
                   || guideCharacter.suitable_weapons !== undefined
                   || guideCharacter.suitable_artifacts !== undefined
                   || guideCharacter.reference_point !== undefined
+                  || guideCharacter.video_sources !== undefined
                 ) && (
                   <Accordion className="w-full" type="multiple">
                     {guideCharacter.upgrading_talents !== undefined && (
@@ -522,6 +525,32 @@ export default function Character() {
                         </AccordionContent>
                       </AccordionItem>
                     )}
+                    {guideCharacter.video_sources !== undefined && (
+                      <AccordionItem value="video_sources">
+                        <AccordionTrigger>Видео-источники</AccordionTrigger>
+                        <AccordionContent>
+                          <ul className="list-inside list-disc">
+                            {guideCharacter.video_sources.map((videoSource, index) => (
+                              <li key={index}>
+                                <div className="inline-flex gap-2 items-center">
+                                  <span>{videoSource.title}</span>
+                                  <Button asChild className="size-8" size="icon">
+                                    <a href={videoSource.vk_url} target="_blank">
+                                      <VK className="size-7" />
+                                    </a>
+                                  </Button>
+                                  <Button asChild className="size-8" size="icon">
+                                    <a href={videoSource.youtube_url} target="_blank">
+                                      <Youtube className="size-7" />
+                                    </a>
+                                  </Button>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </AccordionContent>
+                      </AccordionItem>
+                    )}
                   </Accordion>
                 )}
               </CardContent>
@@ -530,5 +559,6 @@ export default function Character() {
         </Collapsible>
       )}
     </Container>
-  );
+  )
+    ;
 }

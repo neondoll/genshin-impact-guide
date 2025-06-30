@@ -22,6 +22,7 @@ export type GuideCharacter = {
   suitable_weapons?: GuideCharacterSuitableWeapons | Record<string, GuideCharacterSuitableWeapons>;
   suitable_artifacts?: GuideCharacterSuitableArtifacts;
   reference_point?: GuideCharacterReferencePoint | Record<string, GuideCharacterReferencePoint>;
+  video_sources?: { title: string; vk_url: string; youtube_url: string }[];
 };
 export type GuideCharacterReferencePoint = [string, string][];
 export type GuideCharacters = Record<CharacterUid, GuideCharacter>;

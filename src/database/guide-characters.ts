@@ -566,6 +566,13 @@ const guideSkirk = {
       ["Восст. энергии", "111.0%"],
     ],
   },
+  video_sources: [
+    {
+      title: "Miron MinMax: Скирк - Сильнейший Крио (но есть нюанс)",
+      vk_url: "https://vkvideo.ru/video-227044935_456239232",
+      youtube_url: "https://youtu.be/jpAMI38M-LI",
+    },
+  ],
 } as GuideCharacter;
 const guideVaresa = {
   first_constellation_or_signature_weapon: "Однозначно Сигна",
