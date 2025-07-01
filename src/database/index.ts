@@ -17,6 +17,7 @@ import type { CharacterRoleUid } from "./types/character-roles";
 import type { CharacterUid } from "./types/characters";
 import type { ElementUid } from "./types/elements";
 import type { QualityUid } from "./types/qualities";
+import type { TalentUid } from "./types/talents";
 import type { WeaponTypeUid } from "./types/weapon-types";
 import type { WeaponUid } from "./types/weapons";
 
@@ -27,11 +28,11 @@ export function getArtifactSet(uid: ArtifactSetUid) {
 export function getArtifactSetCharactersUid(uid: ArtifactSetUid) {
   return (Object.entries(guideCharacters) as [keyof typeof guideCharacters, typeof guideCharacters[keyof typeof guideCharacters]][])
     .filter(([, guideCharacter]) => {
-      if (guideCharacter.suitable_artifacts === undefined) {
+      if (guideCharacter.assembly_artifacts === undefined) {
         return false;
       }
 
-      return guideCharacter.suitable_artifacts.sets.map(artifactSet => artifactSet.uid).includes(uid);
+      return guideCharacter.assembly_artifacts.sets.map(artifactSet => artifactSet.uid).includes(uid);
     })
     .map(([guideCharacterUid]) => guideCharacterUid);
 }
@@ -86,6 +87,10 @@ export function getGuideCharacters() {
 
 export function getRegions() {
   return regions;
+}
+
+export function getTalent(uid: TalentUid) {
+  return talents[uid];
 }
 
 export function getTalents() {
