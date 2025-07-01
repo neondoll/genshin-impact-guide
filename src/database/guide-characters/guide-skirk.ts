@@ -1,6 +1,6 @@
+import { ArtifactPieceUidEnum } from "../enums/artifact-pieces";
 import { artifactSets } from "../artifact-sets";
 import { ArtifactSetUidEnum } from "../enums/artifact-sets";
-import { ArtifactTypeUidEnum } from "../enums/artifact-types";
 import { AttributeUidEnum } from "../enums/attributes";
 import { CharacterUidEnum } from "../enums/characters";
 import { ElementUidEnum } from "../enums/elements";
@@ -37,17 +37,17 @@ export default {
       },
     ],
     attributes: {
-      [ArtifactTypeUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttackPower }],
-      [ArtifactTypeUidEnum.GobletOfEonothem]: [
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttackPower }],
+      [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.CryoDamageBonus, description: "Лучше" },
         { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Можно поставить, если в отряде Фурина" },
       ],
-      [ArtifactTypeUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalHitChance },
+      [ArtifactPieceUidEnum.CircletOfLogos]: [
+        { uid: AttributeUidEnum.CriticalRate },
         { uid: AttributeUidEnum.CriticalDamage },
       ],
       additional: [
-        { uid: AttributeUidEnum.CriticalHitChance },
+        { uid: AttributeUidEnum.CriticalRate },
         { uid: AttributeUidEnum.CriticalDamage },
         { uid: AttributeUidEnum.PercentageOfAttackPower },
       ],

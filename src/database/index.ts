@@ -1,5 +1,5 @@
+import { artifactPieces } from "./artifact-pieces";
 import { artifactSets } from "./artifact-sets";
-import { artifactTypes } from "./artifact-types";
 import { attributes } from "./attributes";
 import { characterRoles } from "./character-roles";
 import { characters } from "./characters";
@@ -22,6 +22,10 @@ import type { TalentUid } from "./types/talents";
 import type { WeaponTypeUid } from "./types/weapon-types";
 import type { WeaponUid } from "./types/weapons";
 
+export function getArtifactPieces() {
+  return artifactPieces;
+}
+
 export function getArtifactSet(uid: ArtifactSetUid) {
   return artifactSets[uid];
 }
@@ -40,10 +44,6 @@ export function getArtifactSetCharacters(uid: ArtifactSetUid) {
 
 export function getArtifactSets() {
   return artifactSets;
-}
-
-export function getArtifactTypes() {
-  return artifactTypes;
 }
 
 export function getAttribute(uid: AttributeUid) {

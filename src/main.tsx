@@ -10,7 +10,7 @@ import Home, { type HomeLoaderData } from "@/routes/home";
 import Paths from "@/paths";
 import Root from "@/routes/root";
 import {
-  getArtifactSet, getArtifactSetCharacters, getArtifactSets, getArtifactTypes, getCharacter, getCharacterRole,
+  getArtifactPieces, getArtifactSet, getArtifactSetCharacters, getArtifactSets, getCharacter, getCharacterRole,
   getCharacters, getElement, getElements, getGuideCharacter, getRegion, getRegions, getWeapons, getWeaponType,
   getWeaponTypes,
 } from "@/database";
@@ -38,11 +38,11 @@ const router = createHashRouter([
       { loader: homeLoader, index: true, element: <Home /> },
       {
         loader: ({ params }): ArtifactSetLoaderData => {
+          const artifactPieces = getArtifactPieces();
           const artifactSet = getArtifactSet(params.artifactSetUid as ArtifactSetUid);
           const artifactSetCharacters = getArtifactSetCharacters(params.artifactSetUid as ArtifactSetUid);
-          const artifactTypes = getArtifactTypes();
 
-          return { artifactSet, artifactSetCharacters, artifactTypes };
+          return { artifactPieces, artifactSet, artifactSetCharacters };
         },
         path: Paths.ArtifactSet(":artifactSetUid"),
         element: <ArtifactSet />,

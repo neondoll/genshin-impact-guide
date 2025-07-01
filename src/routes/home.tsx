@@ -3,7 +3,7 @@ import { Link, type LinkProps, useLoaderData, useNavigate, useParams } from "rea
 
 import Container from "@/components/container";
 import Paths from "@/paths";
-import { ArtifactTypeUidEnum } from "@/database/enums/artifact-types";
+import { ArtifactPieceUidEnum } from "@/database/enums/artifact-pieces";
 import { cn } from "@/lib/utils";
 import { getArtifactSets, getCharacters, getElements, getRegions, getWeapons, getWeaponTypes } from "@/database";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -90,7 +90,7 @@ export default function Home() {
           <HomeList>
             {Object.values(artifactSets).map(artifactSet => (
               <HomeListItem
-                imageSrc={artifactSet[ArtifactTypeUidEnum.FlowerOfLife].image_src}
+                imageSrc={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
                 key={artifactSet.uid}
                 label={artifactSet.name}
                 to={Paths.ArtifactSet(artifactSet.uid)}

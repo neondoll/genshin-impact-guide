@@ -7,7 +7,7 @@ import Paths from "@/paths";
 import VK from "@/icons/VK";
 import Youtube from "@/icons/Youtube";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArtifactTypeUidEnum } from "@/database/enums/artifact-types";
+import { ArtifactPieceUidEnum } from "@/database/enums/artifact-pieces";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -110,7 +110,7 @@ function AssemblyArtifacts({ assemblyArtifacts, character }: AssemblyArtifactsPr
                     <img
                       alt={artifactSet.name}
                       className="shrink-0 size-8 rounded-md"
-                      src={artifactSet[ArtifactTypeUidEnum.FlowerOfLife].image_src}
+                      src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
                     />
                     <span>
                       {artifactSet.name}
@@ -156,9 +156,9 @@ function AssemblyArtifacts({ assemblyArtifacts, character }: AssemblyArtifactsPr
                     className="p-2 w-min text-right"
                     rowSpan={assemblyArtifacts.attributes[assemblyArtifactAttributesKey].length}
                   >
-                    {assemblyArtifactAttributesKey === ArtifactTypeUidEnum.SandsOfEon && "Часы"}
-                    {assemblyArtifactAttributesKey === ArtifactTypeUidEnum.GobletOfEonothem && "Кубок"}
-                    {assemblyArtifactAttributesKey === ArtifactTypeUidEnum.CircletOfLogos && "Корона"}
+                    {assemblyArtifactAttributesKey === ArtifactPieceUidEnum.SandsOfEon && "Часы"}
+                    {assemblyArtifactAttributesKey === ArtifactPieceUidEnum.GobletOfEonothem && "Кубок"}
+                    {assemblyArtifactAttributesKey === ArtifactPieceUidEnum.CircletOfLogos && "Корона"}
                     {assemblyArtifactAttributesKey === "additional" && "Доп."}
                   </TableHead>
                 )}

@@ -4,17 +4,17 @@ import Container from "@/components/container";
 import Paths from "@/paths";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getArtifactSet, getArtifactSetCharacters, getArtifactTypes, qualityImageSrc } from "@/database";
+import { getArtifactPieces, getArtifactSet, getArtifactSetCharacters, qualityImageSrc } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 
 export type ArtifactSetLoaderData = {
+  artifactPieces: Awaited<ReturnType<typeof getArtifactPieces>>;
   artifactSet: Awaited<ReturnType<typeof getArtifactSet>>;
   artifactSetCharacters: Awaited<ReturnType<typeof getArtifactSetCharacters>>;
-  artifactTypes: Awaited<ReturnType<typeof getArtifactTypes>>;
 };
 
 export default function ArtifactSet() {
-  const { artifactSet, artifactSetCharacters, artifactTypes } = useLoaderData<ArtifactSetLoaderData>();
+  const { artifactPieces, artifactSet, artifactSetCharacters } = useLoaderData<ArtifactSetLoaderData>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -37,17 +37,17 @@ export default function ArtifactSet() {
                   </div>
                 </TableCell>
               </TableRow>
-              {Object.values(artifactTypes).map(artifactType => (
-                <TableRow className="hover:bg-inherit" key={artifactType.uid}>
-                  <TableHead className="p-2 text-balance whitespace-normal">{artifactType.name}</TableHead>
+              {Object.values(artifactPieces).map(artifactPiece => (
+                <TableRow className="hover:bg-inherit" key={artifactPiece.uid}>
+                  <TableHead className="p-2 text-balance whitespace-normal">{artifactPiece.name}</TableHead>
                   <TableCell className="p-2 min-w-48.5">
                     <Badge className="text-balance whitespace-normal" variant="secondary">
                       <img
-                        alt={artifactSet[artifactType.uid].name}
+                        alt={artifactSet[artifactPiece.uid].name}
                         className="shrink-0 size-8 rounded-md"
-                        src={artifactSet[artifactType.uid].image_src}
+                        src={artifactSet[artifactPiece.uid].image_src}
                       />
-                      <span>{artifactSet[artifactType.uid].name}</span>
+                      <span>{artifactSet[artifactPiece.uid].name}</span>
                     </Badge>
                   </TableCell>
                 </TableRow>

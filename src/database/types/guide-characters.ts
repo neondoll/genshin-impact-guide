@@ -1,5 +1,5 @@
+import type { ArtifactPieceUidEnum } from "../enums/artifact-pieces";
 import type { ArtifactSetUid } from "./artifact-sets";
-import type { ArtifactTypeUidEnum } from "../enums/artifact-types";
 import type { AttributeUid } from "./attributes";
 import type { CharacterUid } from "./characters";
 import type { ElementUid } from "./elements";
@@ -9,7 +9,7 @@ import type { WeaponUid } from "./weapons";
 type GuideCharacterAssemblyArtifactAttribute = { uid: AttributeUid; percent?: number; description?: string };
 type GuideCharacterAssemblyArtifacts = {
   sets: GuideCharacterAssemblyArtifactSet[];
-  attributes: Record<typeof ArtifactTypeUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", GuideCharacterAssemblyArtifactAttribute[]>;
+  attributes: Record<typeof ArtifactPieceUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", GuideCharacterAssemblyArtifactAttribute[]>;
 };
 type GuideCharacterAssemblyArtifactSet = { uid: ArtifactSetUid; percent?: number; description?: string };
 type GuideCharacterAssemblyWeapon = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
