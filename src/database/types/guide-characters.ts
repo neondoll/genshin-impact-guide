@@ -2,28 +2,36 @@ import type { ArtifactSetUid } from "./artifact-sets";
 import type { ArtifactTypeUidEnum } from "../enums/artifact-types";
 import type { AttributeUid } from "./attributes";
 import type { CharacterUid } from "./characters";
+import type { ElementUid } from "./elements";
 import type { TalentUid } from "./talents";
 import type { WeaponUid } from "./weapons";
 
-type GuideCharacterSuitableArtifactAttribute = { uid: AttributeUid; percent?: number; description?: string };
-type GuideCharacterSuitableArtifacts = {
-  sets: GuideCharacterSuitableArtifactSet[];
-  attributes: Record<typeof ArtifactTypeUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", GuideCharacterSuitableArtifactAttribute[]>;
+type GuideCharacterAssemblyArtifactAttribute = { uid: AttributeUid; percent?: number; description?: string };
+type GuideCharacterAssemblyArtifacts = {
+  sets: GuideCharacterAssemblyArtifactSet[];
+  attributes: Record<typeof ArtifactTypeUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", GuideCharacterAssemblyArtifactAttribute[]>;
 };
-type GuideCharacterSuitableArtifactSet = { uid: ArtifactSetUid; percent?: number; description?: string };
-type GuideCharacterSuitableWeapon = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
+type GuideCharacterAssemblyArtifactSet = { uid: ArtifactSetUid; percent?: number; description?: string };
+type GuideCharacterAssemblyWeapon = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
 
 export type GuideCharacter = {
-  required_level?: 80 | 90;
-  required_squad?: string;
-  key_constellations?: (1 | 2 | 3 | 4 | 5 | 6)[];
+  character_uid: CharacterUid;
+  assembly_artifacts?: GuideCharacterAssemblyArtifacts;
+  assembly_weapons?: GuideCharacterAssemblyWeapons | Record<string, GuideCharacterAssemblyWeapons>;
   first_constellation_or_signature_weapon?: string;
-  upgrading_talents: Record<TalentUid, string>;
-  suitable_weapons?: GuideCharacterSuitableWeapons | Record<string, GuideCharacterSuitableWeapons>;
-  suitable_artifacts?: GuideCharacterSuitableArtifacts;
+  key_constellations?: (1 | 2 | 3 | 4 | 5 | 6)[];
+  priority_of_talent_leveling?: GuideCharacterPriorityOfTalentLeveling | Record<string, GuideCharacterPriorityOfTalentLeveling>;
   reference_point?: GuideCharacterReferencePoint | Record<string, GuideCharacterReferencePoint>;
-  video_sources?: { title: string; vk_url: string; youtube_url: string }[];
+  required_level?: 80 | 90;
+  rotation?: string | Record<string, string>;
+  squads?: {
+    general_template: (GuideCharacterSquadsItem | GuideCharacterSquadsItem[])[];
+    best_teammates: GuideCharacterSquadsItem[];
+  };
+  video_sources?: { title: string; vk_url?: string; youtube_url: string }[];
 };
+export type GuideCharacterPriorityOfTalentLeveling = { uid: TalentUid; priority: string }[];
 export type GuideCharacterReferencePoint = [string, string][];
 export type GuideCharacters = Record<CharacterUid, GuideCharacter>;
-export type GuideCharacterSuitableWeapons = GuideCharacterSuitableWeapon[];
+export type GuideCharacterSquadsItem = { type: "character"; uid: CharacterUid } | { type: "element"; uid: ElementUid };
+export type GuideCharacterAssemblyWeapons = GuideCharacterAssemblyWeapon[];

@@ -88,32 +88,37 @@ export default function Home() {
         </TabsList>
         <TabsContent value="artifact-sets">
           <HomeList>
-            {Object.entries(artifactSets).map(([artifactSetUid, artifactSet]) => (
+            {Object.values(artifactSets).map(artifactSet => (
               <HomeListItem
                 imageSrc={artifactSet[ArtifactTypeUidEnum.FlowerOfLife].image_src}
-                key={artifactSetUid}
+                key={artifactSet.uid}
                 label={artifactSet.name}
-                to={Paths.ArtifactSet(artifactSetUid)}
+                to={Paths.ArtifactSet(artifactSet.uid)}
               />
             ))}
           </HomeList>
         </TabsContent>
         <TabsContent value="characters">
           <HomeList>
-            {Object.entries(characters).map(([characterUid, character]) => (
+            {Object.values(characters).map(character => (
               <HomeListItem
                 imageSrc={character.small_image_src}
-                key={characterUid}
+                key={character.uid}
                 label={character.name}
-                to={Paths.Character(characterUid)}
+                to={Paths.Character(character.uid)}
               />
             ))}
           </HomeList>
         </TabsContent>
         <TabsContent value="elements">
           <HomeList>
-            {Object.entries(elements).map(([elementUid, element]) => (
-              <HomeListItem imageSrc={element.image_src} key={elementUid} label={element.name} to="#" />
+            {Object.values(elements).map(element => (
+              <HomeListItem
+                imageSrc={element.image_src}
+                key={element.uid}
+                label={element.name}
+                to={Paths.Element(element.uid)}
+              />
             ))}
           </HomeList>
         </TabsContent>

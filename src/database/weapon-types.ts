@@ -5,7 +5,11 @@ import type { WeaponTypes } from "./types/weapon-types";
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`weapon-types/${src}`);
 
 export const weaponTypes = {
-  [WeaponTypeUidEnum.Claymore]: { name: "Двуручное", image_src: imageSrc("claymore-128x128.png") },
+  [WeaponTypeUidEnum.Claymore]: {
+    name: "Двуручное",
+    image_src: imageSrc("claymore-128x128.png"),
+    icon_src: imageSrc("claymore-icon-20x20.png"),
+  },
   [WeaponTypeUidEnum.Polearm]: {
     name: "Древковое",
     image_src: imageSrc("polearm-128x128.png"),

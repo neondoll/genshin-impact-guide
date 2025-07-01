@@ -4,19 +4,17 @@ import Container from "@/components/container";
 import Paths from "@/paths";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  getArtifactSet, getArtifactSetCharactersUid, getArtifactTypes, getCharacter, qualityImageSrc,
-} from "@/database";
+import { getArtifactSet, getArtifactSetCharacters, getArtifactTypes, qualityImageSrc } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 
 export type ArtifactSetLoaderData = {
   artifactSet: Awaited<ReturnType<typeof getArtifactSet>>;
-  artifactSetCharactersUid: Awaited<ReturnType<typeof getArtifactSetCharactersUid>>;
+  artifactSetCharacters: Awaited<ReturnType<typeof getArtifactSetCharacters>>;
   artifactTypes: Awaited<ReturnType<typeof getArtifactTypes>>;
 };
 
 export default function ArtifactSet() {
-  const { artifactSet, artifactSetCharactersUid, artifactTypes } = useLoaderData<ArtifactSetLoaderData>();
+  const { artifactSet, artifactSetCharacters, artifactTypes } = useLoaderData<ArtifactSetLoaderData>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -39,17 +37,17 @@ export default function ArtifactSet() {
                   </div>
                 </TableCell>
               </TableRow>
-              {(Object.entries(artifactTypes) as [keyof typeof artifactTypes, typeof artifactTypes[keyof typeof artifactTypes]][]).map(([artifactTypeUid, artifactType]) => (
-                <TableRow className="hover:bg-inherit" key={artifactTypeUid}>
+              {Object.values(artifactTypes).map(artifactType => (
+                <TableRow className="hover:bg-inherit" key={artifactType.uid}>
                   <TableHead className="p-2 text-balance whitespace-normal">{artifactType.name}</TableHead>
                   <TableCell className="p-2 min-w-48.5">
                     <Badge className="text-balance whitespace-normal" variant="secondary">
                       <img
-                        alt={artifactSet[artifactTypeUid].name}
+                        alt={artifactSet[artifactType.uid].name}
                         className="shrink-0 size-8 rounded-md"
-                        src={artifactSet[artifactTypeUid].image_src}
+                        src={artifactSet[artifactType.uid].image_src}
                       />
-                      <span>{artifactSet[artifactTypeUid].name}</span>
+                      <span>{artifactSet[artifactType.uid].name}</span>
                     </Badge>
                   </TableCell>
                 </TableRow>
@@ -58,22 +56,18 @@ export default function ArtifactSet() {
                 <TableHead className="p-2 text-balance whitespace-normal">На кого собирают</TableHead>
                 <TableCell className="p-2 min-w-48.5">
                   <div className="flex flex-wrap gap-2 items-center">
-                    {artifactSetCharactersUid.map((characterUid) => {
-                      const character = getCharacter(characterUid);
-
-                      return (
-                        <Badge asChild className="text-balance whitespace-normal" key={characterUid} variant="secondary">
-                          <Link to={Paths.Character(characterUid)}>
-                            <img
-                              alt={character.name}
-                              className="shrink-0 size-8 rounded-md"
-                              src={character.small_image_src}
-                            />
-                            <span>{character.name}</span>
-                          </Link>
-                        </Badge>
-                      );
-                    })}
+                    {artifactSetCharacters.map(character => (
+                      <Badge asChild className="text-balance whitespace-normal" key={character.uid} variant="secondary">
+                        <Link to={Paths.Character(character.uid)}>
+                          <img
+                            alt={character.name}
+                            className="shrink-0 size-8 rounded-md"
+                            src={character.small_image_src}
+                          />
+                          <span>{character.name}</span>
+                        </Link>
+                      </Badge>
+                    ))}
                   </div>
                 </TableCell>
               </TableRow>

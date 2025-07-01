@@ -10,6 +10,7 @@ export const CharacterUidEnum = {
   /* Иансан      */ Iansan: "iansan",
   /* Куки Синобу */ KukiShinobu: "kuki_shinobu",
   /* Лайла       */ Layla: "layla",
+  /* Мавуика     */ Mavuika: "mavuika",
   /* Мика        */ Mika: "mika",
   /* Нахида      */ Nahida: "nahida",
   /* Нёвиллет    */ Neuvillette: "neuvillette",
