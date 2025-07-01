@@ -22,6 +22,7 @@ const gameVariants: Record<GameVariantUid, string> = {
 };
 
 export default {
+  character_uid: CharacterUidEnum.Skirk,
   assembly_artifacts: {
     sets: [
       {

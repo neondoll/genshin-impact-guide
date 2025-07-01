@@ -1,3 +1,4 @@
+import guideMavuika from "./guide-mavuika";
 import guideSkirk from "./guide-skirk";
 import { artifactSets } from "../artifact-sets";
 import { ArtifactSetUidEnum } from "../enums/artifact-sets";
@@ -10,6 +11,7 @@ import { WeaponUidEnum } from "../enums/weapons";
 import type { GuideCharacter, GuideCharacters } from "../types/guide-characters";
 
 const guideArlecchino = {
+  character_uid: CharacterUidEnum.Arlecchino,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.FragmentOfHarmonicWhimsy }, { uid: ArtifactSetUidEnum.GladiatorsFinale }],
     attributes: {
@@ -27,7 +29,7 @@ const guideArlecchino = {
         { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
         { uid: AttributeUidEnum.PercentageOfAttackPower },
         {
-          uid: AttributeUidEnum.MasteryOfElements,
+          uid: AttributeUidEnum.ElementalMastery,
           description: "100 - 150 МС для Пара или Таяния, в остальных случаях не нужно",
         },
         { uid: AttributeUidEnum.EnergyRestoration, description: "Специально не собирать" },
@@ -79,6 +81,7 @@ const guideArlecchino = {
   ],
 } as GuideCharacter;
 const guideBennett = {
+  character_uid: CharacterUidEnum.Bennett,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.NoblesseOblige }],
     attributes: {
@@ -113,6 +116,7 @@ const guideBennett = {
   required_level: 90,
 } as GuideCharacter;
 const guideChevreuse = {
+  character_uid: CharacterUidEnum.Chevreuse,
   assembly_artifacts: {
     sets: [
       { uid: ArtifactSetUidEnum.NoblesseOblige },
@@ -155,6 +159,7 @@ const guideChevreuse = {
   required_level: 90,
 } as GuideCharacter;
 const guideEscoffier = {
+  character_uid: CharacterUidEnum.Escoffier,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe, description: "Лучше" }, { uid: ArtifactSetUidEnum.BlizzardStrayer }],
     attributes: {
@@ -218,18 +223,19 @@ const guideEscoffier = {
   required_level: 90,
 } as GuideCharacter;
 const guideFischl = {
+  character_uid: CharacterUidEnum.Fischl,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.785 },
-        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.125 },
+        { uid: AttributeUidEnum.ElementalMastery, percent: 0.125 },
         { uid: AttributeUidEnum.EnergyRestoration, percent: 0.062 },
       ],
       [ArtifactTypeUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.ElectroDamageBonus, percent: 0.830 },
         { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.119 },
-        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.018 },
+        { uid: AttributeUidEnum.ElementalMastery, percent: 0.018 },
       ],
       [ArtifactTypeUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalHitChance, percent: 0.669 },
@@ -252,6 +258,7 @@ const guideFischl = {
   required_level: 90,
 } as GuideCharacter;
 const guideFurina = {
+  character_uid: CharacterUidEnum.Furina,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
     attributes: {
@@ -352,6 +359,7 @@ const guideFurina = {
   reference_point: [["Макс. HP", "33 000"], ["Восст. энергии", "170%"], ["Крит. шанс", "60%"], ["Крит. урон", "140%"]],
 } as GuideCharacter;
 const guideIansan = {
+  character_uid: CharacterUidEnum.Iansan,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
     attributes: {
@@ -382,25 +390,26 @@ const guideIansan = {
   ],
 } as GuideCharacter;
 const guideKukiShinobu = {
+  character_uid: CharacterUidEnum.KukiShinobu,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.GildedDreams }, { uid: ArtifactSetUidEnum.FlowerOfParadiseLost }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.894 },
+        { uid: AttributeUidEnum.ElementalMastery, percent: 0.894 },
         { uid: AttributeUidEnum.PercentageOfHP, percent: 0.073 },
         { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.016 },
       ],
       [ArtifactTypeUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.810 },
+        { uid: AttributeUidEnum.ElementalMastery, percent: 0.810 },
         { uid: AttributeUidEnum.PercentageOfHP, percent: 0.114 },
         { uid: AttributeUidEnum.ElectroDamageBonus, percent: 0.044 },
       ],
       [ArtifactTypeUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.807 },
+        { uid: AttributeUidEnum.ElementalMastery, percent: 0.807 },
         { uid: AttributeUidEnum.TreatmentBonus, percent: 0.071 },
         { uid: AttributeUidEnum.PercentageOfHP, percent: 0.056 },
       ],
-      additional: [{ uid: AttributeUidEnum.MasteryOfElements, description: "Приоритетно" }],
+      additional: [{ uid: AttributeUidEnum.ElementalMastery, description: "Приоритетно" }],
     },
   },
   assembly_weapons: [{ uid: WeaponUidEnum.XiphosMoonlight }],
@@ -413,6 +422,7 @@ const guideKukiShinobu = {
   required_level: 90,
 } as GuideCharacter;
 const guideLayla = {
+  character_uid: CharacterUidEnum.Layla,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.TenacityOfTheMillelith }],
     attributes: {
@@ -443,6 +453,7 @@ const guideLayla = {
   required_level: 80,
 } as GuideCharacter;
 const guideNeuvillette = {
+  character_uid: CharacterUidEnum.Neuvillette,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.MarechausseeHunter }],
     attributes: {
@@ -490,6 +501,7 @@ const guideNeuvillette = {
   ],
 } as GuideCharacter;
 const guideVaresa = {
+  character_uid: CharacterUidEnum.Varesa,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.LongNightsOath }, { uid: ArtifactSetUidEnum.ObsidianCodex }],
     attributes: {
@@ -529,13 +541,14 @@ const guideVaresa = {
   ],
 } as GuideCharacter;
 const guideXiangling = {
+  character_uid: CharacterUidEnum.Xiangling,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
     attributes: {
       [ArtifactTypeUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.EnergyRestoration, percent: 0.748 },
         { uid: AttributeUidEnum.PercentageOfAttackPower, percent: 0.171 },
-        { uid: AttributeUidEnum.MasteryOfElements, percent: 0.055 },
+        { uid: AttributeUidEnum.ElementalMastery, percent: 0.055 },
       ],
       [ArtifactTypeUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.PyroDamageBonus, percent: 0.841 },
@@ -563,6 +576,7 @@ const guideXiangling = {
   required_level: 90,
 } as GuideCharacter;
 const guideXilonen = {
+  character_uid: CharacterUidEnum.Xilonen,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
     attributes: {
@@ -591,6 +605,7 @@ const guideXilonen = {
   ],
 } as GuideCharacter;
 const guideXingqiu = {
+  character_uid: CharacterUidEnum.Xingqiu,
   assembly_artifacts: {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
     attributes: {
@@ -635,6 +650,7 @@ export const guideCharacters = {
   [CharacterUidEnum.Iansan]: guideIansan,
   [CharacterUidEnum.KukiShinobu]: guideKukiShinobu,
   [CharacterUidEnum.Layla]: guideLayla,
+  [CharacterUidEnum.Mavuika]: guideMavuika,
   [CharacterUidEnum.Neuvillette]: guideNeuvillette,
   [CharacterUidEnum.Skirk]: guideSkirk,
   [CharacterUidEnum.Varesa]: guideVaresa,

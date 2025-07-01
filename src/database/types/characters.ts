@@ -9,7 +9,9 @@ import type { WeaponUid } from "./weapons";
 import type { WorldUid } from "./worlds";
 
 type Character = {
+  uid: CharacterUid;
   name: string;
+  small_image_src: string;
   quality: QualityUid;
   weapon_type_uid: WeaponTypeUid;
   element_uid: ElementUid;
@@ -18,7 +20,6 @@ type Character = {
   region_uid?: RegionUid;
   signature_weapon_uid?: WeaponUid;
   signature_artifact_set_uid?: ArtifactSetUid;
-  small_image_src: string;
 };
 
 export type Characters = Record<CharacterUid, Character>;

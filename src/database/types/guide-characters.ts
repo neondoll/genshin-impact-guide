@@ -15,6 +15,7 @@ type GuideCharacterAssemblyArtifactSet = { uid: ArtifactSetUid; percent?: number
 type GuideCharacterAssemblyWeapon = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
 
 export type GuideCharacter = {
+  character_uid: CharacterUid;
   assembly_artifacts?: GuideCharacterAssemblyArtifacts;
   assembly_weapons?: GuideCharacterAssemblyWeapons | Record<string, GuideCharacterAssemblyWeapons>;
   first_constellation_or_signature_weapon?: string;
