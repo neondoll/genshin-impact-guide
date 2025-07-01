@@ -559,6 +559,5 @@ export default function Character() {
         </Collapsible>
       )}
     </Container>
-  )
-    ;
+  );
 }
