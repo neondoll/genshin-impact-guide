@@ -13,17 +13,32 @@ export const attributes = {
     abbreviation: "HP",
     image_src: imageSrc("health-48x48.png"),
   },
+  [AttributeUidEnum.PercentageOfHealth]: {
+    uid: AttributeUidEnum.PercentageOfHealth,
+    name: "Процент от HP",
+    abbreviation: "Процент от HP",
+  },
   [AttributeUidEnum.Attack]: {
     uid: AttributeUidEnum.Attack,
     name: "Сила атаки",
-    abbreviation: "АТК",
+    abbreviation: "Сила атаки",
     image_src: imageSrc("attack-48x48.png"),
+  },
+  [AttributeUidEnum.PercentageOfAttack]: {
+    uid: AttributeUidEnum.PercentageOfAttack,
+    name: "Процент от силы атаки",
+    abbreviation: "Сила атаки %",
   },
   [AttributeUidEnum.Defense]: {
     uid: AttributeUidEnum.Defense,
     name: "Защита",
     abbreviation: "Защита",
     image_src: imageSrc("defense-48x48.png"),
+  },
+  [AttributeUidEnum.PercentageOfDefense]: {
+    uid: AttributeUidEnum.PercentageOfDefense,
+    name: "Процент от защиты",
+    abbreviation: "Процент от защиты",
   },
   [AttributeUidEnum.ElementalMastery]: {
     uid: AttributeUidEnum.ElementalMastery,
@@ -88,7 +103,7 @@ export const attributes = {
   [AttributeUidEnum.CryoDamageBonus]: {
     uid: AttributeUidEnum.CryoDamageBonus,
     name: "Бонус Крио урона",
-    abbreviation: "Бонус Крио",
+    abbreviation: "Бонус Крио урона",
     image_src: elements[ElementUidEnum.Cryo].image_src,
   },
   [AttributeUidEnum.DendroDamageBonus]: {
@@ -175,8 +190,4 @@ export const attributes = {
     abbreviation: "Сопротивление физ.",
     image_src: imageSrc("physical-64x64.png"),
   },
-
-  [AttributeUidEnum.PercentageOfHP]: { name: "Процент от HP", abbreviation: "Процент от HP" },
-  [AttributeUidEnum.PercentageOfAttackPower]: { name: "Процент от силы атаки", abbreviation: "АТК%" },
-  [AttributeUidEnum.PercentageOfProtection]: { name: "Процент от защиты", abbreviation: "Процент от защиты" },
 } as Attributes;

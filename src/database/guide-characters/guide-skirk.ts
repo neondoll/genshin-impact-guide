@@ -37,10 +37,10 @@ export default {
       },
     ],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttackPower }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttack }],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.CryoDamageBonus, description: "Лучше" },
-        { uid: AttributeUidEnum.PercentageOfAttackPower, description: "Можно поставить, если в отряде Фурина" },
+        { uid: AttributeUidEnum.PercentageOfAttack, description: "Можно поставить, если в отряде Фурина" },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalRate },
@@ -49,7 +49,7 @@ export default {
       additional: [
         { uid: AttributeUidEnum.CriticalRate },
         { uid: AttributeUidEnum.CriticalDamage },
-        { uid: AttributeUidEnum.PercentageOfAttackPower },
+        { uid: AttributeUidEnum.PercentageOfAttack },
       ],
     },
   },

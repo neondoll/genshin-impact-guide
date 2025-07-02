@@ -429,15 +429,15 @@ function Squads({ squads }: SquadsProps) {
             <TableCell>
               {Array.isArray(squadsGeneralTemplateUnit)
                 ? (
-                  <div className="flex flex-wrap gap-2" key={index + 1}>
-                    {squadsGeneralTemplateUnit.map((squadsGeneralTemplateItem, index) => (
-                      <SquadsItem key={index} {...squadsGeneralTemplateItem} />
-                    ))}
-                  </div>
-                )
+                    <div className="flex flex-wrap gap-2" key={index + 1}>
+                      {squadsGeneralTemplateUnit.map((squadsGeneralTemplateItem, index) => (
+                        <SquadsItem key={index} {...squadsGeneralTemplateItem} />
+                      ))}
+                    </div>
+                  )
                 : (
-                  <SquadsItem {...squadsGeneralTemplateUnit} />
-                )}
+                    <SquadsItem {...squadsGeneralTemplateUnit} />
+                  )}
             </TableCell>
           </TableRow>
         ))}
