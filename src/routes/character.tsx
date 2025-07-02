@@ -1,4 +1,4 @@
-import { ChevronsUpDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -10,12 +10,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ArtifactPieceUidEnum } from "@/database/enums/artifact-pieces";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { Card } from "@/components/ui/card";
+import { cn, publicImageSrc } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   getArtifactSet, getAttribute, getCharacter, getCharacterRole, getElement, getGuideCharacter, getTalent, getWeapon,
-  getWeaponType, qualityImageSrc,
+  getWeaponType,
 } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -24,6 +24,13 @@ import type {
   GuideCharacterAssemblyWeapons, GuideCharacterPriorityOfTalentLeveling, GuideCharacterReferencePoint,
   GuideCharacterSquadsItem,
 } from "@/database/types/guide-characters";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList, BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb.tsx";
 
 type AssemblyArtifactsProps = {
   assemblyArtifacts: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["assembly_artifacts"]>;
@@ -422,15 +429,15 @@ function Squads({ squads }: SquadsProps) {
             <TableCell>
               {Array.isArray(squadsGeneralTemplateUnit)
                 ? (
-                    <div className="flex flex-wrap gap-2" key={index + 1}>
-                      {squadsGeneralTemplateUnit.map((squadsGeneralTemplateItem, index) => (
-                        <SquadsItem key={index} {...squadsGeneralTemplateItem} />
-                      ))}
-                    </div>
-                  )
+                  <div className="flex flex-wrap gap-2" key={index + 1}>
+                    {squadsGeneralTemplateUnit.map((squadsGeneralTemplateItem, index) => (
+                      <SquadsItem key={index} {...squadsGeneralTemplateItem} />
+                    ))}
+                  </div>
+                )
                 : (
-                    <SquadsItem {...squadsGeneralTemplateUnit} />
-                  )}
+                  <SquadsItem {...squadsGeneralTemplateUnit} />
+                )}
             </TableCell>
           </TableRow>
         ))}
@@ -483,23 +490,53 @@ export default function Character() {
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
-      <Card className="items-center px-6 sm:flex-row">
-        <div className="flex shrink-0 gap-6 items-center self-start sm:flex-col">
-          <img
-            alt={character.name}
-            className="shrink-0 size-20 rounded-xl"
-            src={character.small_image_src}
-            style={{ backgroundColor: `var(${characterElement.color_var})` }}
-          />
-          <CardTitle>{character.name}</CardTitle>
+      <Breadcrumb>
+        <BreadcrumbList className="gap-1 text-xs sm:gap-2">
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link to={Paths.Root}>Главная</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link to={Paths.Characters}>Персонажи</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{character.name}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <div className="flex gap-x-3">
+        <img
+          alt={character.name}
+          className={cn(
+            "shrink-0 size-16 rounded-md rounded-br-2xl",
+            character.quality === 4 && "bg-[linear-gradient(180deg,#5e5789,#9c75b7)]",
+            character.quality === 5 && "bg-[linear-gradient(180deg,#945c2c,#b27330)]",
+          )}
+          src={character.small_image_src}
+        />
+        <div className="space-y-1">
+          <div className="flex gap-x-1 items-center">
+            <h1 className="text-3xl">{character.name}</h1>
+            <img alt={characterElement.name} className="size-6" src={characterElement.image_src} />
+          </div>
+          <div className="flex gap-x-1">
+            {Array.from({ length: character.quality }, (_, i) => i).map(index => (
+              <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
+            ))}
+          </div>
         </div>
-        <Table className="flex-1">
+      </div>
+      <Card>
+        <Table>
           <TableBody>
             <TableRow className="hover:bg-inherit">
-              <TableHead className="p-2 text-right">Качество</TableHead>
-              <TableCell className="p-2">
-                <img alt={`${character.quality} Starts`} src={qualityImageSrc(character.quality)} />
-              </TableCell>
+              <TableHead className="p-2 text-right">Имя</TableHead>
+              <TableCell className="p-2">{character.name}</TableCell>
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead className="p-2 text-right">Оружие</TableHead>
@@ -565,160 +602,152 @@ export default function Character() {
         </Table>
       </Card>
       {characterGuide !== undefined && (
-        <Collapsible defaultOpen asChild>
-          <Card>
-            <CardHeader>
-              <CollapsibleTrigger asChild>
-                <Button className="flex justify-between w-full" variant="secondary">
-                  Гайд
-                  <ChevronsUpDown />
-                </Button>
-              </CollapsibleTrigger>
-            </CardHeader>
-            <CollapsibleContent asChild>
-              <CardContent>
-                {(
-                  characterGuide.first_constellation_or_signature_weapon !== undefined
-                  || characterGuide.key_constellations !== undefined
-                  || characterGuide.required_level !== undefined
-                ) && (
-                  <Table className="table-fixed">
-                    <TableBody
-                      className={cn({
-                        "[&_tr:last-child]:border-b": characterGuide.assembly_artifacts !== undefined
-                          || characterGuide.assembly_weapons !== undefined
-                          || characterGuide.priority_of_talent_leveling !== undefined
-                          || characterGuide.reference_point !== undefined
-                          || characterGuide.rotation !== undefined
-                          || characterGuide.squads !== undefined
-                          || characterGuide.video_sources !== undefined,
-                      })}
-                    >
-                      {characterGuide?.key_constellations !== undefined && (
-                        <TableRow className="hover:bg-inherit">
-                          <TableHead className="p-2 text-right whitespace-normal">Ключевые созвездия</TableHead>
-                          <TableCell className="p-2 whitespace-normal">
-                            {characterGuide.key_constellations.join(", ")}
-                          </TableCell>
-                        </TableRow>
-                      )}
-                      {characterGuide?.first_constellation_or_signature_weapon !== undefined && (
-                        <TableRow className="hover:bg-inherit">
-                          <TableHead className="p-2 text-right whitespace-normal">
-                            C1 или
-                            Сигна?
-                          </TableHead>
-                          <TableCell className="p-2 whitespace-pre-line sm:whitespace-normal">
-                            {characterGuide.first_constellation_or_signature_weapon}
-                          </TableCell>
-                        </TableRow>
-                      )}
-                      {characterGuide?.required_level !== undefined && (
-                        <TableRow className="hover:bg-inherit">
-                          <TableHead className="p-2 text-right whitespace-normal">
-                            Требуемый
-                            уровень
-                          </TableHead>
-                          <TableCell className="p-2 whitespace-normal">{characterGuide.required_level}</TableCell>
-                        </TableRow>
-                      )}
-                    </TableBody>
-                  </Table>
-                )}
-                {(
-                  characterGuide.assembly_artifacts !== undefined
-                  || characterGuide.assembly_weapons !== undefined
-                  || characterGuide.priority_of_talent_leveling !== undefined
-                  || characterGuide.reference_point !== undefined
-                  || characterGuide.rotation !== undefined
-                  || characterGuide.squads !== undefined
-                  || characterGuide.video_sources !== undefined
-                ) && (
-                  <Accordion className="w-full" type="multiple">
-                    {characterGuide.rotation !== undefined && (
-                      <AccordionItem value="rotation">
-                        <AccordionTrigger>Ротация</AccordionTrigger>
-                        <AccordionContent>
-                          <Rotation rotation={characterGuide.rotation} />
-                        </AccordionContent>
-                      </AccordionItem>
+        <Collapsible className="space-y-2 md:space-y-4" defaultOpen>
+          <CollapsibleTrigger asChild>
+            <Button className="flex justify-between w-full [&[data-state=open]>svg]:rotate-180">
+              Рекомендации по оружию, артефактам и отрядам
+              <ChevronDownIcon className="transition-transform duration-200" />
+            </Button>
+          </CollapsibleTrigger>
+          <CollapsibleContent asChild>
+            <Card className="gap-0">
+              {(
+                characterGuide.first_constellation_or_signature_weapon !== undefined
+                || characterGuide.key_constellations !== undefined
+                || characterGuide.required_level !== undefined
+              ) && (
+                <Table className="table-fixed">
+                  <TableBody
+                    className={cn({
+                      "[&_tr:last-child]:border-b": characterGuide.assembly_artifacts !== undefined
+                        || characterGuide.assembly_weapons !== undefined
+                        || characterGuide.priority_of_talent_leveling !== undefined
+                        || characterGuide.reference_point !== undefined
+                        || characterGuide.rotation !== undefined
+                        || characterGuide.squads !== undefined
+                        || characterGuide.video_sources !== undefined,
+                    })}
+                  >
+                    {characterGuide?.key_constellations !== undefined && (
+                      <TableRow className="hover:bg-inherit">
+                        <TableHead className="p-2 text-right whitespace-normal">
+                          Рекомендации по ключевым созвездиям
+                        </TableHead>
+                        <TableCell className="p-2 whitespace-normal">
+                          {characterGuide.key_constellations.join(", ")}
+                        </TableCell>
+                      </TableRow>
                     )}
-                    {characterGuide.priority_of_talent_leveling !== undefined && (
-                      <AccordionItem value="priority_of_talent_leveling">
-                        <AccordionTrigger>Приоритет прокачки талантов</AccordionTrigger>
-                        <AccordionContent>
-                          <PriorityOfTalentLeveling priorityOfTalentLeveling={characterGuide.priority_of_talent_leveling} />
-                        </AccordionContent>
-                      </AccordionItem>
+                    {characterGuide?.first_constellation_or_signature_weapon !== undefined && (
+                      <TableRow className="hover:bg-inherit">
+                        <TableHead className="p-2 text-right whitespace-normal">C1 или Сигна?</TableHead>
+                        <TableCell className="p-2 whitespace-pre-line sm:whitespace-normal">
+                          {characterGuide.first_constellation_or_signature_weapon}
+                        </TableCell>
+                      </TableRow>
                     )}
-                    {characterGuide.squads !== undefined && (
-                      <AccordionItem value="squads_general_template">
-                        <AccordionTrigger>Отряды</AccordionTrigger>
-                        <AccordionContent>
-                          <Squads squads={characterGuide.squads} />
-                        </AccordionContent>
-                      </AccordionItem>
+                    {characterGuide?.required_level !== undefined && (
+                      <TableRow className="hover:bg-inherit">
+                        <TableHead className="p-2 text-right whitespace-normal">Рекомендации по уровню</TableHead>
+                        <TableCell className="p-2 whitespace-normal">{characterGuide.required_level}</TableCell>
+                      </TableRow>
                     )}
-                    {characterGuide.assembly_artifacts !== undefined && (
-                      <AccordionItem value="assembly_artifacts">
-                        <AccordionTrigger>Сборка: Артефакты</AccordionTrigger>
-                        <AccordionContent>
-                          <AssemblyArtifacts
-                            assemblyArtifacts={characterGuide.assembly_artifacts}
-                            character={character}
-                          />
-                        </AccordionContent>
-                      </AccordionItem>
-                    )}
-                    {characterGuide.assembly_weapons !== undefined && (
-                      <AccordionItem value="assembly_weapons">
-                        <AccordionTrigger>Сборка: Оружие</AccordionTrigger>
-                        <AccordionContent>
-                          <AssemblyWeapons assemblyWeapons={characterGuide.assembly_weapons} character={character} />
-                        </AccordionContent>
-                      </AccordionItem>
-                    )}
-                    {characterGuide.reference_point !== undefined && (
-                      <AccordionItem value="reference_point">
-                        <AccordionTrigger>Ориентир</AccordionTrigger>
-                        <AccordionContent>
-                          <ReferencePoint referencePoint={characterGuide.reference_point} />
-                        </AccordionContent>
-                      </AccordionItem>
-                    )}
-                    {characterGuide.video_sources !== undefined && (
-                      <AccordionItem value="video_sources">
-                        <AccordionTrigger>Видео-источники</AccordionTrigger>
-                        <AccordionContent>
-                          <ul className="list-inside list-disc">
-                            {characterGuide.video_sources.map((videoSource, index) => (
-                              <li key={index}>
-                                <div className="inline-flex gap-2 items-center">
-                                  <span>{videoSource.title}</span>
-                                  {videoSource.vk_url !== undefined && (
-                                    <Button asChild className="size-8" size="icon">
-                                      <a href={videoSource.vk_url} target="_blank">
-                                        <VK className="size-7" />
-                                      </a>
-                                    </Button>
-                                  )}
+                  </TableBody>
+                </Table>
+              )}
+              {(
+                characterGuide.assembly_artifacts !== undefined
+                || characterGuide.assembly_weapons !== undefined
+                || characterGuide.priority_of_talent_leveling !== undefined
+                || characterGuide.reference_point !== undefined
+                || characterGuide.rotation !== undefined
+                || characterGuide.squads !== undefined
+                || characterGuide.video_sources !== undefined
+              ) && (
+                <Accordion className="w-full" type="multiple">
+                  {characterGuide.rotation !== undefined && (
+                    <AccordionItem value="rotation">
+                      <AccordionTrigger className="px-6">Рекомендации по ротации</AccordionTrigger>
+                      <AccordionContent className="px-6">
+                        <Rotation rotation={characterGuide.rotation} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                  {characterGuide.priority_of_talent_leveling !== undefined && (
+                    <AccordionItem value="priority_of_talent_leveling">
+                      <AccordionTrigger className="px-6">Рекомендации по возвышению талантов</AccordionTrigger>
+                      <AccordionContent className="px-6">
+                        <PriorityOfTalentLeveling priorityOfTalentLeveling={characterGuide.priority_of_talent_leveling} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                  {characterGuide.assembly_weapons !== undefined && (
+                    <AccordionItem value="assembly_weapons">
+                      <AccordionTrigger className="px-6">Рекомендации по оружию</AccordionTrigger>
+                      <AccordionContent className="px-6">
+                        <AssemblyWeapons assemblyWeapons={characterGuide.assembly_weapons} character={character} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                  {characterGuide.assembly_artifacts !== undefined && (
+                    <AccordionItem value="assembly_artifacts">
+                      <AccordionTrigger className="px-6">Рекомендации по артефактам</AccordionTrigger>
+                      <AccordionContent className="px-6">
+                        <AssemblyArtifacts
+                          assemblyArtifacts={characterGuide.assembly_artifacts}
+                          character={character}
+                        />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                  {characterGuide.squads !== undefined && (
+                    <AccordionItem value="squads_general_template">
+                      <AccordionTrigger className="px-6">Рекомендации по отрядам</AccordionTrigger>
+                      <AccordionContent className="px-6">
+                        <Squads squads={characterGuide.squads} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                  {characterGuide.reference_point !== undefined && (
+                    <AccordionItem value="reference_point">
+                      <AccordionTrigger className="px-6">Ориентир</AccordionTrigger>
+                      <AccordionContent className="px-6">
+                        <ReferencePoint referencePoint={characterGuide.reference_point} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                  {characterGuide.video_sources !== undefined && (
+                    <AccordionItem value="video_sources">
+                      <AccordionTrigger className="px-6">Видео-источники</AccordionTrigger>
+                      <AccordionContent className="px-6">
+                        <ul className="list-inside list-disc">
+                          {characterGuide.video_sources.map((videoSource, index) => (
+                            <li key={index}>
+                              <div className="inline-flex gap-2 items-center">
+                                <span>{videoSource.title}</span>
+                                {videoSource.vk_url !== undefined && (
                                   <Button asChild className="size-8" size="icon">
-                                    <a href={videoSource.youtube_url} target="_blank">
-                                      <Youtube className="size-7" />
+                                    <a href={videoSource.vk_url} target="_blank">
+                                      <VK className="size-7" />
                                     </a>
                                   </Button>
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
-                        </AccordionContent>
-                      </AccordionItem>
-                    )}
-                  </Accordion>
-                )}
-              </CardContent>
-            </CollapsibleContent>
-          </Card>
+                                )}
+                                <Button asChild className="size-8" size="icon">
+                                  <a href={videoSource.youtube_url} target="_blank">
+                                    <Youtube className="size-7" />
+                                  </a>
+                                </Button>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+                  )}
+                </Accordion>
+              )}
+            </Card>
+          </CollapsibleContent>
         </Collapsible>
       )}
     </Container>

@@ -4,13 +4,27 @@ import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-type AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;
-type AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item>;
-type AccordionTriggerProps = React.ComponentProps<typeof AccordionPrimitive.Trigger>;
 type AccordionContentProps = React.ComponentProps<typeof AccordionPrimitive.Content>;
+type AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item>;
+type AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>;
+type AccordionTriggerProps = React.ComponentProps<typeof AccordionPrimitive.Trigger>;
 
 export function Accordion({ ...props }: AccordionProps) {
   return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
+}
+
+export function AccordionContent({ className, children, ...props }: AccordionContentProps) {
+  return (
+    <AccordionPrimitive.Content
+      className={cn(
+        "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+      )}
+      data-slot="accordion-content"
+      {...props}
+    >
+      <div className={cn("pt-0 pb-4", className)}>{children}</div>
+    </AccordionPrimitive.Content>
+  );
 }
 
 export function AccordionItem({ className, ...props }: AccordionItemProps) {
@@ -45,19 +59,5 @@ export function AccordionTrigger({ className, children, ...props }: AccordionTri
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
-  );
-}
-
-export function AccordionContent({ className, children, ...props }: AccordionContentProps) {
-  return (
-    <AccordionPrimitive.Content
-      className={cn(
-        "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
-      )}
-      data-slot="accordion-content"
-      {...props}
-    >
-      <div className={cn("pt-0 pb-4", className)}>{children}</div>
-    </AccordionPrimitive.Content>
   );
 }

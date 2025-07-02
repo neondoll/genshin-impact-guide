@@ -12,13 +12,13 @@ import type { GuideCharacter } from "../types/guide-characters";
 type GameVariantUid = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 
 const GameVariantEnum = {
-  GameFromElementalBurst: `game_from_${TalentUidEnum.ElementalBurst}`,
-  GameFromStance: "game_from_stance",
+  WhenPlayingThroughElementalBurst: `when_playing_through_${TalentUidEnum.ElementalBurst}`,
+  WhenPlayingThroughNormalAttack: `when_playing_through_${TalentUidEnum.NormalAttack}`,
 } as const;
 
 const gameVariants: Record<GameVariantUid, string> = {
-  [GameVariantEnum.GameFromElementalBurst]: "Игра от взрыва стихий",
-  [GameVariantEnum.GameFromStance]: "Игра от стойки",
+  [GameVariantEnum.WhenPlayingThroughElementalBurst]: "При игре через взрыв стихии Хаос: Разрушение",
+  [GameVariantEnum.WhenPlayingThroughNormalAttack]: "При игре через обычные атаки",
 };
 
 export default {
@@ -71,12 +71,12 @@ export default {
   first_constellation_or_signature_weapon: "Сигна > C1,\nC2 > Сигна",
   key_constellations: [1, 2, 5, 6],
   priority_of_talent_leveling: {
-    [gameVariants[GameVariantEnum.GameFromStance]]: [
+    [gameVariants[GameVariantEnum.WhenPlayingThroughNormalAttack]]: [
       { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
       { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
       { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
     ],
-    [gameVariants[GameVariantEnum.GameFromElementalBurst]]: [
+    [gameVariants[GameVariantEnum.WhenPlayingThroughElementalBurst]]: [
       { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
       { uid: TalentUidEnum.ElementalSkill, priority: "Игнорируем\n(1)" },
       { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
@@ -104,8 +104,8 @@ export default {
   },
   required_level: 90,
   rotation: {
-    [gameVariants[GameVariantEnum.GameFromStance]]: "Отряд > Обычный навык (E) > Взрыв стихий (Q) > 10 обычных атак > Заряженная атака > 8 обычных атак",
-    [gameVariants[GameVariantEnum.GameFromElementalBurst]]: "Отряд > Заряженный навык (hold E) > Взрыв стихий (Q)",
+    [gameVariants[GameVariantEnum.WhenPlayingThroughNormalAttack]]: "Отряд > Обычный элементальный навык (E) > Взрыв стихии (Q) > 10 обычных атак > Заряженная атака > 8 обычных атак",
+    [gameVariants[GameVariantEnum.WhenPlayingThroughElementalBurst]]: "Отряд > Заряженный элементальный навык (hold E) > Взрыв стихии (Q)",
   },
   squads: {
     general_template: [

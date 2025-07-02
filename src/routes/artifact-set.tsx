@@ -3,6 +3,9 @@ import { Link, useLoaderData } from "react-router-dom";
 import Container from "@/components/container";
 import Paths from "@/paths";
 import { Badge } from "@/components/ui/badge";
+import {
+  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getArtifactPieces, getArtifactSet, getArtifactSetCharacters, qualityImageSrc } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
@@ -18,6 +21,25 @@ export default function ArtifactSet() {
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
+      <Breadcrumb>
+        <BreadcrumbList className="gap-1 text-xs sm:gap-2">
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link to={Paths.Root}>Главная</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link to={Paths.ArtifactSets}>Артефакты</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{artifactSet.name}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <Card>
         <CardHeader>
           <CardTitle className="text-balance">{artifactSet.name}</CardTitle>

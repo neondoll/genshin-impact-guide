@@ -15,7 +15,7 @@ export const characters = {
   [CharacterUidEnum.Arlecchino]: {
     uid: CharacterUidEnum.Arlecchino,
     name: "Арлекино",
-    small_image_src: imageSrc("arlecchino-small-106x106.png"),
+    small_image_src: imageSrc("arlecchino-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Pyro,
@@ -27,7 +27,7 @@ export const characters = {
   [CharacterUidEnum.Bennett]: {
     uid: CharacterUidEnum.Bennett,
     name: "Беннет",
-    small_image_src: imageSrc("bennett-small-106x106.png"),
+    small_image_src: imageSrc("bennett-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Pyro,
@@ -38,7 +38,7 @@ export const characters = {
   [CharacterUidEnum.Varesa]: {
     uid: CharacterUidEnum.Varesa,
     name: "Вареса",
-    small_image_src: imageSrc("varesa-small-106x106.png"),
+    small_image_src: imageSrc("varesa-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Electro,
@@ -50,18 +50,18 @@ export const characters = {
   [CharacterUidEnum.Dahlia]: {
     uid: CharacterUidEnum.Dahlia,
     name: "Далия",
-    small_image_src: imageSrc("dahlia-small-106x106.png"),
+    small_image_src: imageSrc("dahlia-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Hydro,
-    roles_uid: [CharacterRoleUidEnum.OffField],
+    roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support],
     world_uid: WorldUidEnum.Teyvat,
     region_uid: RegionUidEnum.Mondstadt,
   },
   [CharacterUidEnum.Iansan]: {
     uid: CharacterUidEnum.Iansan,
     name: "Иансан",
-    small_image_src: imageSrc("iansan-small-106x106.png"),
+    small_image_src: imageSrc("iansan-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Electro,
@@ -72,7 +72,7 @@ export const characters = {
   [CharacterUidEnum.Collei]: {
     uid: CharacterUidEnum.Collei,
     name: "Коллеи",
-    small_image_src: imageSrc("collei-small-106x106.png"),
+    small_image_src: imageSrc("collei-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Dendro,
@@ -83,7 +83,7 @@ export const characters = {
   [CharacterUidEnum.KukiShinobu]: {
     uid: CharacterUidEnum.KukiShinobu,
     name: "Куки Синобу",
-    small_image_src: imageSrc("kuki_shinobu-small-106x106.png"),
+    small_image_src: imageSrc("kuki_shinobu-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Electro,
@@ -94,7 +94,7 @@ export const characters = {
   [CharacterUidEnum.Layla]: {
     uid: CharacterUidEnum.Layla,
     name: "Лайла",
-    small_image_src: imageSrc("layla-small-106x106.png"),
+    small_image_src: imageSrc("layla-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Cryo,
@@ -105,7 +105,7 @@ export const characters = {
   [CharacterUidEnum.Lyney]: {
     uid: CharacterUidEnum.Lyney,
     name: "Лини",
-    small_image_src: imageSrc("lyney-small-106x106.png"),
+    small_image_src: imageSrc("lyney-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Pyro,
@@ -116,7 +116,7 @@ export const characters = {
   [CharacterUidEnum.Mavuika]: {
     uid: CharacterUidEnum.Mavuika,
     name: "Мавуика",
-    small_image_src: imageSrc("mavuika-106x106.png"),
+    small_image_src: imageSrc("mavuika-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Claymore,
     element_uid: ElementUidEnum.Pyro,
@@ -132,7 +132,7 @@ export const characters = {
   [CharacterUidEnum.Mika]: {
     uid: CharacterUidEnum.Mika,
     name: "Мика",
-    small_image_src: imageSrc("mika-small-106x106.png"),
+    small_image_src: imageSrc("mika-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Cryo,
@@ -143,7 +143,7 @@ export const characters = {
   [CharacterUidEnum.Nahida]: {
     uid: CharacterUidEnum.Nahida,
     name: "Нахида",
-    small_image_src: imageSrc("nahida-small-106x106.png"),
+    small_image_src: imageSrc("nahida-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Dendro,
@@ -154,7 +154,7 @@ export const characters = {
   [CharacterUidEnum.Neuvillette]: {
     uid: CharacterUidEnum.Neuvillette,
     name: "Нёвиллет",
-    small_image_src: imageSrc("neuvillette-small-106x106.png"),
+    small_image_src: imageSrc("neuvillette-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Hydro,
@@ -166,7 +166,7 @@ export const characters = {
   [CharacterUidEnum.Wriothesley]: {
     uid: CharacterUidEnum.Wriothesley,
     name: "Ризли",
-    small_image_src: imageSrc("wriothesley-small-106x106.png"),
+    small_image_src: imageSrc("wriothesley-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Cryo,
@@ -177,7 +177,7 @@ export const characters = {
   [CharacterUidEnum.Rosaria]: {
     uid: CharacterUidEnum.Rosaria,
     name: "Розария",
-    small_image_src: imageSrc("rosaria-small-106x106.png"),
+    small_image_src: imageSrc("rosaria-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Cryo,
@@ -188,7 +188,7 @@ export const characters = {
   [CharacterUidEnum.Cyno]: {
     uid: CharacterUidEnum.Cyno,
     name: "Сайно",
-    small_image_src: imageSrc("cyno-small-106x106.png"),
+    small_image_src: imageSrc("cyno-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Electro,
@@ -199,7 +199,7 @@ export const characters = {
   [CharacterUidEnum.Sucrose]: {
     uid: CharacterUidEnum.Sucrose,
     name: "Сахароза",
-    small_image_src: imageSrc("sucrose-small-106x106.png"),
+    small_image_src: imageSrc("sucrose-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Anemo,
@@ -210,7 +210,7 @@ export const characters = {
   [CharacterUidEnum.Xingqiu]: {
     uid: CharacterUidEnum.Xingqiu,
     name: "Син Цю",
-    small_image_src: imageSrc("xingqiu-small-106x106.png"),
+    small_image_src: imageSrc("xingqiu-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Hydro,
@@ -221,7 +221,7 @@ export const characters = {
   [CharacterUidEnum.Skirk]: {
     uid: CharacterUidEnum.Skirk,
     name: "Скирк",
-    small_image_src: imageSrc("skirk-small-106x106.png"),
+    small_image_src: imageSrc("skirk-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Cryo,
@@ -233,7 +233,7 @@ export const characters = {
   [CharacterUidEnum.Xiangling]: {
     uid: CharacterUidEnum.Xiangling,
     name: "Сян Лин",
-    small_image_src: imageSrc("xiangling-small-106x106.png"),
+    small_image_src: imageSrc("xiangling-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Pyro,
@@ -244,7 +244,7 @@ export const characters = {
   [CharacterUidEnum.Tartaglia]: {
     uid: CharacterUidEnum.Tartaglia,
     name: "Тарталья",
-    small_image_src: imageSrc("tartaglia-small-106x106.png"),
+    small_image_src: imageSrc("tartaglia-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Hydro,
@@ -255,7 +255,7 @@ export const characters = {
   [CharacterUidEnum.Fischl]: {
     uid: CharacterUidEnum.Fischl,
     name: "Фишль",
-    small_image_src: imageSrc("fischl-small-106x106.png"),
+    small_image_src: imageSrc("fischl-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Electro,
@@ -266,7 +266,7 @@ export const characters = {
   [CharacterUidEnum.Furina]: {
     uid: CharacterUidEnum.Furina,
     name: "Фурина",
-    small_image_src: imageSrc("furina-small-106x106.png"),
+    small_image_src: imageSrc("furina-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Hydro,
@@ -283,7 +283,7 @@ export const characters = {
   [CharacterUidEnum.Qiqi]: {
     uid: CharacterUidEnum.Qiqi,
     name: "Ци Ци",
-    small_image_src: imageSrc("qiqi-small-106x106.png"),
+    small_image_src: imageSrc("qiqi-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Cryo,
@@ -294,7 +294,7 @@ export const characters = {
   [CharacterUidEnum.Chevreuse]: {
     uid: CharacterUidEnum.Chevreuse,
     name: "Шеврёз",
-    small_image_src: imageSrc("chevreuse-small-106x106.png"),
+    small_image_src: imageSrc("chevreuse-256x256.webp"),
     quality: 4,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Pyro,
@@ -305,7 +305,7 @@ export const characters = {
   [CharacterUidEnum.Xilonen]: {
     uid: CharacterUidEnum.Xilonen,
     name: "Шилонен",
-    small_image_src: imageSrc("xilonen-small-106x106.png"),
+    small_image_src: imageSrc("xilonen-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Geo,
@@ -317,7 +317,7 @@ export const characters = {
   [CharacterUidEnum.Escoffier]: {
     uid: CharacterUidEnum.Escoffier,
     name: "Эскофье",
-    small_image_src: imageSrc("escoffier-small-106x106.png"),
+    small_image_src: imageSrc("escoffier-256x256.webp"),
     quality: 5,
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Cryo,

@@ -3,16 +3,20 @@ import * as TabsPrimitive from "@radix-ui/react-tabs";
 
 import { cn } from "@/lib/utils";
 
-type TabsProps = React.ComponentProps<typeof TabsPrimitive.Root>;
-type TabsListProps = React.ComponentProps<typeof TabsPrimitive.List>;
-type TabsTriggerProps = React.ComponentProps<typeof TabsPrimitive.Trigger>;
 type TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content>;
+type TabsListProps = React.ComponentProps<typeof TabsPrimitive.List>;
+type TabsProps = React.ComponentProps<typeof TabsPrimitive.Root>;
+type TabsTriggerProps = React.ComponentProps<typeof TabsPrimitive.Trigger>;
 
 export function Tabs({ className, ...props }: TabsProps) {
+  return <TabsPrimitive.Root className={cn("flex flex-col gap-2", className)} data-slot="tabs" {...props} />;
+}
+
+export function TabsContent({ className, ...props }: TabsContentProps) {
   return (
-    <TabsPrimitive.Root
-      className={cn("flex flex-col gap-2", className)}
-      data-slot="tabs"
+    <TabsPrimitive.Content
+      className={cn("flex-1 outline-none", className)}
+      data-slot="tabs-content"
       {...props}
     />
   );
@@ -45,16 +49,6 @@ export function TabsTrigger({ className, ...props }: TabsTriggerProps) {
         className,
       )}
       data-slot="tabs-trigger"
-      {...props}
-    />
-  );
-}
-
-export function TabsContent({ className, ...props }: TabsContentProps) {
-  return (
-    <TabsPrimitive.Content
-      className={cn("flex-1 outline-none", className)}
-      data-slot="tabs-content"
       {...props}
     />
   );

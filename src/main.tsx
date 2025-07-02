@@ -3,24 +3,27 @@ import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
 
 import ArtifactSet, { type ArtifactSetLoaderData } from "@/routes/artifact-set";
+import ArtifactSets, { type ArtifactSetsLoaderData } from "@/routes/artifact-sets";
 import Character, { type CharacterLoaderData } from "@/routes/character";
+import Characters, { type CharactersLoaderData } from "@/routes/characters";
 import Element, { type ElementLoaderData } from "@/routes/element";
 import ErrorPage from "@/error-page";
-import Home, { type HomeLoaderData } from "@/routes/home";
+import Layout from "@/routes/layout";
 import Paths from "@/paths";
-import Root from "@/routes/root";
+import Root, { type RootLoaderData } from "@/routes/root";
 import {
   getArtifactPieces, getArtifactSet, getArtifactSetCharacters, getArtifactSets, getCharacter, getCharacterRole,
   getCharacters, getElement, getElements, getGuideCharacter, getRegion, getRegions, getWeapons, getWeaponType,
   getWeaponTypes,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
+import Weapons, { type WeaponsLoaderData } from "@/routes/weapons";
 import type { ArtifactSetUid } from "@/database/types/artifact-sets";
 import type { CharacterUid } from "@/database/types/characters";
 import type { ElementUid } from "@/database/types/elements";
 import "./index.css";
 
-const homeLoader = (): HomeLoaderData => {
+const rootLoader = (): RootLoaderData => {
   const artifactSets = getArtifactSets();
   const characters = getCharacters();
   const elements = getElements();
@@ -35,7 +38,14 @@ const router = createHashRouter([
   {
     path: Paths.Root,
     children: [
-      { loader: homeLoader, index: true, element: <Home /> },
+      { loader: rootLoader, index: true, element: <Root /> },
+      {
+        loader: (): ArtifactSetsLoaderData => {
+          return { artifactSets: getArtifactSets() };
+        },
+        path: Paths.ArtifactSets,
+        element: <ArtifactSets />,
+      },
       {
         loader: ({ params }): ArtifactSetLoaderData => {
           const artifactPieces = getArtifactPieces();
@@ -46,6 +56,13 @@ const router = createHashRouter([
         },
         path: Paths.ArtifactSet(":artifactSetUid"),
         element: <ArtifactSet />,
+      },
+      {
+        loader: (): CharactersLoaderData => {
+          return { characters: getCharacters() };
+        },
+        path: Paths.Characters,
+        element: <Characters />,
       },
       {
         loader: ({ params }): CharacterLoaderData => {
@@ -71,9 +88,16 @@ const router = createHashRouter([
         path: Paths.Element(":elementUid"),
         element: <Element />,
       },
-      { loader: homeLoader, path: "/:tabValue", element: <Home /> },
+      {
+        loader: (): WeaponsLoaderData => {
+          return { weapons: getWeapons() };
+        },
+        path: Paths.Weapons,
+        element: <Weapons />,
+      },
+      { loader: rootLoader, path: "/:tabValue", element: <Root /> },
     ],
-    element: <Root />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
   },
 ]);

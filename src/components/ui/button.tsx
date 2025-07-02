@@ -17,6 +17,12 @@ export const buttonVariants = cva(
   ],
   {
     variants: {
+      size: {
+        default: "px-4 py-2 h-9 has-[>svg]:px-3",
+        sm: "gap-1.5 px-3 h-8 rounded-md has-[>svg]:px-2.5",
+        lg: "px-6 h-10 rounded-md has-[>svg]:px-4",
+        icon: "size-9",
+      },
       variant: {
         default: "text-primary-foreground bg-primary shadow-xs hover:bg-primary/90",
         destructive: [
@@ -31,28 +37,13 @@ export const buttonVariants = cva(
         ghost: "hover:text-accent-foreground hover:bg-accent dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
       },
-      size: {
-        default: "px-4 py-2 h-9 has-[>svg]:px-3",
-        sm: "gap-1.5 px-3 h-8 rounded-md has-[>svg]:px-2.5",
-        lg: "px-6 h-10 rounded-md has-[>svg]:px-4",
-        icon: "size-9",
-      },
     },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
+    defaultVariants: { size: "default", variant: "default" },
   },
 );
 
-export function Button({ className, variant, size, asChild = false, ...props }: ButtonProps) {
+export function Button({ asChild = false, className, size, variant, ...props }: ButtonProps) {
   const Comp = asChild ? Slot : "button";
 
-  return (
-    <Comp
-      className={cn(buttonVariants({ variant, size, className }))}
-      data-slot="button"
-      {...props}
-    />
-  );
+  return <Comp className={cn(buttonVariants({ className, size, variant }))} data-slot="button" {...props} />;
 }
