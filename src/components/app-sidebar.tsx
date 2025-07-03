@@ -1,19 +1,10 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-import Paths from "@/paths";
-import { publicImageSrc } from "@/lib/utils";
+import MenuItems from "@/constants/menu-items";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton,
   SidebarMenuItem,
 } from "./ui/sidebar";
-
-// Menu items.
-const items = [
-  { title: "Главная", to: Paths.Root, image_src: undefined },
-  { title: "Персонажи", to: Paths.Characters, image_src: publicImageSrc("characters-logo-85x84.png") },
-  { title: "Оружие", to: Paths.Weapons, image_src: publicImageSrc("weapons-logo-85x84.png") },
-  { title: "Артефакты", to: Paths.ArtifactSets, image_src: publicImageSrc("artifacts-logo-85x84.png") },
-];
 
 export function AppSidebar() {
   return (
@@ -23,15 +14,16 @@ export function AppSidebar() {
           <SidebarGroupLabel>Содержание</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map(item => (
+              {MenuItems.map(item => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link to={item.to}>
-                      {item.image_src !== undefined && (
-                        <img alt={item.title} className="w-auto h-5" src={item.image_src} />
-                      )}
+                    <NavLink
+                      className="[.active]:font-medium [.active]:text-sidebar-accent-foreground [.active]:bg-sidebar-accent"
+                      to={item.to}
+                    >
+                      <img alt={item.title} className="shrink-0 w-auto h-5" src={item.image_src} />
                       <span>{item.title}</span>
-                    </Link>
+                    </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

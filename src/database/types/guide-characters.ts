@@ -6,17 +6,28 @@ import type { ElementUid } from "./elements";
 import type { TalentUid } from "./talents";
 import type { WeaponUid } from "./weapons";
 
-type GuideCharacterAssemblyArtifactAttribute = { uid: AttributeUid; percent?: number; description?: string };
-type GuideCharacterAssemblyArtifacts = {
-  sets: GuideCharacterAssemblyArtifactSet[];
-  attributes: Record<typeof ArtifactPieceUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", GuideCharacterAssemblyArtifactAttribute[]>;
+type GuideCharacterArtifactAttributeRecommendations = {
+  uid: AttributeUid;
+  percent?: number;
+  description?: string;
+  notes?: string[];
 };
-type GuideCharacterAssemblyArtifactSet = { uid: ArtifactSetUid; percent?: number; description?: string };
+type GuideCharacterArtifactRecommendations = {
+  sets: GuideCharacterArtifactSetRecommendations[];
+  attributes: Record<typeof ArtifactPieceUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", GuideCharacterArtifactAttributeRecommendations[]>;
+};
+type GuideCharacterArtifactSetRecommendations = {
+  uid: ArtifactSetUid;
+  is_better?: boolean;
+  percent?: number;
+  description?: string;
+  notes?: string[];
+};
 type GuideCharacterAssemblyWeapon = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
 
 export type GuideCharacter = {
   character_uid: CharacterUid;
-  assembly_artifacts?: GuideCharacterAssemblyArtifacts;
+  artifact_recommendations?: GuideCharacterArtifactRecommendations;
   assembly_weapons?: GuideCharacterAssemblyWeapons | Record<string, GuideCharacterAssemblyWeapons>;
   first_constellation_or_signature_weapon?: string;
   key_constellations?: (1 | 2 | 3 | 4 | 5 | 6)[];

@@ -23,7 +23,7 @@ const gameVariants: Record<GameVariantUid, string> = {
 
 export default {
   character_uid: CharacterUidEnum.Skirk,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [
       {
         uid: ArtifactSetUidEnum.MarechausseeHunter,

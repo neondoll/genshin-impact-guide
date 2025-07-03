@@ -1,3 +1,5 @@
+import guideArlecchino from "./guide-arlecchino";
+import guideEscoffier from "./guide-escoffier";
 import guideMavuika from "./guide-mavuika";
 import guideSkirk from "./guide-skirk";
 import { ArtifactPieceUidEnum } from "../enums/artifact-pieces";
@@ -10,79 +12,9 @@ import { weapons } from "../weapons";
 import { WeaponUidEnum } from "../enums/weapons";
 import type { GuideCharacter, GuideCharacters } from "../types/guide-characters";
 
-const guideArlecchino = {
-  character_uid: CharacterUidEnum.Arlecchino,
-  assembly_artifacts: {
-    sets: [{ uid: ArtifactSetUidEnum.FragmentOfHarmonicWhimsy }, { uid: ArtifactSetUidEnum.GladiatorsFinale }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttack }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PyroDamageBonus, description: "Лучше" },
-        { uid: AttributeUidEnum.PercentageOfAttack },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalDamage },
-        { uid: AttributeUidEnum.CriticalRate },
-      ],
-      additional: [
-        { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
-        { uid: AttributeUidEnum.PercentageOfAttack },
-        {
-          uid: AttributeUidEnum.ElementalMastery,
-          description: "100 - 150 МС для Пара или Таяния, в остальных случаях не нужно",
-        },
-        { uid: AttributeUidEnum.EnergyRecharge, description: "Специально не собирать" },
-      ],
-    },
-  },
-  assembly_weapons: {
-    "Гиперкери | Прожарка | отр. Шеврёз": [
-      { uid: WeaponUidEnum.CrimsonMoonsSemblance, percent: 1.316 },
-      { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.124 },
-      { uid: WeaponUidEnum.StaffOfTheScarletSands, percent: 1.112 },
-      { uid: WeaponUidEnum.LumidouceElegy, percent: 1.103 },
-      { uid: WeaponUidEnum.Deathmatch, refinement: 5, percent: 1.087 },
-      { uid: WeaponUidEnum.StaffOfHoma, percent: 1.085 },
-      { uid: WeaponUidEnum.CalamityQueller, percent: 1.063 },
-      { uid: WeaponUidEnum.Deathmatch, refinement: 1, percent: 1.032 },
-      { uid: WeaponUidEnum.WhiteTassel, percent: 1 },
-      { uid: WeaponUidEnum.BalladOfTheFjords, percent: 0.968 },
-      { uid: WeaponUidEnum.SkywardSpine, percent: 0.948 },
-      { uid: WeaponUidEnum.BlackcliffPole, percent: 0.899 },
-      { uid: WeaponUidEnum.MissiveWindspear, percent: 0.875 },
-    ],
-    "Пар | Таяние": [
-      { uid: WeaponUidEnum.CrimsonMoonsSemblance, percent: 1.309 },
-      { uid: WeaponUidEnum.StaffOfTheScarletSands, percent: 1.156 },
-      { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.114 },
-      { uid: WeaponUidEnum.Deathmatch, refinement: 5, percent: 1.105 },
-      { uid: WeaponUidEnum.LumidouceElegy, percent: 1.103 },
-      { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 5, percent: 1.098 },
-      { uid: WeaponUidEnum.StaffOfHoma, percent: 1.086 },
-      { uid: WeaponUidEnum.CalamityQueller, percent: 1.062 },
-      { uid: WeaponUidEnum.VortexVanquisher, percent: 1.044 },
-      { uid: WeaponUidEnum.LithicSpear, refinement: 5, percent: 1.043 },
-      { uid: WeaponUidEnum.Deathmatch, refinement: 1, percent: 1.043 },
-      { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 1, percent: 1.023 },
-      { uid: WeaponUidEnum.WhiteTassel, percent: 1 },
-      { uid: WeaponUidEnum.MissiveWindspear, percent: 0.99 },
-      { uid: WeaponUidEnum.DragonsBane, percent: 0.965 },
-      { uid: WeaponUidEnum.LithicSpear, refinement: 1, percent: 0.965 },
-      { uid: WeaponUidEnum.SkywardSpine, percent: 0.943 },
-      { uid: WeaponUidEnum.BlackcliffPole, percent: 0.938 },
-    ],
-  },
-  first_constellation_or_signature_weapon: "С1 и Сигна",
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Высокий приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Ситуативно\n(6 | 8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(6 | 8)" },
-  ],
-} as GuideCharacter;
 const guideBennett = {
   character_uid: CharacterUidEnum.Bennett,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.NoblesseOblige }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
@@ -117,7 +49,7 @@ const guideBennett = {
 } as GuideCharacter;
 const guideChevreuse = {
   character_uid: CharacterUidEnum.Chevreuse,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [
       { uid: ArtifactSetUidEnum.NoblesseOblige },
       {
@@ -158,73 +90,9 @@ const guideChevreuse = {
   ],
   required_level: 90,
 } as GuideCharacter;
-const guideEscoffier = {
-  character_uid: CharacterUidEnum.Escoffier,
-  assembly_artifacts: {
-    sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe, description: "Лучше" }, { uid: ArtifactSetUidEnum.BlizzardStrayer }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfAttack, description: "Личный урон важнее, чем ульта по откату" },
-        {
-          uid: AttributeUidEnum.EnergyRecharge,
-          description: "В меньшинстве случаев, когда есть Фурина, лечение нужно и лечить больше некому",
-        },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.CryoDamageBonus, description: "В 99% случаев" },
-        { uid: AttributeUidEnum.PercentageOfAttack, description: "В 1% случаев" },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Почти всегда" },
-      ],
-      additional: [
-        { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
-        { uid: AttributeUidEnum.PercentageOfAttack },
-        { uid: AttributeUidEnum.EnergyRecharge },
-      ],
-    },
-  },
-  assembly_weapons: [
-    { uid: WeaponUidEnum.SymphonistOfScents, percent: 1.2991 },
-    { uid: WeaponUidEnum.StaffOfHoma, percent: 1.2247 },
-    { uid: WeaponUidEnum.LumidouceElegy, percent: 1.1820 },
-    { uid: WeaponUidEnum.Deathmatch, refinement: 5, percent: 1.1568 },
-    { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.1435 },
-    { uid: WeaponUidEnum.CrimsonMoonsSemblance, percent: 1.1126 },
-    { uid: WeaponUidEnum.StaffOfTheScarletSands, percent: 1.0994 },
-    { uid: WeaponUidEnum.Deathmatch, refinement: 1, percent: 1.0637 },
-    { uid: WeaponUidEnum.SkywardSpine, percent: 1.0356 },
-    { uid: WeaponUidEnum.ProspectorsDrill, refinement: 5, percent: 1.0309 },
-    { uid: WeaponUidEnum.LithicSpear, refinement: 5, percent: 1.0118 },
-    { uid: WeaponUidEnum.BlackcliffPole, percent: 1 },
-    { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 5, percent: 0.9927 },
-    { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 1, percent: 0.9926 },
-    { uid: WeaponUidEnum.ProspectorsDrill, refinement: 1, percent: 0.9819 },
-    { uid: WeaponUidEnum.MissiveWindspear, percent: 0.9801 },
-    { uid: WeaponUidEnum.KitainCrossSpear, refinement: 5, percent: 0.8818 },
-    { uid: WeaponUidEnum.FavoniusLance, refinement: 5, percent: 0.8526 },
-  ],
-  first_constellation_or_signature_weapon: "С1 лучше",
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Вторичный приоритет\n(9)" },
-  ],
-  reference_point: [
-    ["Оружие", `${weapons[WeaponUidEnum.Deathmatch].name} R1 [${weapons[WeaponUidEnum.Deathmatch].quality}⭐]`],
-    ["Атака", "2 100"],
-    ["Восст. энергии", "110% - 115%"],
-    ["Крит. шанс", "80%"],
-    ["Крит. урон", "175%"],
-    ["Артефакты", artifactSets[ArtifactSetUidEnum.GoldenTroupe].name],
-  ],
-  required_level: 90,
-} as GuideCharacter;
 const guideFischl = {
   character_uid: CharacterUidEnum.Fischl,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
@@ -259,7 +127,7 @@ const guideFischl = {
 } as GuideCharacter;
 const guideFurina = {
   character_uid: CharacterUidEnum.Furina,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
@@ -360,7 +228,7 @@ const guideFurina = {
 } as GuideCharacter;
 const guideIansan = {
   character_uid: CharacterUidEnum.Iansan,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
@@ -391,7 +259,7 @@ const guideIansan = {
 } as GuideCharacter;
 const guideKukiShinobu = {
   character_uid: CharacterUidEnum.KukiShinobu,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.GildedDreams }, { uid: ArtifactSetUidEnum.FlowerOfParadiseLost }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
@@ -423,7 +291,7 @@ const guideKukiShinobu = {
 } as GuideCharacter;
 const guideLayla = {
   character_uid: CharacterUidEnum.Layla,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.TenacityOfTheMillelith }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
@@ -454,7 +322,7 @@ const guideLayla = {
 } as GuideCharacter;
 const guideNeuvillette = {
   character_uid: CharacterUidEnum.Neuvillette,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.MarechausseeHunter }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfHealth }],
@@ -502,7 +370,7 @@ const guideNeuvillette = {
 } as GuideCharacter;
 const guideVaresa = {
   character_uid: CharacterUidEnum.Varesa,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.LongNightsOath }, { uid: ArtifactSetUidEnum.ObsidianCodex }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttack }],
@@ -542,7 +410,7 @@ const guideVaresa = {
 } as GuideCharacter;
 const guideXiangling = {
   character_uid: CharacterUidEnum.Xiangling,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
@@ -577,7 +445,7 @@ const guideXiangling = {
 } as GuideCharacter;
 const guideXilonen = {
   character_uid: CharacterUidEnum.Xilonen,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
@@ -606,7 +474,7 @@ const guideXilonen = {
 } as GuideCharacter;
 const guideXingqiu = {
   character_uid: CharacterUidEnum.Xingqiu,
-  assembly_artifacts: {
+  artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [

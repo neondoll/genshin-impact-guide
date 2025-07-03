@@ -1,18 +1,20 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
-import Paths from "@/paths";
+import Paths from "@/constants/paths";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ModeToggle } from "@/components/mode-toggle";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function Layout() {
+  const location = useLocation();
+
   return (
     <SidebarProvider>
-      <AppSidebar />
+      {location.pathname !== "/" && <AppSidebar />}
       <div className="flex-1">
         <header className="flex items-center h-12 border-b">
           <div className="container flex gap-1 items-center px-4 mx-auto lg:gap-2 lg:px-6">
-            <SidebarTrigger />
+            {location.pathname !== "/" && <SidebarTrigger />}
             <h2 className="text-base font-medium">
               <Link to={Paths.Root}>
                 <span className="font-(family-name:--font-genshin-drip)">Genshin Impact</span>

@@ -1,11 +1,11 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 import Container from "@/components/container";
-import Paths from "@/paths";
+import Paths from "@/constants/paths";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardTitle } from "@/components/ui/card";
 import { getElement, getRegion } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge.tsx";
 
 export type ElementLoaderData = {
   element: Awaited<ReturnType<typeof getElement>>;

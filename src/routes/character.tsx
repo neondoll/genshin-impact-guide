@@ -3,12 +3,15 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Container from "@/components/container";
-import Paths from "@/paths";
+import Paths from "@/constants/paths";
 import VK from "@/icons/VK";
 import Youtube from "@/icons/Youtube";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArtifactPieceUidEnum } from "@/database/enums/artifact-pieces";
 import { Badge } from "@/components/ui/badge";
+import {
+  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn, publicImageSrc } from "@/lib/utils";
@@ -17,23 +20,16 @@ import {
   getArtifactSet, getAttribute, getCharacter, getCharacterRole, getElement, getGuideCharacter, getTalent, getWeapon,
   getWeaponType,
 } from "@/database";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type {
   GuideCharacterAssemblyWeapons, GuideCharacterPriorityOfTalentLeveling, GuideCharacterReferencePoint,
   GuideCharacterSquadsItem,
 } from "@/database/types/guide-characters";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList, BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb.tsx";
 
-type AssemblyArtifactsProps = {
-  assemblyArtifacts: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["assembly_artifacts"]>;
+type ArtifactRecommendationsProps = {
+  artifactRecommendations: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["artifact_recommendations"]>;
   character: CharacterLoaderData["character"];
 };
 type AssemblyWeaponsProps = {
@@ -71,138 +67,223 @@ export type CharacterLoaderData = {
   characterWeaponType: Awaited<ReturnType<typeof getWeaponType>>;
 };
 
-function AssemblyArtifacts({ assemblyArtifacts, character }: AssemblyArtifactsProps) {
+function ArtifactRecommendations({ artifactRecommendations, character }: ArtifactRecommendationsProps) {
   const [setsDiffPercent, setSetsDiffPercent] = useState(0);
   const [setsMinPercent, setSetsMinPercent] = useState(0);
+  const artifactAttributesRecommendationsHasDescription = (Object.keys(artifactRecommendations.attributes) as (keyof typeof artifactRecommendations.attributes)[]).some((artifactAttributesRecommendationsKey) => {
+    return artifactRecommendations.attributes[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
+      return artifactAttributeRecommendations.description !== undefined;
+    });
+  });
+  const artifactAttributesRecommendationsHasNotes = (Object.keys(artifactRecommendations.attributes) as (keyof typeof artifactRecommendations.attributes)[]).some((artifactAttributesRecommendationsKey) => {
+    return artifactRecommendations.attributes[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
+      return artifactAttributeRecommendations.notes !== undefined;
+    });
+  });
+  const artifactAttributesRecommendationsHasPercent = (Object.keys(artifactRecommendations.attributes) as (keyof typeof artifactRecommendations.attributes)[]).some((artifactAttributesRecommendationsKey) => {
+    return artifactRecommendations.attributes[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
+      return artifactAttributeRecommendations.percent !== undefined;
+    });
+  });
+  const artifactSetsRecommendationsHasDescription = artifactRecommendations.sets.some((artifactSetRecommendations) => {
+    return artifactSetRecommendations.description !== undefined;
+  });
+  const artifactSetsRecommendationsHasIsBetter = artifactRecommendations.sets.some((artifactSetRecommendations) => {
+    return artifactSetRecommendations.is_better === true;
+  });
+  const artifactSetsRecommendationsHasNotes = artifactRecommendations.sets.some((artifactSetRecommendations) => {
+    return artifactSetRecommendations.notes !== undefined;
+  });
+  const artifactSetsRecommendationsHasPercent = artifactRecommendations.sets.some((artifactSetRecommendations) => {
+    return artifactSetRecommendations.percent !== undefined;
+  });
 
   useEffect(() => {
-    let setsMaxPercent = -Infinity, setsMinPercent = Infinity;
+    if (artifactSetsRecommendationsHasPercent) {
+      let setsMaxPercent = -Infinity, setsMinPercent = Infinity;
 
-    assemblyArtifacts.sets.map((assemblyArtifactSet) => {
-      if (assemblyArtifactSet.percent) {
-        if (assemblyArtifactSet.percent > setsMaxPercent) {
-          setsMaxPercent = assemblyArtifactSet.percent;
-        }
+      artifactRecommendations.sets.map((artifactSetRecommendations) => {
+        if (artifactSetRecommendations.percent) {
+          if (artifactSetRecommendations.percent > setsMaxPercent) {
+            setsMaxPercent = artifactSetRecommendations.percent;
+          }
 
-        if (assemblyArtifactSet.percent < setsMinPercent) {
-          setsMinPercent = assemblyArtifactSet.percent;
+          if (artifactSetRecommendations.percent < setsMinPercent) {
+            setsMinPercent = artifactSetRecommendations.percent;
+          }
         }
+      });
+
+      if (setsMaxPercent !== -Infinity && setsMinPercent !== Infinity) {
+        setSetsDiffPercent((setsMaxPercent - setsMinPercent) / 3);
+        setSetsMinPercent(setsMinPercent);
       }
-    });
-
-    if (setsMaxPercent !== -Infinity && setsMinPercent !== Infinity) {
-      setSetsDiffPercent((setsMaxPercent - setsMinPercent) / 3);
-      setSetsMinPercent(setsMinPercent);
     }
-  }, [assemblyArtifacts]);
+  }, [artifactRecommendations, artifactSetsRecommendationsHasPercent]);
 
   return (
-    <Table>
-      <TableBody>
-        {assemblyArtifacts.sets.map((assemblyArtifactSet, index) => {
-          const artifactSet = getArtifactSet(assemblyArtifactSet.uid);
-
-          return (
-            <TableRow className="hover:bg-inherit" key={artifactSet.uid}>
-              {index === 0 && (
-                <TableHead className="p-2 w-min text-right" rowSpan={assemblyArtifacts.sets.length}>Набор</TableHead>
-              )}
-              <TableCell className="p-2 min-w-42.5">
-                <Badge
-                  asChild
-                  className="flex justify-start w-full text-balance whitespace-normal"
-                  variant="secondary"
-                >
-                  <Link to={Paths.ArtifactSet(artifactSet.uid)}>
-                    <img
-                      alt={artifactSet.name}
-                      className="shrink-0 size-8 rounded-md"
-                      src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
-                    />
-                    <span>
-                      {artifactSet.name}
-                      {artifactSet.uid === character.signature_artifact_set_uid && " (сигнатурное)"}
-                    </span>
-                  </Link>
-                </Badge>
-              </TableCell>
-              {assemblyArtifactSet.percent !== undefined && (
-                <TableCell
-                  className={cn({
-                    "text-green-500": assemblyArtifactSet.percent >= (setsMinPercent + (setsDiffPercent * 2)),
-                    "text-yellow-500": assemblyArtifactSet.percent >= (setsMinPercent + setsDiffPercent) && assemblyArtifactSet.percent < (setsMinPercent + (setsDiffPercent * 2)),
-                    "text-red-500": assemblyArtifactSet.percent < (setsMinPercent + setsDiffPercent),
-                  })}
-                >
-                  {new Intl.NumberFormat(undefined, {
-                    style: "percent",
-                    minimumFractionDigits: 2,
-                  }).format(assemblyArtifactSet.percent)}
-                </TableCell>
-              )}
-              <TableCell
-                className="text-balance whitespace-pre-line"
-                colSpan={assemblyArtifactSet.percent === undefined ? 2 : 1}
-              >
-                {assemblyArtifactSet.description}
-              </TableCell>
-            </TableRow>
-          );
-        })}
-        {(Object.keys(assemblyArtifacts.attributes) as (keyof typeof assemblyArtifacts.attributes)[]).map((assemblyArtifactAttributesKey) => {
-          return assemblyArtifacts.attributes[assemblyArtifactAttributesKey].map((assemblyArtifactAttribute, index) => {
-            const attribute = getAttribute(assemblyArtifactAttribute.uid);
+    <div className="flex flex-col gap-4">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            {artifactSetsRecommendationsHasIsBetter && <TableHead />}
+            <TableHead>Наборы</TableHead>
+            {artifactSetsRecommendationsHasPercent && <TableHead />}
+            {artifactSetsRecommendationsHasDescription && <TableHead />}
+            {artifactSetsRecommendationsHasNotes && <TableHead>Заметки</TableHead>}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {artifactRecommendations.sets.map((artifactSetRecommendations) => {
+            const artifactSet = getArtifactSet(artifactSetRecommendations.uid);
 
             return (
-              <TableRow
-                className="hover:bg-inherit"
-                key={`${assemblyArtifactAttributesKey}-${assemblyArtifactAttribute.uid}`}
-              >
-                {index === 0 && (
-                  <TableHead
-                    className="p-2 w-min text-right"
-                    rowSpan={assemblyArtifacts.attributes[assemblyArtifactAttributesKey].length}
-                  >
-                    {assemblyArtifactAttributesKey === ArtifactPieceUidEnum.SandsOfEon && "Часы"}
-                    {assemblyArtifactAttributesKey === ArtifactPieceUidEnum.GobletOfEonothem && "Кубок"}
-                    {assemblyArtifactAttributesKey === ArtifactPieceUidEnum.CircletOfLogos && "Корона"}
-                    {assemblyArtifactAttributesKey === "additional" && "Доп."}
-                  </TableHead>
-                )}
-                <TableCell className="p-2 min-w-39.5">
-                  <Badge
-                    className="flex justify-start w-full text-balance whitespace-normal"
-                    variant="secondary"
-                  >
-                    {attribute.abbreviation}
-                  </Badge>
-                </TableCell>
-                {assemblyArtifactAttribute.percent !== undefined && (
-                  <TableCell
-                    className={cn({
-                      "text-green-500": assemblyArtifactAttribute.percent >= 0.5,
-                      "text-yellow-500": assemblyArtifactAttribute.percent >= 0.25 && assemblyArtifactAttribute.percent < 0.5,
-                      "text-red-500": assemblyArtifactAttribute.percent < 0.25,
-                    })}
-                  >
-                    {new Intl.NumberFormat(undefined, {
-                      style: "percent",
-                      minimumFractionDigits: 1,
-                    }).format(assemblyArtifactAttribute.percent)}
+              <TableRow className="hover:bg-inherit" key={artifactSet.uid}>
+                {artifactSetsRecommendationsHasIsBetter && (
+                  <TableCell className="w-[64px]">
+                    {artifactSetRecommendations.is_better && (
+                      <img
+                        alt="Является лучшим выбором"
+                        className="size-12 rounded-full"
+                        src={publicImageSrc("better-logo-128x128.png")}
+                      />
+                    )}
                   </TableCell>
                 )}
-                <TableCell
-                  className="text-balance whitespace-pre-line"
-                  colSpan={assemblyArtifactAttribute.percent === undefined ? 2 : 1}
-                >
-                  {assemblyArtifactAttribute.description}
+                <TableCell className="text-pretty whitespace-normal sm:w-[192px]">
+                  <Badge
+                    asChild
+                    className="flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row sm:text-left"
+                    variant="secondary"
+                  >
+                    <Link to={Paths.ArtifactSet(artifactSet.uid)}>
+                      <img
+                        alt={artifactSet.name}
+                        className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
+                        src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
+                      />
+                      <span>
+                        {artifactSet.name}
+                        {artifactSet.uid === character.signature_artifact_set_uid && " (сигнатурное)"}
+                      </span>
+                    </Link>
+                  </Badge>
                 </TableCell>
+                {artifactSetsRecommendationsHasPercent && (
+                  <TableCell
+                    className={cn(artifactSetRecommendations.percent !== undefined && {
+                      "text-green-500": artifactSetRecommendations.percent >= (setsMinPercent + (setsDiffPercent * 2)),
+                      "text-yellow-500": artifactSetRecommendations.percent >= (setsMinPercent + setsDiffPercent) && artifactSetRecommendations.percent < (setsMinPercent + (setsDiffPercent * 2)),
+                      "text-red-500": artifactSetRecommendations.percent < (setsMinPercent + setsDiffPercent),
+                    })}
+                  >
+                    {artifactSetRecommendations.percent !== undefined
+                      ? new Intl.NumberFormat(undefined, {
+                          style: "percent",
+                          minimumFractionDigits: 2,
+                        }).format(artifactSetRecommendations.percent)
+                      : ""}
+                  </TableCell>
+                )}
+                {artifactSetsRecommendationsHasDescription && (
+                  <TableCell className="text-pretty whitespace-normal">
+                    {artifactSetRecommendations.description}
+                  </TableCell>
+                )}
+                {artifactSetsRecommendationsHasNotes && (
+                  <TableCell className="text-pretty whitespace-normal">
+                    {artifactSetRecommendations.notes !== undefined && (
+                      <ul className="ml-4 list-outside list-disc">
+                        {artifactSetRecommendations.notes.map((note, index) => (
+                          <li key={index}>{note}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </TableCell>
+                )}
               </TableRow>
             );
-          });
-        })}
-      </TableBody>
-    </Table>
+          })}
+        </TableBody>
+      </Table>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead />
+            <TableHead>Характеристики</TableHead>
+            {artifactAttributesRecommendationsHasPercent && <TableHead />}
+            {artifactAttributesRecommendationsHasDescription && <TableHead />}
+            {artifactAttributesRecommendationsHasNotes && <TableHead>Заметки</TableHead>}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {(Object.keys(artifactRecommendations.attributes) as (keyof typeof artifactRecommendations.attributes)[]).map((artifactAttributesRecommendationsKey) => {
+            return artifactRecommendations.attributes[artifactAttributesRecommendationsKey].map((artifactAttributeRecommendations, index) => {
+              const attribute = getAttribute(artifactAttributeRecommendations.uid);
+
+              return (
+                <TableRow
+                  className="hover:bg-inherit"
+                  key={`${artifactAttributesRecommendationsKey}-${artifactAttributeRecommendations.uid}`}
+                >
+                  {index === 0 && (
+                    <TableHead
+                      className="p-2 w-[72px]"
+                      rowSpan={artifactRecommendations.attributes[artifactAttributesRecommendationsKey].length}
+                    >
+                      {artifactAttributesRecommendationsKey === ArtifactPieceUidEnum.SandsOfEon && "Часы"}
+                      {artifactAttributesRecommendationsKey === ArtifactPieceUidEnum.GobletOfEonothem && "Кубок"}
+                      {artifactAttributesRecommendationsKey === ArtifactPieceUidEnum.CircletOfLogos && "Корона"}
+                      {artifactAttributesRecommendationsKey === "additional" && "Доп."}
+                    </TableHead>
+                  )}
+                  <TableCell className="text-pretty whitespace-normal">
+                    <Badge
+                      className="flex justify-center w-full text-center text-pretty whitespace-normal"
+                      variant="secondary"
+                    >
+                      {attribute.abbreviation}
+                    </Badge>
+                  </TableCell>
+                  {artifactAttributesRecommendationsHasPercent && (
+                    <TableCell
+                      className={cn(artifactAttributeRecommendations.percent !== undefined && {
+                        "text-green-500": artifactAttributeRecommendations.percent >= 0.5,
+                        "text-yellow-500": artifactAttributeRecommendations.percent >= 0.25 && artifactAttributeRecommendations.percent < 0.5,
+                        "text-red-500": artifactAttributeRecommendations.percent < 0.25,
+                      })}
+                    >
+                      {artifactAttributeRecommendations.percent !== undefined
+                        ? new Intl.NumberFormat(undefined, {
+                            style: "percent",
+                            minimumFractionDigits: 1,
+                          }).format(artifactAttributeRecommendations.percent)
+                        : ""}
+                    </TableCell>
+                  )}
+                  {artifactAttributesRecommendationsHasDescription && (
+                    <TableCell className="text-pretty whitespace-normal">
+                      {artifactAttributeRecommendations.description}
+                    </TableCell>
+                  )}
+                  {artifactAttributesRecommendationsHasNotes && (
+                    <TableCell className="text-pretty whitespace-normal">
+                      {artifactAttributeRecommendations.notes !== undefined && (
+                        <ul className="ml-4 list-outside list-disc">
+                          {artifactAttributeRecommendations.notes.map((note, index) => (
+                            <li key={index}>{note}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </TableCell>
+                  )}
+                </TableRow>
+              );
+            });
+          })}
+        </TableBody>
+      </Table>
+    </div>
   );
 }
 
@@ -464,7 +545,11 @@ function SquadsItem({ type, uid }: GuideCharacterSquadsItem) {
       return (
         <Badge asChild variant="secondary">
           <Link to={Paths.Character(uid)}>
-            <img alt={character.name} className="shrink-0 size-8 rounded-md" src={character.small_image_src} />
+            <img
+              alt={character.name}
+              className="shrink-0 size-8 rounded-md"
+              src={character.small_image_src}
+            />
             <span>{character.name}</span>
           </Link>
         </Badge>
@@ -526,7 +611,12 @@ export default function Character() {
           </div>
           <div className="flex gap-x-1">
             {Array.from({ length: character.quality }, (_, i) => i).map(index => (
-              <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
+              <img
+                alt="star"
+                className="size-3.5"
+                key={index + 1}
+                src={publicImageSrc("star-icon-28x28.png")}
+              />
             ))}
           </div>
         </div>
@@ -619,7 +709,7 @@ export default function Character() {
                 <Table className="table-fixed">
                   <TableBody
                     className={cn({
-                      "[&_tr:last-child]:border-b": characterGuide.assembly_artifacts !== undefined
+                      "[&_tr:last-child]:border-b": characterGuide.artifact_recommendations !== undefined
                         || characterGuide.assembly_weapons !== undefined
                         || characterGuide.priority_of_talent_leveling !== undefined
                         || characterGuide.reference_point !== undefined
@@ -640,7 +730,10 @@ export default function Character() {
                     )}
                     {characterGuide?.first_constellation_or_signature_weapon !== undefined && (
                       <TableRow className="hover:bg-inherit">
-                        <TableHead className="p-2 text-right whitespace-normal">C1 или Сигна?</TableHead>
+                        <TableHead className="p-2 text-right whitespace-normal">
+                          C1 или
+                          Сигна?
+                        </TableHead>
                         <TableCell className="p-2 whitespace-pre-line sm:whitespace-normal">
                           {characterGuide.first_constellation_or_signature_weapon}
                         </TableCell>
@@ -648,7 +741,10 @@ export default function Character() {
                     )}
                     {characterGuide?.required_level !== undefined && (
                       <TableRow className="hover:bg-inherit">
-                        <TableHead className="p-2 text-right whitespace-normal">Рекомендации по уровню</TableHead>
+                        <TableHead className="p-2 text-right whitespace-normal">
+                          Рекомендации по
+                          уровню
+                        </TableHead>
                         <TableCell className="p-2 whitespace-normal">{characterGuide.required_level}</TableCell>
                       </TableRow>
                     )}
@@ -656,7 +752,7 @@ export default function Character() {
                 </Table>
               )}
               {(
-                characterGuide.assembly_artifacts !== undefined
+                characterGuide.artifact_recommendations !== undefined
                 || characterGuide.assembly_weapons !== undefined
                 || characterGuide.priority_of_talent_leveling !== undefined
                 || characterGuide.reference_point !== undefined
@@ -667,7 +763,10 @@ export default function Character() {
                 <Accordion className="w-full" type="multiple">
                   {characterGuide.rotation !== undefined && (
                     <AccordionItem value="rotation">
-                      <AccordionTrigger className="px-6">Рекомендации по ротации</AccordionTrigger>
+                      <AccordionTrigger className="px-6">
+                        Рекомендации по
+                        ротации
+                      </AccordionTrigger>
                       <AccordionContent className="px-6">
                         <Rotation rotation={characterGuide.rotation} />
                       </AccordionContent>
@@ -675,7 +774,10 @@ export default function Character() {
                   )}
                   {characterGuide.priority_of_talent_leveling !== undefined && (
                     <AccordionItem value="priority_of_talent_leveling">
-                      <AccordionTrigger className="px-6">Рекомендации по возвышению талантов</AccordionTrigger>
+                      <AccordionTrigger className="px-6">
+                        Рекомендации по возвышению
+                        талантов
+                      </AccordionTrigger>
                       <AccordionContent className="px-6">
                         <PriorityOfTalentLeveling priorityOfTalentLeveling={characterGuide.priority_of_talent_leveling} />
                       </AccordionContent>
@@ -685,16 +787,22 @@ export default function Character() {
                     <AccordionItem value="assembly_weapons">
                       <AccordionTrigger className="px-6">Рекомендации по оружию</AccordionTrigger>
                       <AccordionContent className="px-6">
-                        <AssemblyWeapons assemblyWeapons={characterGuide.assembly_weapons} character={character} />
+                        <AssemblyWeapons
+                          assemblyWeapons={characterGuide.assembly_weapons}
+                          character={character}
+                        />
                       </AccordionContent>
                     </AccordionItem>
                   )}
-                  {characterGuide.assembly_artifacts !== undefined && (
-                    <AccordionItem value="assembly_artifacts">
-                      <AccordionTrigger className="px-6">Рекомендации по артефактам</AccordionTrigger>
+                  {characterGuide.artifact_recommendations !== undefined && (
+                    <AccordionItem value="artifact_recommendations">
+                      <AccordionTrigger className="px-6">
+                        Рекомендации по
+                        артефактам
+                      </AccordionTrigger>
                       <AccordionContent className="px-6">
-                        <AssemblyArtifacts
-                          assemblyArtifacts={characterGuide.assembly_artifacts}
+                        <ArtifactRecommendations
+                          artifactRecommendations={characterGuide.artifact_recommendations}
                           character={character}
                         />
                       </AccordionContent>
@@ -702,7 +810,10 @@ export default function Character() {
                   )}
                   {characterGuide.squads !== undefined && (
                     <AccordionItem value="squads_general_template">
-                      <AccordionTrigger className="px-6">Рекомендации по отрядам</AccordionTrigger>
+                      <AccordionTrigger className="px-6">
+                        Рекомендации по
+                        отрядам
+                      </AccordionTrigger>
                       <AccordionContent className="px-6">
                         <Squads squads={characterGuide.squads} />
                       </AccordionContent>

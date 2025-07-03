@@ -5,7 +5,6 @@ import { characterRoles } from "./character-roles";
 import { characters } from "./characters";
 import { elements } from "./elements";
 import { guideCharacters } from "./guide-characters";
-import { publicImageSrc } from "@/lib/utils";
 import { regions } from "./regions";
 import { talents } from "./talents";
 import { weaponTypes } from "./weapon-types";
@@ -16,7 +15,6 @@ import type { AttributeUid } from "./types/attributes";
 import type { CharacterRoleUid } from "./types/character-roles";
 import type { CharacterUid } from "./types/characters";
 import type { ElementUid } from "./types/elements";
-import type { QualityUid } from "./types/qualities";
 import type { RegionUid } from "./types/regions";
 import type { TalentUid } from "./types/talents";
 import type { WeaponTypeUid } from "./types/weapon-types";
@@ -28,18 +26,6 @@ export function getArtifactPieces() {
 
 export function getArtifactSet(uid: ArtifactSetUid) {
   return artifactSets[uid];
-}
-
-export function getArtifactSetCharacters(uid: ArtifactSetUid) {
-  return Object.values(guideCharacters)
-    .filter((guideCharacter) => {
-      if (guideCharacter.assembly_artifacts === undefined) {
-        return false;
-      }
-
-      return guideCharacter.assembly_artifacts.sets.map(artifactSet => artifactSet.uid).includes(uid);
-    })
-    .map(guideCharacter => getCharacter(guideCharacter.character_uid));
 }
 
 export function getArtifactSets() {
@@ -124,8 +110,4 @@ export function getWeaponTypes() {
 
 export function getWorlds() {
   return worlds;
-}
-
-export function qualityImageSrc(qualityUid: QualityUid) {
-  return publicImageSrc(`qualities/icon_${qualityUid}_stars.png`);
 }
