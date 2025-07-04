@@ -242,7 +242,7 @@ function ArtifactRecommendations({ artifactRecommendations, character }: Artifac
                       className="flex justify-center w-full text-center text-pretty whitespace-normal"
                       variant="secondary"
                     >
-                      {attribute.abbreviation}
+                      {attribute.abbreviation || attribute.name}
                     </Badge>
                   </TableCell>
                   {artifactAttributesRecommendationsHasPercent && (

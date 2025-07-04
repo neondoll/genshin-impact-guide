@@ -19,21 +19,21 @@ const guideBennett = {
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.EnergyRecharge, percent: 0.703 },
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.187 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.089 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.187 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.089 },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.749 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.109 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.749 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.109 },
         { uid: AttributeUidEnum.PyroDamageBonus, percent: 0.105 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.HealingBonus, percent: 0.543 },
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.224 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.224 },
         { uid: AttributeUidEnum.CriticalRate, percent: 0.111 },
       ],
       additional: [
-        { uid: AttributeUidEnum.PercentageOfHealth, description: "Приоритетно" },
+        { uid: AttributeUidEnum.HealthPercent, description: "Приоритетно" },
         { uid: AttributeUidEnum.EnergyRecharge, description: "Приоритетно" },
       ],
     },
@@ -66,16 +66,16 @@ const guideChevreuse = {
       },
     ],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfHealth }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PercentageOfHealth }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HealthPercent }],
+      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.HealthPercent }],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.PercentageOfHealth },
+        { uid: AttributeUidEnum.HealthPercent },
         {
           uid: AttributeUidEnum.CriticalRate,
           description: `Если в руках ${weapons[WeaponUidEnum.FavoniusLance].name}`,
         },
       ],
-      additional: [{ uid: AttributeUidEnum.PercentageOfHealth }, { uid: AttributeUidEnum.EnergyRecharge }],
+      additional: [{ uid: AttributeUidEnum.HealthPercent }, { uid: AttributeUidEnum.EnergyRecharge }],
     },
   },
   assembly_weapons: [
@@ -96,24 +96,24 @@ const guideFischl = {
     sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.785 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.785 },
         { uid: AttributeUidEnum.ElementalMastery, percent: 0.125 },
         { uid: AttributeUidEnum.EnergyRecharge, percent: 0.062 },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.ElectroDamageBonus, percent: 0.830 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.119 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.119 },
         { uid: AttributeUidEnum.ElementalMastery, percent: 0.018 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalRate, percent: 0.669 },
         { uid: AttributeUidEnum.CriticalDamage, percent: 0.266 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.034 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.034 },
       ],
       additional: [
         { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
         { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
-        { uid: AttributeUidEnum.PercentageOfAttack },
+        { uid: AttributeUidEnum.AttackPercent },
       ],
     },
   },
@@ -132,11 +132,11 @@ const guideFurina = {
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.EnergyRecharge },
-        { uid: AttributeUidEnum.PercentageOfHealth },
+        { uid: AttributeUidEnum.HealthPercent },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.HydroDamageBonus },
-        { uid: AttributeUidEnum.PercentageOfHealth, description: "Лучше в подавляющем числе ситуаций" },
+        { uid: AttributeUidEnum.HealthPercent, description: "Лучше в подавляющем числе ситуаций" },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalRate },
@@ -147,7 +147,7 @@ const guideFurina = {
           uid: AttributeUidEnum.EnergyRecharge,
           description: "В отрядах без доп. подкачки - 200% - 220% ВЭ\nВ отрядах с доп. подкачкой - 160% - 180% ВЭ\nВ отрядах с Е Лань или Син Цю - 130% - 140% ВЭ\nВ отрядах с 3 Гидро и более - 100% ВЭ",
         },
-        { uid: AttributeUidEnum.PercentageOfHealth },
+        { uid: AttributeUidEnum.HealthPercent },
         { uid: AttributeUidEnum.CriticalRate },
         { uid: AttributeUidEnum.CriticalDamage },
       ],
@@ -232,15 +232,15 @@ const guideIansan = {
     sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfAttack },
+        { uid: AttributeUidEnum.AttackPercent },
         { uid: AttributeUidEnum.EnergyRecharge },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PercentageOfAttack }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.PercentageOfAttack }],
+      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.AttackPercent }],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.AttackPercent }],
       additional: [
         { uid: AttributeUidEnum.EnergyRecharge, description: "Приоритетно. 160% - 200%" },
         {
-          uid: AttributeUidEnum.PercentageOfAttack,
+          uid: AttributeUidEnum.AttackPercent,
           description: "2556 Силы атаки для 10 Ур. Ульты \n3000 Силы атаки для 13 Ур. Ульты",
         },
       ],
@@ -264,18 +264,18 @@ const guideKukiShinobu = {
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.ElementalMastery, percent: 0.894 },
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.073 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.016 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.073 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.016 },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.ElementalMastery, percent: 0.810 },
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.114 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.114 },
         { uid: AttributeUidEnum.ElectroDamageBonus, percent: 0.044 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.ElementalMastery, percent: 0.807 },
         { uid: AttributeUidEnum.HealingBonus, percent: 0.071 },
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.056 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.056 },
       ],
       additional: [{ uid: AttributeUidEnum.ElementalMastery, description: "Приоритетно" }],
     },
@@ -295,21 +295,21 @@ const guideLayla = {
     sets: [{ uid: ArtifactSetUidEnum.TenacityOfTheMillelith }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.907 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.907 },
         { uid: AttributeUidEnum.EnergyRecharge, percent: 0.051 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.025 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.025 },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.902 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.902 },
         { uid: AttributeUidEnum.CryoDamageBonus, percent: 0.058 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.015 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.015 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.860 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.860 },
         { uid: AttributeUidEnum.CriticalRate, percent: 0.080 },
         { uid: AttributeUidEnum.CriticalDamage, percent: 0.035 },
       ],
-      additional: [{ uid: AttributeUidEnum.PercentageOfHealth, description: "Приоритетно" }],
+      additional: [{ uid: AttributeUidEnum.HealthPercent, description: "Приоритетно" }],
     },
   },
   assembly_weapons: [{ uid: WeaponUidEnum.FavoniusSword }],
@@ -325,18 +325,18 @@ const guideNeuvillette = {
   artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.MarechausseeHunter }],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfHealth }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HealthPercent }],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PercentageOfHealth, description: "Если в команде Фурина" },
+        { uid: AttributeUidEnum.HealthPercent, description: "Если в команде Фурина" },
         { uid: AttributeUidEnum.HydroDamageBonus },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalRate },
         { uid: AttributeUidEnum.CriticalDamage, description: "Чаще всего" },
-        { uid: AttributeUidEnum.PercentageOfHealth, description: "Иногда, особенно с Сигной" },
+        { uid: AttributeUidEnum.HealthPercent, description: "Иногда, особенно с Сигной" },
       ],
       additional: [
-        { uid: AttributeUidEnum.PercentageOfHealth },
+        { uid: AttributeUidEnum.HealthPercent },
         { uid: AttributeUidEnum.CriticalRate, description: "Стремимся к 64% Крит шанса" },
         { uid: AttributeUidEnum.CriticalDamage },
         { uid: AttributeUidEnum.EnergyRecharge, description: "Специально не охотиться" },
@@ -373,17 +373,17 @@ const guideVaresa = {
   artifact_recommendations: {
     sets: [{ uid: ArtifactSetUidEnum.LongNightsOath }, { uid: ArtifactSetUidEnum.ObsidianCodex }],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttack }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.AttackPercent }],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.ElectroDamageBonus, description: "Лучше с Цаплей всегда" },
-        { uid: AttributeUidEnum.PercentageOfAttack, description: "Лучше с Фуриной или в сете на планжи" },
+        { uid: AttributeUidEnum.AttackPercent, description: "Лучше с Фуриной или в сете на планжи" },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalRate },
         { uid: AttributeUidEnum.CriticalDamage },
       ],
       additional: [
-        { uid: AttributeUidEnum.PercentageOfAttack },
+        { uid: AttributeUidEnum.AttackPercent },
         { uid: AttributeUidEnum.CriticalRate },
         { uid: AttributeUidEnum.CriticalDamage },
         { uid: AttributeUidEnum.EnergyRecharge, description: "115% - 135% ВЭ для Ульты" },
@@ -415,18 +415,18 @@ const guideXiangling = {
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.EnergyRecharge, percent: 0.748 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.171 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.171 },
         { uid: AttributeUidEnum.ElementalMastery, percent: 0.055 },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.PyroDamageBonus, percent: 0.841 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.118 },
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.013 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.118 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.013 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalRate, percent: 0.642 },
         { uid: AttributeUidEnum.CriticalDamage, percent: 0.291 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.042 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.042 },
       ],
       additional: [
         { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
@@ -449,17 +449,17 @@ const guideXilonen = {
     sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfDefense },
+        { uid: AttributeUidEnum.DefensePercent },
         { uid: AttributeUidEnum.EnergyRecharge },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PercentageOfDefense }],
+      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.DefensePercent }],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.PercentageOfDefense },
+        { uid: AttributeUidEnum.DefensePercent },
         { uid: AttributeUidEnum.CriticalRate },
         { uid: AttributeUidEnum.HealingBonus },
       ],
       additional: [
-        { uid: AttributeUidEnum.PercentageOfDefense },
+        { uid: AttributeUidEnum.DefensePercent },
         { uid: AttributeUidEnum.EnergyRecharge, description: "~160% ВЭ для стабильной ульты" },
       ],
     },
@@ -478,24 +478,24 @@ const guideXingqiu = {
     sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.525 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.525 },
         { uid: AttributeUidEnum.EnergyRecharge, percent: 0.410 },
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.030 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.030 },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.HydroDamageBonus, percent: 0.844 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.108 },
-        { uid: AttributeUidEnum.PercentageOfHealth, percent: 0.025 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.108 },
+        { uid: AttributeUidEnum.HealthPercent, percent: 0.025 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalRate, percent: 0.650 },
         { uid: AttributeUidEnum.CriticalDamage, percent: 0.258 },
-        { uid: AttributeUidEnum.PercentageOfAttack, percent: 0.055 },
+        { uid: AttributeUidEnum.AttackPercent, percent: 0.055 },
       ],
       additional: [
         { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
         { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
-        { uid: AttributeUidEnum.PercentageOfAttack },
+        { uid: AttributeUidEnum.AttackPercent },
       ],
     },
   },

@@ -27,7 +27,7 @@ export default {
     ],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.PercentageOfAttack, notes: ["Личный урон важнее, чем ульта по откату"] },
+        { uid: AttributeUidEnum.AttackPercent, notes: ["Личный урон важнее, чем ульта по откату"] },
         {
           uid: AttributeUidEnum.EnergyRecharge,
           notes: ["В меньшинстве случаев, когда есть Фурина, лечение нужно и лечить больше некому"],
@@ -35,7 +35,7 @@ export default {
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.CryoDamageBonus, notes: ["В 99% случаев"] },
-        { uid: AttributeUidEnum.PercentageOfAttack, notes: ["В 1% случаев"] },
+        { uid: AttributeUidEnum.AttackPercent, notes: ["В 1% случаев"] },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalRate },
@@ -44,7 +44,7 @@ export default {
       additional: [
         { uid: AttributeUidEnum.CriticalRate, notes: ["Приоритетно"] },
         { uid: AttributeUidEnum.CriticalDamage, notes: ["Приоритетно"] },
-        { uid: AttributeUidEnum.PercentageOfAttack },
+        { uid: AttributeUidEnum.AttackPercent },
         { uid: AttributeUidEnum.EnergyRecharge },
       ],
     },

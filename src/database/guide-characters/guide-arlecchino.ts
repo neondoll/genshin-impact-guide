@@ -26,10 +26,10 @@ export default {
       },
     ],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.PercentageOfAttack }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.AttackPercent }],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.PyroDamageBonus, notes: ["Лучше"] },
-        { uid: AttributeUidEnum.PercentageOfAttack },
+        { uid: AttributeUidEnum.AttackPercent },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalDamage },
@@ -38,7 +38,7 @@ export default {
       additional: [
         { uid: AttributeUidEnum.CriticalRate, notes: ["Приоритетно"] },
         { uid: AttributeUidEnum.CriticalDamage, notes: ["Приоритетно"] },
-        { uid: AttributeUidEnum.PercentageOfAttack },
+        { uid: AttributeUidEnum.AttackPercent },
         {
           uid: AttributeUidEnum.ElementalMastery,
           notes: ["100 - 150 МС для Пара или Таяния, в остальных случаях не нужно"],
