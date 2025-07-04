@@ -9,6 +9,7 @@ import type { WeaponUid } from "./weapons";
 type GuideCharacterArtifactAttributeRecommendations = {
   uid: AttributeUid;
   percent?: number;
+  use_percent?: number;
   description?: string;
   notes?: string[];
 };

@@ -26,7 +26,10 @@ export default {
       },
     ],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.AttackPercent }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [
+        { uid: AttributeUidEnum.AttackPercent },
+        { uid: AttributeUidEnum.ElementalMastery },
+      ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.PyroDamageBonus, notes: ["Лучше"] },
         { uid: AttributeUidEnum.AttackPercent },
@@ -36,13 +39,10 @@ export default {
         { uid: AttributeUidEnum.CriticalRate },
       ],
       additional: [
-        { uid: AttributeUidEnum.CriticalRate, notes: ["Приоритетно"] },
-        { uid: AttributeUidEnum.CriticalDamage, notes: ["Приоритетно"] },
-        { uid: AttributeUidEnum.AttackPercent },
-        {
-          uid: AttributeUidEnum.ElementalMastery,
-          notes: ["100 - 150 МС для Пара или Таяния, в остальных случаях не нужно"],
-        },
+        { uid: AttributeUidEnum.CriticalRate, notes: ["Приоритетно", "от 65%"] },
+        { uid: AttributeUidEnum.CriticalDamage, notes: ["Приоритетно", "от 150%"] },
+        { uid: AttributeUidEnum.AttackPercent, notes: ["от 2000"] },
+        { uid: AttributeUidEnum.ElementalMastery, notes: ["от 150 (если Арлекино активирует реакции)"] },
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["Специально не собирать"] },
       ],
     },

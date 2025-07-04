@@ -8,6 +8,7 @@ export const ArtifactSetUidEnum = {
   /* Конец гладиатора                */ GladiatorsFinale: "gladiators_finale",
   /* Золотая труппа                  */ GoldenTroupe: "golden_troupe",
   /* Клятва долгой ночи              */ LongNightsOath: "long_nights_oath",
+  /* Возлюбленная юная дева          */ MaidenBeloved: "maiden_beloved",
   /* Охотник Сумеречного двора       */ MarechausseeHunter: "marechaussee_hunter",
   /* Церемония древней знати         */ NoblesseOblige: "noblesse_oblige",
   /* Обсидиановый фолиант            */ ObsidianCodex: "obsidian_codex",

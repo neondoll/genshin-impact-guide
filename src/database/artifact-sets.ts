@@ -7,6 +7,39 @@ import type { ArtifactSets } from "./types/artifact-sets";
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-sets/${src}`);
 
 export const artifactSets = {
+  [ArtifactSetUidEnum.MaidenBeloved]: {
+    uid: ArtifactSetUidEnum.MaidenBeloved,
+    name: "Возлюбленная юная дева",
+    qualities: [4, 5],
+    where_to_find: [
+      "Подземелье «Долина воспоминаний». Благословение: Танец стали II+",
+      "Мистическое подношение (Алхимия)",
+    ],
+    item_bonuses: {
+      2: "Увеличивает эффективность лечения на 15%.",
+      4: "Увеличивает получаемое лечение всех членов отряда на 20% в течение 10 сек. после использования элементального навыка или взрыва стихии.",
+    },
+    [ArtifactPieceUidEnum.FlowerOfLife]: {
+      name: "Далёкая душа юной девы",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MaidenBeloved}/maidens_distant_love-256x256.png`),
+    },
+    [ArtifactPieceUidEnum.PlumeOfDeath]: {
+      name: "Тоска юной девы",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MaidenBeloved}/maidens_heart_stricken_infatuation-256x256.png`),
+    },
+    [ArtifactPieceUidEnum.SandsOfEon]: {
+      name: "Уходящая молодость юной девы",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MaidenBeloved}/maidens_passing_youth-256x256.png`),
+    },
+    [ArtifactPieceUidEnum.GobletOfEonothem]: {
+      name: "Досуг юной девы",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MaidenBeloved}/maidens_fleeting_leisure-256x256.png`),
+    },
+    [ArtifactPieceUidEnum.CircletOfLogos]: {
+      name: "Увядающая красота юной девы",
+      image_src: imageSrc(`${ArtifactSetUidEnum.MaidenBeloved}/maidens_fading_beauty-256x256.png`),
+    },
+  },
   [ArtifactSetUidEnum.BlizzardStrayer]: {
     uid: ArtifactSetUidEnum.BlizzardStrayer,
     name: "Заблудший в метели",

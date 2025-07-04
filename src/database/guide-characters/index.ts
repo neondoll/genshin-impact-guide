@@ -1,7 +1,14 @@
 import guideArlecchino from "./guide-arlecchino";
+import guideBennett from "./guide-bennett";
 import guideEscoffier from "./guide-escoffier";
+import guideIansan from "./guide-iansan";
+import guideKukiShinobu from "./guide-kuki_shinobu";
+import guideLayla from "./guide-layla";
 import guideMavuika from "./guide-mavuika";
+import guideNeuvillette from "./guide-neuvillette";
 import guideSkirk from "./guide-skirk";
+import guideVaresa from "./guide-varesa";
+import guideXingqiu from "./guide-xingqiu";
 import { ArtifactPieceUidEnum } from "../enums/artifact-pieces";
 import { artifactSets } from "../artifact-sets";
 import { ArtifactSetUidEnum } from "../enums/artifact-sets";
@@ -12,41 +19,6 @@ import { weapons } from "../weapons";
 import { WeaponUidEnum } from "../enums/weapons";
 import type { GuideCharacter, GuideCharacters } from "../types/guide-characters";
 
-const guideBennett = {
-  character_uid: CharacterUidEnum.Bennett,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.NoblesseOblige }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.EnergyRecharge, percent: 0.703 },
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.187 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.089 },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.749 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.109 },
-        { uid: AttributeUidEnum.PyroDamageBonus, percent: 0.105 },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.HealingBonus, percent: 0.543 },
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.224 },
-        { uid: AttributeUidEnum.CriticalRate, percent: 0.111 },
-      ],
-      additional: [
-        { uid: AttributeUidEnum.HealthPercent, description: "Приоритетно" },
-        { uid: AttributeUidEnum.EnergyRecharge, description: "Приоритетно" },
-      ],
-    },
-  },
-  assembly_weapons: [{ uid: WeaponUidEnum.SapwoodBlade }],
-  key_constellations: [6],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "По необходимости\n(6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Вторичный приоритет\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Главный приоритет\n(10)" },
-  ],
-  required_level: 90,
-} as GuideCharacter;
 const guideChevreuse = {
   character_uid: CharacterUidEnum.Chevreuse,
   artifact_recommendations: {
@@ -226,188 +198,6 @@ const guideFurina = {
   ],
   reference_point: [["Макс. HP", "33 000"], ["Восст. энергии", "170%"], ["Крит. шанс", "60%"], ["Крит. урон", "140%"]],
 } as GuideCharacter;
-const guideIansan = {
-  character_uid: CharacterUidEnum.Iansan,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.AttackPercent },
-        { uid: AttributeUidEnum.EnergyRecharge },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.AttackPercent }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.AttackPercent }],
-      additional: [
-        { uid: AttributeUidEnum.EnergyRecharge, description: "Приоритетно. 160% - 200%" },
-        {
-          uid: AttributeUidEnum.AttackPercent,
-          description: "2556 Силы атаки для 10 Ур. Ульты \n3000 Силы атаки для 13 Ур. Ульты",
-        },
-      ],
-    },
-  },
-  assembly_weapons: [
-    { uid: WeaponUidEnum.SkywardSpine },
-    { uid: WeaponUidEnum.TamayurateiNoOhanashi },
-    { uid: WeaponUidEnum.FavoniusLance },
-  ],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1 - 6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Игнорируем\n(1 - 6)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Высокий приоритет\n(10)" },
-  ],
-} as GuideCharacter;
-const guideKukiShinobu = {
-  character_uid: CharacterUidEnum.KukiShinobu,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.GildedDreams }, { uid: ArtifactSetUidEnum.FlowerOfParadiseLost }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.ElementalMastery, percent: 0.894 },
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.073 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.016 },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.ElementalMastery, percent: 0.810 },
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.114 },
-        { uid: AttributeUidEnum.ElectroDamageBonus, percent: 0.044 },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.ElementalMastery, percent: 0.807 },
-        { uid: AttributeUidEnum.HealingBonus, percent: 0.071 },
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.056 },
-      ],
-      additional: [{ uid: AttributeUidEnum.ElementalMastery, description: "Приоритетно" }],
-    },
-  },
-  assembly_weapons: [{ uid: WeaponUidEnum.XiphosMoonlight }],
-  key_constellations: [2],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
-  ],
-  required_level: 90,
-} as GuideCharacter;
-const guideLayla = {
-  character_uid: CharacterUidEnum.Layla,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.TenacityOfTheMillelith }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.907 },
-        { uid: AttributeUidEnum.EnergyRecharge, percent: 0.051 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.025 },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.902 },
-        { uid: AttributeUidEnum.CryoDamageBonus, percent: 0.058 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.015 },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.860 },
-        { uid: AttributeUidEnum.CriticalRate, percent: 0.080 },
-        { uid: AttributeUidEnum.CriticalDamage, percent: 0.035 },
-      ],
-      additional: [{ uid: AttributeUidEnum.HealthPercent, description: "Приоритетно" }],
-    },
-  },
-  assembly_weapons: [{ uid: WeaponUidEnum.FavoniusSword }],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Вторичный приоритет\n(7)" },
-  ],
-  required_level: 80,
-} as GuideCharacter;
-const guideNeuvillette = {
-  character_uid: CharacterUidEnum.Neuvillette,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.MarechausseeHunter }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HealthPercent }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HealthPercent, description: "Если в команде Фурина" },
-        { uid: AttributeUidEnum.HydroDamageBonus },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Чаще всего" },
-        { uid: AttributeUidEnum.HealthPercent, description: "Иногда, особенно с Сигной" },
-      ],
-      additional: [
-        { uid: AttributeUidEnum.HealthPercent },
-        { uid: AttributeUidEnum.CriticalRate, description: "Стремимся к 64% Крит шанса" },
-        { uid: AttributeUidEnum.CriticalDamage },
-        { uid: AttributeUidEnum.EnergyRecharge, description: "Специально не охотиться" },
-      ],
-    },
-  },
-  assembly_weapons: [
-    { uid: WeaponUidEnum.TomeOfTheEternalFlow, percent: 1 },
-    { uid: WeaponUidEnum.SacrificialJade, refinement: 5, percent: 0.998 },
-    { uid: WeaponUidEnum.SurfsUp, percent: 0.917 },
-    { uid: WeaponUidEnum.SacrificialJade, refinement: 1, percent: 0.914 },
-    { uid: WeaponUidEnum.AshGravenDrinkingHorn, refinement: 5, percent: 0.874 },
-    { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, percent: 0.847 },
-    { uid: WeaponUidEnum.CashflowSupervision, percent: 0.831 },
-    { uid: WeaponUidEnum.AshGravenDrinkingHorn, refinement: 1, percent: 0.808 },
-    { uid: WeaponUidEnum.KagurasVerity, percent: 0.807 },
-    { uid: WeaponUidEnum.TheWidsith, refinement: 5, percent: 0.805 },
-    { uid: WeaponUidEnum.JadefallsSplendor, percent: 0.796 },
-    { uid: WeaponUidEnum.TheWidsith, refinement: 1, percent: 0.791 },
-    { uid: WeaponUidEnum.EverlastingMoonglow, percent: 0.765 },
-    { uid: WeaponUidEnum.TulaytullahsRemembrance, percent: 0.752 },
-    { uid: WeaponUidEnum.PrototypeAmber, percent: 0.745 },
-    { uid: WeaponUidEnum.RingOfYaxche, percent: 0.745 },
-  ],
-  first_constellation_or_signature_weapon: "Сигна > C1, Сигна > C2. Лучше Сигна и С1",
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Высокий приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Ситуативно\n(6 | 8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(6 | 8)" },
-  ],
-} as GuideCharacter;
-const guideVaresa = {
-  character_uid: CharacterUidEnum.Varesa,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.LongNightsOath }, { uid: ArtifactSetUidEnum.ObsidianCodex }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.AttackPercent }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.ElectroDamageBonus, description: "Лучше с Цаплей всегда" },
-        { uid: AttributeUidEnum.AttackPercent, description: "Лучше с Фуриной или в сете на планжи" },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
-      ],
-      additional: [
-        { uid: AttributeUidEnum.AttackPercent },
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
-        { uid: AttributeUidEnum.EnergyRecharge, description: "115% - 135% ВЭ для Ульты" },
-      ],
-    },
-  },
-  assembly_weapons: [
-    { uid: WeaponUidEnum.VividNotions, percent: 1.28 },
-    { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, percent: 1.06 },
-    { uid: WeaponUidEnum.KagurasVerity, percent: 1.05 },
-    { uid: WeaponUidEnum.TomeOfTheEternalFlow, percent: 1.04 },
-    { uid: WeaponUidEnum.CashflowSupervision, percent: 1.04 },
-    { uid: WeaponUidEnum.SurfsUp, percent: 1.03 },
-    { uid: WeaponUidEnum.TheWidsith, refinement: 5, percent: 1 },
-    { uid: WeaponUidEnum.SacrificialJade, refinement: 5, percent: 0.92 },
-    { uid: WeaponUidEnum.FlowingPurity, refinement: 5, percent: 0.92 },
-  ],
-  first_constellation_or_signature_weapon: "Однозначно Сигна",
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Высокий приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Средний приоритет\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Высокий приоритет\n(10)" },
-  ],
-} as GuideCharacter;
 const guideXiangling = {
   character_uid: CharacterUidEnum.Xiangling,
   artifact_recommendations: {
@@ -471,41 +261,6 @@ const guideXilonen = {
     { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(10)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(8)" },
   ],
-} as GuideCharacter;
-const guideXingqiu = {
-  character_uid: CharacterUidEnum.Xingqiu,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.525 },
-        { uid: AttributeUidEnum.EnergyRecharge, percent: 0.410 },
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.030 },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HydroDamageBonus, percent: 0.844 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.108 },
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.025 },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate, percent: 0.650 },
-        { uid: AttributeUidEnum.CriticalDamage, percent: 0.258 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.055 },
-      ],
-      additional: [
-        { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
-        { uid: AttributeUidEnum.AttackPercent },
-      ],
-    },
-  },
-  assembly_weapons: [{ uid: WeaponUidEnum.SacrificialSword }],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "По необходимости\n(6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Вторичный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Главный приоритет\n(10)" },
-  ],
-  required_level: 90,
 } as GuideCharacter;
 
 export const guideCharacters = {

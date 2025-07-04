@@ -27,29 +27,44 @@ export default {
     sets: [
       {
         uid: ArtifactSetUidEnum.MarechausseeHunter,
-        percent: 1,
-        description: "Лучше при игре от стойки. Работает только с Фуриной",
+        description: "Лучше при игре от обычных атак",
+        notes: [
+          "Если в команде с Скирк есть персонажи, периодически изменяющие HP отряда (например, Фурина), она сможет использовать бонус 4 предметов.",
+          "Увеличивает урон обычной атаки и повышает шанс крит. попадания в сумме на 36%, позволяя сконцентрироваться на крит. уроне и силе атаки в артефактах.",
+          "Не рекомендуется использовать оружие на шанс крит. попадания, так как он может выйти за 100%.",
+          "Подойдёт при игре через обычные атаки.",
+        ],
       },
       {
         uid: ArtifactSetUidEnum.FinaleOfTheDeepGalleries,
-        percent: 0.9761,
         description: "Лучше при игре от взрыва стихии",
+        notes: [
+          "Лучший комплект для Скирк, так как повышает Крио урон, а также урон обычных атаки и взрыва стихии.",
+          "Поскольку у Скирк нет энергии, а при её различных стилях игры она не наносит урон взрывом стихии и обычной атакой одновременно, все условия выполняются.",
+          "Подойдёт как при игре через обычные атаки, так и через взрыв стихии.",
+        ],
       },
     ],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.AttackPercent }],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.CryoDamageBonus, description: "Лучше" },
-        { uid: AttributeUidEnum.AttackPercent, description: "Можно поставить, если в отряде Фурина" },
+        { uid: AttributeUidEnum.CryoDamageBonus, notes: ["Лучше"] },
+        { uid: AttributeUidEnum.AttackPercent, notes: ["Можно поставить, если в отряде Фурина"] },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.CriticalRate },
         { uid: AttributeUidEnum.CriticalDamage },
       ],
       additional: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
-        { uid: AttributeUidEnum.AttackPercent },
+        {
+          uid: AttributeUidEnum.CriticalRate,
+          notes: [
+            "В обычной ситуации от 65% до 85%",
+            "При использовании полного комплекта Охотник Сумеречного двора не должно быть больше 64%, но так как Скирк играет минимум с 2 крио персонажами, то не должно быть больше 39%",
+          ],
+        },
+        { uid: AttributeUidEnum.CriticalDamage, notes: ["от 160%"] },
+        { uid: AttributeUidEnum.AttackPercent, notes: ["от 2000"] },
       ],
     },
   },

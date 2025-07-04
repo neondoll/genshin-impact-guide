@@ -28,9 +28,16 @@ import type {
   GuideCharacterSquadsItem,
 } from "@/database/types/guide-characters";
 
+type ArtifactAttributesRecommendationsProps = {
+  artifactAttributesRecommendations: ArtifactRecommendationsProps["artifactRecommendations"]["attributes"];
+};
 type ArtifactRecommendationsProps = {
   artifactRecommendations: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["artifact_recommendations"]>;
   character: CharacterLoaderData["character"];
+};
+type ArtifactSetsRecommendationsProps = {
+  artifactSetsRecommendations: ArtifactRecommendationsProps["artifactRecommendations"]["sets"];
+  character: ArtifactRecommendationsProps["character"];
 };
 type AssemblyWeaponsProps = {
   assemblyWeapons: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["assembly_weapons"]>;
@@ -67,134 +74,124 @@ export type CharacterLoaderData = {
   characterWeaponType: Awaited<ReturnType<typeof getWeaponType>>;
 };
 
-function ArtifactRecommendations({ artifactRecommendations, character }: ArtifactRecommendationsProps) {
-  const [setsDiffPercent, setSetsDiffPercent] = useState(0);
-  const [setsMinPercent, setSetsMinPercent] = useState(0);
-  const artifactAttributesRecommendationsHasDescription = (Object.keys(artifactRecommendations.attributes) as (keyof typeof artifactRecommendations.attributes)[]).some((artifactAttributesRecommendationsKey) => {
-    return artifactRecommendations.attributes[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
-      return artifactAttributeRecommendations.description !== undefined;
-    });
-  });
-  const artifactAttributesRecommendationsHasNotes = (Object.keys(artifactRecommendations.attributes) as (keyof typeof artifactRecommendations.attributes)[]).some((artifactAttributesRecommendationsKey) => {
-    return artifactRecommendations.attributes[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
-      return artifactAttributeRecommendations.notes !== undefined;
-    });
-  });
-  const artifactAttributesRecommendationsHasPercent = (Object.keys(artifactRecommendations.attributes) as (keyof typeof artifactRecommendations.attributes)[]).some((artifactAttributesRecommendationsKey) => {
-    return artifactRecommendations.attributes[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
-      return artifactAttributeRecommendations.percent !== undefined;
-    });
-  });
-  const artifactSetsRecommendationsHasDescription = artifactRecommendations.sets.some((artifactSetRecommendations) => {
-    return artifactSetRecommendations.description !== undefined;
-  });
-  const artifactSetsRecommendationsHasIsBetter = artifactRecommendations.sets.some((artifactSetRecommendations) => {
-    return artifactSetRecommendations.is_better === true;
-  });
-  const artifactSetsRecommendationsHasNotes = artifactRecommendations.sets.some((artifactSetRecommendations) => {
-    return artifactSetRecommendations.notes !== undefined;
-  });
-  const artifactSetsRecommendationsHasPercent = artifactRecommendations.sets.some((artifactSetRecommendations) => {
-    return artifactSetRecommendations.percent !== undefined;
-  });
+function ArtifactAttributesRecommendations({ artifactAttributesRecommendations }: ArtifactAttributesRecommendationsProps) {
+  const [hasDescription, setHasDescription] = useState(false);
+  const [hasNotes, setHasNotes] = useState(false);
+  const [hasPercent, setHasPercent] = useState(false);
+  const [hasUsePercent, setHasUsePercent] = useState(false);
+  const artifactAttributesRecommendationsKeys = Object.keys(artifactAttributesRecommendations) as (keyof typeof artifactAttributesRecommendations)[];
 
   useEffect(() => {
-    if (artifactSetsRecommendationsHasPercent) {
-      let setsMaxPercent = -Infinity, setsMinPercent = Infinity;
-
-      artifactRecommendations.sets.map((artifactSetRecommendations) => {
-        if (artifactSetRecommendations.percent) {
-          if (artifactSetRecommendations.percent > setsMaxPercent) {
-            setsMaxPercent = artifactSetRecommendations.percent;
-          }
-
-          if (artifactSetRecommendations.percent < setsMinPercent) {
-            setsMinPercent = artifactSetRecommendations.percent;
-          }
-        }
+    setHasDescription(artifactAttributesRecommendationsKeys.some((artifactAttributesRecommendationsKey) => {
+      return artifactAttributesRecommendations[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
+        return artifactAttributeRecommendations.description !== undefined;
       });
-
-      if (setsMaxPercent !== -Infinity && setsMinPercent !== Infinity) {
-        setSetsDiffPercent((setsMaxPercent - setsMinPercent) / 3);
-        setSetsMinPercent(setsMinPercent);
-      }
-    }
-  }, [artifactRecommendations, artifactSetsRecommendationsHasPercent]);
+    }));
+    setHasNotes(artifactAttributesRecommendationsKeys.some((artifactAttributesRecommendationsKey) => {
+      return artifactAttributesRecommendations[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
+        return artifactAttributeRecommendations.notes !== undefined;
+      });
+    }));
+    setHasPercent(artifactAttributesRecommendationsKeys.some((artifactAttributesRecommendationsKey) => {
+      return artifactAttributesRecommendations[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
+        return artifactAttributeRecommendations.percent !== undefined;
+      });
+    }));
+    setHasUsePercent(artifactAttributesRecommendationsKeys.some((artifactAttributesRecommendationsKey) => {
+      return artifactAttributesRecommendations[artifactAttributesRecommendationsKey].some((artifactAttributeRecommendations) => {
+        return artifactAttributeRecommendations.use_percent !== undefined;
+      });
+    }));
+  }, [artifactAttributesRecommendations, artifactAttributesRecommendationsKeys]);
 
   return (
-    <div className="flex flex-col gap-4">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            {artifactSetsRecommendationsHasIsBetter && <TableHead />}
-            <TableHead>Наборы</TableHead>
-            {artifactSetsRecommendationsHasPercent && <TableHead />}
-            {artifactSetsRecommendationsHasDescription && <TableHead />}
-            {artifactSetsRecommendationsHasNotes && <TableHead>Заметки</TableHead>}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {artifactRecommendations.sets.map((artifactSetRecommendations) => {
-            const artifactSet = getArtifactSet(artifactSetRecommendations.uid);
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead />
+          <TableHead className="text-center">Характеристики</TableHead>
+          {hasPercent && <TableHead />}
+          {hasUsePercent && (
+            <TableHead className="py-2 h-auto min-h-10 text-center whitespace-normal">Процент использования</TableHead>
+          )}
+          {hasDescription && <TableHead />}
+          {hasNotes && <TableHead className="text-center">Заметки</TableHead>}
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {artifactAttributesRecommendationsKeys.map((artifactAttributesRecommendationsKey) => {
+          return artifactAttributesRecommendations[artifactAttributesRecommendationsKey].map((artifactAttributeRecommendations, index) => {
+            const attribute = getAttribute(artifactAttributeRecommendations.uid);
 
             return (
-              <TableRow className="hover:bg-inherit" key={artifactSet.uid}>
-                {artifactSetsRecommendationsHasIsBetter && (
-                  <TableCell className="w-[64px]">
-                    {artifactSetRecommendations.is_better && (
-                      <img
-                        alt="Является лучшим выбором"
-                        className="size-12 rounded-full"
-                        src={publicImageSrc("better-logo-128x128.png")}
-                      />
-                    )}
-                  </TableCell>
+              <TableRow
+                className="hover:bg-inherit"
+                key={`${artifactAttributesRecommendationsKey}-${artifactAttributeRecommendations.uid}`}
+              >
+                {index === 0 && (
+                  <TableHead
+                    className="p-2 w-18"
+                    rowSpan={artifactAttributesRecommendations[artifactAttributesRecommendationsKey].length}
+                  >
+                    {artifactAttributesRecommendationsKey === ArtifactPieceUidEnum.SandsOfEon && "Часы"}
+                    {artifactAttributesRecommendationsKey === ArtifactPieceUidEnum.GobletOfEonothem && "Кубок"}
+                    {artifactAttributesRecommendationsKey === ArtifactPieceUidEnum.CircletOfLogos && "Корона"}
+                    {artifactAttributesRecommendationsKey === "additional" && "Доп."}
+                  </TableHead>
                 )}
-                <TableCell className="text-pretty whitespace-normal sm:w-[192px]">
+                <TableCell className="text-pretty whitespace-normal">
                   <Badge
-                    asChild
-                    className="flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row sm:text-left"
+                    className="flex justify-center w-full text-center text-pretty whitespace-normal"
                     variant="secondary"
                   >
-                    <Link to={Paths.ArtifactSet(artifactSet.uid)}>
-                      <img
-                        alt={artifactSet.name}
-                        className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
-                        src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
-                      />
-                      <span>
-                        {artifactSet.name}
-                        {artifactSet.uid === character.signature_artifact_set_uid && " (сигнатурное)"}
-                      </span>
-                    </Link>
+                    {attribute.abbreviation || attribute.name}
                   </Badge>
                 </TableCell>
-                {artifactSetsRecommendationsHasPercent && (
+                {hasPercent && (
                   <TableCell
-                    className={cn(artifactSetRecommendations.percent !== undefined && {
-                      "text-green-500": artifactSetRecommendations.percent >= (setsMinPercent + (setsDiffPercent * 2)),
-                      "text-yellow-500": artifactSetRecommendations.percent >= (setsMinPercent + setsDiffPercent) && artifactSetRecommendations.percent < (setsMinPercent + (setsDiffPercent * 2)),
-                      "text-red-500": artifactSetRecommendations.percent < (setsMinPercent + setsDiffPercent),
+                    className={cn(artifactAttributeRecommendations.percent !== undefined && {
+                      "text-green-500": artifactAttributeRecommendations.percent >= 0.5,
+                      "text-yellow-500": artifactAttributeRecommendations.percent >= 0.25 && artifactAttributeRecommendations.percent < 0.5,
+                      "text-red-500": artifactAttributeRecommendations.percent < 0.25,
                     })}
                   >
-                    {artifactSetRecommendations.percent !== undefined
+                    {artifactAttributeRecommendations.percent !== undefined
                       ? new Intl.NumberFormat(undefined, {
                           style: "percent",
-                          minimumFractionDigits: 2,
-                        }).format(artifactSetRecommendations.percent)
+                          minimumFractionDigits: 1,
+                        }).format(artifactAttributeRecommendations.percent)
                       : ""}
                   </TableCell>
                 )}
-                {artifactSetsRecommendationsHasDescription && (
-                  <TableCell className="text-pretty whitespace-normal">
-                    {artifactSetRecommendations.description}
+                {hasUsePercent && (
+                  <TableCell
+                    className={cn(
+                      "text-center",
+                      artifactAttributeRecommendations.use_percent !== undefined && {
+                        "text-green-500": artifactAttributeRecommendations.use_percent >= 0.5,
+                        "text-yellow-500": artifactAttributeRecommendations.use_percent >= 0.25 && artifactAttributeRecommendations.use_percent < 0.5,
+                        "text-red-500": artifactAttributeRecommendations.use_percent < 0.25,
+                      },
+                    )}
+                  >
+                    {artifactAttributeRecommendations.use_percent !== undefined
+                      ? new Intl.NumberFormat(undefined, {
+                          style: "percent",
+                          minimumFractionDigits: 1,
+                        }).format(artifactAttributeRecommendations.use_percent)
+                      : ""}
                   </TableCell>
                 )}
-                {artifactSetsRecommendationsHasNotes && (
+                {hasDescription && (
                   <TableCell className="text-pretty whitespace-normal">
-                    {artifactSetRecommendations.notes !== undefined && (
+                    {artifactAttributeRecommendations.description}
+                  </TableCell>
+                )}
+                {hasNotes && (
+                  <TableCell className="text-pretty whitespace-normal">
+                    {artifactAttributeRecommendations.notes !== undefined && (
                       <ul className="ml-4 list-outside list-disc">
-                        {artifactSetRecommendations.notes.map((note, index) => (
+                        {artifactAttributeRecommendations.notes.map((note, index) => (
                           <li key={index}>{note}</li>
                         ))}
                       </ul>
@@ -203,87 +200,157 @@ function ArtifactRecommendations({ artifactRecommendations, character }: Artifac
                 )}
               </TableRow>
             );
-          })}
-        </TableBody>
-      </Table>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead />
-            <TableHead>Характеристики</TableHead>
-            {artifactAttributesRecommendationsHasPercent && <TableHead />}
-            {artifactAttributesRecommendationsHasDescription && <TableHead />}
-            {artifactAttributesRecommendationsHasNotes && <TableHead>Заметки</TableHead>}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {(Object.keys(artifactRecommendations.attributes) as (keyof typeof artifactRecommendations.attributes)[]).map((artifactAttributesRecommendationsKey) => {
-            return artifactRecommendations.attributes[artifactAttributesRecommendationsKey].map((artifactAttributeRecommendations, index) => {
-              const attribute = getAttribute(artifactAttributeRecommendations.uid);
+          });
+        })}
+      </TableBody>
+    </Table>
+  );
+}
 
-              return (
-                <TableRow
-                  className="hover:bg-inherit"
-                  key={`${artifactAttributesRecommendationsKey}-${artifactAttributeRecommendations.uid}`}
-                >
-                  {index === 0 && (
-                    <TableHead
-                      className="p-2 w-[72px]"
-                      rowSpan={artifactRecommendations.attributes[artifactAttributesRecommendationsKey].length}
-                    >
-                      {artifactAttributesRecommendationsKey === ArtifactPieceUidEnum.SandsOfEon && "Часы"}
-                      {artifactAttributesRecommendationsKey === ArtifactPieceUidEnum.GobletOfEonothem && "Кубок"}
-                      {artifactAttributesRecommendationsKey === ArtifactPieceUidEnum.CircletOfLogos && "Корона"}
-                      {artifactAttributesRecommendationsKey === "additional" && "Доп."}
-                    </TableHead>
-                  )}
-                  <TableCell className="text-pretty whitespace-normal">
-                    <Badge
-                      className="flex justify-center w-full text-center text-pretty whitespace-normal"
-                      variant="secondary"
-                    >
-                      {attribute.abbreviation || attribute.name}
-                    </Badge>
-                  </TableCell>
-                  {artifactAttributesRecommendationsHasPercent && (
-                    <TableCell
-                      className={cn(artifactAttributeRecommendations.percent !== undefined && {
-                        "text-green-500": artifactAttributeRecommendations.percent >= 0.5,
-                        "text-yellow-500": artifactAttributeRecommendations.percent >= 0.25 && artifactAttributeRecommendations.percent < 0.5,
-                        "text-red-500": artifactAttributeRecommendations.percent < 0.25,
-                      })}
-                    >
-                      {artifactAttributeRecommendations.percent !== undefined
-                        ? new Intl.NumberFormat(undefined, {
-                            style: "percent",
-                            minimumFractionDigits: 1,
-                          }).format(artifactAttributeRecommendations.percent)
-                        : ""}
-                    </TableCell>
-                  )}
-                  {artifactAttributesRecommendationsHasDescription && (
-                    <TableCell className="text-pretty whitespace-normal">
-                      {artifactAttributeRecommendations.description}
-                    </TableCell>
-                  )}
-                  {artifactAttributesRecommendationsHasNotes && (
-                    <TableCell className="text-pretty whitespace-normal">
-                      {artifactAttributeRecommendations.notes !== undefined && (
-                        <ul className="ml-4 list-outside list-disc">
-                          {artifactAttributeRecommendations.notes.map((note, index) => (
-                            <li key={index}>{note}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </TableCell>
-                  )}
-                </TableRow>
-              );
-            });
-          })}
-        </TableBody>
-      </Table>
+function ArtifactRecommendations({ artifactRecommendations, character }: ArtifactRecommendationsProps) {
+  return (
+    <div className="flex flex-col gap-4">
+      <ArtifactSetsRecommendations artifactSetsRecommendations={artifactRecommendations.sets} character={character} />
+      <ArtifactAttributesRecommendations artifactAttributesRecommendations={artifactRecommendations.attributes} />
     </div>
+  );
+}
+
+function ArtifactSetsRecommendations({ artifactSetsRecommendations, character }: ArtifactSetsRecommendationsProps) {
+  const [diffPercent, setDiffPercent] = useState(0);
+  const [hasDescription, setHasDescription] = useState(false);
+  const [hasIsBetter, setHasIsBetter] = useState(false);
+  const [hasNotes, setHasNotes] = useState(false);
+  const [hasPercent, setHasPercent] = useState(false);
+  const [minPercent, setMinPercent] = useState(0);
+
+  useEffect(() => {
+    const hasPercent = artifactSetsRecommendations.some((artifactSetRecommendations) => {
+      return artifactSetRecommendations.percent !== undefined;
+    });
+
+    setHasDescription(artifactSetsRecommendations.some((artifactSetRecommendations) => {
+      return artifactSetRecommendations.description !== undefined;
+    }));
+    setHasIsBetter(artifactSetsRecommendations.some((artifactSetRecommendations) => {
+      return artifactSetRecommendations.is_better === true;
+    }));
+    setHasNotes(artifactSetsRecommendations.some((artifactSetRecommendations) => {
+      return artifactSetRecommendations.notes !== undefined;
+    }));
+    setHasPercent(hasPercent);
+
+    if (hasPercent) {
+      let maxPercent = -Infinity, minPercent = Infinity;
+
+      artifactSetsRecommendations.map((artifactSetRecommendations) => {
+        if (artifactSetRecommendations.percent) {
+          if (artifactSetRecommendations.percent > maxPercent) {
+            maxPercent = artifactSetRecommendations.percent;
+          }
+
+          if (artifactSetRecommendations.percent < minPercent) {
+            minPercent = artifactSetRecommendations.percent;
+          }
+        }
+      });
+
+      if (maxPercent !== -Infinity && minPercent !== Infinity) {
+        setDiffPercent((maxPercent - minPercent) / 3);
+        setMinPercent(minPercent);
+      }
+    }
+  }, [artifactSetsRecommendations]);
+
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          {hasIsBetter && <TableHead />}
+          <TableHead className="text-center">Наборы</TableHead>
+          {hasPercent && <TableHead />}
+          {hasDescription && <TableHead />}
+          {hasNotes && <TableHead className="text-center">Заметки</TableHead>}
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {artifactSetsRecommendations.map((artifactSetRecommendations) => {
+          const artifactSet = getArtifactSet(artifactSetRecommendations.uid);
+
+          return (
+            <TableRow className="hover:bg-inherit" key={artifactSet.uid}>
+              {hasIsBetter && (
+                <TableCell className="w-16">
+                  {artifactSetRecommendations.is_better && (
+                    <img
+                      alt="Является лучшим выбором"
+                      className="size-12 rounded-full"
+                      src={publicImageSrc("better-logo-128x128.png")}
+                    />
+                  )}
+                </TableCell>
+              )}
+              <TableCell className="text-pretty whitespace-normal sm:w-48">
+                <Badge
+                  asChild
+                  className={cn(
+                    "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal",
+                    "sm:flex-row sm:text-left",
+                  )}
+                  variant="secondary"
+                >
+                  <Link to={Paths.ArtifactSet(artifactSet.uid)}>
+                    <img
+                      alt={artifactSet.name}
+                      className={cn(
+                        "shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl",
+                      )}
+                      src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
+                    />
+                    <span>
+                      {artifactSet.name}
+                      {artifactSet.uid === character.signature_artifact_set_uid && " (сигнатурное)"}
+                    </span>
+                  </Link>
+                </Badge>
+              </TableCell>
+              {hasPercent && (
+                <TableCell
+                  className={cn(artifactSetRecommendations.percent !== undefined && {
+                    "text-green-500": artifactSetRecommendations.percent >= (minPercent + (diffPercent * 2)),
+                    "text-yellow-500": artifactSetRecommendations.percent >= (minPercent + diffPercent) && artifactSetRecommendations.percent < (minPercent + (diffPercent * 2)),
+                    "text-red-500": artifactSetRecommendations.percent < (minPercent + diffPercent),
+                  })}
+                >
+                  {artifactSetRecommendations.percent !== undefined
+                    ? new Intl.NumberFormat(undefined, {
+                        style: "percent",
+                        minimumFractionDigits: 2,
+                      }).format(artifactSetRecommendations.percent)
+                    : ""}
+                </TableCell>
+              )}
+              {hasDescription && (
+                <TableCell className="text-pretty whitespace-normal">
+                  {artifactSetRecommendations.description}
+                </TableCell>
+              )}
+              {hasNotes && (
+                <TableCell className="text-pretty whitespace-normal">
+                  {artifactSetRecommendations.notes !== undefined && (
+                    <ul className="ml-4 list-outside list-disc">
+                      {artifactSetRecommendations.notes.map((note, index) => (
+                        <li key={index}>{note}</li>
+                      ))}
+                    </ul>
+                  )}
+                </TableCell>
+              )}
+            </TableRow>
+          );
+        })}
+      </TableBody>
+    </Table>
   );
 }
 
