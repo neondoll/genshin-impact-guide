@@ -56,11 +56,17 @@ const guideChevreuse = {
     { uid: WeaponUidEnum.FavoniusLance },
   ],
   priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "По необходимости\n(6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(9)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(8)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Вторичный приоритет\n(8)" },
   ],
   required_level: 90,
+  video_sources: [
+    {
+      title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
+      vk_url: "https://vkvideo.ru/video-227044935_456239080",
+    },
+  ],
 } as GuideCharacter;
 const guideFischl = {
   character_uid: CharacterUidEnum.Fischl,
@@ -193,10 +199,16 @@ const guideFurina = {
   },
   priority_of_talent_leveling: [
     { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Высокий приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Высокий приоритет\n(10)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
   ],
   reference_point: [["Макс. HP", "33 000"], ["Восст. энергии", "170%"], ["Крит. шанс", "60%"], ["Крит. урон", "140%"]],
+  video_sources: [
+    {
+      title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
+      vk_url: "https://vkvideo.ru/video-227044935_456239080",
+    },
+  ],
 } as GuideCharacter;
 const guideXiangling = {
   character_uid: CharacterUidEnum.Xiangling,
@@ -227,11 +239,17 @@ const guideXiangling = {
   },
   assembly_weapons: [{ uid: WeaponUidEnum.EngulfingLightning }],
   priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "По необходимости\n(6)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
     { uid: TalentUidEnum.ElementalSkill, priority: "Вторичный приоритет\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Главный приоритет\n(10)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
   ],
   required_level: 90,
+  video_sources: [
+    {
+      title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
+      vk_url: "https://vkvideo.ru/video-227044935_456239080",
+    },
+  ],
 } as GuideCharacter;
 const guideXilonen = {
   character_uid: CharacterUidEnum.Xilonen,

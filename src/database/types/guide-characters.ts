@@ -40,7 +40,7 @@ export type GuideCharacter = {
     general_template: (GuideCharacterSquadsItem | GuideCharacterSquadsItem[])[];
     best_teammates: GuideCharacterSquadsItem[];
   };
-  video_sources?: { title: string; vk_url?: string; youtube_url: string }[];
+  video_sources?: { title: string; vk_url?: string; youtube_url?: string }[];
 };
 export type GuideCharacterPriorityOfTalentLeveling = { uid: TalentUid; priority: string }[];
 export type GuideCharacterReferencePoint = [string, string][];

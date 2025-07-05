@@ -63,8 +63,14 @@ export default {
   ],
   first_constellation_or_signature_weapon: "Сигна > C1, Сигна > C2. Лучше Сигна и С1",
   priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Высокий приоритет\n(10)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "Максимальный приоритет\n(10)" },
     { uid: TalentUidEnum.ElementalSkill, priority: "Ситуативно\n(6 | 8)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(6 | 8)" },
+  ],
+  video_sources: [
+    {
+      title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
+      vk_url: "https://vkvideo.ru/video-227044935_456239080",
+    },
   ],
 } as GuideCharacter;

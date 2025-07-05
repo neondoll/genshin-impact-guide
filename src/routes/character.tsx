@@ -157,9 +157,9 @@ function ArtifactAttributesRecommendations({ artifactAttributesRecommendations }
                   >
                     {artifactAttributeRecommendations.percent !== undefined
                       ? new Intl.NumberFormat(undefined, {
-                          style: "percent",
-                          minimumFractionDigits: 1,
-                        }).format(artifactAttributeRecommendations.percent)
+                        style: "percent",
+                        minimumFractionDigits: 1,
+                      }).format(artifactAttributeRecommendations.percent)
                       : ""}
                   </TableCell>
                 )}
@@ -176,9 +176,9 @@ function ArtifactAttributesRecommendations({ artifactAttributesRecommendations }
                   >
                     {artifactAttributeRecommendations.use_percent !== undefined
                       ? new Intl.NumberFormat(undefined, {
-                          style: "percent",
-                          minimumFractionDigits: 1,
-                        }).format(artifactAttributeRecommendations.use_percent)
+                        style: "percent",
+                        minimumFractionDigits: 1,
+                      }).format(artifactAttributeRecommendations.use_percent)
                       : ""}
                   </TableCell>
                 )}
@@ -324,9 +324,9 @@ function ArtifactSetsRecommendations({ artifactSetsRecommendations, character }:
                 >
                   {artifactSetRecommendations.percent !== undefined
                     ? new Intl.NumberFormat(undefined, {
-                        style: "percent",
-                        minimumFractionDigits: 2,
-                      }).format(artifactSetRecommendations.percent)
+                      style: "percent",
+                      minimumFractionDigits: 2,
+                    }).format(artifactSetRecommendations.percent)
                     : ""}
                 </TableCell>
               )}
@@ -577,15 +577,15 @@ function Squads({ squads }: SquadsProps) {
             <TableCell>
               {Array.isArray(squadsGeneralTemplateUnit)
                 ? (
-                    <div className="flex flex-wrap gap-2" key={index + 1}>
-                      {squadsGeneralTemplateUnit.map((squadsGeneralTemplateItem, index) => (
-                        <SquadsItem key={index} {...squadsGeneralTemplateItem} />
-                      ))}
-                    </div>
-                  )
+                  <div className="flex flex-wrap gap-2" key={index + 1}>
+                    {squadsGeneralTemplateUnit.map((squadsGeneralTemplateItem, index) => (
+                      <SquadsItem key={index} {...squadsGeneralTemplateItem} />
+                    ))}
+                  </div>
+                )
                 : (
-                    <SquadsItem {...squadsGeneralTemplateUnit} />
-                  )}
+                  <SquadsItem {...squadsGeneralTemplateUnit} />
+                )}
             </TableCell>
           </TableRow>
         ))}
@@ -910,11 +910,13 @@ export default function Character() {
                                     </a>
                                   </Button>
                                 )}
-                                <Button asChild className="size-8" size="icon">
-                                  <a href={videoSource.youtube_url} target="_blank">
-                                    <Youtube className="size-7" />
-                                  </a>
-                                </Button>
+                                {videoSource.youtube_url !== undefined && (
+                                  <Button asChild className="size-8" size="icon">
+                                    <a href={videoSource.youtube_url} target="_blank">
+                                      <Youtube className="size-7" />
+                                    </a>
+                                  </Button>
+                                )}
                               </div>
                             </li>
                           ))}
