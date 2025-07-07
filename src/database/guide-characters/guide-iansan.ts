@@ -49,7 +49,7 @@ export default {
     { uid: WeaponUidEnum.TamayurateiNoOhanashi },
     { uid: WeaponUidEnum.FavoniusLance },
   ],
-  priority_of_talent_leveling: [
+  talent_leveling_recommendations: [
     { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1 - 6)" },
     { uid: TalentUidEnum.ElementalSkill, priority: "Игнорируем\n(1 - 6)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Высокий приоритет\n(10)" },

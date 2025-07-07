@@ -70,11 +70,6 @@ export default {
     { uid: WeaponUidEnum.FavoniusLance, refinement: 5, percent: 0.8526 },
   ],
   first_constellation_or_signature_weapon: "С1 лучше",
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Вторичный приоритет\n(9)" },
-  ],
   reference_point: [
     ["Оружие", `${weapons[WeaponUidEnum.Deathmatch].name} R1 [${weapons[WeaponUidEnum.Deathmatch].quality}⭐]`],
     ["Атака", "2 100"],
@@ -84,4 +79,9 @@ export default {
     ["Артефакты", artifactSets[ArtifactSetUidEnum.GoldenTroupe].name],
   ],
   required_level: 90,
+  talent_leveling_recommendations: [
+    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Вторичный приоритет\n(9)" },
+  ],
 } as GuideCharacter;

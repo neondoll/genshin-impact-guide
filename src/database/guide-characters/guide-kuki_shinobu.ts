@@ -7,7 +7,6 @@ import { WeaponUidEnum } from "../enums/weapons";
 import type { GuideCharacter } from "../types/guide-characters";
 
 export default {
-  character_uid: CharacterUidEnum.KukiShinobu,
   artifact_recommendations: {
     sets: [
       {
@@ -59,11 +58,18 @@ export default {
     },
   },
   assembly_weapons: [{ uid: WeaponUidEnum.XiphosMoonlight }],
+  character_uid: CharacterUidEnum.KukiShinobu,
   key_constellations: [2],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
-  ],
   required_level: 90,
+  talent_leveling_recommendations: [
+    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Не качаем\n(1)" },
+  ],
+  video_sources: [
+    {
+      title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
+      vk_url: "https://vkvideo.ru/video-227044935_456239080",
+    },
+  ],
 } as GuideCharacter;

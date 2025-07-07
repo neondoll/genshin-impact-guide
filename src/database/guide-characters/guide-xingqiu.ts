@@ -50,12 +50,12 @@ export default {
     },
   },
   assembly_weapons: [{ uid: WeaponUidEnum.SacrificialSword }],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Вторичный приоритет\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
-  ],
   required_level: 90,
+  talent_leveling_recommendations: [
+    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "Золотая середина\n(8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Главный приоритет\n(10)" },
+  ],
   video_sources: [
     {
       title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",

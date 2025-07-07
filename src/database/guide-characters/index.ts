@@ -1,301 +1,143 @@
+import guideAmber from "./guide-amber";
 import guideArlecchino from "./guide-arlecchino";
+import guideBarbara from "./guide-barbara";
+import guideBeidou from "./guide-beidou";
 import guideBennett from "./guide-bennett";
+import guideCandace from "./guide-candace";
+import guideCharlotte from "./guide-charlotte";
+import guideChevreuse from "./guide-chevreuse";
+import guideChongyun from "./guide-chongyun";
+import guideCyno from "./guide-cyno";
+import guideDehya from "./guide-dehya";
+import guideDiluc from "./guide-diluc";
+import guideDiona from "./guide-diona";
+import guideDori from "./guide-dori";
 import guideEscoffier from "./guide-escoffier";
+import guideEula from "./guide-eula";
+import guideFaruzan from "./guide-faruzan";
+import guideFischl from "./guide-fischl";
+import guideFreminet from "./guide-freminet";
+import guideFurina from "./guide-furina";
+import guideGanyu from "./guide-ganyu";
+import guideHuTao from "./guide-hu_tao";
 import guideIansan from "./guide-iansan";
+import guideJean from "./guide-jean";
+import guideKaedeharaKazuha from "./guide-kaedehara_kazuha";
+import guideKaeya from "./guide-kaeya";
+import guideKamisatoAyaka from "./guide-kamisato_ayaka";
+import guideKamisatoAyato from "./guide-kamisato_ayato";
+import guideKeqing from "./guide-keqing";
+import guideKlee from "./guide-klee";
+import guideKujouSara from "./guide-kujou_sara";
 import guideKukiShinobu from "./guide-kuki_shinobu";
 import guideLayla from "./guide-layla";
+import guideLisa from "./guide-lisa";
+import guideLynette from "./guide-lynette";
+import guideLyney from "./guide-lyney";
 import guideMavuika from "./guide-mavuika";
+import guideMika from "./guide-mika";
+import guideMona from "./guide-mona";
 import guideNeuvillette from "./guide-neuvillette";
+import guideNilou from "./guide-nilou";
+import guideQiqi from "./guide-qiqi";
+import guideRaidenShogun from "./guide-raiden_shogun";
+import guideRazor from "./guide-razor";
+import guideRosaria from "./guide-rosaria";
+import guideSangonomiyaKokomi from "./guide-sangonomiya_kokomi";
+import guideSayu from "./guide-sayu";
+import guideShenhe from "./guide-shenhe";
+import guideShikanoinHeizou from "./guide-shikanoin_heizou";
 import guideSkirk from "./guide-skirk";
+import guideSucrose from "./guide-sucrose";
+import guideTartaglia from "./guide-tartaglia";
+import guideThoma from "./guide-thoma";
 import guideVaresa from "./guide-varesa";
+import guideVenti from "./guide-venti";
+import guideWanderer from "./guide-wanderer";
+import guideWriothesley from "./guide-wriothesley";
+import guideXiangling from "./guide-xiangling";
+import guideXiao from "./guide-xiao";
+import guideXilonen from "./guide-xilonen";
 import guideXingqiu from "./guide-xingqiu";
-import { ArtifactPieceUidEnum } from "../enums/artifact-pieces";
-import { artifactSets } from "../artifact-sets";
-import { ArtifactSetUidEnum } from "../enums/artifact-sets";
-import { AttributeUidEnum } from "../enums/attributes";
+import guideXinyan from "./guide-xinyan";
+import guideYaeMiko from "./guide-yae_miko";
+import guideYanfei from "./guide-yanfei";
+import guideYelan from "./guide-yelan";
+import guideYoimiya from "./guide-yoimiya";
 import { CharacterUidEnum } from "../enums/characters";
-import { TalentUidEnum } from "../enums/talents";
-import { weapons } from "../weapons";
-import { WeaponUidEnum } from "../enums/weapons";
-import type { GuideCharacter, GuideCharacters } from "../types/guide-characters";
+import type { GuideCharacters } from "../types/guide-characters";
 
-const guideChevreuse = {
-  character_uid: CharacterUidEnum.Chevreuse,
-  artifact_recommendations: {
-    sets: [
-      { uid: ArtifactSetUidEnum.NoblesseOblige },
-      {
-        uid: ArtifactSetUidEnum.SongOfDaysPast,
-        description: "Не рекомендуется, слишком нестабильна и требует овер хил",
-      },
-      {
-        uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity,
-        description: `Если ${artifactSets[ArtifactSetUidEnum.NoblesseOblige].name} занята`,
-      },
-      {
-        uid: ArtifactSetUidEnum.EmblemOfSeveredFate,
-        description: `Если ${artifactSets[ArtifactSetUidEnum.NoblesseOblige].name} и ${artifactSets[ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity].name} заняты`,
-      },
-    ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HealthPercent }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.HealthPercent }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.HealthPercent },
-        {
-          uid: AttributeUidEnum.CriticalRate,
-          description: `Если в руках ${weapons[WeaponUidEnum.FavoniusLance].name}`,
-        },
-      ],
-      additional: [{ uid: AttributeUidEnum.HealthPercent }, { uid: AttributeUidEnum.EnergyRecharge }],
-    },
-  },
-  assembly_weapons: [
-    { uid: WeaponUidEnum.RightfulReward },
-    { uid: WeaponUidEnum.DialoguesOfTheDesertSages },
-    { uid: WeaponUidEnum.FavoniusLance },
-  ],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Вторичный приоритет\n(8)" },
-  ],
-  required_level: 90,
-  video_sources: [
-    {
-      title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
-      vk_url: "https://vkvideo.ru/video-227044935_456239080",
-    },
-  ],
-} as GuideCharacter;
-const guideFischl = {
-  character_uid: CharacterUidEnum.Fischl,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.785 },
-        { uid: AttributeUidEnum.ElementalMastery, percent: 0.125 },
-        { uid: AttributeUidEnum.EnergyRecharge, percent: 0.062 },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.ElectroDamageBonus, percent: 0.830 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.119 },
-        { uid: AttributeUidEnum.ElementalMastery, percent: 0.018 },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate, percent: 0.669 },
-        { uid: AttributeUidEnum.CriticalDamage, percent: 0.266 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.034 },
-      ],
-      additional: [
-        { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
-        { uid: AttributeUidEnum.AttackPercent },
-      ],
-    },
-  },
-  assembly_weapons: [{ uid: WeaponUidEnum.TheStringless }],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "По необходимости\n(6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Вторичный приоритет\n(8)" },
-  ],
-  required_level: 90,
-} as GuideCharacter;
-const guideFurina = {
-  character_uid: CharacterUidEnum.Furina,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.GoldenTroupe }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.EnergyRecharge },
-        { uid: AttributeUidEnum.HealthPercent },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HydroDamageBonus },
-        { uid: AttributeUidEnum.HealthPercent, description: "Лучше в подавляющем числе ситуаций" },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
-      ],
-      additional: [
-        {
-          uid: AttributeUidEnum.EnergyRecharge,
-          description: "В отрядах без доп. подкачки - 200% - 220% ВЭ\nВ отрядах с доп. подкачкой - 160% - 180% ВЭ\nВ отрядах с Е Лань или Син Цю - 130% - 140% ВЭ\nВ отрядах с 3 Гидро и более - 100% ВЭ",
-        },
-        { uid: AttributeUidEnum.HealthPercent },
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
-      ],
-    },
-  },
-  assembly_weapons: {
-    "Без реакций - 120% ВЭ+": [
-      { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.3648 },
-      { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(с гео)", percent: 1.3306 },
-      { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(без гео)", percent: 1.2265 },
-      { uid: WeaponUidEnum.PrimordialJadeCutter, percent: 1.2139 },
-      { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(работает)", percent: 1.1795 },
-      { uid: WeaponUidEnum.LightOfFoliarIncision, percent: 1.1536 },
-      { uid: WeaponUidEnum.KeyOfKhajNisut, percent: 1.1298 },
-      { uid: WeaponUidEnum.WolfFang, refinement: 5, percent: 1.1268 },
-      { uid: WeaponUidEnum.FesteringDesire, percent: 1.0924 },
-      { uid: WeaponUidEnum.WolfFang, refinement: 1, percent: 1.0648 },
-      { uid: WeaponUidEnum.FleuveCendreFerryman, refinement: 5, percent: 1 },
-      { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(не работает)", percent: 0.9745 },
-      { uid: WeaponUidEnum.TheDockhandsAssistant, refinement: 5, percent: 0.9637 },
-      { uid: WeaponUidEnum.FavoniusSword, refinement: 5, percent: 0.8936 },
-    ],
-    "Без реакций - 170% ВЭ+": [
-      { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.1296 },
-      { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(с гео)", percent: 1.0842 },
-      { uid: WeaponUidEnum.FleuveCendreFerryman, refinement: 5, percent: 1 },
-      { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(без гео)", percent: 0.9999 },
-      { uid: WeaponUidEnum.PrimordialJadeCutter, percent: 0.9964 },
-      { uid: WeaponUidEnum.FesteringDesire, percent: 0.9878 },
-      { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(работает)", percent: 0.9627 },
-      { uid: WeaponUidEnum.KeyOfKhajNisut, percent: 0.9578 },
-      { uid: WeaponUidEnum.LightOfFoliarIncision, percent: 0.9402 },
-      { uid: WeaponUidEnum.WolfFang, refinement: 5, percent: 0.9153 },
-      { uid: WeaponUidEnum.FavoniusSword, refinement: 5, percent: 0.8936 },
-      { uid: WeaponUidEnum.WolfFang, refinement: 1, percent: 0.8648 },
-      { uid: WeaponUidEnum.TheDockhandsAssistant, refinement: 5, percent: 0.8080 },
-      { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(не работает)", percent: 0.7894 },
-    ],
-    "Без реакций - 220% ВЭ+": [
-      { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.0893 },
-      { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(с гео)", percent: 1.0421 },
-      { uid: WeaponUidEnum.FleuveCendreFerryman, refinement: 5, percent: 1 },
-      { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(без гео)", percent: 0.9604 },
-      { uid: WeaponUidEnum.PrimordialJadeCutter, percent: 0.9597 },
-      { uid: WeaponUidEnum.FesteringDesire, percent: 0.9498 },
-      { uid: WeaponUidEnum.KeyOfKhajNisut, percent: 0.9254 },
-      { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(работает)", percent: 0.9232 },
-      { uid: WeaponUidEnum.LightOfFoliarIncision, percent: 0.9048 },
-      { uid: WeaponUidEnum.WolfFang, refinement: 5, percent: 0.8798 },
-      { uid: WeaponUidEnum.FavoniusSword, refinement: 5, percent: 0.8725 },
-      { uid: WeaponUidEnum.WolfFang, refinement: 1, percent: 0.8314 },
-      { uid: WeaponUidEnum.TheDockhandsAssistant, refinement: 5, percent: 0.7762 },
-      { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(не работает)", percent: 0.7608 },
-    ],
-    "Фурина вейпит - 180% ВЭ+": [
-      { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.2547 },
-      { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(с гео)", percent: 1.1969 },
-      { uid: WeaponUidEnum.KeyOfKhajNisut, percent: 1.1464 },
-      { uid: WeaponUidEnum.PrimordialJadeCutter, percent: 1.1087 },
-      { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(без гео)", percent: 1.1043 },
-      { uid: WeaponUidEnum.FesteringDesire, percent: 1.0906 },
-      { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(работает)", percent: 1.0652 },
-      { uid: WeaponUidEnum.LightOfFoliarIncision, percent: 1.0406 },
-      { uid: WeaponUidEnum.WolfFang, refinement: 5, percent: 1.0101 },
-      { uid: WeaponUidEnum.FleuveCendreFerryman, refinement: 5, percent: 1 },
-      { uid: WeaponUidEnum.FavoniusSword, refinement: 5, percent: 0.9592 },
-      { uid: WeaponUidEnum.WolfFang, refinement: 1, percent: 0.9552 },
-      { uid: WeaponUidEnum.TheDockhandsAssistant, refinement: 5, percent: 0.9425 },
-      { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(не работает)", percent: 0.8743 },
-    ],
-  },
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
-  ],
-  reference_point: [["Макс. HP", "33 000"], ["Восст. энергии", "170%"], ["Крит. шанс", "60%"], ["Крит. урон", "140%"]],
-  video_sources: [
-    {
-      title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
-      vk_url: "https://vkvideo.ru/video-227044935_456239080",
-    },
-  ],
-} as GuideCharacter;
-const guideXiangling = {
-  character_uid: CharacterUidEnum.Xiangling,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.EnergyRecharge, percent: 0.748 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.171 },
-        { uid: AttributeUidEnum.ElementalMastery, percent: 0.055 },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PyroDamageBonus, percent: 0.841 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.118 },
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.013 },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate, percent: 0.642 },
-        { uid: AttributeUidEnum.CriticalDamage, percent: 0.291 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.042 },
-      ],
-      additional: [
-        { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
-        { uid: AttributeUidEnum.EnergyRecharge },
-      ],
-    },
-  },
-  assembly_weapons: [{ uid: WeaponUidEnum.EngulfingLightning }],
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Вторичный приоритет\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
-  ],
-  required_level: 90,
-  video_sources: [
-    {
-      title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
-      vk_url: "https://vkvideo.ru/video-227044935_456239080",
-    },
-  ],
-} as GuideCharacter;
-const guideXilonen = {
-  character_uid: CharacterUidEnum.Xilonen,
-  artifact_recommendations: {
-    sets: [{ uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.DefensePercent },
-        { uid: AttributeUidEnum.EnergyRecharge },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.DefensePercent }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.DefensePercent },
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.HealingBonus },
-      ],
-      additional: [
-        { uid: AttributeUidEnum.DefensePercent },
-        { uid: AttributeUidEnum.EnergyRecharge, description: "~160% ВЭ для стабильной ульты" },
-      ],
-    },
-  },
-  assembly_weapons: [{ uid: WeaponUidEnum.PeakPatrolSong }, { uid: WeaponUidEnum.FavoniusSword }],
-  first_constellation_or_signature_weapon: "Сигна > С1, но С2 > Сигна",
-  priority_of_talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(8)" },
-  ],
-} as GuideCharacter;
+// talent_leveling_recommendations
+// 1 ур. - Не качаем
+// 6 ур. - Можно прокачать
+// 8 ур. - Золотая середина
+// 10 ур. - Главный приоритет
 
 export const guideCharacters = {
+  [CharacterUidEnum.Amber]: guideAmber,
   [CharacterUidEnum.Arlecchino]: guideArlecchino,
+  [CharacterUidEnum.Barbara]: guideBarbara,
+  [CharacterUidEnum.Beidou]: guideBeidou,
   [CharacterUidEnum.Bennett]: guideBennett,
+  [CharacterUidEnum.Candace]: guideCandace,
+  [CharacterUidEnum.Charlotte]: guideCharlotte,
   [CharacterUidEnum.Chevreuse]: guideChevreuse,
+  [CharacterUidEnum.Chongyun]: guideChongyun,
+  [CharacterUidEnum.Cyno]: guideCyno,
+  [CharacterUidEnum.Dehya]: guideDehya,
+  [CharacterUidEnum.Diluc]: guideDiluc,
+  [CharacterUidEnum.Diona]: guideDiona,
+  [CharacterUidEnum.Dori]: guideDori,
   [CharacterUidEnum.Escoffier]: guideEscoffier,
+  [CharacterUidEnum.Eula]: guideEula,
+  [CharacterUidEnum.Faruzan]: guideFaruzan,
   [CharacterUidEnum.Fischl]: guideFischl,
+  [CharacterUidEnum.Freminet]: guideFreminet,
   [CharacterUidEnum.Furina]: guideFurina,
+  [CharacterUidEnum.Ganyu]: guideGanyu,
+  [CharacterUidEnum.HuTao]: guideHuTao,
   [CharacterUidEnum.Iansan]: guideIansan,
+  [CharacterUidEnum.Jean]: guideJean,
+  [CharacterUidEnum.KaedeharaKazuha]: guideKaedeharaKazuha,
+  [CharacterUidEnum.Kaeya]: guideKaeya,
+  [CharacterUidEnum.KamisatoAyaka]: guideKamisatoAyaka,
+  [CharacterUidEnum.KamisatoAyato]: guideKamisatoAyato,
+  [CharacterUidEnum.Keqing]: guideKeqing,
+  [CharacterUidEnum.Klee]: guideKlee,
+  [CharacterUidEnum.KujouSara]: guideKujouSara,
   [CharacterUidEnum.KukiShinobu]: guideKukiShinobu,
   [CharacterUidEnum.Layla]: guideLayla,
+  [CharacterUidEnum.Lisa]: guideLisa,
+  [CharacterUidEnum.Lynette]: guideLynette,
+  [CharacterUidEnum.Lyney]: guideLyney,
   [CharacterUidEnum.Mavuika]: guideMavuika,
+  [CharacterUidEnum.Mika]: guideMika,
+  [CharacterUidEnum.Mona]: guideMona,
   [CharacterUidEnum.Neuvillette]: guideNeuvillette,
+  [CharacterUidEnum.Nilou]: guideNilou,
+  [CharacterUidEnum.Qiqi]: guideQiqi,
+  [CharacterUidEnum.RaidenShogun]: guideRaidenShogun,
+  [CharacterUidEnum.Razor]: guideRazor,
+  [CharacterUidEnum.Rosaria]: guideRosaria,
+  [CharacterUidEnum.SangonomiyaKokomi]: guideSangonomiyaKokomi,
+  [CharacterUidEnum.Sayu]: guideSayu,
+  [CharacterUidEnum.Shenhe]: guideShenhe,
+  [CharacterUidEnum.ShikanoinHeizou]: guideShikanoinHeizou,
   [CharacterUidEnum.Skirk]: guideSkirk,
+  [CharacterUidEnum.Sucrose]: guideSucrose,
+  [CharacterUidEnum.Tartaglia]: guideTartaglia,
+  [CharacterUidEnum.Thoma]: guideThoma,
   [CharacterUidEnum.Varesa]: guideVaresa,
+  [CharacterUidEnum.Venti]: guideVenti,
+  [CharacterUidEnum.Wanderer]: guideWanderer,
+  [CharacterUidEnum.Wriothesley]: guideWriothesley,
   [CharacterUidEnum.Xiangling]: guideXiangling,
+  [CharacterUidEnum.Xiao]: guideXiao,
   [CharacterUidEnum.Xilonen]: guideXilonen,
   [CharacterUidEnum.Xingqiu]: guideXingqiu,
+  [CharacterUidEnum.Xinyan]: guideXinyan,
+  [CharacterUidEnum.YaeMiko]: guideYaeMiko,
+  [CharacterUidEnum.Yanfei]: guideYanfei,
+  [CharacterUidEnum.Yelan]: guideYelan,
+  [CharacterUidEnum.Yoimiya]: guideYoimiya,
 } as GuideCharacters;

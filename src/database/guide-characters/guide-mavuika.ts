@@ -16,7 +16,7 @@ import type { GuideCharacter } from "../types/guide-characters";
 
 export default {
   character_uid: CharacterUidEnum.Mavuika,
-  priority_of_talent_leveling: [
+  talent_leveling_recommendations: [
     { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
     { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },

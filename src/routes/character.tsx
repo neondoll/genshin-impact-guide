@@ -24,8 +24,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type {
-  GuideCharacterAssemblyWeapons, GuideCharacterPriorityOfTalentLeveling, GuideCharacterReferencePoint,
-  GuideCharacterSquadsItem,
+  GuideCharacterAssemblyWeapons, GuideCharacterReferencePoint, GuideCharacterSquadsItem,
+  GuideCharacterTalentLevelingRecommendations,
 } from "@/database/types/guide-characters";
 
 type ArtifactAttributesRecommendationsProps = {
@@ -48,10 +48,10 @@ type AssemblyWeaponsTableProps = {
   character: AssemblyWeaponsProps["character"];
 };
 type PriorityOfTalentLevelingProps = {
-  priorityOfTalentLeveling: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["priority_of_talent_leveling"]>;
+  priorityOfTalentLeveling: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["talent_leveling_recommendations"]>;
 };
 type PriorityOfTalentLevelingTableProps = {
-  priorityOfTalentLeveling: GuideCharacterPriorityOfTalentLeveling;
+  priorityOfTalentLeveling: GuideCharacterTalentLevelingRecommendations;
 };
 type ReferencePointProps = {
   referencePoint: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["reference_point"]>;
@@ -157,9 +157,9 @@ function ArtifactAttributesRecommendations({ artifactAttributesRecommendations }
                   >
                     {artifactAttributeRecommendations.percent !== undefined
                       ? new Intl.NumberFormat(undefined, {
-                        style: "percent",
-                        minimumFractionDigits: 1,
-                      }).format(artifactAttributeRecommendations.percent)
+                          style: "percent",
+                          minimumFractionDigits: 1,
+                        }).format(artifactAttributeRecommendations.percent)
                       : ""}
                   </TableCell>
                 )}
@@ -176,9 +176,9 @@ function ArtifactAttributesRecommendations({ artifactAttributesRecommendations }
                   >
                     {artifactAttributeRecommendations.use_percent !== undefined
                       ? new Intl.NumberFormat(undefined, {
-                        style: "percent",
-                        minimumFractionDigits: 1,
-                      }).format(artifactAttributeRecommendations.use_percent)
+                          style: "percent",
+                          minimumFractionDigits: 1,
+                        }).format(artifactAttributeRecommendations.use_percent)
                       : ""}
                   </TableCell>
                 )}
@@ -324,9 +324,9 @@ function ArtifactSetsRecommendations({ artifactSetsRecommendations, character }:
                 >
                   {artifactSetRecommendations.percent !== undefined
                     ? new Intl.NumberFormat(undefined, {
-                      style: "percent",
-                      minimumFractionDigits: 2,
-                    }).format(artifactSetRecommendations.percent)
+                        style: "percent",
+                        minimumFractionDigits: 2,
+                      }).format(artifactSetRecommendations.percent)
                     : ""}
                 </TableCell>
               )}
@@ -577,15 +577,15 @@ function Squads({ squads }: SquadsProps) {
             <TableCell>
               {Array.isArray(squadsGeneralTemplateUnit)
                 ? (
-                  <div className="flex flex-wrap gap-2" key={index + 1}>
-                    {squadsGeneralTemplateUnit.map((squadsGeneralTemplateItem, index) => (
-                      <SquadsItem key={index} {...squadsGeneralTemplateItem} />
-                    ))}
-                  </div>
-                )
+                    <div className="flex flex-wrap gap-2" key={index + 1}>
+                      {squadsGeneralTemplateUnit.map((squadsGeneralTemplateItem, index) => (
+                        <SquadsItem key={index} {...squadsGeneralTemplateItem} />
+                      ))}
+                    </div>
+                  )
                 : (
-                  <SquadsItem {...squadsGeneralTemplateUnit} />
-                )}
+                    <SquadsItem {...squadsGeneralTemplateUnit} />
+                  )}
             </TableCell>
           </TableRow>
         ))}
@@ -778,10 +778,10 @@ export default function Character() {
                     className={cn({
                       "[&_tr:last-child]:border-b": characterGuide.artifact_recommendations !== undefined
                         || characterGuide.assembly_weapons !== undefined
-                        || characterGuide.priority_of_talent_leveling !== undefined
                         || characterGuide.reference_point !== undefined
                         || characterGuide.rotation !== undefined
                         || characterGuide.squads !== undefined
+                        || characterGuide.talent_leveling_recommendations !== undefined
                         || characterGuide.video_sources !== undefined,
                     })}
                   >
@@ -821,32 +821,26 @@ export default function Character() {
               {(
                 characterGuide.artifact_recommendations !== undefined
                 || characterGuide.assembly_weapons !== undefined
-                || characterGuide.priority_of_talent_leveling !== undefined
                 || characterGuide.reference_point !== undefined
                 || characterGuide.rotation !== undefined
                 || characterGuide.squads !== undefined
+                || characterGuide.talent_leveling_recommendations !== undefined
                 || characterGuide.video_sources !== undefined
               ) && (
                 <Accordion className="w-full" type="multiple">
                   {characterGuide.rotation !== undefined && (
                     <AccordionItem value="rotation">
-                      <AccordionTrigger className="px-6">
-                        Рекомендации по
-                        ротации
-                      </AccordionTrigger>
+                      <AccordionTrigger className="px-6">Рекомендации по ротации</AccordionTrigger>
                       <AccordionContent className="px-6">
                         <Rotation rotation={characterGuide.rotation} />
                       </AccordionContent>
                     </AccordionItem>
                   )}
-                  {characterGuide.priority_of_talent_leveling !== undefined && (
-                    <AccordionItem value="priority_of_talent_leveling">
-                      <AccordionTrigger className="px-6">
-                        Рекомендации по возвышению
-                        талантов
-                      </AccordionTrigger>
+                  {characterGuide.talent_leveling_recommendations !== undefined && (
+                    <AccordionItem value="talent_leveling_recommendations">
+                      <AccordionTrigger className="px-6">Рекомендации по возвышению талантов</AccordionTrigger>
                       <AccordionContent className="px-6">
-                        <PriorityOfTalentLeveling priorityOfTalentLeveling={characterGuide.priority_of_talent_leveling} />
+                        <PriorityOfTalentLeveling priorityOfTalentLeveling={characterGuide.talent_leveling_recommendations} />
                       </AccordionContent>
                     </AccordionItem>
                   )}
@@ -863,10 +857,7 @@ export default function Character() {
                   )}
                   {characterGuide.artifact_recommendations !== undefined && (
                     <AccordionItem value="artifact_recommendations">
-                      <AccordionTrigger className="px-6">
-                        Рекомендации по
-                        артефактам
-                      </AccordionTrigger>
+                      <AccordionTrigger className="px-6">Рекомендации по артефактам</AccordionTrigger>
                       <AccordionContent className="px-6">
                         <ArtifactRecommendations
                           artifactRecommendations={characterGuide.artifact_recommendations}
@@ -877,10 +868,7 @@ export default function Character() {
                   )}
                   {characterGuide.squads !== undefined && (
                     <AccordionItem value="squads_general_template">
-                      <AccordionTrigger className="px-6">
-                        Рекомендации по
-                        отрядам
-                      </AccordionTrigger>
+                      <AccordionTrigger className="px-6">Рекомендации по отрядам</AccordionTrigger>
                       <AccordionContent className="px-6">
                         <Squads squads={characterGuide.squads} />
                       </AccordionContent>

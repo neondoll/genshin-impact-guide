@@ -85,7 +85,7 @@ export default {
     ],
   },
   first_constellation_or_signature_weapon: "С1 и Сигна",
-  priority_of_talent_leveling: [
+  talent_leveling_recommendations: [
     { uid: TalentUidEnum.NormalAttack, priority: "Высокий приоритет\n(10)" },
     { uid: TalentUidEnum.ElementalSkill, priority: "Ситуативно\n(6 | 8)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(6 | 8)" },

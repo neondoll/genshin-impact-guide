@@ -53,7 +53,7 @@ export default {
     { uid: WeaponUidEnum.FlowingPurity, refinement: 5, percent: 0.92 },
   ],
   first_constellation_or_signature_weapon: "Однозначно Сигна",
-  priority_of_talent_leveling: [
+  talent_leveling_recommendations: [
     { uid: TalentUidEnum.NormalAttack, priority: "Высокий приоритет\n(10)" },
     { uid: TalentUidEnum.ElementalSkill, priority: "Средний приоритет\n(8)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Высокий приоритет\n(10)" },

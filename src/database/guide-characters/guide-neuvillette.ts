@@ -62,7 +62,7 @@ export default {
     { uid: WeaponUidEnum.RingOfYaxche, percent: 0.745 },
   ],
   first_constellation_or_signature_weapon: "Сигна > C1, Сигна > C2. Лучше Сигна и С1",
-  priority_of_talent_leveling: [
+  talent_leveling_recommendations: [
     { uid: TalentUidEnum.NormalAttack, priority: "Максимальный приоритет\n(10)" },
     { uid: TalentUidEnum.ElementalSkill, priority: "Ситуативно\n(6 | 8)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(6 | 8)" },

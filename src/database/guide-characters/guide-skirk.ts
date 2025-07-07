@@ -85,18 +85,6 @@ export default {
   ],
   first_constellation_or_signature_weapon: "Сигна > C1,\nC2 > Сигна",
   key_constellations: [1, 2, 5, 6],
-  priority_of_talent_leveling: {
-    [gameVariants[GameVariantEnum.WhenPlayingThroughNormalAttack]]: [
-      { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-      { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
-      { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
-    ],
-    [gameVariants[GameVariantEnum.WhenPlayingThroughElementalBurst]]: [
-      { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-      { uid: TalentUidEnum.ElementalSkill, priority: "Игнорируем\n(1)" },
-      { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
-    ],
-  },
   reference_point: {
     [`${artifactSets[ArtifactSetUidEnum.MarechausseeHunter].name}\n+\n${weapons[WeaponUidEnum.FinaleOfTheDeep].name}`]: [
       ["Макс. HP", "22 041"],
@@ -132,6 +120,18 @@ export default {
     best_teammates: [
       { type: "character", uid: CharacterUidEnum.Escoffier },
       { type: "character", uid: CharacterUidEnum.Furina },
+    ],
+  },
+  talent_leveling_recommendations: {
+    [gameVariants[GameVariantEnum.WhenPlayingThroughNormalAttack]]: [
+      { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
+      { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
+      { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
+    ],
+    [gameVariants[GameVariantEnum.WhenPlayingThroughElementalBurst]]: [
+      { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
+      { uid: TalentUidEnum.ElementalSkill, priority: "Игнорируем\n(1)" },
+      { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
     ],
   },
   video_sources: [
