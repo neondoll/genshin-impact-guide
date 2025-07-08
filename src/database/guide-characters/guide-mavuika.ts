@@ -1,6 +1,6 @@
 import { CharacterUidEnum } from "../enums/characters";
 import { TalentUidEnum } from "../enums/talents";
-import type { GuideCharacter } from "../types/guide-characters";
+import type { CharacterRecommendation } from "../types/character-recommendations";
 
 // type GameVariantUid = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 
@@ -21,4 +21,4 @@ export default {
     { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
   ],
-} as GuideCharacter;
+} as CharacterRecommendation;

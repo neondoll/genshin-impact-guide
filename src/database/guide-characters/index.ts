@@ -81,7 +81,7 @@ import guideYoimiya from "./guide-yoimiya";
 import guideYunJin from "./guide-yun_jin";
 import guideZhongli from "./guide-zhongli";
 import { CharacterUidEnum } from "../enums/characters";
-import type { GuideCharacters } from "../types/guide-characters";
+import type { CharacterRecommendations } from "../types/character-recommendations.ts";
 
 // talent_leveling_recommendations
 // 1 ур. - Не качаем
@@ -172,4 +172,4 @@ export const guideCharacters = {
   [CharacterUidEnum.Yoimiya]: guideYoimiya,
   [CharacterUidEnum.YunJin]: guideYunJin,
   [CharacterUidEnum.Zhongli]: guideZhongli,
-} as GuideCharacters;
+} as CharacterRecommendations;

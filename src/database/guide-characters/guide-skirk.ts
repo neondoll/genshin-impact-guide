@@ -7,7 +7,7 @@ import { ElementUidEnum } from "../enums/elements";
 import { TalentUidEnum } from "../enums/talents";
 import { weapons } from "../weapons";
 import { WeaponUidEnum } from "../enums/weapons";
-import type { GuideCharacter } from "../types/guide-characters";
+import type { CharacterRecommendation } from "../types/character-recommendations";
 
 type GameVariantUid = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 
@@ -149,4 +149,4 @@ export default {
       youtube_url: "https://youtu.be/Rr26SHvbmXE",
     },
   ],
-} as GuideCharacter;
+} as CharacterRecommendation;

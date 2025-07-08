@@ -6,7 +6,7 @@ import { CharacterUidEnum } from "../enums/characters";
 import { TalentUidEnum } from "../enums/talents";
 import { weapons } from "../weapons";
 import { WeaponUidEnum } from "../enums/weapons";
-import type { GuideCharacter } from "../types/guide-characters";
+import type { CharacterRecommendation } from "../types/character-recommendations";
 
 export default {
   character_uid: CharacterUidEnum.Escoffier,
@@ -84,4 +84,4 @@ export default {
     { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Вторичный приоритет\n(9)" },
   ],
-} as GuideCharacter;
+} as CharacterRecommendation;

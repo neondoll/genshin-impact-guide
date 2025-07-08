@@ -6,7 +6,7 @@ import { CharacterUidEnum } from "../enums/characters";
 import { TalentUidEnum } from "../enums/talents";
 import { weapons } from "../weapons";
 import { WeaponUidEnum } from "../enums/weapons";
-import type { GuideCharacter } from "../types/guide-characters";
+import type { CharacterRecommendation } from "../types/character-recommendations";
 
 export default {
   character_uid: CharacterUidEnum.Chevreuse,
@@ -56,4 +56,4 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239080",
     },
   ],
-} as GuideCharacter;
+} as CharacterRecommendation;

@@ -4,7 +4,7 @@ import { AttributeUidEnum } from "../enums/attributes";
 import { CharacterUidEnum } from "../enums/characters";
 import { TalentUidEnum } from "../enums/talents";
 import { WeaponUidEnum } from "../enums/weapons";
-import type { GuideCharacter } from "../types/guide-characters";
+import type { CharacterRecommendation } from "../types/character-recommendations";
 
 export default {
   character_uid: CharacterUidEnum.Xiangling,
@@ -46,4 +46,4 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239080",
     },
   ],
-} as GuideCharacter;
+} as CharacterRecommendation;

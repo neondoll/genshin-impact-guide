@@ -4,7 +4,7 @@ import { AttributeUidEnum } from "../enums/attributes";
 import { CharacterUidEnum } from "../enums/characters";
 import { TalentUidEnum } from "../enums/talents";
 import { WeaponUidEnum } from "../enums/weapons";
-import type { GuideCharacter } from "../types/guide-characters";
+import type { CharacterRecommendation } from "../types/character-recommendations";
 
 export default {
   character_uid: CharacterUidEnum.Varesa,
@@ -58,4 +58,4 @@ export default {
     { uid: TalentUidEnum.ElementalSkill, priority: "Средний приоритет\n(8)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Высокий приоритет\n(10)" },
   ],
-} as GuideCharacter;
+} as CharacterRecommendation;

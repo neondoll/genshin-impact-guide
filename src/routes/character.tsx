@@ -24,9 +24,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type {
-  GuideCharacterAssemblyWeapons, GuideCharacterReferencePoint, GuideCharacterSquadsItem,
-  GuideCharacterTalentLevelingRecommendations,
-} from "@/database/types/guide-characters";
+  CharacterReferencePointRecommendations, CharacterSquadItemRecommendation, CharacterTalentLevelingRecommendations,
+  CharacterWeaponRecommendations,
+} from "@/database/types/character-recommendations";
 
 type ArtifactAttributesRecommendationsProps = {
   artifactAttributesRecommendations: ArtifactRecommendationsProps["artifactRecommendations"]["attributes"];
@@ -44,20 +44,20 @@ type AssemblyWeaponsProps = {
   character: CharacterLoaderData["character"];
 };
 type AssemblyWeaponsTableProps = {
-  assemblyWeapons: GuideCharacterAssemblyWeapons;
+  assemblyWeapons: CharacterWeaponRecommendations;
   character: AssemblyWeaponsProps["character"];
 };
 type PriorityOfTalentLevelingProps = {
   priorityOfTalentLeveling: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["talent_leveling_recommendations"]>;
 };
 type PriorityOfTalentLevelingTableProps = {
-  priorityOfTalentLeveling: GuideCharacterTalentLevelingRecommendations;
+  priorityOfTalentLeveling: CharacterTalentLevelingRecommendations;
 };
 type ReferencePointProps = {
   referencePoint: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["reference_point"]>;
 };
 type ReferencePointTableProps = {
-  referencePoint: GuideCharacterReferencePoint;
+  referencePoint: CharacterReferencePointRecommendations;
 };
 type RotationProps = {
   rotation: NonNullable<NonNullable<CharacterLoaderData["characterGuide"]>["rotation"]>;
@@ -604,7 +604,7 @@ function Squads({ squads }: SquadsProps) {
   );
 }
 
-function SquadsItem({ type, uid }: GuideCharacterSquadsItem) {
+function SquadsItem({ type, uid }: CharacterSquadItemRecommendation) {
   switch (type) {
     case "character": {
       const character = getCharacter(uid);
