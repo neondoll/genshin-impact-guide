@@ -4,7 +4,7 @@ import type { ArtifactPieces } from "./types/artifact-pieces";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-pieces/${src}`);
 
-export const artifactPieces = {
+export default {
   [ArtifactPieceUidEnum.FlowerOfLife]: {
     uid: ArtifactPieceUidEnum.FlowerOfLife,
     name: "Цветок жизни",

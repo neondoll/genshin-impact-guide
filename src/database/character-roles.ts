@@ -4,7 +4,7 @@ import type { CharacterRoles } from "./types/character-roles";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`character-roles/${src}`);
 
-export const characterRoles = {
+export default {
   [CharacterRoleUidEnum.OnField]: {
     name: "На поле",
     description: "Разумно распределяйте время, чтобы такие персонажи могли <span class='text-orange-500'>сражаться на поле боя</span> как можно больше, тем самым в полной мере используя их сильные стороны.",

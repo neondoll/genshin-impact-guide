@@ -13,8 +13,8 @@ import Paths from "@/constants/paths";
 import Root from "@/routes/root";
 import Weapons, { type WeaponsLoaderData } from "@/routes/weapons";
 import {
-  getArtifactPieces, getArtifactSet, getArtifactSets, getCharacter, getCharacterRole, getCharacters, getElement,
-  getGuideCharacter, getRegion, getWeapons, getWeaponType,
+  getArtifactPieces, getArtifactSet, getArtifactSets, getCharacter, getCharacterRecommendations, getCharacterRole,
+  getCharacters, getElement, getRegion, getWeapons, getWeaponType,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { ArtifactSetUid } from "@/database/types/artifact-sets";
@@ -52,7 +52,7 @@ const router = createHashRouter([
           return {
             character,
             characterElement: getElement(character.element_uid),
-            characterGuide: getGuideCharacter(params.characterUid as CharacterUid),
+            characterRecommendations: getCharacterRecommendations(params.characterUid as CharacterUid),
             characterRoles: character.roles_uid.map(characterRoleUid => getCharacterRole(characterRoleUid)),
             characterWeaponType: getWeaponType(character.weapon_type_uid),
           };

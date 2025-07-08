@@ -6,7 +6,7 @@ import type { ArtifactSets } from "./types/artifact-sets";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-sets/${src}`);
 
-export const artifactSets = {
+export default {
   [ArtifactSetUidEnum.MaidenBeloved]: {
     uid: ArtifactSetUidEnum.MaidenBeloved,
     name: "Возлюбленная юная дева",

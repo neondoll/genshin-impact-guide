@@ -11,7 +11,7 @@ import type { Characters } from "./types/characters";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`characters/${src}`);
 
-export const characters = {
+export default {
   [CharacterUidEnum.Alhaitham]: {
     uid: CharacterUidEnum.Alhaitham,
     name: "Аль-Хайтам",

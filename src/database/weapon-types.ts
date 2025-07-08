@@ -4,7 +4,7 @@ import type { WeaponTypes } from "./types/weapon-types";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`weapon-types/${src}`);
 
-export const weaponTypes = {
+export default {
   [WeaponTypeUidEnum.Claymore]: {
     name: "Двуручное",
     image_src: imageSrc("claymore-128x128.png"),

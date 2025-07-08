@@ -5,6 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function numberFormatPercent(value: number | bigint, minimumFractionDigits?: number) {
+  return new Intl.NumberFormat(undefined, { style: "percent", minimumFractionDigits }).format(value);
+}
+
 export function publicImageSrc(src: string) {
   return publicSrc(`images/${src}`);
 }

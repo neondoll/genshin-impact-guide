@@ -1,15 +1,14 @@
-import { artifactPieces } from "./artifact-pieces";
-import { artifactSets } from "./artifact-sets";
-import { attributes } from "./attributes";
-import { characterRoles } from "./character-roles";
-import { characters } from "./characters";
-import { elements } from "./elements";
-import { guideCharacters } from "./guide-characters";
-import { regions } from "./regions";
-import { talents } from "./talents";
-import { weaponTypes } from "./weapon-types";
-import { weapons } from "./weapons";
-import { worlds } from "./worlds";
+import artifactPieces from "./artifact-pieces";
+import artifactSets from "./artifact-sets";
+import attributes from "./attributes";
+import characterRecommendations from "./character-recommendations";
+import characterRoles from "./character-roles";
+import characters from "./characters";
+import elements from "./elements";
+import regions from "./regions";
+import talents from "./talents";
+import weaponTypes from "./weapon-types";
+import weapons from "./weapons";
 import type { ArtifactSetUid } from "./types/artifact-sets";
 import type { AttributeUid } from "./types/attributes";
 import type { CharacterRoleUid } from "./types/character-roles";
@@ -24,90 +23,54 @@ export function getArtifactPieces() {
   return artifactPieces;
 }
 
-export function getArtifactSet(uid: ArtifactSetUid) {
-  return artifactSets[uid];
+export function getArtifactSet(artifactSetUid: ArtifactSetUid) {
+  return artifactSets[artifactSetUid];
 }
 
 export function getArtifactSets() {
   return artifactSets;
 }
 
-export function getAttribute(uid: AttributeUid) {
-  return attributes[uid];
+export function getAttribute(attributeUid: AttributeUid) {
+  return attributes[attributeUid];
 }
 
-export function getAttributes() {
-  return attributes;
+export function getCharacter(characterUid: CharacterUid) {
+  return characters[characterUid];
 }
 
-export function getCharacter(uid: CharacterUid) {
-  return characters[uid];
+export function getCharacterRecommendations(characterUid: CharacterUid) {
+  return characterUid in characterRecommendations ? characterRecommendations[characterUid] : undefined;
 }
 
-export function getCharacterRole(uid: CharacterRoleUid) {
-  return characterRoles[uid];
-}
-
-export function getCharacterRoles() {
-  return characterRoles;
+export function getCharacterRole(characterRoleUid: CharacterRoleUid) {
+  return characterRoles[characterRoleUid];
 }
 
 export function getCharacters() {
   return characters;
 }
 
-export function getElement(uid: ElementUid) {
-  return elements[uid];
+export function getElement(elementUid: ElementUid) {
+  return elements[elementUid];
 }
 
-export function getElementCharacters(uid: ElementUid) {
-  return Object.values(characters).filter(character => character.element_uid === uid);
+export function getRegion(regionUid: RegionUid) {
+  return regions[regionUid];
 }
 
-export function getElements() {
-  return elements;
+export function getTalent(talentUid: TalentUid) {
+  return talents[talentUid];
 }
 
-export function getGuideCharacter(characterUid: CharacterUid) {
-  return characterUid in guideCharacters ? guideCharacters[characterUid] : undefined;
-}
-
-export function getGuideCharacters() {
-  return guideCharacters;
-}
-
-export function getRegion(uid: RegionUid) {
-  return regions[uid];
-}
-
-export function getRegions() {
-  return regions;
-}
-
-export function getTalent(uid: TalentUid) {
-  return talents[uid];
-}
-
-export function getTalents() {
-  return talents;
-}
-
-export function getWeapon(uid: WeaponUid) {
-  return weapons[uid];
+export function getWeapon(weaponUid: WeaponUid) {
+  return weapons[weaponUid];
 }
 
 export function getWeapons() {
   return weapons;
 }
 
-export function getWeaponType(uid: WeaponTypeUid) {
-  return weaponTypes[uid];
-}
-
-export function getWeaponTypes() {
-  return weaponTypes;
-}
-
-export function getWorlds() {
-  return worlds;
+export function getWeaponType(weaponTypeUid: WeaponTypeUid) {
+  return weaponTypes[weaponTypeUid];
 }

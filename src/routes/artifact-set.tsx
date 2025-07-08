@@ -12,9 +12,55 @@ import { cn } from "@/lib/utils";
 import { getArtifactPieces, getArtifactSet, getCharacter } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 
+function ArtifactSetBreadcrumbs({ item }: { item: ArtifactSetLoaderData["artifactSet"] }) {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList className="gap-1 text-xs sm:gap-2">
+        <BreadcrumbItem>
+          <BreadcrumbLink asChild>
+            <Link children="Главная" to={Paths.Root} />
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink asChild>
+            <Link children="Артефакты" to={Paths.ArtifactSets} />
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbPage children={item.name} />
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}
+
+function ArtifactSetHeading({ item }: { item: ArtifactSetLoaderData["artifactSet"] }) {
+  return (
+    <div className="flex gap-x-3">
+      <img
+        alt={item.name}
+        className={cn(
+          "shrink-0 size-16 rounded-md rounded-br-2xl",
+          Math.max(...item.qualities) === 3 && "bg-[linear-gradient(180deg,#567496,#5392b8)]",
+          Math.max(...item.qualities) === 4 && "bg-[linear-gradient(180deg,#5e5789,#9c75b7)]",
+          Math.max(...item.qualities) === 5 && "bg-[linear-gradient(180deg,#945c2c,#b27330)]",
+        )}
+        src={item[ArtifactPieceUidEnum.FlowerOfLife].image_src}
+      />
+      <div className="space-y-1">
+        <div className="flex gap-x-1 items-center">
+          <h1 children={item.name} className="text-3xl" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export type ArtifactSetLoaderData = {
-  artifactPieces: Awaited<ReturnType<typeof getArtifactPieces>>;
-  artifactSet: Awaited<ReturnType<typeof getArtifactSet>>;
+  artifactPieces: ReturnType<typeof getArtifactPieces>;
+  artifactSet: ReturnType<typeof getArtifactSet>;
 };
 
 export default function ArtifactSet() {
@@ -22,42 +68,8 @@ export default function ArtifactSet() {
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
-      <Breadcrumb>
-        <BreadcrumbList className="gap-1 text-xs sm:gap-2">
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link to={Paths.Root}>Главная</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link to={Paths.ArtifactSets}>Артефакты</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{artifactSet.name}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-      <div className="flex gap-x-3">
-        <img
-          alt={artifactSet.name}
-          className={cn(
-            "shrink-0 size-16 rounded-md rounded-br-2xl",
-            Math.max(...artifactSet.qualities) === 3 && "bg-[linear-gradient(180deg,#567496,#5392b8)]",
-            Math.max(...artifactSet.qualities) === 4 && "bg-[linear-gradient(180deg,#5e5789,#9c75b7)]",
-            Math.max(...artifactSet.qualities) === 5 && "bg-[linear-gradient(180deg,#945c2c,#b27330)]",
-          )}
-          src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
-        />
-        <div className="space-y-1">
-          <div className="flex gap-x-1 items-center">
-            <h1 className="text-3xl">{artifactSet.name}</h1>
-          </div>
-        </div>
-      </div>
+      <ArtifactSetBreadcrumbs item={artifactSet} />
+      <ArtifactSetHeading item={artifactSet} />
       <Card>
         <CardHeader>
           <CardTitle>Характеристики</CardTitle>

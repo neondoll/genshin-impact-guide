@@ -4,7 +4,7 @@ import type { Regions } from "./types/regions";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`regions/${src}`);
 
-export const regions = {
+export default {
   [RegionUidEnum.Mondstadt]: { name: "Мондштадт", emblem_image_src: imageSrc("mondstadt-emblem-256x256.png") },
   [RegionUidEnum.Liyue]: { name: "Ли Юэ", emblem_image_src: imageSrc("liyue-emblem-256x256.png") },
   [RegionUidEnum.Inazuma]: { name: "Инадзума", emblem_image_src: imageSrc("inazuma-emblem-256x256.png") },

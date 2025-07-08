@@ -13,9 +13,10 @@ type CharacterArtifactAttributeRecommendation = {
   description?: string;
   notes?: string[];
 };
+type CharacterArtifactAttributeRecommendations = Record<typeof ArtifactPieceUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", CharacterArtifactAttributeRecommendation[]>;
 type CharacterArtifactRecommendations = {
-  sets: CharacterArtifactSetRecommendation[];
-  attributes: Record<typeof ArtifactPieceUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", CharacterArtifactAttributeRecommendation[]>;
+  sets: CharacterArtifactSetRecommendations;
+  attributes: CharacterArtifactAttributeRecommendations;
 };
 type CharacterArtifactSetRecommendation = {
   uid: ArtifactSetUid;
@@ -24,14 +25,14 @@ type CharacterArtifactSetRecommendation = {
   description?: string;
   notes?: string[];
 };
+type CharacterArtifactSetRecommendations = CharacterArtifactSetRecommendation[];
 type CharacterSquadElementRecommendation = { type: "element"; uid: ElementUid };
 type CharacterSquadCharacterRecommendation = { type: "character"; uid: CharacterUid };
 type CharacterTalentLevelingRecommendation = { uid: TalentUid; priority: string };
 type CharacterWeaponRecommendation = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
 
 export type CharacterRecommendation = {
-  artifact_recommendations?: CharacterArtifactRecommendations;
-  assembly_weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
+  artifacts?: CharacterArtifactRecommendations;
   character_uid: CharacterUid;
   first_constellation_or_signature_weapon?: string;
   key_constellations?: (1 | 2 | 3 | 4 | 5 | 6)[];
@@ -42,8 +43,9 @@ export type CharacterRecommendation = {
     general_template: (CharacterSquadItemRecommendation | CharacterSquadItemRecommendation[])[];
     best_teammates: CharacterSquadItemRecommendation[];
   };
-  talent_leveling_recommendations?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
+  talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
   video_sources?: { title: string; vk_url?: string; youtube_url?: string }[];
+  weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
 };
 export type CharacterRecommendations = Record<CharacterUid, CharacterRecommendation>;
 export type CharacterReferencePointRecommendations = [string, string][];

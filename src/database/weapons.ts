@@ -5,7 +5,7 @@ import type { Weapons } from "./types/weapons";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`weapons/${src}`);
 
-export const weapons = {
+export default {
   [WeaponUidEnum.BalladOfTheFjords]: {
     name: "Баллада фьордов",
     type: WeaponTypeUidEnum.Polearm,

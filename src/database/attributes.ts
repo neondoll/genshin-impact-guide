@@ -1,12 +1,12 @@
+import elements from "./elements";
 import { AttributeUidEnum } from "./enums/attributes";
-import { elements } from "./elements";
 import { ElementUidEnum } from "./enums/elements";
 import { publicImageSrc } from "@/lib/utils";
 import type { Attributes } from "./types/attributes";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`attributes/${src}`);
 
-export const attributes = {
+export default {
   [AttributeUidEnum.Health]: { uid: AttributeUidEnum.Health, name: "HP", image_src: imageSrc("health-48x48.png") },
   [AttributeUidEnum.HealthPercent]: {
     uid: AttributeUidEnum.HealthPercent,

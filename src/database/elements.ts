@@ -5,7 +5,7 @@ import type { Elements } from "./types/elements";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`elements/${src}`);
 
-export const elements = {
+export default {
   [ElementUidEnum.Anemo]: {
     uid: ElementUidEnum.Anemo,
     name: "Анемо",
