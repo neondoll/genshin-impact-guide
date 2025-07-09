@@ -36,9 +36,9 @@ export default {
   character_uid: CharacterUidEnum.Furina,
   reference_point: [["Макс. HP", "33 000"], ["Восст. энергии", "170%"], ["Крит. шанс", "60%"], ["Крит. урон", "140%"]],
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(10)" },
   ],
   video_sources: [
     {

@@ -45,9 +45,9 @@ export default {
   },
   character_uid: CharacterUidEnum.Iansan,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1 - 6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Игнорируем\n(1 - 6)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Высокий приоритет\n(10)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1 - 6)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "Не качаем\n(1 - 6)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   weapons: [
     { uid: WeaponUidEnum.SkywardSpine },

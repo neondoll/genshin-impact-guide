@@ -45,9 +45,9 @@ export default {
   character_uid: CharacterUidEnum.Neuvillette,
   first_constellation_or_signature_weapon: "Сигна > C1, Сигна > C2. Лучше Сигна и С1",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Максимальный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Ситуативно\n(6 | 8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(6 | 8)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(6 | 8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "По необходимости\n(6 | 8)" },
   ],
   video_sources: [
     {

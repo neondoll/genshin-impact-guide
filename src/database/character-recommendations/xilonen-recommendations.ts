@@ -29,9 +29,9 @@ export default {
   character_uid: CharacterUidEnum.Xilonen,
   first_constellation_or_signature_weapon: "Сигна > С1, но С2 > Сигна",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(8)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(8)" },
   ],
   weapons: [{ uid: WeaponUidEnum.PeakPatrolSong }, { uid: WeaponUidEnum.FavoniusSword }],
 } as CharacterRecommendation;

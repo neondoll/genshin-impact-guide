@@ -5,9 +5,9 @@ import type { CharacterRecommendation } from "../types/character-recommendations
 export default {
   character_uid: CharacterUidEnum.Diluc,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Золотая середина\n(8)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Золотая середина\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Золотая середина\n(8)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(8)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "По необходимости\n(8)" },
   ],
   video_sources: [
     {

@@ -43,9 +43,9 @@ export default {
   character_uid: CharacterUidEnum.Varesa,
   first_constellation_or_signature_weapon: "Однозначно Сигна",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Высокий приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Средний приоритет\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Высокий приоритет\n(10)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(10)" },
   ],
   weapons: [
     { uid: WeaponUidEnum.VividNotions, percent: 1.28 },

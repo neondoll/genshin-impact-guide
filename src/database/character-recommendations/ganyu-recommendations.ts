@@ -6,19 +6,19 @@ export default {
   character_uid: CharacterUidEnum.Ganyu,
   talent_leveling: {
     Мелт: [
-      { uid: TalentUidEnum.NormalAttack, priority: "Главный приоритет\n(10)" },
-      { uid: TalentUidEnum.ElementalSkill, priority: "Золотая середина\n(8)" },
+      { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
+      { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(8)" },
       { uid: TalentUidEnum.ElementalBurst, priority: "Не качаем\n(1)" },
     ],
     Фриз: [
-      { uid: TalentUidEnum.NormalAttack, priority: "Главный приоритет\n(10)" },
-      { uid: TalentUidEnum.ElementalSkill, priority: "Золотая середина\n(8)" },
-      { uid: TalentUidEnum.ElementalBurst, priority: "Можно прокачать\n(6)" },
+      { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
+      { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(8)" },
+      { uid: TalentUidEnum.ElementalBurst, priority: "По необходимости\n(6)" },
     ],
     Саппорт: [
       { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-      { uid: TalentUidEnum.ElementalSkill, priority: "Можно прокачать\n(6)" },
-      { uid: TalentUidEnum.ElementalBurst, priority: "Золотая середина\n(8)" },
+      { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(6)" },
+      { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(8)" },
     ],
   },
   video_sources: [

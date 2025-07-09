@@ -49,9 +49,9 @@ export default {
   character_uid: CharacterUidEnum.Arlecchino,
   first_constellation_or_signature_weapon: "С1 и Сигна",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Высокий приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Ситуативно\n(6 | 8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Ситуативно\n(6 | 8)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(6 | 8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(6 | 8)" },
   ],
   weapons: {
     "Гиперкери | Прожарка | отр. Шеврёз": [

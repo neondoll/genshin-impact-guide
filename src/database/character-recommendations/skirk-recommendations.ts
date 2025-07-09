@@ -109,14 +109,14 @@ export default {
   },
   talent_leveling: {
     [gameVariants[GameVariantEnum.WhenPlayingThroughNormalAttack]]: [
-      { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-      { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
-      { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
+      { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
+      { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
+      { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(10)" },
     ],
     [gameVariants[GameVariantEnum.WhenPlayingThroughElementalBurst]]: [
-      { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-      { uid: TalentUidEnum.ElementalSkill, priority: "Игнорируем\n(1)" },
-      { uid: TalentUidEnum.ElementalBurst, priority: "Максимальный приоритет\n(10)" },
+      { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
+      { uid: TalentUidEnum.ElementalSkill, priority: "Не качаем\n(1)" },
+      { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
     ],
   },
   video_sources: [

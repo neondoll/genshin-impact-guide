@@ -42,8 +42,8 @@ export default {
   required_level: 90,
   talent_leveling: [
     { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Золотая середина\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Золотая середина\n(8)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(8)" },
   ],
   video_sources: [
     {

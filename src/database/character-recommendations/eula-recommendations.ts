@@ -5,9 +5,9 @@ import type { CharacterRecommendation } from "../types/character-recommendations
 export default {
   character_uid: CharacterUidEnum.Eula,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Главный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Можно прокачать\n(6)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Главный приоритет\n(10)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "Во вторую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(6)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   video_sources: [
     {

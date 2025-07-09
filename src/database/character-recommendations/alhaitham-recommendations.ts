@@ -5,9 +5,9 @@ import type { CharacterRecommendation } from "../types/character-recommendations
 export default {
   character_uid: CharacterUidEnum.Alhaitham,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Можно прокачать\n(6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Золотая середина\n(8)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "Во вторую очередь\n(6)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "По необходимости\n(8)" },
   ],
   video_sources: [
     {

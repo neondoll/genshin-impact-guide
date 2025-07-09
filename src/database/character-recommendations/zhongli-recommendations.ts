@@ -6,7 +6,7 @@ export default {
   character_uid: CharacterUidEnum.Zhongli,
   talent_leveling: [
     { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(10)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Не качаем\n(1)" },
   ],
   video_sources: [

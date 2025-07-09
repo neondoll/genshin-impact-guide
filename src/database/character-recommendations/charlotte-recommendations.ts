@@ -7,7 +7,7 @@ export default {
   talent_leveling: [
     { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
     { uid: TalentUidEnum.ElementalSkill, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Золотая середина\n(8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(8)" },
   ],
   video_sources: [
     {

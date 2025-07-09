@@ -6,8 +6,8 @@ export default {
   character_uid: CharacterUidEnum.Shenhe,
   talent_leveling: [
     { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Главный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Главный приоритет\n(10)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(10)" },
   ],
   video_sources: [
     {

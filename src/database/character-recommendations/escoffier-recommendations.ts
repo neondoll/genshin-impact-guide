@@ -60,9 +60,9 @@ export default {
   ],
   required_level: 90,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Игнорируем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Максимальный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Вторичный приоритет\n(9)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(9)" },
   ],
   weapons: [
     { uid: WeaponUidEnum.SymphonistOfScents, percent: 1.2991 },

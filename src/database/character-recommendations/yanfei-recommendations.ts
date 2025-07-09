@@ -5,9 +5,9 @@ import type { CharacterRecommendation } from "../types/character-recommendations
 export default {
   character_uid: CharacterUidEnum.Yanfei,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Главный приоритет\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Золотая середина\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Золотая середина\n(8)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(8)" },
   ],
   video_sources: [
     {

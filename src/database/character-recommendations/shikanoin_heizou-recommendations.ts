@@ -5,9 +5,9 @@ import type { CharacterRecommendation } from "../types/character-recommendations
 export default {
   character_uid: CharacterUidEnum.ShikanoinHeizou,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Можно прокачать\n(6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Золотая середина\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Золотая середина\n(8)" },
+    { uid: TalentUidEnum.NormalAttack, priority: "По необходимости\n(6)" },
+    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(8)" },
+    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(8)" },
   ],
   video_sources: [
     {
