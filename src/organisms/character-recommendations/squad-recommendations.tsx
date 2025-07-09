@@ -57,16 +57,34 @@ export default function SquadRecommendations({ recommendations }: SquadRecommend
             </TableCell>
           </TableRow>
         ))}
-        <TableRow className="hover:bg-inherit">
-          <TableHead>Лучшие тиммейты</TableHead>
-          <TableCell>
-            <div className="flex flex-wrap gap-2">
-              {recommendations.best_teammates.map((bestTeammate, index) => (
-                <SquadRecommendationsItem key={index} {...bestTeammate} />
-              ))}
-            </div>
-          </TableCell>
-        </TableRow>
+        {Array.isArray(recommendations.best_teammates)
+          ? (
+              <TableRow className="hover:bg-inherit">
+                <TableHead>Лучшие тиммейты</TableHead>
+                <TableCell>
+                  <div className="flex flex-wrap gap-2">
+                    {recommendations.best_teammates.map((bestTeammate, index) => (
+                      <SquadRecommendationsItem key={index} {...bestTeammate} />
+                    ))}
+                  </div>
+                </TableCell>
+              </TableRow>
+            )
+          : Object.entries(recommendations.best_teammates).map(([key, bestTeammates], index) => (
+              <TableRow className="hover:bg-inherit" key={key}>
+                {index === 0 && (
+                  <TableHead rowSpan={Object.entries(recommendations.best_teammates).length}>Лучшие тиммейты</TableHead>
+                )}
+                <TableHead>{key}</TableHead>
+                <TableCell>
+                  <div className="flex flex-wrap gap-2">
+                    {bestTeammates.map((bestTeammate, index) => (
+                      <SquadRecommendationsItem key={index} {...bestTeammate} />
+                    ))}
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
       </TableBody>
     </Table>
   );

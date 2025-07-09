@@ -6,6 +6,20 @@ import type { Weapons } from "./types/weapons";
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`weapons/${src}`);
 
 export default {
+  [WeaponUidEnum.MakhairaAquamarine]: {
+    uid: WeaponUidEnum.MakhairaAquamarine,
+    name: "Аквамарин Махайры",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("makhaira_aquamarine-256x256.png"),
+  },
+  [WeaponUidEnum.Akuoumaru]: {
+    uid: WeaponUidEnum.Akuoumaru,
+    name: "Акуомару",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("akuoumaru-256x256.png"),
+  },
   [WeaponUidEnum.BalladOfTheFjords]: {
     name: "Баллада фьордов",
     type: WeaponTypeUidEnum.Polearm,
@@ -30,6 +44,13 @@ export default {
     quality: 4,
     image_src: imageSrc("the_stringless-256x256.png"),
   },
+  [WeaponUidEnum.LuxuriousSeaLord]: {
+    uid: WeaponUidEnum.LuxuriousSeaLord,
+    name: "Благодатный владыка вод",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("luxurious_sea_lord-256x256.png"),
+  },
   [WeaponUidEnum.SplendorOfTranquilWaters]: {
     name: "Блеск тихих вод",
     type: WeaponTypeUidEnum.Sword,
@@ -47,6 +68,13 @@ export default {
     type: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     image_src: imageSrc("jadefalls_splendor-256x256.png"),
+  },
+  [WeaponUidEnum.Verdict]: {
+    uid: WeaponUidEnum.Verdict,
+    name: "Вердикт",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 5,
+    image_src: imageSrc("verdict-256x256.png"),
   },
   [WeaponUidEnum.TheDockhandsAssistant]: {
     name: "Верфь",
@@ -66,11 +94,25 @@ export default {
     quality: 4,
     image_src: imageSrc("wolf_fang-256x256.png"),
   },
+  [WeaponUidEnum.WolfsGravestone]: {
+    uid: WeaponUidEnum.WolfsGravestone,
+    name: "Волчья погибель",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 5,
+    image_src: imageSrc("wolfs_gravestone-256x256.png"),
+  },
   [WeaponUidEnum.TulaytullahsRemembrance]: {
     name: "Воспоминания Тулайтуллы",
     type: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     image_src: imageSrc("tulaytullahs_remembrance-256x256.png"),
+  },
+  [WeaponUidEnum.TalkingStick]: {
+    uid: WeaponUidEnum.TalkingStick,
+    name: "Говорящая палица",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("talking_stick-256x256.png"),
   },
   [WeaponUidEnum.FinaleOfTheDeep]: {
     name: "Грандиозный финал глубин",
@@ -126,6 +168,13 @@ export default {
     quality: 4,
     image_src: imageSrc("lithic_spear-256x256.png"),
   },
+  [WeaponUidEnum.FangOfTheMountainKing]: {
+    uid: WeaponUidEnum.FangOfTheMountainKing,
+    name: "Клык Горного короля",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 5,
+    image_src: imageSrc("fang_of_the_mountain_king-256x256.png"),
+  },
   [WeaponUidEnum.KeyOfKhajNisut]: {
     name: "Ключ Хадж-нисут",
     type: WeaponTypeUidEnum.Sword,
@@ -149,6 +198,13 @@ export default {
     type: WeaponTypeUidEnum.Polearm,
     quality: 4,
     image_src: imageSrc("favonius_lance-256x256.png"),
+  },
+  [WeaponUidEnum.RedhornStonethresher]: {
+    uid: WeaponUidEnum.RedhornStonethresher,
+    name: "Краснорогий камнеруб",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 5,
+    image_src: imageSrc("redhorn_stonethresher-256x256.png"),
   },
   [WeaponUidEnum.KitainCrossSpear]: {
     name: "Крест-копьё Китаин",
@@ -180,6 +236,27 @@ export default {
     quality: 4,
     image_src: imageSrc("xiphos_moonlight-256x256.png"),
   },
+  [WeaponUidEnum.UltimateOverlordsMegaMagicSword]: {
+    uid: WeaponUidEnum.UltimateOverlordsMegaMagicSword,
+    name: "«Магический супермеч высшего владыки»",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("ultimate_overlords_mega_magic_sword-256x256.png"),
+  },
+  [WeaponUidEnum.BeaconOfTheReedSea]: {
+    uid: WeaponUidEnum.BeaconOfTheReedSea,
+    name: "Маяк тростникового моря",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 5,
+    image_src: imageSrc("beacon_of_the_reed_sea-256x256.png"),
+  },
+  [WeaponUidEnum.SerpentSpine]: {
+    uid: WeaponUidEnum.SerpentSpine,
+    name: "Меч драконьей кости",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("serpent_spine-256x256.png"),
+  },
   [WeaponUidEnum.FavoniusSword]: {
     name: "Меч Фавония",
     type: WeaponTypeUidEnum.Sword,
@@ -197,6 +274,20 @@ export default {
     type: WeaponTypeUidEnum.Polearm,
     quality: 5,
     image_src: imageSrc("skyward_spine-256x256.png"),
+  },
+  [WeaponUidEnum.SkywardPride]: {
+    uid: WeaponUidEnum.SkywardPride,
+    name: "Небесное величие",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 5,
+    image_src: imageSrc("skyward_pride-256x256.png"),
+  },
+  [WeaponUidEnum.TheUnforged]: {
+    uid: WeaponUidEnum.TheUnforged,
+    name: "Некованый",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 5,
+    image_src: imageSrc("the_unforged-256x256.png"),
   },
   [WeaponUidEnum.PrimordialJadeWingedSpear]: {
     name: "Нефритовый коршун",
@@ -252,6 +343,13 @@ export default {
     quality: 5,
     image_src: imageSrc("peak_patrol_song-256x256.png"),
   },
+  [WeaponUidEnum.SongOfBrokenPines]: {
+    uid: WeaponUidEnum.SongOfBrokenPines,
+    name: "Песнь разбитых сосен",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 5,
+    image_src: imageSrc("song_of_broken_pines-256x256.png"),
+  },
   [WeaponUidEnum.TheWidsith]: {
     name: "Песнь странника",
     type: WeaponTypeUidEnum.Catalyst,
@@ -281,6 +379,13 @@ export default {
     type: WeaponTypeUidEnum.Sword,
     quality: 3,
     image_src: imageSrc("harbinger_of_dawn-256x256.png"),
+  },
+  [WeaponUidEnum.PrototypeArchaic]: {
+    uid: WeaponUidEnum.PrototypeArchaic,
+    name: "Прототип: Архаичный",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("prototype_archaic-256x256.png"),
   },
   [WeaponUidEnum.PrototypeAmber]: {
     name: "Прототип: Янтарь",
@@ -336,6 +441,20 @@ export default {
     quality: 4,
     image_src: imageSrc("tamayuratei_no_ohanashi-256x256.png"),
   },
+  [WeaponUidEnum.TidalShadow]: {
+    uid: WeaponUidEnum.TidalShadow,
+    name: "Тень волны",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("tidal_shadow-256x256.png"),
+  },
+  [WeaponUidEnum.AThousandBlazingSuns]: {
+    uid: WeaponUidEnum.AThousandBlazingSuns,
+    name: "Тысяча ослепительных солнц",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 5,
+    image_src: imageSrc("a_thousand_blazing_suns-256x256.png"),
+  },
   [WeaponUidEnum.UrakuMisugiri]: {
     name: "Ураку мисугири",
     type: WeaponTypeUidEnum.Sword,
@@ -354,11 +473,25 @@ export default {
     quality: 5,
     image_src: imageSrc("haran_geppaku_futsu-256x256.png"),
   },
+  [WeaponUidEnum.MailedFlower]: {
+    uid: WeaponUidEnum.MailedFlower,
+    name: "Цветок в латах",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("mailed_flower-256x256.png"),
+  },
   [WeaponUidEnum.SacrificialSword]: {
     name: "Церемониальный меч",
     type: WeaponTypeUidEnum.Sword,
     quality: 4,
     image_src: imageSrc("sacrificial_sword-256x256.png"),
+  },
+  [WeaponUidEnum.BlackcliffSlasher]: {
+    uid: WeaponUidEnum.BlackcliffSlasher,
+    name: "Черногорская бритва",
+    type: WeaponTypeUidEnum.Claymore,
+    quality: 4,
+    image_src: imageSrc("blackcliff_slasher-256x256.png"),
   },
   [WeaponUidEnum.BlackcliffPole]: {
     name: "Черногорская пика",

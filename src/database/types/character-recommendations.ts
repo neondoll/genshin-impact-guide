@@ -30,6 +30,7 @@ type CharacterSquadElementRecommendation = { type: "element"; uid: ElementUid };
 type CharacterSquadCharacterRecommendation = { type: "character"; uid: CharacterUid };
 type CharacterTalentLevelingRecommendation = { uid: TalentUid; priority: string };
 type CharacterWeaponRecommendation = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
+type CharacterRecommendationSquadBestTeammates = CharacterSquadItemRecommendation[];
 
 export type CharacterRecommendation = {
   artifacts?: CharacterArtifactRecommendations;
@@ -41,7 +42,7 @@ export type CharacterRecommendation = {
   rotation?: string | Record<string, string>;
   squads?: {
     general_template: (CharacterSquadItemRecommendation | CharacterSquadItemRecommendation[])[];
-    best_teammates: CharacterSquadItemRecommendation[];
+    best_teammates: CharacterRecommendationSquadBestTeammates | Record<string, CharacterRecommendationSquadBestTeammates>;
   };
   talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
   video_sources?: { title: string; vk_url?: string; youtube_url?: string }[];
