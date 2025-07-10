@@ -112,7 +112,7 @@ export default function ArtifactSet() {
         <CardContent>
           <Table>
             <TableBody>
-              {Object.values(artifactPieces).map(artifactPiece => (
+              {artifactPieces.map(artifactPiece => (
                 <TableRow className="hover:bg-inherit" key={artifactPiece.uid}>
                   <TableHead className="p-2 text-pretty whitespace-normal">{artifactPiece.name}</TableHead>
                   <TableCell className="p-2 text-pretty whitespace-normal">

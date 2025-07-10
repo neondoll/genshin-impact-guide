@@ -20,7 +20,7 @@ import type { WeaponTypeUid } from "./types/weapon-type";
 import type { WeaponUid } from "./types/weapon";
 
 export function getArtifactPieces() {
-  return artifactPieces;
+  return Object.values(artifactPieces).sort((a, b) => a.sort_by - b.sort_by);
 }
 
 export function getArtifactSet(artifactSetUid: ArtifactSetUid) {

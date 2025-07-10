@@ -26,8 +26,6 @@ export default function Character() {
     character, characterElement, characterRecommendations, characterRoles, characterWeaponType,
   } = useLoaderData<CharacterLoaderData>();
 
-  console.log(characterRecommendations);
-
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
       <Breadcrumb>

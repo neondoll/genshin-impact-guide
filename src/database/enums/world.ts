@@ -1,4 +1,4 @@
 export const WorldUidEnum = {
-  Another: "another",
-  Teyvat: "teyvat",
+  /* Другой мир */ Another: "another",
+  /* Тейват     */ Teyvat: "teyvat",
 } as const;
