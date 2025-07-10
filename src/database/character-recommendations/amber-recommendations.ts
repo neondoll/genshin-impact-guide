@@ -1,6 +1,6 @@
-import { CharacterUidEnum } from "../enums/characters";
-import { TalentUidEnum } from "../enums/talents";
-import type { CharacterRecommendation } from "../types/character-recommendations";
+import { CharacterUidEnum } from "../enums/character.ts";
+import { TalentUidEnum } from "../enums/talent.ts";
+import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   character_uid: CharacterUidEnum.Amber,
@@ -15,4 +15,4 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239080",
     },
   ],
-} as CharacterRecommendation;
+} as CharacterRecommendations;

@@ -1,6 +1,6 @@
-import { ArtifactPieceUidEnum } from "./enums/artifact-pieces";
+import { ArtifactPieceUidEnum } from "./enums/artifact-piece";
 import { publicImageSrc } from "@/lib/utils";
-import type { ArtifactPieces } from "./types/artifact-pieces";
+import type { ArtifactPiece, ArtifactPieceUid } from "./types/artifact-piece";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-pieces/${src}`);
 
@@ -30,4 +30,4 @@ export default {
     name: "Корона разума",
     image_src: imageSrc("circlet_of_logos-64x64.png"),
   },
-} as ArtifactPieces;
+} as Record<ArtifactPieceUid, ArtifactPiece>;

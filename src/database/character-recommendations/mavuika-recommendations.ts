@@ -1,12 +1,12 @@
 import characters from "../characters";
-import { ArtifactPieceUidEnum } from "../enums/artifact-pieces";
-import { ArtifactSetUidEnum } from "../enums/artifact-sets";
-import { AttributeUidEnum } from "../enums/attributes";
-import { CharacterRoleUidEnum } from "../enums/character-roles";
-import { CharacterUidEnum } from "../enums/characters";
-import { TalentUidEnum } from "../enums/talents";
-import { WeaponUidEnum } from "../enums/weapons";
-import type { CharacterRecommendation } from "../types/character-recommendations";
+import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
+import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
+import { AttributeUidEnum } from "../enums/attribute.ts";
+import { CharacterRoleUidEnum } from "../enums/character-role.ts";
+import { CharacterUidEnum } from "../enums/character.ts";
+import { TalentUidEnum } from "../enums/talent.ts";
+import { WeaponUidEnum } from "../enums/weapon.ts";
+import type { CharacterRecommendations } from "../types/character-recommendations";
 
 type GameVariantUid = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 
@@ -175,4 +175,4 @@ export default {
       { uid: WeaponUidEnum.LuxuriousSeaLord, refinement: 5, percent: 0.9195 },
     ],
   },
-} as CharacterRecommendation;
+} as CharacterRecommendations;

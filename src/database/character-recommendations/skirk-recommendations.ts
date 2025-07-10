@@ -1,13 +1,13 @@
 import artifactSets from "../artifact-sets";
 import weapons from "../weapons";
-import { ArtifactPieceUidEnum } from "../enums/artifact-pieces";
-import { ArtifactSetUidEnum } from "../enums/artifact-sets";
-import { AttributeUidEnum } from "../enums/attributes";
-import { CharacterUidEnum } from "../enums/characters";
-import { ElementUidEnum } from "../enums/elements";
-import { TalentUidEnum } from "../enums/talents";
-import { WeaponUidEnum } from "../enums/weapons";
-import type { CharacterRecommendation } from "../types/character-recommendations";
+import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
+import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
+import { AttributeUidEnum } from "../enums/attribute.ts";
+import { CharacterUidEnum } from "../enums/character.ts";
+import { ElementUidEnum } from "../enums/element.ts";
+import { TalentUidEnum } from "../enums/talent.ts";
+import { WeaponUidEnum } from "../enums/weapon.ts";
+import type { CharacterRecommendations } from "../types/character-recommendations";
 
 type GameVariantUid = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 
@@ -149,4 +149,4 @@ export default {
     { uid: WeaponUidEnum.FinaleOfTheDeep, percent: 1 },
     { uid: WeaponUidEnum.BlackcliffLongsword, percent: 0.9451 },
   ],
-} as CharacterRecommendation;
+} as CharacterRecommendations;

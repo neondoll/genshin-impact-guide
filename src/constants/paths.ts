@@ -1,6 +1,6 @@
-import type { ArtifactSetUid } from "@/database/types/artifact-sets";
-import type { CharacterUid } from "@/database/types/characters";
-import type { ElementUid } from "@/database/types/elements";
+import type { ArtifactSetUid } from "@/database/types/artifact-set.ts";
+import type { CharacterUid } from "@/database/types/character.ts";
+import type { ElementUid } from "@/database/types/element.ts";
 
 export default {
   ArtifactSet: (uid: ArtifactSetUid | string) => `/artifact-sets/${uid}`,

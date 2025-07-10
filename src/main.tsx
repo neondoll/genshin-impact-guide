@@ -17,9 +17,9 @@ import {
   getCharacters, getElement, getRegion, getWeapons, getWeaponType,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
-import type { ArtifactSetUid } from "@/database/types/artifact-sets";
-import type { CharacterUid } from "@/database/types/characters";
-import type { ElementUid } from "@/database/types/elements";
+import type { ArtifactSetUid } from "@/database/types/artifact-set.ts";
+import type { CharacterUid } from "@/database/types/character.ts";
+import type { ElementUid } from "@/database/types/element.ts";
 import "./index.css";
 
 const router = createHashRouter([

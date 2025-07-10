@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Paths from "@/constants/paths";
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-pieces";
+import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece.ts";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
 import { getArtifactSet } from "@/database";

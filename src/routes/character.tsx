@@ -57,7 +57,7 @@ export default function Character() {
             character.quality === 4 && "bg-[linear-gradient(180deg,#5e5789,#9c75b7)]",
             character.quality === 5 && "bg-[linear-gradient(180deg,#945c2c,#b27330)]",
           )}
-          src={character.small_image_src}
+          src={character.image_src}
         />
         <div className="space-y-1">
           <div className="flex gap-x-1 items-center">

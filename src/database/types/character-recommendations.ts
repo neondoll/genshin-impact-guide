@@ -1,10 +1,10 @@
-import type { ArtifactPieceUidEnum } from "../enums/artifact-pieces";
-import type { ArtifactSetUid } from "./artifact-sets";
-import type { AttributeUid } from "./attributes";
-import type { CharacterUid } from "./characters";
-import type { ElementUid } from "./elements";
-import type { TalentUid } from "./talents";
-import type { WeaponUid } from "./weapons";
+import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
+import type { ArtifactSetUid } from "./artifact-set";
+import type { AttributeUid } from "./attribute";
+import type { CharacterUid } from "./character";
+import type { ElementUid } from "./element";
+import type { TalentUid } from "./talent";
+import type { WeaponUid } from "./weapon";
 
 type CharacterArtifactAttributeRecommendation = {
   uid: AttributeUid;
@@ -32,7 +32,7 @@ type CharacterTalentLevelingRecommendation = { uid: TalentUid; priority: string 
 type CharacterWeaponRecommendation = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
 type CharacterRecommendationSquadBestTeammates = CharacterSquadItemRecommendation[];
 
-export type CharacterRecommendation = {
+export type CharacterRecommendations = {
   artifacts?: CharacterArtifactRecommendations;
   character_uid: CharacterUid;
   first_constellation_or_signature_weapon?: string;
@@ -48,9 +48,9 @@ export type CharacterRecommendation = {
   video_sources?: { title: string; vk_url?: string; youtube_url?: string }[];
   weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
 };
-export type CharacterRecommendations = Record<CharacterUid, CharacterRecommendation>;
 export type CharacterReferencePointRecommendations = [string, string][];
 export type CharacterSquadItemRecommendation
-  = CharacterSquadCharacterRecommendation | CharacterSquadElementRecommendation;
+  = CharacterSquadCharacterRecommendation
+    | CharacterSquadElementRecommendation;
 export type CharacterTalentLevelingRecommendations = CharacterTalentLevelingRecommendation[];
 export type CharacterWeaponRecommendations = CharacterWeaponRecommendation[];

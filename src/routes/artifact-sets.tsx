@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-pieces";
+import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
@@ -33,7 +33,7 @@ export default function ArtifactSets() {
       </Breadcrumb>
       <h1 className="text-2xl">Артефакты</h1>
       <ul className="flex flex-wrap gap-2 justify-center items-stretch md:gap-4">
-        {Object.values(artifactSets).map(artifactSet => (
+        {artifactSets.map(artifactSet => (
           <li
             className={cn(
               "flex relative flex-col gap-4 px-5.5 py-4 w-36 min-h-45 text-card-foreground bg-card rounded-xl border shadow-sm",

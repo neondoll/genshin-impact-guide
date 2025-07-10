@@ -1,5 +1,6 @@
-import { CharacterUidEnum } from "../enums/characters";
+import { CharacterUidEnum } from "../enums/character.ts";
 import type { CharacterRecommendations } from "../types/character-recommendations";
+import type { CharacterUid } from "../types/character.ts";
 
 export default {
   [CharacterUidEnum.Albedo]: (await import("./albedo-recommendations")).default,
@@ -84,4 +85,4 @@ export default {
   [CharacterUidEnum.Yoimiya]: (await import("./yoimiya-recommendations")).default,
   [CharacterUidEnum.YunJin]: (await import("./yun_jin-recommendations")).default,
   [CharacterUidEnum.Zhongli]: (await import("./zhongli-recommendations")).default,
-} as CharacterRecommendations;
+} as Record<CharacterUid, CharacterRecommendations>;

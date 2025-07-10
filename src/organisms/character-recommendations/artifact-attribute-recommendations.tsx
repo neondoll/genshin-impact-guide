@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-pieces";
+import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece.ts";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent } from "@/lib/utils";
 import { getAttribute } from "@/database";

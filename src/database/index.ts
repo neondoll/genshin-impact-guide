@@ -9,15 +9,15 @@ import regions from "./regions";
 import talents from "./talents";
 import weaponTypes from "./weapon-types";
 import weapons from "./weapons";
-import type { ArtifactSetUid } from "./types/artifact-sets";
-import type { AttributeUid } from "./types/attributes";
-import type { CharacterRoleUid } from "./types/character-roles";
-import type { CharacterUid } from "./types/characters";
-import type { ElementUid } from "./types/elements";
-import type { RegionUid } from "./types/regions";
-import type { TalentUid } from "./types/talents";
-import type { WeaponTypeUid } from "./types/weapon-types";
-import type { WeaponUid } from "./types/weapons";
+import type { ArtifactSetUid } from "./types/artifact-set";
+import type { AttributeUid } from "./types/attribute";
+import type { CharacterRoleUid } from "./types/character-role";
+import type { CharacterUid } from "./types/character";
+import type { ElementUid } from "./types/element";
+import type { RegionUid } from "./types/region";
+import type { TalentUid } from "./types/talent";
+import type { WeaponTypeUid } from "./types/weapon-type";
+import type { WeaponUid } from "./types/weapon";
 
 export function getArtifactPieces() {
   return artifactPieces;
@@ -28,7 +28,7 @@ export function getArtifactSet(artifactSetUid: ArtifactSetUid) {
 }
 
 export function getArtifactSets() {
-  return artifactSets;
+  return Object.values(artifactSets).sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function getAttribute(attributeUid: AttributeUid) {
@@ -48,7 +48,7 @@ export function getCharacterRole(characterRoleUid: CharacterRoleUid) {
 }
 
 export function getCharacters() {
-  return characters;
+  return Object.values(characters).sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function getElement(elementUid: ElementUid) {
@@ -68,7 +68,7 @@ export function getWeapon(weaponUid: WeaponUid) {
 }
 
 export function getWeapons() {
-  return weapons;
+  return Object.values(weapons).sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function getWeaponType(weaponTypeUid: WeaponTypeUid) {

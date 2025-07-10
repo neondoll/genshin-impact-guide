@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-pieces";
+import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece.ts";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -154,7 +154,7 @@ export default function ArtifactSet() {
                             <img
                               alt={character.name}
                               className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
-                              src={character.small_image_src}
+                              src={character.image_src}
                             />
                             <span>{character.name}</span>
                           </Link>

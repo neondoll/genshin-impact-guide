@@ -32,13 +32,13 @@ export default function Weapons() {
       </Breadcrumb>
       <h1 className="text-2xl">Оружие</h1>
       <ul className="flex flex-wrap gap-2 justify-center items-stretch md:gap-4">
-        {Object.entries(weapons).map(([weaponUid, weapon]) => (
+        {weapons.map(weapon => (
           <li
             className={cn(
               "flex relative flex-col gap-4 px-5.5 py-4 w-36 min-h-45 text-card-foreground bg-card rounded-xl border shadow-sm",
               "transition-all has-hover:scale-104 has-focus-visible:ring-3 has-focus-visible:ring-ring/50",
             )}
-            key={weaponUid}
+            key={weapon.uid}
           >
             <span
               className={cn(
