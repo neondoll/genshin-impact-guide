@@ -7,7 +7,7 @@ import characters from "./characters";
 import elements from "./elements";
 import regions from "./regions";
 import talents from "./talents";
-import tierListWeaponTypes from "./tier-list-weapon-types";
+import tierListsWeapons from "./tier-lists-weapons";
 import weaponTypes from "./weapon-types";
 import weapons from "./weapons";
 import type { ArtifactSetUid } from "./types/artifact-set";
@@ -18,7 +18,7 @@ import type { ElementUid } from "./types/element";
 import type { RegionUid } from "./types/region";
 import type { TalentUid } from "./types/talent";
 import type { WeaponTypeUid } from "./types/weapon-type";
-import type { WeaponUid } from "./types/weapon";
+import type { Weapon, WeaponUid } from "./types/weapon";
 
 export function getArtifactPieces() {
   return Object.values(artifactPieces).sort((a, b) => a.sort_by - b.sort_by);
@@ -49,7 +49,9 @@ export function getCharacterRole(characterRoleUid: CharacterRoleUid) {
 }
 
 export function getCharacters() {
-  return Object.values(characters).sort((a, b) => a.name.localeCompare(b.name));
+  return Object.values(characters).sort((a, b) => {
+    return a.quality === b.quality ? a.name.localeCompare(b.name) : b.quality - a.quality;
+  });
 }
 
 export function getElement(elementUid: ElementUid) {
@@ -64,8 +66,8 @@ export function getTalent(talentUid: TalentUid) {
   return talents[talentUid];
 }
 
-export function getTierListWeaponTypes() {
-  return tierListWeaponTypes;
+export function getTierListsWeapons() {
+  return tierListsWeapons;
 }
 
 export function getWeapon(weaponUid: WeaponUid) {
@@ -73,9 +75,13 @@ export function getWeapon(weaponUid: WeaponUid) {
 }
 
 export function getWeapons() {
-  return Object.values(weapons).sort((a, b) => a.name.localeCompare(b.name));
+  return Object.values(weapons).sort(sortWeapons);
 }
 
 export function getWeaponType(weaponTypeUid: WeaponTypeUid) {
   return weaponTypes[weaponTypeUid];
+}
+
+export function sortWeapons(a: Weapon, b: Weapon) {
+  return a.quality === b.quality ? a.name.localeCompare(b.name) : b.quality - a.quality;
 }

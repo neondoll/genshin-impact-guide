@@ -15,7 +15,7 @@ import Weapons, { type WeaponsLoaderData } from "@/routes/weapons";
 import WeaponsTierList, { type WeaponsTierListLoaderData } from "@/routes/weapons-tier-list";
 import {
   getArtifactPieces, getArtifactSet, getArtifactSets, getCharacter, getCharacterRecommendations, getCharacterRole,
-  getCharacters, getElement, getRegion, getTierListWeaponTypes, getWeapons, getWeaponType,
+  getCharacters, getElement, getRegion, getTierListsWeapons, getWeapons, getWeaponType,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { ArtifactSetUid } from "@/database/types/artifact-set";
@@ -76,7 +76,7 @@ const router = createHashRouter([
       },
       { loader: (): WeaponsLoaderData => ({ weapons: getWeapons() }), path: Paths.Weapons.to, element: <Weapons /> },
       {
-        loader: (): WeaponsTierListLoaderData => ({ tierListWeaponTypes: getTierListWeaponTypes() }),
+        loader: (): WeaponsTierListLoaderData => ({ tierListsWeapons: getTierListsWeapons() }),
         path: Paths.WeaponsTierList.to,
         element: <WeaponsTierList />,
       },
