@@ -35,7 +35,7 @@ export default function Element() {
                 <div className="flex flex-wrap gap-2">
                   {elementReactsWith.map(element => (
                     <Badge asChild className="rounded-full" key={element.uid} variant="secondary">
-                      <Link to={Paths.Element(element.uid)}>
+                      <Link to={Paths.Element.to(element.uid)}>
                         <img alt={element.name} className="shrink-0 size-5" src={element.image_src} />
                         <span>{element.name}</span>
                       </Link>

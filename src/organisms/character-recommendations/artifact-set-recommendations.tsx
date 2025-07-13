@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Paths from "@/constants/paths";
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece.ts";
+import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
 import { getArtifactSet } from "@/database";
@@ -92,7 +92,7 @@ export default function ArtifactSetRecommendations({ character, recommendations 
                   )}
                   variant="secondary"
                 >
-                  <Link to={Paths.ArtifactSet(artifactSet.uid)}>
+                  <Link to={Paths.ArtifactSet.to(artifactSet.uid)}>
                     <img
                       alt={artifactSet.name}
                       className={cn(

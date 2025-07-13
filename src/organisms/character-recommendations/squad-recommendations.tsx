@@ -13,7 +13,7 @@ function SquadRecommendationsItem({ type, uid }: SquadRecommendationsItemProps) 
 
       return (
         <Badge asChild variant="secondary">
-          <Link to={Paths.Character(uid)}>
+          <Link to={Paths.Character.to(uid)}>
             <img alt={character.name} className="shrink-0 size-8 rounded-md" src={character.image_src} />
             <span children={character.name} />
           </Link>

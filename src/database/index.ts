@@ -7,6 +7,7 @@ import characters from "./characters";
 import elements from "./elements";
 import regions from "./regions";
 import talents from "./talents";
+import tierListWeaponTypes from "./tier-list-weapon-types";
 import weaponTypes from "./weapon-types";
 import weapons from "./weapons";
 import type { ArtifactSetUid } from "./types/artifact-set";
@@ -61,6 +62,10 @@ export function getRegion(regionUid: RegionUid) {
 
 export function getTalent(talentUid: TalentUid) {
   return talents[talentUid];
+}
+
+export function getTierListWeaponTypes() {
+  return tierListWeaponTypes;
 }
 
 export function getWeapon(weaponUid: WeaponUid) {

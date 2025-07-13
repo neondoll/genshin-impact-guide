@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece.ts";
+import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -18,18 +18,18 @@ function ArtifactSetBreadcrumbs({ item }: { item: ArtifactSetLoaderData["artifac
       <BreadcrumbList className="gap-1 text-xs sm:gap-2">
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link children="Главная" to={Paths.Root} />
+            <Link children={Paths.Root.title} to={Paths.Root.to} />
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link children="Артефакты" to={Paths.ArtifactSets} />
+            <Link children={Paths.ArtifactSets.title} to={Paths.ArtifactSets.to} />
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage children={item.name} />
+          <BreadcrumbPage children={Paths.ArtifactSet.title(item)} />
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
@@ -51,7 +51,7 @@ function ArtifactSetHeading({ item }: { item: ArtifactSetLoaderData["artifactSet
       />
       <div className="space-y-1">
         <div className="flex gap-x-1 items-center">
-          <h1 children={item.name} className="text-3xl" />
+          <h1 children={Paths.ArtifactSet.title(item)} className="text-3xl" />
         </div>
       </div>
     </div>
@@ -150,7 +150,7 @@ export default function ArtifactSet() {
                           className="flex flex-col gap-2.5 justify-start p-2 w-full sm:flex-row sm:text-sm"
                           variant="secondary"
                         >
-                          <Link to={Paths.Character(character.uid)}>
+                          <Link to={Paths.Character.to(character.uid)}>
                             <img
                               alt={character.name}
                               className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"

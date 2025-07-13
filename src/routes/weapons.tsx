@@ -5,6 +5,7 @@ import Paths from "@/constants/paths";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getWeapons } from "@/database";
 
@@ -21,16 +22,21 @@ export default function Weapons() {
         <BreadcrumbList className="gap-1 text-xs sm:gap-2">
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to={Paths.Root}>Главная</Link>
+              <Link children={Paths.Root.title} to={Paths.Root.to} />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Оружие</BreadcrumbPage>
+            <BreadcrumbPage children={Paths.Weapons.title} />
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className="text-2xl">Оружие</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl">{Paths.Weapons.title}</h1>
+        <Button asChild>
+          <Link children={Paths.WeaponsTierList.title} to={Paths.WeaponsTierList.to} />
+        </Button>
+      </div>
       <ul className="flex flex-wrap gap-2 justify-center items-stretch md:gap-4">
         {weapons.map(weapon => (
           <li

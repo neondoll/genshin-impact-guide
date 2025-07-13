@@ -16,7 +16,7 @@ export default function Layout() {
           <div className="container flex gap-1 items-center px-4 mx-auto lg:gap-2 lg:px-6">
             {location.pathname !== "/" && <SidebarTrigger />}
             <h2 className="text-base font-medium">
-              <Link to={Paths.Root}>
+              <Link to={Paths.Root.to}>
                 <span className="font-(family-name:--font-genshin-drip)">Genshin Impact</span>
                 {" "}
                 Гайд

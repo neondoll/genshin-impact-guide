@@ -12,24 +12,25 @@ import Layout from "@/routes/layout";
 import Paths from "@/constants/paths";
 import Root from "@/routes/root";
 import Weapons, { type WeaponsLoaderData } from "@/routes/weapons";
+import WeaponsTierList, { type WeaponsTierListLoaderData } from "@/routes/weapons-tier-list";
 import {
   getArtifactPieces, getArtifactSet, getArtifactSets, getCharacter, getCharacterRecommendations, getCharacterRole,
-  getCharacters, getElement, getRegion, getWeapons, getWeaponType,
+  getCharacters, getElement, getRegion, getTierListWeaponTypes, getWeapons, getWeaponType,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
-import type { ArtifactSetUid } from "@/database/types/artifact-set.ts";
-import type { CharacterUid } from "@/database/types/character.ts";
-import type { ElementUid } from "@/database/types/element.ts";
+import type { ArtifactSetUid } from "@/database/types/artifact-set";
+import type { CharacterUid } from "@/database/types/character";
+import type { ElementUid } from "@/database/types/element";
 import "./index.css";
 
 const router = createHashRouter([
   {
-    path: Paths.Root,
+    path: Paths.Root.to,
     children: [
       { index: true, element: <Root /> },
       {
         loader: (): ArtifactSetsLoaderData => ({ artifactSets: getArtifactSets() }),
-        path: Paths.ArtifactSets,
+        path: Paths.ArtifactSets.to,
         element: <ArtifactSets />,
       },
       {
@@ -37,12 +38,12 @@ const router = createHashRouter([
           artifactPieces: getArtifactPieces(),
           artifactSet: getArtifactSet(params.artifactSetUid as ArtifactSetUid),
         }),
-        path: Paths.ArtifactSet(":artifactSetUid"),
+        path: Paths.ArtifactSet.to(":artifactSetUid"),
         element: <ArtifactSet />,
       },
       {
         loader: (): CharactersLoaderData => ({ characters: getCharacters() }),
-        path: Paths.Characters,
+        path: Paths.Characters.to,
         element: <Characters />,
       },
       {
@@ -57,7 +58,7 @@ const router = createHashRouter([
             characterWeaponType: getWeaponType(character.weapon_type_uid),
           };
         },
-        path: Paths.Character(":characterUid"),
+        path: Paths.Character.to(":characterUid"),
         element: <Character />,
       },
       {
@@ -70,13 +71,14 @@ const router = createHashRouter([
             elementRegion: getRegion(element.region_uid),
           };
         },
-        path: Paths.Element(":elementUid"),
+        path: Paths.Element.to(":elementUid"),
         element: <Element />,
       },
+      { loader: (): WeaponsLoaderData => ({ weapons: getWeapons() }), path: Paths.Weapons.to, element: <Weapons /> },
       {
-        loader: (): WeaponsLoaderData => ({ weapons: getWeapons() }),
-        path: Paths.Weapons,
-        element: <Weapons />,
+        loader: (): WeaponsTierListLoaderData => ({ tierListWeaponTypes: getTierListWeaponTypes() }),
+        path: Paths.WeaponsTierList.to,
+        element: <WeaponsTierList />,
       },
     ],
     element: <Layout />,

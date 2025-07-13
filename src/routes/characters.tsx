@@ -21,12 +21,12 @@ export default function Characters() {
         <BreadcrumbList className="gap-1 text-xs sm:gap-2">
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to={Paths.Root}>Главная</Link>
+              <Link children={Paths.Root.title} to={Paths.Root.to} />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Персонажи</BreadcrumbPage>
+            <BreadcrumbPage children={Paths.Characters.title} />
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -59,7 +59,7 @@ export default function Characters() {
                 "inline-flex flex-1 justify-center items-center text-sm text-center outline-none before:absolute",
                 "before:inset-0",
               )}
-              to={Paths.Character(character.uid)}
+              to={Paths.Character.to(character.uid)}
             >
               {character.name}
             </Link>

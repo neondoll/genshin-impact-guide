@@ -32,18 +32,18 @@ export default function Character() {
         <BreadcrumbList className="gap-1 text-xs sm:gap-2">
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to={Paths.Root}>Главная</Link>
+              <Link children={Paths.Root.title} to={Paths.Root.to} />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to={Paths.Characters}>Персонажи</Link>
+              <Link children={Paths.Characters.title} to={Paths.Characters.to} />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{character.name}</BreadcrumbPage>
+            <BreadcrumbPage children={Paths.Character.title(character)} />
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -59,7 +59,7 @@ export default function Character() {
         />
         <div className="space-y-1">
           <div className="flex gap-x-1 items-center">
-            <h1 className="text-3xl">{character.name}</h1>
+            <h1 className="text-3xl">{Paths.Character.title(character)}</h1>
             <img alt={characterElement.name} className="size-6" src={characterElement.image_src} />
           </div>
           <div className="flex gap-x-1">

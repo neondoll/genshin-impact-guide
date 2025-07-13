@@ -22,12 +22,12 @@ export default function ArtifactSets() {
         <BreadcrumbList className="gap-1 text-xs sm:gap-2">
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to={Paths.Root}>Главная</Link>
+              <Link children={Paths.Root.title} to={Paths.Root.to} />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Артефакты</BreadcrumbPage>
+            <BreadcrumbPage children={Paths.ArtifactSets.title} />
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -61,7 +61,7 @@ export default function ArtifactSets() {
                 "inline-flex flex-1 justify-center items-center text-sm text-center outline-none before:absolute",
                 "before:inset-0",
               )}
-              to={Paths.ArtifactSet(artifactSet.uid)}
+              to={Paths.ArtifactSet.to(artifactSet.uid)}
             >
               {artifactSet.name}
             </Link>
