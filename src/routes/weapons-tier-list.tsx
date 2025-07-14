@@ -47,7 +47,7 @@ export default function WeaponsTierList() {
         </BreadcrumbList>
       </Breadcrumb>
       <h1 children={Paths.WeaponsTierList.title} className="text-2xl" />
-      <Tabs defaultValue={tierListsWeaponsEntries[4][0]}>
+      <Tabs defaultValue={tierListsWeaponsEntries[0][0]}>
         <TabsList className="flex w-full">
           {tierListsWeaponsEntries.map(([weaponTypeUid]) => (
             <TabsTrigger children={getWeaponType(weaponTypeUid).name} key={weaponTypeUid} value={weaponTypeUid} />
