@@ -241,7 +241,7 @@ export default {
         weapon_uids: [
           WeaponUidEnum.BlackcliffLongsword, WeaponUidEnum.CalamityOfEshu, WeaponUidEnum.FinaleOfTheDeep,
           WeaponUidEnum.HarbingerOfDawn, WeaponUidEnum.SapwoodBlade, WeaponUidEnum.SturdyBone,
-          WeaponUidEnum.TheAlleyFlash, WeaponUidEnum.TheDockhandsAssistant,
+          WeaponUidEnum.SummitShaper, WeaponUidEnum.TheAlleyFlash, WeaponUidEnum.TheDockhandsAssistant,
         ],
       },
       {
