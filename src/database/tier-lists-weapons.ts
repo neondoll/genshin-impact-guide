@@ -238,9 +238,9 @@ export default {
         tier: "C",
         description: "Если нет альтернатив",
         weapon_uids: [
-          WeaponUidEnum.CalamityOfEshu, WeaponUidEnum.FinaleOfTheDeep, WeaponUidEnum.HarbingerOfDawn,
-          WeaponUidEnum.SapwoodBlade, WeaponUidEnum.SturdyBone, WeaponUidEnum.TheAlleyFlash,
-          WeaponUidEnum.TheDockhandsAssistant,
+          WeaponUidEnum.BlackcliffLongsword, WeaponUidEnum.CalamityOfEshu, WeaponUidEnum.FinaleOfTheDeep,
+          WeaponUidEnum.HarbingerOfDawn, WeaponUidEnum.SapwoodBlade, WeaponUidEnum.SturdyBone,
+          WeaponUidEnum.TheAlleyFlash, WeaponUidEnum.TheDockhandsAssistant,
         ],
       },
       {
