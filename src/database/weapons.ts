@@ -79,6 +79,15 @@ export default {
     base_atk: { min_value: "44", max_value: "542" },
     secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "19.2%", max_value: "88.2%" },
   },
+  [WeaponUidEnum.AquilaFavonia]: {
+    uid: WeaponUidEnum.AquilaFavonia,
+    name: "Меч Сокола",
+    image_src: imageSrc("aquila_favonia-256x256.png"),
+    type_uid: WeaponTypeUidEnum.Sword,
+    quality: 5,
+    base_atk: { min_value: "48", max_value: "6774" },
+    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "9%", max_value: "41.3%" },
+  },
   [WeaponUidEnum.AshGravenDrinkingHorn]: {
     uid: WeaponUidEnum.AshGravenDrinkingHorn,
     name: "Пепельный рог",
@@ -1275,6 +1284,15 @@ export default {
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
     secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "7.2%", max_value: "33.1%" },
+  },
+  [WeaponUidEnum.SkywardBlade]: {
+    uid: WeaponUidEnum.SkywardBlade,
+    name: "Небесный меч",
+    image_src: imageSrc("skyward_blade-256x256.png"),
+    type_uid: WeaponTypeUidEnum.Sword,
+    quality: 5,
+    base_atk: { min_value: "46", max_value: "608" },
+    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.SkywardHarp]: {
     uid: WeaponUidEnum.SkywardHarp,

@@ -220,19 +220,30 @@ export default {
   },
   [WeaponTypeUidEnum.Sword]: {
     list: [
-      { tier: "S", description: "Лучшее оружие", weapon_uids: [WeaponUidEnum.FavoniusSword] },
+      {
+        tier: "S",
+        description: "Лучшее оружие",
+        weapon_uids: [
+          WeaponUidEnum.Absolution, WeaponUidEnum.FavoniusSword, WeaponUidEnum.MistsplitterReforged,
+          WeaponUidEnum.PeakPatrolSong,
+        ],
+      },
       {
         tier: "A",
         description: "Хорошее оружие",
-        weapon_uids: [WeaponUidEnum.FreedomSworn, WeaponUidEnum.SacrificialSword, WeaponUidEnum.XiphosMoonlight],
+        weapon_uids: [
+          WeaponUidEnum.FreedomSworn, WeaponUidEnum.HaranGeppakuFutsu, WeaponUidEnum.LightOfFoliarIncision,
+          WeaponUidEnum.PrimordialJadeCutter, WeaponUidEnum.SacrificialSword, WeaponUidEnum.SplendorOfTranquilWaters,
+          WeaponUidEnum.UrakuMisugiri, WeaponUidEnum.XiphosMoonlight,
+        ],
       },
       {
         tier: "B",
         description: "Опциональное оружие",
         weapon_uids: [
           WeaponUidEnum.FesteringDesire, WeaponUidEnum.FleuveCendreFerryman, WeaponUidEnum.IronSting,
-          WeaponUidEnum.KeyOfKhajNisut, WeaponUidEnum.TheBlackSword, WeaponUidEnum.ToukabouShigure,
-          WeaponUidEnum.WolfFang,
+          WeaponUidEnum.KeyOfKhajNisut, WeaponUidEnum.SkywardBlade, WeaponUidEnum.TheBlackSword,
+          WeaponUidEnum.ToukabouShigure, WeaponUidEnum.WolfFang,
         ],
       },
       {
@@ -248,9 +259,9 @@ export default {
         tier: "D",
         description: "На крайний случай",
         weapon_uids: [
-          WeaponUidEnum.AmenomaKageuchi, WeaponUidEnum.CinnabarSpindle, WeaponUidEnum.FluteOfEzpitzal,
-          WeaponUidEnum.KagotsurubeIsshin, WeaponUidEnum.LionsRoar, WeaponUidEnum.RoyalLongsword,
-          WeaponUidEnum.SwordOfNarzissenkreuz,
+          WeaponUidEnum.AmenomaKageuchi, WeaponUidEnum.AquilaFavonia, WeaponUidEnum.CinnabarSpindle,
+          WeaponUidEnum.FluteOfEzpitzal, WeaponUidEnum.KagotsurubeIsshin, WeaponUidEnum.LionsRoar,
+          WeaponUidEnum.RoyalLongsword, WeaponUidEnum.SwordOfNarzissenkreuz,
         ],
       },
       {
