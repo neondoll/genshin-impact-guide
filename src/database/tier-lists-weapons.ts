@@ -231,7 +231,8 @@ export default {
         description: "Опциональное оружие",
         weapon_uids: [
           WeaponUidEnum.FesteringDesire, WeaponUidEnum.FleuveCendreFerryman, WeaponUidEnum.IronSting,
-          WeaponUidEnum.TheBlackSword, WeaponUidEnum.ToukabouShigure, WeaponUidEnum.WolfFang,
+          WeaponUidEnum.KeyOfKhajNisut, WeaponUidEnum.TheBlackSword, WeaponUidEnum.ToukabouShigure,
+          WeaponUidEnum.WolfFang,
         ],
       },
       {
