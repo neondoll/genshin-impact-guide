@@ -62,6 +62,7 @@ export const WeaponUidEnum = {
   /* Флейта Эспицаль                       */ FluteOfEzpitzal: "flute_of_ezpitzal",
   /* След радуги                           */ FootprintOfTheRainbow: "footprint_of_the_rainbow",
   /* Регалия леса                          */ ForestRegalia: "forest_regalia",
+  /* Клятва свободы                        */ FreedomSworn: "freedom_sworn",
   /* Плод вечной мерзлоты                  */ Frostbearer: "frostbearer",
   /* Плод восполнения                      */ FruitOfFulfillment: "fruit_of_fulfillment",
   /* Плодотворный крюк                     */ FruitfulHook: "fruitful_hook",

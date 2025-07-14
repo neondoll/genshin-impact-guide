@@ -224,7 +224,7 @@ export default {
       {
         tier: "A",
         description: "Хорошее оружие",
-        weapon_uids: [WeaponUidEnum.SacrificialSword, WeaponUidEnum.XiphosMoonlight],
+        weapon_uids: [WeaponUidEnum.FreedomSworn, WeaponUidEnum.SacrificialSword, WeaponUidEnum.XiphosMoonlight],
       },
       {
         tier: "B",

@@ -574,6 +574,15 @@ export default {
     base_atk: { min_value: "44", max_value: "565" },
     secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
+  [WeaponUidEnum.FreedomSworn]: {
+    uid: WeaponUidEnum.FreedomSworn,
+    name: "Клятва свободы",
+    image_src: imageSrc("freedom_sworn-256x256.png"),
+    type_uid: WeaponTypeUidEnum.Sword,
+    quality: 5,
+    base_atk: { min_value: "46", max_value: "608" },
+    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "43", max_value: "198" },
+  },
   [WeaponUidEnum.Frostbearer]: {
     uid: WeaponUidEnum.Frostbearer,
     name: "Плод вечной мерзлоты",
