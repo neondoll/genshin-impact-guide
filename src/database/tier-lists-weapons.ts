@@ -221,7 +221,11 @@ export default {
   [WeaponTypeUidEnum.Sword]: {
     list: [
       { tier: "S", description: "Лучшее оружие", weapon_uids: [WeaponUidEnum.FavoniusSword] },
-      { tier: "A", description: "Хорошее оружие", weapon_uids: [WeaponUidEnum.XiphosMoonlight] },
+      {
+        tier: "A",
+        description: "Хорошее оружие",
+        weapon_uids: [WeaponUidEnum.SacrificialSword, WeaponUidEnum.XiphosMoonlight],
+      },
       {
         tier: "B",
         description: "Опциональное оружие",
