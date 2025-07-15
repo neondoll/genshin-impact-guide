@@ -24,11 +24,12 @@ export default {
   [WeaponUidEnum.AThousandFloatingDreams]: {
     uid: WeaponUidEnum.AThousandFloatingDreams,
     name: "Сновидения тысячи ночей",
-    image_src: imageSrc("a_thousand_floating_dreams-256x256.png"),
+    image_src: imageSrc("a_thousand_floating_dreams-256x256.webp"),
+    source: "Эксклюзивное оружие Молитвы события",
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
-    base_atk: { min_value: "44", max_value: "542" },
-    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "58", max_value: "265" },
+    base_atk: { min_value: 44, max_value: 542 },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: 58, max_value: 265 },
   },
   [WeaponUidEnum.Absolution]: {
     uid: WeaponUidEnum.Absolution,

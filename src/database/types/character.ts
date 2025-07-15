@@ -6,15 +6,18 @@ import type { QualityUid } from "./quality";
 import type { WeaponTypeUid } from "./weapon-type";
 import type { WeaponUid } from "./weapon";
 
+type CharacterArkhe = "Усия" | "Пневма";
+
 export type Character = {
   uid: CharacterUid;
-  name: string;
-  image_src: string;
-  quality: QualityUid;
-  weapon_type_uid: WeaponTypeUid;
-  element_uid: ElementUid;
-  roles_uid?: CharacterRoleUid[];
-  signature_weapon_uid?: WeaponUid;
+  /* Имя      */ name: string;
+  /* Качество */ quality: QualityUid;
+  /* Оружие   */ weapon_type_uid: WeaponTypeUid;
+  /* Элемент  */ element_uid: ElementUid;
+  /* Архэ     */ arkhe?: CharacterArkhe | CharacterArkhe[];
+  /* Роли     */ roles_uid?: CharacterRoleUid[];
   signature_artifact_set_uid?: ArtifactSetUid;
+  signature_weapon_uid?: WeaponUid;
+  image_src: string;
 };
 export type CharacterUid = typeof CharacterUidEnum[keyof typeof CharacterUidEnum];

@@ -59,17 +59,12 @@ export default function Character() {
         />
         <div className="space-y-1">
           <div className="flex gap-x-1 items-center">
-            <h1 className="text-3xl">{Paths.Character.title(character)}</h1>
+            <h1 children={Paths.Character.title(character)} className="text-3xl" />
             <img alt={characterElement.name} className="size-6" src={characterElement.image_src} />
           </div>
           <div className="flex gap-x-1">
             {Array.from({ length: character.quality }, (_, i) => i).map(index => (
-              <img
-                alt="star"
-                className="size-3.5"
-                key={index + 1}
-                src={publicImageSrc("star-icon-28x28.png")}
-              />
+              <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
             ))}
           </div>
         </div>
@@ -78,34 +73,30 @@ export default function Character() {
         <Table>
           <TableBody>
             <TableRow className="hover:bg-inherit">
-              <TableHead className="p-2 text-right">Имя</TableHead>
-              <TableCell className="p-2">{character.name}</TableCell>
+              <TableHead children="Имя:" className="p-2 text-right" />
+              <TableCell children={character.name} className="p-2" />
             </TableRow>
             <TableRow className="hover:bg-inherit">
-              <TableHead className="p-2 text-right">Оружие</TableHead>
+              <TableHead children="Оружие:" className="p-2 text-right" />
               <TableCell className="p-2">
                 <div className="flex gap-1 items-center">
-                  <img
-                    alt={`${characterWeaponType.name} Icon`}
-                    className="shrink-0 size-5"
-                    src={characterWeaponType.icon_src}
-                  />
-                  <span>{characterWeaponType.name}</span>
+                  <img alt={characterWeaponType.name} className="shrink-0 size-5" src={characterWeaponType.icon_src} />
+                  <span children={characterWeaponType.abbreviation} />
                 </div>
               </TableCell>
             </TableRow>
             <TableRow className="hover:bg-inherit">
-              <TableHead className="p-2 text-right">Элемент</TableHead>
+              <TableHead children="Элемент:" className="p-2 text-right" />
               <TableCell className="p-2">
                 <div className="flex gap-1 items-center">
                   <img alt={characterElement.name} className="shrink-0 size-5" src={characterElement.image_src} />
-                  <span>{characterElement.name}</span>
+                  <span children={characterElement.name} />
                 </div>
               </TableCell>
             </TableRow>
             {characterRoles !== undefined && (
               <TableRow className="hover:bg-inherit">
-                <TableHead className="p-2 text-right">Роли</TableHead>
+                <TableHead children="Роли:" className="p-2 text-right" />
                 <TableCell className="p-2">
                   <div className="flex flex-wrap gap-2">
                     {characterRoles.map(characterRole => (
@@ -113,7 +104,7 @@ export default function Character() {
                         <TooltipTrigger asChild>
                           <Badge className="rounded-full">
                             <img alt={characterRole.name} className="shrink-0 size-5" src={characterRole.icon_src} />
-                            <span>{characterRole.name}</span>
+                            <span children={characterRole.name} />
                           </Badge>
                         </TooltipTrigger>
                         <TooltipContent
