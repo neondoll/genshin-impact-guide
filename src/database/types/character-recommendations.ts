@@ -29,7 +29,13 @@ type CharacterArtifactSetRecommendations = CharacterArtifactSetRecommendation[];
 type CharacterSquadElementRecommendation = { type: "element"; uid: ElementUid };
 type CharacterSquadCharacterRecommendation = { type: "character"; uid: CharacterUid };
 type CharacterTalentLevelingRecommendation = { uid: TalentUid; priority: string };
-type CharacterWeaponRecommendation = { uid: WeaponUid; refinement?: 1 | 5; postfix?: string; percent?: number };
+type CharacterWeaponRecommendation = {
+  uid: WeaponUid;
+  refinement?: 1 | 5;
+  is_better?: boolean;
+  postfix?: string;
+  percent?: number;
+};
 type CharacterRecommendationSquadBestTeammates = CharacterSquadItemRecommendation[];
 
 export type CharacterRecommendations = {

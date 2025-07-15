@@ -47,8 +47,8 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.AquaSimulacra, refinement: 1 },
-    { uid: WeaponUidEnum.ElegyForTheEnd, refinement: 1 },
+    { uid: WeaponUidEnum.AquaSimulacra, refinement: 1, is_better: true },
+    { uid: WeaponUidEnum.ElegyForTheEnd, refinement: 1, is_better: true },
     { uid: WeaponUidEnum.TheStringless },
   ],
 } as CharacterRecommendations;

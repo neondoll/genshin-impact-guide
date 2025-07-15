@@ -1,8 +1,8 @@
 import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
 import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
 import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterUidEnum } from "../enums/character.ts";
-import { TalentUidEnum } from "../enums/talent.ts";
+import { CharacterUidEnum } from "../enums/character";
+import { TalentUidEnum } from "../enums/talent";
 import { WeaponUidEnum } from "../enums/weapon.ts";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 

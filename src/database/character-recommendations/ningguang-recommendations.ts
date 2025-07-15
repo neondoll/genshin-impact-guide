@@ -18,7 +18,7 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, refinement: 1 },
-    { uid: WeaponUidEnum.ThrillingTalesOfDragonSlayers, refinement: 5 },
+    { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, refinement: 1, is_better: true },
+    { uid: WeaponUidEnum.ThrillingTalesOfDragonSlayers, refinement: 5, is_better: true },
   ],
 } as CharacterRecommendations;

@@ -1,9 +1,9 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
-import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
-import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterUidEnum } from "../enums/character.ts";
-import { TalentUidEnum } from "../enums/talent.ts";
-import { WeaponUidEnum } from "../enums/weapon.ts";
+import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
+import { ArtifactSetUidEnum } from "../enums/artifact-set";
+import { AttributeUidEnum } from "../enums/attribute";
+import { CharacterUidEnum } from "../enums/character";
+import { TalentUidEnum } from "../enums/talent";
+import { WeaponUidEnum } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
@@ -50,9 +50,12 @@ export default {
     { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(6 | 8)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(6 | 8)" },
   ],
+  video_sources: [
+    { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
+  ],
   weapons: {
     "Гиперкери | Прожарка | отр. Шеврёз": [
-      { uid: WeaponUidEnum.CrimsonMoonsSemblance, percent: 1.316 },
+      { uid: WeaponUidEnum.CrimsonMoonsSemblance, is_better: true, percent: 1.316 },
       { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.124 },
       { uid: WeaponUidEnum.StaffOfTheScarletSands, percent: 1.112 },
       { uid: WeaponUidEnum.LumidouceElegy, percent: 1.103 },
@@ -67,7 +70,7 @@ export default {
       { uid: WeaponUidEnum.MissiveWindspear, percent: 0.875 },
     ],
     "Пар | Таяние": [
-      { uid: WeaponUidEnum.CrimsonMoonsSemblance, percent: 1.309 },
+      { uid: WeaponUidEnum.CrimsonMoonsSemblance, is_better: true, percent: 1.309 },
       { uid: WeaponUidEnum.StaffOfTheScarletSands, percent: 1.156 },
       { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.114 },
       { uid: WeaponUidEnum.Deathmatch, refinement: 5, percent: 1.105 },

@@ -47,7 +47,7 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.EngulfingLightning, refinement: 1 },
+    { uid: WeaponUidEnum.EngulfingLightning, refinement: 1, is_better: true },
     { uid: WeaponUidEnum.StaffOfHoma, refinement: 1 },
     { uid: WeaponUidEnum.StaffOfTheScarletSands, refinement: 1 },
   ],

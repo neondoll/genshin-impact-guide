@@ -18,7 +18,7 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.RedhornStonethresher, refinement: 1 },
+    { uid: WeaponUidEnum.RedhornStonethresher, refinement: 1, is_better: true },
     { uid: WeaponUidEnum.FavoniusGreatsword, refinement: 5 },
   ],
 } as CharacterRecommendations;

@@ -18,7 +18,7 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.MistsplitterReforged, refinement: 1 },
+    { uid: WeaponUidEnum.MistsplitterReforged, refinement: 1, is_better: true },
     { uid: WeaponUidEnum.LightOfFoliarIncision, refinement: 1 },
   ],
 } as CharacterRecommendations;

@@ -18,7 +18,7 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.AquilaFavonia, refinement: 1 },
-    { uid: WeaponUidEnum.FavoniusSword, refinement: 5 },
+    { uid: WeaponUidEnum.AquilaFavonia, refinement: 1, is_better: true },
+    { uid: WeaponUidEnum.FavoniusSword, refinement: 5, is_better: true },
   ],
 } as CharacterRecommendations;

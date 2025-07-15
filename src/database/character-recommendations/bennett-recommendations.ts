@@ -67,9 +67,9 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.MistsplitterReforged, refinement: 1 },
-    { uid: WeaponUidEnum.AquilaFavonia, refinement: 1 },
-    { uid: WeaponUidEnum.SkywardBlade, refinement: 1 },
+    { uid: WeaponUidEnum.MistsplitterReforged, refinement: 1, is_better: true },
+    { uid: WeaponUidEnum.AquilaFavonia, refinement: 1, is_better: true },
+    { uid: WeaponUidEnum.SkywardBlade, refinement: 1, is_better: true },
     { uid: WeaponUidEnum.SapwoodBlade },
   ],
 } as CharacterRecommendations;

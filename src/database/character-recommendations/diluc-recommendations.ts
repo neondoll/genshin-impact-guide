@@ -18,8 +18,8 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.SerpentSpine, refinement: 5 },
     { uid: WeaponUidEnum.RedhornStonethresher, refinement: 1 },
+    { uid: WeaponUidEnum.SerpentSpine, refinement: 5, is_better: true },
     { uid: WeaponUidEnum.WolfsGravestone, refinement: 1 },
   ],
 } as CharacterRecommendations;

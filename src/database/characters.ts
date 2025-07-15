@@ -33,6 +33,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Dendro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.LightOfFoliarIncision,
     image_src: imageSrc("alhaitham-256x256.webp"),
   },
   [CharacterUidEnum.Amber]: {
@@ -72,6 +73,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Dendro,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
+    signature_weapon_uid: WeaponUidEnum.JadefallsSplendor,
     image_src: imageSrc("baizhu-256x256.webp"),
   },
   [CharacterUidEnum.Barbara]: {
@@ -130,6 +132,16 @@ export default {
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
     image_src: imageSrc("chevreuse-256x256.webp"),
   },
+  [CharacterUidEnum.Chiori]: {
+    uid: CharacterUidEnum.Chiori,
+    name: "Тиори",
+    quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Sword,
+    element_uid: ElementUidEnum.Geo,
+    roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.UrakuMisugiri,
+    image_src: imageSrc("chiori-256x256.webp"),
+  },
   [CharacterUidEnum.Chongyun]: {
     uid: CharacterUidEnum.Chongyun,
     name: "Чун Юнь",
@@ -146,7 +158,19 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Cryo,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
+    signature_weapon_uid: WeaponUidEnum.StarcallersWatch,
     image_src: imageSrc("citlali-256x256.webp"),
+  },
+  [CharacterUidEnum.Clorinde]: {
+    uid: CharacterUidEnum.Clorinde,
+    name: "Клоринда",
+    quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Sword,
+    element_uid: ElementUidEnum.Electro,
+    arkhe: "Усия",
+    roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.Absolution,
+    image_src: imageSrc("clorinde-256x256.webp"),
   },
   [CharacterUidEnum.Collei]: {
     uid: CharacterUidEnum.Collei,
@@ -164,6 +188,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Electro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.StaffOfTheScarletSands,
     image_src: imageSrc("cyno-256x256.webp"),
   },
   [CharacterUidEnum.Dahlia]: {
@@ -182,6 +207,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Claymore,
     element_uid: ElementUidEnum.Pyro,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS, CharacterRoleUidEnum.Survivability],
+    signature_weapon_uid: WeaponUidEnum.BeaconOfTheReedSea,
     image_src: imageSrc("dehya-256x256.webp"),
   },
   [CharacterUidEnum.Diluc]: {
@@ -211,6 +237,17 @@ export default {
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Survivability],
     image_src: imageSrc("dori-256x256.webp"),
   },
+  [CharacterUidEnum.Emilie]: {
+    uid: CharacterUidEnum.Emilie,
+    name: "Эмилия",
+    quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Polearm,
+    element_uid: ElementUidEnum.Dendro,
+    arkhe: "Пневма",
+    roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.LumidouceElegy,
+    image_src: imageSrc("emilie-256x256.webp"),
+  },
   [CharacterUidEnum.Escoffier]: {
     uid: CharacterUidEnum.Escoffier,
     name: "Эскофье",
@@ -229,6 +266,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Claymore,
     element_uid: ElementUidEnum.Cryo,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.SongOfBrokenPines,
     image_src: imageSrc("eula-256x256.webp"),
   },
   [CharacterUidEnum.Faruzan]: {
@@ -270,6 +308,15 @@ export default {
     signature_weapon_uid: WeaponUidEnum.SplendorOfTranquilWaters,
     image_src: imageSrc("furina-256x256.webp"),
   },
+  [CharacterUidEnum.Gaming]: {
+    uid: CharacterUidEnum.Gaming,
+    name: "Ка Мин",
+    quality: 4,
+    weapon_type_uid: WeaponTypeUidEnum.Claymore,
+    element_uid: ElementUidEnum.Pyro,
+    roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    image_src: imageSrc("gaming-256x256.webp"),
+  },
   [CharacterUidEnum.Ganyu]: {
     uid: CharacterUidEnum.Ganyu,
     name: "Гань Юй",
@@ -277,6 +324,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Cryo,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.AmosBow,
     image_src: imageSrc("ganyu-256x256.webp"),
   },
   [CharacterUidEnum.Gorou]: {
@@ -295,6 +343,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Pyro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.StaffOfHoma,
     image_src: imageSrc("hu_tao-256x256.webp"),
   },
   [CharacterUidEnum.Iansan]: {
@@ -315,6 +364,15 @@ export default {
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Survivability],
     image_src: imageSrc("jean-256x256.webp"),
   },
+  [CharacterUidEnum.Kachina]: {
+    uid: CharacterUidEnum.Kachina,
+    name: "Качина",
+    quality: 4,
+    weapon_type_uid: WeaponTypeUidEnum.Polearm,
+    element_uid: ElementUidEnum.Geo,
+    roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS],
+    image_src: imageSrc("kachina-256x256.webp"),
+  },
   [CharacterUidEnum.KaedeharaKazuha]: {
     uid: CharacterUidEnum.KaedeharaKazuha,
     name: "Кадзуха",
@@ -322,6 +380,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Anemo,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support],
+    signature_weapon_uid: WeaponUidEnum.FreedomSworn,
     image_src: imageSrc("kaedehara_kazuha-256x256.webp"),
   },
   [CharacterUidEnum.Kaeya]: {
@@ -340,6 +399,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Cryo,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.MistsplitterReforged,
     image_src: imageSrc("kamisato_ayaka-256x256.webp"),
   },
   [CharacterUidEnum.KamisatoAyato]: {
@@ -349,6 +409,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Hydro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.HaranGeppakuFutsu,
     image_src: imageSrc("kamisato_ayato-256x256.webp"),
   },
   [CharacterUidEnum.Kaveh]: {
@@ -369,6 +430,16 @@ export default {
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
     image_src: imageSrc("keqing-256x256.webp"),
   },
+  [CharacterUidEnum.Kinich]: {
+    uid: CharacterUidEnum.Kinich,
+    name: "Кинич",
+    quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Claymore,
+    element_uid: ElementUidEnum.Dendro,
+    roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.FangOfTheMountainKing,
+    image_src: imageSrc("kinich-256x256.webp"),
+  },
   [CharacterUidEnum.Kirara]: {
     uid: CharacterUidEnum.Kirara,
     name: "Кирара",
@@ -385,6 +456,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Pyro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.LostPrayerToTheSacredWinds,
     image_src: imageSrc("klee-256x256.webp"),
   },
   [CharacterUidEnum.KujouSara]: {
@@ -441,6 +513,7 @@ export default {
     element_uid: ElementUidEnum.Pyro,
     arkhe: "Пневма",
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.TheFirstGreatMagic,
     image_src: imageSrc("lyney-256x256.webp"),
   },
   [CharacterUidEnum.Mavuika]: {
@@ -471,6 +544,16 @@ export default {
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support],
     image_src: imageSrc("mona-256x256.webp"),
   },
+  [CharacterUidEnum.Mualani]: {
+    uid: CharacterUidEnum.Mualani,
+    name: "Муалани",
+    quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Catalyst,
+    element_uid: ElementUidEnum.Hydro,
+    roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.SurfsUp,
+    image_src: imageSrc("mualani-256x256.webp"),
+  },
   [CharacterUidEnum.Nahida]: {
     uid: CharacterUidEnum.Nahida,
     name: "Нахида",
@@ -478,6 +561,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Dendro,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS, CharacterRoleUidEnum.Support],
+    signature_weapon_uid: WeaponUidEnum.AThousandFloatingDreams,
     image_src: imageSrc("nahida-256x256.webp"),
   },
   [CharacterUidEnum.Navia]: {
@@ -488,6 +572,7 @@ export default {
     element_uid: ElementUidEnum.Geo,
     arkhe: "Усия",
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.Verdict,
     image_src: imageSrc("navia-256x256.webp"),
   },
   [CharacterUidEnum.Neuvillette]: {
@@ -508,6 +593,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Sword,
     element_uid: ElementUidEnum.Hydro,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS, CharacterRoleUidEnum.Support],
+    signature_weapon_uid: WeaponUidEnum.KeyOfKhajNisut,
     image_src: imageSrc("nilou-256x256.webp"),
   },
   [CharacterUidEnum.Ningguang]: {
@@ -553,6 +639,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Electro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS, CharacterRoleUidEnum.Support],
+    signature_weapon_uid: WeaponUidEnum.EngulfingLightning,
     image_src: imageSrc("raiden_shogun-256x256.webp"),
   },
   [CharacterUidEnum.Razor]: {
@@ -580,6 +667,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Hydro,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
+    signature_weapon_uid: WeaponUidEnum.EverlastingMoonglow,
     image_src: imageSrc("sangonomiya_kokomi-256x256.webp"),
   },
   [CharacterUidEnum.Sayu]: {
@@ -591,6 +679,15 @@ export default {
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Survivability],
     image_src: imageSrc("sayu-256x256.webp"),
   },
+  [CharacterUidEnum.Sethos]: {
+    uid: CharacterUidEnum.Sethos,
+    name: "Сетос",
+    quality: 4,
+    weapon_type_uid: WeaponTypeUidEnum.Bow,
+    element_uid: ElementUidEnum.Electro,
+    roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    image_src: imageSrc("sethos-256x256.webp"),
+  },
   [CharacterUidEnum.Shenhe]: {
     uid: CharacterUidEnum.Shenhe,
     name: "Шэнь Хэ",
@@ -598,6 +695,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Cryo,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support],
+    signature_weapon_uid: WeaponUidEnum.CalamityQueller,
     image_src: imageSrc("shenhe-256x256.webp"),
   },
   [CharacterUidEnum.ShikanoinHeizou]: {
@@ -608,6 +706,17 @@ export default {
     element_uid: ElementUidEnum.Anemo,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
     image_src: imageSrc("shikanoin_heizou-256x256.webp"),
+  },
+  [CharacterUidEnum.Sigewinne]: {
+    uid: CharacterUidEnum.Sigewinne,
+    name: "Сиджвин",
+    quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Bow,
+    element_uid: ElementUidEnum.Hydro,
+    arkhe: "Усия",
+    roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
+    signature_weapon_uid: WeaponUidEnum.SilvershowerHeartstrings,
+    image_src: imageSrc("sigewinne-256x256.webp"),
   },
   [CharacterUidEnum.Skirk]: {
     uid: CharacterUidEnum.Skirk,
@@ -636,6 +745,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Hydro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.PolarStar,
     image_src: imageSrc("tartaglia-256x256.webp"),
   },
   [CharacterUidEnum.Thoma]: {
@@ -654,6 +764,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Dendro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.HuntersPath,
     image_src: imageSrc("tighnari-256x256.webp"),
   },
   [CharacterUidEnum.TravelerAnemo]: {
@@ -710,6 +821,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Anemo,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS, CharacterRoleUidEnum.Support],
+    signature_weapon_uid: WeaponUidEnum.ElegyForTheEnd,
     image_src: imageSrc("venti-256x256.webp"),
   },
   [CharacterUidEnum.Wanderer]: {
@@ -719,6 +831,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Anemo,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.TulaytullahsRemembrance,
     image_src: imageSrc("wanderer-256x256.webp"),
   },
   [CharacterUidEnum.Wriothesley]: {
@@ -729,6 +842,7 @@ export default {
     element_uid: ElementUidEnum.Cryo,
     arkhe: "Усия",
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.CashflowSupervision,
     image_src: imageSrc("wriothesley-256x256.webp"),
   },
   [CharacterUidEnum.Xiangling]: {
@@ -740,6 +854,16 @@ export default {
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS],
     image_src: imageSrc("xiangling-256x256.webp"),
   },
+  [CharacterUidEnum.Xianyun]: {
+    uid: CharacterUidEnum.Xianyun,
+    name: "Сянь Юнь",
+    quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Catalyst,
+    element_uid: ElementUidEnum.Anemo,
+    roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
+    signature_weapon_uid: WeaponUidEnum.CranesEchoingCall,
+    image_src: imageSrc("xianyun-256x256.webp"),
+  },
   [CharacterUidEnum.Xiao]: {
     uid: CharacterUidEnum.Xiao,
     name: "Сяо",
@@ -747,6 +871,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Anemo,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.PrimordialJadeWingedSpear,
     image_src: imageSrc("xiao-256x256.webp"),
   },
   [CharacterUidEnum.Xilonen]: {
@@ -784,6 +909,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Catalyst,
     element_uid: ElementUidEnum.Electro,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.KagurasVerity,
     image_src: imageSrc("yae_miko-256x256.webp"),
   },
   [CharacterUidEnum.Yanfei]: {
@@ -811,6 +937,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Hydro,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.AquaSimulacra,
     image_src: imageSrc("yelan-256x256.webp"),
   },
   [CharacterUidEnum.Yoimiya]: {
@@ -820,6 +947,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Pyro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.ThunderingPulse,
     image_src: imageSrc("yoimiya-256x256.webp"),
   },
   [CharacterUidEnum.YunJin]: {
@@ -838,6 +966,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Polearm,
     element_uid: ElementUidEnum.Geo,
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
+    signature_weapon_uid: WeaponUidEnum.VortexVanquisher,
     image_src: imageSrc("zhongli-256x256.webp"),
   },
 } as Record<CharacterUid, Character>;

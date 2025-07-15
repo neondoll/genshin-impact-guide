@@ -18,7 +18,7 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.BloodtaintedGreatsword, refinement: 5 },
+    { uid: WeaponUidEnum.BloodtaintedGreatsword, refinement: 5, is_better: true },
     { uid: WeaponUidEnum.Rainslasher, refinement: 5 },
     { uid: WeaponUidEnum.MakhairaAquamarine, refinement: 5 },
   ],

@@ -1,9 +1,9 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
-import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
-import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterUidEnum } from "../enums/character.ts";
-import { TalentUidEnum } from "../enums/talent.ts";
-import { WeaponUidEnum } from "../enums/weapon.ts";
+import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
+import { ArtifactSetUidEnum } from "../enums/artifact-set";
+import { AttributeUidEnum } from "../enums/attribute";
+import { CharacterUidEnum } from "../enums/character";
+import { TalentUidEnum } from "../enums/talent";
+import { WeaponUidEnum } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
@@ -38,6 +38,7 @@ export default {
     { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(10)" },
   ],
   video_sources: [
+    { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
     {
       title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
       vk_url: "https://vkvideo.ru/video-227044935_456239080",
@@ -45,7 +46,7 @@ export default {
   ],
   weapons: {
     "Без реакций - 120% ВЭ+": [
-      { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.3648 },
+      { uid: WeaponUidEnum.SplendorOfTranquilWaters, is_better: true, percent: 1.3648 },
       { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(с гео)", percent: 1.3306 },
       { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(без гео)", percent: 1.2265 },
       { uid: WeaponUidEnum.PrimordialJadeCutter, percent: 1.2139 },
@@ -61,7 +62,7 @@ export default {
       { uid: WeaponUidEnum.FavoniusSword, refinement: 5, percent: 0.8936 },
     ],
     "Без реакций - 170% ВЭ+": [
-      { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.1296 },
+      { uid: WeaponUidEnum.SplendorOfTranquilWaters, is_better: true, percent: 1.1296 },
       { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(с гео)", percent: 1.0842 },
       { uid: WeaponUidEnum.FleuveCendreFerryman, refinement: 5, percent: 1 },
       { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(без гео)", percent: 0.9999 },
@@ -77,7 +78,7 @@ export default {
       { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(не работает)", percent: 0.7894 },
     ],
     "Без реакций - 220% ВЭ+": [
-      { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.0893 },
+      { uid: WeaponUidEnum.SplendorOfTranquilWaters, is_better: true, percent: 1.0893 },
       { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(с гео)", percent: 1.0421 },
       { uid: WeaponUidEnum.FleuveCendreFerryman, refinement: 5, percent: 1 },
       { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(без гео)", percent: 0.9604 },
@@ -93,7 +94,7 @@ export default {
       { uid: WeaponUidEnum.HarbingerOfDawn, refinement: 5, postfix: "(не работает)", percent: 0.7608 },
     ],
     "Фурина вейпит - 180% ВЭ+": [
-      { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.2547 },
+      { uid: WeaponUidEnum.SplendorOfTranquilWaters, is_better: true, percent: 1.2547 },
       { uid: WeaponUidEnum.UrakuMisugiri, postfix: "(с гео)", percent: 1.1969 },
       { uid: WeaponUidEnum.KeyOfKhajNisut, percent: 1.1464 },
       { uid: WeaponUidEnum.PrimordialJadeCutter, percent: 1.1087 },

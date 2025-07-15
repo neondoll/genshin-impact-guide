@@ -1,9 +1,9 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
-import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
-import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterUidEnum } from "../enums/character.ts";
-import { TalentUidEnum } from "../enums/talent.ts";
-import { WeaponUidEnum } from "../enums/weapon.ts";
+import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
+import { ArtifactSetUidEnum } from "../enums/artifact-set";
+import { AttributeUidEnum } from "../enums/attribute";
+import { CharacterUidEnum } from "../enums/character";
+import { TalentUidEnum } from "../enums/talent";
+import { WeaponUidEnum } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
@@ -33,5 +33,11 @@ export default {
     { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
     { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(8)" },
   ],
-  weapons: [{ uid: WeaponUidEnum.PeakPatrolSong }, { uid: WeaponUidEnum.FavoniusSword }],
+  video_sources: [
+    { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
+  ],
+  weapons: [
+    { uid: WeaponUidEnum.PeakPatrolSong, refinement: 1, is_better: true },
+    { uid: WeaponUidEnum.FavoniusSword, refinement: 5 },
+  ],
 } as CharacterRecommendations;

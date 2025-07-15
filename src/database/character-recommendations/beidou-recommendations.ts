@@ -17,5 +17,5 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239080",
     },
   ],
-  weapons: [{ uid: WeaponUidEnum.SkywardPride, refinement: 1 }],
+  weapons: [{ uid: WeaponUidEnum.SkywardPride, refinement: 1, is_better: true }],
 } as CharacterRecommendations;
