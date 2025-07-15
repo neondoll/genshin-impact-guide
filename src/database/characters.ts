@@ -9,6 +9,13 @@ import type { Character, CharacterUid } from "./types/character";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`characters/${src}`);
 
+const traveler = {
+  name: "Путешественник",
+  image_src: imageSrc("traveler-256x256.gif"),
+  quality: 5,
+  weapon_type_uid: WeaponTypeUidEnum.Sword,
+} as Omit<Character, "element_uid" | "uid">;
+
 export default {
   [CharacterUidEnum.Albedo]: {
     uid: CharacterUidEnum.Albedo,
@@ -45,6 +52,7 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Claymore,
     element_uid: ElementUidEnum.Geo,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+    signature_weapon_uid: WeaponUidEnum.RedhornStonethresher,
   },
   [CharacterUidEnum.Arlecchino]: {
     uid: CharacterUidEnum.Arlecchino,
@@ -638,6 +646,42 @@ export default {
     weapon_type_uid: WeaponTypeUidEnum.Bow,
     element_uid: ElementUidEnum.Dendro,
     roles_uid: [CharacterRoleUidEnum.OnField, CharacterRoleUidEnum.DPS],
+  },
+  [CharacterUidEnum.TravelerAnemo]: {
+    ...traveler,
+    uid: CharacterUidEnum.TravelerAnemo,
+    name: `${traveler.name} (Анемо)`,
+    element_uid: ElementUidEnum.Anemo,
+  },
+  [CharacterUidEnum.TravelerDendro]: {
+    ...traveler,
+    uid: CharacterUidEnum.TravelerDendro,
+    name: `${traveler.name} (Дендро)`,
+    element_uid: ElementUidEnum.Dendro,
+  },
+  [CharacterUidEnum.TravelerElectro]: {
+    ...traveler,
+    uid: CharacterUidEnum.TravelerElectro,
+    name: `${traveler.name} (Электро)`,
+    element_uid: ElementUidEnum.Electro,
+  },
+  [CharacterUidEnum.TravelerGeo]: {
+    ...traveler,
+    uid: CharacterUidEnum.TravelerGeo,
+    name: `${traveler.name} (Гео)`,
+    element_uid: ElementUidEnum.Geo,
+  },
+  [CharacterUidEnum.TravelerHydro]: {
+    ...traveler,
+    uid: CharacterUidEnum.TravelerHydro,
+    name: `${traveler.name} (Гидро)`,
+    element_uid: ElementUidEnum.Hydro,
+  },
+  [CharacterUidEnum.TravelerPyro]: {
+    ...traveler,
+    uid: CharacterUidEnum.TravelerPyro,
+    name: `${traveler.name} (Пиро)`,
+    element_uid: ElementUidEnum.Pyro,
   },
   [CharacterUidEnum.Varesa]: {
     uid: CharacterUidEnum.Varesa,

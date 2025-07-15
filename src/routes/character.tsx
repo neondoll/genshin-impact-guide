@@ -17,7 +17,7 @@ export type CharacterLoaderData = {
   character: Awaited<ReturnType<typeof getCharacter>>;
   characterElement: Awaited<ReturnType<typeof getElement>>;
   characterRecommendations: Awaited<ReturnType<typeof getCharacterRecommendations>>;
-  characterRoles: Awaited<ReturnType<typeof getCharacterRole>>[];
+  characterRoles: Awaited<ReturnType<typeof getCharacterRole>>[] | undefined;
   characterWeaponType: Awaited<ReturnType<typeof getWeaponType>>;
 };
 
@@ -98,49 +98,43 @@ export default function Character() {
               <TableHead className="p-2 text-right">Элемент</TableHead>
               <TableCell className="p-2">
                 <div className="flex gap-1 items-center">
-                  <img
-                    alt={characterElement.name}
-                    className="shrink-0 size-5"
-                    src={characterElement.image_src}
-                  />
+                  <img alt={characterElement.name} className="shrink-0 size-5" src={characterElement.image_src} />
                   <span>{characterElement.name}</span>
                 </div>
               </TableCell>
             </TableRow>
-            <TableRow className="hover:bg-inherit">
-              <TableHead className="p-2 text-right">Роли</TableHead>
-              <TableCell className="p-2">
-                <div className="flex flex-wrap gap-2">
-                  {characterRoles.map((characterRole, index) => (
-                    <Tooltip key={character.roles_uid[index]}>
-                      <TooltipTrigger asChild>
-                        <Badge className="rounded-full">
-                          <img
-                            alt={characterRole.name}
-                            className="shrink-0 size-5"
-                            src={characterRole.icon_src}
-                          />
-                          <span>{characterRole.name}</span>
-                        </Badge>
-                      </TooltipTrigger>
-                      <TooltipContent
-                        className={cn(
-                          "max-w-[calc(var(--container-width)-(var(--container-padding-x)*2))] text-pretty",
-                          "[--container-width:var(--radix-popper-available-width)]",
-                          "[--container-padding-x:calc(var(--spacing)*4)]",
-                          "sm:[--container-width:var(--breakpoint-sm)] md:[--container-width:var(--breakpoint-md)]",
-                          "lg:[--container-width:var(--breakpoint-lg)]",
-                          "lg:[--container-padding-x:calc(var(--spacing)*6)]",
-                          "xl:[--container-width:var(--breakpoint-xl)] 2xl:[--container-width:var(--breakpoint-2xl)]",
-                        )}
-                      >
-                        <p dangerouslySetInnerHTML={{ __html: characterRole.description }} />
-                      </TooltipContent>
-                    </Tooltip>
-                  ))}
-                </div>
-              </TableCell>
-            </TableRow>
+            {characterRoles !== undefined && (
+              <TableRow className="hover:bg-inherit">
+                <TableHead className="p-2 text-right">Роли</TableHead>
+                <TableCell className="p-2">
+                  <div className="flex flex-wrap gap-2">
+                    {characterRoles.map(characterRole => (
+                      <Tooltip key={characterRole.uid}>
+                        <TooltipTrigger asChild>
+                          <Badge className="rounded-full">
+                            <img alt={characterRole.name} className="shrink-0 size-5" src={characterRole.icon_src} />
+                            <span>{characterRole.name}</span>
+                          </Badge>
+                        </TooltipTrigger>
+                        <TooltipContent
+                          className={cn(
+                            "max-w-[calc(var(--container-width)-(var(--container-padding-x)*2))] text-pretty",
+                            "[--container-width:var(--radix-popper-available-width)]",
+                            "[--container-padding-x:calc(var(--spacing)*4)]",
+                            "sm:[--container-width:var(--breakpoint-sm)] md:[--container-width:var(--breakpoint-md)]",
+                            "lg:[--container-width:var(--breakpoint-lg)]",
+                            "lg:[--container-padding-x:calc(var(--spacing)*6)]",
+                            "xl:[--container-width:var(--breakpoint-xl)] 2xl:[--container-width:var(--breakpoint-2xl)]",
+                          )}
+                        >
+                          <p dangerouslySetInnerHTML={{ __html: characterRole.description }} />
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
+                  </div>
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </Card>

@@ -1,6 +1,7 @@
-import { CharacterUidEnum } from "../enums/character.ts";
+import { CharacterUidEnum } from "../enums/character";
+import { ElementUidEnum } from "../enums/element";
 import type { CharacterRecommendations } from "../types/character-recommendations";
-import type { CharacterUid } from "../types/character.ts";
+import type { CharacterUid } from "../types/character";
 
 export default {
   [CharacterUidEnum.Albedo]: (await import("./albedo-recommendations")).default,
@@ -69,6 +70,11 @@ export default {
   [CharacterUidEnum.Tartaglia]: (await import("./tartaglia-recommendations")).default,
   [CharacterUidEnum.Thoma]: (await import("./thoma-recommendations")).default,
   [CharacterUidEnum.Tighnari]: (await import("./tighnari-recommendations")).default,
+  [CharacterUidEnum.TravelerAnemo]: (await import("./traveler-recommendations")).default[ElementUidEnum.Anemo],
+  [CharacterUidEnum.TravelerDendro]: (await import("./traveler-recommendations")).default[ElementUidEnum.Dendro],
+  [CharacterUidEnum.TravelerElectro]: (await import("./traveler-recommendations")).default[ElementUidEnum.Electro],
+  [CharacterUidEnum.TravelerGeo]: (await import("./traveler-recommendations")).default[ElementUidEnum.Geo],
+  [CharacterUidEnum.TravelerHydro]: (await import("./traveler-recommendations")).default[ElementUidEnum.Hydro],
   [CharacterUidEnum.Varesa]: (await import("./varesa-recommendations")).default,
   [CharacterUidEnum.Venti]: (await import("./venti-recommendations")).default,
   [CharacterUidEnum.Wanderer]: (await import("./wanderer-recommendations")).default,

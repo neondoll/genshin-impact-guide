@@ -1,9 +1,9 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
-import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
-import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterUidEnum } from "../enums/character.ts";
-import { TalentUidEnum } from "../enums/talent.ts";
-import { WeaponUidEnum } from "../enums/weapon.ts";
+import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
+import { ArtifactSetUidEnum } from "../enums/artifact-set";
+import { AttributeUidEnum } from "../enums/attribute";
+import { CharacterUidEnum } from "../enums/character";
+import { TalentUidEnum } from "../enums/talent";
+import { WeaponUidEnum } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
@@ -56,10 +56,11 @@ export default {
     { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   video_sources: [
+    { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
     {
       title: "Miron MinMax: ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
       vk_url: "https://vkvideo.ru/video-227044935_456239080",
     },
   ],
-  weapons: [{ uid: WeaponUidEnum.SacrificialSword }],
+  weapons: [{ uid: WeaponUidEnum.SacrificialSword, refinement: 5 }],
 } as CharacterRecommendations;

@@ -54,7 +54,7 @@ const router = createHashRouter([
             character,
             characterElement: getElement(character.element_uid),
             characterRecommendations: getCharacterRecommendations(params.characterUid as CharacterUid),
-            characterRoles: character.roles_uid.map(characterRoleUid => getCharacterRole(characterRoleUid)),
+            characterRoles: character.roles_uid ? character.roles_uid.map(characterRoleUid => getCharacterRole(characterRoleUid)) : undefined,
             characterWeaponType: getWeaponType(character.weapon_type_uid),
           };
         },

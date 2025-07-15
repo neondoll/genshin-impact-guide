@@ -13,7 +13,7 @@ export type Character = {
   quality: QualityUid;
   weapon_type_uid: WeaponTypeUid;
   element_uid: ElementUid;
-  roles_uid: CharacterRoleUid[];
+  roles_uid?: CharacterRoleUid[];
   signature_weapon_uid?: WeaponUid;
   signature_artifact_set_uid?: ArtifactSetUid;
 };
