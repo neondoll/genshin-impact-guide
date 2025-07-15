@@ -2,10 +2,11 @@ import { CharacterUidEnum } from "../enums/character";
 import { TalentUidEnum } from "../enums/talent";
 import { WeaponUidEnum } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
+import weapons from "@/database/weapons.ts";
 
 export default {
   character_uid: CharacterUidEnum.Wanderer,
-  first_constellation_or_signature_weapon: "Сигна",
+  first_constellation_or_signature_weapon: `С1 если ${weapons[WeaponUidEnum.TheWidsith].name} R5 | Сигна если ${weapons[WeaponUidEnum.TheWidsith].name} не R5`,
   talent_leveling: [
     { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
     { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(10)" },
