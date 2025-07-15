@@ -33,13 +33,10 @@ export default {
         { uid: AttributeUidEnum.PyroDamageBonus, notes: ["Лучше"] },
         { uid: AttributeUidEnum.AttackPercent },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalDamage },
-        { uid: AttributeUidEnum.CriticalRate },
-      ],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CritDmg }, { uid: AttributeUidEnum.CritRate }],
       additional: [
-        { uid: AttributeUidEnum.CriticalRate, notes: ["Приоритетно", "от 65%"] },
-        { uid: AttributeUidEnum.CriticalDamage, notes: ["Приоритетно", "от 150%"] },
+        { uid: AttributeUidEnum.CritRate, notes: ["Приоритетно", "от 65%"] },
+        { uid: AttributeUidEnum.CritDmg, notes: ["Приоритетно", "от 150%"] },
         { uid: AttributeUidEnum.AttackPercent, notes: ["от 2000"] },
         { uid: AttributeUidEnum.ElementalMastery, notes: ["от 150 (если Арлекино активирует реакции)"] },
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["Специально не собирать"] },

@@ -37,17 +37,17 @@ export default {
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.HealingBonus, use_percent: 0.543 },
         { uid: AttributeUidEnum.HealthPercent, use_percent: 0.224 },
-        { uid: AttributeUidEnum.CriticalRate, use_percent: 0.111 },
-        { uid: AttributeUidEnum.CriticalDamage },
+        { uid: AttributeUidEnum.CritRate, use_percent: 0.111 },
+        { uid: AttributeUidEnum.CritDmg },
       ],
       additional: [
         { uid: AttributeUidEnum.HealthPercent, notes: ["Приоритетно", "от 25000"] },
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["Приоритетно", "от 220%"] },
         {
-          uid: AttributeUidEnum.CriticalRate,
+          uid: AttributeUidEnum.CritRate,
           notes: ["от 50% (при использовании меча Фавония или если Беннет будет наносить дополнительный урон)"],
         },
-        { uid: AttributeUidEnum.CriticalDamage, notes: ["от 120% (если Беннет будет наносить дополнительный урон)"] },
+        { uid: AttributeUidEnum.CritDmg, notes: ["от 120% (если Беннет будет наносить дополнительный урон)"] },
       ],
     },
   },

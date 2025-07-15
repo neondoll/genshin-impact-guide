@@ -54,14 +54,11 @@ export default {
         },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PyroDamageBonus, notes: ["Всегда"] }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
-      ],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CritRate }, { uid: AttributeUidEnum.CritDmg }],
       additional: [
         { uid: AttributeUidEnum.AttackPercent },
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
+        { uid: AttributeUidEnum.CritRate },
+        { uid: AttributeUidEnum.CritDmg },
         { uid: AttributeUidEnum.ElementalMastery, notes: ["Если играем в Вейпе\\Мелте"] },
       ],
     },

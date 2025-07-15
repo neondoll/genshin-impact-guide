@@ -17,7 +17,7 @@ export default {
       [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.DefensePercent }],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.DefensePercent },
-        { uid: AttributeUidEnum.CriticalRate },
+        { uid: AttributeUidEnum.CritRate },
         { uid: AttributeUidEnum.HealingBonus },
       ],
       additional: [

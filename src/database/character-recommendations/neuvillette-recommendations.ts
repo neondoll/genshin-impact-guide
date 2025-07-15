@@ -24,20 +24,20 @@ export default {
         { uid: AttributeUidEnum.HydroDamageBonus },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage, notes: ["Чаще всего"] },
+        { uid: AttributeUidEnum.CritRate },
+        { uid: AttributeUidEnum.CritDmg, notes: ["Чаще всего"] },
         { uid: AttributeUidEnum.HealthPercent, notes: ["Иногда, особенно с Сигной"] },
       ],
       additional: [
         { uid: AttributeUidEnum.HealthPercent, notes: ["от 30000"] },
         {
-          uid: AttributeUidEnum.CriticalRate,
+          uid: AttributeUidEnum.CritRate,
           notes: [
             "от 65% в обычной ситуации",
             "от 35% при использовании полного комплекта Охотник Сумеречного двора и стремимся к 64%",
           ],
         },
-        { uid: AttributeUidEnum.CriticalDamage, notes: ["от 160%"] },
+        { uid: AttributeUidEnum.CritDmg, notes: ["от 160%"] },
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["Специально не охотиться", "от 120%"] },
       ],
     },

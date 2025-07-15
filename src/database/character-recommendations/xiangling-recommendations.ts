@@ -21,13 +21,13 @@ export default {
         { uid: AttributeUidEnum.HealthPercent, percent: 0.013 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate, percent: 0.642 },
-        { uid: AttributeUidEnum.CriticalDamage, percent: 0.291 },
+        { uid: AttributeUidEnum.CritRate, percent: 0.642 },
+        { uid: AttributeUidEnum.CritDmg, percent: 0.291 },
         { uid: AttributeUidEnum.AttackPercent, percent: 0.042 },
       ],
       additional: [
-        { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
+        { uid: AttributeUidEnum.CritRate, description: "Приоритетно" },
+        { uid: AttributeUidEnum.CritDmg, description: "Приоритетно" },
         { uid: AttributeUidEnum.EnergyRecharge },
       ],
     },

@@ -28,13 +28,13 @@ export default {
     name: "Снижение времени отката",
     image_src: imageSrc("cooldown_reduction-48x48.png"),
   },
-  [AttributeUidEnum.CriticalDamage]: {
-    uid: AttributeUidEnum.CriticalDamage,
+  [AttributeUidEnum.CritDmg]: {
+    uid: AttributeUidEnum.CritDmg,
     name: "Крит. урон",
     image_src: imageSrc("critical_hit-48x48.png"),
   },
-  [AttributeUidEnum.CriticalRate]: {
-    uid: AttributeUidEnum.CriticalRate,
+  [AttributeUidEnum.CritRate]: {
+    uid: AttributeUidEnum.CritRate,
     name: "Шанс крит. попадания",
     image_src: imageSrc("critical_hit-48x48.png"),
   },

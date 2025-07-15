@@ -18,18 +18,15 @@ export default {
         { uid: AttributeUidEnum.HydroDamageBonus },
         { uid: AttributeUidEnum.HealthPercent, description: "Лучше в подавляющем числе ситуаций" },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
-      ],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CritRate }, { uid: AttributeUidEnum.CritDmg }],
       additional: [
         {
           uid: AttributeUidEnum.EnergyRecharge,
           description: "В отрядах без доп. подкачки - 200% - 220% ВЭ\nВ отрядах с доп. подкачкой - 160% - 180% ВЭ\nВ отрядах с Е Лань или Син Цю - 130% - 140% ВЭ\nВ отрядах с 3 Гидро и более - 100% ВЭ",
         },
         { uid: AttributeUidEnum.HealthPercent },
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
+        { uid: AttributeUidEnum.CritRate },
+        { uid: AttributeUidEnum.CritDmg },
       ],
     },
   },

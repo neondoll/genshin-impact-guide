@@ -1,5 +1,5 @@
 import { AttributeUidEnum } from "./enums/attribute";
-import { publicImageSrc } from "@/lib/utils";
+import { numberFormatPercent, publicImageSrc } from "@/lib/utils";
 import { WeaponTypeUidEnum } from "./enums/weapon-type";
 import { WeaponUidEnum } from "./enums/weapon";
 import type { Weapon, WeaponUid } from "./types/weapon";
@@ -10,11 +10,16 @@ export default {
   [WeaponUidEnum.AThousandBlazingSuns]: {
     uid: WeaponUidEnum.AThousandBlazingSuns,
     name: "Тысяча ослепительных солнц",
-    image_src: imageSrc("a_thousand_blazing_suns-256x256.png"),
+    image_src: imageSrc("a_thousand_blazing_suns-256x256.webp"),
+    source: "Эксклюзивное оружие Молитвы события",
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 5,
-    base_atk: { min_value: "49", max_value: "741" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "2.4%", max_value: "11.0%" },
+    base_atk: { min_value: 49, max_value: 741 },
+    secondary_attributes: {
+      uid: AttributeUidEnum.CritRate,
+      min_value: numberFormatPercent(0.024, 1),
+      max_value: numberFormatPercent(0.110, 1),
+    },
   },
   [WeaponUidEnum.AThousandFloatingDreams]: {
     uid: WeaponUidEnum.AThousandFloatingDreams,
@@ -23,7 +28,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "58", max_value: "265" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "58", max_value: "265" },
   },
   [WeaponUidEnum.Absolution]: {
     uid: WeaponUidEnum.Absolution,
@@ -32,7 +37,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "9.6%", max_value: "44.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponUidEnum.Akuoumaru]: {
     uid: WeaponUidEnum.Akuoumaru,
@@ -41,7 +46,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.AlleyHunter]: {
     uid: WeaponUidEnum.AlleyHunter,
@@ -50,7 +55,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.AmenomaKageuchi]: {
     uid: WeaponUidEnum.AmenomaKageuchi,
@@ -59,7 +64,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.AmosBow]: {
     uid: WeaponUidEnum.AmosBow,
@@ -68,7 +73,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponUidEnum.AquaSimulacra]: {
     uid: WeaponUidEnum.AquaSimulacra,
@@ -77,7 +82,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "19.2%", max_value: "88.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponUidEnum.AquilaFavonia]: {
     uid: WeaponUidEnum.AquilaFavonia,
@@ -86,7 +91,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "48", max_value: "6774" },
-    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.AshGravenDrinkingHorn]: {
     uid: WeaponUidEnum.AshGravenDrinkingHorn,
@@ -95,25 +100,35 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.AstralVulturesCrimsonPlumage]: {
     uid: WeaponUidEnum.AstralVulturesCrimsonPlumage,
     name: "Алое перо звёздного грифа",
-    image_src: imageSrc("astral_vultures_crimson_plumage-256x256.png"),
+    image_src: imageSrc("astral_vultures_crimson_plumage-256x256.webp"),
+    source: "Эксклюзивное оружие Молитвы события",
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
-    base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "14.4%", max_value: "66.2%" },
+    base_atk: { min_value: 46, max_value: 608 },
+    secondary_attributes: {
+      uid: AttributeUidEnum.CritDmg,
+      min_value: numberFormatPercent(0.144, 1),
+      max_value: numberFormatPercent(0.662, 1),
+    },
   },
   [WeaponUidEnum.Azurelight]: {
     uid: WeaponUidEnum.Azurelight,
     name: "Лазурное сияние",
-    image_src: imageSrc("azurelight-256x256.png"),
+    image_src: imageSrc("azurelight-256x256.webp"),
+    source: "Эксклюзивное оружие Молитвы события",
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
-    base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "4.8%", max_value: "22.1%" },
+    base_atk: { min_value: 48, max_value: 674 },
+    secondary_attributes: {
+      uid: AttributeUidEnum.CritRate,
+      min_value: numberFormatPercent(0.048, 1),
+      max_value: numberFormatPercent(0.221, 1),
+    },
   },
   [WeaponUidEnum.BalladOfTheBoundlessBlue]: {
     uid: WeaponUidEnum.BalladOfTheBoundlessBlue,
@@ -122,7 +137,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.BalladOfTheFjords]: {
     uid: WeaponUidEnum.BalladOfTheFjords,
@@ -131,7 +146,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.BeaconOfTheReedSea]: {
     uid: WeaponUidEnum.BeaconOfTheReedSea,
@@ -140,7 +155,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "7.2%", max_value: "33.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "7.2%", max_value: "33.1%" },
   },
   [WeaponUidEnum.BlackTassel]: {
     uid: WeaponUidEnum.BlackTassel,
@@ -149,7 +164,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 3,
     base_atk: { min_value: "38", max_value: "354" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "10.2%", max_value: "46.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "10.2%", max_value: "46.9%" },
   },
   [WeaponUidEnum.BlackcliffAgate]: {
     uid: WeaponUidEnum.BlackcliffAgate,
@@ -158,7 +173,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.BlackcliffLongsword]: {
     uid: WeaponUidEnum.BlackcliffLongsword,
@@ -167,7 +182,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "8%", max_value: "36.8%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponUidEnum.BlackcliffPole]: {
     uid: WeaponUidEnum.BlackcliffPole,
@@ -176,7 +191,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.BlackcliffSlasher]: {
     uid: WeaponUidEnum.BlackcliffSlasher,
@@ -185,7 +200,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.BlackcliffWarbow]: {
     uid: WeaponUidEnum.BlackcliffWarbow,
@@ -194,7 +209,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "8%", max_value: "36.8%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponUidEnum.BloodtaintedGreatsword]: {
     uid: WeaponUidEnum.BloodtaintedGreatsword,
@@ -203,7 +218,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 3,
     base_atk: { min_value: "38", max_value: "354" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "41", max_value: "187" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "41", max_value: "187" },
   },
   [WeaponUidEnum.CalamityOfEshu]: {
     uid: WeaponUidEnum.CalamityOfEshu,
@@ -212,7 +227,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.CalamityQueller]: {
     uid: WeaponUidEnum.CalamityQueller,
@@ -221,7 +236,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
     base_atk: { min_value: "49", max_value: "741" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "3.6%", max_value: "16.5%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "3.6%", max_value: "16.5%" },
   },
   [WeaponUidEnum.CashflowSupervision]: {
     uid: WeaponUidEnum.CashflowSupervision,
@@ -230,7 +245,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "4.8%", max_value: "22.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "4.8%", max_value: "22.1%" },
   },
   [WeaponUidEnum.ChainBreaker]: {
     uid: WeaponUidEnum.ChainBreaker,
@@ -239,7 +254,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.CinnabarSpindle]: {
     uid: WeaponUidEnum.CinnabarSpindle,
@@ -248,7 +263,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.Defense, min_value: "15%", max_value: "69.0%" },
+    secondary_attributes: { uid: AttributeUidEnum.Defense, min_value: "15%", max_value: "69.0%" },
   },
   [WeaponUidEnum.Cloudforged]: {
     uid: WeaponUidEnum.Cloudforged,
@@ -257,7 +272,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponUidEnum.CompoundBow]: {
     uid: WeaponUidEnum.CompoundBow,
@@ -266,7 +281,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "15%", max_value: "69.0%" },
+    secondary_attributes: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "15%", max_value: "69.0%" },
   },
   [WeaponUidEnum.CoolSteel]: {
     uid: WeaponUidEnum.CoolSteel,
@@ -275,7 +290,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "7.7%", max_value: "35.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponUidEnum.CranesEchoingCall]: {
     uid: WeaponUidEnum.CranesEchoingCall,
@@ -284,7 +299,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "49", max_value: "741" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "3.6%", max_value: "16.5%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "3.6%", max_value: "16.5%" },
   },
   [WeaponUidEnum.CrescentPike]: {
     uid: WeaponUidEnum.CrescentPike,
@@ -293,7 +308,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "7.5%", max_value: "34.5%" },
+    secondary_attributes: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "7.5%", max_value: "34.5%" },
   },
   [WeaponUidEnum.CrimsonMoonsSemblance]: {
     uid: WeaponUidEnum.CrimsonMoonsSemblance,
@@ -302,7 +317,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "4.8%", max_value: "22.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "4.8%", max_value: "22.1%" },
   },
   [WeaponUidEnum.DarkIronSword]: {
     uid: WeaponUidEnum.DarkIronSword,
@@ -311,7 +326,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "31", max_value: "141" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "31", max_value: "141" },
   },
   [WeaponUidEnum.Deathmatch]: {
     uid: WeaponUidEnum.Deathmatch,
@@ -320,7 +335,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "8%", max_value: "36.8%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponUidEnum.DebateClub]: {
     uid: WeaponUidEnum.DebateClub,
@@ -329,7 +344,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "7.7%", max_value: "35.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponUidEnum.DialoguesOfTheDesertSages]: {
     uid: WeaponUidEnum.DialoguesOfTheDesertSages,
@@ -338,7 +353,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.DodocoTales]: {
     uid: WeaponUidEnum.DodocoTales,
@@ -347,7 +362,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.DragonsBane]: {
     uid: WeaponUidEnum.DragonsBane,
@@ -356,7 +371,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "48", max_value: "221" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "48", max_value: "221" },
   },
   [WeaponUidEnum.DragonspineSpear]: {
     uid: WeaponUidEnum.DragonspineSpear,
@@ -365,7 +380,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "15%", max_value: "69.0%" },
+    secondary_attributes: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "15%", max_value: "69.0%" },
   },
   [WeaponUidEnum.EarthShaker]: {
     uid: WeaponUidEnum.EarthShaker,
@@ -374,7 +389,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.ElegyForTheEnd]: {
     uid: WeaponUidEnum.ElegyForTheEnd,
@@ -383,7 +398,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.EmeraldOrb]: {
     uid: WeaponUidEnum.EmeraldOrb,
@@ -392,7 +407,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 3,
     base_atk: { min_value: "40", max_value: "448" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "20", max_value: "94" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "20", max_value: "94" },
   },
   [WeaponUidEnum.EndOfTheLine]: {
     uid: WeaponUidEnum.EndOfTheLine,
@@ -401,7 +416,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponUidEnum.EngulfingLightning]: {
     uid: WeaponUidEnum.EngulfingLightning,
@@ -410,7 +425,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.EverlastingMoonglow]: {
     uid: WeaponUidEnum.EverlastingMoonglow,
@@ -419,7 +434,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "10.8%", max_value: "49.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponUidEnum.EyeOfPerception]: {
     uid: WeaponUidEnum.EyeOfPerception,
@@ -428,7 +443,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.FadingTwilight]: {
     uid: WeaponUidEnum.FadingTwilight,
@@ -437,7 +452,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.FangOfTheMountainKing]: {
     uid: WeaponUidEnum.FangOfTheMountainKing,
@@ -446,7 +461,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 5,
     base_atk: { min_value: "49", max_value: "741" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "2.4%", max_value: "11.0%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "2.4%", max_value: "11.0%" },
   },
   [WeaponUidEnum.FavoniusCodex]: {
     uid: WeaponUidEnum.FavoniusCodex,
@@ -455,7 +470,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponUidEnum.FavoniusGreatsword]: {
     uid: WeaponUidEnum.FavoniusGreatsword,
@@ -464,7 +479,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
   },
   [WeaponUidEnum.FavoniusLance]: {
     uid: WeaponUidEnum.FavoniusLance,
@@ -473,7 +488,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.FavoniusSword]: {
     uid: WeaponUidEnum.FavoniusSword,
@@ -482,7 +497,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
   },
   [WeaponUidEnum.FavoniusWarbow]: {
     uid: WeaponUidEnum.FavoniusWarbow,
@@ -491,7 +506,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
   },
   [WeaponUidEnum.FerrousShadow]: {
     uid: WeaponUidEnum.FerrousShadow,
@@ -500,7 +515,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "7.7%", max_value: "35.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponUidEnum.FesteringDesire]: {
     uid: WeaponUidEnum.FesteringDesire,
@@ -509,7 +524,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponUidEnum.FilletBlade]: {
     uid: WeaponUidEnum.FilletBlade,
@@ -518,7 +533,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "7.7%", max_value: "35.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponUidEnum.FinaleOfTheDeep]: {
     uid: WeaponUidEnum.FinaleOfTheDeep,
@@ -527,7 +542,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.FleuveCendreFerryman]: {
     uid: WeaponUidEnum.FleuveCendreFerryman,
@@ -536,7 +551,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponUidEnum.FlowerWreathedFeathers]: {
     uid: WeaponUidEnum.FlowerWreathedFeathers,
@@ -545,7 +560,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.FlowingPurity]: {
     uid: WeaponUidEnum.FlowingPurity,
@@ -554,7 +569,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.FluteOfEzpitzal]: {
     uid: WeaponUidEnum.FluteOfEzpitzal,
@@ -563,7 +578,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.Defense, min_value: "15%", max_value: "69.0%" },
+    secondary_attributes: { uid: AttributeUidEnum.Defense, min_value: "15%", max_value: "69.0%" },
   },
   [WeaponUidEnum.FootprintOfTheRainbow]: {
     uid: WeaponUidEnum.FootprintOfTheRainbow,
@@ -572,7 +587,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Defense, min_value: "11.3%", max_value: "51.7%" },
+    secondary_attributes: { uid: AttributeUidEnum.Defense, min_value: "11.3%", max_value: "51.7%" },
   },
   [WeaponUidEnum.ForestRegalia]: {
     uid: WeaponUidEnum.ForestRegalia,
@@ -581,7 +596,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.FreedomSworn]: {
     uid: WeaponUidEnum.FreedomSworn,
@@ -590,7 +605,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "43", max_value: "198" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "43", max_value: "198" },
   },
   [WeaponUidEnum.Frostbearer]: {
     uid: WeaponUidEnum.Frostbearer,
@@ -599,7 +614,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.FruitOfFulfillment]: {
     uid: WeaponUidEnum.FruitOfFulfillment,
@@ -608,7 +623,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponUidEnum.FruitfulHook]: {
     uid: WeaponUidEnum.FruitfulHook,
@@ -617,7 +632,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.HakushinRing]: {
     uid: WeaponUidEnum.HakushinRing,
@@ -626,7 +641,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.Halberd]: {
     uid: WeaponUidEnum.Halberd,
@@ -635,7 +650,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 3,
     base_atk: { min_value: "40", max_value: "448" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "5.1%", max_value: "23.4%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "5.1%", max_value: "23.4%" },
   },
   [WeaponUidEnum.Hamayumi]: {
     uid: WeaponUidEnum.Hamayumi,
@@ -644,7 +659,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.HaranGeppakuFutsu]: {
     uid: WeaponUidEnum.HaranGeppakuFutsu,
@@ -653,7 +668,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "7.2%", max_value: "33.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "7.2%", max_value: "33.1%" },
   },
   [WeaponUidEnum.HarbingerOfDawn]: {
     uid: WeaponUidEnum.HarbingerOfDawn,
@@ -662,7 +677,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "10.2%", max_value: "46.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "10.2%", max_value: "46.9%" },
   },
   [WeaponUidEnum.HuntersPath]: {
     uid: WeaponUidEnum.HuntersPath,
@@ -671,7 +686,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "9.6%", max_value: "44.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponUidEnum.IbisPiercer]: {
     uid: WeaponUidEnum.IbisPiercer,
@@ -680,7 +695,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.IronSting]: {
     uid: WeaponUidEnum.IronSting,
@@ -689,7 +704,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponUidEnum.JadefallsSplendor]: {
     uid: WeaponUidEnum.JadefallsSplendor,
@@ -698,7 +713,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "10.8%", max_value: "49.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponUidEnum.KagotsurubeIsshin]: {
     uid: WeaponUidEnum.KagotsurubeIsshin,
@@ -707,7 +722,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.KagurasVerity]: {
     uid: WeaponUidEnum.KagurasVerity,
@@ -716,7 +731,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "14.4%", max_value: "66.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "14.4%", max_value: "66.2%" },
   },
   [WeaponUidEnum.KatsuragikiriNagamasa]: {
     uid: WeaponUidEnum.KatsuragikiriNagamasa,
@@ -725,7 +740,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponUidEnum.KeyOfKhajNisut]: {
     uid: WeaponUidEnum.KeyOfKhajNisut,
@@ -734,7 +749,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "14.4%", max_value: "66.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "14.4%", max_value: "66.2%" },
   },
   [WeaponUidEnum.KingsSquire]: {
     uid: WeaponUidEnum.KingsSquire,
@@ -743,7 +758,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.KitainCrossSpear]: {
     uid: WeaponUidEnum.KitainCrossSpear,
@@ -752,7 +767,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "24", max_value: "110" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "24", max_value: "110" },
   },
   [WeaponUidEnum.LightOfFoliarIncision]: {
     uid: WeaponUidEnum.LightOfFoliarIncision,
@@ -761,7 +776,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "19.2%", max_value: "88.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponUidEnum.LionsRoar]: {
     uid: WeaponUidEnum.LionsRoar,
@@ -770,7 +785,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.LithicBlade]: {
     uid: WeaponUidEnum.LithicBlade,
@@ -779,7 +794,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.LithicSpear]: {
     uid: WeaponUidEnum.LithicSpear,
@@ -788,7 +803,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.LostPrayerToTheSacredWinds]: {
     uid: WeaponUidEnum.LostPrayerToTheSacredWinds,
@@ -797,7 +812,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "7.2%", max_value: "33.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "7.2%", max_value: "33.1%" },
   },
   [WeaponUidEnum.LumidouceElegy]: {
     uid: WeaponUidEnum.LumidouceElegy,
@@ -806,7 +821,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "7.2%", max_value: "33.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "7.2%", max_value: "33.1%" },
   },
   [WeaponUidEnum.LuxuriousSeaLord]: {
     uid: WeaponUidEnum.LuxuriousSeaLord,
@@ -815,7 +830,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.MagicGuide]: {
     uid: WeaponUidEnum.MagicGuide,
@@ -824,7 +839,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 3,
     base_atk: { min_value: "38", max_value: "354" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "41", max_value: "187" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "41", max_value: "187" },
   },
   [WeaponUidEnum.MailedFlower]: {
     uid: WeaponUidEnum.MailedFlower,
@@ -833,7 +848,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "24", max_value: "110" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "24", max_value: "110" },
   },
   [WeaponUidEnum.MakhairaAquamarine]: {
     uid: WeaponUidEnum.MakhairaAquamarine,
@@ -842,7 +857,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponUidEnum.MappaMare]: {
     uid: WeaponUidEnum.MappaMare,
@@ -851,7 +866,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "24", max_value: "110" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "24", max_value: "110" },
   },
   [WeaponUidEnum.MemoryOfDust]: {
     uid: WeaponUidEnum.MemoryOfDust,
@@ -860,7 +875,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponUidEnum.Messenger]: {
     uid: WeaponUidEnum.Messenger,
@@ -869,7 +884,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 3,
     base_atk: { min_value: "40", max_value: "448" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "6.8%", max_value: "31.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "6.8%", max_value: "31.2%" },
   },
   [WeaponUidEnum.MissiveWindspear]: {
     uid: WeaponUidEnum.MissiveWindspear,
@@ -878,7 +893,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.MistsplitterReforged]: {
     uid: WeaponUidEnum.MistsplitterReforged,
@@ -887,7 +902,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "9.6%", max_value: "44.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponUidEnum.MitternachtsWaltz]: {
     uid: WeaponUidEnum.MitternachtsWaltz,
@@ -896,7 +911,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "11.3%", max_value: "51.7%" },
+    secondary_attributes: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "11.3%", max_value: "51.7%" },
   },
   [WeaponUidEnum.Moonpiercer]: {
     uid: WeaponUidEnum.Moonpiercer,
@@ -905,7 +920,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "24", max_value: "110" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "24", max_value: "110" },
   },
   [WeaponUidEnum.MountainBracingBolt]: {
     uid: WeaponUidEnum.MountainBracingBolt,
@@ -914,7 +929,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.MouunsMoon]: {
     uid: WeaponUidEnum.MouunsMoon,
@@ -923,7 +938,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.OathswornEye]: {
     uid: WeaponUidEnum.OathswornEye,
@@ -932,7 +947,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.OtherworldlyStory]: {
     uid: WeaponUidEnum.OtherworldlyStory,
@@ -941,7 +956,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "8.5%", max_value: "39.0%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "8.5%", max_value: "39.0%" },
   },
   [WeaponUidEnum.PeakPatrolSong]: {
     uid: WeaponUidEnum.PeakPatrolSong,
@@ -950,7 +965,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.Defense, min_value: "18%", max_value: "82.7%" },
+    secondary_attributes: { uid: AttributeUidEnum.Defense, min_value: "18%", max_value: "82.7%" },
   },
   [WeaponUidEnum.PolarStar]: {
     uid: WeaponUidEnum.PolarStar,
@@ -959,7 +974,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "7.2%", max_value: "33.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "7.2%", max_value: "33.1%" },
   },
   [WeaponUidEnum.PortablePowerSaw]: {
     uid: WeaponUidEnum.PortablePowerSaw,
@@ -968,7 +983,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.Predator]: {
     uid: WeaponUidEnum.Predator,
@@ -977,7 +992,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.PrimordialJadeCutter]: {
     uid: WeaponUidEnum.PrimordialJadeCutter,
@@ -986,7 +1001,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "9.6%", max_value: "44.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponUidEnum.PrimordialJadeWingedSpear]: {
     uid: WeaponUidEnum.PrimordialJadeWingedSpear,
@@ -995,7 +1010,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "4.8%", max_value: "22.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "4.8%", max_value: "22.1%" },
   },
   [WeaponUidEnum.ProspectorsDrill]: {
     uid: WeaponUidEnum.ProspectorsDrill,
@@ -1004,7 +1019,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.PrototypeAmber]: {
     uid: WeaponUidEnum.PrototypeAmber,
@@ -1013,7 +1028,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.PrototypeArchaic]: {
     uid: WeaponUidEnum.PrototypeArchaic,
@@ -1022,7 +1037,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.PrototypeCrescent]: {
     uid: WeaponUidEnum.PrototypeCrescent,
@@ -1031,7 +1046,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.PrototypeRancour]: {
     uid: WeaponUidEnum.PrototypeRancour,
@@ -1040,7 +1055,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "7.5%", max_value: "34.5%" },
+    secondary_attributes: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "7.5%", max_value: "34.5%" },
   },
   [WeaponUidEnum.PrototypeStarglitter]: {
     uid: WeaponUidEnum.PrototypeStarglitter,
@@ -1049,7 +1064,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponUidEnum.Rainslasher]: {
     uid: WeaponUidEnum.Rainslasher,
@@ -1058,7 +1073,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponUidEnum.RangeGauge]: {
     uid: WeaponUidEnum.RangeGauge,
@@ -1067,7 +1082,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.RavenBow]: {
     uid: WeaponUidEnum.RavenBow,
@@ -1076,7 +1091,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 3,
     base_atk: { min_value: "40", max_value: "448" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "20", max_value: "94" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "20", max_value: "94" },
   },
   [WeaponUidEnum.RecurveBow]: {
     uid: WeaponUidEnum.RecurveBow,
@@ -1085,7 +1100,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 3,
     base_atk: { min_value: "38", max_value: "354" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "10.2%", max_value: "46.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "10.2%", max_value: "46.9%" },
   },
   [WeaponUidEnum.RedhornStonethresher]: {
     uid: WeaponUidEnum.RedhornStonethresher,
@@ -1094,7 +1109,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "19.2%", max_value: "88.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponUidEnum.RightfulReward]: {
     uid: WeaponUidEnum.RightfulReward,
@@ -1103,7 +1118,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.RingOfYaxche]: {
     uid: WeaponUidEnum.RingOfYaxche,
@@ -1112,7 +1127,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.RoyalBow]: {
     uid: WeaponUidEnum.RoyalBow,
@@ -1121,7 +1136,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.RoyalGreatsword]: {
     uid: WeaponUidEnum.RoyalGreatsword,
@@ -1130,7 +1145,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.RoyalGrimoire]: {
     uid: WeaponUidEnum.RoyalGrimoire,
@@ -1139,7 +1154,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.RoyalLongsword]: {
     uid: WeaponUidEnum.RoyalLongsword,
@@ -1148,7 +1163,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.RoyalSpear]: {
     uid: WeaponUidEnum.RoyalSpear,
@@ -1157,7 +1172,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.Rust]: {
     uid: WeaponUidEnum.Rust,
@@ -1166,7 +1181,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.SacrificialBow]: {
     uid: WeaponUidEnum.SacrificialBow,
@@ -1175,7 +1190,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.SacrificialFragments]: {
     uid: WeaponUidEnum.SacrificialFragments,
@@ -1184,7 +1199,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "48", max_value: "221" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "48", max_value: "221" },
   },
   [WeaponUidEnum.SacrificialGreatsword]: {
     uid: WeaponUidEnum.SacrificialGreatsword,
@@ -1193,7 +1208,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.SacrificialJade]: {
     uid: WeaponUidEnum.SacrificialJade,
@@ -1202,7 +1217,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "8%", max_value: "36.8%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponUidEnum.SacrificialSword]: {
     uid: WeaponUidEnum.SacrificialSword,
@@ -1211,7 +1226,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
   },
   [WeaponUidEnum.SapwoodBlade]: {
     uid: WeaponUidEnum.SapwoodBlade,
@@ -1220,7 +1235,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.ScionOfTheBlazingSun]: {
     uid: WeaponUidEnum.ScionOfTheBlazingSun,
@@ -1229,7 +1244,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "4%", max_value: "18.4%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "4%", max_value: "18.4%" },
   },
   [WeaponUidEnum.SerpentSpine]: {
     uid: WeaponUidEnum.SerpentSpine,
@@ -1238,7 +1253,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.SharpshootersOath]: {
     uid: WeaponUidEnum.SharpshootersOath,
@@ -1247,7 +1262,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "10.2%", max_value: "46.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "10.2%", max_value: "46.9%" },
   },
   [WeaponUidEnum.SilvershowerHeartstrings]: {
     uid: WeaponUidEnum.SilvershowerHeartstrings,
@@ -1256,7 +1271,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "14.4%", max_value: "66.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "14.4%", max_value: "66.2%" },
   },
   [WeaponUidEnum.SkyriderGreatsword]: {
     uid: WeaponUidEnum.SkyriderGreatsword,
@@ -1265,7 +1280,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "9.6%", max_value: "43.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "9.6%", max_value: "43.9%" },
   },
   [WeaponUidEnum.SkyriderSword]: {
     uid: WeaponUidEnum.SkyriderSword,
@@ -1274,7 +1289,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 3,
     base_atk: { min_value: "38", max_value: "354" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "11.3%", max_value: "51.7%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "11.3%", max_value: "51.7%" },
   },
   [WeaponUidEnum.SkywardAtlas]: {
     uid: WeaponUidEnum.SkywardAtlas,
@@ -1283,7 +1298,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "7.2%", max_value: "33.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "7.2%", max_value: "33.1%" },
   },
   [WeaponUidEnum.SkywardBlade]: {
     uid: WeaponUidEnum.SkywardBlade,
@@ -1292,7 +1307,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.SkywardHarp]: {
     uid: WeaponUidEnum.SkywardHarp,
@@ -1301,7 +1316,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "4.8%", max_value: "22.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "4.8%", max_value: "22.1%" },
   },
   [WeaponUidEnum.SkywardPride]: {
     uid: WeaponUidEnum.SkywardPride,
@@ -1310,7 +1325,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "8%", max_value: "36.8%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponUidEnum.SkywardSpine]: {
     uid: WeaponUidEnum.SkywardSpine,
@@ -1319,7 +1334,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "8%", max_value: "36.8%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponUidEnum.Slingshot]: {
     uid: WeaponUidEnum.Slingshot,
@@ -1328,7 +1343,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 3,
     base_atk: { min_value: "38", max_value: "354" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "6.8%", max_value: "31.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "6.8%", max_value: "31.2%" },
   },
   [WeaponUidEnum.SnowTombedStarsilver]: {
     uid: WeaponUidEnum.SnowTombedStarsilver,
@@ -1337,7 +1352,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "7.5%", max_value: "34.5%" },
+    secondary_attributes: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "7.5%", max_value: "34.5%" },
   },
   [WeaponUidEnum.SolarPearl]: {
     uid: WeaponUidEnum.SolarPearl,
@@ -1346,7 +1361,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.SongOfBrokenPines]: {
     uid: WeaponUidEnum.SongOfBrokenPines,
@@ -1355,7 +1370,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 5,
     base_atk: { min_value: "49", max_value: "741" },
-    secondary_attribute: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "4.5%", max_value: "20.7%" },
+    secondary_attributes: { uid: AttributeUidEnum.PhysicalDamageBonus, min_value: "4.5%", max_value: "20.7%" },
   },
   [WeaponUidEnum.SongOfStillness]: {
     uid: WeaponUidEnum.SongOfStillness,
@@ -1364,7 +1379,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.SplendorOfTranquilWaters]: {
     uid: WeaponUidEnum.SplendorOfTranquilWaters,
@@ -1373,7 +1388,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "19.2%", max_value: "88.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponUidEnum.StaffOfHoma]: {
     uid: WeaponUidEnum.StaffOfHoma,
@@ -1382,7 +1397,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "14.4%", max_value: "66.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "14.4%", max_value: "66.2%" },
   },
   [WeaponUidEnum.StaffOfTheScarletSands]: {
     uid: WeaponUidEnum.StaffOfTheScarletSands,
@@ -1391,16 +1406,17 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "9.6%", max_value: "44.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponUidEnum.StarcallersWatch]: {
     uid: WeaponUidEnum.StarcallersWatch,
     name: "Бдение взывающего к звёздам",
-    image_src: imageSrc("starcallers_watch-256x256.png"),
+    image_src: imageSrc("starcallers_watch-256x256.webp"),
+    source: "Эксклюзивное оружие Молитвы события",
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
-    base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "58", max_value: "265" },
+    base_atk: { min_value: 44, max_value: 542 },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: 58, max_value: 265 },
   },
   [WeaponUidEnum.SturdyBone]: {
     uid: WeaponUidEnum.SturdyBone,
@@ -1409,7 +1425,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.SummitShaper]: {
     uid: WeaponUidEnum.SummitShaper,
@@ -1418,16 +1434,17 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponUidEnum.SunnyMorningSleepIn]: {
     uid: WeaponUidEnum.SunnyMorningSleepIn,
     name: "Сон солнечным утром",
-    image_src: imageSrc("sunny_morning_sleep_in-256x256.png"),
+    image_src: imageSrc("sunny_morning_sleep_in-256x256.webp"),
+    source: "Эксклюзивное оружие Молитвы события",
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
-    base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "58", max_value: "265" },
+    base_atk: { min_value: 44, max_value: 542 },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: 58, max_value: 265 },
   },
   [WeaponUidEnum.SurfsUp]: {
     uid: WeaponUidEnum.SurfsUp,
@@ -1436,7 +1453,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "19.2%", max_value: "88.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponUidEnum.SwordOfDescension]: {
     uid: WeaponUidEnum.SwordOfDescension,
@@ -1445,7 +1462,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "39", max_value: "440" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "7.7%", max_value: "35.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponUidEnum.SwordOfNarzissenkreuz]: {
     uid: WeaponUidEnum.SwordOfNarzissenkreuz,
@@ -1454,16 +1471,21 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.SymphonistOfScents]: {
     uid: WeaponUidEnum.SymphonistOfScents,
     name: "Симфонист ароматов",
-    image_src: imageSrc("symphonist_of_scents-256x256.png"),
+    image_src: imageSrc("symphonist_of_scents-256x256.webp"),
+    source: "Эксклюзивное оружие Молитвы события",
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
-    base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "14.4%", max_value: "66.2%" },
+    base_atk: { min_value: 46, max_value: 608 },
+    secondary_attributes: {
+      uid: AttributeUidEnum.CritDmg,
+      min_value: numberFormatPercent(0.144, 1),
+      max_value: numberFormatPercent(0.662, 1),
+    },
   },
   [WeaponUidEnum.TalkingStick]: {
     uid: WeaponUidEnum.TalkingStick,
@@ -1472,16 +1494,21 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "4%", max_value: "18.4%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "4%", max_value: "18.4%" },
   },
   [WeaponUidEnum.TamayurateiNoOhanashi]: {
     uid: WeaponUidEnum.TamayurateiNoOhanashi,
     name: "Тамаюратэй но оханаси",
-    image_src: imageSrc("tamayuratei_no_ohanashi-256x256.png"),
+    image_src: imageSrc("tamayuratei_no_ohanashi-256x256.webp"),
+    source: "Событие версии 5.4 «Чудесные истории фестиваля Микавы»",
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
-    base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    base_atk: { min_value: 44, max_value: 565 },
+    secondary_attributes: {
+      uid: AttributeUidEnum.EnergyRecharge,
+      min_value: numberFormatPercent(0.067, 1),
+      max_value: numberFormatPercent(0.306, 1),
+    },
   },
   [WeaponUidEnum.TheAlleyFlash]: {
     uid: WeaponUidEnum.TheAlleyFlash,
@@ -1490,7 +1517,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "45", max_value: "620" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "12", max_value: "55" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "12", max_value: "55" },
   },
   [WeaponUidEnum.TheBell]: {
     uid: WeaponUidEnum.TheBell,
@@ -1499,7 +1526,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.TheBlackSword]: {
     uid: WeaponUidEnum.TheBlackSword,
@@ -1508,7 +1535,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.TheCatch]: {
     uid: WeaponUidEnum.TheCatch,
@@ -1517,7 +1544,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponUidEnum.TheDockhandsAssistant]: {
     uid: WeaponUidEnum.TheDockhandsAssistant,
@@ -1526,7 +1553,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.TheFirstGreatMagic]: {
     uid: WeaponUidEnum.TheFirstGreatMagic,
@@ -1535,7 +1562,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "14.4%", max_value: "66.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "14.4%", max_value: "66.2%" },
   },
   [WeaponUidEnum.TheFlute]: {
     uid: WeaponUidEnum.TheFlute,
@@ -1544,7 +1571,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.TheStringless]: {
     uid: WeaponUidEnum.TheStringless,
@@ -1553,7 +1580,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponUidEnum.TheUnforged]: {
     uid: WeaponUidEnum.TheUnforged,
@@ -1562,7 +1589,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponUidEnum.TheViridescentHunt]: {
     uid: WeaponUidEnum.TheViridescentHunt,
@@ -1571,7 +1598,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.TheWidsith]: {
     uid: WeaponUidEnum.TheWidsith,
@@ -1580,7 +1607,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "12%", max_value: "55.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponUidEnum.ThrillingTalesOfDragonSlayers]: {
     uid: WeaponUidEnum.ThrillingTalesOfDragonSlayers,
@@ -1589,7 +1616,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.Health, min_value: "7.7%", max_value: "35.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.Health, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponUidEnum.ThunderingPulse]: {
     uid: WeaponUidEnum.ThunderingPulse,
@@ -1598,7 +1625,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "14.4%", max_value: "66.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "14.4%", max_value: "66.2%" },
   },
   [WeaponUidEnum.TidalShadow]: {
     uid: WeaponUidEnum.TidalShadow,
@@ -1607,7 +1634,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponUidEnum.TomeOfTheEternalFlow]: {
     uid: WeaponUidEnum.TomeOfTheEternalFlow,
@@ -1616,7 +1643,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "19.2%", max_value: "88.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponUidEnum.ToukabouShigure]: {
     uid: WeaponUidEnum.ToukabouShigure,
@@ -1625,7 +1652,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponUidEnum.TravelersHandySword]: {
     uid: WeaponUidEnum.TravelersHandySword,
@@ -1634,7 +1661,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 3,
     base_atk: { min_value: "40", max_value: "448" },
-    secondary_attribute: { uid: AttributeUidEnum.Defense, min_value: "6.4%", max_value: "29.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.Defense, min_value: "6.4%", max_value: "29.3%" },
   },
   [WeaponUidEnum.TulaytullahsRemembrance]: {
     uid: WeaponUidEnum.TulaytullahsRemembrance,
@@ -1643,7 +1670,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "9.6%", max_value: "44.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponUidEnum.TwinNephrite]: {
     uid: WeaponUidEnum.TwinNephrite,
@@ -1652,7 +1679,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 3,
     base_atk: { min_value: "40", max_value: "448" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "3.4%", max_value: "15.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "3.4%", max_value: "15.6%" },
   },
   [WeaponUidEnum.UltimateOverlordsMegaMagicSword]: {
     uid: WeaponUidEnum.UltimateOverlordsMegaMagicSword,
@@ -1661,7 +1688,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.UrakuMisugiri]: {
     uid: WeaponUidEnum.UrakuMisugiri,
@@ -1670,7 +1697,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "19.2%", max_value: "88.2%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritDmg, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponUidEnum.Verdict]: {
     uid: WeaponUidEnum.Verdict,
@@ -1679,16 +1706,21 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "4.8%", max_value: "22.1%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "4.8%", max_value: "22.1%" },
   },
   [WeaponUidEnum.VividNotions]: {
     uid: WeaponUidEnum.VividNotions,
     name: "Переливающиеся чаяния",
-    image_src: imageSrc("vivid_notions-256x256.png"),
+    image_src: imageSrc("vivid_notions-256x256.webp"),
+    source: "Эксклюзивное оружие Молитвы события",
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 5,
-    base_atk: { min_value: "48", max_value: "674" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalDamage, min_value: "9.6%", max_value: "44.1%" },
+    base_atk: { min_value: 48, max_value: 674 },
+    secondary_attributes: {
+      uid: AttributeUidEnum.CritDmg,
+      min_value: numberFormatPercent(0.096, 1),
+      max_value: numberFormatPercent(0.441, 1),
+    },
   },
   [WeaponUidEnum.VortexVanquisher]: {
     uid: WeaponUidEnum.VortexVanquisher,
@@ -1697,7 +1729,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponUidEnum.WanderingEvenstar]: {
     uid: WeaponUidEnum.WanderingEvenstar,
@@ -1706,7 +1738,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponUidEnum.WavebreakersFin]: {
     uid: WeaponUidEnum.WavebreakersFin,
@@ -1715,7 +1747,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 4,
     base_atk: { min_value: "45", max_value: "620" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "3%", max_value: "13.8%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "3%", max_value: "13.8%" },
   },
   [WeaponUidEnum.WaveridingWhirl]: {
     uid: WeaponUidEnum.WaveridingWhirl,
@@ -1724,7 +1756,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
   },
   [WeaponUidEnum.WhiteIronGreatsword]: {
     uid: WeaponUidEnum.WhiteIronGreatsword,
@@ -1733,7 +1765,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.Defense, min_value: "9.6%", max_value: "43.9%" },
+    secondary_attributes: { uid: AttributeUidEnum.Defense, min_value: "9.6%", max_value: "43.9%" },
   },
   [WeaponUidEnum.WhiteTassel]: {
     uid: WeaponUidEnum.WhiteTassel,
@@ -1742,7 +1774,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Polearm,
     quality: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "5.1%", max_value: "23.4%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "5.1%", max_value: "23.4%" },
   },
   [WeaponUidEnum.Whiteblind]: {
     uid: WeaponUidEnum.Whiteblind,
@@ -1751,7 +1783,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.Defense, min_value: "11.3%", max_value: "51.7%" },
+    secondary_attributes: { uid: AttributeUidEnum.Defense, min_value: "11.3%", max_value: "51.7%" },
   },
   [WeaponUidEnum.WindblumeOde]: {
     uid: WeaponUidEnum.WindblumeOde,
@@ -1760,7 +1792,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Bow,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponUidEnum.WineAndSong]: {
     uid: WeaponUidEnum.WineAndSong,
@@ -1769,7 +1801,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Catalyst,
     quality: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_attribute: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponUidEnum.WolfFang]: {
     uid: WeaponUidEnum.WolfFang,
@@ -1778,7 +1810,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.CriticalRate, min_value: "6%", max_value: "27.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponUidEnum.WolfsGravestone]: {
     uid: WeaponUidEnum.WolfsGravestone,
@@ -1787,7 +1819,7 @@ export default {
     type_uid: WeaponTypeUidEnum.Claymore,
     quality: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_attribute: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
+    secondary_attributes: { uid: AttributeUidEnum.Attack, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponUidEnum.XiphosMoonlight]: {
     uid: WeaponUidEnum.XiphosMoonlight,
@@ -1796,6 +1828,6 @@ export default {
     type_uid: WeaponTypeUidEnum.Sword,
     quality: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_attribute: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_attributes: { uid: AttributeUidEnum.ElementalMastery, min_value: "36", max_value: "165" },
   },
 } as Record<WeaponUid, Weapon>;

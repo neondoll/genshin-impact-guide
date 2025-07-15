@@ -21,13 +21,13 @@ export default {
         { uid: AttributeUidEnum.ElementalMastery, percent: 0.018 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate, percent: 0.669 },
-        { uid: AttributeUidEnum.CriticalDamage, percent: 0.266 },
+        { uid: AttributeUidEnum.CritRate, percent: 0.669 },
+        { uid: AttributeUidEnum.CritDmg, percent: 0.266 },
         { uid: AttributeUidEnum.AttackPercent, percent: 0.034 },
       ],
       additional: [
-        { uid: AttributeUidEnum.CriticalRate, description: "Приоритетно" },
-        { uid: AttributeUidEnum.CriticalDamage, description: "Приоритетно" },
+        { uid: AttributeUidEnum.CritRate, description: "Приоритетно" },
+        { uid: AttributeUidEnum.CritDmg, description: "Приоритетно" },
         { uid: AttributeUidEnum.AttackPercent },
       ],
     },

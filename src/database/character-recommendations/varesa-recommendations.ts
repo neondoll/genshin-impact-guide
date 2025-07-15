@@ -27,14 +27,11 @@ export default {
         { uid: AttributeUidEnum.ElectroDamageBonus, notes: ["Лучше с Цаплей всегда"] },
         { uid: AttributeUidEnum.AttackPercent, notes: ["Лучше с Фуриной или в сете на планжи"] },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage },
-      ],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CritRate }, { uid: AttributeUidEnum.CritDmg }],
       additional: [
         { uid: AttributeUidEnum.AttackPercent, notes: ["от 1800"] },
-        { uid: AttributeUidEnum.CriticalRate, notes: ["от 60%"] },
-        { uid: AttributeUidEnum.CriticalDamage, notes: ["от 180%"] },
+        { uid: AttributeUidEnum.CritRate, notes: ["от 60%"] },
+        { uid: AttributeUidEnum.CritDmg, notes: ["от 180%"] },
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["115% - 135% для Взрыва стихии"] },
         { uid: AttributeUidEnum.ElementalMastery, notes: ["от 150 (при игре через реакцию Вегетация)"] },
       ],

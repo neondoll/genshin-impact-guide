@@ -37,12 +37,12 @@ export default {
         { uid: AttributeUidEnum.AttackPercent, notes: ["В 1% случаев"] },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CriticalRate },
-        { uid: AttributeUidEnum.CriticalDamage, notes: ["Почти всегда"] },
+        { uid: AttributeUidEnum.CritRate },
+        { uid: AttributeUidEnum.CritDmg, notes: ["Почти всегда"] },
       ],
       additional: [
-        { uid: AttributeUidEnum.CriticalRate, notes: ["Приоритетно"] },
-        { uid: AttributeUidEnum.CriticalDamage, notes: ["Приоритетно"] },
+        { uid: AttributeUidEnum.CritRate, notes: ["Приоритетно"] },
+        { uid: AttributeUidEnum.CritDmg, notes: ["Приоритетно"] },
         { uid: AttributeUidEnum.AttackPercent },
         { uid: AttributeUidEnum.EnergyRecharge },
       ],

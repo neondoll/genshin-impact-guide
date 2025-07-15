@@ -30,10 +30,7 @@ export default {
       [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.HealthPercent }],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.HealthPercent },
-        {
-          uid: AttributeUidEnum.CriticalRate,
-          description: `Если в руках ${weapons[WeaponUidEnum.FavoniusLance].name}`,
-        },
+        { uid: AttributeUidEnum.CritRate, description: `Если в руках ${weapons[WeaponUidEnum.FavoniusLance].name}` },
       ],
       additional: [{ uid: AttributeUidEnum.HealthPercent }, { uid: AttributeUidEnum.EnergyRecharge }],
     },
