@@ -40,9 +40,6 @@ export type TalentLevelingRecommendationsProps = {
 export type TalentLevelingRecommendationsTableProps = {
   recommendations: CharacterTalentLevelingRecommendations;
 };
-export type VideoSourcesProps = {
-  items: NonNullable<CharacterRecommendationsProps["recommendations"]["video_sources"]>;
-};
 export type WeaponRecommendationsProps = {
   character: CharacterRecommendationsProps["character"];
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["weapons"]>;

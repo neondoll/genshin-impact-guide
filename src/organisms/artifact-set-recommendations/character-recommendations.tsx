@@ -1,0 +1,91 @@
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import Paths from "@/constants/paths";
+import { backgroundClassByQuality } from "@/lib/quality";
+import { Badge } from "@/components/ui/badge";
+import { cn, publicImageSrc } from "@/lib/utils";
+import { getCharacter, sortCharacters } from "@/database";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import type { ArtifactSetCharacterRecommendation } from "@/database/types/artifact-set-recommendations";
+import type { CharacterRecommendationsProps } from "./types";
+
+export default function CharacterRecommendations({ recommendations }: CharacterRecommendationsProps) {
+  const [characterRecommendations, setCharacterRecommendations] = useState<{
+    character: ReturnType<typeof getCharacter>;
+    recommendation: ArtifactSetCharacterRecommendation;
+  }[]>([]);
+  const [hasIsBetter, setHasIsBetter] = useState(false);
+  const [hasNotes, setHasNotes] = useState(false);
+
+  useEffect(() => {
+    setCharacterRecommendations(recommendations.map((recommendation) => {
+      return { character: getCharacter(recommendation.uid), recommendation };
+    }).sort((a, b) => {
+      return sortCharacters(a.character, b.character);
+    }));
+    setHasIsBetter(recommendations.some((recommendation) => {
+      return recommendation.is_better === true;
+    }));
+    setHasNotes(recommendations.some((recommendation) => {
+      return recommendation.notes !== undefined;
+    }));
+  }, [recommendations]);
+
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          {hasIsBetter && <TableHead />}
+          <TableHead children="Персонажи" className="text-center" />
+          {hasNotes && <TableHead children="Заметки" className="text-center" />}
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {characterRecommendations.map(item => (
+          <TableRow className="hover:bg-inherit" key={item.character.uid}>
+            {hasIsBetter && (
+              <TableCell className="w-16">
+                {item.recommendation.is_better && (
+                  <img
+                    alt="Является лучшим выбором"
+                    className="size-12 rounded-full"
+                    src={publicImageSrc("better-logo-128x128.png")}
+                  />
+                )}
+              </TableCell>
+            )}
+            <TableCell className="text-pretty whitespace-normal sm:min-w-[166px]">
+              <Badge
+                asChild
+                className={cn(
+                  "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal",
+                  "sm:flex-row sm:text-left",
+                )}
+                variant="secondary"
+              >
+                <Link to={Paths.Character.to(item.character.uid)}>
+                  <img
+                    alt={item.character.name}
+                    className={cn(
+                      "shrink-0 size-12 rounded-md rounded-br-2xl",
+                      backgroundClassByQuality(item.character.quality),
+                    )}
+                    src={item.character.image_src}
+                  />
+                  <span children={item.character.name} />
+                </Link>
+              </Badge>
+            </TableCell>
+            {hasNotes && (
+              <TableCell
+                className="text-pretty whitespace-pre-line"
+                dangerouslySetInnerHTML={item.recommendation.notes !== undefined ? { __html: item.recommendation.notes } : undefined}
+              />
+            )}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+}

@@ -1,15 +1,17 @@
 import { Link, useLoaderData } from "react-router-dom";
 
+import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
 import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
+import { backgroundClassByQuality } from "@/lib/quality";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getArtifactPieces, getArtifactSet, getCharacter } from "@/database";
+import { getArtifactPieces, getArtifactSet, getArtifactSetRecommendations, getCharacter } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 
 function ArtifactSetBreadcrumbs({ item }: { item: ArtifactSetLoaderData["artifactSet"] }) {
@@ -41,12 +43,7 @@ function ArtifactSetHeading({ item }: { item: ArtifactSetLoaderData["artifactSet
     <div className="flex gap-x-3">
       <img
         alt={item.name}
-        className={cn(
-          "shrink-0 size-16 rounded-md rounded-br-2xl",
-          Math.max(...item.qualities) === 3 && "bg-[linear-gradient(180deg,#567496,#5392b8)]",
-          Math.max(...item.qualities) === 4 && "bg-[linear-gradient(180deg,#5e5789,#9c75b7)]",
-          Math.max(...item.qualities) === 5 && "bg-[linear-gradient(180deg,#945c2c,#b27330)]",
-        )}
+        className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByQuality(...item.qualities))}
         src={item[ArtifactPieceUidEnum.FlowerOfLife].image_src}
       />
       <div className="space-y-1">
@@ -61,10 +58,11 @@ function ArtifactSetHeading({ item }: { item: ArtifactSetLoaderData["artifactSet
 export type ArtifactSetLoaderData = {
   artifactPieces: ReturnType<typeof getArtifactPieces>;
   artifactSet: ReturnType<typeof getArtifactSet>;
+  artifactSetRecommendations: ReturnType<typeof getArtifactSetRecommendations>;
 };
 
 export default function ArtifactSet() {
-  const { artifactPieces, artifactSet } = useLoaderData<ArtifactSetLoaderData>();
+  const { artifactPieces, artifactSet, artifactSetRecommendations } = useLoaderData<ArtifactSetLoaderData>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -131,6 +129,9 @@ export default function ArtifactSet() {
           </Table>
         </CardContent>
       </Card>
+      {artifactSetRecommendations !== undefined && (
+        <ArtifactSetRecommendations recommendations={artifactSetRecommendations} />
+      )}
       {artifactSet.character_recommendations !== undefined && (
         <Card>
           <CardHeader>

@@ -1,20 +1,32 @@
+import * as React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import VK from "@/icons/VK";
-import Youtube from "@/icons/Youtube";
+import VideoSources from "@/organisms/video-sources";
+import { backgroundClassByQuality } from "@/lib/quality";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getTierListsWeapons, getWeapon, getWeaponType, sortWeapons } from "@/database";
+import { getTierListsWeapons, getWeapon, sortWeapons } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+
+function TierBadge(props: Pick<React.ComponentProps<typeof Badge>, "children">) {
+  return (
+    <Badge
+      className={cn(
+        "min-w-12 h-12 text-pretty whitespace-normal",
+        typeof props.children === "string" && props.children.length === 1 ? "text-4xl/none" : "text-sm",
+      )}
+      {...props}
+    />
+  );
+}
 
 export type WeaponsTierListLoaderData = {
   tierListsWeapons: Awaited<ReturnType<typeof getTierListsWeapons>>;
@@ -48,13 +60,13 @@ export default function WeaponsTierList() {
       </Breadcrumb>
       <h1 children={Paths.WeaponsTierList.title} className="text-2xl" />
       <Tabs defaultValue={tierListsWeaponsEntries[0][0]}>
-        <TabsList className="flex w-full">
-          {tierListsWeaponsEntries.map(([weaponTypeUid]) => (
-            <TabsTrigger children={getWeaponType(weaponTypeUid).name} key={weaponTypeUid} value={weaponTypeUid} />
+        <TabsList className="flex flex-wrap w-full h-auto min-h-9">
+          {tierListsWeaponsEntries.map(([tierListWeaponsTitle]) => (
+            <TabsTrigger children={tierListWeaponsTitle} key={tierListWeaponsTitle} value={tierListWeaponsTitle} />
           ))}
         </TabsList>
-        {tierListsWeaponsEntries.map(([weaponTypeUid, tierListWeapons]) => (
-          <TabsContent className="flex flex-col gap-2" key={weaponTypeUid} value={weaponTypeUid}>
+        {tierListsWeaponsEntries.map(([tierListWeaponsTitle, tierListWeapons]) => (
+          <TabsContent className="flex flex-col gap-2" key={tierListWeaponsTitle} value={tierListWeaponsTitle}>
             {tierListWeapons.list !== undefined && (
               <Card className="py-0">
                 <Table>
@@ -71,24 +83,27 @@ export default function WeaponsTierList() {
                           key={item.tier}
                         >
                           <TableHead className="p-2 text-center">
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <Badge children={item.tier} className="aspect-square size-12 text-4xl/none" />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p children={item.description} />
-                              </TooltipContent>
-                            </Tooltip>
+                            {item.description !== undefined
+                              ? (
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <TierBadge children={item.tier} />
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p children={item.description} />
+                                    </TooltipContent>
+                                  </Tooltip>
+                                )
+                              : (
+                                  <TierBadge children={item.tier} />
+                                )}
                           </TableHead>
                           <TableCell className="p-2">
                             <ul className="flex flex-wrap gap-2">
                               {weapons.map(weapon => (
                                 <li
                                   className={cn(
-                                    "shrink-0 size-12 rounded-md",
-                                    weapon.quality === 3 && "bg-[linear-gradient(180deg,#567496,#5392b8)]",
-                                    weapon.quality === 4 && "bg-[linear-gradient(180deg,#5e5789,#9c75b7)]",
-                                    weapon.quality === 5 && "bg-[linear-gradient(180deg,#945c2c,#b27330)]",
+                                    "shrink-0 size-12 rounded-md", backgroundClassByQuality(weapon.quality),
                                   )}
                                   key={weapon.uid}
                                 >
@@ -110,27 +125,7 @@ export default function WeaponsTierList() {
                   <CardTitle children="Видео-источник" />
                 </CardHeader>
                 <CardContent>
-                  <ul className="list-inside list-disc">
-                    <li>
-                      <div className="inline-flex gap-2 items-center">
-                        <span children={tierListWeapons.video_source.title} />
-                        {tierListWeapons.video_source.vk_url !== undefined && (
-                          <Button asChild className="size-8" size="icon">
-                            <a href={tierListWeapons.video_source.vk_url} target="_blank">
-                              <VK className="size-7" />
-                            </a>
-                          </Button>
-                        )}
-                        {tierListWeapons.video_source.youtube_url !== undefined && (
-                          <Button asChild className="size-8" size="icon">
-                            <a href={tierListWeapons.video_source.youtube_url} target="_blank">
-                              <Youtube className="size-7" />
-                            </a>
-                          </Button>
-                        )}
-                      </div>
-                    </li>
-                  </ul>
+                  <VideoSources items={[tierListWeapons.video_source]} />
                 </CardContent>
               </Card>
             )}

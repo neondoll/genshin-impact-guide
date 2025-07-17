@@ -1,14 +1,15 @@
+import { ChevronDownIcon } from "lucide-react";
+
 import ArtifactRecommendations from "./artifact-recommendations";
 import ReferencePointRecommendations from "./reference-point-recommendations";
 import RotationRecommendations from "./rotation-recommendations";
 import SquadRecommendations from "./squad-recommendations";
 import TalentLevelingRecommendations from "./talent-leveling-recommendations";
-import VideoSources from "./video-sources";
+import VideoSources from "../video-sources";
 import WeaponRecommendations from "./weapon-recommendations";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ChevronDownIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";

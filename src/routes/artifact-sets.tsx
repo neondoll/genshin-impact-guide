@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
 import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
+import { backgroundClassByQuality } from "@/lib/quality";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
@@ -44,9 +45,7 @@ export default function ArtifactSets() {
             <span
               className={cn(
                 "inline-flex shrink-0 justify-center items-center w-24.5 rounded-lg rounded-br-3xl",
-                Math.max(...artifactSet.qualities) === 3 && "bg-[linear-gradient(180deg,#567496,#5392b8)]",
-                Math.max(...artifactSet.qualities) === 4 && "bg-[linear-gradient(180deg,#5e5789,#9c75b7)]",
-                Math.max(...artifactSet.qualities) === 5 && "bg-[linear-gradient(180deg,#945c2c,#b27330)]",
+                backgroundClassByQuality(...artifactSet.qualities),
               )}
             >
               <img

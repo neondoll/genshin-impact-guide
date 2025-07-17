@@ -1,10 +1,39 @@
+import weaponTypes from "./weapon-types";
 import { WeaponTypeUidEnum } from "./enums/weapon-type";
 import { WeaponUidEnum } from "./enums/weapon";
 import type { TierListWeapons } from "./types/tier-list-weapons";
-import type { WeaponTypeUid } from "./types/weapon-type";
 
 export default {
-  [WeaponTypeUidEnum.Catalyst]: {
+  "Крафтовое оружие": {
+    list: [
+      {
+        tier: "Могут быть полезны",
+        weapon_uids: [
+          WeaponUidEnum.EarthShaker, WeaponUidEnum.FinaleOfTheDeep, WeaponUidEnum.FlowingPurity,
+          WeaponUidEnum.FluteOfEzpitzal, WeaponUidEnum.FootprintOfTheRainbow, WeaponUidEnum.IronSting,
+          WeaponUidEnum.KitainCrossSpear, WeaponUidEnum.MappaMare, WeaponUidEnum.PrototypeAmber,
+          WeaponUidEnum.RightfulReward, WeaponUidEnum.RingOfYaxche, WeaponUidEnum.SapwoodBlade,
+          WeaponUidEnum.SongOfStillness, WeaponUidEnum.TidalShadow, WeaponUidEnum.Whiteblind,
+        ],
+      },
+      {
+        tier: "Трата ресурсов",
+        weapon_uids: [
+          WeaponUidEnum.AmenomaKageuchi, WeaponUidEnum.ChainBreaker, WeaponUidEnum.CompoundBow,
+          WeaponUidEnum.CrescentPike, WeaponUidEnum.DragonspineSpear, WeaponUidEnum.ForestRegalia,
+          WeaponUidEnum.Frostbearer, WeaponUidEnum.FruitOfFulfillment, WeaponUidEnum.HakushinRing,
+          WeaponUidEnum.Hamayumi, WeaponUidEnum.KatsuragikiriNagamasa, WeaponUidEnum.KingsSquire,
+          WeaponUidEnum.Moonpiercer, WeaponUidEnum.PrototypeArchaic, WeaponUidEnum.PrototypeCrescent,
+          WeaponUidEnum.PrototypeRancour, WeaponUidEnum.PrototypeStarglitter, WeaponUidEnum.SnowTombedStarsilver,
+        ],
+      },
+    ],
+    video_source: {
+      title: "Анимекул: Анализ ВСЕГО Крафтового Оружия | Тир-лист полезности [Genshin Impact]",
+      youtube_url: "https://youtu.be/CU-BxsNF-qw",
+    },
+  },
+  [weaponTypes[WeaponTypeUidEnum.Catalyst].name]: {
     list: [
       {
         tier: "S",
@@ -64,7 +93,7 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239231",
     },
   },
-  [WeaponTypeUidEnum.Bow]: {
+  [weaponTypes[WeaponTypeUidEnum.Bow].name]: {
     list: [
       {
         tier: "S",
@@ -116,7 +145,7 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239218",
     },
   },
-  [WeaponTypeUidEnum.Polearm]: {
+  [weaponTypes[WeaponTypeUidEnum.Polearm].name]: {
     list: [
       {
         tier: "S",
@@ -165,7 +194,7 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239209",
     },
   },
-  [WeaponTypeUidEnum.Claymore]: {
+  [weaponTypes[WeaponTypeUidEnum.Claymore].name]: {
     list: [
       {
         tier: "S",
@@ -218,7 +247,7 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239205",
     },
   },
-  [WeaponTypeUidEnum.Sword]: {
+  [weaponTypes[WeaponTypeUidEnum.Sword].name]: {
     list: [
       {
         tier: "S",
@@ -279,4 +308,4 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239200",
     },
   },
-} as Record<WeaponTypeUid, TierListWeapons>;
+} as Record<string, TierListWeapons>;

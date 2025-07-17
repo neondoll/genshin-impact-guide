@@ -1,0 +1,33 @@
+import { ArtifactSetUidEnum } from "../enums/artifact-set";
+import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
+import type { ArtifactSetUid } from "../types/artifact-set";
+
+export default {
+  [ArtifactSetUidEnum.ArchaicPetra]: (await import("./archaic_petra-recommendations")).default,
+  [ArtifactSetUidEnum.BlizzardStrayer]: (await import("./blizzard_strayer-recommendations")).default,
+  [ArtifactSetUidEnum.BloodstainedChivalry]: (await import("./bloodstained_chivalry-recommendations")).default,
+  [ArtifactSetUidEnum.CrimsonWitchOfFlames]: (await import("./crimson_witch_of_flames-recommendations")).default,
+  [ArtifactSetUidEnum.DeepwoodMemories]: (await import("./deepwood_memories-recommendations")).default,
+  [ArtifactSetUidEnum.DesertPavilionChronicle]: (await import("./desert_pavilion_chronicle-recommendations")).default,
+  [ArtifactSetUidEnum.EchoesOfAnOffering]: (await import("./echoes_of_an_offering-recommendations")).default,
+  [ArtifactSetUidEnum.EmblemOfSeveredFate]: (await import("./emblem_of_severed_fate-recommendations")).default,
+  [ArtifactSetUidEnum.FlowerOfParadiseLost]: (await import("./flower_of_paradise_lost-recommendations")).default,
+  [ArtifactSetUidEnum.GildedDreams]: (await import("./gilded_dreams-recommendations")).default,
+  [ArtifactSetUidEnum.GladiatorsFinale]: (await import("./gladiators_finale-recommendations")).default,
+  [ArtifactSetUidEnum.HeartOfDepth]: (await import("./heart_of_depth-recommendations")).default,
+  [ArtifactSetUidEnum.HuskOfOpulentDreams]: (await import("./husk_of_opulent_dreams-recommendations")).default,
+  [ArtifactSetUidEnum.Instructor]: (await import("./instructor-recommendations")).default,
+  [ArtifactSetUidEnum.Lavawalker]: (await import("./lavawalker-recommendations")).default,
+  [ArtifactSetUidEnum.MaidenBeloved]: (await import("./maiden_beloved-recommendations")).default,
+  [ArtifactSetUidEnum.NoblesseOblige]: (await import("./noblesse_oblige-recommendations")).default,
+  [ArtifactSetUidEnum.OceanHuedClam]: (await import("./ocean_hued_clam-recommendations")).default,
+  [ArtifactSetUidEnum.PaleFlame]: (await import("./pale_flame-recommendations")).default,
+  [ArtifactSetUidEnum.RetracingBolide]: (await import("./retracing_bolide-recommendations")).default,
+  [ArtifactSetUidEnum.ShimenawasReminiscence]: (await import("./shimenawas_reminiscence-recommendations")).default,
+  [ArtifactSetUidEnum.TenacityOfTheMillelith]: (await import("./tenacity_of_the_millelith-recommendations")).default,
+  [ArtifactSetUidEnum.ThunderingFury]: (await import("./thundering_fury-recommendations")).default,
+  [ArtifactSetUidEnum.Thundersoother]: (await import("./thundersoother-recommendations")).default,
+  [ArtifactSetUidEnum.VermillionHereafter]: (await import("./vermillion_hereafter-recommendations")).default,
+  [ArtifactSetUidEnum.ViridescentVenerer]: (await import("./viridescent_venerer-recommendations")).default,
+  [ArtifactSetUidEnum.WanderersTroupe]: (await import("./wanderers_troupe-recommendations")).default,
+} as Record<ArtifactSetUid, ArtifactSetRecommendations>;

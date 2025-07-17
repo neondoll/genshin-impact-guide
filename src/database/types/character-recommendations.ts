@@ -4,6 +4,7 @@ import type { AttributeUid } from "./attribute";
 import type { CharacterUid } from "./character";
 import type { ElementUid } from "./element";
 import type { TalentUid } from "./talent";
+import type { VideoSource } from "./video-source";
 import type { WeaponUid } from "./weapon";
 
 type CharacterArtifactAttributeRecommendation = {
@@ -51,7 +52,7 @@ export type CharacterRecommendations = {
     best_teammates: CharacterRecommendationSquadBestTeammates | Record<string, CharacterRecommendationSquadBestTeammates>;
   };
   talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
-  video_sources?: { title: string; vk_url?: string; youtube_url?: string }[];
+  video_sources?: VideoSource[];
   weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
 };
 export type CharacterReferencePointRecommendations = [string, string][];
