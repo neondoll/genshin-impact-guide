@@ -8,17 +8,17 @@ import type { PreferredAttributesRecommendationsProps } from "./types";
 
 export default function PreferredAttributesRecommendations({ recommendations }: PreferredAttributesRecommendationsProps) {
   const recommendationsKeys = Object.keys(recommendations) as (keyof typeof recommendations)[];
-  const rowsCount = Math.max(...recommendationsKeys.map((recommendationsKey) => recommendations[recommendationsKey].length));
+  const rowsCount = Math.max(...recommendationsKeys.map(recommendationsKey => recommendations[recommendationsKey].length));
   const [sortedRecommendations, setSortedRecommendations] = useState(recommendations);
 
   useEffect(() => {
     recommendationsKeys.forEach((recommendationsKey) => {
-      setSortedRecommendations((prevState) => ({
+      setSortedRecommendations(prevState => ({
         ...prevState,
-        [recommendationsKey]: recommendations[recommendationsKey].map((value) => getAttribute(value)).sort(sortAttributes).map((value) => value.uid),
+        [recommendationsKey]: recommendations[recommendationsKey].map(value => getAttribute(value)).sort(sortAttributes).map(value => value.uid),
       }));
     });
-  }, [recommendations]);
+  }, [recommendations, recommendationsKeys]);
 
   return (
     <Table>
@@ -35,7 +35,7 @@ export default function PreferredAttributesRecommendations({ recommendations }: 
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: rowsCount }, (_, i) => i).map((index) => (
+        {Array.from({ length: rowsCount }, (_, i) => i).map(index => (
           <TableRow className="hover:bg-inherit" key={index + 1}>
             {recommendationsKeys.map((recommendationsKey) => {
               const attribute = index in sortedRecommendations[recommendationsKey] ? getAttribute(sortedRecommendations[recommendationsKey][index]) : undefined;

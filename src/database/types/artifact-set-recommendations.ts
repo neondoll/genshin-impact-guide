@@ -4,7 +4,7 @@ import type { AttributeUid } from "./attribute";
 import type { CharacterUid } from "./character";
 import type { VideoSource } from "./video-source";
 
-export type ArtifactSetCharacterRecommendation = { uid: CharacterUid; is_better?: boolean; notes?: string };
+export type ArtifactSetCharacterRecommendation = { uid: CharacterUid; is_better?: boolean; notes?: string | string[] };
 export type ArtifactSetRecommendations = {
   artifact_set_uid: ArtifactSetUid;
   characters: ArtifactSetCharacterRecommendation[];

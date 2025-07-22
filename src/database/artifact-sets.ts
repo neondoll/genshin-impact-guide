@@ -412,45 +412,31 @@ export default {
     uid: ArtifactSetUidEnum.GoldenTroupe,
     name: "Золотая труппа",
     qualities: [4, 5],
-    source: ["Подземелье «Конец греха»", "Мистическое подношение (Алхимия)"],
+    source: [dungeonByUid(DungeonUidEnum.DenouementOfSin), alchemy],
     item_bonuses: {
       2: "Увеличивает урон элементального навыка на 20%.",
       4: "Увеличивает урон элементального навыка на 25%. Кроме того, когда персонаж не на поле боя, урон элементального навыка дополнительно увеличивается на 25%. Через 2 сек. после вступления в бой эффект исчезает.",
     },
     [ArtifactPieceUidEnum.FlowerOfLife]: {
       name: "Вариация золотой песни",
-      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/golden_songs_variation-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/${ArtifactPieceUidEnum.FlowerOfLife}_icon.webp`),
     },
     [ArtifactPieceUidEnum.PlumeOfDeath]: {
       name: "Перо золотой птицы",
-      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/golden_birds_shedding-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/${ArtifactPieceUidEnum.PlumeOfDeath}_icon.webp`),
     },
     [ArtifactPieceUidEnum.SandsOfEon]: {
       name: "Предзнаменование золотой эпохи",
-      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/golden_eras_prelude-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/${ArtifactPieceUidEnum.SandsOfEon}_icon.webp`),
     },
     [ArtifactPieceUidEnum.GobletOfEonothem]: {
       name: "Суета золотой ночи",
-      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/golden_nights_bustle-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/${ArtifactPieceUidEnum.GobletOfEonothem}_icon.webp`),
     },
     [ArtifactPieceUidEnum.CircletOfLogos]: {
       name: "Награда Золотой труппы",
-      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/golden_troupes_reward-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.GoldenTroupe}/${ArtifactPieceUidEnum.CircletOfLogos}_icon.webp`),
     },
-    character_recommendations: [
-      {
-        uid: CharacterUidEnum.Escoffier,
-        notes: "Лучший комплект для Эскофье, так как её элементальный навык является основным талантом, при этом Эскофье наносит урон, не находясь на поле.",
-      },
-      {
-        uid: CharacterUidEnum.Fischl,
-        notes: "Лучший комплект для Фишль в роли дополнительного урона, так как её элементальный навык наносит основной урон и действует, даже когда Фишль не находится на поле.",
-      },
-      {
-        uid: CharacterUidEnum.Furina,
-        notes: "Лучший комплект для Фурины, так как её элементальный навык является основным талантом, при этом Фурина наносит урон, не находясь на поле.",
-      },
-    ],
   },
   [ArtifactSetUidEnum.HeartOfDepth]: {
     uid: ArtifactSetUidEnum.HeartOfDepth,
@@ -640,35 +626,61 @@ export default {
     uid: ArtifactSetUidEnum.MarechausseeHunter,
     name: "Охотник Сумеречного двора",
     qualities: [4, 5],
-    source: ["Подземелье «Конец греха»", "Мистическое подношение (Алхимия)"],
+    source: [dungeonByUid(DungeonUidEnum.DenouementOfSin), alchemy],
     item_bonuses: {
       2: "Увеличивает урон обычной и заряженной атаки на 15%.",
       4: "Увеличивает шанс крит. попадания на 12% на 5 сек., когда текущее HP увеличивается или снижается. Эффект может складываться до 3 раз.",
     },
     [ArtifactPieceUidEnum.FlowerOfLife]: {
       name: "Брошь охотника",
-      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/hunters_brooch-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/${ArtifactPieceUidEnum.FlowerOfLife}_icon.webp`),
     },
     [ArtifactPieceUidEnum.PlumeOfDeath]: {
       name: "Увертюра шедевра",
-      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/masterpieces_overture-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/${ArtifactPieceUidEnum.PlumeOfDeath}_icon.webp`),
     },
     [ArtifactPieceUidEnum.SandsOfEon]: {
       name: "Мгновение правосудия",
-      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/moment_of_judgment-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/${ArtifactPieceUidEnum.SandsOfEon}_icon.webp`),
     },
     [ArtifactPieceUidEnum.GobletOfEonothem]: {
       name: "Забытый сосуд",
-      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/forgotten_vessel-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/${ArtifactPieceUidEnum.GobletOfEonothem}_icon.webp`),
     },
     [ArtifactPieceUidEnum.CircletOfLogos]: {
       name: "Лик старого солдата",
-      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/veterans_visage-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.MarechausseeHunter}/${ArtifactPieceUidEnum.CircletOfLogos}_icon.webp`),
     },
-    character_recommendations: [
-      { uid: CharacterUidEnum.Neuvillette, notes: "" },
-      { uid: CharacterUidEnum.Skirk, notes: "" },
-    ],
+  },
+  [ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods]: {
+    uid: ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods,
+    name: "Ночной шёпот в Лесу откликающегося эха",
+    qualities: [4, 5],
+    source: dungeonByUid(DungeonUidEnum.WaterfallWen),
+    item_bonuses: {
+      2: "Увеличивает силу атаки на 18%.",
+      4: "После использования элементального навыка бонус Гео урона на 10 сек. увеличивается на 20%. Если персонаж находится под защитой щита, созданного реакцией Кристалл, этот эффект увеличивается на 150%. Через 1 сек. после потери щита это дополнительное увеличение исчезает.",
+    },
+    [ArtifactPieceUidEnum.FlowerOfLife]: {
+      name: "Бескорыстный цветок",
+      image_src: imageSrc(`${ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods}/${ArtifactPieceUidEnum.FlowerOfLife}_icon.webp`),
+    },
+    [ArtifactPieceUidEnum.PlumeOfDeath]: {
+      name: "Искреннее перо",
+      image_src: imageSrc(`${ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods}/${ArtifactPieceUidEnum.PlumeOfDeath}_icon.webp`),
+    },
+    [ArtifactPieceUidEnum.SandsOfEon]: {
+      name: "Верные песочные часы",
+      image_src: imageSrc(`${ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods}/${ArtifactPieceUidEnum.SandsOfEon}_icon.webp`),
+    },
+    [ArtifactPieceUidEnum.GobletOfEonothem]: {
+      name: "Великодушная чернильница",
+      image_src: imageSrc(`${ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods}/${ArtifactPieceUidEnum.GobletOfEonothem}_icon.webp`),
+    },
+    [ArtifactPieceUidEnum.CircletOfLogos]: {
+      name: "Милостивая шляпка",
+      image_src: imageSrc(`${ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods}/${ArtifactPieceUidEnum.CircletOfLogos}_icon.webp`),
+    },
   },
   [ArtifactSetUidEnum.NoblesseOblige]: {
     uid: ArtifactSetUidEnum.NoblesseOblige,
@@ -920,30 +932,30 @@ export default {
     uid: ArtifactSetUidEnum.SongOfDaysPast,
     name: "Песнь былых времён",
     qualities: [4, 5],
-    source: "Подземелье «Город гроз»",
+    source: dungeonByUid(DungeonUidEnum.WaterfallWen),
     item_bonuses: {
       2: "Повышает бонус лечения на 15%.",
       4: "Экипированный персонаж при лечении членов отряда на 6 сек. создаёт эффект Стремления, который регистрирует осуществлённое лечение (в том числе избыточное). С завершением длительности Стремление превращается в Волны былых времён: при попадании обычной атаки, заряженной атаки, атаки в падении, элементального навыка или взрыва стихии вашего активного персонажа по противнику наносимый урон увеличивается на 8% от общего количества лечения, зарегистрированного Стремлением. После 5 активаций или через 10 сек. эффект Волн былых времён исчезает. Однократный эффект Стремления регистрирует до 15 000 ед. HP. Одновременно может существовать только одно Стремление, но оно регистрирует лечение, предоставляемое несколькими экипированными персонажами сразу. Этот эффект активируется, даже если экипированный персонаж не на поле боя.",
     },
     [ArtifactPieceUidEnum.FlowerOfLife]: {
       name: "Забытая клятва былых времён",
-      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/forgotten_oath_of_days_past-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/${ArtifactPieceUidEnum.FlowerOfLife}_icon.webp`),
     },
     [ArtifactPieceUidEnum.PlumeOfDeath]: {
       name: "Воспоминания о былых временах",
-      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/recollection_of_days_past-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/${ArtifactPieceUidEnum.PlumeOfDeath}_icon.webp`),
     },
     [ArtifactPieceUidEnum.SandsOfEon]: {
       name: "Отзвуки былых времён",
-      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/echoing_sound_from_days_past-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/${ArtifactPieceUidEnum.SandsOfEon}_icon.webp`),
     },
     [ArtifactPieceUidEnum.GobletOfEonothem]: {
       name: "Обещанный сон былых времён",
-      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/promised_dream_of_days_past-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/${ArtifactPieceUidEnum.GobletOfEonothem}_icon.webp`),
     },
     [ArtifactPieceUidEnum.CircletOfLogos]: {
       name: "Поэзия былых времён",
-      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/poetry_of_days_past-256x256.png`),
+      image_src: imageSrc(`${ArtifactSetUidEnum.SongOfDaysPast}/${ArtifactPieceUidEnum.CircletOfLogos}_icon.webp`),
     },
   },
   [ArtifactSetUidEnum.TenacityOfTheMillelith]: {
@@ -1094,6 +1106,36 @@ export default {
     [ArtifactPieceUidEnum.CircletOfLogos]: {
       name: "Венок изумрудного охотника",
       image_src: imageSrc(`${ArtifactSetUidEnum.ViridescentVenerer}/${ArtifactPieceUidEnum.CircletOfLogos}_icon.webp`),
+    },
+  },
+  [ArtifactSetUidEnum.VourukashasGlow]: {
+    uid: ArtifactSetUidEnum.VourukashasGlow,
+    name: "Сияние Вурукаши",
+    qualities: [4, 5],
+    source: [dungeonByUid(DungeonUidEnum.MoltenIronFortress), alchemy],
+    item_bonuses: {
+      2: "Увеличивает HP на 20%.",
+      4: "Увеличивает урон элементального навыка и взрыва стихии на 10%. Если экипированный персонаж получает урон, этот эффект повышения урона увеличивается на 80% на 5 сек. Эффект может складываться до 5 раз. Отсчёт времени каждого уровня происходит отдельно. Эти эффекты активируются, даже если экипированный персонаж не на поле боя.",
+    },
+    [ArtifactPieceUidEnum.FlowerOfLife]: {
+      name: "Тычинка истока Хварны",
+      image_src: imageSrc(`${ArtifactSetUidEnum.VourukashasGlow}/${ArtifactPieceUidEnum.FlowerOfLife}_icon.webp`),
+    },
+    [ArtifactPieceUidEnum.PlumeOfDeath]: {
+      name: "Самоцветное перо",
+      image_src: imageSrc(`${ArtifactSetUidEnum.VourukashasGlow}/${ArtifactPieceUidEnum.PlumeOfDeath}_icon.webp`),
+    },
+    [ArtifactPieceUidEnum.SandsOfEon]: {
+      name: "Древнее увядание",
+      image_src: imageSrc(`${ArtifactSetUidEnum.VourukashasGlow}/${ArtifactPieceUidEnum.SandsOfEon}_icon.webp`),
+    },
+    [ArtifactPieceUidEnum.GobletOfEonothem]: {
+      name: "Пир необузданного веселья",
+      image_src: imageSrc(`${ArtifactSetUidEnum.VourukashasGlow}/${ArtifactPieceUidEnum.GobletOfEonothem}_icon.webp`),
+    },
+    [ArtifactPieceUidEnum.CircletOfLogos]: {
+      name: "Сердце светозарности Хварны",
+      image_src: imageSrc(`${ArtifactSetUidEnum.VourukashasGlow}/${ArtifactPieceUidEnum.CircletOfLogos}_icon.webp`),
     },
   },
   [ArtifactSetUidEnum.WanderersTroupe]: {

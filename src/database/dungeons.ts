@@ -13,6 +13,11 @@ export default {
     name: "Чистая вода и горная пещера",
     artifact_set_uids: [ArtifactSetUidEnum.BloodstainedChivalry, ArtifactSetUidEnum.NoblesseOblige],
   }, // Крайне не выгодный
+  [DungeonUidEnum.DenouementOfSin]: {
+    uid: DungeonUidEnum.DenouementOfSin,
+    name: "Конец греха",
+    artifact_set_uids: [ArtifactSetUidEnum.GoldenTroupe, ArtifactSetUidEnum.MarechausseeHunter],
+  }, // Крайне выгодный
   [DungeonUidEnum.DomainOfGuyun]: {
     uid: DungeonUidEnum.DomainOfGuyun,
     name: "Владения Гуюнь",
@@ -31,8 +36,8 @@ export default {
   [DungeonUidEnum.MoltenIronFortress]: {
     uid: DungeonUidEnum.MoltenIronFortress,
     name: "Расплавленная крепость",
-    artifact_set_uids: [ArtifactSetUidEnum.NymphsDream],
-  },
+    artifact_set_uids: [ArtifactSetUidEnum.NymphsDream, ArtifactSetUidEnum.VourukashasGlow],
+  }, // Крайне не выгодный
   [DungeonUidEnum.MomijiDyedCourt]: {
     uid: DungeonUidEnum.MomijiDyedCourt,
     name: "Кленовый зал",
@@ -68,4 +73,9 @@ export default {
     name: "Долина воспоминаний",
     artifact_set_uids: [ArtifactSetUidEnum.MaidenBeloved, ArtifactSetUidEnum.ViridescentVenerer],
   }, // Может быть полезен
+  [DungeonUidEnum.WaterfallWen]: {
+    uid: DungeonUidEnum.WaterfallWen,
+    name: "Город гроз",
+    artifact_set_uids: [ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods, ArtifactSetUidEnum.SongOfDaysPast],
+  }, // Крайне не выгодный
 } as Record<DungeonUid, Dungeon>;

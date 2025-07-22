@@ -1,6 +1,7 @@
 export const DungeonUidEnum = {
   /* Город золота                 */ CityOfGold: "city_of_gold",
   /* Чистая вода и горная пещера  */ ClearPoolAndMountainCavern: "clear_pool_and_mountain_cavern",
+  /* Конец греха                  */ DenouementOfSin: "denouement_of_sin",
   /* Владения Гуюнь               */ DomainOfGuyun: "domain_of_guyun",
   /* Скрытый дворец Уван          */ HiddenPalaceOfZhouFormula: "hidden_palace_of_zhou_formula",
   /* Июльские сады                */ MidsummerCourtyard: "midsummer_courtyard",
@@ -12,4 +13,5 @@ export const DungeonUidEnum = {
   /* Шпиль одинокого просветления */ SpireOfSolitaryEnlightenment: "spire_of_solitary_enlightenment",
   /* Затерянная долина            */ TheLostValley: "the_lost_valley",
   /* Долина воспоминаний          */ ValleyOfRemembrance: "valley_of_remembrance",
+  /* Город гроз                   */ WaterfallWen: "waterfall_wen",
 } as const;

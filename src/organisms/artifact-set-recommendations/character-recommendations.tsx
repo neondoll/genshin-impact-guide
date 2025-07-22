@@ -78,10 +78,19 @@ export default function CharacterRecommendations({ recommendations }: CharacterR
               </Badge>
             </TableCell>
             {hasNotes && (
-              <TableCell
-                className="text-pretty whitespace-pre-line"
-                dangerouslySetInnerHTML={item.recommendation.notes !== undefined ? { __html: item.recommendation.notes } : undefined}
-              />
+              <TableCell className="text-pretty whitespace-pre-line">
+                {item.recommendation.notes !== undefined && (Array.isArray(item.recommendation.notes)
+                  ? (
+                      <ul className="ml-4 list-outside list-disc">
+                        {item.recommendation.notes.map((note, index) => (
+                          <li dangerouslySetInnerHTML={{ __html: note }} key={index + 1} />
+                        ))}
+                      </ul>
+                    )
+                  : (
+                      <span dangerouslySetInnerHTML={{ __html: item.recommendation.notes }} />
+                    ))}
+              </TableCell>
             )}
           </TableRow>
         ))}
