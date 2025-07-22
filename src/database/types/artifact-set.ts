@@ -10,7 +10,7 @@ export type ArtifactSet = Record<ArtifactPieceUid, ArtifactSetPiece> & {
   uid: ArtifactSetUid;
   name: string;
   qualities: QualityUid[];
-  where_to_find: string | string[];
+  source: string | string[];
   item_bonuses: Record<2 | 4, string>;
   character_recommendations?: ArtifactSetCharacterRecommendation[];
 };

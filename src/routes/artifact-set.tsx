@@ -82,15 +82,15 @@ export default function ArtifactSet() {
               <TableRow className="hover:bg-inherit">
                 <TableHead className="p-2">Где найти</TableHead>
                 <TableCell className="p-2 text-pretty whitespace-normal">
-                  {Array.isArray(artifactSet.where_to_find)
+                  {Array.isArray(artifactSet.source)
                     ? (
                         <ul className="ml-4 list-outside list-disc">
-                          {artifactSet.where_to_find.map((item, index) => (
+                          {artifactSet.source.map((item, index) => (
                             <li key={index}>{item}</li>
                           ))}
                         </ul>
                       )
-                    : artifactSet.where_to_find}
+                    : artifactSet.source}
                 </TableCell>
               </TableRow>
               {Object.entries(artifactSet.item_bonuses).map(([itemCount, itemBonus]) => (

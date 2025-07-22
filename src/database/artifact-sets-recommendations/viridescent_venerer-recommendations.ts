@@ -1,5 +1,7 @@
-import { artifactSetByUid } from "./help";
+import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
+import { artifactSetByUid, AttributesCrit, AttributesElementDamageBonus } from "./help";
 import { ArtifactSetUidEnum } from "../enums/artifact-set";
+import { AttributeUidEnum } from "../enums/attribute";
 import { CharacterUidEnum } from "../enums/character";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -40,6 +42,17 @@ export default {
       notes: `Персонаж, наносящий основной Анемо урон в команде, поэтому ему будут полезны бонусы 2 предметов. Для лучшего эффекта сочетать с 2 предметами набора ${artifactSetByUid(ArtifactSetUidEnum.GladiatorsFinale)} или другими с аналогичными бонусами. 2 предмета набора ${artifactSetByUid(ArtifactSetUidEnum.ViridescentVenerer)} можно заменить ${artifactSetByUid(ArtifactSetUidEnum.DesertPavilionChronicle)}.`,
     },
   ],
+  preferred_attributes: {
+    [ArtifactPieceUidEnum.SandsOfEon]: [
+      AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge,
+    ],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ElementalMastery],
+    [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.ElementalMastery],
+    additional: [
+      ...AttributesCrit, AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery,
+      AttributeUidEnum.EnergyRecharge,
+    ],
+  },
   video_sources: [
     {
       title: "Miron MinMax: ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin",

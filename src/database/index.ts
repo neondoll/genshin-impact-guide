@@ -12,7 +12,7 @@ import tierListsWeapons from "./tier-lists-weapons";
 import weaponTypes from "./weapon-types";
 import weapons from "./weapons";
 import type { ArtifactSet, ArtifactSetUid } from "./types/artifact-set";
-import type { AttributeUid } from "./types/attribute";
+import type { Attribute, AttributeUid } from "./types/attribute";
 import type { Character, CharacterUid } from "./types/character";
 import type { CharacterRoleUid } from "./types/character-role";
 import type { ElementUid } from "./types/element";
@@ -90,6 +90,13 @@ export function sortArtifactSets(a: ArtifactSet, b: ArtifactSet) {
   const bMaxQuality = Math.max(...b.qualities);
 
   return aMaxQuality === bMaxQuality ? a.name.localeCompare(b.name) : bMaxQuality - aMaxQuality;
+}
+
+export function sortAttributes(a: Attribute, b: Attribute) {
+  const aName = a.abbreviation || a.name;
+  const bName = b.abbreviation || b.name;
+
+  return aName.localeCompare(bName);
 }
 
 export function sortCharacters(a: Character, b: Character) {

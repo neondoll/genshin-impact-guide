@@ -1,5 +1,7 @@
-import { artifactSetByUid } from "./help";
+import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
+import { artifactSetByUid, AttributesCrit, AttributesElementDamageBonus } from "./help";
 import { ArtifactSetUidEnum } from "../enums/artifact-set";
+import { AttributeUidEnum } from "../enums/attribute";
 import { CharacterUidEnum } from "../enums/character";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -17,6 +19,12 @@ export default {
     },
     { uid: CharacterUidEnum.Wriothesley },
   ],
+  preferred_attributes: {
+    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.AttackPercent],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.AttackPercent],
+    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
+    additional: [...AttributesCrit, AttributeUidEnum.AttackPercent, AttributeUidEnum.EnergyRecharge],
+  },
   video_sources: [
     {
       title: "Miron MinMax: ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin",

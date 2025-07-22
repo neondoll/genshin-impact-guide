@@ -21,6 +21,7 @@ export const ArtifactSetUidEnum = {
   /* Возлюбленная юная дева          */ MaidenBeloved: "maiden_beloved",
   /* Охотник Сумеречного двора       */ MarechausseeHunter: "marechaussee_hunter",
   /* Церемония древней знати         */ NoblesseOblige: "noblesse_oblige",
+  /* Сон нимфы                       */ NymphsDream: "nymphs_dream",
   /* Обсидиановый фолиант            */ ObsidianCodex: "obsidian_codex",
   /* Моллюск морских красок          */ OceanHuedClam: "ocean_hued_clam",
   /* Бледный огонь                   */ PaleFlame: "pale_flame",

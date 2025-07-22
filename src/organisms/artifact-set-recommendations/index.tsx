@@ -1,6 +1,7 @@
 import { ChevronDownIcon } from "lucide-react";
 
 import CharacterRecommendations from "./character-recommendations";
+import PreferredAttributesRecommendations from "./preferred-attributes-recommendations";
 import VideoSources from "../video-sources";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import type { ArtifactSetRecommendationsProps } from "./types";
 
 export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
-  const showAccordion = recommendations.characters !== undefined || recommendations.video_sources !== undefined;
+  const showAccordion = recommendations.characters !== undefined || recommendations.preferred_attributes !== undefined || recommendations.video_sources !== undefined;
 
   return (
     <Collapsible className="space-y-2 md:space-y-4" defaultOpen>
@@ -30,6 +31,16 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
                   </AccordionTrigger>
                   <AccordionContent className="px-6">
                     <CharacterRecommendations recommendations={recommendations.characters} />
+                  </AccordionContent>
+                </AccordionItem>
+              )}
+              {recommendations.preferred_attributes !== undefined && (
+                <AccordionItem value="preferred_attributes">
+                  <AccordionTrigger className="px-6">
+                    Рекомендации по предпочтительным характеристикам
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6">
+                    <PreferredAttributesRecommendations recommendations={recommendations.preferred_attributes} />
                   </AccordionContent>
                 </AccordionItem>
               )}

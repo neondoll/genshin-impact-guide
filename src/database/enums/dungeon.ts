@@ -1,0 +1,15 @@
+export const DungeonUidEnum = {
+  /* Город золота                 */ CityOfGold: "city_of_gold",
+  /* Чистая вода и горная пещера  */ ClearPoolAndMountainCavern: "clear_pool_and_mountain_cavern",
+  /* Владения Гуюнь               */ DomainOfGuyun: "domain_of_guyun",
+  /* Скрытый дворец Уван          */ HiddenPalaceOfZhouFormula: "hidden_palace_of_zhou_formula",
+  /* Июльские сады                */ MidsummerCourtyard: "midsummer_courtyard",
+  /* Расплавленная крепость       */ MoltenIronFortress: "molten_iron_fortress",
+  /* Кленовый зал                 */ MomijiDyedCourt: "momiji_dyed_court",
+  /* Пик Виндагнира               */ PeakOfVindagnyr: "peak_of_vindagnyr",
+  /* Горный дозор                 */ RidgeWatch: "ridge_watch",
+  /* Дремлющий сад                */ SlumberingCourt: "slumbering_court",
+  /* Шпиль одинокого просветления */ SpireOfSolitaryEnlightenment: "spire_of_solitary_enlightenment",
+  /* Затерянная долина            */ TheLostValley: "the_lost_valley",
+  /* Долина воспоминаний          */ ValleyOfRemembrance: "valley_of_remembrance",
+} as const;
