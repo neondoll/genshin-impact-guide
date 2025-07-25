@@ -84,6 +84,7 @@ export default {
   [CharacterUidEnum.TravelerElectro]: (await import("./traveler-recommendations")).default[ElementUidEnum.Electro],
   [CharacterUidEnum.TravelerGeo]: (await import("./traveler-recommendations")).default[ElementUidEnum.Geo],
   [CharacterUidEnum.TravelerHydro]: (await import("./traveler-recommendations")).default[ElementUidEnum.Hydro],
+  [CharacterUidEnum.TravelerPyro]: (await import("./traveler-recommendations")).default[ElementUidEnum.Pyro],
   [CharacterUidEnum.Varesa]: (await import("./varesa-recommendations")).default,
   [CharacterUidEnum.Venti]: (await import("./venti-recommendations")).default,
   [CharacterUidEnum.Wanderer]: (await import("./wanderer-recommendations")).default,

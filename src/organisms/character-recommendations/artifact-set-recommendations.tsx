@@ -8,6 +8,34 @@ import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
 import { getArtifactSet } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { ArtifactSetRecommendationsProps } from "./types";
+import type { ArtifactSetUid } from "@/database/types/artifact-set.ts";
+
+function ArtifactSetBage({ artifactSetUid, isSignature }: { artifactSetUid: ArtifactSetUid; isSignature: boolean }) {
+  const artifactSet = getArtifactSet(artifactSetUid);
+
+  return (
+    <Badge
+      asChild
+      className={cn(
+        "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row",
+        "sm:text-left",
+      )}
+      variant="secondary"
+    >
+      <Link to={Paths.ArtifactSet.to(artifactSet.uid)}>
+        <img
+          alt={artifactSet.name}
+          className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
+          src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
+        />
+        <span>
+          {artifactSet.name}
+          {isSignature && " (сигнатурное)"}
+        </span>
+      </Link>
+    </Badge>
+  );
+}
 
 export default function ArtifactSetRecommendations({ character, recommendations }: ArtifactSetRecommendationsProps) {
   const [diffPercent, setDiffPercent] = useState(0);
@@ -67,73 +95,67 @@ export default function ArtifactSetRecommendations({ character, recommendations 
         </TableRow>
       </TableHeader>
       <TableBody>
-        {recommendations.map((recommendation) => {
-          const artifactSet = getArtifactSet(recommendation.uid);
-
-          return (
-            <TableRow className="hover:bg-inherit" key={recommendation.uid}>
-              {hasIsBetter && (
-                <TableCell className="w-16">
-                  {recommendation.is_better && (
-                    <img
-                      alt="Является лучшим выбором"
-                      className="size-12 rounded-full"
-                      src={publicImageSrc("better-logo-128x128.png")}
-                    />
-                  )}
-                </TableCell>
-              )}
-              <TableCell className="text-pretty whitespace-normal sm:w-48">
-                <Badge
-                  asChild
-                  className={cn(
-                    "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal",
-                    "sm:flex-row sm:text-left",
-                  )}
-                  variant="secondary"
-                >
-                  <Link to={Paths.ArtifactSet.to(artifactSet.uid)}>
-                    <img
-                      alt={artifactSet.name}
-                      className={cn(
-                        "shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl",
-                      )}
-                      src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
-                    />
-                    <span>
-                      {artifactSet.name}
-                      {artifactSet.uid === character.signature_artifact_set_uid && " (сигнатурное)"}
-                    </span>
-                  </Link>
-                </Badge>
+        {recommendations.map(recommendation => (
+          <TableRow
+            className="hover:bg-inherit"
+            key={"uid" in recommendation ? recommendation.uid : recommendation.uids.join("+")}
+          >
+            {hasIsBetter && (
+              <TableCell className="w-16">
+                {recommendation.is_better && (
+                  <img
+                    alt="Является лучшим выбором"
+                    className="size-12 rounded-full"
+                    src={publicImageSrc("better-logo-128x128.png")}
+                  />
+                )}
               </TableCell>
-              {hasPercent && (
-                <TableCell
-                  children={recommendation.percent !== undefined ? numberFormatPercent(recommendation.percent, 2) : ""}
-                  className={cn(recommendation.percent !== undefined && {
-                    "text-green-500": recommendation.percent >= (minPercent + (diffPercent * 2)),
-                    "text-yellow-500": recommendation.percent >= (minPercent + diffPercent) && recommendation.percent < (minPercent + (diffPercent * 2)),
-                    "text-red-500": recommendation.percent < (minPercent + diffPercent),
-                  })}
-                />
-              )}
-              {hasDescription && (
-                <TableCell children={recommendation.description} className="text-pretty whitespace-normal" />
-              )}
-              {hasNotes && (
-                <TableCell className="text-pretty whitespace-normal">
-                  {recommendation.notes !== undefined && (
-                    <ul className="ml-4 list-outside list-disc">
-                      {recommendation.notes.map((note, index) => (
-                        <li children={note} key={index} />
+            )}
+            <TableCell className="text-pretty whitespace-normal sm:w-48">
+              {"uid" in recommendation
+                ? (
+                    <ArtifactSetBage
+                      artifactSetUid={recommendation.uid}
+                      isSignature={recommendation.uid === character.signature_artifact_set_uid}
+                    />
+                  )
+                : (
+                    <div className="flex flex-col gap-2">
+                      {recommendation.uids.map(uid => (
+                        <ArtifactSetBage
+                          artifactSetUid={uid}
+                          isSignature={uid === character.signature_artifact_set_uid}
+                        />
                       ))}
-                    </ul>
+                    </div>
                   )}
-                </TableCell>
-              )}
-            </TableRow>
-          );
-        })}
+            </TableCell>
+            {hasPercent && (
+              <TableCell
+                children={recommendation.percent !== undefined ? numberFormatPercent(recommendation.percent, 2) : ""}
+                className={cn(recommendation.percent !== undefined && {
+                  "text-green-500": recommendation.percent >= (minPercent + (diffPercent * 2)),
+                  "text-yellow-500": recommendation.percent >= (minPercent + diffPercent) && recommendation.percent < (minPercent + (diffPercent * 2)),
+                  "text-red-500": recommendation.percent < (minPercent + diffPercent),
+                })}
+              />
+            )}
+            {hasDescription && (
+              <TableCell children={recommendation.description} className="text-pretty whitespace-normal" />
+            )}
+            {hasNotes && (
+              <TableCell className="text-pretty whitespace-normal">
+                {recommendation.notes !== undefined && (
+                  <ul className="ml-4 list-outside list-disc">
+                    {recommendation.notes.map((note, index) => (
+                      <li children={note} key={index} />
+                    ))}
+                  </ul>
+                )}
+              </TableCell>
+            )}
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );

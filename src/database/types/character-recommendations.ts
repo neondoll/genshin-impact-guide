@@ -7,6 +7,21 @@ import type { TalentUid } from "./talent";
 import type { VideoSource } from "./video-source";
 import type { WeaponUid } from "./weapon";
 
+type _CharacterArtifactSetRecommendation = {
+  is_better?: boolean;
+  percent?: number;
+  description?: string;
+  notes?: string[];
+};
+
+interface CharacterArtifactSetRecommendationWithUid extends _CharacterArtifactSetRecommendation {
+  uid: ArtifactSetUid;
+}
+
+interface CharacterArtifactSetRecommendationWithUids extends _CharacterArtifactSetRecommendation {
+  uids: [ArtifactSetUid, ArtifactSetUid];
+}
+
 type CharacterArtifactAttributeRecommendation = {
   uid: AttributeUid;
   percent?: number;
@@ -18,13 +33,6 @@ type CharacterArtifactAttributeRecommendations = Record<typeof ArtifactPieceUidE
 type CharacterArtifactRecommendations = {
   sets: CharacterArtifactSetRecommendations;
   attributes: CharacterArtifactAttributeRecommendations;
-};
-type CharacterArtifactSetRecommendation = {
-  uid: ArtifactSetUid;
-  is_better?: boolean;
-  percent?: number;
-  description?: string;
-  notes?: string[];
 };
 type CharacterArtifactSetRecommendations = CharacterArtifactSetRecommendation[];
 type CharacterSquadElementRecommendation = { type: "element"; uid: ElementUid };
@@ -39,6 +47,8 @@ type CharacterWeaponRecommendation = {
 };
 type CharacterRecommendationSquadBestTeammates = CharacterSquadItemRecommendation[];
 
+export type CharacterArtifactSetRecommendation
+  = CharacterArtifactSetRecommendationWithUid | CharacterArtifactSetRecommendationWithUids;
 export type CharacterRecommendations = {
   artifacts?: CharacterArtifactRecommendations;
   character_uid: CharacterUid;
@@ -57,7 +67,6 @@ export type CharacterRecommendations = {
 };
 export type CharacterReferencePointRecommendations = [string, string][];
 export type CharacterSquadItemRecommendation
-  = CharacterSquadCharacterRecommendation
-    | CharacterSquadElementRecommendation;
+  = CharacterSquadCharacterRecommendation | CharacterSquadElementRecommendation;
 export type CharacterTalentLevelingRecommendations = CharacterTalentLevelingRecommendation[];
 export type CharacterWeaponRecommendations = CharacterWeaponRecommendation[];
