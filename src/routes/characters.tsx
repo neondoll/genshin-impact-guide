@@ -38,12 +38,16 @@ export default function Characters() {
       filteredCharacters = filteredCharacters.filter(character => filterElementUids.includes(character.element_uid));
     }
 
+    if (filterQualities.length) {
+      filteredCharacters = filteredCharacters.filter(character => filterQualities.includes(character.quality));
+    }
+
     if (filterWeaponTypeUids.length) {
       filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeUids.includes(character.weapon_type_uid));
     }
 
     setFilteredCharacters(filteredCharacters);
-  }, [characters, filterElementUids, filterWeaponTypeUids]);
+  }, [characters, filterElementUids, filterQualities, filterWeaponTypeUids]);
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
