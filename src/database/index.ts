@@ -61,6 +61,10 @@ export function getElement(elementUid: ElementUid) {
   return elements[elementUid];
 }
 
+export function getElements() {
+  return elements;
+}
+
 export function getRegion(regionUid: RegionUid) {
   return regions[regionUid];
 }
@@ -83,6 +87,10 @@ export function getWeapons() {
 
 export function getWeaponType(weaponTypeUid: WeaponTypeUid) {
   return weaponTypes[weaponTypeUid];
+}
+
+export function getWeaponTypes() {
+  return weaponTypes;
 }
 
 export function sortArtifactSets(a: ArtifactSet, b: ArtifactSet) {

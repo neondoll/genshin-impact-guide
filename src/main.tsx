@@ -15,8 +15,8 @@ import Weapons, { type WeaponsLoaderData } from "@/routes/weapons";
 import WeaponsTierList, { type WeaponsTierListLoaderData } from "@/routes/weapons-tier-list";
 import {
   getArtifactPieces, getArtifactSet, getArtifactSetRecommendations, getArtifactSets, getCharacter,
-  getCharacterRecommendations, getCharacterRole, getCharacters, getElement, getRegion, getTierListsWeapons, getWeapons,
-  getWeaponType,
+  getCharacterRecommendations, getCharacterRole, getCharacters, getElement, getElements, getRegion, getTierListsWeapons,
+  getWeapons, getWeaponType, getWeaponTypes,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { ArtifactSetUid } from "@/database/types/artifact-set";
@@ -44,7 +44,11 @@ const router = createHashRouter([
         element: <ArtifactSet />,
       },
       {
-        loader: (): CharactersLoaderData => ({ characters: getCharacters() }),
+        loader: (): CharactersLoaderData => ({
+          characters: getCharacters(),
+          elements: getElements(),
+          weaponTypes: getWeaponTypes(),
+        }),
         path: Paths.Characters.to,
         element: <Characters />,
       },
