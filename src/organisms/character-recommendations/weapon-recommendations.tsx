@@ -6,6 +6,7 @@ import { getWeapon } from "@/database";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { WeaponRecommendationsProps, WeaponRecommendationsTableProps } from "./types";
+import { backgroundClassByQuality } from "@/lib/quality.ts";
 
 function WeaponRecommendationsTable({ character, recommendations }: WeaponRecommendationsTableProps) {
   const [diffPercent, setDiffPercent] = useState(0);
@@ -81,13 +82,15 @@ function WeaponRecommendationsTable({ character, recommendations }: WeaponRecomm
                 >
                   <img
                     alt={weapon.name}
-                    className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
+                    className={cn(
+                      "shrink-0 size-12 rounded-md rounded-br-2xl",
+                      backgroundClassByQuality(weapon.quality),
+                    )}
                     src={weapon.image_src}
                   />
                   <span>
                     {weapon.name}
                     {recommendation.refinement !== undefined && ` R${recommendation.refinement}`}
-                    {` [${weapon.quality}⭐]`}
                     {weapon.uid === character.signature_weapon_uid && " (сигнатурное)"}
                     {recommendation.postfix !== undefined && (
                       <>

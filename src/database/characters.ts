@@ -355,6 +355,15 @@ export default {
     roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
     image_src: imageSrc("iansan-256x256.webp"),
   },
+  [CharacterUidEnum.Ineffa]: {
+    uid: CharacterUidEnum.Ineffa,
+    name: "Инеффа",
+    quality: 5,
+    weapon_type_uid: WeaponTypeUidEnum.Polearm,
+    element_uid: ElementUidEnum.Electro,
+    roles_uid: [CharacterRoleUidEnum.OffField, CharacterRoleUidEnum.DPS, CharacterRoleUidEnum.Support, CharacterRoleUidEnum.Survivability],
+    image_src: imageSrc("ineffa-256x256.webp"),
+  },
   [CharacterUidEnum.Jean]: {
     uid: CharacterUidEnum.Jean,
     name: "Джинн",

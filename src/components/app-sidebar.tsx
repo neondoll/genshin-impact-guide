@@ -22,7 +22,7 @@ export function AppSidebar() {
                       to={item.to}
                     >
                       <img alt={item.title} className="shrink-0 w-auto h-5" src={item.image_src} />
-                      <span>{item.title}</span>
+                      <span children={item.title} />
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

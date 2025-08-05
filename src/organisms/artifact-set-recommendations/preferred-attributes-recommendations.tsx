@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
 import { Badge } from "@/components/ui/badge";
 import { getAttribute, sortAttributes } from "@/database";
@@ -9,16 +7,17 @@ import type { PreferredAttributesRecommendationsProps } from "./types";
 export default function PreferredAttributesRecommendations({ recommendations }: PreferredAttributesRecommendationsProps) {
   const recommendationsKeys = Object.keys(recommendations) as (keyof typeof recommendations)[];
   const rowsCount = Math.max(...recommendationsKeys.map(recommendationsKey => recommendations[recommendationsKey].length));
-  const [sortedRecommendations, setSortedRecommendations] = useState(recommendations);
 
-  useEffect(() => {
-    recommendationsKeys.forEach((recommendationsKey) => {
-      setSortedRecommendations(prevState => ({
-        ...prevState,
-        [recommendationsKey]: recommendations[recommendationsKey].map(value => getAttribute(value)).sort(sortAttributes).map(value => value.uid),
-      }));
-    });
-  }, [recommendations, recommendationsKeys]);
+  const recommendationsSort = (recommendationsKey: keyof typeof recommendations) => {
+    return recommendations[recommendationsKey].map(value => getAttribute(value)).sort(sortAttributes).map(value => value.uid);
+  };
+
+  const sortedRecommendations = {
+    [ArtifactPieceUidEnum.SandsOfEon]: recommendationsSort(ArtifactPieceUidEnum.SandsOfEon),
+    [ArtifactPieceUidEnum.GobletOfEonothem]: recommendationsSort(ArtifactPieceUidEnum.GobletOfEonothem),
+    [ArtifactPieceUidEnum.CircletOfLogos]: recommendationsSort(ArtifactPieceUidEnum.CircletOfLogos),
+    additional: recommendationsSort("additional"),
+  };
 
   return (
     <Table>

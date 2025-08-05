@@ -1,6 +1,6 @@
-import * as React from "react";
+import type { ComponentProps } from "react";
 
-export default function VK(props: Pick<React.ComponentProps<"svg">, "className">) {
+export default function VK(props: Pick<ComponentProps<"svg">, "className">) {
   return (
     <svg fill="currentColor" viewBox="-2.5 0 32 32" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

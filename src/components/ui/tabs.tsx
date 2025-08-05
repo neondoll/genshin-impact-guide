@@ -1,20 +1,15 @@
-import * as React from "react";
-import * as TabsPrimitive from "@radix-ui/react-tabs";
+import * as Primitive from "@radix-ui/react-tabs";
+import type { ComponentProps } from "react";
 
 import { cn } from "@/lib/utils";
 
-type TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content>;
-type TabsListProps = React.ComponentProps<typeof TabsPrimitive.List>;
-type TabsProps = React.ComponentProps<typeof TabsPrimitive.Root>;
-type TabsTriggerProps = React.ComponentProps<typeof TabsPrimitive.Trigger>;
-
-export function Tabs({ className, ...props }: TabsProps) {
-  return <TabsPrimitive.Root className={cn("flex flex-col gap-2", className)} data-slot="tabs" {...props} />;
+export function Tabs({ className, ...props }: ComponentProps<typeof Primitive.Root>) {
+  return <Primitive.Root className={cn("flex flex-col gap-2", className)} data-slot="tabs" {...props} />;
 }
 
-export function TabsContent({ className, ...props }: TabsContentProps) {
+export function TabsContent({ className, ...props }: ComponentProps<typeof Primitive.Content>) {
   return (
-    <TabsPrimitive.Content
+    <Primitive.Content
       className={cn("flex-1 outline-none", className)}
       data-slot="tabs-content"
       {...props}
@@ -22,9 +17,9 @@ export function TabsContent({ className, ...props }: TabsContentProps) {
   );
 }
 
-export function TabsList({ className, ...props }: TabsListProps) {
+export function TabsList({ className, ...props }: ComponentProps<typeof Primitive.List>) {
   return (
-    <TabsPrimitive.List
+    <Primitive.List
       className={cn(
         "inline-flex justify-center items-center p-[3px] w-fit h-9 text-muted-foreground bg-muted rounded-lg",
         className,
@@ -35,9 +30,9 @@ export function TabsList({ className, ...props }: TabsListProps) {
   );
 }
 
-export function TabsTrigger({ className, ...props }: TabsTriggerProps) {
+export function TabsTrigger({ className, ...props }: ComponentProps<typeof Primitive.Trigger>) {
   return (
-    <TabsPrimitive.Trigger
+    <Primitive.Trigger
       className={cn(
         "inline-flex flex-1 gap-1.5 justify-center items-center px-2 py-1 h-[calc(100%-1px)] text-sm font-medium",
         "text-foreground whitespace-nowrap rounded-md border border-transparent transition-[color,box-shadow]",

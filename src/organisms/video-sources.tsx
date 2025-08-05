@@ -3,9 +3,7 @@ import Youtube from "@/icons/Youtube";
 import { Button } from "@/components/ui/button";
 import type { VideoSource } from "@/database/types/video-source";
 
-type VideoSourcesProps = { items: VideoSource[] };
-
-export default function VideoSources({ items }: VideoSourcesProps) {
+export default function VideoSources({ items }: { items: VideoSource[] }) {
   return (
     <ul className="list-inside list-disc">
       {items.map((item, index) => (

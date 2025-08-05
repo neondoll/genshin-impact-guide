@@ -34,6 +34,7 @@ export const CharacterUidEnum = {
   /* Горо                     */ Gorou: "gorou",
   /* Ху Тао                   */ HuTao: "hu_tao",
   /* Иансан                   */ Iansan: "iansan",
+  /* Инеффа                   */ Ineffa: "ineffa",
   /* Джинн                    */ Jean: "jean",
   /* Качина                   */ Kachina: "kachina",
   /* Кадзуха                  */ KaedeharaKazuha: "kaedehara_kazuha",

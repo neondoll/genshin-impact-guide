@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 
 import Paths from "@/constants/paths";
 import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
+import { backgroundClassByQuality } from "@/lib/quality";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
 import { getArtifactSet } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { ArtifactSetRecommendationsProps } from "./types";
-import type { ArtifactSetUid } from "@/database/types/artifact-set.ts";
+import type { ArtifactSetUid } from "@/database/types/artifact-set";
 
 function ArtifactSetBage({ artifactSetUid, isSignature }: { artifactSetUid: ArtifactSetUid; isSignature: boolean }) {
   const artifactSet = getArtifactSet(artifactSetUid);
@@ -25,7 +26,10 @@ function ArtifactSetBage({ artifactSetUid, isSignature }: { artifactSetUid: Arti
       <Link to={Paths.ArtifactSet.to(artifactSet.uid)}>
         <img
           alt={artifactSet.name}
-          className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
+          className={cn(
+            "shrink-0 size-12 rounded-md rounded-br-2xl",
+            backgroundClassByQuality(...artifactSet.qualities),
+          )}
           src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
         />
         <span>

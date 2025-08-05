@@ -18,6 +18,7 @@ export default {
   [CharacterUidEnum.Chevreuse]: (await import("./chevreuse-recommendations")).default,
   [CharacterUidEnum.Chiori]: (await import("./chiori-recommendations")).default,
   [CharacterUidEnum.Chongyun]: (await import("./chongyun-recommendations")).default,
+  [CharacterUidEnum.Citlali]: (await import("./citlali-recommendations")).default,
   [CharacterUidEnum.Clorinde]: (await import("./clorinde-recommendations")).default,
   [CharacterUidEnum.Collei]: (await import("./collei-recommendations")).default,
   [CharacterUidEnum.Cyno]: (await import("./cyno-recommendations")).default,

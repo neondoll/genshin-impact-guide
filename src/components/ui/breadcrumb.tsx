@@ -1,22 +1,14 @@
-import * as React from "react";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
 import { Slot } from "@radix-ui/react-slot";
+import type { ComponentProps } from "react";
 
 import { cn } from "@/lib/utils";
 
-type BreadcrumbEllipsisProps = React.ComponentProps<"span">;
-type BreadcrumbItemProps = React.ComponentProps<"li">;
-type BreadcrumbLinkProps = React.ComponentProps<"a"> & { asChild?: boolean };
-type BreadcrumbListProps = React.ComponentProps<"ol">;
-type BreadcrumbPageProps = React.ComponentProps<"span">;
-type BreadcrumbProps = React.ComponentProps<"nav">;
-type BreadcrumbSeparatorProps = React.ComponentProps<"li">;
-
-export function Breadcrumb({ ...props }: BreadcrumbProps) {
+export function Breadcrumb({ ...props }: ComponentProps<"nav">) {
   return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />;
 }
 
-export function BreadcrumbEllipsis({ className, ...props }: BreadcrumbEllipsisProps) {
+export function BreadcrumbEllipsis({ className, ...props }: ComponentProps<"span">) {
   return (
     <span
       aria-hidden="true"
@@ -31,11 +23,11 @@ export function BreadcrumbEllipsis({ className, ...props }: BreadcrumbEllipsisPr
   );
 }
 
-export function BreadcrumbItem({ className, ...props }: BreadcrumbItemProps) {
+export function BreadcrumbItem({ className, ...props }: ComponentProps<"li">) {
   return <li className={cn("inline-flex gap-1.5 items-center", className)} data-slot="breadcrumb-item" {...props} />;
 }
 
-export function BreadcrumbLink({ asChild, className, ...props }: BreadcrumbLinkProps) {
+export function BreadcrumbLink({ asChild, className, ...props }: ComponentProps<"a"> & { asChild?: boolean }) {
   const Comp = asChild ? Slot : "a";
 
   return (
@@ -43,7 +35,7 @@ export function BreadcrumbLink({ asChild, className, ...props }: BreadcrumbLinkP
   );
 }
 
-export function BreadcrumbList({ className, ...props }: BreadcrumbListProps) {
+export function BreadcrumbList({ className, ...props }: ComponentProps<"ol">) {
   return (
     <ol
       className={cn(
@@ -56,7 +48,7 @@ export function BreadcrumbList({ className, ...props }: BreadcrumbListProps) {
   );
 }
 
-export function BreadcrumbPage({ className, ...props }: BreadcrumbPageProps) {
+export function BreadcrumbPage({ className, ...props }: ComponentProps<"span">) {
   return (
     <span
       aria-current="page"
@@ -69,16 +61,15 @@ export function BreadcrumbPage({ className, ...props }: BreadcrumbPageProps) {
   );
 }
 
-export function BreadcrumbSeparator({ children, className, ...props }: BreadcrumbSeparatorProps) {
+export function BreadcrumbSeparator({ children, className, ...props }: ComponentProps<"li">) {
   return (
     <li
       aria-hidden="true"
+      children={children ?? <ChevronRight />}
       className={cn("[&>svg]:size-3.5", className)}
       data-slot="breadcrumb-separator"
       role="presentation"
       {...props}
-    >
-      {children ?? <ChevronRight />}
-    </li>
+    />
   );
 }
