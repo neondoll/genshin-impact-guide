@@ -26,24 +26,24 @@ export default {
     ],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.AttackPercent, notes: ["Личный урон важнее, чем ульта по откату"] },
+        { uid: AttributeUidEnum.ATKPercentage, notes: ["Личный урон важнее, чем ульта по откату"] },
         {
           uid: AttributeUidEnum.EnergyRecharge,
           notes: ["В меньшинстве случаев, когда есть Фурина, лечение нужно и лечить больше некому"],
         },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.CryoDamageBonus, notes: ["В 99% случаев"] },
-        { uid: AttributeUidEnum.AttackPercent, notes: ["В 1% случаев"] },
+        { uid: AttributeUidEnum.CryoDMGBonus, notes: ["В 99% случаев"] },
+        { uid: AttributeUidEnum.ATKPercentage, notes: ["В 1% случаев"] },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CritRate },
-        { uid: AttributeUidEnum.CritDmg, notes: ["Почти всегда"] },
+        { uid: AttributeUidEnum.CRITRate },
+        { uid: AttributeUidEnum.CRITDMG, notes: ["Почти всегда"] },
       ],
       additional: [
-        { uid: AttributeUidEnum.CritRate, notes: ["Приоритетно"] },
-        { uid: AttributeUidEnum.CritDmg, notes: ["Приоритетно"] },
-        { uid: AttributeUidEnum.AttackPercent },
+        { uid: AttributeUidEnum.CRITRate, notes: ["Приоритетно"] },
+        { uid: AttributeUidEnum.CRITDMG, notes: ["Приоритетно"] },
+        { uid: AttributeUidEnum.ATKPercentage },
         { uid: AttributeUidEnum.EnergyRecharge },
       ],
     },

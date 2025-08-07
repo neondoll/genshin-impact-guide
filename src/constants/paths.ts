@@ -1,6 +1,7 @@
 import type { ArtifactSet, ArtifactSetUid } from "@/database/types/artifact-set";
 import type { Character, CharacterUid } from "@/database/types/character";
 import type { ElementUid } from "@/database/types/element";
+import type { Weapon, WeaponUid } from "@/database/types/weapon";
 
 export default {
   ArtifactSet: {
@@ -15,6 +16,10 @@ export default {
   Characters: { title: "Персонажи", to: "/characters" },
   Element: { to: (uid: ElementUid | string) => `/elements/${uid}` },
   Root: { title: "Главная", to: "/" },
+  Weapon: {
+    title: (item: Weapon) => item.name,
+    to: (uid: WeaponUid | string) => `/weapons/${uid}`,
+  },
   Weapons: { title: "Оружие", to: "/weapons" },
   WeaponsTierList: { title: "Тир-лист", to: "/weapons/tier-list" },
 } as const;

@@ -12,22 +12,22 @@ export default {
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.EnergyRecharge, percent: 0.748 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.171 },
+        { uid: AttributeUidEnum.ATKPercentage, percent: 0.171 },
         { uid: AttributeUidEnum.ElementalMastery, percent: 0.055 },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PyroDamageBonus, percent: 0.841 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.118 },
-        { uid: AttributeUidEnum.HealthPercent, percent: 0.013 },
+        { uid: AttributeUidEnum.PyroDMGBonus, percent: 0.841 },
+        { uid: AttributeUidEnum.ATKPercentage, percent: 0.118 },
+        { uid: AttributeUidEnum.HPPercentage, percent: 0.013 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CritRate, percent: 0.642 },
-        { uid: AttributeUidEnum.CritDmg, percent: 0.291 },
-        { uid: AttributeUidEnum.AttackPercent, percent: 0.042 },
+        { uid: AttributeUidEnum.CRITRate, percent: 0.642 },
+        { uid: AttributeUidEnum.CRITDMG, percent: 0.291 },
+        { uid: AttributeUidEnum.ATKPercentage, percent: 0.042 },
       ],
       additional: [
-        { uid: AttributeUidEnum.CritRate, description: "Приоритетно" },
-        { uid: AttributeUidEnum.CritDmg, description: "Приоритетно" },
+        { uid: AttributeUidEnum.CRITRate, description: "Приоритетно" },
+        { uid: AttributeUidEnum.CRITDMG, description: "Приоритетно" },
         { uid: AttributeUidEnum.EnergyRecharge },
       ],
     },

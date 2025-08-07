@@ -22,10 +22,10 @@ export type CharactersLoaderData = {
 
 export default function Characters() {
   const { characters, elements, weaponTypes } = useLoaderData<CharactersLoaderData>();
-  const [filteredCharacters, setFilteredCharacters] = useState<typeof characters>([]);
   const [filterElementUids, setFilterElementUids] = useState<ElementUid[]>([]);
   const [filterQualities, setFilterQualities] = useState<QualityUid[]>([]);
   const [filterWeaponTypeUids, setFilterWeaponTypeUids] = useState<WeaponTypeUid[]>([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<typeof characters>([]);
   const [qualities, setQualities] = useState<QualityUid[]>([]);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function Characters() {
       <h1 children={Paths.Characters.title} className="text-2xl" />
       <Filter>
         <FilterGroup label="Элемент">
-          <div className="flex gap-x-3">
+          <div className="flex flex-wrap gap-3">
             {Object.values(elements).map(element => (
               <FilterCheckbox
                 asChild
@@ -97,7 +97,7 @@ export default function Characters() {
           </div>
         </FilterGroup>
         <FilterGroup label="Тип">
-          <div className="flex gap-x-3">
+          <div className="flex flex-wrap gap-3">
             {Object.values(weaponTypes).map(weaponType => (
               <FilterCheckbox
                 asChild
@@ -127,7 +127,7 @@ export default function Characters() {
           </div>
         </FilterGroup>
         <FilterGroup label="Качество">
-          <div className="flex gap-x-3">
+          <div className="flex flex-wrap gap-3">
             {qualities.map(quality => (
               <FilterCheckbox
                 checked={filterQualities.includes(quality)}

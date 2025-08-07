@@ -27,19 +27,19 @@ export default {
     ],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.AttackPercent },
+        { uid: AttributeUidEnum.ATKPercentage },
         { uid: AttributeUidEnum.EnergyRecharge },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.AttackPercent }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.AttackPercent }],
+      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.ATKPercentage }],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.ATKPercentage }],
       additional: [
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["Приоритетно", "от 160%"] },
         {
-          uid: AttributeUidEnum.AttackPercent,
+          uid: AttributeUidEnum.ATKPercentage,
           notes: ["от 2000", "2556 для 10 Ур. Взрыва стихии", "3000 для 13 Ур. Взрыва стихии"],
         },
-        { uid: AttributeUidEnum.CritRate },
-        { uid: AttributeUidEnum.CritDmg },
+        { uid: AttributeUidEnum.CRITRate },
+        { uid: AttributeUidEnum.CRITDMG },
       ],
     },
   },

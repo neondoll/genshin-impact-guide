@@ -19,15 +19,15 @@ export default {
   ],
   preferred_attributes: {
     [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge,
-      AttributeUidEnum.HealthPercent,
+      AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge,
+      AttributeUidEnum.HPPercentage,
     ],
     [ArtifactPieceUidEnum.GobletOfEonothem]: [
-      ...AttributesElementDamageBonus, AttributeUidEnum.AttackPercent, AttributeUidEnum.HealthPercent,
+      ...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage, AttributeUidEnum.HPPercentage,
     ],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.HealthPercent],
+    [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.HPPercentage],
     additional: [
-      ...AttributesCrit, AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery,
+      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
       AttributeUidEnum.EnergyRecharge,
     ],
   },

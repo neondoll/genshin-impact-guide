@@ -12,21 +12,21 @@ export default {
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.EnergyRecharge },
-        { uid: AttributeUidEnum.HealthPercent },
+        { uid: AttributeUidEnum.HPPercentage },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HydroDamageBonus },
-        { uid: AttributeUidEnum.HealthPercent, description: "Лучше в подавляющем числе ситуаций" },
+        { uid: AttributeUidEnum.HydroDMGBonus },
+        { uid: AttributeUidEnum.HPPercentage, description: "Лучше в подавляющем числе ситуаций" },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CritRate }, { uid: AttributeUidEnum.CritDmg }],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CRITRate }, { uid: AttributeUidEnum.CRITDMG }],
       additional: [
         {
           uid: AttributeUidEnum.EnergyRecharge,
           description: "В отрядах без доп. подкачки - 200% - 220% ВЭ\nВ отрядах с доп. подкачкой - 160% - 180% ВЭ\nВ отрядах с Е Лань или Син Цю - 130% - 140% ВЭ\nВ отрядах с 3 Гидро и более - 100% ВЭ",
         },
-        { uid: AttributeUidEnum.HealthPercent },
-        { uid: AttributeUidEnum.CritRate },
-        { uid: AttributeUidEnum.CritDmg },
+        { uid: AttributeUidEnum.HPPercentage },
+        { uid: AttributeUidEnum.CRITRate },
+        { uid: AttributeUidEnum.CRITDMG },
       ],
     },
   },

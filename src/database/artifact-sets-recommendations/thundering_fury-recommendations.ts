@@ -14,13 +14,13 @@ export default {
     { uid: CharacterUidEnum.YaeMiko },
   ],
   preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery],
+    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery],
     [ArtifactPieceUidEnum.GobletOfEonothem]: [
-      ...AttributesElementDamageBonus, AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery,
+      ...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
     ],
     [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
     additional: [
-      ...AttributesCrit, AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery,
+      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
       AttributeUidEnum.EnergyRecharge,
     ],
   },

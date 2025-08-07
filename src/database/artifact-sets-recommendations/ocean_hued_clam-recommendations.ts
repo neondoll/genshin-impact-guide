@@ -13,10 +13,10 @@ export default {
     { uid: CharacterUidEnum.SangonomiyaKokomi, is_better: true },
   ],
   preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HealthPercent],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HealthPercent],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [AttributeUidEnum.HealingBonus, AttributeUidEnum.HealthPercent],
-    additional: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HealthPercent],
+    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
+    [ArtifactPieceUidEnum.CircletOfLogos]: [AttributeUidEnum.HealingBonus, AttributeUidEnum.HPPercentage],
+    additional: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
   },
   video_sources: [
     {

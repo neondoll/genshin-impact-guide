@@ -22,16 +22,16 @@ export default {
       },
     ],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.AttackPercent }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.ATKPercentage }],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.ElectroDamageBonus, notes: ["Лучше с Цаплей всегда"] },
-        { uid: AttributeUidEnum.AttackPercent, notes: ["Лучше с Фуриной или в сете на планжи"] },
+        { uid: AttributeUidEnum.ElectroDMGBonus, notes: ["Лучше с Цаплей всегда"] },
+        { uid: AttributeUidEnum.ATKPercentage, notes: ["Лучше с Фуриной или в сете на планжи"] },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CritRate }, { uid: AttributeUidEnum.CritDmg }],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CRITRate }, { uid: AttributeUidEnum.CRITDMG }],
       additional: [
-        { uid: AttributeUidEnum.AttackPercent, notes: ["от 1800"] },
-        { uid: AttributeUidEnum.CritRate, notes: ["от 60%"] },
-        { uid: AttributeUidEnum.CritDmg, notes: ["от 180%"] },
+        { uid: AttributeUidEnum.ATKPercentage, notes: ["от 1800"] },
+        { uid: AttributeUidEnum.CRITRate, notes: ["от 60%"] },
+        { uid: AttributeUidEnum.CRITDMG, notes: ["от 180%"] },
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["115% - 135% для Взрыва стихии"] },
         { uid: AttributeUidEnum.ElementalMastery, notes: ["от 150 (при игре через реакцию Вегетация)"] },
       ],

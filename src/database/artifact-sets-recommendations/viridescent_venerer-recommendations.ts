@@ -44,12 +44,12 @@ export default {
   ],
   preferred_attributes: {
     [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge,
+      AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge,
     ],
     [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ElementalMastery],
     [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.ElementalMastery],
     additional: [
-      ...AttributesCrit, AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery,
+      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
       AttributeUidEnum.EnergyRecharge,
     ],
   },

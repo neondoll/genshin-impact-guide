@@ -135,6 +135,7 @@ export const WeaponUidEnum = {
   /* Церемониальный меч                    */ SacrificialSword: "sacrificial_sword",
   /* Деревянный клинок                     */ SapwoodBlade: "sapwood_blade",
   /* Наследник слепящего солнца            */ ScionOfTheBlazingSun: "scion_of_the_blazing_sun",
+  /* Каденция одиночества                  */ SequenceOfSolitude: "sequence_of_solitude",
   /* Меч драконьей кости                   */ SerpentSpine: "serpent_spine",
   /* Клятва стрелка                        */ SharpshootersOath: "sharpshooters_oath",
   /* Сердечные струны дождя                */ SilvershowerHeartstrings: "silvershower_heartstrings",

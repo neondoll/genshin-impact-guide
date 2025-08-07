@@ -15,7 +15,7 @@ export default {
   ],
   preferred_attributes: {
     [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.DefensePercent],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.DefensePercent, AttributeUidEnum.GeoDamageBonus],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.DefensePercent, AttributeUidEnum.GeoDMGBonus],
     [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
     additional: [...AttributesCrit, AttributeUidEnum.DefensePercent, AttributeUidEnum.EnergyRecharge],
   },

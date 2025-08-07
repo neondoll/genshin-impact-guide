@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import CharacterRecommendations from "@/organisms/character-recommendations";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
+import { backgroundClassByQuality } from "@/lib/quality";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -52,8 +53,7 @@ export default function Character() {
           alt={character.name}
           className={cn(
             "shrink-0 size-16 rounded-md rounded-br-2xl",
-            character.quality === 4 && "bg-[linear-gradient(180deg,#5e5789,#9c75b7)]",
-            character.quality === 5 && "bg-[linear-gradient(180deg,#945c2c,#b27330)]",
+            backgroundClassByQuality(character.quality),
           )}
           src={character.image_src}
         />

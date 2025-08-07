@@ -26,13 +26,13 @@ export default {
       },
     ],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HealthPercent }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.HealthPercent }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HPPercentage }],
+      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.HPPercentage }],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.HealthPercent },
-        { uid: AttributeUidEnum.CritRate, description: `Если в руках ${weapons[WeaponUidEnum.FavoniusLance].name}` },
+        { uid: AttributeUidEnum.HPPercentage },
+        { uid: AttributeUidEnum.CRITRate, description: `Если в руках ${weapons[WeaponUidEnum.FavoniusLance].name}` },
       ],
-      additional: [{ uid: AttributeUidEnum.HealthPercent }, { uid: AttributeUidEnum.EnergyRecharge }],
+      additional: [{ uid: AttributeUidEnum.HPPercentage }, { uid: AttributeUidEnum.EnergyRecharge }],
     },
   },
   character_uid: CharacterUidEnum.Chevreuse,

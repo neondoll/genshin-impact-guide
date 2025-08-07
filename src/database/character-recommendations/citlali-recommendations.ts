@@ -52,7 +52,7 @@ export default {
       [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.ElementalMastery }],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.ElementalMastery, notes: ["всегда"] },
-        { uid: AttributeUidEnum.CritRate, notes: [`можно рассмотреть, если в руках ${weapons[WeaponUidEnum.FavoniusCodex].name}`] },
+        { uid: AttributeUidEnum.CRITRate, notes: [`можно рассмотреть, если в руках ${weapons[WeaponUidEnum.FavoniusCodex].name}`] },
       ],
       additional: [
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["приоритетно", "от 170%"] },

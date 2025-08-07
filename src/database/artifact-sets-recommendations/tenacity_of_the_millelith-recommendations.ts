@@ -15,12 +15,12 @@ export default {
     { uid: CharacterUidEnum.Zhongli, is_better: true },
   ],
   preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HealthPercent],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.HealthPercent],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.HealthPercent],
+    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.HPPercentage],
+    [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.HPPercentage],
     additional: [
-      ...AttributesCrit, AttributeUidEnum.AttackPercent, AttributeUidEnum.EnergyRecharge,
-      AttributeUidEnum.HealthPercent,
+      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge,
+      AttributeUidEnum.HPPercentage,
     ],
   },
   video_sources: [

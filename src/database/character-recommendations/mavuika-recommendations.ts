@@ -39,7 +39,7 @@ export default {
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
         {
-          uid: AttributeUidEnum.AttackPercent,
+          uid: AttributeUidEnum.ATKPercentage,
           notes: [
             "Гиперкерри\\Перегрузка - Всегда",
             `Вейп\\Мелт - Лучше, если в отряде есть инструктор и отсутствует ${characters[CharacterUidEnum.Bennett].name} или ${characters[CharacterUidEnum.Iansan].name}`,
@@ -53,12 +53,12 @@ export default {
           ],
         },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PyroDamageBonus, notes: ["Всегда"] }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CritRate }, { uid: AttributeUidEnum.CritDmg }],
+      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PyroDMGBonus, notes: ["Всегда"] }],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CRITRate }, { uid: AttributeUidEnum.CRITDMG }],
       additional: [
-        { uid: AttributeUidEnum.AttackPercent },
-        { uid: AttributeUidEnum.CritRate },
-        { uid: AttributeUidEnum.CritDmg },
+        { uid: AttributeUidEnum.ATKPercentage },
+        { uid: AttributeUidEnum.CRITRate },
+        { uid: AttributeUidEnum.CRITDMG },
         { uid: AttributeUidEnum.ElementalMastery, notes: ["Если играем в Вейпе\\Мелте"] },
       ],
     },

@@ -9,11 +9,11 @@ export default {
   artifact_set_uid: ArtifactSetUidEnum.EchoesOfAnOffering,
   characters: [{ uid: CharacterUidEnum.KamisatoAyato, is_better: true }, { uid: CharacterUidEnum.Yoimiya }],
   preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.AttackPercent],
+    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
     [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
     additional: [
-      ...AttributesCrit, AttributeUidEnum.AttackPercent, AttributeUidEnum.ElementalMastery,
+      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
       AttributeUidEnum.EnergyRecharge,
     ],
   },

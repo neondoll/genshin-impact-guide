@@ -14,12 +14,12 @@ export default {
     { uid: CharacterUidEnum.Wriothesley, is_better: true },
   ],
   preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.AttackPercent, AttributeUidEnum.HealthPercent],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.AttackPercent],
+    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.HPPercentage],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
     [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
     additional: [
-      ...AttributesCrit, AttributeUidEnum.AttackPercent, AttributeUidEnum.EnergyRecharge,
-      AttributeUidEnum.HealthPercent,
+      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge,
+      AttributeUidEnum.HPPercentage,
     ],
   },
   video_sources: [

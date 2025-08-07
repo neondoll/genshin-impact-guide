@@ -15,10 +15,10 @@ export default {
     },
   ],
   preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.AttackPercent],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.AttackPercent, AttributeUidEnum.GeoDamageBonus],
+    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.GeoDMGBonus],
     [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [...AttributesCrit, AttributeUidEnum.AttackPercent, AttributeUidEnum.EnergyRecharge],
+    additional: [...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge],
   },
   video_sources: [
     {

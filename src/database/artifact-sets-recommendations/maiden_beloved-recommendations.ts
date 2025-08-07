@@ -14,15 +14,15 @@ export default {
   ],
   preferred_attributes: {
     [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.AttackPercent, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HealthPercent,
+      AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
     ],
     [ArtifactPieceUidEnum.GobletOfEonothem]: [
-      AttributeUidEnum.AttackPercent, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HealthPercent,
+      AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
     ],
     [ArtifactPieceUidEnum.CircletOfLogos]: [
-      AttributeUidEnum.AttackPercent, AttributeUidEnum.HealingBonus, AttributeUidEnum.HealthPercent,
+      AttributeUidEnum.ATKPercentage, AttributeUidEnum.HealingBonus, AttributeUidEnum.HPPercentage,
     ],
-    additional: [AttributeUidEnum.AttackPercent, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HealthPercent],
+    additional: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
   },
   video_sources: [
     {

@@ -8,11 +8,11 @@ import { cn } from "@/lib/utils";
 import type { ArtifactSetUid } from "../types/artifact-set";
 import type { WeaponUid } from "../types/weapon";
 
-export const AttributesCrit = [AttributeUidEnum.CritDmg, AttributeUidEnum.CritRate];
+export const AttributesCrit = [AttributeUidEnum.CRITDMG, AttributeUidEnum.CRITRate];
 export const AttributesElementDamageBonus = [
-  AttributeUidEnum.AnemoDamageBonus, AttributeUidEnum.CryoDamageBonus, AttributeUidEnum.DendroDamageBonus,
-  AttributeUidEnum.ElectroDamageBonus, AttributeUidEnum.GeoDamageBonus, AttributeUidEnum.HydroDamageBonus,
-  AttributeUidEnum.PyroDamageBonus,
+  AttributeUidEnum.AnemoDMGBonus, AttributeUidEnum.CryoDMGBonus, AttributeUidEnum.DendroDMGBonus,
+  AttributeUidEnum.ElectroDMGBonus, AttributeUidEnum.GeoDMGBonus, AttributeUidEnum.HydroDMGBonus,
+  AttributeUidEnum.PyroDMGBonus,
 ];
 
 export function artifactSetByUid(uid: ArtifactSetUid) {

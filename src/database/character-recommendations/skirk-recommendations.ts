@@ -45,22 +45,22 @@ export default {
       },
     ],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.AttackPercent }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.ATKPercentage }],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.CryoDamageBonus, notes: ["Лучше"] },
-        { uid: AttributeUidEnum.AttackPercent, notes: ["Можно поставить, если в отряде Фурина"] },
+        { uid: AttributeUidEnum.CryoDMGBonus, notes: ["Лучше"] },
+        { uid: AttributeUidEnum.ATKPercentage, notes: ["Можно поставить, если в отряде Фурина"] },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CritRate }, { uid: AttributeUidEnum.CritDmg }],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CRITRate }, { uid: AttributeUidEnum.CRITDMG }],
       additional: [
         {
-          uid: AttributeUidEnum.CritRate,
+          uid: AttributeUidEnum.CRITRate,
           notes: [
             "В обычной ситуации от 65% до 85%",
             "При использовании полного комплекта Охотник Сумеречного двора не должно быть больше 64%, но так как Скирк играет минимум с 2 крио персонажами, то не должно быть больше 39%",
           ],
         },
-        { uid: AttributeUidEnum.CritDmg, notes: ["от 160%"] },
-        { uid: AttributeUidEnum.AttackPercent, notes: ["от 2000"] },
+        { uid: AttributeUidEnum.CRITDMG, notes: ["от 160%"] },
+        { uid: AttributeUidEnum.ATKPercentage, notes: ["от 2000"] },
       ],
     },
   },

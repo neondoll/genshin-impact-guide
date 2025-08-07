@@ -15,15 +15,15 @@ export default {
   ],
   preferred_attributes: {
     [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HealthPercent,
+      AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
     ],
     [ArtifactPieceUidEnum.GobletOfEonothem]: [
-      ...AttributesElementDamageBonus, AttributeUidEnum.ElementalMastery, AttributeUidEnum.HealthPercent,
+      ...AttributesElementDamageBonus, AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage,
     ],
     [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.ElementalMastery],
     additional: [
       ...AttributesCrit, AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge,
-      AttributeUidEnum.HealthPercent,
+      AttributeUidEnum.HPPercentage,
     ],
   },
   video_sources: [

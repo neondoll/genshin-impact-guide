@@ -12,10 +12,10 @@ export default {
     { uid: CharacterUidEnum.RaidenShogun, is_better: true },
   ],
   preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.HealthPercent],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.HealthPercent],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.HealthPercent],
-    additional: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HealthPercent],
+    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage],
+    [ArtifactPieceUidEnum.CircletOfLogos]: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage],
+    additional: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
   },
   video_sources: [
     {

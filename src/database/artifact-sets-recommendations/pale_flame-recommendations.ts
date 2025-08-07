@@ -13,10 +13,10 @@ export default {
     { uid: CharacterUidEnum.Razor },
   ],
   preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.AttackPercent],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.AttackPercent, AttributeUidEnum.PhysicalDamageBonus],
+    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage],
+    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.PhysicalDMGBonus],
     [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [...AttributesCrit, AttributeUidEnum.AttackPercent],
+    additional: [...AttributesCrit, AttributeUidEnum.ATKPercentage],
   },
   video_sources: [
     {

@@ -26,18 +26,18 @@ export default {
     ],
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.AttackPercent },
+        { uid: AttributeUidEnum.ATKPercentage },
         { uid: AttributeUidEnum.ElementalMastery },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PyroDamageBonus, notes: ["Лучше"] },
-        { uid: AttributeUidEnum.AttackPercent },
+        { uid: AttributeUidEnum.PyroDMGBonus, notes: ["Лучше"] },
+        { uid: AttributeUidEnum.ATKPercentage },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CritDmg }, { uid: AttributeUidEnum.CritRate }],
+      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CRITDMG }, { uid: AttributeUidEnum.CRITRate }],
       additional: [
-        { uid: AttributeUidEnum.CritRate, notes: ["Приоритетно", "от 65%"] },
-        { uid: AttributeUidEnum.CritDmg, notes: ["Приоритетно", "от 150%"] },
-        { uid: AttributeUidEnum.AttackPercent, notes: ["от 2000"] },
+        { uid: AttributeUidEnum.CRITRate, notes: ["Приоритетно", "от 65%"] },
+        { uid: AttributeUidEnum.CRITDMG, notes: ["Приоритетно", "от 150%"] },
+        { uid: AttributeUidEnum.ATKPercentage, notes: ["от 2000"] },
         { uid: AttributeUidEnum.ElementalMastery, notes: ["от 150 (если Арлекино активирует реакции)"] },
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["Специально не собирать"] },
       ],

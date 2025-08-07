@@ -8,7 +8,7 @@ export default {
   [WeaponTypeUidEnum.Bow]: {
     uid: WeaponTypeUidEnum.Bow,
     name: "Стрелковое оружие",
-    abbreviation: "Стрелковое оружие",
+    abbreviation: "Стрелковое",
     image_src: imageSrc("bow-128x128.png"),
     icon_src: imageSrc("bow-icon-20x20.png"),
   },

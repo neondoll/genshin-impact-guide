@@ -38,22 +38,22 @@ export default {
     attributes: {
       [ArtifactPieceUidEnum.SandsOfEon]: [
         { uid: AttributeUidEnum.ElementalMastery, use_percent: 0.894 },
-        { uid: AttributeUidEnum.HealthPercent, use_percent: 0.073 },
-        { uid: AttributeUidEnum.AttackPercent, use_percent: 0.016 },
+        { uid: AttributeUidEnum.HPPercentage, use_percent: 0.073 },
+        { uid: AttributeUidEnum.ATKPercentage, use_percent: 0.016 },
       ],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
         { uid: AttributeUidEnum.ElementalMastery, use_percent: 0.810 },
-        { uid: AttributeUidEnum.HealthPercent, use_percent: 0.114 },
-        { uid: AttributeUidEnum.ElectroDamageBonus, use_percent: 0.044 },
+        { uid: AttributeUidEnum.HPPercentage, use_percent: 0.114 },
+        { uid: AttributeUidEnum.ElectroDMGBonus, use_percent: 0.044 },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
         { uid: AttributeUidEnum.ElementalMastery, use_percent: 0.807 },
         { uid: AttributeUidEnum.HealingBonus, use_percent: 0.071 },
-        { uid: AttributeUidEnum.HealthPercent, use_percent: 0.056 },
+        { uid: AttributeUidEnum.HPPercentage, use_percent: 0.056 },
       ],
       additional: [
         { uid: AttributeUidEnum.ElementalMastery, notes: ["Приоритетно", "от 700"] },
-        { uid: AttributeUidEnum.HealthPercent, notes: ["от 30000"] },
+        { uid: AttributeUidEnum.HPPercentage, notes: ["от 30000"] },
       ],
     },
   },

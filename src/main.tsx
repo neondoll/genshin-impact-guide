@@ -11,17 +11,19 @@ import ErrorPage from "@/error-page";
 import Layout from "@/routes/layout";
 import Paths from "@/constants/paths";
 import Root from "@/routes/root";
+import Weapon, { type WeaponLoaderData } from "@/routes/weapon";
 import Weapons, { type WeaponsLoaderData } from "@/routes/weapons";
 import WeaponsTierList, { type WeaponsTierListLoaderData } from "@/routes/weapons-tier-list";
 import {
   getArtifactPieces, getArtifactSet, getArtifactSetRecommendations, getArtifactSets, getCharacter,
   getCharacterRecommendations, getCharacterRole, getCharacters, getElement, getElements, getRegion, getTierListsWeapons,
-  getWeapons, getWeaponType, getWeaponTypes,
+  getWeapon, getWeapons, getWeaponType, getWeaponTypes,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { ArtifactSetUid } from "@/database/types/artifact-set";
 import type { CharacterUid } from "@/database/types/character";
 import type { ElementUid } from "@/database/types/element";
+import type { WeaponUid } from "@/database/types/weapon";
 import "./index.css";
 
 const router = createHashRouter([
@@ -80,7 +82,23 @@ const router = createHashRouter([
         path: Paths.Element.to(":elementUid"),
         element: <Element />,
       },
-      { loader: (): WeaponsLoaderData => ({ weapons: getWeapons() }), path: Paths.Weapons.to, element: <Weapons /> },
+      {
+        loader: (): WeaponsLoaderData => ({ weapons: getWeapons(), weaponTypes: getWeaponTypes() }),
+        path: Paths.Weapons.to,
+        element: <Weapons />,
+      },
+      {
+        loader: ({ params }): WeaponLoaderData => {
+          const weapon = getWeapon(params.weaponUid as WeaponUid);
+
+          return {
+            weapon,
+            weaponType: getWeaponType(weapon.type_uid),
+          };
+        },
+        path: Paths.Weapon.to(":weaponUid"),
+        element: <Weapon />,
+      },
       {
         loader: (): WeaponsTierListLoaderData => ({ tierListsWeapons: getTierListsWeapons() }),
         path: Paths.WeaponsTierList.to,

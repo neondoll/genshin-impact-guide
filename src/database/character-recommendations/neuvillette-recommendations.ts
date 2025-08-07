@@ -18,26 +18,26 @@ export default {
       },
     ],
     attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HealthPercent }],
+      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HPPercentage }],
       [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HealthPercent, notes: ["Если в команде Фурина"] },
-        { uid: AttributeUidEnum.HydroDamageBonus },
+        { uid: AttributeUidEnum.HPPercentage, notes: ["Если в команде Фурина"] },
+        { uid: AttributeUidEnum.HydroDMGBonus },
       ],
       [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CritRate },
-        { uid: AttributeUidEnum.CritDmg, notes: ["Чаще всего"] },
-        { uid: AttributeUidEnum.HealthPercent, notes: ["Иногда, особенно с Сигной"] },
+        { uid: AttributeUidEnum.CRITRate },
+        { uid: AttributeUidEnum.CRITDMG, notes: ["Чаще всего"] },
+        { uid: AttributeUidEnum.HPPercentage, notes: ["Иногда, особенно с Сигной"] },
       ],
       additional: [
-        { uid: AttributeUidEnum.HealthPercent, notes: ["от 30000"] },
+        { uid: AttributeUidEnum.HPPercentage, notes: ["от 30000"] },
         {
-          uid: AttributeUidEnum.CritRate,
+          uid: AttributeUidEnum.CRITRate,
           notes: [
             "от 65% в обычной ситуации",
             "от 35% при использовании полного комплекта Охотник Сумеречного двора и стремимся к 64%",
           ],
         },
-        { uid: AttributeUidEnum.CritDmg, notes: ["от 160%"] },
+        { uid: AttributeUidEnum.CRITDMG, notes: ["от 160%"] },
         { uid: AttributeUidEnum.EnergyRecharge, notes: ["Специально не охотиться", "от 120%"] },
       ],
     },
