@@ -1,92 +1,93 @@
-import artifactPieces from "./artifact-pieces";
 import artifactSets from "./artifact-sets";
 import artifactSetsRecommendations from "./artifact-sets-recommendations";
-import attributes from "./attributes";
+import artifactSlots from "./artifact-slots";
 import characterRecommendations from "./character-recommendations";
 import characterRoles from "./character-roles";
 import characters from "./characters";
 import elements from "./elements";
 import regions from "./regions";
+import stats from "./stats";
 import talents from "./talents";
 import tierListsWeapons from "./tier-lists-weapons";
 import weaponTypes from "./weapon-types";
 import weapons from "./weapons";
-import type { ArtifactSet, ArtifactSetUid } from "./types/artifact-set";
-import type { Attribute, AttributeUid } from "./types/attribute";
-import type { Character, CharacterUid } from "./types/character";
-import type { CharacterRoleUid } from "./types/character-role";
-import type { ElementUid } from "./types/element";
-import type { RegionUid } from "./types/region";
-import type { TalentUid } from "./types/talent";
-import type { Weapon, WeaponUid } from "./types/weapon";
-import type { WeaponTypeUid } from "./types/weapon-type";
+import type { ArtifactSet, ArtifactSetKey } from "./types/artifact-set";
+import type { ArtifactSlot } from "./types/artifact-slot";
+import type { Character, CharacterKey } from "./types/character";
+import type { CharacterRoleKey } from "./types/character-role";
+import type { ElementKey } from "./types/element";
+import type { RegionKey } from "./types/region";
+import type { Stat, StatKey } from "./types/stat";
+import type { TalentKey } from "./types/talent";
+import type { Weapon, WeaponKey } from "./types/weapon";
+import type { WeaponTypeKey } from "./types/weapon-type";
 
-export function getArtifactPieces() {
-  return Object.values(artifactPieces).sort((a, b) => a.sort_by - b.sort_by);
+export function getArtifactSet(artifactSetKey: ArtifactSetKey) {
+  return artifactSets[artifactSetKey];
 }
 
-export function getArtifactSet(artifactSetUid: ArtifactSetUid) {
-  return artifactSets[artifactSetUid];
-}
-
-export function getArtifactSetRecommendations(artifactSetUid: ArtifactSetUid) {
-  return artifactSetUid in artifactSetsRecommendations ? artifactSetsRecommendations[artifactSetUid] : undefined;
+export function getArtifactSetRecommendations(artifactSetKey: ArtifactSetKey) {
+  return artifactSetKey in artifactSetsRecommendations ? artifactSetsRecommendations[artifactSetKey] : undefined;
 }
 
 export function getArtifactSets() {
   return Object.values(artifactSets).sort(sortArtifactSets);
 }
 
-export function getAttribute(attributeUid: AttributeUid) {
-  return attributes[attributeUid];
+export function getArtifactSlots() {
+  return Object.values(artifactSlots).sort(sortArtifactSlots);
 }
 
-export function getCharacter(characterUid: CharacterUid) {
-  return characters[characterUid];
+export function getCharacter(characterKey: CharacterKey) {
+  return characters[characterKey];
 }
 
-export function getCharacterRecommendations(characterUid: CharacterUid) {
-  return characterUid in characterRecommendations ? characterRecommendations[characterUid] : undefined;
+export function getCharacterRecommendations(characterKey: CharacterKey) {
+  return characterKey in characterRecommendations ? characterRecommendations[characterKey] : undefined;
 }
 
-export function getCharacterRole(characterRoleUid: CharacterRoleUid) {
-  return characterRoles[characterRoleUid];
+export function getCharacterRole(characterRoleKey: CharacterRoleKey) {
+  return characterRoles[characterRoleKey];
 }
 
 export function getCharacters() {
   return Object.values(characters).sort(sortCharacters);
 }
 
-export function getElement(elementUid: ElementUid) {
-  return elements[elementUid];
+export function getElement(elementKey: ElementKey) {
+  return elements[elementKey];
 }
 
 export function getElements() {
   return elements;
 }
 
-export function getRegion(regionUid: RegionUid) {
-  return regions[regionUid];
+export function getRegion(regionKey: RegionKey) {
+  return regions[regionKey];
 }
 
-export function getTalent(talentUid: TalentUid) {
-  return talents[talentUid];
+export function getStat(statKey: StatKey) {
+  return stats[statKey];
+}
+
+export function getTalent(talentKey: TalentKey) {
+  return talents[talentKey];
 }
 
 export function getTierListsWeapons() {
   return tierListsWeapons;
 }
 
-export function getWeapon(weaponUid: WeaponUid) {
-  return weapons[weaponUid];
+export function getWeapon(weaponKey: WeaponKey) {
+  return weapons[weaponKey];
 }
 
 export function getWeapons() {
   return Object.values(weapons).sort(sortWeapons);
 }
 
-export function getWeaponType(weaponTypeUid: WeaponTypeUid) {
-  return weaponTypes[weaponTypeUid];
+export function getWeaponType(weaponTypeKey: WeaponTypeKey) {
+  return weaponTypes[weaponTypeKey];
 }
 
 export function getWeaponTypes() {
@@ -94,23 +95,27 @@ export function getWeaponTypes() {
 }
 
 export function sortArtifactSets(a: ArtifactSet, b: ArtifactSet) {
-  const aMaxQuality = Math.max(...a.qualities);
-  const bMaxQuality = Math.max(...b.qualities);
+  const aMaxRarity = Math.max(...a.rarities);
+  const bMaxRarity = Math.max(...b.rarities);
 
-  return aMaxQuality === bMaxQuality ? a.name.localeCompare(b.name) : bMaxQuality - aMaxQuality;
+  return aMaxRarity === bMaxRarity ? a.name.localeCompare(b.name) : bMaxRarity - aMaxRarity;
 }
 
-export function sortAttributes(a: Attribute, b: Attribute) {
+export function sortArtifactSlots(a: ArtifactSlot, b: ArtifactSlot) {
+  return a.sort_by - b.sort_by;
+}
+
+export function sortCharacters(a: Character, b: Character) {
+  return a.rarity === b.rarity ? a.name.localeCompare(b.name) : b.rarity - a.rarity;
+}
+
+export function sortStats(a: Stat, b: Stat) {
   const aName = a.abbreviation || a.name;
   const bName = b.abbreviation || b.name;
 
   return aName.localeCompare(bName);
 }
 
-export function sortCharacters(a: Character, b: Character) {
-  return a.quality === b.quality ? a.name.localeCompare(b.name) : b.quality - a.quality;
-}
-
 export function sortWeapons(a: Weapon, b: Weapon) {
-  return a.quality === b.quality ? a.name.localeCompare(b.name) : b.quality - a.quality;
+  return a.rarity === b.rarity ? a.name.localeCompare(b.name) : b.rarity - a.rarity;
 }

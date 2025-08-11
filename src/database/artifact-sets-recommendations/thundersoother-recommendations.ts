@@ -1,26 +1,23 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
-import { AttributesCrit, AttributesElementDamageBonus } from "@/database/artifact-sets-recommendations/help.ts";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.Thundersoother,
+  artifact_set_key: ArtifactSetKeys.Thundersoother,
   characters: [
-    { uid: CharacterUidEnum.Cyno, is_better: true },
-    { uid: CharacterUidEnum.Fischl },
-    { uid: CharacterUidEnum.Keqing, is_better: true },
-    { uid: CharacterUidEnum.YaeMiko },
+    { key: CharacterKeys.Cyno, is_better: true },
+    { key: CharacterKeys.Fischl },
+    { key: CharacterKeys.Keqing, is_better: true },
+    { key: CharacterKeys.YaeMiko },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [
-      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
-      AttributeUidEnum.EnergyRecharge,
-    ],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.ElementalMastery],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

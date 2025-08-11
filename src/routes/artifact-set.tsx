@@ -3,15 +3,15 @@ import { Link, useLoaderData } from "react-router-dom";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
-import { backgroundClassByQuality } from "@/lib/quality";
+import { ArtifactSlotKeys } from "@/database/enums/artifact-slot";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getArtifactPieces, getArtifactSet, getArtifactSetRecommendations, getCharacter } from "@/database";
+import { getArtifactSlots, getArtifactSet, getArtifactSetRecommendations, getCharacter } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 
 function ArtifactSetBreadcrumbs({ item }: { item: ArtifactSetLoaderData["artifactSet"] }) {
@@ -43,8 +43,8 @@ function ArtifactSetHeading({ item }: { item: ArtifactSetLoaderData["artifactSet
     <div className="flex gap-x-3">
       <img
         alt={item.name}
-        className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByQuality(...item.qualities))}
-        src={item[ArtifactPieceUidEnum.FlowerOfLife].image_src}
+        className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByRarity(...item.rarities))}
+        src={item[ArtifactSlotKeys.Flower].image_src}
       />
       <div className="space-y-1">
         <div className="flex gap-x-1 items-center">
@@ -56,13 +56,13 @@ function ArtifactSetHeading({ item }: { item: ArtifactSetLoaderData["artifactSet
 }
 
 export type ArtifactSetLoaderData = {
-  artifactPieces: ReturnType<typeof getArtifactPieces>;
+  artifactSlots: ReturnType<typeof getArtifactSlots>;
   artifactSet: ReturnType<typeof getArtifactSet>;
   artifactSetRecommendations: ReturnType<typeof getArtifactSetRecommendations>;
 };
 
 export default function ArtifactSet() {
-  const { artifactPieces, artifactSet, artifactSetRecommendations } = useLoaderData<ArtifactSetLoaderData>();
+  const { artifactSlots, artifactSet, artifactSetRecommendations } = useLoaderData<ArtifactSetLoaderData>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -110,17 +110,17 @@ export default function ArtifactSet() {
         <CardContent>
           <Table>
             <TableBody>
-              {artifactPieces.map(artifactPiece => (
-                <TableRow className="hover:bg-inherit" key={artifactPiece.uid}>
-                  <TableHead className="p-2 text-pretty whitespace-normal">{artifactPiece.name}</TableHead>
+              {artifactSlots.map(artifactSlot => (
+                <TableRow className="hover:bg-inherit" key={artifactSlot.key}>
+                  <TableHead children={artifactSlot.name} className="p-2 text-pretty whitespace-normal" />
                   <TableCell className="p-2 text-pretty whitespace-normal">
                     <div className="flex gap-2.5 items-center">
                       <img
-                        alt={artifactSet[artifactPiece.uid].name}
+                        alt={artifactSet[artifactSlot.key].name}
                         className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
-                        src={artifactSet[artifactPiece.uid].image_src}
+                        src={artifactSet[artifactSlot.key].image_src}
                       />
-                      <span>{artifactSet[artifactPiece.uid].name}</span>
+                      <span children={artifactSet[artifactSlot.key].name} />
                     </div>
                   </TableCell>
                 </TableRow>
@@ -141,17 +141,17 @@ export default function ArtifactSet() {
             <Table>
               <TableBody>
                 {artifactSet.character_recommendations.map((characterRecommendation) => {
-                  const character = getCharacter(characterRecommendation.uid);
+                  const character = getCharacter(characterRecommendation.key);
 
                   return (
-                    <TableRow className="hover:bg-inherit" key={character.uid}>
+                    <TableRow className="hover:bg-inherit" key={character.key}>
                       <TableCell className="text-pretty whitespace-normal sm:w-[166px]">
                         <Badge
                           asChild
                           className="flex flex-col gap-2.5 justify-start p-2 w-full sm:flex-row sm:text-sm"
                           variant="secondary"
                         >
-                          <Link to={Paths.Character.to(character.uid)}>
+                          <Link to={Paths.Character.to(character.key)}>
                             <img
                               alt={character.name}
                               className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"

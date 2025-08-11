@@ -2,13 +2,13 @@ import { Link, useLoaderData } from "react-router-dom";
 
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import { backgroundClassByQuality } from "@/lib/quality";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
 import { cn, publicImageSrc } from "@/lib/utils";
-import { getAttribute, getWeapon, getWeaponType } from "@/database";
+import { getStat, getWeapon, getWeaponType } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 
 export type WeaponLoaderData = {
@@ -45,14 +45,14 @@ export default function Weapon() {
           alt={weapon.name}
           className={cn(
             "shrink-0 size-16 rounded-md rounded-br-2xl",
-            backgroundClassByQuality(weapon.quality),
+            backgroundClassByRarity(weapon.rarity),
           )}
           src={weapon.image_src}
         />
         <div className="space-y-1">
           <h1 children={Paths.Weapon.title(weapon)} className="text-3xl" />
           <div className="flex gap-x-1">
-            {Array.from({ length: weapon.quality }, (_, i) => i).map(index => (
+            {Array.from({ length: weapon.rarity }, (_, i) => i).map(index => (
               <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
             ))}
           </div>
@@ -80,7 +80,7 @@ export default function Weapon() {
                 className="p-2 whitespace-normal"
               />
             </TableRow>
-            {weapon.secondary_attributes !== undefined && (
+            {weapon.secondary_stats !== undefined && (
               <>
                 <TableRow className="hover:bg-inherit">
                   <TableHead
@@ -89,13 +89,13 @@ export default function Weapon() {
                     rowSpan={2}
                   />
                   <TableCell
-                    children={getAttribute(weapon.secondary_attributes.uid).name}
+                    children={getStat(weapon.secondary_stats.key).name}
                     className="p-2 whitespace-normal"
                   />
                 </TableRow>
                 <TableRow className="hover:bg-inherit">
                   <TableCell
-                    children={`${weapon.secondary_attributes.min_value} - ${weapon.secondary_attributes.max_value}`}
+                    children={`${weapon.secondary_stats.min_value} - ${weapon.secondary_stats.max_value}`}
                     className="p-2 whitespace-normal"
                   />
                 </TableRow>

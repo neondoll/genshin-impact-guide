@@ -1,4 +1,4 @@
-export const WeaponTypeUidEnum = {
+export const WeaponTypeKeys = {
   /* Стрелковое оружие */ Bow: "bow",
   /* Катализатор       */ Catalyst: "catalyst",
   /* Двуручное оружие  */ Claymore: "claymore",

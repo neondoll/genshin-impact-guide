@@ -1,22 +1,22 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.OceanHuedClam,
+  artifact_set_key: ArtifactSetKeys.OceanHuedClam,
   characters: [
-    { uid: CharacterUidEnum.Baizhu },
-    { uid: CharacterUidEnum.Barbara, is_better: true },
-    { uid: CharacterUidEnum.Jean },
-    { uid: CharacterUidEnum.SangonomiyaKokomi, is_better: true },
+    { key: CharacterKeys.Baizhu },
+    { key: CharacterKeys.Barbara, is_better: true },
+    { key: CharacterKeys.Jean },
+    { key: CharacterKeys.SangonomiyaKokomi, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [AttributeUidEnum.HealingBonus, AttributeUidEnum.HPPercentage],
-    additional: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.EnergyRecharge, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [StatKeys.EnergyRecharge, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: [StatKeys.HealingBonus, StatKeys.HPPercentage],
+    additional: [StatKeys.EnergyRecharge, StatKeys.HPPercentage],
   },
   video_sources: [
     {

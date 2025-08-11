@@ -8,10 +8,10 @@ function TalentLevelingRecommendationsTable({ recommendations }: TalentLevelingR
     <Table className="table-fixed">
       <TableBody>
         {recommendations.map((recommendation) => {
-          const talent = getTalent(recommendation.uid);
+          const talent = getTalent(recommendation.key);
 
           return (
-            <TableRow className="hover:bg-inherit" key={recommendation.uid}>
+            <TableRow className="hover:bg-inherit" key={recommendation.key}>
               <TableHead children={talent.name} className="p-2 whitespace-normal" />
               <TableCell
                 children={recommendation.priority}

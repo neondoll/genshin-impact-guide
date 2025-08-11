@@ -1,58 +1,58 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
-import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
-import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon.ts";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.LongNightsOath,
+        key: ArtifactSetKeys.LongNightsOath,
         notes: ["Лучший набор для Варесы, поскольку значительно увеличивает её урон от атак в падении."],
       },
       {
-        uid: ArtifactSetUidEnum.ObsidianCodex,
+        key: ArtifactSetKeys.ObsidianCodex,
         notes: [
           "Комплект увеличивает урон Варесы и повышает шанс крит. попадания в сумме до 40%, позволяя сосредоточиться на крит. уроне в артефактах.",
           "Так как Вареса обладает Благословением Ночного духа, она полностью реализует условия комплекта.",
         ],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.ATKPercentage }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.ElectroDMGBonus, notes: ["Лучше с Цаплей всегда"] },
-        { uid: AttributeUidEnum.ATKPercentage, notes: ["Лучше с Фуриной или в сете на планжи"] },
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.ATKPercentage }],
+      [ArtifactSlotKeys.GobletOfEonothem]: [
+        { key: StatKeys.ElectroDMGBonus, notes: ["Лучше с Цаплей всегда"] },
+        { key: StatKeys.ATKPercentage, notes: ["Лучше с Фуриной или в сете на планжи"] },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CRITRate }, { uid: AttributeUidEnum.CRITDMG }],
+      [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.CRITRate }, { key: StatKeys.CRITDMG }],
       additional: [
-        { uid: AttributeUidEnum.ATKPercentage, notes: ["от 1800"] },
-        { uid: AttributeUidEnum.CRITRate, notes: ["от 60%"] },
-        { uid: AttributeUidEnum.CRITDMG, notes: ["от 180%"] },
-        { uid: AttributeUidEnum.EnergyRecharge, notes: ["115% - 135% для Взрыва стихии"] },
-        { uid: AttributeUidEnum.ElementalMastery, notes: ["от 150 (при игре через реакцию Вегетация)"] },
+        { key: StatKeys.ATKPercentage, notes: ["от 1800"] },
+        { key: StatKeys.CRITRate, notes: ["от 60%"] },
+        { key: StatKeys.CRITDMG, notes: ["от 180%"] },
+        { key: StatKeys.EnergyRecharge, notes: ["115% - 135% для Взрыва стихии"] },
+        { key: StatKeys.ElementalMastery, notes: ["от 150 (при игре через реакцию Вегетация)"] },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Varesa,
+  character_key: CharacterKeys.Varesa,
   first_constellation_or_signature_weapon: "Однозначно Сигна",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.ElementalSkill, priority: "По необходимости\n(8)" },
+    { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(10)" },
   ],
   weapons: [
-    { uid: WeaponUidEnum.VividNotions, percent: 1.28 },
-    { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, percent: 1.06 },
-    { uid: WeaponUidEnum.KagurasVerity, percent: 1.05 },
-    { uid: WeaponUidEnum.TomeOfTheEternalFlow, percent: 1.04 },
-    { uid: WeaponUidEnum.CashflowSupervision, percent: 1.04 },
-    { uid: WeaponUidEnum.SurfsUp, percent: 1.03 },
-    { uid: WeaponUidEnum.TheWidsith, refinement: 5, percent: 1 },
-    { uid: WeaponUidEnum.SacrificialJade, refinement: 5, percent: 0.92 },
-    { uid: WeaponUidEnum.FlowingPurity, refinement: 5, percent: 0.92 },
+    { key: WeaponKeys.VividNotions, percent: 1.28 },
+    { key: WeaponKeys.LostPrayerToTheSacredWinds, percent: 1.06 },
+    { key: WeaponKeys.KagurasVerity, percent: 1.05 },
+    { key: WeaponKeys.TomeOfTheEternalFlow, percent: 1.04 },
+    { key: WeaponKeys.CashflowSupervision, percent: 1.04 },
+    { key: WeaponKeys.SurfsUp, percent: 1.03 },
+    { key: WeaponKeys.TheWidsith, refinement: 5, percent: 1 },
+    { key: WeaponKeys.SacrificialJade, refinement: 5, percent: 0.92 },
+    { key: WeaponKeys.FlowingPurity, refinement: 5, percent: 0.92 },
   ],
 } as CharacterRecommendations;

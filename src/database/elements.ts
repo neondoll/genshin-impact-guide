@@ -1,58 +1,58 @@
-import { ElementUidEnum } from "./enums/element";
+import { ElementKeys } from "./enums/element";
 import { publicImageSrc } from "@/lib/utils";
-import { RegionUidEnum } from "./enums/region";
-import type { Element, ElementUid } from "./types/element";
+import { RegionKeys } from "./enums/region";
+import type { Element, ElementKey } from "./types/element";
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`elements/${src}`);
 
 export default {
-  [ElementUidEnum.Anemo]: {
-    uid: ElementUidEnum.Anemo,
+  [ElementKeys.Anemo]: {
+    key: ElementKeys.Anemo,
     name: "Анемо",
     image_src: imageSrc("anemo-84x84.png"),
-    region_uid: RegionUidEnum.Mondstadt,
-    reacts_with: [ElementUidEnum.Electro, ElementUidEnum.Hydro, ElementUidEnum.Pyro, ElementUidEnum.Cryo],
+    region_key: RegionKeys.Mondstadt,
+    reacts_with: [ElementKeys.Electro, ElementKeys.Hydro, ElementKeys.Pyro, ElementKeys.Cryo],
   },
-  [ElementUidEnum.Cryo]: {
-    uid: ElementUidEnum.Cryo,
+  [ElementKeys.Cryo]: {
+    key: ElementKeys.Cryo,
     name: "Крио",
     image_src: imageSrc("cryo-84x84.png"),
-    region_uid: RegionUidEnum.Snezhnaya,
-    reacts_with: [ElementUidEnum.Anemo, ElementUidEnum.Geo, ElementUidEnum.Electro, ElementUidEnum.Hydro, ElementUidEnum.Pyro],
+    region_key: RegionKeys.Snezhnaya,
+    reacts_with: [ElementKeys.Anemo, ElementKeys.Geo, ElementKeys.Electro, ElementKeys.Hydro, ElementKeys.Pyro],
   },
-  [ElementUidEnum.Dendro]: {
-    uid: ElementUidEnum.Dendro,
+  [ElementKeys.Dendro]: {
+    key: ElementKeys.Dendro,
     name: "Дендро",
     image_src: imageSrc("dendro-84x84.png"),
-    region_uid: RegionUidEnum.Sumeru,
-    reacts_with: [ElementUidEnum.Electro, ElementUidEnum.Hydro, ElementUidEnum.Pyro],
+    region_key: RegionKeys.Sumeru,
+    reacts_with: [ElementKeys.Electro, ElementKeys.Hydro, ElementKeys.Pyro],
   },
-  [ElementUidEnum.Electro]: {
-    uid: ElementUidEnum.Electro,
+  [ElementKeys.Electro]: {
+    key: ElementKeys.Electro,
     name: "Электро",
     image_src: imageSrc("electro-84x84.png"),
-    region_uid: RegionUidEnum.Inazuma,
-    reacts_with: [ElementUidEnum.Anemo, ElementUidEnum.Geo, ElementUidEnum.Dendro, ElementUidEnum.Hydro, ElementUidEnum.Pyro, ElementUidEnum.Cryo],
+    region_key: RegionKeys.Inazuma,
+    reacts_with: [ElementKeys.Anemo, ElementKeys.Geo, ElementKeys.Dendro, ElementKeys.Hydro, ElementKeys.Pyro, ElementKeys.Cryo],
   },
-  [ElementUidEnum.Geo]: {
-    uid: ElementUidEnum.Geo,
+  [ElementKeys.Geo]: {
+    key: ElementKeys.Geo,
     name: "Гео",
     image_src: imageSrc("geo-84x84.png"),
-    region_uid: RegionUidEnum.Liyue,
-    reacts_with: [ElementUidEnum.Electro, ElementUidEnum.Hydro, ElementUidEnum.Pyro, ElementUidEnum.Cryo],
+    region_key: RegionKeys.Liyue,
+    reacts_with: [ElementKeys.Electro, ElementKeys.Hydro, ElementKeys.Pyro, ElementKeys.Cryo],
   },
-  [ElementUidEnum.Hydro]: {
-    uid: ElementUidEnum.Hydro,
+  [ElementKeys.Hydro]: {
+    key: ElementKeys.Hydro,
     name: "Гидро",
     image_src: imageSrc("hydro-84x84.png"),
-    region_uid: RegionUidEnum.Fontaine,
-    reacts_with: [ElementUidEnum.Anemo, ElementUidEnum.Geo, ElementUidEnum.Electro, ElementUidEnum.Dendro, ElementUidEnum.Pyro, ElementUidEnum.Cryo],
+    region_key: RegionKeys.Fontaine,
+    reacts_with: [ElementKeys.Anemo, ElementKeys.Geo, ElementKeys.Electro, ElementKeys.Dendro, ElementKeys.Pyro, ElementKeys.Cryo],
   },
-  [ElementUidEnum.Pyro]: {
-    uid: ElementUidEnum.Pyro,
+  [ElementKeys.Pyro]: {
+    key: ElementKeys.Pyro,
     name: "Пиро",
     image_src: imageSrc("pyro-84x84.png"),
-    region_uid: RegionUidEnum.Natlan,
-    reacts_with: [ElementUidEnum.Anemo, ElementUidEnum.Geo, ElementUidEnum.Electro, ElementUidEnum.Dendro, ElementUidEnum.Hydro, ElementUidEnum.Cryo],
+    region_key: RegionKeys.Natlan,
+    reacts_with: [ElementKeys.Anemo, ElementKeys.Geo, ElementKeys.Electro, ElementKeys.Dendro, ElementKeys.Hydro, ElementKeys.Cryo],
   },
-} as Record<ElementUid, Element>;
+} as Record<ElementKey, Element>;

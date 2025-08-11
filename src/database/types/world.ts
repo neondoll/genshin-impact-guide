@@ -1,4 +1,4 @@
-import { WorldUidEnum } from "../enums/world";
+import { WorldKeys } from "../enums/world";
 
 export type World = { name: string };
-export type WorldUid = typeof WorldUidEnum[keyof typeof WorldUidEnum];
+export type WorldKey = typeof WorldKeys[keyof typeof WorldKeys];

@@ -1,18 +1,18 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.VermillionHereafter,
-  characters: [{ uid: CharacterUidEnum.Xiao, is_better: true }],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge],
+  artifact_set_key: ArtifactSetKeys.VermillionHereafter,
+  characters: [{ key: CharacterKeys.Xiao, is_better: true }],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

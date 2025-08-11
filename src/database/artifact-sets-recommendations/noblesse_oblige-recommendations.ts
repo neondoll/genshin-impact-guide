@@ -1,36 +1,31 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.NoblesseOblige,
+  artifact_set_key: ArtifactSetKeys.NoblesseOblige,
   characters: [
-    { uid: CharacterUidEnum.Bennett, is_better: true },
-    { uid: CharacterUidEnum.Charlotte, is_better: true },
-    { uid: CharacterUidEnum.Chevreuse, is_better: true },
-    { uid: CharacterUidEnum.Ganyu, is_better: true },
-    { uid: CharacterUidEnum.Gorou, is_better: true },
-    { uid: CharacterUidEnum.Jean, is_better: true },
-    { uid: CharacterUidEnum.KujouSara, is_better: true },
-    { uid: CharacterUidEnum.Mona, is_better: true },
-    { uid: CharacterUidEnum.Shenhe, is_better: true },
-    { uid: CharacterUidEnum.Xingqiu, is_better: true },
-    { uid: CharacterUidEnum.Zhongli, is_better: true },
+    { key: CharacterKeys.Bennett, is_better: true },
+    { key: CharacterKeys.Charlotte, is_better: true },
+    { key: CharacterKeys.Chevreuse, is_better: true },
+    { key: CharacterKeys.Ganyu, is_better: true },
+    { key: CharacterKeys.Gorou, is_better: true },
+    { key: CharacterKeys.Jean, is_better: true },
+    { key: CharacterKeys.KujouSara, is_better: true },
+    { key: CharacterKeys.Mona, is_better: true },
+    { key: CharacterKeys.Shenhe, is_better: true },
+    { key: CharacterKeys.Xingqiu, is_better: true },
+    { key: CharacterKeys.Zhongli, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [
-      ...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.HPPercentage],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.EnergyRecharge, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: [...StatsCrit, StatKeys.HPPercentage],
     additional: [
-      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
-      AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
+      ...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HPPercentage,
     ],
   },
   video_sources: [

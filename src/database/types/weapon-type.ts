@@ -1,10 +1,10 @@
-import { WeaponTypeUidEnum } from "../enums/weapon-type";
+import { WeaponTypeKeys } from "../enums/weapon-type";
 
 export type WeaponType = {
-  uid: WeaponTypeUid;
+  key: WeaponTypeKey;
   name: string;
   abbreviation: string;
   image_src: string;
   icon_src: string;
 };
-export type WeaponTypeUid = typeof WeaponTypeUidEnum[keyof typeof WeaponTypeUidEnum];
+export type WeaponTypeKey = typeof WeaponTypeKeys[keyof typeof WeaponTypeKeys];

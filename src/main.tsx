@@ -15,15 +15,15 @@ import Weapon, { type WeaponLoaderData } from "@/routes/weapon";
 import Weapons, { type WeaponsLoaderData } from "@/routes/weapons";
 import WeaponsTierList, { type WeaponsTierListLoaderData } from "@/routes/weapons-tier-list";
 import {
-  getArtifactPieces, getArtifactSet, getArtifactSetRecommendations, getArtifactSets, getCharacter,
+  getArtifactSet, getArtifactSetRecommendations, getArtifactSets, getArtifactSlots, getCharacter,
   getCharacterRecommendations, getCharacterRole, getCharacters, getElement, getElements, getRegion, getTierListsWeapons,
   getWeapon, getWeapons, getWeaponType, getWeaponTypes,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
-import type { ArtifactSetUid } from "@/database/types/artifact-set";
-import type { CharacterUid } from "@/database/types/character";
-import type { ElementUid } from "@/database/types/element";
-import type { WeaponUid } from "@/database/types/weapon";
+import type { ArtifactSetKey } from "@/database/types/artifact-set";
+import type { CharacterKey } from "@/database/types/character";
+import type { ElementKey } from "@/database/types/element";
+import type { WeaponKey } from "@/database/types/weapon";
 import "./index.css";
 
 const router = createHashRouter([
@@ -38,11 +38,11 @@ const router = createHashRouter([
       },
       {
         loader: ({ params }): ArtifactSetLoaderData => ({
-          artifactPieces: getArtifactPieces(),
-          artifactSet: getArtifactSet(params.artifactSetUid as ArtifactSetUid),
-          artifactSetRecommendations: getArtifactSetRecommendations(params.artifactSetUid as ArtifactSetUid),
+          artifactSlots: getArtifactSlots(),
+          artifactSet: getArtifactSet(params.artifactSetKey as ArtifactSetKey),
+          artifactSetRecommendations: getArtifactSetRecommendations(params.artifactSetKey as ArtifactSetKey),
         }),
-        path: Paths.ArtifactSet.to(":artifactSetUid"),
+        path: Paths.ArtifactSet.to(":artifactSetKey"),
         element: <ArtifactSet />,
       },
       {
@@ -56,30 +56,30 @@ const router = createHashRouter([
       },
       {
         loader: ({ params }): CharacterLoaderData => {
-          const character = getCharacter(params.characterUid as CharacterUid);
+          const character = getCharacter(params.characterKey as CharacterKey);
 
           return {
             character,
-            characterElement: getElement(character.element_uid),
-            characterRecommendations: getCharacterRecommendations(params.characterUid as CharacterUid),
-            characterRoles: character.roles_uid ? character.roles_uid.map(characterRoleUid => getCharacterRole(characterRoleUid)) : undefined,
-            characterWeaponType: getWeaponType(character.weapon_type_uid),
+            characterElement: getElement(character.element_key),
+            characterRecommendations: getCharacterRecommendations(params.characterKey as CharacterKey),
+            characterRoles: character.roles_key ? character.roles_key.map(getCharacterRole) : undefined,
+            characterWeaponType: getWeaponType(character.weapon_type_key),
           };
         },
-        path: Paths.Character.to(":characterUid"),
+        path: Paths.Character.to(":characterKey"),
         element: <Character />,
       },
       {
         loader: ({ params }): ElementLoaderData => {
-          const element = getElement(params.elementUid as ElementUid);
+          const element = getElement(params.elementKey as ElementKey);
 
           return {
             element,
-            elementReactsWith: element.reacts_with.map(elementUid => getElement(elementUid)),
-            elementRegion: getRegion(element.region_uid),
+            elementReactsWith: element.reacts_with.map(getElement),
+            elementRegion: getRegion(element.region_key),
           };
         },
-        path: Paths.Element.to(":elementUid"),
+        path: Paths.Element.to(":elementKey"),
         element: <Element />,
       },
       {
@@ -89,14 +89,14 @@ const router = createHashRouter([
       },
       {
         loader: ({ params }): WeaponLoaderData => {
-          const weapon = getWeapon(params.weaponUid as WeaponUid);
+          const weapon = getWeapon(params.weaponKey as WeaponKey);
 
           return {
             weapon,
-            weaponType: getWeaponType(weapon.type_uid),
+            weaponType: getWeaponType(weapon.type_key),
           };
         },
-        path: Paths.Weapon.to(":weaponUid"),
+        path: Paths.Weapon.to(":weaponKey"),
         element: <Weapon />,
       },
       {

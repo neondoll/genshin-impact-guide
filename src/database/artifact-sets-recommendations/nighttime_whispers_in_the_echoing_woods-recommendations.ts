@@ -1,24 +1,24 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods,
+  artifact_set_key: ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods,
   characters: [
     {
-      uid: CharacterUidEnum.Navia,
+      key: CharacterKeys.Navia,
       is_better: true,
       notes: "Является одним из лучших комплектов для Навии, так как увеличивает силу атаки и бонус Гео урона в сумме до 50% при выполнении всех условий 4 предметов. Для реализации условий в команде необходимо иметь Пиро/Крио/Гидро и/или Электро персонажей.",
     },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.GeoDMGBonus],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [StatKeys.ATKPercentage, StatKeys.GeoDMGBonus],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

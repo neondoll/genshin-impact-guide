@@ -1,22 +1,22 @@
 import artifactSets from "../artifact-sets";
 import weapons from "../weapons";
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
-import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
-import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterUidEnum } from "../enums/character";
-import { ElementUidEnum } from "../enums/element.ts";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon.ts";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { ElementKeys } from "../enums/element";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
-type GameVariantUid = typeof GameVariantEnum[keyof typeof GameVariantEnum];
+type GameVariantkey = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 
 const GameVariantEnum = {
-  WhenPlayingThroughElementalBurst: `when_playing_through_${TalentUidEnum.ElementalBurst}`,
-  WhenPlayingThroughNormalAttack: `when_playing_through_${TalentUidEnum.NormalAttack}`,
+  WhenPlayingThroughElementalBurst: `when_playing_through_${TalentKeys.ElementalBurst}`,
+  WhenPlayingThroughNormalAttack: `when_playing_through_${TalentKeys.NormalAttack}`,
 } as const;
 
-const gameVariants: Record<GameVariantUid, string> = {
+const gameVariants: Record<GameVariantkey, string> = {
   [GameVariantEnum.WhenPlayingThroughElementalBurst]: "При игре через взрыв стихии Хаос: Разрушение",
   [GameVariantEnum.WhenPlayingThroughNormalAttack]: "При игре через обычные атаки",
 };
@@ -25,7 +25,7 @@ export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.MarechausseeHunter,
+        key: ArtifactSetKeys.MarechausseeHunter,
         description: "Лучше при игре от обычных атак",
         notes: [
           "Если в команде с Скирк есть персонажи, периодически изменяющие HP отряда (например, Фурина), она сможет использовать бонус 4 предметов.",
@@ -35,7 +35,7 @@ export default {
         ],
       },
       {
-        uid: ArtifactSetUidEnum.FinaleOfTheDeepGalleries,
+        key: ArtifactSetKeys.FinaleOfTheDeepGalleries,
         description: "Лучше при игре от взрыва стихии",
         notes: [
           "Лучший комплект для Скирк, так как повышает Крио урон, а также урон обычных атаки и взрыва стихии.",
@@ -44,31 +44,31 @@ export default {
         ],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.ATKPercentage }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.CryoDMGBonus, notes: ["Лучше"] },
-        { uid: AttributeUidEnum.ATKPercentage, notes: ["Можно поставить, если в отряде Фурина"] },
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.ATKPercentage }],
+      [ArtifactSlotKeys.GobletOfEonothem]: [
+        { key: StatKeys.CryoDMGBonus, notes: ["Лучше"] },
+        { key: StatKeys.ATKPercentage, notes: ["Можно поставить, если в отряде Фурина"] },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CRITRate }, { uid: AttributeUidEnum.CRITDMG }],
+      [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.CRITRate }, { key: StatKeys.CRITDMG }],
       additional: [
         {
-          uid: AttributeUidEnum.CRITRate,
+          key: StatKeys.CRITRate,
           notes: [
             "В обычной ситуации от 65% до 85%",
             "При использовании полного комплекта Охотник Сумеречного двора не должно быть больше 64%, но так как Скирк играет минимум с 2 крио персонажами, то не должно быть больше 39%",
           ],
         },
-        { uid: AttributeUidEnum.CRITDMG, notes: ["от 160%"] },
-        { uid: AttributeUidEnum.ATKPercentage, notes: ["от 2000"] },
+        { key: StatKeys.CRITDMG, notes: ["от 160%"] },
+        { key: StatKeys.ATKPercentage, notes: ["от 2000"] },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Skirk,
+  character_key: CharacterKeys.Skirk,
   first_constellation_or_signature_weapon: "Сигна > C1,\nC2 > Сигна",
   key_constellations: [1, 2, 5, 6],
   reference_point: {
-    [`${artifactSets[ArtifactSetUidEnum.MarechausseeHunter].name}\n+\n${weapons[WeaponUidEnum.FinaleOfTheDeep].name}`]: [
+    [`${artifactSets[ArtifactSetKeys.MarechausseeHunter].name}\n+\n${weapons[WeaponKeys.FinaleOfTheDeep].name}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -77,7 +77,7 @@ export default {
       ["Крит. урон", "216.8%"],
       ["Восст. энергии", "111.0%"],
     ],
-    [`${artifactSets[ArtifactSetUidEnum.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponUidEnum.CalamityOfEshu].name}`]: [
+    [`${artifactSets[ArtifactSetKeys.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponKeys.CalamityOfEshu].name}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -94,26 +94,26 @@ export default {
   },
   squads: {
     general_template: [
-      { type: "character", uid: CharacterUidEnum.Skirk },
-      { type: "element", uid: ElementUidEnum.Hydro },
-      { type: "element", uid: ElementUidEnum.Cryo },
-      [{ type: "element", uid: ElementUidEnum.Cryo }, { type: "element", uid: ElementUidEnum.Hydro }],
+      { type: "character", key: CharacterKeys.Skirk },
+      { type: "element", key: ElementKeys.Hydro },
+      { type: "element", key: ElementKeys.Cryo },
+      [{ type: "element", key: ElementKeys.Cryo }, { type: "element", key: ElementKeys.Hydro }],
     ],
     best_teammates: [
-      { type: "character", uid: CharacterUidEnum.Escoffier },
-      { type: "character", uid: CharacterUidEnum.Furina },
+      { type: "character", key: CharacterKeys.Escoffier },
+      { type: "character", key: CharacterKeys.Furina },
     ],
   },
   talent_leveling: {
     [gameVariants[GameVariantEnum.WhenPlayingThroughNormalAttack]]: [
-      { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-      { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
-      { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(10)" },
+      { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+      { key: TalentKeys.ElementalSkill, priority: "В первую очередь\n(10)" },
+      { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(10)" },
     ],
     [gameVariants[GameVariantEnum.WhenPlayingThroughElementalBurst]]: [
-      { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-      { uid: TalentUidEnum.ElementalSkill, priority: "Не качаем\n(1)" },
-      { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
+      { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+      { key: TalentKeys.ElementalSkill, priority: "Не качаем\n(1)" },
+      { key: TalentKeys.ElementalBurst, priority: "В первую очередь\n(10)" },
     ],
   },
   video_sources: [
@@ -132,18 +132,18 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.Azurelight, percent: 1.4256 },
-    { uid: WeaponUidEnum.HaranGeppakuFutsu, percent: 1.2239 },
-    { uid: WeaponUidEnum.PrimordialJadeCutter, percent: 1.2238 },
-    { uid: WeaponUidEnum.CalamityOfEshu, postfix: "(щит)", percent: 1.1844 },
-    { uid: WeaponUidEnum.MistsplitterReforged, percent: 1.1639 },
-    { uid: WeaponUidEnum.SummitShaper, postfix: "(щит)", percent: 1.1500 },
-    { uid: WeaponUidEnum.Absolution, percent: 1.1291 },
-    { uid: WeaponUidEnum.UrakuMisugiri, percent: 1.1264 },
-    { uid: WeaponUidEnum.LightOfFoliarIncision, percent: 1.1176 },
-    { uid: WeaponUidEnum.SplendorOfTranquilWaters, percent: 1.1023 },
-    { uid: WeaponUidEnum.TheBlackSword, percent: 1.0728 },
-    { uid: WeaponUidEnum.FinaleOfTheDeep, percent: 1 },
-    { uid: WeaponUidEnum.BlackcliffLongsword, percent: 0.9451 },
+    { key: WeaponKeys.Azurelight, percent: 1.4256 },
+    { key: WeaponKeys.HaranGeppakuFutsu, percent: 1.2239 },
+    { key: WeaponKeys.PrimordialJadeCutter, percent: 1.2238 },
+    { key: WeaponKeys.CalamityOfEshu, postfix: "(щит)", percent: 1.1844 },
+    { key: WeaponKeys.MistsplitterReforged, percent: 1.1639 },
+    { key: WeaponKeys.SummitShaper, postfix: "(щит)", percent: 1.1500 },
+    { key: WeaponKeys.Absolution, percent: 1.1291 },
+    { key: WeaponKeys.UrakuMisugiri, percent: 1.1264 },
+    { key: WeaponKeys.LightOfFoliarIncision, percent: 1.1176 },
+    { key: WeaponKeys.SplendorOfTranquilWaters, percent: 1.1023 },
+    { key: WeaponKeys.TheBlackSword, percent: 1.0728 },
+    { key: WeaponKeys.FinaleOfTheDeep, percent: 1 },
+    { key: WeaponKeys.BlackcliffLongsword, percent: 0.9451 },
   ],
 } as CharacterRecommendations;

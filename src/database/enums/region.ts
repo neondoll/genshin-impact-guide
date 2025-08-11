@@ -1,4 +1,4 @@
-export const RegionUidEnum = {
+export const RegionKeys = {
   /* Фонтейн   */ Fontaine: "fontaine",
   /* Инадзума  */ Inazuma: "inazuma",
   /* Ли Юэ     */ Liyue: "liyue",

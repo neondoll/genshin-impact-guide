@@ -1,14 +1,14 @@
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { CharacterKeys } from "../enums/character";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
-  character_uid: CharacterUidEnum.Keqing,
+  character_key: CharacterKeys.Keqing,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.ElementalSkill, priority: "По необходимости\n(10)" },
+    { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(10)" },
   ],
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
@@ -18,7 +18,7 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.MistsplitterReforged, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.LightOfFoliarIncision, refinement: 1 },
+    { key: WeaponKeys.MistsplitterReforged, refinement: 1, is_better: true },
+    { key: WeaponKeys.LightOfFoliarIncision, refinement: 1 },
   ],
 } as CharacterRecommendations;

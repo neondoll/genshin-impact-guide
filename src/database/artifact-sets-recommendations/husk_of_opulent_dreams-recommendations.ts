@@ -1,23 +1,23 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.HuskOfOpulentDreams,
+  artifact_set_key: ArtifactSetKeys.HuskOfOpulentDreams,
   characters: [
-    { uid: CharacterUidEnum.Albedo },
-    { uid: CharacterUidEnum.AratakiItto, is_better: true },
-    { uid: CharacterUidEnum.Noelle, is_better: true },
-    { uid: CharacterUidEnum.YunJin },
+    { key: CharacterKeys.Albedo },
+    { key: CharacterKeys.AratakiItto, is_better: true },
+    { key: CharacterKeys.Noelle, is_better: true },
+    { key: CharacterKeys.YunJin },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.DefensePercent],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.DefensePercent, AttributeUidEnum.GeoDMGBonus],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [...AttributesCrit, AttributeUidEnum.DefensePercent, AttributeUidEnum.EnergyRecharge],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.DefensePercent],
+    [ArtifactSlotKeys.GobletOfEonothem]: [StatKeys.DefensePercent, StatKeys.GeoDMGBonus],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    additional: [...StatsCrit, StatKeys.DefensePercent, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

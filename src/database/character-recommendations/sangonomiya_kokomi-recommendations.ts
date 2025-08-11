@@ -1,15 +1,15 @@
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { CharacterKeys } from "../enums/character";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
-  character_uid: CharacterUidEnum.SangonomiyaKokomi,
+  character_key: CharacterKeys.SangonomiyaKokomi,
   first_constellation_or_signature_weapon: "Сигна",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "По необходимости\n(6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(8)" },
+    { key: TalentKeys.NormalAttack, priority: "По необходимости\n(6)" },
+    { key: TalentKeys.ElementalSkill, priority: "В первую очередь\n(8)" },
+    { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(8)" },
   ],
   video_sources: [
     {
@@ -23,9 +23,9 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.ThrillingTalesOfDragonSlayers, refinement: 5, is_better: true },
-    { uid: WeaponUidEnum.EverlastingMoonglow, refinement: 1 },
-    { uid: WeaponUidEnum.PrototypeAmber, refinement: 5 },
-    { uid: WeaponUidEnum.FlowingPurity, refinement: 5 },
+    { key: WeaponKeys.ThrillingTalesOfDragonSlayers, refinement: 5, is_better: true },
+    { key: WeaponKeys.EverlastingMoonglow, refinement: 1 },
+    { key: WeaponKeys.PrototypeAmber, refinement: 5 },
+    { key: WeaponKeys.FlowingPurity, refinement: 5 },
   ],
 } as CharacterRecommendations;

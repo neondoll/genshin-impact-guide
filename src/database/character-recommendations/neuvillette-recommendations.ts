@@ -1,53 +1,53 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.MarechausseeHunter,
+        key: ArtifactSetKeys.MarechausseeHunter,
         notes: [
           "Лучший комплект для Нёвиллета, так как увеличивает урон заряженной атаки и повышает шанс крит. попадания в сумме на 36%.",
           "Так как Нёвиллет при заряженной атаке теряет HP, он выполняет условие 4 предметов.",
         ],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HPPercentage }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HPPercentage, notes: ["Если в команде Фурина"] },
-        { uid: AttributeUidEnum.HydroDMGBonus },
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.HPPercentage }],
+      [ArtifactSlotKeys.GobletOfEonothem]: [
+        { key: StatKeys.HPPercentage, notes: ["Если в команде Фурина"] },
+        { key: StatKeys.HydroDMGBonus },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CRITRate },
-        { uid: AttributeUidEnum.CRITDMG, notes: ["Чаще всего"] },
-        { uid: AttributeUidEnum.HPPercentage, notes: ["Иногда, особенно с Сигной"] },
+      [ArtifactSlotKeys.CircletOfLogos]: [
+        { key: StatKeys.CRITRate },
+        { key: StatKeys.CRITDMG, notes: ["Чаще всего"] },
+        { key: StatKeys.HPPercentage, notes: ["Иногда, особенно с Сигной"] },
       ],
       additional: [
-        { uid: AttributeUidEnum.HPPercentage, notes: ["от 30000"] },
+        { key: StatKeys.HPPercentage, notes: ["от 30000"] },
         {
-          uid: AttributeUidEnum.CRITRate,
+          key: StatKeys.CRITRate,
           notes: [
             "от 65% в обычной ситуации",
             "от 35% при использовании полного комплекта Охотник Сумеречного двора и стремимся к 64%",
           ],
         },
-        { uid: AttributeUidEnum.CRITDMG, notes: ["от 160%"] },
-        { uid: AttributeUidEnum.EnergyRecharge, notes: ["Специально не охотиться", "от 120%"] },
+        { key: StatKeys.CRITDMG, notes: ["от 160%"] },
+        { key: StatKeys.EnergyRecharge, notes: ["Специально не охотиться", "от 120%"] },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Neuvillette,
+  character_key: CharacterKeys.Neuvillette,
   first_constellation_or_signature_weapon: "Сигна > C1, Сигна > C2. Лучше Сигна и С1",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(6 | 8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "По необходимости\n(6 | 8)" },
+    { key: TalentKeys.NormalAttack, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.ElementalSkill, priority: "Во вторую очередь\n(6 | 8)" },
+    { key: TalentKeys.ElementalBurst, priority: "По необходимости\n(6 | 8)" },
   ],
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
@@ -57,21 +57,21 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.TomeOfTheEternalFlow, is_better: true, percent: 1 },
-    { uid: WeaponUidEnum.SacrificialJade, refinement: 5, percent: 0.998 },
-    { uid: WeaponUidEnum.SurfsUp, percent: 0.917 },
-    { uid: WeaponUidEnum.SacrificialJade, refinement: 1, percent: 0.914 },
-    { uid: WeaponUidEnum.AshGravenDrinkingHorn, refinement: 5, percent: 0.874 },
-    { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, percent: 0.847 },
-    { uid: WeaponUidEnum.CashflowSupervision, percent: 0.831 },
-    { uid: WeaponUidEnum.AshGravenDrinkingHorn, refinement: 1, percent: 0.808 },
-    { uid: WeaponUidEnum.KagurasVerity, percent: 0.807 },
-    { uid: WeaponUidEnum.TheWidsith, refinement: 5, percent: 0.805 },
-    { uid: WeaponUidEnum.JadefallsSplendor, percent: 0.796 },
-    { uid: WeaponUidEnum.TheWidsith, refinement: 1, percent: 0.791 },
-    { uid: WeaponUidEnum.EverlastingMoonglow, percent: 0.765 },
-    { uid: WeaponUidEnum.TulaytullahsRemembrance, percent: 0.752 },
-    { uid: WeaponUidEnum.PrototypeAmber, percent: 0.745 },
-    { uid: WeaponUidEnum.RingOfYaxche, percent: 0.745 },
+    { key: WeaponKeys.TomeOfTheEternalFlow, is_better: true, percent: 1 },
+    { key: WeaponKeys.SacrificialJade, refinement: 5, percent: 0.998 },
+    { key: WeaponKeys.SurfsUp, percent: 0.917 },
+    { key: WeaponKeys.SacrificialJade, refinement: 1, percent: 0.914 },
+    { key: WeaponKeys.AshGravenDrinkingHorn, refinement: 5, percent: 0.874 },
+    { key: WeaponKeys.LostPrayerToTheSacredWinds, percent: 0.847 },
+    { key: WeaponKeys.CashflowSupervision, percent: 0.831 },
+    { key: WeaponKeys.AshGravenDrinkingHorn, refinement: 1, percent: 0.808 },
+    { key: WeaponKeys.KagurasVerity, percent: 0.807 },
+    { key: WeaponKeys.TheWidsith, refinement: 5, percent: 0.805 },
+    { key: WeaponKeys.JadefallsSplendor, percent: 0.796 },
+    { key: WeaponKeys.TheWidsith, refinement: 1, percent: 0.791 },
+    { key: WeaponKeys.EverlastingMoonglow, percent: 0.765 },
+    { key: WeaponKeys.TulaytullahsRemembrance, percent: 0.752 },
+    { key: WeaponKeys.PrototypeAmber, percent: 0.745 },
+    { key: WeaponKeys.RingOfYaxche, percent: 0.745 },
   ],
 } as CharacterRecommendations;

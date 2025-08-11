@@ -1,28 +1,23 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.HeartOfDepth,
+  artifact_set_key: ArtifactSetKeys.HeartOfDepth,
   characters: [
-    { uid: CharacterUidEnum.KamisatoAyato, is_better: true },
-    { uid: CharacterUidEnum.Neuvillette, is_better: true },
-    { uid: CharacterUidEnum.Tartaglia, is_better: true },
+    { key: CharacterKeys.KamisatoAyato, is_better: true },
+    { key: CharacterKeys.Neuvillette, is_better: true },
+    { key: CharacterKeys.Tartaglia, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [
-      ...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
     additional: [
-      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
-      AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
+      ...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HPPercentage,
     ],
   },
   video_sources: [

@@ -1,35 +1,29 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.EmblemOfSeveredFate,
+  artifact_set_key: ArtifactSetKeys.EmblemOfSeveredFate,
   characters: [
-    { uid: CharacterUidEnum.Chevreuse, is_better: true },
-    { uid: CharacterUidEnum.Ganyu },
-    { uid: CharacterUidEnum.Mona },
-    { uid: CharacterUidEnum.RaidenShogun, is_better: true },
-    { uid: CharacterUidEnum.Shenhe },
-    { uid: CharacterUidEnum.Xiangling, is_better: true },
-    { uid: CharacterUidEnum.Xingqiu, is_better: true },
-    { uid: CharacterUidEnum.Yelan, is_better: true },
+    { key: CharacterKeys.Chevreuse, is_better: true },
+    { key: CharacterKeys.Ganyu },
+    { key: CharacterKeys.Mona },
+    { key: CharacterKeys.RaidenShogun, is_better: true },
+    { key: CharacterKeys.Shenhe },
+    { key: CharacterKeys.Xiangling, is_better: true },
+    { key: CharacterKeys.Xingqiu, is_better: true },
+    { key: CharacterKeys.Yelan, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge,
-      AttributeUidEnum.HPPercentage,
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [
+      StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HPPercentage,
     ],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [
-      ...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.HPPercentage],
-    additional: [
-      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
-      AttributeUidEnum.EnergyRecharge,
-    ],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: [...StatsCrit, StatKeys.HPPercentage],
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

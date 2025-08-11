@@ -1,14 +1,14 @@
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { CharacterKeys } from "../enums/character";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
-  character_uid: CharacterUidEnum.Faruzan,
+  character_key: CharacterKeys.Faruzan,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
@@ -18,7 +18,7 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.FavoniusWarbow, refinement: 5 },
-    { uid: WeaponUidEnum.ElegyForTheEnd, refinement: 1, is_better: true },
+    { key: WeaponKeys.FavoniusWarbow, refinement: 5 },
+    { key: WeaponKeys.ElegyForTheEnd, refinement: 1, is_better: true },
   ],
 } as CharacterRecommendations;

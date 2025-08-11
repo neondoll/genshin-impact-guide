@@ -1,28 +1,22 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.MaidenBeloved,
+  artifact_set_key: ArtifactSetKeys.MaidenBeloved,
   characters: [
-    { uid: CharacterUidEnum.Barbara, is_better: true },
-    { uid: CharacterUidEnum.Jean, is_better: true },
-    { uid: CharacterUidEnum.Qiqi },
-    { uid: CharacterUidEnum.SangonomiyaKokomi, is_better: true },
+    { key: CharacterKeys.Barbara, is_better: true },
+    { key: CharacterKeys.Jean, is_better: true },
+    { key: CharacterKeys.Qiqi },
+    { key: CharacterKeys.SangonomiyaKokomi, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [
-      AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [
-      AttributeUidEnum.ATKPercentage, AttributeUidEnum.HealingBonus, AttributeUidEnum.HPPercentage,
-    ],
-    additional: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.EnergyRecharge, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [StatKeys.ATKPercentage, StatKeys.EnergyRecharge, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: [StatKeys.ATKPercentage, StatKeys.HealingBonus, StatKeys.HPPercentage],
+    additional: [StatKeys.ATKPercentage, StatKeys.EnergyRecharge, StatKeys.HPPercentage],
   },
   video_sources: [
     {

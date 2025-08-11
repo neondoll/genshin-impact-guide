@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import { backgroundClassByQuality } from "@/lib/quality";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { cn, publicImageSrc } from "@/lib/utils";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
 import { getCharacters, getElements, getWeaponTypes } from "@/database";
-import type { ElementUid } from "@/database/types/element";
-import type { QualityUid } from "@/database/types/quality";
-import type { WeaponTypeUid } from "@/database/types/weapon-type";
+import type { ElementKey } from "@/database/types/element";
+import type { Rarity } from "@/database/types/rarity";
+import type { WeaponTypeKey } from "@/database/types/weapon-type";
 
 export type CharactersLoaderData = {
   characters: Awaited<ReturnType<typeof getCharacters>>;
@@ -22,32 +22,32 @@ export type CharactersLoaderData = {
 
 export default function Characters() {
   const { characters, elements, weaponTypes } = useLoaderData<CharactersLoaderData>();
-  const [filterElementUids, setFilterElementUids] = useState<ElementUid[]>([]);
-  const [filterQualities, setFilterQualities] = useState<QualityUid[]>([]);
-  const [filterWeaponTypeUids, setFilterWeaponTypeUids] = useState<WeaponTypeUid[]>([]);
+  const [filterElementKeys, setFilterElementKeys] = useState<ElementKey[]>([]);
+  const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
+  const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<WeaponTypeKey[]>([]);
   const [filteredCharacters, setFilteredCharacters] = useState<typeof characters>([]);
-  const [qualities, setQualities] = useState<QualityUid[]>([]);
+  const [rarities, setRarities] = useState<Rarity[]>([]);
 
   useEffect(() => {
-    setQualities(Array.from(new Set(characters.map(character => character.quality))).sort((a, b) => b - a));
+    setRarities(Array.from(new Set(characters.map(character => character.rarity))).sort((a, b) => b - a));
   }, [characters]);
   useEffect(() => {
     let filteredCharacters = characters;
 
-    if (filterElementUids.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterElementUids.includes(character.element_uid));
+    if (filterElementKeys.length) {
+      filteredCharacters = filteredCharacters.filter(character => filterElementKeys.includes(character.element_key));
     }
 
-    if (filterQualities.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterQualities.includes(character.quality));
+    if (filterRarities.length) {
+      filteredCharacters = filteredCharacters.filter(character => filterRarities.includes(character.rarity));
     }
 
-    if (filterWeaponTypeUids.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeUids.includes(character.weapon_type_uid));
+    if (filterWeaponTypeKeys.length) {
+      filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeKeys.includes(character.weapon_type_key));
     }
 
     setFilteredCharacters(filteredCharacters);
-  }, [characters, filterElementUids, filterQualities, filterWeaponTypeUids]);
+  }, [characters, filterElementKeys, filterRarities, filterWeaponTypeKeys]);
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -71,25 +71,25 @@ export default function Characters() {
             {Object.values(elements).map(element => (
               <FilterCheckbox
                 asChild
-                checked={filterElementUids.includes(element.uid)}
+                checked={filterElementKeys.includes(element.key)}
                 className="p-1 size-8.5 rounded-full"
-                key={element.uid}
+                key={element.key}
                 name="elements"
                 onChange={(event) => {
                   if (event.target.checked) {
-                    if (!filterElementUids.includes(element.uid)) {
-                      setFilterElementUids(prev => prev.concat([element.uid]));
+                    if (!filterElementKeys.includes(element.key)) {
+                      setFilterElementKeys(prev => prev.concat([element.key]));
                     }
                   }
                   else {
-                    const index = filterElementUids.indexOf(element.uid);
+                    const index = filterElementKeys.indexOf(element.key);
 
                     if (index !== -1) {
-                      setFilterElementUids(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterElementKeys(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
-                value={element.uid}
+                value={element.key}
               >
                 <img alt={element.name} src={element.image_src} />
               </FilterCheckbox>
@@ -101,25 +101,25 @@ export default function Characters() {
             {Object.values(weaponTypes).map(weaponType => (
               <FilterCheckbox
                 asChild
-                checked={filterWeaponTypeUids.includes(weaponType.uid)}
+                checked={filterWeaponTypeKeys.includes(weaponType.key)}
                 className="p-1 size-8.5 rounded-full"
-                key={weaponType.uid}
+                key={weaponType.key}
                 name="weapon-types"
                 onChange={(event) => {
                   if (event.target.checked) {
-                    if (!filterWeaponTypeUids.includes(weaponType.uid)) {
-                      setFilterWeaponTypeUids(prev => prev.concat([weaponType.uid]));
+                    if (!filterWeaponTypeKeys.includes(weaponType.key)) {
+                      setFilterWeaponTypeKeys(prev => prev.concat([weaponType.key]));
                     }
                   }
                   else {
-                    const index = filterWeaponTypeUids.indexOf(weaponType.uid);
+                    const index = filterWeaponTypeKeys.indexOf(weaponType.key);
 
                     if (index !== -1) {
-                      setFilterWeaponTypeUids(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterWeaponTypeKeys(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
-                value={weaponType.uid}
+                value={weaponType.key}
               >
                 <img alt={weaponType.name} src={weaponType.image_src} />
               </FilterCheckbox>
@@ -128,29 +128,29 @@ export default function Characters() {
         </FilterGroup>
         <FilterGroup label="Качество">
           <div className="flex flex-wrap gap-3">
-            {qualities.map(quality => (
+            {rarities.map(rarity => (
               <FilterCheckbox
-                checked={filterQualities.includes(quality)}
+                checked={filterRarities.includes(rarity)}
                 className="flex gap-x-0.5 align-center"
-                key={quality}
-                name="qualities"
+                key={rarity}
+                name="rarities"
                 onChange={(event) => {
                   if (event.target.checked) {
-                    if (!filterQualities.includes(quality)) {
-                      setFilterQualities(prev => prev.concat([quality]));
+                    if (!filterRarities.includes(rarity)) {
+                      setFilterRarities(prev => prev.concat([rarity]));
                     }
                   }
                   else {
-                    const index = filterQualities.indexOf(quality);
+                    const index = filterRarities.indexOf(rarity);
 
                     if (index !== -1) {
-                      setFilterQualities(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterRarities(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
-                value={quality}
+                value={rarity}
               >
-                {Array.from({ length: quality }, (_, i) => i).map(index => (
+                {Array.from({ length: rarity }, (_, i) => i).map(index => (
                   <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
                 ))}
               </FilterCheckbox>
@@ -160,7 +160,7 @@ export default function Characters() {
       </Filter>
       <ul className="flex flex-wrap gap-2 justify-center items-stretch md:gap-4">
         {filteredCharacters.map((character) => {
-          const element = elements[character.element_uid];
+          const element = elements[character.element_key];
 
           return (
             <li
@@ -169,7 +169,7 @@ export default function Characters() {
                 "border shadow-sm transition-all has-hover:scale-104 has-focus-visible:ring-3",
                 "has-focus-visible:ring-ring/50",
               )}
-              key={character.uid}
+              key={character.key}
             >
               <span className="relative shrink-0 size-24.5">
                 <img
@@ -181,7 +181,7 @@ export default function Characters() {
                   alt={character.name}
                   className={cn(
                     "object-cover size-full rounded-lg rounded-br-3xl",
-                    backgroundClassByQuality(character.quality),
+                    backgroundClassByRarity(character.rarity),
                   )}
                   draggable={false}
                   src={character.image_src}
@@ -193,7 +193,7 @@ export default function Characters() {
                   "inline-flex flex-1 justify-center items-center text-sm text-center outline-none",
                   "before:absolute before:inset-0",
                 )}
-                to={Paths.Character.to(character.uid)}
+                to={Paths.Character.to(character.key)}
               />
             </li>
           );

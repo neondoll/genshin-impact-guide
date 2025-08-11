@@ -14,5 +14,5 @@ export function publicImageSrc(src: string) {
 }
 
 export function publicSrc(src: string) {
-  return `/genshin-impact-guide/${src}`;
+  return `/genshin-impact-gkeye/${src}`;
 }

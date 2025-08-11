@@ -1,81 +1,81 @@
-import { ArtifactSetUidEnum } from "./enums/artifact-set";
-import { DungeonUidEnum } from "./enums/dungeon";
-import type { Dungeon, DungeonUid } from "./types/dungeon";
+import { ArtifactSetKeys } from "./enums/artifact-set";
+import { DungeonKeys } from "./enums/dungeon";
+import type { Dungeon, DungeonKey } from "./types/dungeon";
 
 export default {
-  [DungeonUidEnum.CityOfGold]: {
-    uid: DungeonUidEnum.CityOfGold,
+  [DungeonKeys.CityOfGold]: {
+    key: DungeonKeys.CityOfGold,
     name: "Город золота",
-    artifact_set_uids: [ArtifactSetUidEnum.DesertPavilionChronicle, ArtifactSetUidEnum.FlowerOfParadiseLost],
+    artifact_set_keys: [ArtifactSetKeys.DesertPavilionChronicle, ArtifactSetKeys.FlowerOfParadiseLost],
   }, // Крайне не выгодный
-  [DungeonUidEnum.ClearPoolAndMountainCavern]: {
-    uid: DungeonUidEnum.ClearPoolAndMountainCavern,
+  [DungeonKeys.ClearPoolAndMountainCavern]: {
+    key: DungeonKeys.ClearPoolAndMountainCavern,
     name: "Чистая вода и горная пещера",
-    artifact_set_uids: [ArtifactSetUidEnum.BloodstainedChivalry, ArtifactSetUidEnum.NoblesseOblige],
+    artifact_set_keys: [ArtifactSetKeys.BloodstainedChivalry, ArtifactSetKeys.NoblesseOblige],
   }, // Крайне не выгодный
-  [DungeonUidEnum.DenouementOfSin]: {
-    uid: DungeonUidEnum.DenouementOfSin,
+  [DungeonKeys.DenouementOfSin]: {
+    key: DungeonKeys.DenouementOfSin,
     name: "Конец греха",
-    artifact_set_uids: [ArtifactSetUidEnum.GoldenTroupe, ArtifactSetUidEnum.MarechausseeHunter],
+    artifact_set_keys: [ArtifactSetKeys.GoldenTroupe, ArtifactSetKeys.MarechausseeHunter],
   }, // Крайне выгодный
-  [DungeonUidEnum.DomainOfGuyun]: {
-    uid: DungeonUidEnum.DomainOfGuyun,
+  [DungeonKeys.DomainOfGuyun]: {
+    key: DungeonKeys.DomainOfGuyun,
     name: "Владения Гуюнь",
-    artifact_set_uids: [ArtifactSetUidEnum.ArchaicPetra, ArtifactSetUidEnum.RetracingBolide],
+    artifact_set_keys: [ArtifactSetKeys.ArchaicPetra, ArtifactSetKeys.RetracingBolide],
   }, // Крайне не выгодный
-  [DungeonUidEnum.HiddenPalaceOfZhouFormula]: {
-    uid: DungeonUidEnum.HiddenPalaceOfZhouFormula,
+  [DungeonKeys.HiddenPalaceOfZhouFormula]: {
+    key: DungeonKeys.HiddenPalaceOfZhouFormula,
     name: "Скрытый дворец Уван",
-    artifact_set_uids: [ArtifactSetUidEnum.CrimsonWitchOfFlames, ArtifactSetUidEnum.Lavawalker],
+    artifact_set_keys: [ArtifactSetKeys.CrimsonWitchOfFlames, ArtifactSetKeys.Lavawalker],
   }, // Может быть полезен
-  [DungeonUidEnum.MidsummerCourtyard]: {
-    uid: DungeonUidEnum.MidsummerCourtyard,
+  [DungeonKeys.MidsummerCourtyard]: {
+    key: DungeonKeys.MidsummerCourtyard,
     name: "Июльские сады",
-    artifact_set_uids: [ArtifactSetUidEnum.ThunderingFury, ArtifactSetUidEnum.Thundersoother],
+    artifact_set_keys: [ArtifactSetKeys.ThunderingFury, ArtifactSetKeys.Thundersoother],
   }, // Крайне не выгодный
-  [DungeonUidEnum.MoltenIronFortress]: {
-    uid: DungeonUidEnum.MoltenIronFortress,
+  [DungeonKeys.MoltenIronFortress]: {
+    key: DungeonKeys.MoltenIronFortress,
     name: "Расплавленная крепость",
-    artifact_set_uids: [ArtifactSetUidEnum.NymphsDream, ArtifactSetUidEnum.VourukashasGlow],
+    artifact_set_keys: [ArtifactSetKeys.NymphsDream, ArtifactSetKeys.VourukashasGlow],
   }, // Крайне не выгодный
-  [DungeonUidEnum.MomijiDyedCourt]: {
-    uid: DungeonUidEnum.MomijiDyedCourt,
+  [DungeonKeys.MomijiDyedCourt]: {
+    key: DungeonKeys.MomijiDyedCourt,
     name: "Кленовый зал",
-    artifact_set_uids: [ArtifactSetUidEnum.EmblemOfSeveredFate, ArtifactSetUidEnum.ShimenawasReminiscence],
+    artifact_set_keys: [ArtifactSetKeys.EmblemOfSeveredFate, ArtifactSetKeys.ShimenawasReminiscence],
   }, // Крайне выгодный
-  [DungeonUidEnum.PeakOfVindagnyr]: {
-    uid: DungeonUidEnum.PeakOfVindagnyr,
+  [DungeonKeys.PeakOfVindagnyr]: {
+    key: DungeonKeys.PeakOfVindagnyr,
     name: "Пик Виндагнира",
-    artifact_set_uids: [ArtifactSetUidEnum.BlizzardStrayer, ArtifactSetUidEnum.HeartOfDepth],
+    artifact_set_keys: [ArtifactSetKeys.BlizzardStrayer, ArtifactSetKeys.HeartOfDepth],
   }, // Выгодный
-  [DungeonUidEnum.RidgeWatch]: {
-    uid: DungeonUidEnum.RidgeWatch,
+  [DungeonKeys.RidgeWatch]: {
+    key: DungeonKeys.RidgeWatch,
     name: "Горный дозор",
-    artifact_set_uids: [ArtifactSetUidEnum.PaleFlame, ArtifactSetUidEnum.TenacityOfTheMillelith],
+    artifact_set_keys: [ArtifactSetKeys.PaleFlame, ArtifactSetKeys.TenacityOfTheMillelith],
   }, // Крайне не выгодный
-  [DungeonUidEnum.SlumberingCourt]: {
-    uid: DungeonUidEnum.SlumberingCourt,
+  [DungeonKeys.SlumberingCourt]: {
+    key: DungeonKeys.SlumberingCourt,
     name: "Дремлющий сад",
-    artifact_set_uids: [ArtifactSetUidEnum.HuskOfOpulentDreams, ArtifactSetUidEnum.OceanHuedClam],
+    artifact_set_keys: [ArtifactSetKeys.HuskOfOpulentDreams, ArtifactSetKeys.OceanHuedClam],
   }, // Крайне не выгодный
-  [DungeonUidEnum.SpireOfSolitaryEnlightenment]: {
-    uid: DungeonUidEnum.SpireOfSolitaryEnlightenment,
+  [DungeonKeys.SpireOfSolitaryEnlightenment]: {
+    key: DungeonKeys.SpireOfSolitaryEnlightenment,
     name: "Шпиль одинокого просветления",
-    artifact_set_uids: [ArtifactSetUidEnum.DeepwoodMemories, ArtifactSetUidEnum.GildedDreams],
+    artifact_set_keys: [ArtifactSetKeys.DeepwoodMemories, ArtifactSetKeys.GildedDreams],
   }, // Крайне выгодный
-  [DungeonUidEnum.TheLostValley]: {
-    uid: DungeonUidEnum.TheLostValley,
+  [DungeonKeys.TheLostValley]: {
+    key: DungeonKeys.TheLostValley,
     name: "Затерянная долина",
-    artifact_set_uids: [ArtifactSetUidEnum.EchoesOfAnOffering, ArtifactSetUidEnum.VermillionHereafter],
+    artifact_set_keys: [ArtifactSetKeys.EchoesOfAnOffering, ArtifactSetKeys.VermillionHereafter],
   }, // Крайне не выгодный
-  [DungeonUidEnum.ValleyOfRemembrance]: {
-    uid: DungeonUidEnum.ValleyOfRemembrance,
+  [DungeonKeys.ValleyOfRemembrance]: {
+    key: DungeonKeys.ValleyOfRemembrance,
     name: "Долина воспоминаний",
-    artifact_set_uids: [ArtifactSetUidEnum.MaidenBeloved, ArtifactSetUidEnum.ViridescentVenerer],
+    artifact_set_keys: [ArtifactSetKeys.MaidenBeloved, ArtifactSetKeys.ViridescentVenerer],
   }, // Может быть полезен
-  [DungeonUidEnum.WaterfallWen]: {
-    uid: DungeonUidEnum.WaterfallWen,
+  [DungeonKeys.WaterfallWen]: {
+    key: DungeonKeys.WaterfallWen,
     name: "Город гроз",
-    artifact_set_uids: [ArtifactSetUidEnum.NighttimeWhispersInTheEchoingWoods, ArtifactSetUidEnum.SongOfDaysPast],
+    artifact_set_keys: [ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods, ArtifactSetKeys.SongOfDaysPast],
   }, // Крайне не выгодный
-} as Record<DungeonUid, Dungeon>;
+} as Record<DungeonKey, Dungeon>;

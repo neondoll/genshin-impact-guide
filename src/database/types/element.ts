@@ -1,11 +1,11 @@
-import { ElementUidEnum } from "../enums/element";
-import type { RegionUid } from "./region";
+import { ElementKeys } from "../enums/element";
+import type { RegionKey } from "./region";
 
 export type Element = {
-  uid: ElementUid;
+  key: ElementKey;
   name: string;
   image_src: string;
-  region_uid: RegionUid;
-  reacts_with: ElementUid[];
+  region_key: RegionKey;
+  reacts_with: ElementKey[];
 };
-export type ElementUid = typeof ElementUidEnum[keyof typeof ElementUidEnum];
+export type ElementKey = typeof ElementKeys[keyof typeof ElementKeys];

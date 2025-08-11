@@ -1,34 +1,34 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { artifactSetByUid, AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { artifactSetByKey, StatsCrit, StatsElementDamageBonus } from "./help";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.DesertPavilionChronicle,
+  artifact_set_key: ArtifactSetKeys.DesertPavilionChronicle,
   characters: [
     {
-      uid: CharacterUidEnum.ShikanoinHeizou,
+      key: CharacterKeys.ShikanoinHeizou,
       is_better: true,
-      notes: `Может использовать как 4 предмета, так и 2 предмета.\nДля реализации условия 4 предметов необходимо использовать заряженную атаку перед обычными.\n2 предмета можно сочетать с ${artifactSetByUid(ArtifactSetUidEnum.GladiatorsFinale)}, ${artifactSetByUid(ArtifactSetUidEnum.ShimenawasReminiscence)}, ${artifactSetByUid(ArtifactSetUidEnum.EchoesOfAnOffering)}, ${artifactSetByUid(ArtifactSetUidEnum.GoldenTroupe)} и ${artifactSetByUid(ArtifactSetUidEnum.VermillionHereafter)}. В данном случае комплект может быть заменён 2 предметами набора ${artifactSetByUid(ArtifactSetUidEnum.ViridescentVenerer)}.`,
+      notes: `Может использовать как 4 предмета, так и 2 предмета.\nДля реализации условия 4 предметов необходимо использовать заряженную атаку перед обычными.\n2 предмета можно сочетать с ${artifactSetByKey(ArtifactSetKeys.GladiatorsFinale)}, ${artifactSetByKey(ArtifactSetKeys.ShimenawasReminiscence)}, ${artifactSetByKey(ArtifactSetKeys.EchoesOfAnOffering)}, ${artifactSetByKey(ArtifactSetKeys.GoldenTroupe)} и ${artifactSetByKey(ArtifactSetKeys.VermillionHereafter)}. В данном случае комплект может быть заменён 2 предметами набора ${artifactSetByKey(ArtifactSetKeys.ViridescentVenerer)}.`,
     },
     {
-      uid: CharacterUidEnum.Wanderer,
+      key: CharacterKeys.Wanderer,
       is_better: true,
-      notes: `Лучший комплект для Странника, так как даёт бонус Анемо урона и увеличивает урон обычной и заряженной атаки. Для реализации условия 4 предметов необходимо использовать заряженную атаку перед обычными.\nСтраннику будет полезен бонус и 2 предметов, которые он может сочетать с ${artifactSetByUid(ArtifactSetUidEnum.GladiatorsFinale)}, ${artifactSetByUid(ArtifactSetUidEnum.ShimenawasReminiscence)}, ${artifactSetByUid(ArtifactSetUidEnum.EchoesOfAnOffering)}, ${artifactSetByUid(ArtifactSetUidEnum.MarechausseeHunter)} и ${artifactSetByUid(ArtifactSetUidEnum.VermillionHereafter)}. В данном случае комплект может быть заменён 2 предметами набора ${artifactSetByUid(ArtifactSetUidEnum.ViridescentVenerer)}.`,
+      notes: `Лучший комплект для Странника, так как даёт бонус Анемо урона и увеличивает урон обычной и заряженной атаки. Для реализации условия 4 предметов необходимо использовать заряженную атаку перед обычными.\nСтраннику будет полезен бонус и 2 предметов, которые он может сочетать с ${artifactSetByKey(ArtifactSetKeys.GladiatorsFinale)}, ${artifactSetByKey(ArtifactSetKeys.ShimenawasReminiscence)}, ${artifactSetByKey(ArtifactSetKeys.EchoesOfAnOffering)}, ${artifactSetByKey(ArtifactSetKeys.MarechausseeHunter)} и ${artifactSetByKey(ArtifactSetKeys.VermillionHereafter)}. В данном случае комплект может быть заменён 2 предметами набора ${artifactSetByKey(ArtifactSetKeys.ViridescentVenerer)}.`,
     },
     {
-      uid: CharacterUidEnum.Xiao,
+      key: CharacterKeys.Xiao,
       is_better: true,
-      notes: `Может использовать как 4 предмета, так и 2 предмета.\nДля реализации условия 4 предметов необходимо использовать заряженную атаку сразу перед взрывом стихии.\n2 предмета можно сочетать с ${artifactSetByUid(ArtifactSetUidEnum.GladiatorsFinale)}, ${artifactSetByUid(ArtifactSetUidEnum.ShimenawasReminiscence)}, ${artifactSetByUid(ArtifactSetUidEnum.EchoesOfAnOffering)} и ${artifactSetByUid(ArtifactSetUidEnum.VermillionHereafter)}. В данном случае комплект может быть заменён 2 предметами набора ${artifactSetByUid(ArtifactSetUidEnum.ViridescentVenerer)}.`,
+      notes: `Может использовать как 4 предмета, так и 2 предмета.\nДля реализации условия 4 предметов необходимо использовать заряженную атаку сразу перед взрывом стихии.\n2 предмета можно сочетать с ${artifactSetByKey(ArtifactSetKeys.GladiatorsFinale)}, ${artifactSetByKey(ArtifactSetKeys.ShimenawasReminiscence)}, ${artifactSetByKey(ArtifactSetKeys.EchoesOfAnOffering)} и ${artifactSetByKey(ArtifactSetKeys.VermillionHereafter)}. В данном случае комплект может быть заменён 2 предметами набора ${artifactSetByKey(ArtifactSetKeys.ViridescentVenerer)}.`,
     },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

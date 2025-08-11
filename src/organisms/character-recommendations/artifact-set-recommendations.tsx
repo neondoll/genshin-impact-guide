@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Paths from "@/constants/paths";
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
-import { backgroundClassByQuality } from "@/lib/quality";
+import { ArtifactSlotKeys } from "@/database/enums/artifact-slot";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
 import { getArtifactSet } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { ArtifactSetRecommendationsProps } from "./types";
-import type { ArtifactSetUid } from "@/database/types/artifact-set";
+import type { ArtifactSetKey } from "@/database/types/artifact-set";
 
-function ArtifactSetBage({ artifactSetUid, isSignature }: { artifactSetUid: ArtifactSetUid; isSignature: boolean }) {
-  const artifactSet = getArtifactSet(artifactSetUid);
+function ArtifactSetBage({ artifactSetKey, isSignature }: { artifactSetKey: ArtifactSetKey; isSignature: boolean }) {
+  const artifactSet = getArtifactSet(artifactSetKey);
 
   return (
     <Badge
@@ -23,14 +23,14 @@ function ArtifactSetBage({ artifactSetUid, isSignature }: { artifactSetUid: Arti
       )}
       variant="secondary"
     >
-      <Link to={Paths.ArtifactSet.to(artifactSet.uid)}>
+      <Link to={Paths.ArtifactSet.to(artifactSet.key)}>
         <img
           alt={artifactSet.name}
           className={cn(
             "shrink-0 size-12 rounded-md rounded-br-2xl",
-            backgroundClassByQuality(...artifactSet.qualities),
+            backgroundClassByRarity(...artifactSet.rarities),
           )}
-          src={artifactSet[ArtifactPieceUidEnum.FlowerOfLife].image_src}
+          src={artifactSet[ArtifactSlotKeys.Flower].image_src}
         />
         <span>
           {artifactSet.name}
@@ -102,7 +102,7 @@ export default function ArtifactSetRecommendations({ character, recommendations 
         {recommendations.map(recommendation => (
           <TableRow
             className="hover:bg-inherit"
-            key={"uid" in recommendation ? recommendation.uid : recommendation.uids.join("+")}
+            key={"key" in recommendation ? recommendation.key : recommendation.keys.join("+")}
           >
             {hasIsBetter && (
               <TableCell className="w-16">
@@ -116,19 +116,19 @@ export default function ArtifactSetRecommendations({ character, recommendations 
               </TableCell>
             )}
             <TableCell className="text-pretty whitespace-normal sm:w-48">
-              {"uid" in recommendation
+              {"key" in recommendation
                 ? (
                     <ArtifactSetBage
-                      artifactSetUid={recommendation.uid}
-                      isSignature={recommendation.uid === character.signature_artifact_set_uid}
+                      artifactSetKey={recommendation.key}
+                      isSignature={recommendation.key === character.signature_artifact_set_key}
                     />
                   )
                 : (
                     <div className="flex flex-col gap-2">
-                      {recommendation.uids.map(uid => (
+                      {recommendation.keys.map(key => (
                         <ArtifactSetBage
-                          artifactSetUid={uid}
-                          isSignature={uid === character.signature_artifact_set_uid}
+                          artifactSetKey={key}
+                          isSignature={key === character.signature_artifact_set_key}
                         />
                       ))}
                     </div>

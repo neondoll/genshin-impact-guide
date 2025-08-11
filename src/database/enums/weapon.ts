@@ -1,4 +1,4 @@
-export const WeaponUidEnum = {
+export const WeaponKeys = {
   /* Тысяча ослепительных солнц            */ AThousandBlazingSuns: "a_thousand_blazing_suns",
   /* Сновидения тысячи ночей               */ AThousandFloatingDreams: "a_thousand_floating_dreams",
   /* Отпущение грехов                      */ Absolution: "absolution",
@@ -89,7 +89,7 @@ export const WeaponUidEnum = {
   /* Молитва святым ветрам                 */ LostPrayerToTheSacredWinds: "lost_prayer_to_the_sacred_winds",
   /* Элегия Люмидус                        */ LumidouceElegy: "lumidouce_elegy",
   /* Благодатный владыка вод               */ LuxuriousSeaLord: "luxurious_sea_lord",
-  /* Руководство по магии                  */ MagicGuide: "magic_guide",
+  /* Руководство по магии                  */ MagicGkeye: "magic_gkeye",
   /* Цветок в латах                        */ MailedFlower: "mailed_flower",
   /* Аквамарин Махайры                     */ MakhairaAquamarine: "makhaira_aquamarine",
   /* Морской атлас                         */ MappaMare: "mappa_mare",

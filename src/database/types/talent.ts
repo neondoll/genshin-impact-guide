@@ -1,6 +1,6 @@
-import { TalentTypeUidEnum, TalentUidEnum } from "../enums/talent";
+import { TalentKeys, TalentTypeKeys } from "../enums/talent";
 
-type TalentTypeUid = typeof TalentTypeUidEnum[keyof typeof TalentTypeUidEnum];
+type TalentTypeKey = typeof TalentTypeKeys[keyof typeof TalentTypeKeys];
 
-export type Talent = { uid: TalentUid; name: string; type_uid: TalentTypeUid };
-export type TalentUid = typeof TalentUidEnum[keyof typeof TalentUidEnum];
+export type Talent = { key: TalentKey; name: string; type_key: TalentTypeKey };
+export type TalentKey = typeof TalentKeys[keyof typeof TalentKeys];

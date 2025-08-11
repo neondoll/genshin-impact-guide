@@ -1,28 +1,25 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.ShimenawasReminiscence,
+  artifact_set_key: ArtifactSetKeys.ShimenawasReminiscence,
   characters: [
-    { uid: CharacterUidEnum.Ganyu, is_better: true },
-    { uid: CharacterUidEnum.HuTao, is_better: true },
-    { uid: CharacterUidEnum.Wanderer, is_better: true },
-    { uid: CharacterUidEnum.Wriothesley, is_better: true },
-    { uid: CharacterUidEnum.Yoimiya, is_better: true },
+    { key: CharacterKeys.Ganyu, is_better: true },
+    { key: CharacterKeys.HuTao, is_better: true },
+    { key: CharacterKeys.Wanderer, is_better: true },
+    { key: CharacterKeys.Wriothesley, is_better: true },
+    { key: CharacterKeys.Yoimiya, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
     additional: [
-      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
-      AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
+      ...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HPPercentage,
     ],
   },
   video_sources: [

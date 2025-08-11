@@ -1,63 +1,63 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.NoblesseOblige,
+        key: ArtifactSetKeys.NoblesseOblige,
         is_better: true,
         notes: [
           "Лучший комплект для Беннета в роли поддержки. Увеличивает собственный урон от взрыва стихий и даёт дополнительный бонус к атаке. Используется, когда никто другой не носит данный комплект артефактов.",
         ],
       },
       {
-        uid: ArtifactSetUidEnum.EmblemOfSeveredFate,
+        key: ArtifactSetKeys.EmblemOfSeveredFate,
         notes: [
           "Комплект не даёт никаких бонусов другим членам отряда, но увеличивает восстановление энергии Беннета и урон от его взрыва стихий. Комплект используется, если хочется, чтобы Беннет наносил дополнительный урон.",
         ],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.EnergyRecharge, use_percent: 0.703 },
-        { uid: AttributeUidEnum.HPPercentage, use_percent: 0.187 },
-        { uid: AttributeUidEnum.ATKPercentage, use_percent: 0.089 },
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [
+        { key: StatKeys.EnergyRecharge, use_percent: 0.703 },
+        { key: StatKeys.HPPercentage, use_percent: 0.187 },
+        { key: StatKeys.ATKPercentage, use_percent: 0.089 },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HPPercentage, use_percent: 0.749 },
-        { uid: AttributeUidEnum.ATKPercentage, use_percent: 0.109 },
-        { uid: AttributeUidEnum.PyroDMGBonus, use_percent: 0.105 },
+      [ArtifactSlotKeys.GobletOfEonothem]: [
+        { key: StatKeys.HPPercentage, use_percent: 0.749 },
+        { key: StatKeys.ATKPercentage, use_percent: 0.109 },
+        { key: StatKeys.PyroDMGBonus, use_percent: 0.105 },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.HealingBonus, use_percent: 0.543 },
-        { uid: AttributeUidEnum.HPPercentage, use_percent: 0.224 },
-        { uid: AttributeUidEnum.CRITRate, use_percent: 0.111 },
-        { uid: AttributeUidEnum.CRITDMG },
+      [ArtifactSlotKeys.CircletOfLogos]: [
+        { key: StatKeys.HealingBonus, use_percent: 0.543 },
+        { key: StatKeys.HPPercentage, use_percent: 0.224 },
+        { key: StatKeys.CRITRate, use_percent: 0.111 },
+        { key: StatKeys.CRITDMG },
       ],
       additional: [
-        { uid: AttributeUidEnum.HPPercentage, notes: ["Приоритетно", "от 25000"] },
-        { uid: AttributeUidEnum.EnergyRecharge, notes: ["Приоритетно", "от 220%"] },
+        { key: StatKeys.HPPercentage, notes: ["Приоритетно", "от 25000"] },
+        { key: StatKeys.EnergyRecharge, notes: ["Приоритетно", "от 220%"] },
         {
-          uid: AttributeUidEnum.CRITRate,
+          key: StatKeys.CRITRate,
           notes: ["от 50% (при использовании меча Фавония или если Беннет будет наносить дополнительный урон)"],
         },
-        { uid: AttributeUidEnum.CRITDMG, notes: ["от 120% (если Беннет будет наносить дополнительный урон)"] },
+        { key: StatKeys.CRITDMG, notes: ["от 120% (если Беннет будет наносить дополнительный урон)"] },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Bennett,
+  character_key: CharacterKeys.Bennett,
   key_constellations: [6],
   required_level: 90,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
@@ -67,9 +67,9 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.MistsplitterReforged, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.AquilaFavonia, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.SkywardBlade, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.SapwoodBlade },
+    { key: WeaponKeys.MistsplitterReforged, refinement: 1, is_better: true },
+    { key: WeaponKeys.AquilaFavonia, refinement: 1, is_better: true },
+    { key: WeaponKeys.SkywardBlade, refinement: 1, is_better: true },
+    { key: WeaponKeys.SapwoodBlade },
   ],
 } as CharacterRecommendations;

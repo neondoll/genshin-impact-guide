@@ -1,4 +1,4 @@
-export const ElementUidEnum = {
+export const ElementKeys = {
   /* Анемо   */ Anemo: "anemo",
   /* Крио    */ Cryo: "cryo",
   /* Дендро  */ Dendro: "dendro",

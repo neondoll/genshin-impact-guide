@@ -1,21 +1,21 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.FlowerOfParadiseLost,
+  artifact_set_key: ArtifactSetKeys.FlowerOfParadiseLost,
   characters: [
-    { uid: CharacterUidEnum.KukiShinobu, is_better: true },
-    { uid: CharacterUidEnum.Nilou, is_better: true },
-    { uid: CharacterUidEnum.RaidenShogun, is_better: true },
+    { key: CharacterKeys.KukiShinobu, is_better: true },
+    { key: CharacterKeys.Nilou, is_better: true },
+    { key: CharacterKeys.RaidenShogun, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage],
-    additional: [AttributeUidEnum.ElementalMastery, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ElementalMastery, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [StatKeys.ElementalMastery, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: [StatKeys.ElementalMastery, StatKeys.HPPercentage],
+    additional: [StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HPPercentage],
   },
   video_sources: [
     {

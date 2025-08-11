@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Paths from "@/constants/paths";
-import { backgroundClassByQuality } from "@/lib/quality";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, publicImageSrc } from "@/lib/utils";
 import { getCharacter, sortCharacters } from "@/database";
@@ -20,7 +20,7 @@ export default function CharacterRecommendations({ recommendations }: CharacterR
 
   useEffect(() => {
     setCharacterRecommendations(recommendations.map((recommendation) => {
-      return { character: getCharacter(recommendation.uid), recommendation };
+      return { character: getCharacter(recommendation.key), recommendation };
     }).sort((a, b) => {
       return sortCharacters(a.character, b.character);
     }));
@@ -43,7 +43,7 @@ export default function CharacterRecommendations({ recommendations }: CharacterR
       </TableHeader>
       <TableBody>
         {characterRecommendations.map(item => (
-          <TableRow className="hover:bg-inherit" key={item.character.uid}>
+          <TableRow className="hover:bg-inherit" key={item.character.key}>
             {hasIsBetter && (
               <TableCell className="w-16">
                 {item.recommendation.is_better && (
@@ -64,12 +64,12 @@ export default function CharacterRecommendations({ recommendations }: CharacterR
                 )}
                 variant="secondary"
               >
-                <Link to={Paths.Character.to(item.character.uid)}>
+                <Link to={Paths.Character.to(item.character.key)}>
                   <img
                     alt={item.character.name}
                     className={cn(
                       "shrink-0 size-12 rounded-md rounded-br-2xl",
-                      backgroundClassByQuality(item.character.quality),
+                      backgroundClassByRarity(item.character.rarity),
                     )}
                     src={item.character.image_src}
                   />

@@ -1,16 +1,16 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.FragmentOfHarmonicWhimsy,
+        key: ArtifactSetKeys.FragmentOfHarmonicWhimsy,
         is_better: true,
         notes: [
           "Лучший вариант для Арлекино, так как повышает важную силу атаки и наносимый урон.",
@@ -18,76 +18,73 @@ export default {
         ],
       },
       {
-        uid: ArtifactSetUidEnum.GladiatorsFinale,
+        key: ArtifactSetKeys.GladiatorsFinale,
         notes: [
           "Арлекино использует древковое оружие и наносит урон преимущественно обычными атаками, поэтому ей подходит бонус 4 предметов.",
         ],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.ATKPercentage },
-        { uid: AttributeUidEnum.ElementalMastery },
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.ATKPercentage }, { key: StatKeys.ElementalMastery }],
+      [ArtifactSlotKeys.GobletOfEonothem]: [
+        { key: StatKeys.PyroDMGBonus, notes: ["Лучше"] },
+        { key: StatKeys.ATKPercentage },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PyroDMGBonus, notes: ["Лучше"] },
-        { uid: AttributeUidEnum.ATKPercentage },
-      ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CRITDMG }, { uid: AttributeUidEnum.CRITRate }],
+      [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.CRITDMG }, { key: StatKeys.CRITRate }],
       additional: [
-        { uid: AttributeUidEnum.CRITRate, notes: ["Приоритетно", "от 65%"] },
-        { uid: AttributeUidEnum.CRITDMG, notes: ["Приоритетно", "от 150%"] },
-        { uid: AttributeUidEnum.ATKPercentage, notes: ["от 2000"] },
-        { uid: AttributeUidEnum.ElementalMastery, notes: ["от 150 (если Арлекино активирует реакции)"] },
-        { uid: AttributeUidEnum.EnergyRecharge, notes: ["Специально не собирать"] },
+        { key: StatKeys.CRITRate, notes: ["Приоритетно", "от 65%"] },
+        { key: StatKeys.CRITDMG, notes: ["Приоритетно", "от 150%"] },
+        { key: StatKeys.ATKPercentage, notes: ["от 2000"] },
+        { key: StatKeys.ElementalMastery, notes: ["от 150 (если Арлекино активирует реакции)"] },
+        { key: StatKeys.EnergyRecharge, notes: ["Специально не собирать"] },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Arlecchino,
+  character_key: CharacterKeys.Arlecchino,
   first_constellation_or_signature_weapon: "С1 и Сигна",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(6 | 8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(6 | 8)" },
+    { key: TalentKeys.NormalAttack, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.ElementalSkill, priority: "По необходимости\n(6 | 8)" },
+    { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(6 | 8)" },
   ],
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
   ],
   weapons: {
     "Гиперкери | Прожарка | отр. Шеврёз": [
-      { uid: WeaponUidEnum.CrimsonMoonsSemblance, is_better: true, percent: 1.316 },
-      { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.124 },
-      { uid: WeaponUidEnum.StaffOfTheScarletSands, percent: 1.112 },
-      { uid: WeaponUidEnum.LumidouceElegy, percent: 1.103 },
-      { uid: WeaponUidEnum.Deathmatch, refinement: 5, percent: 1.087 },
-      { uid: WeaponUidEnum.StaffOfHoma, percent: 1.085 },
-      { uid: WeaponUidEnum.CalamityQueller, percent: 1.063 },
-      { uid: WeaponUidEnum.Deathmatch, refinement: 1, percent: 1.032 },
-      { uid: WeaponUidEnum.WhiteTassel, percent: 1 },
-      { uid: WeaponUidEnum.BalladOfTheFjords, percent: 0.968 },
-      { uid: WeaponUidEnum.SkywardSpine, percent: 0.948 },
-      { uid: WeaponUidEnum.BlackcliffPole, percent: 0.899 },
-      { uid: WeaponUidEnum.MissiveWindspear, percent: 0.875 },
+      { key: WeaponKeys.CrimsonMoonsSemblance, is_better: true, percent: 1.316 },
+      { key: WeaponKeys.PrimordialJadeWingedSpear, percent: 1.124 },
+      { key: WeaponKeys.StaffOfTheScarletSands, percent: 1.112 },
+      { key: WeaponKeys.LumidouceElegy, percent: 1.103 },
+      { key: WeaponKeys.Deathmatch, refinement: 5, percent: 1.087 },
+      { key: WeaponKeys.StaffOfHoma, percent: 1.085 },
+      { key: WeaponKeys.CalamityQueller, percent: 1.063 },
+      { key: WeaponKeys.Deathmatch, refinement: 1, percent: 1.032 },
+      { key: WeaponKeys.WhiteTassel, percent: 1 },
+      { key: WeaponKeys.BalladOfTheFjords, percent: 0.968 },
+      { key: WeaponKeys.SkywardSpine, percent: 0.948 },
+      { key: WeaponKeys.BlackcliffPole, percent: 0.899 },
+      { key: WeaponKeys.MissiveWindspear, percent: 0.875 },
     ],
     "Пар | Таяние": [
-      { uid: WeaponUidEnum.CrimsonMoonsSemblance, is_better: true, percent: 1.309 },
-      { uid: WeaponUidEnum.StaffOfTheScarletSands, percent: 1.156 },
-      { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.114 },
-      { uid: WeaponUidEnum.Deathmatch, refinement: 5, percent: 1.105 },
-      { uid: WeaponUidEnum.LumidouceElegy, percent: 1.103 },
-      { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 5, percent: 1.098 },
-      { uid: WeaponUidEnum.StaffOfHoma, percent: 1.086 },
-      { uid: WeaponUidEnum.CalamityQueller, percent: 1.062 },
-      { uid: WeaponUidEnum.VortexVanquisher, percent: 1.044 },
-      { uid: WeaponUidEnum.LithicSpear, refinement: 5, percent: 1.043 },
-      { uid: WeaponUidEnum.Deathmatch, refinement: 1, percent: 1.043 },
-      { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 1, percent: 1.023 },
-      { uid: WeaponUidEnum.WhiteTassel, percent: 1 },
-      { uid: WeaponUidEnum.MissiveWindspear, percent: 0.99 },
-      { uid: WeaponUidEnum.DragonsBane, percent: 0.965 },
-      { uid: WeaponUidEnum.LithicSpear, refinement: 1, percent: 0.965 },
-      { uid: WeaponUidEnum.SkywardSpine, percent: 0.943 },
-      { uid: WeaponUidEnum.BlackcliffPole, percent: 0.938 },
+      { key: WeaponKeys.CrimsonMoonsSemblance, is_better: true, percent: 1.309 },
+      { key: WeaponKeys.StaffOfTheScarletSands, percent: 1.156 },
+      { key: WeaponKeys.PrimordialJadeWingedSpear, percent: 1.114 },
+      { key: WeaponKeys.Deathmatch, refinement: 5, percent: 1.105 },
+      { key: WeaponKeys.LumidouceElegy, percent: 1.103 },
+      { key: WeaponKeys.BalladOfTheFjords, refinement: 5, percent: 1.098 },
+      { key: WeaponKeys.StaffOfHoma, percent: 1.086 },
+      { key: WeaponKeys.CalamityQueller, percent: 1.062 },
+      { key: WeaponKeys.VortexVanquisher, percent: 1.044 },
+      { key: WeaponKeys.LithicSpear, refinement: 5, percent: 1.043 },
+      { key: WeaponKeys.Deathmatch, refinement: 1, percent: 1.043 },
+      { key: WeaponKeys.BalladOfTheFjords, refinement: 1, percent: 1.023 },
+      { key: WeaponKeys.WhiteTassel, percent: 1 },
+      { key: WeaponKeys.MissiveWindspear, percent: 0.99 },
+      { key: WeaponKeys.DragonsBane, percent: 0.965 },
+      { key: WeaponKeys.LithicSpear, refinement: 1, percent: 0.965 },
+      { key: WeaponKeys.SkywardSpine, percent: 0.943 },
+      { key: WeaponKeys.BlackcliffPole, percent: 0.938 },
     ],
   },
 } as CharacterRecommendations;

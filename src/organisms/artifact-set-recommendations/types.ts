@@ -6,6 +6,6 @@ export type ArtifactSetRecommendationsProps = {
 export type CharacterRecommendationsProps = {
   recommendations: ArtifactSetRecommendationsProps["recommendations"]["characters"];
 };
-export type PreferredAttributesRecommendationsProps = {
-  recommendations: ArtifactSetRecommendationsProps["recommendations"]["preferred_attributes"];
+export type PreferredStatsRecommendationsProps = {
+  recommendations: ArtifactSetRecommendationsProps["recommendations"]["preferred_stats"];
 };

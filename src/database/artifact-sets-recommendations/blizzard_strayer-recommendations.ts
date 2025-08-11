@@ -1,29 +1,29 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { artifactSetByUid, AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { artifactSetByKey, StatsCrit, StatsElementDamageBonus } from "./help";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.BlizzardStrayer,
+  artifact_set_key: ArtifactSetKeys.BlizzardStrayer,
   characters: [
     {
-      uid: CharacterUidEnum.Ganyu,
-      notes: `Является персонажем, наносящим основной Крио урон в команде, поэтому ей подойдут бонусы как 2 предметов, так и полного комплекта. Полный комплект лучше всего подходят для игры через Заморозку, а 2 предмета комплекта можно использовать в других случаях и сочетать с 2 предметами ${artifactSetByUid(ArtifactSetUidEnum.GladiatorsFinale)} или аналогами.`,
+      key: CharacterKeys.Ganyu,
+      notes: `Является персонажем, наносящим основной Крио урон в команде, поэтому ей подойдут бонусы как 2 предметов, так и полного комплекта. Полный комплект лучше всего подходят для игры через Заморозку, а 2 предмета комплекта можно использовать в других случаях и сочетать с 2 предметами ${artifactSetByKey(ArtifactSetKeys.GladiatorsFinale)} или аналогами.`,
     },
     {
-      uid: CharacterUidEnum.KamisatoAyaka,
+      key: CharacterKeys.KamisatoAyaka,
       is_better: true,
-      notes: `Является персонажем, наносящим основной Крио урон в команде, поэтому ей подойдут бонусы как 2 предметов, так и полного комплекта. Полный комплект лучше всего подходит для игры через Заморозку, а 2 предмета комплекта можно использовать в любом другом случае и сочетать с 2 предметами ${artifactSetByUid(ArtifactSetUidEnum.GladiatorsFinale)} или аналогами.`,
+      notes: `Является персонажем, наносящим основной Крио урон в команде, поэтому ей подойдут бонусы как 2 предметов, так и полного комплекта. Полный комплект лучше всего подходит для игры через Заморозку, а 2 предмета комплекта можно использовать в любом другом случае и сочетать с 2 предметами ${artifactSetByKey(ArtifactSetKeys.GladiatorsFinale)} или аналогами.`,
     },
-    { uid: CharacterUidEnum.Wriothesley },
+    { key: CharacterKeys.Wriothesley },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

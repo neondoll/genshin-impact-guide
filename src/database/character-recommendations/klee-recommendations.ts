@@ -1,15 +1,15 @@
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { CharacterKeys } from "../enums/character";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
-  character_uid: CharacterUidEnum.Klee,
+  character_key: CharacterKeys.Klee,
   first_constellation_or_signature_weapon: "С1",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.ElementalSkill, priority: "По необходимости\n(10)" },
+    { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(10)" },
   ],
   video_sources: [
     {
@@ -23,8 +23,8 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.LostPrayerToTheSacredWinds, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.ThrillingTalesOfDragonSlayers, refinement: 5, is_better: true },
-    { uid: WeaponUidEnum.TheWidsith, refinement: 5 },
+    { key: WeaponKeys.LostPrayerToTheSacredWinds, refinement: 1, is_better: true },
+    { key: WeaponKeys.ThrillingTalesOfDragonSlayers, refinement: 5, is_better: true },
+    { key: WeaponKeys.TheWidsith, refinement: 5 },
   ],
 } as CharacterRecommendations;

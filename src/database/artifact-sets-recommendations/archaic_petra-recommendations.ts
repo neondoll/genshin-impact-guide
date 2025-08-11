@@ -1,29 +1,24 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.ArchaicPetra,
+  artifact_set_key: ArtifactSetKeys.ArchaicPetra,
   characters: [
-    { uid: CharacterUidEnum.Albedo },
-    { uid: CharacterUidEnum.Ningguang, is_better: true },
-    { uid: CharacterUidEnum.Noelle, is_better: true },
-    { uid: CharacterUidEnum.YunJin },
-    { uid: CharacterUidEnum.Zhongli, is_better: true },
+    { key: CharacterKeys.Albedo },
+    { key: CharacterKeys.Ningguang, is_better: true },
+    { key: CharacterKeys.Noelle, is_better: true },
+    { key: CharacterKeys.YunJin },
+    { key: CharacterKeys.Zhongli, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.DefensePercent, AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.DefensePercent, AttributeUidEnum.HPPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.HPPercentage],
-    additional: [
-      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
-      AttributeUidEnum.EnergyRecharge,
-    ],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.DefensePercent, StatKeys.EnergyRecharge, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [StatKeys.DefensePercent, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: [...StatsCrit, StatKeys.HPPercentage],
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

@@ -1,43 +1,43 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
-    sets: [{ uid: ArtifactSetUidEnum.EmblemOfSeveredFate }],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.EnergyRecharge, percent: 0.748 },
-        { uid: AttributeUidEnum.ATKPercentage, percent: 0.171 },
-        { uid: AttributeUidEnum.ElementalMastery, percent: 0.055 },
+    sets: [{ key: ArtifactSetKeys.EmblemOfSeveredFate }],
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [
+        { key: StatKeys.EnergyRecharge, percent: 0.748 },
+        { key: StatKeys.ATKPercentage, percent: 0.171 },
+        { key: StatKeys.ElementalMastery, percent: 0.055 },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.PyroDMGBonus, percent: 0.841 },
-        { uid: AttributeUidEnum.ATKPercentage, percent: 0.118 },
-        { uid: AttributeUidEnum.HPPercentage, percent: 0.013 },
+      [ArtifactSlotKeys.GobletOfEonothem]: [
+        { key: StatKeys.PyroDMGBonus, percent: 0.841 },
+        { key: StatKeys.ATKPercentage, percent: 0.118 },
+        { key: StatKeys.HPPercentage, percent: 0.013 },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CRITRate, percent: 0.642 },
-        { uid: AttributeUidEnum.CRITDMG, percent: 0.291 },
-        { uid: AttributeUidEnum.ATKPercentage, percent: 0.042 },
+      [ArtifactSlotKeys.CircletOfLogos]: [
+        { key: StatKeys.CRITRate, percent: 0.642 },
+        { key: StatKeys.CRITDMG, percent: 0.291 },
+        { key: StatKeys.ATKPercentage, percent: 0.042 },
       ],
       additional: [
-        { uid: AttributeUidEnum.CRITRate, description: "Приоритетно" },
-        { uid: AttributeUidEnum.CRITDMG, description: "Приоритетно" },
-        { uid: AttributeUidEnum.EnergyRecharge },
+        { key: StatKeys.CRITRate, description: "Приоритетно" },
+        { key: StatKeys.CRITDMG, description: "Приоритетно" },
+        { key: StatKeys.EnergyRecharge },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Xiangling,
+  character_key: CharacterKeys.Xiangling,
   required_level: 90,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "Во вторую очередь\n(8)" },
+    { key: TalentKeys.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
@@ -47,8 +47,8 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.EngulfingLightning, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.StaffOfHoma, refinement: 1 },
-    { uid: WeaponUidEnum.StaffOfTheScarletSands, refinement: 1 },
+    { key: WeaponKeys.EngulfingLightning, refinement: 1, is_better: true },
+    { key: WeaponKeys.StaffOfHoma, refinement: 1 },
+    { key: WeaponKeys.StaffOfTheScarletSands, refinement: 1 },
   ],
 } as CharacterRecommendations;

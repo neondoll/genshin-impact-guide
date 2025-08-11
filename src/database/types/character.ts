@@ -1,23 +1,23 @@
-import { CharacterUidEnum } from "../enums/character";
-import type { ArtifactSetUid } from "./artifact-set";
-import type { CharacterRoleUid } from "./character-role";
-import type { ElementUid } from "./element";
-import type { QualityUid } from "./quality";
-import type { WeaponTypeUid } from "./weapon-type";
-import type { WeaponUid } from "./weapon";
+import { CharacterKeys } from "../enums/character";
+import type { ArtifactSetKey } from "./artifact-set";
+import type { CharacterRoleKey } from "./character-role";
+import type { ElementKey } from "./element";
+import type { Rarity } from "./rarity";
+import type { WeaponKey } from "./weapon";
+import type { WeaponTypeKey } from "./weapon-type";
 
 type CharacterArkhe = "Усия" | "Пневма";
 
 export type Character = {
-  uid: CharacterUid;
+  key: CharacterKey;
   /* Имя      */ name: string;
-  /* Качество */ quality: QualityUid;
-  /* Оружие   */ weapon_type_uid: WeaponTypeUid;
-  /* Элемент  */ element_uid: ElementUid;
+  /* Редкость */ rarity: Rarity;
+  /* Оружие   */ weapon_type_key: WeaponTypeKey;
+  /* Элемент  */ element_key: ElementKey;
   /* Архэ     */ arkhe?: CharacterArkhe | CharacterArkhe[];
-  /* Роли     */ roles_uid?: CharacterRoleUid[];
-  signature_artifact_set_uid?: ArtifactSetUid;
-  signature_weapon_uid?: WeaponUid;
+  /* Роли     */ roles_key?: CharacterRoleKey[];
+  signature_artifact_set_key?: ArtifactSetKey;
+  signature_weapon_key?: WeaponKey;
   image_src: string;
 };
-export type CharacterUid = typeof CharacterUidEnum[keyof typeof CharacterUidEnum];
+export type CharacterKey = typeof CharacterKeys[keyof typeof CharacterKeys];

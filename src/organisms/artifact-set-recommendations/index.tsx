@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from "lucide-react";
 
 import CharacterRecommendations from "./character-recommendations";
-import PreferredAttributesRecommendations from "./preferred-attributes-recommendations";
+import PreferredStatsRecommendations from "./preferred-stats-recommendations";
 import VideoSources from "../video-sources";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import type { ArtifactSetRecommendationsProps } from "./types";
 
 export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
-  const showAccordion = recommendations.characters !== undefined || recommendations.preferred_attributes !== undefined || recommendations.video_sources !== undefined;
+  const showAccordion = recommendations.characters !== undefined || recommendations.preferred_stats !== undefined || recommendations.video_sources !== undefined;
 
   return (
     <Collapsible className="space-y-2 md:space-y-4" defaultOpen>
@@ -34,13 +34,13 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
                   </AccordionContent>
                 </AccordionItem>
               )}
-              {recommendations.preferred_attributes !== undefined && (
-                <AccordionItem value="preferred_attributes">
+              {recommendations.preferred_stats !== undefined && (
+                <AccordionItem value="preferred_stats">
                   <AccordionTrigger className="px-6">
                     Рекомендации по предпочтительным характеристикам
                   </AccordionTrigger>
                   <AccordionContent className="px-6">
-                    <PreferredAttributesRecommendations recommendations={recommendations.preferred_attributes} />
+                    <PreferredStatsRecommendations recommendations={recommendations.preferred_stats} />
                   </AccordionContent>
                 </AccordionItem>
               )}

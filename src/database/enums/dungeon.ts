@@ -1,4 +1,4 @@
-export const DungeonUidEnum = {
+export const DungeonKeys = {
   /* Город золота                 */ CityOfGold: "city_of_gold",
   /* Чистая вода и горная пещера  */ ClearPoolAndMountainCavern: "clear_pool_and_mountain_cavern",
   /* Конец греха                  */ DenouementOfSin: "denouement_of_sin",

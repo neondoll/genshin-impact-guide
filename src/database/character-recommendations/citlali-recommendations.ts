@@ -1,19 +1,19 @@
 import artifactSets from "../artifact-sets";
 import characters from "../characters";
 import weapons from "../weapons";
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity,
+        key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity,
         is_better: true,
         notes: [
           "Лучший набор для Ситлали, так как восстановит ей энергию и увеличит элементальный урон основного персонажа.",
@@ -21,46 +21,49 @@ export default {
         ],
       },
       {
-        uid: ArtifactSetUidEnum.TenacityOfTheMillelith,
+        key: ArtifactSetKeys.TenacityOfTheMillelith,
         notes: [
           "Бонус 2 предметов не важен Ситлали, но бонус 4 предметов увеличит прочность щита и атаку других персонажей в отряде.",
         ],
       },
       {
-        uid: ArtifactSetUidEnum.NoblesseOblige,
+        key: ArtifactSetKeys.NoblesseOblige,
         notes: [
           "Увеличивает урон от взрыва стихии Ситлали и увеличивает силу атаки другим членам отряда.",
           "Рекомендуется, если никто другой в отряде не носит данный комплект.",
         ],
       },
       {
-        uid: ArtifactSetUidEnum.Instructor,
+        key: ArtifactSetKeys.Instructor,
         notes: [
           "Хоть данный комплект не бывает 5★, он повышает мастерство стихий как самой Ситлали, так и всем членам отряда.",
         ],
       },
       {
-        uid: ArtifactSetUidEnum.ArchaicPetra,
-        notes: [`Если в отряде есть ${characters[CharacterUidEnum.Xilonen].name}`, "Носитель должен подбирать осколок"],
+        key: ArtifactSetKeys.ArchaicPetra,
+        notes: [`Если в отряде есть ${characters[CharacterKeys.Xilonen].name}`, "Носитель должен подбирать осколок"],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.EnergyRecharge, notes: ["в 99% случаев"] },
-        { uid: AttributeUidEnum.ElementalMastery },
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [
+        { key: StatKeys.EnergyRecharge, notes: ["в 99% случаев"] },
+        { key: StatKeys.ElementalMastery },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.ElementalMastery }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.ElementalMastery, notes: ["всегда"] },
-        { uid: AttributeUidEnum.CRITRate, notes: [`можно рассмотреть, если в руках ${weapons[WeaponUidEnum.FavoniusCodex].name}`] },
+      [ArtifactSlotKeys.GobletOfEonothem]: [{ key: StatKeys.ElementalMastery }],
+      [ArtifactSlotKeys.CircletOfLogos]: [
+        { key: StatKeys.ElementalMastery, notes: ["всегда"] },
+        {
+          key: StatKeys.CRITRate,
+          notes: [`можно рассмотреть, если в руках ${weapons[WeaponKeys.FavoniusCodex].name}`],
+        },
       ],
       additional: [
-        { uid: AttributeUidEnum.EnergyRecharge, notes: ["приоритетно", "от 170%"] },
-        { uid: AttributeUidEnum.ElementalMastery, notes: ["от 800"] },
+        { key: StatKeys.EnergyRecharge, notes: ["приоритетно", "от 170%"] },
+        { key: StatKeys.ElementalMastery, notes: ["от 800"] },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Citlali,
+  character_key: CharacterKeys.Citlali,
   first_constellation_or_signature_weapon: "C1 < Сигна < C2",
   key_constellations: [2],
   reference_point: [
@@ -71,14 +74,14 @@ export default {
     ["МС", "342"],
     ["Крит. шанс", "59.2%"],
     ["Крит. урон", "122.8%"],
-    ["Оружие", weapons[WeaponUidEnum.ThrillingTalesOfDragonSlayers].name],
-    ["Набор артефактов", artifactSets[ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity].name],
+    ["Оружие", weapons[WeaponKeys.ThrillingTalesOfDragonSlayers].name],
+    ["Набор артефактов", artifactSets[ArtifactSetKeys.ScrollOfTheHeroOfCinderCity].name],
   ],
   required_level: 80,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(6-8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(6-8)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "В первую очередь\n(6-8)" },
+    { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(6-8)" },
   ],
   video_sources: [
     {
@@ -87,11 +90,11 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.StarcallersWatch, is_better: true },
-    { uid: WeaponUidEnum.FavoniusCodex },
-    { uid: WeaponUidEnum.ThrillingTalesOfDragonSlayers },
-    { uid: WeaponUidEnum.SacrificialFragments },
-    { uid: WeaponUidEnum.PrototypeAmber },
-    { uid: WeaponUidEnum.WanderingEvenstar },
+    { key: WeaponKeys.StarcallersWatch, is_better: true },
+    { key: WeaponKeys.FavoniusCodex },
+    { key: WeaponKeys.ThrillingTalesOfDragonSlayers },
+    { key: WeaponKeys.SacrificialFragments },
+    { key: WeaponKeys.PrototypeAmber },
+    { key: WeaponKeys.WanderingEvenstar },
   ],
 } as CharacterRecommendations;

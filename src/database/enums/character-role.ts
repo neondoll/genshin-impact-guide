@@ -1,4 +1,4 @@
-export const CharacterRoleUidEnum = {
+export const CharacterRoleKeys = {
   /* Урон      */ DPS: "dps",
   /* Вне поля  */ OffField: "off_field",
   /* На поле   */ OnField: "on_field",

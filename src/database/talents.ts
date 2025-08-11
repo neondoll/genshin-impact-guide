@@ -1,45 +1,41 @@
-import { TalentTypeUidEnum, TalentUidEnum } from "./enums/talent";
-import type { Talent, TalentUid } from "./types/talent";
+import { TalentKeys, TalentTypeKeys } from "./enums/talent";
+import type { Talent, TalentKey } from "./types/talent";
 
 export default {
-  [TalentUidEnum.AlternateSprint]: {
-    uid: TalentUidEnum.NormalAttack,
+  [TalentKeys.AlternateSprint]: {
+    key: TalentKeys.NormalAttack,
     name: "Альтернативный спринт",
-    type_uid: TalentTypeUidEnum.Passive,
+    type_key: TalentTypeKeys.Passive,
   },
-  [TalentUidEnum.ElementalBurst]: {
-    uid: TalentUidEnum.ElementalBurst,
+  [TalentKeys.ElementalBurst]: {
+    key: TalentKeys.ElementalBurst,
     name: "Взрыв стихии",
-    type_uid: TalentTypeUidEnum.Combat,
+    type_key: TalentTypeKeys.Combat,
   },
-  [TalentUidEnum.ElementalSkill]: {
-    uid: TalentUidEnum.ElementalSkill,
+  [TalentKeys.ElementalSkill]: {
+    key: TalentKeys.ElementalSkill,
     name: "Элементальный навык",
-    type_uid: TalentTypeUidEnum.Combat,
+    type_key: TalentTypeKeys.Combat,
   },
-  [TalentUidEnum.FirstAscensionPassive]: {
-    uid: TalentUidEnum.FirstAscensionPassive,
+  [TalentKeys.FirstAscensionPassive]: {
+    key: TalentKeys.FirstAscensionPassive,
     name: "1-е пассивное вознесение",
-    type_uid: TalentTypeUidEnum.Ascension,
+    type_key: TalentTypeKeys.Ascension,
   },
-  [TalentUidEnum.FourthAscensionPassive]: {
-    uid: TalentUidEnum.FourthAscensionPassive,
+  [TalentKeys.FourthAscensionPassive]: {
+    key: TalentKeys.FourthAscensionPassive,
     name: "4-е пассивное вознесение",
-    type_uid: TalentTypeUidEnum.Ascension,
+    type_key: TalentTypeKeys.Ascension,
   },
-  [TalentUidEnum.NightRealmsGiftPassive]: {
-    uid: TalentUidEnum.NightRealmsGiftPassive,
+  [TalentKeys.NightRealmsGiftPassive]: {
+    key: TalentKeys.NightRealmsGiftPassive,
     name: "Дар Ночного царства пассивен",
-    type_uid: TalentTypeUidEnum.Passive,
+    type_key: TalentTypeKeys.Passive,
   },
-  [TalentUidEnum.NormalAttack]: {
-    uid: TalentUidEnum.NormalAttack,
-    name: "Обычная атака",
-    type_uid: TalentTypeUidEnum.Combat,
-  },
-  [TalentUidEnum.UtilityPassive]: {
-    uid: TalentUidEnum.UtilityPassive,
+  [TalentKeys.NormalAttack]: { key: TalentKeys.NormalAttack, name: "Обычная атака", type_key: TalentTypeKeys.Combat },
+  [TalentKeys.UtilityPassive]: {
+    key: TalentKeys.UtilityPassive,
     name: "Полезность Пассивная",
-    type_uid: TalentTypeUidEnum.Passive,
+    type_key: TalentTypeKeys.Passive,
   },
-} as Record<TalentUid, Talent>;
+} as Record<TalentKey, Talent>;

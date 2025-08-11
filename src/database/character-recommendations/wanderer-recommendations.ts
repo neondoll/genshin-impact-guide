@@ -1,16 +1,16 @@
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import weapons from "../weapons";
+import { CharacterKeys } from "../enums/character";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
-import weapons from "@/database/weapons.ts";
 
 export default {
-  character_uid: CharacterUidEnum.Wanderer,
-  first_constellation_or_signature_weapon: `С1 если ${weapons[WeaponUidEnum.TheWidsith].name} R5 | Сигна если ${weapons[WeaponUidEnum.TheWidsith].name} не R5`,
+  character_key: CharacterKeys.Wanderer,
+  first_constellation_or_signature_weapon: `С1 если ${weapons[WeaponKeys.TheWidsith].name} R5 | Сигна если ${weapons[WeaponKeys.TheWidsith].name} не R5`,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "В первую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "По необходимости\n(8)" },
+    { key: TalentKeys.NormalAttack, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.ElementalSkill, priority: "Во вторую очередь\n(10)" },
+    { key: TalentKeys.ElementalBurst, priority: "По необходимости\n(8)" },
   ],
   video_sources: [
     {
@@ -24,8 +24,8 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.TulaytullahsRemembrance, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.TheWidsith, refinement: 5 },
-    { uid: WeaponUidEnum.FlowingPurity, refinement: 5 },
+    { key: WeaponKeys.TulaytullahsRemembrance, refinement: 1, is_better: true },
+    { key: WeaponKeys.TheWidsith, refinement: 5 },
+    { key: WeaponKeys.FlowingPurity, refinement: 5 },
   ],
 } as CharacterRecommendations;

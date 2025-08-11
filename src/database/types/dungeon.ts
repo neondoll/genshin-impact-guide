@@ -1,5 +1,5 @@
-import { DungeonUidEnum } from "../enums/dungeon";
-import type { ArtifactSetUid } from "./artifact-set";
+import { DungeonKeys } from "../enums/dungeon";
+import type { ArtifactSetKey } from "./artifact-set";
 
-export type Dungeon = { uid: DungeonUid; name: string; artifact_set_uids: ArtifactSetUid[] };
-export type DungeonUid = typeof DungeonUidEnum[keyof typeof DungeonUidEnum];
+export type Dungeon = { key: DungeonKey; name: string; artifact_set_keys: ArtifactSetKey[] };
+export type DungeonKey = typeof DungeonKeys[keyof typeof DungeonKeys];

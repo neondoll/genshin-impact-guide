@@ -1,6 +1,6 @@
 import weaponTypes from "./weapon-types";
-import { WeaponTypeUidEnum } from "./enums/weapon-type";
-import { WeaponUidEnum } from "./enums/weapon";
+import { WeaponKeys } from "./enums/weapon";
+import { WeaponTypeKeys } from "./enums/weapon-type";
 import type { TierListWeapons } from "./types/tier-list-weapons";
 
 export default {
@@ -8,23 +8,21 @@ export default {
     list: [
       {
         tier: "Могут быть полезны",
-        weapon_uids: [
-          WeaponUidEnum.EarthShaker, WeaponUidEnum.FinaleOfTheDeep, WeaponUidEnum.FlowingPurity,
-          WeaponUidEnum.FluteOfEzpitzal, WeaponUidEnum.FootprintOfTheRainbow, WeaponUidEnum.IronSting,
-          WeaponUidEnum.KitainCrossSpear, WeaponUidEnum.MappaMare, WeaponUidEnum.PrototypeAmber,
-          WeaponUidEnum.RightfulReward, WeaponUidEnum.RingOfYaxche, WeaponUidEnum.SapwoodBlade,
-          WeaponUidEnum.SongOfStillness, WeaponUidEnum.TidalShadow, WeaponUidEnum.Whiteblind,
+        weapon_keys: [
+          WeaponKeys.EarthShaker, WeaponKeys.FinaleOfTheDeep, WeaponKeys.FlowingPurity, WeaponKeys.FluteOfEzpitzal,
+          WeaponKeys.FootprintOfTheRainbow, WeaponKeys.IronSting, WeaponKeys.KitainCrossSpear, WeaponKeys.MappaMare,
+          WeaponKeys.PrototypeAmber, WeaponKeys.RightfulReward, WeaponKeys.RingOfYaxche, WeaponKeys.SapwoodBlade,
+          WeaponKeys.SongOfStillness, WeaponKeys.TidalShadow, WeaponKeys.Whiteblind,
         ],
       },
       {
         tier: "Трата ресурсов",
-        weapon_uids: [
-          WeaponUidEnum.AmenomaKageuchi, WeaponUidEnum.ChainBreaker, WeaponUidEnum.CompoundBow,
-          WeaponUidEnum.CrescentPike, WeaponUidEnum.DragonspineSpear, WeaponUidEnum.ForestRegalia,
-          WeaponUidEnum.Frostbearer, WeaponUidEnum.FruitOfFulfillment, WeaponUidEnum.HakushinRing,
-          WeaponUidEnum.Hamayumi, WeaponUidEnum.KatsuragikiriNagamasa, WeaponUidEnum.KingsSquire,
-          WeaponUidEnum.Moonpiercer, WeaponUidEnum.PrototypeArchaic, WeaponUidEnum.PrototypeCrescent,
-          WeaponUidEnum.PrototypeRancour, WeaponUidEnum.PrototypeStarglitter, WeaponUidEnum.SnowTombedStarsilver,
+        weapon_keys: [
+          WeaponKeys.AmenomaKageuchi, WeaponKeys.ChainBreaker, WeaponKeys.CompoundBow, WeaponKeys.CrescentPike,
+          WeaponKeys.DragonspineSpear, WeaponKeys.ForestRegalia, WeaponKeys.Frostbearer, WeaponKeys.FruitOfFulfillment,
+          WeaponKeys.HakushinRing, WeaponKeys.Hamayumi, WeaponKeys.KatsuragikiriNagamasa, WeaponKeys.KingsSquire,
+          WeaponKeys.Moonpiercer, WeaponKeys.PrototypeArchaic, WeaponKeys.PrototypeCrescent,
+          WeaponKeys.PrototypeRancour, WeaponKeys.PrototypeStarglitter, WeaponKeys.SnowTombedStarsilver,
         ],
       },
     ],
@@ -33,58 +31,57 @@ export default {
       youtube_url: "https://youtu.be/CU-BxsNF-qw",
     },
   },
-  [weaponTypes[WeaponTypeUidEnum.Catalyst].name]: {
+  [weaponTypes[WeaponTypeKeys.Catalyst].name]: {
     list: [
       {
         tier: "S",
         description: "Лучшие",
-        weapon_uids: [
-          WeaponUidEnum.LostPrayerToTheSacredWinds, WeaponUidEnum.StarcallersWatch, WeaponUidEnum.SurfsUp,
-          WeaponUidEnum.TomeOfTheEternalFlow, WeaponUidEnum.VividNotions,
+        weapon_keys: [
+          WeaponKeys.LostPrayerToTheSacredWinds, WeaponKeys.StarcallersWatch, WeaponKeys.SurfsUp,
+          WeaponKeys.TomeOfTheEternalFlow, WeaponKeys.VividNotions,
         ],
       },
       {
         tier: "A",
         description: "Хорошие",
-        weapon_uids: [
-          WeaponUidEnum.AThousandFloatingDreams, WeaponUidEnum.CashflowSupervision, WeaponUidEnum.CranesEchoingCall,
-          WeaponUidEnum.KagurasVerity, WeaponUidEnum.TheWidsith, WeaponUidEnum.ThrillingTalesOfDragonSlayers,
-          WeaponUidEnum.TulaytullahsRemembrance,
+        weapon_keys: [
+          WeaponKeys.AThousandFloatingDreams, WeaponKeys.CashflowSupervision, WeaponKeys.CranesEchoingCall,
+          WeaponKeys.KagurasVerity, WeaponKeys.TheWidsith, WeaponKeys.ThrillingTalesOfDragonSlayers,
+          WeaponKeys.TulaytullahsRemembrance,
         ],
       },
       {
         tier: "B",
         description: "Опциональные",
-        weapon_uids: [
-          WeaponUidEnum.FavoniusCodex, WeaponUidEnum.FlowingPurity, WeaponUidEnum.PrototypeAmber,
-          WeaponUidEnum.RingOfYaxche, WeaponUidEnum.SacrificialFragments, WeaponUidEnum.SacrificialJade,
-          WeaponUidEnum.SkywardAtlas, WeaponUidEnum.WanderingEvenstar,
+        weapon_keys: [
+          WeaponKeys.FavoniusCodex, WeaponKeys.FlowingPurity, WeaponKeys.PrototypeAmber, WeaponKeys.RingOfYaxche,
+          WeaponKeys.SacrificialFragments, WeaponKeys.SacrificialJade, WeaponKeys.SkywardAtlas,
+          WeaponKeys.WanderingEvenstar,
         ],
       },
       {
         tier: "C",
         description: "Если нет вариантов лучше",
-        weapon_uids: [
-          WeaponUidEnum.AshGravenDrinkingHorn, WeaponUidEnum.BlackcliffAgate, WeaponUidEnum.EverlastingMoonglow,
-          WeaponUidEnum.HakushinRing, WeaponUidEnum.JadefallsSplendor, WeaponUidEnum.MemoryOfDust,
-          WeaponUidEnum.OathswornEye, WeaponUidEnum.SolarPearl, WeaponUidEnum.SunnyMorningSleepIn,
+        weapon_keys: [
+          WeaponKeys.AshGravenDrinkingHorn, WeaponKeys.BlackcliffAgate, WeaponKeys.EverlastingMoonglow,
+          WeaponKeys.HakushinRing, WeaponKeys.JadefallsSplendor, WeaponKeys.MemoryOfDust, WeaponKeys.OathswornEye,
+          WeaponKeys.SolarPearl, WeaponKeys.SunnyMorningSleepIn,
         ],
       },
       {
         tier: "D",
         description: "На крайний случай",
-        weapon_uids: [
-          WeaponUidEnum.BalladOfTheBoundlessBlue, WeaponUidEnum.DodocoTales, WeaponUidEnum.MagicGuide,
-          WeaponUidEnum.MappaMare, WeaponUidEnum.WineAndSong,
+        weapon_keys: [
+          WeaponKeys.BalladOfTheBoundlessBlue, WeaponKeys.DodocoTales, WeaponKeys.MagicGkeye, WeaponKeys.MappaMare,
+          WeaponKeys.WineAndSong,
         ],
       },
       {
         tier: "F",
         description: "Худшие",
-        weapon_uids: [
-          WeaponUidEnum.EmeraldOrb, WeaponUidEnum.EyeOfPerception, WeaponUidEnum.Frostbearer,
-          WeaponUidEnum.FruitOfFulfillment, WeaponUidEnum.OtherworldlyStory, WeaponUidEnum.RoyalGrimoire,
-          WeaponUidEnum.TwinNephrite, WeaponUidEnum.WaveridingWhirl,
+        weapon_keys: [
+          WeaponKeys.EmeraldOrb, WeaponKeys.EyeOfPerception, WeaponKeys.Frostbearer, WeaponKeys.FruitOfFulfillment,
+          WeaponKeys.OtherworldlyStory, WeaponKeys.RoyalGrimoire, WeaponKeys.TwinNephrite, WeaponKeys.WaveridingWhirl,
         ],
       },
     ],
@@ -93,50 +90,48 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239231",
     },
   },
-  [weaponTypes[WeaponTypeUidEnum.Bow].name]: {
+  [weaponTypes[WeaponTypeKeys.Bow].name]: {
     list: [
       {
         tier: "S",
         description: "Лучшие",
-        weapon_uids: [
-          WeaponUidEnum.AquaSimulacra, WeaponUidEnum.ElegyForTheEnd, WeaponUidEnum.FavoniusWarbow,
-          WeaponUidEnum.SkywardHarp,
+        weapon_keys: [
+          WeaponKeys.AquaSimulacra, WeaponKeys.ElegyForTheEnd, WeaponKeys.FavoniusWarbow, WeaponKeys.SkywardHarp,
         ],
       },
       {
         tier: "A",
         description: "Отличные",
-        weapon_uids: [
-          WeaponUidEnum.AstralVulturesCrimsonPlumage, WeaponUidEnum.HuntersPath, WeaponUidEnum.PolarStar,
-          WeaponUidEnum.TheFirstGreatMagic, WeaponUidEnum.ThunderingPulse,
+        weapon_keys: [
+          WeaponKeys.AstralVulturesCrimsonPlumage, WeaponKeys.HuntersPath, WeaponKeys.PolarStar,
+          WeaponKeys.TheFirstGreatMagic, WeaponKeys.ThunderingPulse,
         ],
       },
       {
         tier: "B",
         description: "Хорошие",
-        weapon_uids: [
-          WeaponUidEnum.AlleyHunter, WeaponUidEnum.AmosBow, WeaponUidEnum.BlackcliffWarbow, WeaponUidEnum.ChainBreaker,
-          WeaponUidEnum.FlowerWreathedFeathers, WeaponUidEnum.RangeGauge, WeaponUidEnum.SacrificialBow,
-          WeaponUidEnum.ScionOfTheBlazingSun, WeaponUidEnum.Slingshot, WeaponUidEnum.SongOfStillness,
-          WeaponUidEnum.TheStringless,
+        weapon_keys: [
+          WeaponKeys.AlleyHunter, WeaponKeys.AmosBow, WeaponKeys.BlackcliffWarbow, WeaponKeys.ChainBreaker,
+          WeaponKeys.FlowerWreathedFeathers, WeaponKeys.RangeGauge, WeaponKeys.SacrificialBow,
+          WeaponKeys.ScionOfTheBlazingSun, WeaponKeys.Slingshot, WeaponKeys.SongOfStillness, WeaponKeys.TheStringless,
         ],
       },
       {
         tier: "C",
         description: "Ситуативные",
-        weapon_uids: [
-          WeaponUidEnum.FadingTwilight, WeaponUidEnum.Hamayumi, WeaponUidEnum.IbisPiercer, WeaponUidEnum.MouunsMoon,
-          WeaponUidEnum.PrototypeCrescent, WeaponUidEnum.RecurveBow, WeaponUidEnum.Rust,
-          WeaponUidEnum.SilvershowerHeartstrings, WeaponUidEnum.TheViridescentHunt, WeaponUidEnum.WindblumeOde,
+        weapon_keys: [
+          WeaponKeys.FadingTwilight, WeaponKeys.Hamayumi, WeaponKeys.IbisPiercer, WeaponKeys.MouunsMoon,
+          WeaponKeys.PrototypeCrescent, WeaponKeys.RecurveBow, WeaponKeys.Rust, WeaponKeys.SilvershowerHeartstrings,
+          WeaponKeys.TheViridescentHunt, WeaponKeys.WindblumeOde,
         ],
       },
       {
         tier: "D",
         description: "Плохие",
-        weapon_uids: [
-          WeaponUidEnum.Cloudforged, WeaponUidEnum.CompoundBow, WeaponUidEnum.EndOfTheLine, WeaponUidEnum.KingsSquire,
-          WeaponUidEnum.Messenger, WeaponUidEnum.MitternachtsWaltz, WeaponUidEnum.Predator, WeaponUidEnum.RavenBow,
-          WeaponUidEnum.RoyalBow, WeaponUidEnum.SharpshootersOath,
+        weapon_keys: [
+          WeaponKeys.Cloudforged, WeaponKeys.CompoundBow, WeaponKeys.EndOfTheLine, WeaponKeys.KingsSquire,
+          WeaponKeys.Messenger, WeaponKeys.MitternachtsWaltz, WeaponKeys.Predator, WeaponKeys.RavenBow,
+          WeaponKeys.RoyalBow, WeaponKeys.SharpshootersOath,
         ],
       },
     ],
@@ -145,47 +140,46 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239218",
     },
   },
-  [weaponTypes[WeaponTypeUidEnum.Polearm].name]: {
+  [weaponTypes[WeaponTypeKeys.Polearm].name]: {
     list: [
       {
         tier: "S",
         description: "Лучшие",
-        weapon_uids: [WeaponUidEnum.FavoniusLance, WeaponUidEnum.StaffOfHoma, WeaponUidEnum.StaffOfTheScarletSands],
+        weapon_keys: [WeaponKeys.FavoniusLance, WeaponKeys.StaffOfHoma, WeaponKeys.StaffOfTheScarletSands],
       },
       {
         tier: "A",
         description: "Отличные",
-        weapon_uids: [
-          WeaponUidEnum.CrimsonMoonsSemblance, WeaponUidEnum.EngulfingLightning, WeaponUidEnum.LumidouceElegy,
-          WeaponUidEnum.PrimordialJadeWingedSpear,
+        weapon_keys: [
+          WeaponKeys.CrimsonMoonsSemblance, WeaponKeys.EngulfingLightning, WeaponKeys.LumidouceElegy,
+          WeaponKeys.PrimordialJadeWingedSpear,
         ],
       },
       {
         tier: "B",
         description: "Хорошие",
-        weapon_uids: [
-          WeaponUidEnum.BalladOfTheFjords, WeaponUidEnum.BlackcliffPole, WeaponUidEnum.CalamityQueller,
-          WeaponUidEnum.Deathmatch, WeaponUidEnum.DragonsBane, WeaponUidEnum.SkywardSpine,
-          WeaponUidEnum.TamayurateiNoOhanashi, WeaponUidEnum.TheCatch, WeaponUidEnum.VortexVanquisher,
-          WeaponUidEnum.WavebreakersFin,
+        weapon_keys: [
+          WeaponKeys.BalladOfTheFjords, WeaponKeys.BlackcliffPole, WeaponKeys.CalamityQueller, WeaponKeys.Deathmatch,
+          WeaponKeys.DragonsBane, WeaponKeys.SkywardSpine, WeaponKeys.TamayurateiNoOhanashi, WeaponKeys.TheCatch,
+          WeaponKeys.VortexVanquisher, WeaponKeys.WavebreakersFin,
         ],
       },
       {
         tier: "C",
         description: "Ситуативные",
-        weapon_uids: [
-          WeaponUidEnum.BlackTassel, WeaponUidEnum.DialoguesOfTheDesertSages, WeaponUidEnum.FootprintOfTheRainbow,
-          WeaponUidEnum.LithicSpear, WeaponUidEnum.KitainCrossSpear, WeaponUidEnum.MissiveWindspear,
-          WeaponUidEnum.MountainBracingBolt, WeaponUidEnum.ProspectorsDrill, WeaponUidEnum.RightfulReward,
-          WeaponUidEnum.RoyalSpear, WeaponUidEnum.WhiteTassel,
+        weapon_keys: [
+          WeaponKeys.BlackTassel, WeaponKeys.DialoguesOfTheDesertSages, WeaponKeys.FootprintOfTheRainbow,
+          WeaponKeys.LithicSpear, WeaponKeys.KitainCrossSpear, WeaponKeys.MissiveWindspear,
+          WeaponKeys.MountainBracingBolt, WeaponKeys.ProspectorsDrill, WeaponKeys.RightfulReward, WeaponKeys.RoyalSpear,
+          WeaponKeys.WhiteTassel,
         ],
       },
       {
         tier: "D",
         description: "Плохие",
-        weapon_uids: [
-          WeaponUidEnum.CrescentPike, WeaponUidEnum.DragonspineSpear, WeaponUidEnum.Halberd, WeaponUidEnum.Moonpiercer,
-          WeaponUidEnum.PrototypeStarglitter,
+        weapon_keys: [
+          WeaponKeys.CrescentPike, WeaponKeys.DragonspineSpear, WeaponKeys.Halberd, WeaponKeys.Moonpiercer,
+          WeaponKeys.PrototypeStarglitter,
         ],
       },
     ],
@@ -194,51 +188,48 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239209",
     },
   },
-  [weaponTypes[WeaponTypeUidEnum.Claymore].name]: {
+  [weaponTypes[WeaponTypeKeys.Claymore].name]: {
     list: [
       {
         tier: "S",
         description: "Лучшие",
-        weapon_uids: [
-          WeaponUidEnum.AThousandBlazingSuns, WeaponUidEnum.BeaconOfTheReedSea, WeaponUidEnum.SerpentSpine,
-          WeaponUidEnum.Verdict,
+        weapon_keys: [
+          WeaponKeys.AThousandBlazingSuns, WeaponKeys.BeaconOfTheReedSea, WeaponKeys.SerpentSpine, WeaponKeys.Verdict,
         ],
       },
       {
         tier: "A",
         description: "Хорошие",
-        weapon_uids: [
-          WeaponUidEnum.Akuoumaru, WeaponUidEnum.FangOfTheMountainKing, WeaponUidEnum.FruitfulHook,
-          WeaponUidEnum.RedhornStonethresher, WeaponUidEnum.WolfsGravestone,
+        weapon_keys: [
+          WeaponKeys.Akuoumaru, WeaponKeys.FangOfTheMountainKing, WeaponKeys.FruitfulHook,
+          WeaponKeys.RedhornStonethresher, WeaponKeys.WolfsGravestone,
         ],
       },
       {
         tier: "B",
         description: "Середнячки",
-        weapon_uids: [
-          WeaponUidEnum.BlackcliffSlasher, WeaponUidEnum.EarthShaker, WeaponUidEnum.FavoniusGreatsword,
-          WeaponUidEnum.MailedFlower, WeaponUidEnum.Rainslasher, WeaponUidEnum.SkywardPride,
-          WeaponUidEnum.SongOfBrokenPines, WeaponUidEnum.TheUnforged, WeaponUidEnum.TidalShadow,
-          WeaponUidEnum.UltimateOverlordsMegaMagicSword,
+        weapon_keys: [
+          WeaponKeys.BlackcliffSlasher, WeaponKeys.EarthShaker, WeaponKeys.FavoniusGreatsword, WeaponKeys.MailedFlower,
+          WeaponKeys.Rainslasher, WeaponKeys.SkywardPride, WeaponKeys.SongOfBrokenPines, WeaponKeys.TheUnforged,
+          WeaponKeys.TidalShadow, WeaponKeys.UltimateOverlordsMegaMagicSword,
         ],
       },
       {
         tier: "C",
         description: "Ситуативное оружие",
-        weapon_uids: [
-          WeaponUidEnum.BloodtaintedGreatsword, WeaponUidEnum.KatsuragikiriNagamasa, WeaponUidEnum.LithicBlade,
-          WeaponUidEnum.MakhairaAquamarine, WeaponUidEnum.PortablePowerSaw, WeaponUidEnum.PrototypeArchaic,
-          WeaponUidEnum.Whiteblind,
+        weapon_keys: [
+          WeaponKeys.BloodtaintedGreatsword, WeaponKeys.KatsuragikiriNagamasa, WeaponKeys.LithicBlade,
+          WeaponKeys.MakhairaAquamarine, WeaponKeys.PortablePowerSaw, WeaponKeys.PrototypeArchaic,
+          WeaponKeys.Whiteblind,
         ],
       },
       {
         tier: "D",
         description: "Не рекомендуется к прокачке",
-        weapon_uids: [
-          WeaponUidEnum.DebateClub, WeaponUidEnum.FerrousShadow, WeaponUidEnum.ForestRegalia,
-          WeaponUidEnum.LuxuriousSeaLord, WeaponUidEnum.RoyalGreatsword, WeaponUidEnum.SacrificialGreatsword,
-          WeaponUidEnum.SkyriderGreatsword, WeaponUidEnum.SnowTombedStarsilver, WeaponUidEnum.TalkingStick,
-          WeaponUidEnum.TheBell, WeaponUidEnum.WhiteIronGreatsword,
+        weapon_keys: [
+          WeaponKeys.DebateClub, WeaponKeys.FerrousShadow, WeaponKeys.ForestRegalia, WeaponKeys.LuxuriousSeaLord,
+          WeaponKeys.RoyalGreatsword, WeaponKeys.SacrificialGreatsword, WeaponKeys.SkyriderGreatsword,
+          WeaponKeys.SnowTombedStarsilver, WeaponKeys.TalkingStick, WeaponKeys.TheBell, WeaponKeys.WhiteIronGreatsword,
         ],
       },
     ],
@@ -247,59 +238,56 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239205",
     },
   },
-  [weaponTypes[WeaponTypeUidEnum.Sword].name]: {
+  [weaponTypes[WeaponTypeKeys.Sword].name]: {
     list: [
       {
         tier: "S",
         description: "Лучшее оружие",
-        weapon_uids: [
-          WeaponUidEnum.Absolution, WeaponUidEnum.FavoniusSword, WeaponUidEnum.MistsplitterReforged,
-          WeaponUidEnum.PeakPatrolSong,
+        weapon_keys: [
+          WeaponKeys.Absolution, WeaponKeys.FavoniusSword, WeaponKeys.MistsplitterReforged, WeaponKeys.PeakPatrolSong,
         ],
       },
       {
         tier: "A",
         description: "Хорошее оружие",
-        weapon_uids: [
-          WeaponUidEnum.FreedomSworn, WeaponUidEnum.HaranGeppakuFutsu, WeaponUidEnum.LightOfFoliarIncision,
-          WeaponUidEnum.PrimordialJadeCutter, WeaponUidEnum.SacrificialSword, WeaponUidEnum.SplendorOfTranquilWaters,
-          WeaponUidEnum.UrakuMisugiri, WeaponUidEnum.XiphosMoonlight,
+        weapon_keys: [
+          WeaponKeys.FreedomSworn, WeaponKeys.HaranGeppakuFutsu, WeaponKeys.LightOfFoliarIncision,
+          WeaponKeys.PrimordialJadeCutter, WeaponKeys.SacrificialSword, WeaponKeys.SplendorOfTranquilWaters,
+          WeaponKeys.UrakuMisugiri, WeaponKeys.XiphosMoonlight,
         ],
       },
       {
         tier: "B",
         description: "Опциональное оружие",
-        weapon_uids: [
-          WeaponUidEnum.FesteringDesire, WeaponUidEnum.FleuveCendreFerryman, WeaponUidEnum.IronSting,
-          WeaponUidEnum.KeyOfKhajNisut, WeaponUidEnum.SkywardBlade, WeaponUidEnum.TheBlackSword,
-          WeaponUidEnum.ToukabouShigure, WeaponUidEnum.WolfFang,
+        weapon_keys: [
+          WeaponKeys.FesteringDesire, WeaponKeys.FleuveCendreFerryman, WeaponKeys.IronSting, WeaponKeys.KeyOfKhajNisut,
+          WeaponKeys.SkywardBlade, WeaponKeys.TheBlackSword, WeaponKeys.ToukabouShigure, WeaponKeys.WolfFang,
         ],
       },
       {
         tier: "C",
         description: "Если нет альтернатив",
-        weapon_uids: [
-          WeaponUidEnum.BlackcliffLongsword, WeaponUidEnum.CalamityOfEshu, WeaponUidEnum.FinaleOfTheDeep,
-          WeaponUidEnum.HarbingerOfDawn, WeaponUidEnum.SapwoodBlade, WeaponUidEnum.SturdyBone,
-          WeaponUidEnum.SummitShaper, WeaponUidEnum.TheAlleyFlash, WeaponUidEnum.TheDockhandsAssistant,
+        weapon_keys: [
+          WeaponKeys.BlackcliffLongsword, WeaponKeys.CalamityOfEshu, WeaponKeys.FinaleOfTheDeep,
+          WeaponKeys.HarbingerOfDawn, WeaponKeys.SapwoodBlade, WeaponKeys.SturdyBone, WeaponKeys.SummitShaper,
+          WeaponKeys.TheAlleyFlash, WeaponKeys.TheDockhandsAssistant,
         ],
       },
       {
         tier: "D",
         description: "На крайний случай",
-        weapon_uids: [
-          WeaponUidEnum.AmenomaKageuchi, WeaponUidEnum.AquilaFavonia, WeaponUidEnum.CinnabarSpindle,
-          WeaponUidEnum.FluteOfEzpitzal, WeaponUidEnum.KagotsurubeIsshin, WeaponUidEnum.LionsRoar,
-          WeaponUidEnum.RoyalLongsword, WeaponUidEnum.SwordOfNarzissenkreuz,
+        weapon_keys: [
+          WeaponKeys.AmenomaKageuchi, WeaponKeys.AquilaFavonia, WeaponKeys.CinnabarSpindle, WeaponKeys.FluteOfEzpitzal,
+          WeaponKeys.KagotsurubeIsshin, WeaponKeys.LionsRoar, WeaponKeys.RoyalLongsword,
+          WeaponKeys.SwordOfNarzissenkreuz,
         ],
       },
       {
         tier: "F",
         description: "Худшее оружие",
-        weapon_uids: [
-          WeaponUidEnum.CoolSteel, WeaponUidEnum.DarkIronSword, WeaponUidEnum.FilletBlade,
-          WeaponUidEnum.PrototypeRancour, WeaponUidEnum.SkyriderSword, WeaponUidEnum.SwordOfDescension,
-          WeaponUidEnum.TheFlute, WeaponUidEnum.TravelersHandySword,
+        weapon_keys: [
+          WeaponKeys.CoolSteel, WeaponKeys.DarkIronSword, WeaponKeys.FilletBlade, WeaponKeys.PrototypeRancour,
+          WeaponKeys.SkyriderSword, WeaponKeys.SwordOfDescension, WeaponKeys.TheFlute, WeaponKeys.TravelersHandySword,
         ],
       },
     ],

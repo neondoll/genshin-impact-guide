@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import { backgroundClassByQuality } from "@/lib/quality";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { cn, publicImageSrc } from "@/lib/utils";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
 import { getWeapons, getWeaponTypes } from "@/database";
-import type { QualityUid } from "@/database/types/quality";
-import type { WeaponTypeUid } from "@/database/types/weapon-type";
+import type { Rarity } from "@/database/types/rarity";
+import type { WeaponTypeKey } from "@/database/types/weapon-type";
 
 export type WeaponsLoaderData = {
   weapons: Awaited<ReturnType<typeof getWeapons>>;
@@ -21,27 +21,27 @@ export type WeaponsLoaderData = {
 
 export default function Weapons() {
   const { weapons, weaponTypes } = useLoaderData<WeaponsLoaderData>();
-  const [filterQualities, setFilterQualities] = useState<QualityUid[]>([]);
-  const [filterWeaponTypeUids, setFilterWeaponTypeUids] = useState<WeaponTypeUid[]>([]);
+  const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
+  const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<WeaponTypeKey[]>([]);
   const [filteredWeapons, setFilteredWeapons] = useState<typeof weapons>([]);
-  const [qualities, setQualities] = useState<QualityUid[]>([]);
+  const [rarities, setRarities] = useState<Rarity[]>([]);
 
   useEffect(() => {
-    setQualities(Array.from(new Set(weapons.map(weapon => weapon.quality))).sort((a, b) => b - a));
+    setRarities(Array.from(new Set(weapons.map(weapon => weapon.rarity))).sort((a, b) => b - a));
   }, [weapons]);
   useEffect(() => {
     let filteredWeapons = weapons;
 
-    if (filterQualities.length) {
-      filteredWeapons = filteredWeapons.filter(weapon => filterQualities.includes(weapon.quality));
+    if (filterRarities.length) {
+      filteredWeapons = filteredWeapons.filter(weapon => filterRarities.includes(weapon.rarity));
     }
 
-    if (filterWeaponTypeUids.length) {
-      filteredWeapons = filteredWeapons.filter(weapon => filterWeaponTypeUids.includes(weapon.type_uid));
+    if (filterWeaponTypeKeys.length) {
+      filteredWeapons = filteredWeapons.filter(weapon => filterWeaponTypeKeys.includes(weapon.type_key));
     }
 
     setFilteredWeapons(filteredWeapons);
-  }, [filterQualities, filterWeaponTypeUids, weapons]);
+  }, [filterRarities, filterWeaponTypeKeys, weapons]);
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -70,25 +70,25 @@ export default function Weapons() {
             {Object.values(weaponTypes).map(weaponType => (
               <FilterCheckbox
                 asChild
-                checked={filterWeaponTypeUids.includes(weaponType.uid)}
+                checked={filterWeaponTypeKeys.includes(weaponType.key)}
                 className="p-1 size-8.5 rounded-full"
-                key={weaponType.uid}
+                key={weaponType.key}
                 name="weapon-types"
                 onChange={(event) => {
                   if (event.target.checked) {
-                    if (!filterWeaponTypeUids.includes(weaponType.uid)) {
-                      setFilterWeaponTypeUids(prev => prev.concat([weaponType.uid]));
+                    if (!filterWeaponTypeKeys.includes(weaponType.key)) {
+                      setFilterWeaponTypeKeys(prev => prev.concat([weaponType.key]));
                     }
                   }
                   else {
-                    const index = filterWeaponTypeUids.indexOf(weaponType.uid);
+                    const index = filterWeaponTypeKeys.indexOf(weaponType.key);
 
                     if (index !== -1) {
-                      setFilterWeaponTypeUids(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterWeaponTypeKeys(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
-                value={weaponType.uid}
+                value={weaponType.key}
               >
                 <img alt={weaponType.name} src={weaponType.image_src} />
               </FilterCheckbox>
@@ -97,29 +97,29 @@ export default function Weapons() {
         </FilterGroup>
         <FilterGroup label="Качество">
           <div className="flex flex-wrap gap-3">
-            {qualities.map(quality => (
+            {rarities.map(rarity => (
               <FilterCheckbox
-                checked={filterQualities.includes(quality)}
+                checked={filterRarities.includes(rarity)}
                 className="flex gap-x-0.5 align-center"
-                key={quality}
-                name="qualities"
+                key={rarity}
+                name="rarities"
                 onChange={(event) => {
                   if (event.target.checked) {
-                    if (!filterQualities.includes(quality)) {
-                      setFilterQualities(prev => prev.concat([quality]));
+                    if (!filterRarities.includes(rarity)) {
+                      setFilterRarities(prev => prev.concat([rarity]));
                     }
                   }
                   else {
-                    const index = filterQualities.indexOf(quality);
+                    const index = filterRarities.indexOf(rarity);
 
                     if (index !== -1) {
-                      setFilterQualities(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterRarities(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
-                value={quality}
+                value={rarity}
               >
-                {Array.from({ length: quality }, (_, i) => i).map(index => (
+                {Array.from({ length: rarity }, (_, i) => i).map(index => (
                   <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
                 ))}
               </FilterCheckbox>
@@ -135,14 +135,14 @@ export default function Weapons() {
               "border shadow-sm transition-all has-hover:scale-104 has-focus-visible:ring-3",
               "has-focus-visible:ring-ring/50",
             )}
-            key={weapon.uid}
+            key={weapon.key}
           >
             <span className="shrink-0 size-24.5">
               <img
                 alt={weapon.name}
                 className={cn(
                   "object-cover size-full rounded-lg rounded-br-3xl",
-                  backgroundClassByQuality(weapon.quality),
+                  backgroundClassByRarity(weapon.rarity),
                 )}
                 draggable={false}
                 src={weapon.image_src}
@@ -154,7 +154,7 @@ export default function Weapons() {
                 "inline-flex flex-1 justify-center items-center text-sm text-center outline-none before:absolute",
                 "before:inset-0",
               )}
-              to={Paths.Weapon.to(weapon.uid)}
+              to={Paths.Weapon.to(weapon.key)}
             />
           </li>
         ))}

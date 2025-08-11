@@ -1,17 +1,17 @@
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import type { ArtifactPieceUid } from "./artifact-piece";
-import type { CharacterUid } from "./character";
-import type { QualityUid } from "./quality";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import type { ArtifactSlotKey } from "./artifact-slot";
+import type { CharacterKey } from "./character";
+import type { Rarity } from "./rarity";
 
-type ArtifactSetCharacterRecommendation = { uid: CharacterUid; notes: string };
-type ArtifactSetPiece = { name: string; image_src: string };
+type ArtifactSetCharacterRecommendation = { key: CharacterKey; notes: string };
+type ArtifactSetSlot = { name: string; image_src: string };
 
-export type ArtifactSet = Record<ArtifactPieceUid, ArtifactSetPiece> & {
-  uid: ArtifactSetUid;
+export type ArtifactSet = Record<ArtifactSlotKey, ArtifactSetSlot> & {
+  key: ArtifactSetKey;
   name: string;
-  qualities: QualityUid[];
+  rarities: Rarity[];
   source: string | string[];
   item_bonuses: Record<2 | 4, string>;
   character_recommendations?: ArtifactSetCharacterRecommendation[];
 };
-export type ArtifactSetUid = typeof ArtifactSetUidEnum[keyof typeof ArtifactSetUidEnum];
+export type ArtifactSetKey = typeof ArtifactSetKeys[keyof typeof ArtifactSetKeys];

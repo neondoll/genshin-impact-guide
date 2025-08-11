@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import CharacterRecommendations from "@/organisms/character-recommendations";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import { backgroundClassByQuality } from "@/lib/quality";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -53,7 +53,7 @@ export default function Character() {
           alt={character.name}
           className={cn(
             "shrink-0 size-16 rounded-md rounded-br-2xl",
-            backgroundClassByQuality(character.quality),
+            backgroundClassByRarity(character.rarity),
           )}
           src={character.image_src}
         />
@@ -63,7 +63,7 @@ export default function Character() {
             <img alt={characterElement.name} className="size-6" src={characterElement.image_src} />
           </div>
           <div className="flex gap-x-1">
-            {Array.from({ length: character.quality }, (_, i) => i).map(index => (
+            {Array.from({ length: character.rarity }, (_, i) => i).map(index => (
               <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
             ))}
           </div>
@@ -100,7 +100,7 @@ export default function Character() {
                 <TableCell className="p-2">
                   <div className="flex flex-wrap gap-2">
                     {characterRoles.map(characterRole => (
-                      <Tooltip key={characterRole.uid}>
+                      <Tooltip key={characterRole.key}>
                         <TooltipTrigger asChild>
                           <Badge className="rounded-full">
                             <img alt={characterRole.name} className="shrink-0 size-5" src={characterRole.icon_src} />

@@ -1,27 +1,24 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.WanderersTroupe,
+  artifact_set_key: ArtifactSetKeys.WanderersTroupe,
   characters: [
-    { uid: CharacterUidEnum.Amber },
-    { uid: CharacterUidEnum.Ganyu, is_better: true },
-    { uid: CharacterUidEnum.Klee, is_better: true },
-    { uid: CharacterUidEnum.Tighnari, is_better: true },
-    { uid: CharacterUidEnum.Yanfei, is_better: true },
+    { key: CharacterKeys.Amber },
+    { key: CharacterKeys.Ganyu, is_better: true },
+    { key: CharacterKeys.Klee, is_better: true },
+    { key: CharacterKeys.Tighnari, is_better: true },
+    { key: CharacterKeys.Yanfei, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [
-      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
-      AttributeUidEnum.EnergyRecharge,
-    ],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.ElementalMastery],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

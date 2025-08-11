@@ -1,24 +1,24 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.CrimsonWitchOfFlames,
+  artifact_set_key: ArtifactSetKeys.CrimsonWitchOfFlames,
   characters: [
-    { uid: CharacterUidEnum.Diluc, is_better: true },
-    { uid: CharacterUidEnum.HuTao, is_better: true },
-    { uid: CharacterUidEnum.Klee, is_better: true },
-    { uid: CharacterUidEnum.Yanfei },
-    { uid: CharacterUidEnum.Yoimiya },
+    { key: CharacterKeys.Diluc, is_better: true },
+    { key: CharacterKeys.HuTao, is_better: true },
+    { key: CharacterKeys.Klee, is_better: true },
+    { key: CharacterKeys.Yanfei },
+    { key: CharacterKeys.Yoimiya },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
-    additional: [...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

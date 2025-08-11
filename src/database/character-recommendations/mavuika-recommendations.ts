@@ -1,18 +1,18 @@
 import characters from "../characters";
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
-import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
-import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterRoleUidEnum } from "../enums/character-role.ts";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon.ts";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { CharacterRoleKeys } from "../enums/character-role";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
-type GameVariantUid = typeof GameVariantEnum[keyof typeof GameVariantEnum];
+type GameVariantkey = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 
-const GameVariantEnum = { DPS: CharacterRoleUidEnum.DPS, Support: CharacterRoleUidEnum.Support } as const;
+const GameVariantEnum = { DPS: CharacterRoleKeys.DPS, Support: CharacterRoleKeys.Support } as const;
 
-const gameVariants: Record<GameVariantUid, string> = {
+const gameVariants: Record<GameVariantkey, string> = {
   [GameVariantEnum.DPS]: "Основной урон",
   [GameVariantEnum.Support]: "Поддержка",
 };
@@ -21,7 +21,7 @@ export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.ObsidianCodex,
+        key: ArtifactSetKeys.ObsidianCodex,
         is_better: true,
         notes: [
           "Лучший комплект для Мавуики, поскольку увеличивает её урон и повышает шанс крит. попадания в сумме до 40%, позволяя сосредоточиться на крит. уроне в артефактах.",
@@ -29,41 +29,41 @@ export default {
         ],
       },
       {
-        uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity,
+        key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity,
         notes: [
           "Бонус 2 предметов является неважным для Мавуики, но бонус 4 предметов значительно повысит бонус элементального урона всему отряду.",
           "Стоит учитывать, что лучше всего комплект работает в команде с персонажами из Натлана.",
         ],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [
         {
-          uid: AttributeUidEnum.ATKPercentage,
+          key: StatKeys.ATKPercentage,
           notes: [
             "Гиперкерри\\Перегрузка - Всегда",
-            `Вейп\\Мелт - Лучше, если в отряде есть инструктор и отсутствует ${characters[CharacterUidEnum.Bennett].name} или ${characters[CharacterUidEnum.Iansan].name}`,
+            `Вейп\\Мелт - Лучше, если в отряде есть инструктор и отсутствует ${characters[CharacterKeys.Bennett].name} или ${characters[CharacterKeys.Iansan].name}`,
             `${gameVariants[GameVariantEnum.Support]} - Всегда`,
           ],
         },
         {
-          uid: AttributeUidEnum.ElementalMastery,
+          key: StatKeys.ElementalMastery,
           notes: [
-            `Вейп\\Мелт - Всегда, если есть в команде ${characters[CharacterUidEnum.Bennett].name} или ${characters[CharacterUidEnum.Iansan].name} и мало МС в доп. статах`,
+            `Вейп\\Мелт - Всегда, если есть в команде ${characters[CharacterKeys.Bennett].name} или ${characters[CharacterKeys.Iansan].name} и мало МС в доп. статах`,
           ],
         },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.PyroDMGBonus, notes: ["Всегда"] }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.CRITRate }, { uid: AttributeUidEnum.CRITDMG }],
+      [ArtifactSlotKeys.GobletOfEonothem]: [{ key: StatKeys.PyroDMGBonus, notes: ["Всегда"] }],
+      [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.CRITRate }, { key: StatKeys.CRITDMG }],
       additional: [
-        { uid: AttributeUidEnum.ATKPercentage },
-        { uid: AttributeUidEnum.CRITRate },
-        { uid: AttributeUidEnum.CRITDMG },
-        { uid: AttributeUidEnum.ElementalMastery, notes: ["Если играем в Вейпе\\Мелте"] },
+        { key: StatKeys.ATKPercentage },
+        { key: StatKeys.CRITRate },
+        { key: StatKeys.CRITDMG },
+        { key: StatKeys.ElementalMastery, notes: ["Если играем в Вейпе\\Мелте"] },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Mavuika,
+  character_key: CharacterKeys.Mavuika,
   first_constellation_or_signature_weapon: "C1 < Сигна < C2",
   key_constellations: [2, 4],
   reference_point: {
@@ -99,29 +99,29 @@ export default {
     general_template: [],
     best_teammates: {
       [`В целом (${gameVariants[GameVariantEnum.DPS]})`]: [
-        { type: "character", uid: CharacterUidEnum.Xilonen },
-        { type: "character", uid: CharacterUidEnum.Bennett },
-        { type: "character", uid: CharacterUidEnum.Iansan },
+        { type: "character", key: CharacterKeys.Xilonen },
+        { type: "character", key: CharacterKeys.Bennett },
+        { type: "character", key: CharacterKeys.Iansan },
       ],
       [`В мелте (${gameVariants[GameVariantEnum.DPS]})`]: [
-        { type: "character", uid: CharacterUidEnum.Citlali },
-        { type: "character", uid: CharacterUidEnum.Escoffier },
-        { type: "character", uid: CharacterUidEnum.Rosaria },
+        { type: "character", key: CharacterKeys.Citlali },
+        { type: "character", key: CharacterKeys.Escoffier },
+        { type: "character", key: CharacterKeys.Rosaria },
       ],
       [`В вейпе (${gameVariants[GameVariantEnum.DPS]})`]: [
-        { type: "character", uid: CharacterUidEnum.Furina },
-        { type: "character", uid: CharacterUidEnum.Yelan },
+        { type: "character", key: CharacterKeys.Furina },
+        { type: "character", key: CharacterKeys.Yelan },
       ],
       [`В перегрузе (${gameVariants[GameVariantEnum.DPS]})`]: [
-        { type: "character", uid: CharacterUidEnum.Chevreuse },
-        { type: "character", uid: CharacterUidEnum.Ororon },
+        { type: "character", key: CharacterKeys.Chevreuse },
+        { type: "character", key: CharacterKeys.Ororon },
       ],
     },
   },
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "Во вторую очередь\n(10)" },
+    { key: TalentKeys.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   video_sources: [
     {
@@ -132,44 +132,44 @@ export default {
   ],
   weapons: {
     "Вейп\\Мелт": [
-      { uid: WeaponUidEnum.AThousandBlazingSuns, refinement: 1, percent: 1.3504 },
-      { uid: WeaponUidEnum.SerpentSpine, refinement: 5, percent: 1.1990 },
-      { uid: WeaponUidEnum.BeaconOfTheReedSea, refinement: 1, percent: 1.1761 },
-      { uid: WeaponUidEnum.RedhornStonethresher, refinement: 1, percent: 1.1582 },
-      { uid: WeaponUidEnum.Verdict, refinement: 1, percent: 1.1546 },
-      { uid: WeaponUidEnum.SerpentSpine, refinement: 1, percent: 1.1255 },
-      { uid: WeaponUidEnum.WolfsGravestone, refinement: 1, percent: 1.0832 },
-      { uid: WeaponUidEnum.TheUnforged, refinement: 1, percent: 1.0785 },
-      { uid: WeaponUidEnum.FangOfTheMountainKing, refinement: 1, percent: 1.0487 },
-      { uid: WeaponUidEnum.SongOfBrokenPines, refinement: 1, percent: 1.0404 },
-      { uid: WeaponUidEnum.MakhairaAquamarine, refinement: 5, percent: 1.0012 },
-      { uid: WeaponUidEnum.MailedFlower, refinement: 5, percent: 1.0000 },
-      { uid: WeaponUidEnum.Akuoumaru, refinement: 5, percent: 0.9980 },
-      { uid: WeaponUidEnum.UltimateOverlordsMegaMagicSword, refinement: 5, percent: 0.9970 },
-      { uid: WeaponUidEnum.TalkingStick, refinement: 5, percent: 0.9928 },
-      { uid: WeaponUidEnum.BlackcliffSlasher, refinement: 5, percent: 0.9881 },
-      { uid: WeaponUidEnum.SkywardPride, refinement: 1, percent: 0.9833 },
-      { uid: WeaponUidEnum.LuxuriousSeaLord, refinement: 5, percent: 0.9780 },
-      { uid: WeaponUidEnum.PrototypeArchaic, refinement: 5, percent: 0.9621 },
-      { uid: WeaponUidEnum.TidalShadow, refinement: 5, percent: 0.9413 },
+      { key: WeaponKeys.AThousandBlazingSuns, refinement: 1, percent: 1.3504 },
+      { key: WeaponKeys.SerpentSpine, refinement: 5, percent: 1.1990 },
+      { key: WeaponKeys.BeaconOfTheReedSea, refinement: 1, percent: 1.1761 },
+      { key: WeaponKeys.RedhornStonethresher, refinement: 1, percent: 1.1582 },
+      { key: WeaponKeys.Verdict, refinement: 1, percent: 1.1546 },
+      { key: WeaponKeys.SerpentSpine, refinement: 1, percent: 1.1255 },
+      { key: WeaponKeys.WolfsGravestone, refinement: 1, percent: 1.0832 },
+      { key: WeaponKeys.TheUnforged, refinement: 1, percent: 1.0785 },
+      { key: WeaponKeys.FangOfTheMountainKing, refinement: 1, percent: 1.0487 },
+      { key: WeaponKeys.SongOfBrokenPines, refinement: 1, percent: 1.0404 },
+      { key: WeaponKeys.MakhairaAquamarine, refinement: 5, percent: 1.0012 },
+      { key: WeaponKeys.MailedFlower, refinement: 5, percent: 1.0000 },
+      { key: WeaponKeys.Akuoumaru, refinement: 5, percent: 0.9980 },
+      { key: WeaponKeys.UltimateOverlordsMegaMagicSword, refinement: 5, percent: 0.9970 },
+      { key: WeaponKeys.TalkingStick, refinement: 5, percent: 0.9928 },
+      { key: WeaponKeys.BlackcliffSlasher, refinement: 5, percent: 0.9881 },
+      { key: WeaponKeys.SkywardPride, refinement: 1, percent: 0.9833 },
+      { key: WeaponKeys.LuxuriousSeaLord, refinement: 5, percent: 0.9780 },
+      { key: WeaponKeys.PrototypeArchaic, refinement: 5, percent: 0.9621 },
+      { key: WeaponKeys.TidalShadow, refinement: 5, percent: 0.9413 },
     ],
     "Гиперкерри\\Перегрузка": [
-      { uid: WeaponUidEnum.AThousandBlazingSuns, refinement: 1, percent: 1.3218 },
-      { uid: WeaponUidEnum.SerpentSpine, refinement: 5, percent: 1.1805 },
-      { uid: WeaponUidEnum.BeaconOfTheReedSea, refinement: 1, percent: 1.1546 },
-      { uid: WeaponUidEnum.RedhornStonethresher, refinement: 1, percent: 1.1541 },
-      { uid: WeaponUidEnum.Verdict, refinement: 1, percent: 1.1437 },
-      { uid: WeaponUidEnum.SerpentSpine, refinement: 1, percent: 1.1083 },
-      { uid: WeaponUidEnum.FangOfTheMountainKing, refinement: 1, percent: 1.0624 },
-      { uid: WeaponUidEnum.SongOfBrokenPines, refinement: 1, percent: 1.0426 },
-      { uid: WeaponUidEnum.WolfsGravestone, refinement: 1, percent: 1.0418 },
-      { uid: WeaponUidEnum.SkywardPride, refinement: 1, percent: 1.0088 },
-      { uid: WeaponUidEnum.TidalShadow, refinement: 5, percent: 1.0000 },
-      { uid: WeaponUidEnum.BlackcliffSlasher, refinement: 5, percent: 0.9997 },
-      { uid: WeaponUidEnum.TalkingStick, refinement: 5, percent: 0.9879 },
-      { uid: WeaponUidEnum.UltimateOverlordsMegaMagicSword, refinement: 5, percent: 0.9642 },
-      { uid: WeaponUidEnum.PrototypeArchaic, refinement: 5, percent: 0.9508 },
-      { uid: WeaponUidEnum.LuxuriousSeaLord, refinement: 5, percent: 0.9195 },
+      { key: WeaponKeys.AThousandBlazingSuns, refinement: 1, percent: 1.3218 },
+      { key: WeaponKeys.SerpentSpine, refinement: 5, percent: 1.1805 },
+      { key: WeaponKeys.BeaconOfTheReedSea, refinement: 1, percent: 1.1546 },
+      { key: WeaponKeys.RedhornStonethresher, refinement: 1, percent: 1.1541 },
+      { key: WeaponKeys.Verdict, refinement: 1, percent: 1.1437 },
+      { key: WeaponKeys.SerpentSpine, refinement: 1, percent: 1.1083 },
+      { key: WeaponKeys.FangOfTheMountainKing, refinement: 1, percent: 1.0624 },
+      { key: WeaponKeys.SongOfBrokenPines, refinement: 1, percent: 1.0426 },
+      { key: WeaponKeys.WolfsGravestone, refinement: 1, percent: 1.0418 },
+      { key: WeaponKeys.SkywardPride, refinement: 1, percent: 1.0088 },
+      { key: WeaponKeys.TidalShadow, refinement: 5, percent: 1.0000 },
+      { key: WeaponKeys.BlackcliffSlasher, refinement: 5, percent: 0.9997 },
+      { key: WeaponKeys.TalkingStick, refinement: 5, percent: 0.9879 },
+      { key: WeaponKeys.UltimateOverlordsMegaMagicSword, refinement: 5, percent: 0.9642 },
+      { key: WeaponKeys.PrototypeArchaic, refinement: 5, percent: 0.9508 },
+      { key: WeaponKeys.LuxuriousSeaLord, refinement: 5, percent: 0.9195 },
     ],
   },
 } as CharacterRecommendations;

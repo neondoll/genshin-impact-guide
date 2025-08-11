@@ -4,7 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
 import VideoSources from "@/organisms/video-sources";
-import { backgroundClassByQuality } from "@/lib/quality";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -72,7 +72,7 @@ export default function WeaponsTierList() {
                 <Table>
                   <TableBody>
                     {tierListWeapons.list.map((item) => {
-                      const weapons = item.weapon_uids.map(getWeapon).sort(sortWeapons);
+                      const weapons = item.weapon_keys.map(getWeapon).sort(sortWeapons);
 
                       return (
                         <TableRow
@@ -103,9 +103,9 @@ export default function WeaponsTierList() {
                               {weapons.map(weapon => (
                                 <li
                                   className={cn(
-                                    "shrink-0 size-12 rounded-md", backgroundClassByQuality(weapon.quality),
+                                    "shrink-0 size-12 rounded-md", backgroundClassByRarity(weapon.rarity),
                                   )}
-                                  key={weapon.uid}
+                                  key={weapon.key}
                                 >
                                   <img alt={weapon.name} className="size-12" src={weapon.image_src} />
                                 </li>

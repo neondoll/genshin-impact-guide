@@ -1,28 +1,25 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { artifactSetByUid, AttributesCrit, AttributesElementDamageBonus } from "./help";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { artifactSetByKey, StatsCrit, StatsElementDamageBonus } from "./help";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.VourukashasGlow,
+  artifact_set_key: ArtifactSetKeys.VourukashasGlow,
   characters: [
     {
-      uid: CharacterUidEnum.Dehya,
+      key: CharacterKeys.Dehya,
       is_better: true,
-      notes: `Сияние Вурукаши - один из лучших комплектов для позиции основного урона и поддержки. Бонус 4 предметов увеличит урон Дэхьи, так как она получает урон, даже если не находится на поле.\nМожет использовать как полный комплект, так и 2 предмета, сочетая их с ${artifactSetByUid(ArtifactSetUidEnum.CrimsonWitchOfFlames)}, ${artifactSetByUid(ArtifactSetUidEnum.WanderersTroupe)}, ${artifactSetByUid(ArtifactSetUidEnum.GildedDreams)}, ${artifactSetByUid(ArtifactSetUidEnum.FlowerOfParadiseLost)} или ${artifactSetByUid(ArtifactSetUidEnum.TenacityOfTheMillelith)} в зависимости от позиции. В данных случаях ${artifactSetByUid(ArtifactSetUidEnum.VourukashasGlow)} может быть заменён ${artifactSetByUid(ArtifactSetUidEnum.TenacityOfTheMillelith)}, если не используются оба комплекта.`,
+      notes: `Сияние Вурукаши - один из лучших комплектов для позиции основного урона и поддержки. Бонус 4 предметов увеличит урон Дэхьи, так как она получает урон, даже если не находится на поле.\nМожет использовать как полный комплект, так и 2 предмета, сочетая их с ${artifactSetByKey(ArtifactSetKeys.CrimsonWitchOfFlames)}, ${artifactSetByKey(ArtifactSetKeys.WanderersTroupe)}, ${artifactSetByKey(ArtifactSetKeys.GildedDreams)}, ${artifactSetByKey(ArtifactSetKeys.FlowerOfParadiseLost)} или ${artifactSetByKey(ArtifactSetKeys.TenacityOfTheMillelith)} в зависимости от позиции. В данных случаях ${artifactSetByKey(ArtifactSetKeys.VourukashasGlow)} может быть заменён ${artifactSetByKey(ArtifactSetKeys.TenacityOfTheMillelith)}, если не используются оба комплекта.`,
     },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [
-      AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery, AttributeUidEnum.HPPercentage,
-    ],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.ATKPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: AttributesCrit,
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
     additional: [
-      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.ElementalMastery,
-      AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage,
+      ...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HPPercentage,
     ],
   },
   video_sources: [

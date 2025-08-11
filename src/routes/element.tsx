@@ -34,8 +34,8 @@ export default function Element() {
               <TableCell className="p-2">
                 <div className="flex flex-wrap gap-2">
                   {elementReactsWith.map(element => (
-                    <Badge asChild className="rounded-full" key={element.uid} variant="secondary">
-                      <Link to={Paths.Element.to(element.uid)}>
+                    <Badge asChild className="rounded-full" key={element.key} variant="secondary">
+                      <Link to={Paths.Element.to(element.key)}>
                         <img alt={element.name} className="shrink-0 size-5" src={element.image_src} />
                         <span>{element.name}</span>
                       </Link>

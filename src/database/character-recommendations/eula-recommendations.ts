@@ -1,15 +1,15 @@
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { CharacterKeys } from "../enums/character";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
-  character_uid: CharacterUidEnum.Eula,
+  character_key: CharacterKeys.Eula,
   first_constellation_or_signature_weapon: "Сигна",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Во вторую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "По необходимости\n(6)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "Во вторую очередь\n(10)" },
+    { key: TalentKeys.ElementalSkill, priority: "По необходимости\n(6)" },
+    { key: TalentKeys.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   video_sources: [
     {
@@ -23,7 +23,7 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.SongOfBrokenPines, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.PrototypeArchaic, refinement: 5 },
+    { key: WeaponKeys.SongOfBrokenPines, refinement: 1, is_better: true },
+    { key: WeaponKeys.PrototypeArchaic, refinement: 5 },
   ],
 } as CharacterRecommendations;

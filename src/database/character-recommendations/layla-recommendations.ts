@@ -1,16 +1,16 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.TenacityOfTheMillelith,
+        key: ArtifactSetKeys.TenacityOfTheMillelith,
         is_better: true,
         notes: [
           "Лучший комплект, так как бонус к HP повысит прочность щита и урон Лайлы.",
@@ -18,51 +18,51 @@ export default {
         ],
       },
       {
-        uid: ArtifactSetUidEnum.NoblesseOblige,
+        key: ArtifactSetKeys.NoblesseOblige,
         notes: [
           "Увеличивает урон от взрыва стихии Лайлы и увеличивает силу атаки другим членам отряда.",
           "Рекомендуется, если никто другой в отряде не носит данный комплект.",
         ],
       },
       {
-        uid: ArtifactSetUidEnum.BlizzardStrayer,
+        key: ArtifactSetKeys.BlizzardStrayer,
         notes: [
           "Рекомендуется, только если хочется получить больше урона от Лайлы.",
           "Рекомендуется иметь в отряде Гидро и других Крио персонажей для поддержания Заморозки.",
         ],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.HPPercentage, use_percent: 0.907 },
-        { uid: AttributeUidEnum.EnergyRecharge, use_percent: 0.051 },
-        { uid: AttributeUidEnum.ATKPercentage, use_percent: 0.025 },
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [
+        { key: StatKeys.HPPercentage, use_percent: 0.907 },
+        { key: StatKeys.EnergyRecharge, use_percent: 0.051 },
+        { key: StatKeys.ATKPercentage, use_percent: 0.025 },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.HPPercentage, use_percent: 0.902 },
-        { uid: AttributeUidEnum.CryoDMGBonus, use_percent: 0.058 },
-        { uid: AttributeUidEnum.ATKPercentage, use_percent: 0.015 },
+      [ArtifactSlotKeys.GobletOfEonothem]: [
+        { key: StatKeys.HPPercentage, use_percent: 0.902 },
+        { key: StatKeys.CryoDMGBonus, use_percent: 0.058 },
+        { key: StatKeys.ATKPercentage, use_percent: 0.015 },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.HPPercentage, use_percent: 0.860 },
-        { uid: AttributeUidEnum.CRITRate, use_percent: 0.080 },
-        { uid: AttributeUidEnum.CRITDMG, use_percent: 0.035 },
+      [ArtifactSlotKeys.CircletOfLogos]: [
+        { key: StatKeys.HPPercentage, use_percent: 0.860 },
+        { key: StatKeys.CRITRate, use_percent: 0.080 },
+        { key: StatKeys.CRITDMG, use_percent: 0.035 },
       ],
       additional: [
-        { uid: AttributeUidEnum.HPPercentage, notes: ["Приоритетно", "от 25000"] },
-        { uid: AttributeUidEnum.EnergyRecharge, notes: ["от 120%"] },
-        { uid: AttributeUidEnum.CRITRate, notes: ["от 50%"] },
-        { uid: AttributeUidEnum.CRITDMG, notes: ["от 120%"] },
-        { uid: AttributeUidEnum.ElementalMastery, notes: ["от 250 (только при игре через реакции)"] },
+        { key: StatKeys.HPPercentage, notes: ["Приоритетно", "от 25000"] },
+        { key: StatKeys.EnergyRecharge, notes: ["от 120%"] },
+        { key: StatKeys.CRITRate, notes: ["от 50%"] },
+        { key: StatKeys.CRITDMG, notes: ["от 120%"] },
+        { key: StatKeys.ElementalMastery, notes: ["от 250 (только при игре через реакции)"] },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Layla,
+  character_key: CharacterKeys.Layla,
   required_level: 80,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(6)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "В первую очередь\n(8)" },
+    { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(6)" },
   ],
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
@@ -71,5 +71,5 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239080",
     },
   ],
-  weapons: [{ uid: WeaponUidEnum.FavoniusSword, refinement: 5, is_better: true }],
+  weapons: [{ key: WeaponKeys.FavoniusSword, refinement: 5, is_better: true }],
 } as CharacterRecommendations;

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece.ts";
+import { ArtifactSlotKeys } from "@/database/enums/artifact-slot";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent } from "@/lib/utils";
-import { getAttribute } from "@/database";
+import { getStat } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import type { ArtifactAttributeRecommendationsProps } from "./types";
+import type { ArtifactStatRecommendationsProps } from "./types";
 
-export default function ArtifactAttributeRecommendations({ recommendations }: ArtifactAttributeRecommendationsProps) {
+export default function ArtifactStatRecommendations({ recommendations }: ArtifactStatRecommendationsProps) {
   const [hasDescription, setHasDescription] = useState(false);
   const [hasNotes, setHasNotes] = useState(false);
   const [hasPercent, setHasPercent] = useState(false);
@@ -57,21 +57,21 @@ export default function ArtifactAttributeRecommendations({ recommendations }: Ar
       <TableBody>
         {recommendationsKeys.map((recommendationsKey) => {
           return recommendations[recommendationsKey].map((recommendation, index) => {
-            const attribute = getAttribute(recommendation.uid);
+            const stat = getStat(recommendation.key);
 
             return (
-              <TableRow className="hover:bg-inherit" key={`${recommendationsKey}-${recommendation.uid}`}>
+              <TableRow className="hover:bg-inherit" key={`${recommendationsKey}-${recommendation.key}`}>
                 {index === 0 && (
                   <TableHead className="p-2 w-18" rowSpan={recommendations[recommendationsKey].length}>
-                    {recommendationsKey === ArtifactPieceUidEnum.SandsOfEon && "Часы"}
-                    {recommendationsKey === ArtifactPieceUidEnum.GobletOfEonothem && "Кубок"}
-                    {recommendationsKey === ArtifactPieceUidEnum.CircletOfLogos && "Корона"}
+                    {recommendationsKey === ArtifactSlotKeys.SandsOfEon && "Часы"}
+                    {recommendationsKey === ArtifactSlotKeys.GobletOfEonothem && "Кубок"}
+                    {recommendationsKey === ArtifactSlotKeys.CircletOfLogos && "Корона"}
                     {recommendationsKey === "additional" && "Доп."}
                   </TableHead>
                 )}
                 <TableCell className="text-pretty whitespace-normal">
                   <Badge
-                    children={attribute.abbreviation || attribute.name}
+                    children={stat.abbreviation || stat.name}
                     className="flex justify-center w-full text-center text-pretty whitespace-normal"
                     variant="secondary"
                   />

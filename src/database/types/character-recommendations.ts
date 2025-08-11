@@ -1,11 +1,11 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import type { ArtifactSetUid } from "./artifact-set";
-import type { AttributeUid } from "./attribute";
-import type { CharacterUid } from "./character";
-import type { ElementUid } from "./element";
-import type { TalentUid } from "./talent";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import type { ArtifactSetKey } from "./artifact-set";
+import type { CharacterKey } from "./character";
+import type { ElementKey } from "./element";
+import type { StatKey } from "./stat";
+import type { TalentKey } from "./talent";
 import type { VideoSource } from "./video-source";
-import type { WeaponUid } from "./weapon";
+import type { WeaponKey } from "./weapon";
 
 type _CharacterArtifactSetRecommendation = {
   is_better?: boolean;
@@ -14,32 +14,32 @@ type _CharacterArtifactSetRecommendation = {
   notes?: string[];
 };
 
-interface CharacterArtifactSetRecommendationWithUid extends _CharacterArtifactSetRecommendation {
-  uid: ArtifactSetUid;
+interface CharacterArtifactSetRecommendationWithkey extends _CharacterArtifactSetRecommendation {
+  key: ArtifactSetKey;
 }
 
-interface CharacterArtifactSetRecommendationWithUids extends _CharacterArtifactSetRecommendation {
-  uids: [ArtifactSetUid, ArtifactSetUid];
+interface CharacterArtifactSetRecommendationWithkeys extends _CharacterArtifactSetRecommendation {
+  keys: [ArtifactSetKey, ArtifactSetKey];
 }
 
-type CharacterArtifactAttributeRecommendation = {
-  uid: AttributeUid;
+type CharacterArtifactRecommendations = {
+  sets: CharacterArtifactSetRecommendations;
+  stats: CharacterArtifactStatRecommendations;
+};
+type CharacterArtifactSetRecommendations = CharacterArtifactSetRecommendation[];
+type CharacterArtifactStatRecommendation = {
+  key: StatKey;
   percent?: number;
   use_percent?: number;
   description?: string;
   notes?: string[];
 };
-type CharacterArtifactAttributeRecommendations = Record<typeof ArtifactPieceUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", CharacterArtifactAttributeRecommendation[]>;
-type CharacterArtifactRecommendations = {
-  sets: CharacterArtifactSetRecommendations;
-  attributes: CharacterArtifactAttributeRecommendations;
-};
-type CharacterArtifactSetRecommendations = CharacterArtifactSetRecommendation[];
-type CharacterSquadElementRecommendation = { type: "element"; uid: ElementUid };
-type CharacterSquadCharacterRecommendation = { type: "character"; uid: CharacterUid };
-type CharacterTalentLevelingRecommendation = { uid: TalentUid; priority: string };
+type CharacterArtifactStatRecommendations = Record<typeof ArtifactSlotKeys["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", CharacterArtifactStatRecommendation[]>;
+type CharacterSquadElementRecommendation = { type: "element"; key: ElementKey };
+type CharacterSquadCharacterRecommendation = { type: "character"; key: CharacterKey };
+type CharacterTalentLevelingRecommendation = { key: TalentKey; priority: string };
 type CharacterWeaponRecommendation = {
-  uid: WeaponUid;
+  key: WeaponKey;
   refinement?: 1 | 5;
   is_better?: boolean;
   postfix?: string;
@@ -48,10 +48,10 @@ type CharacterWeaponRecommendation = {
 type CharacterRecommendationSquadBestTeammates = CharacterSquadItemRecommendation[];
 
 export type CharacterArtifactSetRecommendation
-  = CharacterArtifactSetRecommendationWithUid | CharacterArtifactSetRecommendationWithUids;
+  = CharacterArtifactSetRecommendationWithkey | CharacterArtifactSetRecommendationWithkeys;
 export type CharacterRecommendations = {
   artifacts?: CharacterArtifactRecommendations;
-  character_uid: CharacterUid;
+  character_key: CharacterKey;
   first_constellation_or_signature_weapon?: string;
   key_constellations?: (1 | 2 | 3 | 4 | 5 | 6)[];
   reference_point?: CharacterReferencePointRecommendations | Record<string, CharacterReferencePointRecommendations>;

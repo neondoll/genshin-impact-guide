@@ -1,15 +1,15 @@
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { CharacterKeys } from "../enums/character";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
-  character_uid: CharacterUidEnum.RaidenShogun,
+  character_key: CharacterKeys.RaidenShogun,
   first_constellation_or_signature_weapon: "С1 < Сигна < С2",
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Во вторую очередь\n(9)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "Во вторую очередь\n(9)" },
+    { key: TalentKeys.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   video_sources: [
     {
@@ -23,8 +23,8 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.EngulfingLightning, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.DragonsBane, refinement: 5 },
-    { uid: WeaponUidEnum.TheCatch, refinement: 5 },
+    { key: WeaponKeys.EngulfingLightning, refinement: 1, is_better: true },
+    { key: WeaponKeys.DragonsBane, refinement: 5 },
+    { key: WeaponKeys.TheCatch, refinement: 5 },
   ],
 } as CharacterRecommendations;

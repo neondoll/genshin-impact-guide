@@ -1,16 +1,16 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
-import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
-import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon.ts";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity,
+        key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity,
         is_better: true,
         notes: [
           "Лучший набор для Иансан, так как восстановит ей энергию и увеличит элементальный урон основного персонажа.",
@@ -18,40 +18,37 @@ export default {
         ],
       },
       {
-        uid: ArtifactSetUidEnum.NoblesseOblige,
+        key: ArtifactSetKeys.NoblesseOblige,
         notes: [
           "Увеличит урон взрыва стихии Иансан и силу атаки отряду.",
           "Рекомендуется использовать, если другие члены отряда не носят данный комплект.",
         ],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.ATKPercentage },
-        { uid: AttributeUidEnum.EnergyRecharge },
-      ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.ATKPercentage }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [{ uid: AttributeUidEnum.ATKPercentage }],
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.ATKPercentage }, { key: StatKeys.EnergyRecharge }],
+      [ArtifactSlotKeys.GobletOfEonothem]: [{ key: StatKeys.ATKPercentage }],
+      [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.ATKPercentage }],
       additional: [
-        { uid: AttributeUidEnum.EnergyRecharge, notes: ["Приоритетно", "от 160%"] },
+        { key: StatKeys.EnergyRecharge, notes: ["Приоритетно", "от 160%"] },
         {
-          uid: AttributeUidEnum.ATKPercentage,
+          key: StatKeys.ATKPercentage,
           notes: ["от 2000", "2556 для 10 Ур. Взрыва стихии", "3000 для 13 Ур. Взрыва стихии"],
         },
-        { uid: AttributeUidEnum.CRITRate },
-        { uid: AttributeUidEnum.CRITDMG },
+        { key: StatKeys.CRITRate },
+        { key: StatKeys.CRITDMG },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Iansan,
+  character_key: CharacterKeys.Iansan,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1 - 6)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Не качаем\n(1 - 6)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1 - 6)" },
+    { key: TalentKeys.ElementalSkill, priority: "Не качаем\n(1 - 6)" },
+    { key: TalentKeys.ElementalBurst, priority: "В первую очередь\n(10)" },
   ],
   weapons: [
-    { uid: WeaponUidEnum.SkywardSpine },
-    { uid: WeaponUidEnum.TamayurateiNoOhanashi },
-    { uid: WeaponUidEnum.FavoniusLance },
+    { key: WeaponKeys.SkywardSpine },
+    { key: WeaponKeys.TamayurateiNoOhanashi },
+    { key: WeaponKeys.FavoniusLance },
   ],
 } as CharacterRecommendations;

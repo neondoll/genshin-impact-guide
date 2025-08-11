@@ -1,20 +1,20 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.SongOfDaysPast,
+  artifact_set_key: ArtifactSetKeys.SongOfDaysPast,
   characters: [
-    { uid: CharacterUidEnum.Barbara, is_better: true },
-    { uid: CharacterUidEnum.SangonomiyaKokomi, is_better: true },
+    { key: CharacterKeys.Barbara, is_better: true },
+    { key: CharacterKeys.SangonomiyaKokomi, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.HPPercentage],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [AttributeUidEnum.HPPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [AttributeUidEnum.HealingBonus, AttributeUidEnum.HPPercentage],
-    additional: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [StatKeys.HPPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: [StatKeys.HealingBonus, StatKeys.HPPercentage],
+    additional: [StatKeys.EnergyRecharge, StatKeys.HPPercentage],
   },
   video_sources: [
     {

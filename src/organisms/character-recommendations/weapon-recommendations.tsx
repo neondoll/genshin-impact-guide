@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
+import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
 import { getWeapon } from "@/database";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { WeaponRecommendationsProps, WeaponRecommendationsTableProps } from "./types";
-import { backgroundClassByQuality } from "@/lib/quality.ts";
 
 function WeaponRecommendationsTable({ character, recommendations }: WeaponRecommendationsTableProps) {
   const [diffPercent, setDiffPercent] = useState(0);
@@ -50,13 +50,13 @@ function WeaponRecommendationsTable({ character, recommendations }: WeaponRecomm
     <Table className="sm:table-fixed">
       <TableBody>
         {recommendations.map((recommendation) => {
-          const weapon = getWeapon(recommendation.uid);
+          const weapon = getWeapon(recommendation.key);
 
           return (
             <TableRow
               className="hover:bg-inherit"
               key={
-                weapon.uid
+                weapon.key
                 + (recommendation.refinement === undefined ? "" : `-r${recommendation.refinement}`)
                 + (recommendation.postfix === undefined ? "" : `-${recommendation.postfix}`)
               }
@@ -84,14 +84,14 @@ function WeaponRecommendationsTable({ character, recommendations }: WeaponRecomm
                     alt={weapon.name}
                     className={cn(
                       "shrink-0 size-12 rounded-md rounded-br-2xl",
-                      backgroundClassByQuality(weapon.quality),
+                      backgroundClassByRarity(weapon.rarity),
                     )}
                     src={weapon.image_src}
                   />
                   <span>
                     {weapon.name}
                     {recommendation.refinement !== undefined && ` R${recommendation.refinement}`}
-                    {weapon.uid === character.signature_weapon_uid && " (сигнатурное)"}
+                    {weapon.key === character.signature_weapon_key && " (сигнатурное)"}
                     {recommendation.postfix !== undefined && (
                       <>
                         {" "}

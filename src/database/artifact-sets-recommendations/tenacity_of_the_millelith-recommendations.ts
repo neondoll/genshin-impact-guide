@@ -1,27 +1,24 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
-import { AttributesCrit, AttributesElementDamageBonus } from "@/database/artifact-sets-recommendations/help.ts";
 
 export default {
-  artifact_set_uid: ArtifactSetUidEnum.TenacityOfTheMillelith,
+  artifact_set_key: ArtifactSetKeys.TenacityOfTheMillelith,
   characters: [
-    { uid: CharacterUidEnum.Dehya },
-    { uid: CharacterUidEnum.KukiShinobu },
-    { uid: CharacterUidEnum.Mona, is_better: true },
-    { uid: CharacterUidEnum.SangonomiyaKokomi, is_better: true },
-    { uid: CharacterUidEnum.Zhongli, is_better: true },
+    { key: CharacterKeys.Dehya },
+    { key: CharacterKeys.KukiShinobu },
+    { key: CharacterKeys.Mona, is_better: true },
+    { key: CharacterKeys.SangonomiyaKokomi, is_better: true },
+    { key: CharacterKeys.Zhongli, is_better: true },
   ],
-  preferred_attributes: {
-    [ArtifactPieceUidEnum.SandsOfEon]: [AttributeUidEnum.EnergyRecharge, AttributeUidEnum.HPPercentage],
-    [ArtifactPieceUidEnum.GobletOfEonothem]: [...AttributesElementDamageBonus, AttributeUidEnum.HPPercentage],
-    [ArtifactPieceUidEnum.CircletOfLogos]: [...AttributesCrit, AttributeUidEnum.HPPercentage],
-    additional: [
-      ...AttributesCrit, AttributeUidEnum.ATKPercentage, AttributeUidEnum.EnergyRecharge,
-      AttributeUidEnum.HPPercentage,
-    ],
+  preferred_stats: {
+    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.EnergyRecharge, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.CircletOfLogos]: [...StatsCrit, StatKeys.HPPercentage],
+    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.EnergyRecharge, StatKeys.HPPercentage],
   },
   video_sources: [
     {

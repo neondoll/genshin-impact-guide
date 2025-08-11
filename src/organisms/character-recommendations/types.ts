@@ -1,14 +1,11 @@
+import type { CharacterLoaderData } from "@/routes/character";
 import type {
   CharacterReferencePointRecommendations,
   CharacterSquadItemRecommendation,
   CharacterTalentLevelingRecommendations,
   CharacterWeaponRecommendations,
 } from "@/database/types/character-recommendations";
-import type { CharacterLoaderData } from "@/routes/character";
 
-export type ArtifactAttributeRecommendationsProps = {
-  recommendations: ArtifactRecommendationsProps["recommendations"]["attributes"];
-};
 export type ArtifactRecommendationsProps = {
   character: CharacterRecommendationsProps["character"];
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["artifacts"]>;
@@ -16,6 +13,9 @@ export type ArtifactRecommendationsProps = {
 export type ArtifactSetRecommendationsProps = {
   character: ArtifactRecommendationsProps["character"];
   recommendations: ArtifactRecommendationsProps["recommendations"]["sets"];
+};
+export type ArtifactStatRecommendationsProps = {
+  recommendations: ArtifactRecommendationsProps["recommendations"]["stats"];
 };
 export type CharacterRecommendationsProps = {
   character: CharacterLoaderData["character"];

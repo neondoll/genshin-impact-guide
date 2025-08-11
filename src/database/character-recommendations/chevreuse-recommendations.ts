@@ -1,46 +1,46 @@
 import artifactSets from "../artifact-sets";
 import weapons from "../weapons";
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import { ArtifactSetUidEnum } from "../enums/artifact-set";
-import { AttributeUidEnum } from "../enums/attribute";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
     sets: [
-      { uid: ArtifactSetUidEnum.NoblesseOblige },
+      { key: ArtifactSetKeys.NoblesseOblige },
       {
-        uid: ArtifactSetUidEnum.SongOfDaysPast,
+        key: ArtifactSetKeys.SongOfDaysPast,
         description: "Не рекомендуется, слишком нестабильна и требует овер хил",
       },
       {
-        uid: ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity,
-        description: `Если ${artifactSets[ArtifactSetUidEnum.NoblesseOblige].name} занята`,
+        key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity,
+        description: `Если ${artifactSets[ArtifactSetKeys.NoblesseOblige].name} занята`,
       },
       {
-        uid: ArtifactSetUidEnum.EmblemOfSeveredFate,
-        description: `Если ${artifactSets[ArtifactSetUidEnum.NoblesseOblige].name} и ${artifactSets[ArtifactSetUidEnum.ScrollOfTheHeroOfCinderCity].name} заняты`,
+        key: ArtifactSetKeys.EmblemOfSeveredFate,
+        description: `Если ${artifactSets[ArtifactSetKeys.NoblesseOblige].name} и ${artifactSets[ArtifactSetKeys.ScrollOfTheHeroOfCinderCity].name} заняты`,
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [{ uid: AttributeUidEnum.HPPercentage }],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [{ uid: AttributeUidEnum.HPPercentage }],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.HPPercentage },
-        { uid: AttributeUidEnum.CRITRate, description: `Если в руках ${weapons[WeaponUidEnum.FavoniusLance].name}` },
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.HPPercentage }],
+      [ArtifactSlotKeys.GobletOfEonothem]: [{ key: StatKeys.HPPercentage }],
+      [ArtifactSlotKeys.CircletOfLogos]: [
+        { key: StatKeys.HPPercentage },
+        { key: StatKeys.CRITRate, description: `Если в руках ${weapons[WeaponKeys.FavoniusLance].name}` },
       ],
-      additional: [{ uid: AttributeUidEnum.HPPercentage }, { uid: AttributeUidEnum.EnergyRecharge }],
+      additional: [{ key: StatKeys.HPPercentage }, { key: StatKeys.EnergyRecharge }],
     },
   },
-  character_uid: CharacterUidEnum.Chevreuse,
+  character_key: CharacterKeys.Chevreuse,
   required_level: 90,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(8)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(8)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "В первую очередь\n(8)" },
+    { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(8)" },
   ],
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
@@ -50,9 +50,9 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.StaffOfHoma, refinement: 1, is_better: true },
-    { uid: WeaponUidEnum.DialoguesOfTheDesertSages, refinement: 5 },
-    { uid: WeaponUidEnum.FavoniusLance, refinement: 5 },
-    { uid: WeaponUidEnum.RightfulReward, refinement: 5 },
+    { key: WeaponKeys.StaffOfHoma, refinement: 1, is_better: true },
+    { key: WeaponKeys.DialoguesOfTheDesertSages, refinement: 5 },
+    { key: WeaponKeys.FavoniusLance, refinement: 5 },
+    { key: WeaponKeys.RightfulReward, refinement: 5 },
   ],
 } as CharacterRecommendations;

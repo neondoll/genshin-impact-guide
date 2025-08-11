@@ -1,14 +1,14 @@
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon";
+import { CharacterKeys } from "../enums/character";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
-  character_uid: CharacterUidEnum.Razor,
+  character_key: CharacterKeys.Razor,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalBurst, priority: "Не качаем\n(1)" },
   ],
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
@@ -18,8 +18,8 @@ export default {
     },
   ],
   weapons: [
-    { uid: WeaponUidEnum.BloodtaintedGreatsword, refinement: 5, is_better: true },
-    { uid: WeaponUidEnum.Rainslasher, refinement: 5 },
-    { uid: WeaponUidEnum.MakhairaAquamarine, refinement: 5 },
+    { key: WeaponKeys.BloodtaintedGreatsword, refinement: 5, is_better: true },
+    { key: WeaponKeys.Rainslasher, refinement: 5 },
+    { key: WeaponKeys.MakhairaAquamarine, refinement: 5 },
   ],
 } as CharacterRecommendations;

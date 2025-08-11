@@ -6,14 +6,14 @@ import { getCharacter, getElement } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import type { SquadRecommendationsItemProps, SquadRecommendationsProps } from "./types";
 
-function SquadRecommendationsItem({ type, uid }: SquadRecommendationsItemProps) {
-  switch (type) {
+function SquadRecommendationsItem({ item }: { item: SquadRecommendationsItemProps }) {
+  switch (item.type) {
     case "character": {
-      const character = getCharacter(uid);
+      const character = getCharacter(item.key);
 
       return (
         <Badge asChild variant="secondary">
-          <Link to={Paths.Character.to(uid)}>
+          <Link to={Paths.Character.to(item.key)}>
             <img alt={character.name} className="shrink-0 size-8 rounded-md" src={character.image_src} />
             <span children={character.name} />
           </Link>
@@ -21,7 +21,7 @@ function SquadRecommendationsItem({ type, uid }: SquadRecommendationsItemProps) 
       );
     }
     case "element": {
-      const element = getElement(uid);
+      const element = getElement(item.key);
 
       return (
         <Badge variant="secondary">
@@ -47,12 +47,12 @@ export default function SquadRecommendations({ recommendations }: SquadRecommend
                 ? (
                     <div className="flex flex-wrap gap-2" key={index + 1}>
                       {generalTemplateUnit.map((generalTemplateItem, index) => (
-                        <SquadRecommendationsItem key={index} {...generalTemplateItem} />
+                        <SquadRecommendationsItem item={generalTemplateItem} key={index} />
                       ))}
                     </div>
                   )
                 : (
-                    <SquadRecommendationsItem {...generalTemplateUnit} />
+                    <SquadRecommendationsItem item={generalTemplateUnit} />
                   )}
             </TableCell>
           </TableRow>
@@ -64,7 +64,7 @@ export default function SquadRecommendations({ recommendations }: SquadRecommend
                 <TableCell>
                   <div className="flex flex-wrap gap-2">
                     {recommendations.best_teammates.map((bestTeammate, index) => (
-                      <SquadRecommendationsItem key={index} {...bestTeammate} />
+                      <SquadRecommendationsItem item={bestTeammate} key={index} />
                     ))}
                   </div>
                 </TableCell>
@@ -79,7 +79,7 @@ export default function SquadRecommendations({ recommendations }: SquadRecommend
                 <TableCell>
                   <div className="flex flex-wrap gap-2">
                     {bestTeammates.map((bestTeammate, index) => (
-                      <SquadRecommendationsItem key={index} {...bestTeammate} />
+                      <SquadRecommendationsItem item={bestTeammate} key={index} />
                     ))}
                   </div>
                 </TableCell>

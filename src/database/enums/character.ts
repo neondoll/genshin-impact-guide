@@ -1,4 +1,4 @@
-export const CharacterUidEnum = {
+export const CharacterKeys = {
   /* Альбедо                  */ Albedo: "albedo",
   /* Аль-Хайтам               */ Alhaitham: "alhaitham",
   /* Эмбер                    */ Amber: "amber",

@@ -1,13 +1,13 @@
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece";
-import type { ArtifactSetUid } from "./artifact-set";
-import type { AttributeUid } from "./attribute";
-import type { CharacterUid } from "./character";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import type { ArtifactSetKey } from "./artifact-set";
+import type { CharacterKey } from "./character";
+import type { StatKey } from "./stat";
 import type { VideoSource } from "./video-source";
 
-export type ArtifactSetCharacterRecommendation = { uid: CharacterUid; is_better?: boolean; notes?: string | string[] };
+export type ArtifactSetCharacterRecommendation = { key: CharacterKey; is_better?: boolean; notes?: string | string[] };
 export type ArtifactSetRecommendations = {
-  artifact_set_uid: ArtifactSetUid;
+  artifact_set_key: ArtifactSetKey;
   characters: ArtifactSetCharacterRecommendation[];
-  preferred_attributes: Record<typeof ArtifactPieceUidEnum["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", AttributeUid[]>;
+  preferred_stats: Record<typeof ArtifactSlotKeys["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", StatKey[]>;
   video_sources?: VideoSource[];
 };

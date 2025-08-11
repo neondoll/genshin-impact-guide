@@ -1,7 +1,7 @@
-import { WorldUidEnum } from "./enums/world";
-import type { World, WorldUid } from "./types/world";
+import { WorldKeys } from "./enums/world";
+import type { World, WorldKey } from "./types/world";
 
 export default {
-  [WorldUidEnum.Another]: { name: "Другой мир" },
-  [WorldUidEnum.Teyvat]: { name: "Тейват" },
-} as Record<WorldUid, World>;
+  [WorldKeys.Another]: { name: "Другой мир" },
+  [WorldKeys.Teyvat]: { name: "Тейват" },
+} as Record<WorldKey, World>;

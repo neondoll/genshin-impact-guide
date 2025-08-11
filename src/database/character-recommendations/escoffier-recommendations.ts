@@ -1,87 +1,87 @@
 import artifactSets from "../artifact-sets";
 import weapons from "../weapons";
-import { ArtifactPieceUidEnum } from "../enums/artifact-piece.ts";
-import { ArtifactSetUidEnum } from "../enums/artifact-set.ts";
-import { AttributeUidEnum } from "../enums/attribute.ts";
-import { CharacterUidEnum } from "../enums/character";
-import { TalentUidEnum } from "../enums/talent";
-import { WeaponUidEnum } from "../enums/weapon.ts";
+import { ArtifactSetKeys } from "../enums/artifact-set";
+import { ArtifactSlotKeys } from "../enums/artifact-slot";
+import { CharacterKeys } from "../enums/character";
+import { StatKeys } from "../enums/stat";
+import { TalentKeys } from "../enums/talent";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
   artifacts: {
     sets: [
       {
-        uid: ArtifactSetUidEnum.GoldenTroupe,
+        key: ArtifactSetKeys.GoldenTroupe,
         is_better: true,
         notes: ["Значительно увеличит урон элементального навыка Эскофье, особенно когда она не на поле."],
       },
       {
-        uid: ArtifactSetUidEnum.BlizzardStrayer,
+        key: ArtifactSetKeys.BlizzardStrayer,
         notes: [
           "Комплект увеличит Крио урон и шанс крит. попадания Эскофье.",
           "Поскольку Эскофье играет в отрядах с Крио и Гидро персонажами, она выполняет условие комплекта.",
         ],
       },
     ],
-    attributes: {
-      [ArtifactPieceUidEnum.SandsOfEon]: [
-        { uid: AttributeUidEnum.ATKPercentage, notes: ["Личный урон важнее, чем ульта по откату"] },
+    stats: {
+      [ArtifactSlotKeys.SandsOfEon]: [
+        { key: StatKeys.ATKPercentage, notes: ["Личный урон важнее, чем ульта по откату"] },
         {
-          uid: AttributeUidEnum.EnergyRecharge,
+          key: StatKeys.EnergyRecharge,
           notes: ["В меньшинстве случаев, когда есть Фурина, лечение нужно и лечить больше некому"],
         },
       ],
-      [ArtifactPieceUidEnum.GobletOfEonothem]: [
-        { uid: AttributeUidEnum.CryoDMGBonus, notes: ["В 99% случаев"] },
-        { uid: AttributeUidEnum.ATKPercentage, notes: ["В 1% случаев"] },
+      [ArtifactSlotKeys.GobletOfEonothem]: [
+        { key: StatKeys.CryoDMGBonus, notes: ["В 99% случаев"] },
+        { key: StatKeys.ATKPercentage, notes: ["В 1% случаев"] },
       ],
-      [ArtifactPieceUidEnum.CircletOfLogos]: [
-        { uid: AttributeUidEnum.CRITRate },
-        { uid: AttributeUidEnum.CRITDMG, notes: ["Почти всегда"] },
+      [ArtifactSlotKeys.CircletOfLogos]: [
+        { key: StatKeys.CRITRate },
+        { key: StatKeys.CRITDMG, notes: ["Почти всегда"] },
       ],
       additional: [
-        { uid: AttributeUidEnum.CRITRate, notes: ["Приоритетно"] },
-        { uid: AttributeUidEnum.CRITDMG, notes: ["Приоритетно"] },
-        { uid: AttributeUidEnum.ATKPercentage },
-        { uid: AttributeUidEnum.EnergyRecharge },
+        { key: StatKeys.CRITRate, notes: ["Приоритетно"] },
+        { key: StatKeys.CRITDMG, notes: ["Приоритетно"] },
+        { key: StatKeys.ATKPercentage },
+        { key: StatKeys.EnergyRecharge },
       ],
     },
   },
-  character_uid: CharacterUidEnum.Escoffier,
+  character_key: CharacterKeys.Escoffier,
   first_constellation_or_signature_weapon: "С1 лучше",
   reference_point: [
-    ["Оружие", `${weapons[WeaponUidEnum.Deathmatch].name} R1 [${weapons[WeaponUidEnum.Deathmatch].quality}⭐]`],
+    ["Оружие", `${weapons[WeaponKeys.Deathmatch].name} R1 [${weapons[WeaponKeys.Deathmatch].rarity}⭐]`],
     ["Атака", "2 100"],
     ["Восст. энергии", "110% - 115%"],
     ["Крит. шанс", "80%"],
     ["Крит. урон", "175%"],
-    ["Артефакты", artifactSets[ArtifactSetUidEnum.GoldenTroupe].name],
+    ["Артефакты", artifactSets[ArtifactSetKeys.GoldenTroupe].name],
   ],
   required_level: 90,
   talent_leveling: [
-    { uid: TalentUidEnum.NormalAttack, priority: "Не качаем\n(1)" },
-    { uid: TalentUidEnum.ElementalSkill, priority: "В первую очередь\n(10)" },
-    { uid: TalentUidEnum.ElementalBurst, priority: "Во вторую очередь\n(9)" },
+    { key: TalentKeys.NormalAttack, priority: "Не качаем\n(1)" },
+    { key: TalentKeys.ElementalSkill, priority: "В первую очередь\n(10)" },
+    { key: TalentKeys.ElementalBurst, priority: "Во вторую очередь\n(9)" },
   ],
   weapons: [
-    { uid: WeaponUidEnum.SymphonistOfScents, percent: 1.2991 },
-    { uid: WeaponUidEnum.StaffOfHoma, percent: 1.2247 },
-    { uid: WeaponUidEnum.LumidouceElegy, percent: 1.1820 },
-    { uid: WeaponUidEnum.Deathmatch, refinement: 5, percent: 1.1568 },
-    { uid: WeaponUidEnum.PrimordialJadeWingedSpear, percent: 1.1435 },
-    { uid: WeaponUidEnum.CrimsonMoonsSemblance, percent: 1.1126 },
-    { uid: WeaponUidEnum.StaffOfTheScarletSands, percent: 1.0994 },
-    { uid: WeaponUidEnum.Deathmatch, refinement: 1, percent: 1.0637 },
-    { uid: WeaponUidEnum.SkywardSpine, percent: 1.0356 },
-    { uid: WeaponUidEnum.ProspectorsDrill, refinement: 5, percent: 1.0309 },
-    { uid: WeaponUidEnum.LithicSpear, refinement: 5, percent: 1.0118 },
-    { uid: WeaponUidEnum.BlackcliffPole, percent: 1 },
-    { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 5, percent: 0.9927 },
-    { uid: WeaponUidEnum.BalladOfTheFjords, refinement: 1, percent: 0.9926 },
-    { uid: WeaponUidEnum.ProspectorsDrill, refinement: 1, percent: 0.9819 },
-    { uid: WeaponUidEnum.MissiveWindspear, percent: 0.9801 },
-    { uid: WeaponUidEnum.KitainCrossSpear, refinement: 5, percent: 0.8818 },
-    { uid: WeaponUidEnum.FavoniusLance, refinement: 5, percent: 0.8526 },
+    { key: WeaponKeys.SymphonistOfScents, percent: 1.2991 },
+    { key: WeaponKeys.StaffOfHoma, percent: 1.2247 },
+    { key: WeaponKeys.LumidouceElegy, percent: 1.1820 },
+    { key: WeaponKeys.Deathmatch, refinement: 5, percent: 1.1568 },
+    { key: WeaponKeys.PrimordialJadeWingedSpear, percent: 1.1435 },
+    { key: WeaponKeys.CrimsonMoonsSemblance, percent: 1.1126 },
+    { key: WeaponKeys.StaffOfTheScarletSands, percent: 1.0994 },
+    { key: WeaponKeys.Deathmatch, refinement: 1, percent: 1.0637 },
+    { key: WeaponKeys.SkywardSpine, percent: 1.0356 },
+    { key: WeaponKeys.ProspectorsDrill, refinement: 5, percent: 1.0309 },
+    { key: WeaponKeys.LithicSpear, refinement: 5, percent: 1.0118 },
+    { key: WeaponKeys.BlackcliffPole, percent: 1 },
+    { key: WeaponKeys.BalladOfTheFjords, refinement: 5, percent: 0.9927 },
+    { key: WeaponKeys.BalladOfTheFjords, refinement: 1, percent: 0.9926 },
+    { key: WeaponKeys.ProspectorsDrill, refinement: 1, percent: 0.9819 },
+    { key: WeaponKeys.MissiveWindspear, percent: 0.9801 },
+    { key: WeaponKeys.KitainCrossSpear, refinement: 5, percent: 0.8818 },
+    { key: WeaponKeys.FavoniusLance, refinement: 5, percent: 0.8526 },
   ],
 } as CharacterRecommendations;

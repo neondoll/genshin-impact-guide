@@ -1,21 +1,21 @@
-import { ArtifactPieceUidEnum } from "@/database/enums/artifact-piece";
+import { ArtifactSlotKeys } from "@/database/enums/artifact-slot";
 import { Badge } from "@/components/ui/badge";
-import { getAttribute, sortAttributes } from "@/database";
+import { getStat, sortStats } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import type { PreferredAttributesRecommendationsProps } from "./types";
+import type { PreferredStatsRecommendationsProps } from "./types";
 
-export default function PreferredAttributesRecommendations({ recommendations }: PreferredAttributesRecommendationsProps) {
+export default function PreferredStatsRecommendations({ recommendations }: PreferredStatsRecommendationsProps) {
   const recommendationsKeys = Object.keys(recommendations) as (keyof typeof recommendations)[];
   const rowsCount = Math.max(...recommendationsKeys.map(recommendationsKey => recommendations[recommendationsKey].length));
 
   const recommendationsSort = (recommendationsKey: keyof typeof recommendations) => {
-    return recommendations[recommendationsKey].map(value => getAttribute(value)).sort(sortAttributes).map(value => value.uid);
+    return recommendations[recommendationsKey].map(getStat).sort(sortStats).map(value => value.key);
   };
 
   const sortedRecommendations = {
-    [ArtifactPieceUidEnum.SandsOfEon]: recommendationsSort(ArtifactPieceUidEnum.SandsOfEon),
-    [ArtifactPieceUidEnum.GobletOfEonothem]: recommendationsSort(ArtifactPieceUidEnum.GobletOfEonothem),
-    [ArtifactPieceUidEnum.CircletOfLogos]: recommendationsSort(ArtifactPieceUidEnum.CircletOfLogos),
+    [ArtifactSlotKeys.SandsOfEon]: recommendationsSort(ArtifactSlotKeys.SandsOfEon),
+    [ArtifactSlotKeys.GobletOfEonothem]: recommendationsSort(ArtifactSlotKeys.GobletOfEonothem),
+    [ArtifactSlotKeys.CircletOfLogos]: recommendationsSort(ArtifactSlotKeys.CircletOfLogos),
     additional: recommendationsSort("additional"),
   };
 
@@ -25,9 +25,9 @@ export default function PreferredAttributesRecommendations({ recommendations }: 
         <TableRow>
           {recommendationsKeys.map(recommendationsKey => (
             <TableHead className="text-center" key={recommendationsKey}>
-              {recommendationsKey === ArtifactPieceUidEnum.SandsOfEon && "Часы"}
-              {recommendationsKey === ArtifactPieceUidEnum.GobletOfEonothem && "Кубок"}
-              {recommendationsKey === ArtifactPieceUidEnum.CircletOfLogos && "Корона"}
+              {recommendationsKey === ArtifactSlotKeys.SandsOfEon && "Часы"}
+              {recommendationsKey === ArtifactSlotKeys.GobletOfEonothem && "Кубок"}
+              {recommendationsKey === ArtifactSlotKeys.CircletOfLogos && "Корона"}
               {recommendationsKey === "additional" && "Доп."}
             </TableHead>
           ))}
@@ -37,13 +37,13 @@ export default function PreferredAttributesRecommendations({ recommendations }: 
         {Array.from({ length: rowsCount }, (_, i) => i).map(index => (
           <TableRow className="hover:bg-inherit" key={index + 1}>
             {recommendationsKeys.map((recommendationsKey) => {
-              const attribute = index in sortedRecommendations[recommendationsKey] ? getAttribute(sortedRecommendations[recommendationsKey][index]) : undefined;
+              const stat = index in sortedRecommendations[recommendationsKey] ? getStat(sortedRecommendations[recommendationsKey][index]) : undefined;
 
               return (
                 <TableCell className="text-pretty whitespace-normal" key={recommendationsKey}>
-                  {attribute !== undefined && (
+                  {stat !== undefined && (
                     <Badge
-                      children={attribute.abbreviation || attribute.name}
+                      children={stat.abbreviation || stat.name}
                       className="flex justify-center w-full text-center text-pretty whitespace-normal"
                       variant="secondary"
                     />

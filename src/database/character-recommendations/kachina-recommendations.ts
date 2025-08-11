@@ -1,11 +1,11 @@
-import { CharacterUidEnum } from "../enums/character";
-import { WeaponUidEnum } from "../enums/weapon";
+import { CharacterKeys } from "../enums/character";
+import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
-  character_uid: CharacterUidEnum.Kachina,
+  character_key: CharacterKeys.Kachina,
   video_sources: [
     { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
   ],
-  weapons: [{ uid: WeaponUidEnum.FavoniusLance, refinement: 5, is_better: true }],
+  weapons: [{ key: WeaponKeys.FavoniusLance, refinement: 5, is_better: true }],
 } as CharacterRecommendations;
