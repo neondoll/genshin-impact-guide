@@ -3,7 +3,7 @@ import weapons from "../weapons";
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -25,26 +25,26 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [
-        { key: StatKeys.ATKPercentage, notes: ["Личный урон важнее, чем ульта по откату"] },
+      [ArtifactSlotKeys.Sands]: [
+        { key: StAtkeys.AtkPercentage, notes: ["Личный урон важнее, чем ульта по откату"] },
         {
-          key: StatKeys.EnergyRecharge,
+          key: StAtkeys.EnergyRecharge,
           notes: ["В меньшинстве случаев, когда есть Фурина, лечение нужно и лечить больше некому"],
         },
       ],
-      [ArtifactSlotKeys.GobletOfEonothem]: [
-        { key: StatKeys.CryoDMGBonus, notes: ["В 99% случаев"] },
-        { key: StatKeys.ATKPercentage, notes: ["В 1% случаев"] },
+      [ArtifactSlotKeys.Goblet]: [
+        { key: StAtkeys.CryoDmgBonus, notes: ["В 99% случаев"] },
+        { key: StAtkeys.AtkPercentage, notes: ["В 1% случаев"] },
       ],
-      [ArtifactSlotKeys.CircletOfLogos]: [
-        { key: StatKeys.CRITRate },
-        { key: StatKeys.CRITDMG, notes: ["Почти всегда"] },
+      [ArtifactSlotKeys.Circlet]: [
+        { key: StAtkeys.CritRate },
+        { key: StAtkeys.CritDMG, notes: ["Почти всегда"] },
       ],
       additional: [
-        { key: StatKeys.CRITRate, notes: ["Приоритетно"] },
-        { key: StatKeys.CRITDMG, notes: ["Приоритетно"] },
-        { key: StatKeys.ATKPercentage },
-        { key: StatKeys.EnergyRecharge },
+        { key: StAtkeys.CritRate, notes: ["Приоритетно"] },
+        { key: StAtkeys.CritDMG, notes: ["Приоритетно"] },
+        { key: StAtkeys.AtkPercentage },
+        { key: StAtkeys.EnergyRecharge },
       ],
     },
   },

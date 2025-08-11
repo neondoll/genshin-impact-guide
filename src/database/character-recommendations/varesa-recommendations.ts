@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -22,18 +22,18 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.ATKPercentage }],
-      [ArtifactSlotKeys.GobletOfEonothem]: [
-        { key: StatKeys.ElectroDMGBonus, notes: ["Лучше с Цаплей всегда"] },
-        { key: StatKeys.ATKPercentage, notes: ["Лучше с Фуриной или в сете на планжи"] },
+      [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.AtkPercentage }],
+      [ArtifactSlotKeys.Goblet]: [
+        { key: StAtkeys.ElectroDmgBonus, notes: ["Лучше с Цаплей всегда"] },
+        { key: StAtkeys.AtkPercentage, notes: ["Лучше с Фуриной или в сете на планжи"] },
       ],
-      [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.CRITRate }, { key: StatKeys.CRITDMG }],
+      [ArtifactSlotKeys.Circlet]: [{ key: StAtkeys.CritRate }, { key: StAtkeys.CritDMG }],
       additional: [
-        { key: StatKeys.ATKPercentage, notes: ["от 1800"] },
-        { key: StatKeys.CRITRate, notes: ["от 60%"] },
-        { key: StatKeys.CRITDMG, notes: ["от 180%"] },
-        { key: StatKeys.EnergyRecharge, notes: ["115% - 135% для Взрыва стихии"] },
-        { key: StatKeys.ElementalMastery, notes: ["от 150 (при игре через реакцию Вегетация)"] },
+        { key: StAtkeys.AtkPercentage, notes: ["от 1800"] },
+        { key: StAtkeys.CritRate, notes: ["от 60%"] },
+        { key: StAtkeys.CritDMG, notes: ["от 180%"] },
+        { key: StAtkeys.EnergyRecharge, notes: ["115% - 135% для Взрыва стихии"] },
+        { key: StAtkeys.ElementalMastery, notes: ["от 150 (при игре через реакцию Вегетация)"] },
       ],
     },
   },

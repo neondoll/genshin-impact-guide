@@ -4,15 +4,15 @@ import weapons from "../weapons";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn, publicSrc } from "@/lib/utils";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import type { ArtifactSetKey } from "../types/artifact-set";
 import type { WeaponKey } from "../types/weapon";
 
-export const StatsCrit = [StatKeys.CRITDMG, StatKeys.CRITRate];
+export const StatsCrit = [StAtkeys.CritDMG, StAtkeys.CritRate];
 export const StatsElementDamageBonus = [
-  StatKeys.AnemoDMGBonus, StatKeys.CryoDMGBonus, StatKeys.DendroDMGBonus,
-  StatKeys.ElectroDMGBonus, StatKeys.GeoDMGBonus, StatKeys.HydroDMGBonus,
-  StatKeys.PyroDMGBonus,
+  StAtkeys.AnemoDmgBonus, StAtkeys.CryoDmgBonus, StAtkeys.DendroDmgBonus,
+  StAtkeys.ElectroDmgBonus, StAtkeys.GeoDmgBonus, StAtkeys.HydroDmgBonus,
+  StAtkeys.PyroDmgBonus,
 ];
 
 export function artifactSetByKey(key: ArtifactSetKey) {

@@ -3,7 +3,7 @@ import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
 import { CharacterRoleKeys } from "../enums/character-role";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -37,9 +37,9 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [
+      [ArtifactSlotKeys.Sands]: [
         {
-          key: StatKeys.ATKPercentage,
+          key: StAtkeys.AtkPercentage,
           notes: [
             "Гиперкерри\\Перегрузка - Всегда",
             `Вейп\\Мелт - Лучше, если в отряде есть инструктор и отсутствует ${characters[CharacterKeys.Bennett].name} или ${characters[CharacterKeys.Iansan].name}`,
@@ -47,19 +47,19 @@ export default {
           ],
         },
         {
-          key: StatKeys.ElementalMastery,
+          key: StAtkeys.ElementalMastery,
           notes: [
             `Вейп\\Мелт - Всегда, если есть в команде ${characters[CharacterKeys.Bennett].name} или ${characters[CharacterKeys.Iansan].name} и мало МС в доп. статах`,
           ],
         },
       ],
-      [ArtifactSlotKeys.GobletOfEonothem]: [{ key: StatKeys.PyroDMGBonus, notes: ["Всегда"] }],
-      [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.CRITRate }, { key: StatKeys.CRITDMG }],
+      [ArtifactSlotKeys.Goblet]: [{ key: StAtkeys.PyroDmgBonus, notes: ["Всегда"] }],
+      [ArtifactSlotKeys.Circlet]: [{ key: StAtkeys.CritRate }, { key: StAtkeys.CritDMG }],
       additional: [
-        { key: StatKeys.ATKPercentage },
-        { key: StatKeys.CRITRate },
-        { key: StatKeys.CRITDMG },
-        { key: StatKeys.ElementalMastery, notes: ["Если играем в Вейпе\\Мелте"] },
+        { key: StAtkeys.AtkPercentage },
+        { key: StAtkeys.CritRate },
+        { key: StAtkeys.CritDMG },
+        { key: StAtkeys.ElementalMastery, notes: ["Если играем в Вейпе\\Мелте"] },
       ],
     },
   },

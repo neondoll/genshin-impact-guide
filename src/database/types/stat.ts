@@ -1,4 +1,4 @@
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 
-export type Stat = { key: StatKey; name: string; abbreviation?: string };
-export type StatKey = typeof StatKeys[keyof typeof StatKeys];
+export type Stat = { key: StAtkey; name: string; abbreviation?: string };
+export type StAtkey = typeof StAtkeys[keyof typeof StAtkeys];

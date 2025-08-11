@@ -2,7 +2,7 @@ import { artifactSetByKey, StatsCrit, StatsElementDamageBonus, weaponByKey } fro
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { WeaponKeys } from "../enums/weapon";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -57,11 +57,11 @@ export default {
     },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.HPPercentage],
-    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.HPPercentage],
-    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    [ArtifactSlotKeys.Sands]: [StAtkeys.AtkPercentage, StAtkeys.ElementalMastery, StAtkeys.HpPercentage],
+    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StAtkeys.HpPercentage],
+    [ArtifactSlotKeys.Circlet]: StatsCrit,
     additional: [
-      ...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HPPercentage,
+      ...StatsCrit, StAtkeys.AtkPercentage, StAtkeys.ElementalMastery, StAtkeys.EnergyRecharge, StAtkeys.HpPercentage,
     ],
   },
   video_sources: [

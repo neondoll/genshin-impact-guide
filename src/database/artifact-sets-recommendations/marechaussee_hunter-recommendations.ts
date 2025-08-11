@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -14,10 +14,10 @@ export default {
     { key: CharacterKeys.Wriothesley, is_better: true },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.HPPercentage],
-    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
-    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
-    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.EnergyRecharge, StatKeys.HPPercentage],
+    [ArtifactSlotKeys.Sands]: [StAtkeys.AtkPercentage, StAtkeys.HpPercentage],
+    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StAtkeys.AtkPercentage],
+    [ArtifactSlotKeys.Circlet]: StatsCrit,
+    additional: [...StatsCrit, StAtkeys.AtkPercentage, StAtkeys.EnergyRecharge, StAtkeys.HpPercentage],
   },
   video_sources: [
     {

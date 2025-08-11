@@ -2,7 +2,7 @@ import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
 import { ElementKeys } from "../enums/element";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 import type { ElementKey } from "../types/element";
@@ -48,15 +48,15 @@ export default {
         },
       ],
       stats: {
-        [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.ATKPercentage }],
-        [ArtifactSlotKeys.GobletOfEonothem]: [{ key: StatKeys.PyroDMGBonus }, { key: StatKeys.ATKPercentage }],
-        [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.CRITRate }, { key: StatKeys.CRITDMG }],
+        [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.AtkPercentage }],
+        [ArtifactSlotKeys.Goblet]: [{ key: StAtkeys.PyroDmgBonus }, { key: StAtkeys.AtkPercentage }],
+        [ArtifactSlotKeys.Circlet]: [{ key: StAtkeys.CritRate }, { key: StAtkeys.CritDMG }],
         additional: [
-          { key: StatKeys.CRITDMG },
-          { key: StatKeys.CRITRate },
-          { key: StatKeys.ATKPercentage },
-          { key: StatKeys.EnergyRecharge, notes: ["Намеренно собирать не нужно"] },
-          { key: StatKeys.ATK },
+          { key: StAtkeys.CritDMG },
+          { key: StAtkeys.CritRate },
+          { key: StAtkeys.AtkPercentage },
+          { key: StAtkeys.EnergyRecharge, notes: ["Намеренно собирать не нужно"] },
+          { key: StAtkeys.Atk },
         ],
       },
     },

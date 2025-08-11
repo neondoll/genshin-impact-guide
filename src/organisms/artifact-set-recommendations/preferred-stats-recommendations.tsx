@@ -13,9 +13,9 @@ export default function PreferredStatsRecommendations({ recommendations }: Prefe
   };
 
   const sortedRecommendations = {
-    [ArtifactSlotKeys.SandsOfEon]: recommendationsSort(ArtifactSlotKeys.SandsOfEon),
-    [ArtifactSlotKeys.GobletOfEonothem]: recommendationsSort(ArtifactSlotKeys.GobletOfEonothem),
-    [ArtifactSlotKeys.CircletOfLogos]: recommendationsSort(ArtifactSlotKeys.CircletOfLogos),
+    [ArtifactSlotKeys.Sands]: recommendationsSort(ArtifactSlotKeys.Sands),
+    [ArtifactSlotKeys.Goblet]: recommendationsSort(ArtifactSlotKeys.Goblet),
+    [ArtifactSlotKeys.Circlet]: recommendationsSort(ArtifactSlotKeys.Circlet),
     additional: recommendationsSort("additional"),
   };
 
@@ -25,9 +25,9 @@ export default function PreferredStatsRecommendations({ recommendations }: Prefe
         <TableRow>
           {recommendationsKeys.map(recommendationsKey => (
             <TableHead className="text-center" key={recommendationsKey}>
-              {recommendationsKey === ArtifactSlotKeys.SandsOfEon && "Часы"}
-              {recommendationsKey === ArtifactSlotKeys.GobletOfEonothem && "Кубок"}
-              {recommendationsKey === ArtifactSlotKeys.CircletOfLogos && "Корона"}
+              {recommendationsKey === ArtifactSlotKeys.Sands && "Часы"}
+              {recommendationsKey === ArtifactSlotKeys.Goblet && "Кубок"}
+              {recommendationsKey === ArtifactSlotKeys.Circlet && "Корона"}
               {recommendationsKey === "additional" && "Доп."}
             </TableHead>
           ))}

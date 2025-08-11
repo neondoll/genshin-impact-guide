@@ -4,7 +4,7 @@ import weapons from "../weapons";
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -45,21 +45,21 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [
-        { key: StatKeys.EnergyRecharge, notes: ["в 99% случаев"] },
-        { key: StatKeys.ElementalMastery },
+      [ArtifactSlotKeys.Sands]: [
+        { key: StAtkeys.EnergyRecharge, notes: ["в 99% случаев"] },
+        { key: StAtkeys.ElementalMastery },
       ],
-      [ArtifactSlotKeys.GobletOfEonothem]: [{ key: StatKeys.ElementalMastery }],
-      [ArtifactSlotKeys.CircletOfLogos]: [
-        { key: StatKeys.ElementalMastery, notes: ["всегда"] },
+      [ArtifactSlotKeys.Goblet]: [{ key: StAtkeys.ElementalMastery }],
+      [ArtifactSlotKeys.Circlet]: [
+        { key: StAtkeys.ElementalMastery, notes: ["всегда"] },
         {
-          key: StatKeys.CRITRate,
+          key: StAtkeys.CritRate,
           notes: [`можно рассмотреть, если в руках ${weapons[WeaponKeys.FavoniusCodex].name}`],
         },
       ],
       additional: [
-        { key: StatKeys.EnergyRecharge, notes: ["приоритетно", "от 170%"] },
-        { key: StatKeys.ElementalMastery, notes: ["от 800"] },
+        { key: StAtkeys.EnergyRecharge, notes: ["приоритетно", "от 170%"] },
+        { key: StAtkeys.ElementalMastery, notes: ["от 800"] },
       ],
     },
   },

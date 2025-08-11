@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -33,27 +33,27 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [
-        { key: StatKeys.HPPercentage, use_percent: 0.907 },
-        { key: StatKeys.EnergyRecharge, use_percent: 0.051 },
-        { key: StatKeys.ATKPercentage, use_percent: 0.025 },
+      [ArtifactSlotKeys.Sands]: [
+        { key: StAtkeys.HpPercentage, use_percent: 0.907 },
+        { key: StAtkeys.EnergyRecharge, use_percent: 0.051 },
+        { key: StAtkeys.AtkPercentage, use_percent: 0.025 },
       ],
-      [ArtifactSlotKeys.GobletOfEonothem]: [
-        { key: StatKeys.HPPercentage, use_percent: 0.902 },
-        { key: StatKeys.CryoDMGBonus, use_percent: 0.058 },
-        { key: StatKeys.ATKPercentage, use_percent: 0.015 },
+      [ArtifactSlotKeys.Goblet]: [
+        { key: StAtkeys.HpPercentage, use_percent: 0.902 },
+        { key: StAtkeys.CryoDmgBonus, use_percent: 0.058 },
+        { key: StAtkeys.AtkPercentage, use_percent: 0.015 },
       ],
-      [ArtifactSlotKeys.CircletOfLogos]: [
-        { key: StatKeys.HPPercentage, use_percent: 0.860 },
-        { key: StatKeys.CRITRate, use_percent: 0.080 },
-        { key: StatKeys.CRITDMG, use_percent: 0.035 },
+      [ArtifactSlotKeys.Circlet]: [
+        { key: StAtkeys.HpPercentage, use_percent: 0.860 },
+        { key: StAtkeys.CritRate, use_percent: 0.080 },
+        { key: StAtkeys.CritDMG, use_percent: 0.035 },
       ],
       additional: [
-        { key: StatKeys.HPPercentage, notes: ["Приоритетно", "от 25000"] },
-        { key: StatKeys.EnergyRecharge, notes: ["от 120%"] },
-        { key: StatKeys.CRITRate, notes: ["от 50%"] },
-        { key: StatKeys.CRITDMG, notes: ["от 120%"] },
-        { key: StatKeys.ElementalMastery, notes: ["от 250 (только при игре через реакции)"] },
+        { key: StAtkeys.HpPercentage, notes: ["Приоритетно", "от 25000"] },
+        { key: StAtkeys.EnergyRecharge, notes: ["от 120%"] },
+        { key: StAtkeys.CritRate, notes: ["от 50%"] },
+        { key: StAtkeys.CritDMG, notes: ["от 120%"] },
+        { key: StAtkeys.ElementalMastery, notes: ["от 250 (только при игре через реакции)"] },
       ],
     },
   },

@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { StatsCrit } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -15,10 +15,10 @@ export default {
     { key: CharacterKeys.Zhongli, is_better: true },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.DefensePercent, StatKeys.EnergyRecharge, StatKeys.HPPercentage],
-    [ArtifactSlotKeys.GobletOfEonothem]: [StatKeys.DefensePercent, StatKeys.HPPercentage],
-    [ArtifactSlotKeys.CircletOfLogos]: [...StatsCrit, StatKeys.HPPercentage],
-    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge],
+    [ArtifactSlotKeys.Sands]: [StAtkeys.DefPercentage, StAtkeys.EnergyRecharge, StAtkeys.HpPercentage],
+    [ArtifactSlotKeys.Goblet]: [StAtkeys.DefPercentage, StAtkeys.HpPercentage],
+    [ArtifactSlotKeys.Circlet]: [...StatsCrit, StAtkeys.HpPercentage],
+    additional: [...StatsCrit, StAtkeys.AtkPercentage, StAtkeys.ElementalMastery, StAtkeys.EnergyRecharge],
   },
   video_sources: [
     {

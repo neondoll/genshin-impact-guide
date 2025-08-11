@@ -76,7 +76,7 @@ export default function Weapon() {
             <TableRow className="hover:bg-inherit">
               <TableHead children="Базовая атака:" className="p-2 text-right whitespace-normal" />
               <TableCell
-                children={`${weapon.base_atk.min_value} - ${weapon.base_atk.max_value}`}
+                children={`${weapon.base_Atk.min_value} - ${weapon.base_Atk.max_value}`}
                 className="p-2 whitespace-normal"
               />
             </TableRow>

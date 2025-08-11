@@ -5,8 +5,8 @@ import type { ArtifactSlot, ArtifactSlotKey } from "./types/artifact-slot";
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-slots/${src}`);
 
 export default {
-  [ArtifactSlotKeys.CircletOfLogos]: {
-    key: ArtifactSlotKeys.CircletOfLogos,
+  [ArtifactSlotKeys.Circlet]: {
+    key: ArtifactSlotKeys.Circlet,
     name: "Корона разума",
     image_src: imageSrc("circlet_of_logos-64x64.png"),
     sort_by: 5,
@@ -17,20 +17,20 @@ export default {
     image_src: imageSrc("flower-64x64.png"),
     sort_by: 1,
   },
-  [ArtifactSlotKeys.GobletOfEonothem]: {
-    key: ArtifactSlotKeys.GobletOfEonothem,
+  [ArtifactSlotKeys.Goblet]: {
+    key: ArtifactSlotKeys.Goblet,
     name: "Кубок пространства",
     image_src: imageSrc("goblet_of_eonothem-64x64.png"),
     sort_by: 4,
   },
-  [ArtifactSlotKeys.PlumeOfDeath]: {
-    key: ArtifactSlotKeys.PlumeOfDeath,
+  [ArtifactSlotKeys.Plume]: {
+    key: ArtifactSlotKeys.Plume,
     name: "Перо смерти",
     image_src: imageSrc("plume_of_death-64x64.png"),
     sort_by: 2,
   },
-  [ArtifactSlotKeys.SandsOfEon]: {
-    key: ArtifactSlotKeys.SandsOfEon,
+  [ArtifactSlotKeys.Sands]: {
+    key: ArtifactSlotKeys.Sands,
     name: "Пески времени",
     image_src: imageSrc("sands_of_eon-64x64.png"),
     sort_by: 3,

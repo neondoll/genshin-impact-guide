@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -13,10 +13,10 @@ export default {
     { key: CharacterKeys.Razor },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage],
-    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage],
-    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
-    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.EnergyRecharge],
+    [ArtifactSlotKeys.Sands]: [StAtkeys.AtkPercentage],
+    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StAtkeys.AtkPercentage],
+    [ArtifactSlotKeys.Circlet]: StatsCrit,
+    additional: [...StatsCrit, StAtkeys.AtkPercentage, StAtkeys.EnergyRecharge],
   },
   video_sources: [
     {

@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -13,11 +13,11 @@ export default {
     { key: CharacterKeys.Tartaglia, is_better: true },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.HPPercentage],
-    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ATKPercentage, StatKeys.HPPercentage],
-    [ArtifactSlotKeys.CircletOfLogos]: StatsCrit,
+    [ArtifactSlotKeys.Sands]: [StAtkeys.AtkPercentage, StAtkeys.ElementalMastery, StAtkeys.HpPercentage],
+    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StAtkeys.AtkPercentage, StAtkeys.HpPercentage],
+    [ArtifactSlotKeys.Circlet]: StatsCrit,
     additional: [
-      ...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HPPercentage,
+      ...StatsCrit, StAtkeys.AtkPercentage, StAtkeys.ElementalMastery, StAtkeys.EnergyRecharge, StAtkeys.HpPercentage,
     ],
   },
   video_sources: [

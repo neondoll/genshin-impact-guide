@@ -17,7 +17,7 @@ import type { Character, CharacterKey } from "./types/character";
 import type { CharacterRoleKey } from "./types/character-role";
 import type { ElementKey } from "./types/element";
 import type { RegionKey } from "./types/region";
-import type { Stat, StatKey } from "./types/stat";
+import type { Stat, StAtkey } from "./types/stat";
 import type { TalentKey } from "./types/talent";
 import type { Weapon, WeaponKey } from "./types/weapon";
 import type { WeaponTypeKey } from "./types/weapon-type";
@@ -66,8 +66,8 @@ export function getRegion(regionKey: RegionKey) {
   return regions[regionKey];
 }
 
-export function getStat(statKey: StatKey) {
-  return stats[statKey];
+export function getStat(stAtkey: StAtkey) {
+  return stats[stAtkey];
 }
 
 export function getTalent(talentKey: TalentKey) {

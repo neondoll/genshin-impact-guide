@@ -2,7 +2,7 @@ import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import type { ArtifactSetKey } from "./artifact-set";
 import type { CharacterKey } from "./character";
 import type { ElementKey } from "./element";
-import type { StatKey } from "./stat";
+import type { StAtkey } from "./stat";
 import type { TalentKey } from "./talent";
 import type { VideoSource } from "./video-source";
 import type { WeaponKey } from "./weapon";
@@ -28,13 +28,13 @@ type CharacterArtifactRecommendations = {
 };
 type CharacterArtifactSetRecommendations = CharacterArtifactSetRecommendation[];
 type CharacterArtifactStatRecommendation = {
-  key: StatKey;
+  key: StAtkey;
   percent?: number;
   use_percent?: number;
   description?: string;
   notes?: string[];
 };
-type CharacterArtifactStatRecommendations = Record<typeof ArtifactSlotKeys["SandsOfEon" | "GobletOfEonothem" | "CircletOfLogos"] | "additional", CharacterArtifactStatRecommendation[]>;
+type CharacterArtifactStatRecommendations = Record<typeof ArtifactSlotKeys["Sands" | "Goblet" | "Circlet"] | "additional", CharacterArtifactStatRecommendation[]>;
 type CharacterSquadElementRecommendation = { type: "element"; key: ElementKey };
 type CharacterSquadCharacterRecommendation = { type: "character"; key: CharacterKey };
 type CharacterTalentLevelingRecommendation = { key: TalentKey; priority: string };

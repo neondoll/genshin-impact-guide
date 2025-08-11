@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -24,30 +24,30 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [
-        { key: StatKeys.EnergyRecharge, use_percent: 0.703 },
-        { key: StatKeys.HPPercentage, use_percent: 0.187 },
-        { key: StatKeys.ATKPercentage, use_percent: 0.089 },
+      [ArtifactSlotKeys.Sands]: [
+        { key: StAtkeys.EnergyRecharge, use_percent: 0.703 },
+        { key: StAtkeys.HpPercentage, use_percent: 0.187 },
+        { key: StAtkeys.AtkPercentage, use_percent: 0.089 },
       ],
-      [ArtifactSlotKeys.GobletOfEonothem]: [
-        { key: StatKeys.HPPercentage, use_percent: 0.749 },
-        { key: StatKeys.ATKPercentage, use_percent: 0.109 },
-        { key: StatKeys.PyroDMGBonus, use_percent: 0.105 },
+      [ArtifactSlotKeys.Goblet]: [
+        { key: StAtkeys.HpPercentage, use_percent: 0.749 },
+        { key: StAtkeys.AtkPercentage, use_percent: 0.109 },
+        { key: StAtkeys.PyroDmgBonus, use_percent: 0.105 },
       ],
-      [ArtifactSlotKeys.CircletOfLogos]: [
-        { key: StatKeys.HealingBonus, use_percent: 0.543 },
-        { key: StatKeys.HPPercentage, use_percent: 0.224 },
-        { key: StatKeys.CRITRate, use_percent: 0.111 },
-        { key: StatKeys.CRITDMG },
+      [ArtifactSlotKeys.Circlet]: [
+        { key: StAtkeys.Heal, use_percent: 0.543 },
+        { key: StAtkeys.HpPercentage, use_percent: 0.224 },
+        { key: StAtkeys.CritRate, use_percent: 0.111 },
+        { key: StAtkeys.CritDMG },
       ],
       additional: [
-        { key: StatKeys.HPPercentage, notes: ["Приоритетно", "от 25000"] },
-        { key: StatKeys.EnergyRecharge, notes: ["Приоритетно", "от 220%"] },
+        { key: StAtkeys.HpPercentage, notes: ["Приоритетно", "от 25000"] },
+        { key: StAtkeys.EnergyRecharge, notes: ["Приоритетно", "от 220%"] },
         {
-          key: StatKeys.CRITRate,
+          key: StAtkeys.CritRate,
           notes: ["от 50% (при использовании меча Фавония или если Беннет будет наносить дополнительный урон)"],
         },
-        { key: StatKeys.CRITDMG, notes: ["от 120% (если Беннет будет наносить дополнительный урон)"] },
+        { key: StAtkeys.CritDMG, notes: ["от 120% (если Беннет будет наносить дополнительный урон)"] },
       ],
     },
   },

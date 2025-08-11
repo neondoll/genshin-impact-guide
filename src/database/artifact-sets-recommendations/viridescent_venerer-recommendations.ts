@@ -2,7 +2,7 @@ import { artifactSetByKey, StatsCrit, StatsElementDamageBonus } from "./help";
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
@@ -43,10 +43,10 @@ export default {
     },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.SandsOfEon]: [StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge],
-    [ArtifactSlotKeys.GobletOfEonothem]: [...StatsElementDamageBonus, StatKeys.ElementalMastery],
-    [ArtifactSlotKeys.CircletOfLogos]: [...StatsCrit, StatKeys.ElementalMastery],
-    additional: [...StatsCrit, StatKeys.ATKPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge],
+    [ArtifactSlotKeys.Sands]: [StAtkeys.AtkPercentage, StAtkeys.ElementalMastery, StAtkeys.EnergyRecharge],
+    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StAtkeys.ElementalMastery],
+    [ArtifactSlotKeys.Circlet]: [...StatsCrit, StAtkeys.ElementalMastery],
+    additional: [...StatsCrit, StAtkeys.AtkPercentage, StAtkeys.ElementalMastery, StAtkeys.EnergyRecharge],
   },
   video_sources: [
     {

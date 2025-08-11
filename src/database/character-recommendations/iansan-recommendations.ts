@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -26,17 +26,17 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.ATKPercentage }, { key: StatKeys.EnergyRecharge }],
-      [ArtifactSlotKeys.GobletOfEonothem]: [{ key: StatKeys.ATKPercentage }],
-      [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.ATKPercentage }],
+      [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.AtkPercentage }, { key: StAtkeys.EnergyRecharge }],
+      [ArtifactSlotKeys.Goblet]: [{ key: StAtkeys.AtkPercentage }],
+      [ArtifactSlotKeys.Circlet]: [{ key: StAtkeys.AtkPercentage }],
       additional: [
-        { key: StatKeys.EnergyRecharge, notes: ["Приоритетно", "от 160%"] },
+        { key: StAtkeys.EnergyRecharge, notes: ["Приоритетно", "от 160%"] },
         {
-          key: StatKeys.ATKPercentage,
+          key: StAtkeys.AtkPercentage,
           notes: ["от 2000", "2556 для 10 Ур. Взрыва стихии", "3000 для 13 Ур. Взрыва стихии"],
         },
-        { key: StatKeys.CRITRate },
-        { key: StatKeys.CRITDMG },
+        { key: StAtkeys.CritRate },
+        { key: StAtkeys.CritDMG },
       ],
     },
   },

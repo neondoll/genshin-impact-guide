@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -25,18 +25,18 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [{ key: StatKeys.ATKPercentage }, { key: StatKeys.ElementalMastery }],
-      [ArtifactSlotKeys.GobletOfEonothem]: [
-        { key: StatKeys.PyroDMGBonus, notes: ["Лучше"] },
-        { key: StatKeys.ATKPercentage },
+      [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.AtkPercentage }, { key: StAtkeys.ElementalMastery }],
+      [ArtifactSlotKeys.Goblet]: [
+        { key: StAtkeys.PyroDmgBonus, notes: ["Лучше"] },
+        { key: StAtkeys.AtkPercentage },
       ],
-      [ArtifactSlotKeys.CircletOfLogos]: [{ key: StatKeys.CRITDMG }, { key: StatKeys.CRITRate }],
+      [ArtifactSlotKeys.Circlet]: [{ key: StAtkeys.CritDMG }, { key: StAtkeys.CritRate }],
       additional: [
-        { key: StatKeys.CRITRate, notes: ["Приоритетно", "от 65%"] },
-        { key: StatKeys.CRITDMG, notes: ["Приоритетно", "от 150%"] },
-        { key: StatKeys.ATKPercentage, notes: ["от 2000"] },
-        { key: StatKeys.ElementalMastery, notes: ["от 150 (если Арлекино активирует реакции)"] },
-        { key: StatKeys.EnergyRecharge, notes: ["Специально не собирать"] },
+        { key: StAtkeys.CritRate, notes: ["Приоритетно", "от 65%"] },
+        { key: StAtkeys.CritDMG, notes: ["Приоритетно", "от 150%"] },
+        { key: StAtkeys.AtkPercentage, notes: ["от 2000"] },
+        { key: StAtkeys.ElementalMastery, notes: ["от 150 (если Арлекино активирует реакции)"] },
+        { key: StAtkeys.EnergyRecharge, notes: ["Специально не собирать"] },
       ],
     },
   },

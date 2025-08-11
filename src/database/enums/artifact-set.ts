@@ -2,11 +2,11 @@ export const ArtifactSetKeys = {
   /* Архаичный камень                       */
   ArchaicPetra: "archaic_petra",
   /* Заблудший в метели                     */
-  BlizzardStrayer: "blizzard_strayer",
+  BlizzardStrayer: "BlizzardStrayer",
   /* Рыцарь крови                           */
   BloodstainedChivalry: "bloodstained_chivalry",
   /* Горящая алая ведьма                    */
-  CrimsonWitchOfFlames: "crimson_witch_of_flames",
+  CrimsonWitchOfFlames: "CrimsonWitchOfFlames",
   /* Воспоминания дремучего леса            */
   DeepwoodMemories: "deepwood_memories",
   /* Хроники Чертогов в пустыне             */
@@ -14,41 +14,41 @@ export const ArtifactSetKeys = {
   /* Отголоски подношения                   */
   EchoesOfAnOffering: "echoes_of_an_offering",
   /* Эмблема рассечённой судьбы             */
-  EmblemOfSeveredFate: "emblem_of_severed_fate",
+  EmblemOfSeveredFate: "EmblemOfSeveredFate",
   /* Финал галерей глубин                   */
-  FinaleOfTheDeepGalleries: "finale_of_the_deep_galleries",
+  FinaleOfTheDeepGalleries: "FinaleOfTheDeepGalleries",
   /* Цветок потерянного рая                 */
   FlowerOfParadiseLost: "flower_of_paradise_lost",
   /* Фрагмент гармонической фантазии        */
-  FragmentOfHarmonicWhimsy: "fragment_of_harmonic_whimsy",
+  FragmentOfHarmonicWhimsy: "FragmentOfHarmonicWhimsy",
   /* Позолоченные сны                       */
-  GildedDreams: "gilded_dreams",
+  GildedDreams: "GildedDreams",
   /* Конец гладиатора                       */
-  GladiatorsFinale: "gladiators_finale",
+  GladiatorsFinale: "GladiatorsFinale",
   /* Золотая труппа                         */
-  GoldenTroupe: "golden_troupe",
+  GoldenTroupe: "GoldenTroupe",
   /* Сердце глубин                          */
-  HeartOfDepth: "heart_of_depth",
+  HeartOfDepth: "HeartOfDepth",
   /* Кокон сладких грёз                     */
   HuskOfOpulentDreams: "husk_of_opulent_dreams",
   /* Инструктор                             */
-  Instructor: "instructor",
+  Instructor: "Instructor",
   /* Ступающий по лаве                      */
   Lavawalker: "lavawalker",
   /* Клятва долгой ночи                     */
-  LongNightsOath: "long_nights_oath",
+  LongNightsOath: "LongNightsOath",
   /* Возлюбленная юная дева                 */
   MaidenBeloved: "maiden_beloved",
   /* Охотник Сумеречного двора              */
-  MarechausseeHunter: "marechaussee_hunter",
+  MarechausseeHunter: "MarechausseeHunter",
   /* Ночной шёпот в Лесу откликающегося эха */
   NighttimeWhispersInTheEchoingWoods: "nighttime_whispers_in_the_echoing_woods",
   /* Церемония древней знати                */
-  NoblesseOblige: "noblesse_oblige",
+  NoblesseOblige: "NoblesseOblige",
   /* Сон нимфы                              */
   NymphsDream: "nymphs_dream",
   /* Обсидиановый фолиант                   */
-  ObsidianCodex: "obsidian_codex",
+  ObsidianCodex: "ObsidianCodex",
   /* Моллюск морских красок                 */
   OceanHuedClam: "ocean_hued_clam",
   /* Бледный огонь                          */
@@ -56,7 +56,7 @@ export const ArtifactSetKeys = {
   /* Встречная комета                       */
   RetracingBolide: "retracing_bolide",
   /* Свиток героя сожжённого города         */
-  ScrollOfTheHeroOfCinderCity: "scroll_of_the_hero_of_cinder_city",
+  ScrollOfTheHeroOfCinderCity: "ScrollOfTheHeroOfCinderCity",
   /* Воспоминания Симэнавы                  */
   ShimenawasReminiscence: "shimenawas_reminiscence",
   /* Песнь былых времён                     */
@@ -64,15 +64,15 @@ export const ArtifactSetKeys = {
   /* Стойкость Миллелита                    */
   TenacityOfTheMillelith: "tenacity_of_the_millelith",
   /* Громогласный рёв ярости                */
-  ThunderingFury: "thundering_fury",
+  ThunderingFury: "ThunderingFury",
   /* Усмиряющий гром                        */
   Thundersoother: "thundersoother",
   /* Киноварное загробье                    */
   VermillionHereafter: "vermillion_hereafter",
   /* Изумрудная тень                        */
-  ViridescentVenerer: "viridescent_venerer",
+  ViridescentVenerer: "ViridescentVenerer",
   /* Сияние Вурукаши                        */
   VourukashasGlow: "vourukashas_glow",
   /* Странствующий ансамбль                 */
-  WanderersTroupe: "wanderers_troupe",
+  WanderersTroupe: "WanderersTroupe",
 } as const;

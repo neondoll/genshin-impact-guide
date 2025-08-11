@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -10,25 +10,25 @@ export default {
   artifacts: {
     sets: [{ key: ArtifactSetKeys.EmblemOfSeveredFate }],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [
-        { key: StatKeys.EnergyRecharge, percent: 0.748 },
-        { key: StatKeys.ATKPercentage, percent: 0.171 },
-        { key: StatKeys.ElementalMastery, percent: 0.055 },
+      [ArtifactSlotKeys.Sands]: [
+        { key: StAtkeys.EnergyRecharge, percent: 0.748 },
+        { key: StAtkeys.AtkPercentage, percent: 0.171 },
+        { key: StAtkeys.ElementalMastery, percent: 0.055 },
       ],
-      [ArtifactSlotKeys.GobletOfEonothem]: [
-        { key: StatKeys.PyroDMGBonus, percent: 0.841 },
-        { key: StatKeys.ATKPercentage, percent: 0.118 },
-        { key: StatKeys.HPPercentage, percent: 0.013 },
+      [ArtifactSlotKeys.Goblet]: [
+        { key: StAtkeys.PyroDmgBonus, percent: 0.841 },
+        { key: StAtkeys.AtkPercentage, percent: 0.118 },
+        { key: StAtkeys.HpPercentage, percent: 0.013 },
       ],
-      [ArtifactSlotKeys.CircletOfLogos]: [
-        { key: StatKeys.CRITRate, percent: 0.642 },
-        { key: StatKeys.CRITDMG, percent: 0.291 },
-        { key: StatKeys.ATKPercentage, percent: 0.042 },
+      [ArtifactSlotKeys.Circlet]: [
+        { key: StAtkeys.CritRate, percent: 0.642 },
+        { key: StAtkeys.CritDMG, percent: 0.291 },
+        { key: StAtkeys.AtkPercentage, percent: 0.042 },
       ],
       additional: [
-        { key: StatKeys.CRITRate, description: "Приоритетно" },
-        { key: StatKeys.CRITDMG, description: "Приоритетно" },
-        { key: StatKeys.EnergyRecharge },
+        { key: StAtkeys.CritRate, description: "Приоритетно" },
+        { key: StAtkeys.CritDMG, description: "Приоритетно" },
+        { key: StAtkeys.EnergyRecharge },
       ],
     },
   },

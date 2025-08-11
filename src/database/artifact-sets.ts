@@ -4,7 +4,8 @@ import { ArtifactSlotKeys } from "./enums/artifact-slot";
 import { CharacterKeys } from "./enums/character";
 import { DungeonKeys } from "./enums/dungeon";
 import { publicImageSrc } from "@/lib/utils";
-import type { ArtifactSet, ArtifactSetKey } from "./types/artifact-set";
+import type { ArtifactSet, ArtifactSetKey, ArtifactSetSlot } from "./types/artifact-set";
+import type { ArtifactSlotKey } from "./types/artifact-slot";
 import type { DungeonKey } from "./types/dungeon";
 
 const alchemy = "Мистическое подношение (Алхимия)";
@@ -12,38 +13,61 @@ const alchemy = "Мистическое подношение (Алхимия)";
 const dungeonByKey = (key: DungeonKey) => `Подземелье «${dungeons[key].name}»`;
 
 const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-sets/${src}`);
+const IconWebSrc = (setKey: keyof typeof ArtifactSetKeys, slotKey: keyof typeof ArtifactSlotKeys) => {
+  return imageSrc(`${ArtifactSetKeys[setKey]}/${ArtifactSlotKeys[slotKey]}_icon.webp`);
+};
+
+class _ArtifactSet implements ArtifactSet {
+  readonly key: ArtifactSet["key"];
+  readonly name: ArtifactSet["name"];
+  readonly rarities: ArtifactSet["rarities"];
+  readonly source: ArtifactSet["source"];
+  readonly item_bonuses: ArtifactSet["item_bonuses"];
+  readonly [ArtifactSlotKeys.Flower]: ArtifactSet[typeof ArtifactSlotKeys.Flower];
+  readonly [ArtifactSlotKeys.Plume]: ArtifactSet[typeof ArtifactSlotKeys.Plume];
+  readonly [ArtifactSlotKeys.Sands]: ArtifactSet[typeof ArtifactSlotKeys.Sands];
+  readonly [ArtifactSlotKeys.Goblet]: ArtifactSet[typeof ArtifactSlotKeys.Goblet];
+  readonly [ArtifactSlotKeys.Circlet]: ArtifactSet[typeof ArtifactSlotKeys.Circlet];
+
+  constructor(
+    key: keyof typeof ArtifactSetKeys,
+    name: ArtifactSet["name"],
+    rarities: ArtifactSet["rarities"],
+    source: ArtifactSet["source"],
+    item_bonuses: ArtifactSet["item_bonuses"],
+    slots: Record<ArtifactSlotKey, ArtifactSetSlot["name"]>,
+  ) {
+    this.key = ArtifactSetKeys[key];
+    this.name = name;
+    this.rarities = rarities;
+    this.source = source;
+    this.item_bonuses = item_bonuses;
+    this[ArtifactSlotKeys.Flower] = { name: slots[ArtifactSlotKeys.Flower], image_src: IconWebSrc(key, "Flower") };
+    this[ArtifactSlotKeys.Plume] = { name: slots[ArtifactSlotKeys.Plume], image_src: IconWebSrc(key, "Plume") };
+    this[ArtifactSlotKeys.Sands] = { name: slots[ArtifactSlotKeys.Sands], image_src: IconWebSrc(key, "Sands") };
+    this[ArtifactSlotKeys.Goblet] = { name: slots[ArtifactSlotKeys.Goblet], image_src: IconWebSrc(key, "Goblet") };
+    this[ArtifactSlotKeys.Circlet] = { name: slots[ArtifactSlotKeys.Circlet], image_src: IconWebSrc(key, "Circlet") };
+  }
+}
 
 export default {
-  [ArtifactSetKeys.ArchaicPetra]: {
-    key: ArtifactSetKeys.ArchaicPetra,
-    name: "Архаичный камень",
-    rarities: [4, 5],
-    source: [dungeonByKey(DungeonKeys.DomainOfGuyun), alchemy],
-    item_bonuses: {
+  [ArtifactSetKeys.ArchaicPetra]: new _ArtifactSet(
+    "ArchaicPetra",
+    "Архаичный камень",
+    [4, 5],
+    [dungeonByKey(DungeonKeys.DomainOfGuyun), alchemy],
+    {
       2: "Увеличивает бонус Гео урона на 15%.",
       4: "Подобранный элементальный осколок, образованный реакцией Кристалл, увеличивает бонус элементального урона соответствующего элемента всех членов отряда на 35% в течение 10 сек. Одновременно можно иметь бонус урона только одного элемента.",
     },
-    [ArtifactSlotKeys.Flower]: {
-      name: "Цветок скальных трещин",
-      image_src: imageSrc(`${ArtifactSetKeys.ArchaicPetra}/${ArtifactSlotKeys.Flower}_icon.webp`),
+    {
+      [ArtifactSlotKeys.Flower]: "Цветок скальных трещин",
+      [ArtifactSlotKeys.Plume]: "Перо зубчатых пиков",
+      [ArtifactSlotKeys.Sands]: "Часы из прочного нефрита",
+      [ArtifactSlotKeys.Goblet]: "Кубок из резного камня",
+      [ArtifactSlotKeys.Circlet]: "Маска из одинокого базальта",
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
-      name: "Перо зубчатых пиков",
-      image_src: imageSrc(`${ArtifactSetKeys.ArchaicPetra}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
-    },
-    [ArtifactSlotKeys.SandsOfEon]: {
-      name: "Часы из прочного нефрита",
-      image_src: imageSrc(`${ArtifactSetKeys.ArchaicPetra}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
-    },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
-      name: "Кубок из резного камня",
-      image_src: imageSrc(`${ArtifactSetKeys.ArchaicPetra}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
-    },
-    [ArtifactSlotKeys.CircletOfLogos]: {
-      name: "Маска из одинокого базальта",
-      image_src: imageSrc(`${ArtifactSetKeys.ArchaicPetra}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
-    },
-  },
+  ),
   [ArtifactSetKeys.BlizzardStrayer]: {
     key: ArtifactSetKeys.BlizzardStrayer,
     name: "Заблудший в метели",
@@ -53,26 +77,11 @@ export default {
       2: "Увеличивает бонус Крио урона на 15%.",
       4: "Атаки по противникам с эффектом Крио увеличивают шанс крит. попадания на 20%. Если противник имеет статус Заморозка, то дополнительно увеличивает шанс крит. попадания на 20%.",
     },
-    [ArtifactSlotKeys.Flower]: {
-      name: "Занесённая снегом память",
-      image_src: imageSrc(`${ArtifactSetKeys.BlizzardStrayer}/${ArtifactSlotKeys.Flower}_icon.webp`),
-    },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
-      name: "Решимость крушителя льда",
-      image_src: imageSrc(`${ArtifactSetKeys.BlizzardStrayer}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
-    },
-    [ArtifactSlotKeys.SandsOfEon]: {
-      name: "Гибель замёрзшей родины",
-      image_src: imageSrc(`${ArtifactSetKeys.BlizzardStrayer}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
-    },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
-      name: "Морозная гордость",
-      image_src: imageSrc(`${ArtifactSetKeys.BlizzardStrayer}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
-    },
-    [ArtifactSlotKeys.CircletOfLogos]: {
-      name: "Эхо осколков инея",
-      image_src: imageSrc(`${ArtifactSetKeys.BlizzardStrayer}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
-    },
+    [ArtifactSlotKeys.Flower]: { name: "Занесённая снегом память", image_src: IconWebSrc("BlizzardStrayer", "Flower") },
+    [ArtifactSlotKeys.Plume]: { name: "Решимость крушителя льда", image_src: IconWebSrc("BlizzardStrayer", "Plume") },
+    [ArtifactSlotKeys.Sands]: { name: "Гибель замёрзшей родины", image_src: IconWebSrc("BlizzardStrayer", "Sands") },
+    [ArtifactSlotKeys.Goblet]: { name: "Морозная гордость", image_src: IconWebSrc("BlizzardStrayer", "Goblet") },
+    [ArtifactSlotKeys.Circlet]: { name: "Эхо осколков инея", image_src: IconWebSrc("BlizzardStrayer", "Circlet") },
   },
   [ArtifactSetKeys.BloodstainedChivalry]: {
     key: ArtifactSetKeys.BloodstainedChivalry,
@@ -85,23 +94,20 @@ export default {
     },
     [ArtifactSlotKeys.Flower]: {
       name: "Железное сердце рыцаря крови",
-      image_src: imageSrc(`${ArtifactSetKeys.BloodstainedChivalry}/${ArtifactSlotKeys.Flower}_icon.webp`),
+      image_src: IconWebSrc("BloodstainedChivalry", "Flower"),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
-      name: "Перо рыцаря крови",
-      image_src: imageSrc(`${ArtifactSetKeys.BloodstainedChivalry}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
-    },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Plume]: { name: "Перо рыцаря крови", image_src: IconWebSrc("BloodstainedChivalry", "Plume") },
+    [ArtifactSlotKeys.Sands]: {
       name: "Час долга рыцаря крови",
-      image_src: imageSrc(`${ArtifactSetKeys.BloodstainedChivalry}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: IconWebSrc("BloodstainedChivalry", "Sands"),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Кубок рыцаря крови",
-      image_src: imageSrc(`${ArtifactSetKeys.BloodstainedChivalry}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.BloodstainedChivalry}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Железная маска рыцаря крови",
-      image_src: imageSrc(`${ArtifactSetKeys.BloodstainedChivalry}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.BloodstainedChivalry}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.CrimsonWitchOfFlames]: {
@@ -117,21 +123,21 @@ export default {
       name: "Ведьмин огненный цветок",
       image_src: imageSrc(`${ArtifactSetKeys.CrimsonWitchOfFlames}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Пылающее ведьмино перо",
-      image_src: imageSrc(`${ArtifactSetKeys.CrimsonWitchOfFlames}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.CrimsonWitchOfFlames}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Ведьмин последний час",
-      image_src: imageSrc(`${ArtifactSetKeys.CrimsonWitchOfFlames}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.CrimsonWitchOfFlames}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Пламя ведьминого сердца",
-      image_src: imageSrc(`${ArtifactSetKeys.CrimsonWitchOfFlames}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.CrimsonWitchOfFlames}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Тлеющая ведьмина шляпа",
-      image_src: imageSrc(`${ArtifactSetKeys.CrimsonWitchOfFlames}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.CrimsonWitchOfFlames}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.DeepwoodMemories]: {
@@ -147,21 +153,21 @@ export default {
       name: "Странник лабиринта",
       image_src: imageSrc(`${ArtifactSetKeys.DeepwoodMemories}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Мудрец лозы",
-      image_src: imageSrc(`${ArtifactSetKeys.DeepwoodMemories}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.DeepwoodMemories}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Час осмысления",
-      image_src: imageSrc(`${ArtifactSetKeys.DeepwoodMemories}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.DeepwoodMemories}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Лампа заблудших",
-      image_src: imageSrc(`${ArtifactSetKeys.DeepwoodMemories}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.DeepwoodMemories}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Лавровый венец",
-      image_src: imageSrc(`${ArtifactSetKeys.DeepwoodMemories}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.DeepwoodMemories}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.DesertPavilionChronicle]: {
@@ -177,21 +183,21 @@ export default {
       name: "Рождение города королей",
       image_src: imageSrc(`${ArtifactSetKeys.DesertPavilionChronicle}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Конец золотого царства",
-      image_src: imageSrc(`${ArtifactSetKeys.DesertPavilionChronicle}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.DesertPavilionChronicle}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Часы потерянного пути",
-      image_src: imageSrc(`${ArtifactSetKeys.DesertPavilionChronicle}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.DesertPavilionChronicle}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Хранитель дивной мечты",
-      image_src: imageSrc(`${ArtifactSetKeys.DesertPavilionChronicle}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.DesertPavilionChronicle}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Наследие пустынной знати",
-      image_src: imageSrc(`${ArtifactSetKeys.DesertPavilionChronicle}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.DesertPavilionChronicle}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.EchoesOfAnOffering]: {
@@ -207,21 +213,21 @@ export default {
       name: "Цветок призрачного аромата",
       image_src: imageSrc(`${ArtifactSetKeys.EchoesOfAnOffering}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Нефритовый листок",
-      image_src: imageSrc(`${ArtifactSetKeys.EchoesOfAnOffering}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.EchoesOfAnOffering}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Символ подношения",
-      image_src: imageSrc(`${ArtifactSetKeys.EchoesOfAnOffering}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.EchoesOfAnOffering}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Чаша истока",
-      image_src: imageSrc(`${ArtifactSetKeys.EchoesOfAnOffering}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.EchoesOfAnOffering}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Серьги текучести",
-      image_src: imageSrc(`${ArtifactSetKeys.EchoesOfAnOffering}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.EchoesOfAnOffering}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.EmblemOfSeveredFate]: {
@@ -237,21 +243,21 @@ export default {
       name: "Великолепная цуба",
       image_src: imageSrc(`${ArtifactSetKeys.EmblemOfSeveredFate}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Обрезанное перо",
-      image_src: imageSrc(`${ArtifactSetKeys.EmblemOfSeveredFate}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.EmblemOfSeveredFate}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Клетка грозовых облаков",
-      image_src: imageSrc(`${ArtifactSetKeys.EmblemOfSeveredFate}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.EmblemOfSeveredFate}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Алый сосуд",
-      image_src: imageSrc(`${ArtifactSetKeys.EmblemOfSeveredFate}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.EmblemOfSeveredFate}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Украшенный кабуто",
-      image_src: imageSrc(`${ArtifactSetKeys.EmblemOfSeveredFate}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.EmblemOfSeveredFate}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.FinaleOfTheDeepGalleries]: {
@@ -267,21 +273,21 @@ export default {
       name: "Отголоски песни галерей глубин",
       image_src: imageSrc(`${ArtifactSetKeys.FinaleOfTheDeepGalleries}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Дальние странствия галерей глубин",
-      image_src: imageSrc(`${ArtifactSetKeys.FinaleOfTheDeepGalleries}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.FinaleOfTheDeepGalleries}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Часы забвения галерей глубин",
-      image_src: imageSrc(`${ArtifactSetKeys.FinaleOfTheDeepGalleries}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.FinaleOfTheDeepGalleries}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Ниспосланный пир галерей глубин",
-      image_src: imageSrc(`${ArtifactSetKeys.FinaleOfTheDeepGalleries}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.FinaleOfTheDeepGalleries}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Утраченная корона галерей глубин",
-      image_src: imageSrc(`${ArtifactSetKeys.FinaleOfTheDeepGalleries}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.FinaleOfTheDeepGalleries}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.FlowerOfParadiseLost]: {
@@ -297,21 +303,21 @@ export default {
       name: "Великолепие Ай-Ханум",
       image_src: imageSrc(`${ArtifactSetKeys.FlowerOfParadiseLost}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Угасающий пир",
-      image_src: imageSrc(`${ArtifactSetKeys.FlowerOfParadiseLost}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.FlowerOfParadiseLost}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Застывшее мгновение",
-      image_src: imageSrc(`${ArtifactSetKeys.FlowerOfParadiseLost}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.FlowerOfParadiseLost}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Магический сосуд хранителя тайн",
-      image_src: imageSrc(`${ArtifactSetKeys.FlowerOfParadiseLost}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.FlowerOfParadiseLost}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Аметистовый венец",
-      image_src: imageSrc(`${ArtifactSetKeys.FlowerOfParadiseLost}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.FlowerOfParadiseLost}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.FragmentOfHarmonicWhimsy]: {
@@ -327,19 +333,19 @@ export default {
       name: "Увертюра стройной симфонии",
       image_src: imageSrc(`${ArtifactSetKeys.FragmentOfHarmonicWhimsy}/harmonious_symphony_prelude-256x256.png`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Ночные раздумья древнего моря",
       image_src: imageSrc(`${ArtifactSetKeys.FragmentOfHarmonicWhimsy}/ancient_seas_nocturnal_musing-256x256.png`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Скерцо поворотов судьбы",
       image_src: imageSrc(`${ArtifactSetKeys.FragmentOfHarmonicWhimsy}/the_grand_jape_of_the_turning_of_fate-256x256.png`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Неистовая рапсодия ихора",
       image_src: imageSrc(`${ArtifactSetKeys.FragmentOfHarmonicWhimsy}/ichor_shower_rhapsody-256x256.png`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Вальс увядших фантазий",
       image_src: imageSrc(`${ArtifactSetKeys.FragmentOfHarmonicWhimsy}/whimsical_dance_of_the_withered-256x256.png`),
     },
@@ -361,21 +367,21 @@ export default {
       name: "Сон железного цветка",
       image_src: imageSrc(`${ArtifactSetKeys.GildedDreams}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Перо суждения",
-      image_src: imageSrc(`${ArtifactSetKeys.GildedDreams}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GildedDreams}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Золотые годы",
-      image_src: imageSrc(`${ArtifactSetKeys.GildedDreams}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GildedDreams}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Последний медовый пир",
-      image_src: imageSrc(`${ArtifactSetKeys.GildedDreams}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GildedDreams}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Тень Короля песков",
-      image_src: imageSrc(`${ArtifactSetKeys.GildedDreams}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GildedDreams}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.GladiatorsFinale]: {
@@ -393,21 +399,21 @@ export default {
       name: "Ностальгия гладиатора",
       image_src: imageSrc(`${ArtifactSetKeys.GladiatorsFinale}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Судьба гладиатора",
-      image_src: imageSrc(`${ArtifactSetKeys.GladiatorsFinale}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GladiatorsFinale}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Стремление гладиатора",
-      image_src: imageSrc(`${ArtifactSetKeys.GladiatorsFinale}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GladiatorsFinale}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Пьянство гладиатора",
-      image_src: imageSrc(`${ArtifactSetKeys.GladiatorsFinale}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GladiatorsFinale}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Триумф гладиатора",
-      image_src: imageSrc(`${ArtifactSetKeys.GladiatorsFinale}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GladiatorsFinale}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.GoldenTroupe]: {
@@ -423,21 +429,21 @@ export default {
       name: "Вариация золотой песни",
       image_src: imageSrc(`${ArtifactSetKeys.GoldenTroupe}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Перо золотой птицы",
-      image_src: imageSrc(`${ArtifactSetKeys.GoldenTroupe}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GoldenTroupe}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Предзнаменование золотой эпохи",
-      image_src: imageSrc(`${ArtifactSetKeys.GoldenTroupe}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GoldenTroupe}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Суета золотой ночи",
-      image_src: imageSrc(`${ArtifactSetKeys.GoldenTroupe}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GoldenTroupe}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Награда Золотой труппы",
-      image_src: imageSrc(`${ArtifactSetKeys.GoldenTroupe}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.GoldenTroupe}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.HeartOfDepth]: {
@@ -453,21 +459,21 @@ export default {
       name: "Позолоченная брошь",
       image_src: imageSrc(`${ArtifactSetKeys.HeartOfDepth}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Порыв ностальгии",
-      image_src: imageSrc(`${ArtifactSetKeys.HeartOfDepth}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.HeartOfDepth}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Медный компас",
-      image_src: imageSrc(`${ArtifactSetKeys.HeartOfDepth}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.HeartOfDepth}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Кубок оглушающих глубин",
-      image_src: imageSrc(`${ArtifactSetKeys.HeartOfDepth}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.HeartOfDepth}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Треуголка в пятнах вина",
-      image_src: imageSrc(`${ArtifactSetKeys.HeartOfDepth}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.HeartOfDepth}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.HuskOfOpulentDreams]: {
@@ -483,21 +489,21 @@ export default {
       name: "Пора расцвета",
       image_src: imageSrc(`${ArtifactSetKeys.HuskOfOpulentDreams}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Перо чертога",
-      image_src: imageSrc(`${ArtifactSetKeys.HuskOfOpulentDreams}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.HuskOfOpulentDreams}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Песнь жизни",
-      image_src: imageSrc(`${ArtifactSetKeys.HuskOfOpulentDreams}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.HuskOfOpulentDreams}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Тыква пробуждения",
-      image_src: imageSrc(`${ArtifactSetKeys.HuskOfOpulentDreams}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.HuskOfOpulentDreams}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Шляпа телесности",
-      image_src: imageSrc(`${ArtifactSetKeys.HuskOfOpulentDreams}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.HuskOfOpulentDreams}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.Instructor]: {
@@ -513,21 +519,21 @@ export default {
       name: "Брошь инструктора",
       image_src: imageSrc(`${ArtifactSetKeys.Instructor}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Перо инструктора",
-      image_src: imageSrc(`${ArtifactSetKeys.Instructor}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Instructor}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Карманные часы инструктора",
-      image_src: imageSrc(`${ArtifactSetKeys.Instructor}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Instructor}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Чайная кружка инструктора",
-      image_src: imageSrc(`${ArtifactSetKeys.Instructor}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Instructor}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Кепка инструктора",
-      image_src: imageSrc(`${ArtifactSetKeys.Instructor}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Instructor}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.Lavawalker]: {
@@ -543,21 +549,21 @@ export default {
       name: "Решительность ступающего по лаве",
       image_src: imageSrc(`${ArtifactSetKeys.Lavawalker}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Спасение ступающего по лаве",
-      image_src: imageSrc(`${ArtifactSetKeys.Lavawalker}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Lavawalker}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Муки ступающего по лаве",
-      image_src: imageSrc(`${ArtifactSetKeys.Lavawalker}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Lavawalker}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Просветление ступающего по лаве",
-      image_src: imageSrc(`${ArtifactSetKeys.Lavawalker}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Lavawalker}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Мудрость ступающего по лаве",
-      image_src: imageSrc(`${ArtifactSetKeys.Lavawalker}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Lavawalker}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.LongNightsOath]: {
@@ -573,19 +579,19 @@ export default {
       name: "Клятва светоносца",
       image_src: imageSrc(`${ArtifactSetKeys.LongNightsOath}/lightkeepers_pledge-256x256.png`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Соловьиное перо",
       image_src: imageSrc(`${ArtifactSetKeys.LongNightsOath}/nightingales_tail_feather-256x256.png`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Скорбный колокольчик бессмертного",
       image_src: imageSrc(`${ArtifactSetKeys.LongNightsOath}/undying_ones_mourning_bell-256x256.png`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Умолкнувший рог",
       image_src: imageSrc(`${ArtifactSetKeys.LongNightsOath}/a_horn_unwinded-256x256.png`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Окрашенный шлем",
       image_src: imageSrc(`${ArtifactSetKeys.LongNightsOath}/dyed_tassel-256x256.png`),
     },
@@ -607,21 +613,21 @@ export default {
       name: "Далёкая душа юной девы",
       image_src: imageSrc(`${ArtifactSetKeys.MaidenBeloved}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Тоска юной девы",
-      image_src: imageSrc(`${ArtifactSetKeys.MaidenBeloved}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.MaidenBeloved}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Уходящая молодость юной девы",
-      image_src: imageSrc(`${ArtifactSetKeys.MaidenBeloved}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.MaidenBeloved}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Досуг юной девы",
-      image_src: imageSrc(`${ArtifactSetKeys.MaidenBeloved}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.MaidenBeloved}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Увядающая красота юной девы",
-      image_src: imageSrc(`${ArtifactSetKeys.MaidenBeloved}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.MaidenBeloved}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.MarechausseeHunter]: {
@@ -637,21 +643,21 @@ export default {
       name: "Брошь охотника",
       image_src: imageSrc(`${ArtifactSetKeys.MarechausseeHunter}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Увертюра шедевра",
-      image_src: imageSrc(`${ArtifactSetKeys.MarechausseeHunter}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.MarechausseeHunter}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Мгновение правосудия",
-      image_src: imageSrc(`${ArtifactSetKeys.MarechausseeHunter}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.MarechausseeHunter}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Забытый сосуд",
-      image_src: imageSrc(`${ArtifactSetKeys.MarechausseeHunter}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.MarechausseeHunter}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Лик старого солдата",
-      image_src: imageSrc(`${ArtifactSetKeys.MarechausseeHunter}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.MarechausseeHunter}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods]: {
@@ -667,21 +673,21 @@ export default {
       name: "Бескорыстный цветок",
       image_src: imageSrc(`${ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Искреннее перо",
-      image_src: imageSrc(`${ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Верные песочные часы",
-      image_src: imageSrc(`${ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Великодушная чернильница",
-      image_src: imageSrc(`${ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Милостивая шляпка",
-      image_src: imageSrc(`${ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.NoblesseOblige]: {
@@ -697,21 +703,21 @@ export default {
       name: "Королевский цветок",
       image_src: imageSrc(`${ArtifactSetKeys.NoblesseOblige}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Королевское перо",
-      image_src: imageSrc(`${ArtifactSetKeys.NoblesseOblige}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NoblesseOblige}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Королевские карманные часы",
-      image_src: imageSrc(`${ArtifactSetKeys.NoblesseOblige}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NoblesseOblige}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Королевская серебряная фляжка",
-      image_src: imageSrc(`${ArtifactSetKeys.NoblesseOblige}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NoblesseOblige}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Королевская маска",
-      image_src: imageSrc(`${ArtifactSetKeys.NoblesseOblige}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NoblesseOblige}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.NymphsDream]: {
@@ -727,21 +733,21 @@ export default {
       name: "Цветок странствий",
       image_src: imageSrc(`${ArtifactSetKeys.NymphsDream}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Перо злого мага",
-      image_src: imageSrc(`${ArtifactSetKeys.NymphsDream}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NymphsDream}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Постоянство нимфы",
-      image_src: imageSrc(`${ArtifactSetKeys.NymphsDream}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NymphsDream}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Чаепитие героев",
-      image_src: imageSrc(`${ArtifactSetKeys.NymphsDream}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NymphsDream}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Монокль свирепого дракона",
-      image_src: imageSrc(`${ArtifactSetKeys.NymphsDream}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.NymphsDream}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.ObsidianCodex]: {
@@ -757,19 +763,19 @@ export default {
       name: "Ожидания инородцев",
       image_src: imageSrc(`${ArtifactSetKeys.ObsidianCodex}/reckoning_of_the_xenogenic-256x256.png`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Корень костного мозга души",
       image_src: imageSrc(`${ArtifactSetKeys.ObsidianCodex}/root_of_the_spirit_marrow-256x256.png`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Мифы владений ночи",
       image_src: imageSrc(`${ArtifactSetKeys.ObsidianCodex}/myths_of_the_night_realm-256x256.png`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Банкет перед состязанием",
       image_src: imageSrc(`${ArtifactSetKeys.ObsidianCodex}/pre_banquet_of_the_contenders-256x256.png`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Корона святых",
       image_src: imageSrc(`${ArtifactSetKeys.ObsidianCodex}/crown_of_the_saints-256x256.png`),
     },
@@ -788,21 +794,21 @@ export default {
       name: "Цветок морских красок",
       image_src: imageSrc(`${ArtifactSetKeys.OceanHuedClam}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Перо глубинного дворца",
-      image_src: imageSrc(`${ArtifactSetKeys.OceanHuedClam}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.OceanHuedClam}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Раковина разлуки",
-      image_src: imageSrc(`${ArtifactSetKeys.OceanHuedClam}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.OceanHuedClam}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Жемчужная клетка",
-      image_src: imageSrc(`${ArtifactSetKeys.OceanHuedClam}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.OceanHuedClam}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Корона Ватацуми",
-      image_src: imageSrc(`${ArtifactSetKeys.OceanHuedClam}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.OceanHuedClam}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.PaleFlame]: {
@@ -818,21 +824,21 @@ export default {
       name: "Незапятнанный цветок",
       image_src: imageSrc(`${ArtifactSetKeys.PaleFlame}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Перо мудрого лекаря",
-      image_src: imageSrc(`${ArtifactSetKeys.PaleFlame}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.PaleFlame}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Замершее мгновение",
-      image_src: imageSrc(`${ArtifactSetKeys.PaleFlame}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.PaleFlame}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Превосходящая чаша",
-      image_src: imageSrc(`${ArtifactSetKeys.PaleFlame}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.PaleFlame}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Смеющаяся маска",
-      image_src: imageSrc(`${ArtifactSetKeys.PaleFlame}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.PaleFlame}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.RetracingBolide]: {
@@ -848,21 +854,21 @@ export default {
       name: "Цветок равноденствия",
       image_src: imageSrc(`${ArtifactSetKeys.RetracingBolide}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Конец равноденствия",
-      image_src: imageSrc(`${ArtifactSetKeys.RetracingBolide}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.RetracingBolide}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Час равноденствия",
-      image_src: imageSrc(`${ArtifactSetKeys.RetracingBolide}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.RetracingBolide}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Шар равноденствия",
-      image_src: imageSrc(`${ArtifactSetKeys.RetracingBolide}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.RetracingBolide}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Маска равноденствия",
-      image_src: imageSrc(`${ArtifactSetKeys.RetracingBolide}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.RetracingBolide}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.ScrollOfTheHeroOfCinderCity]: {
@@ -878,19 +884,19 @@ export default {
       name: "Талисман укротителя зверей",
       image_src: imageSrc(`${ArtifactSetKeys.ScrollOfTheHeroOfCinderCity}/beast_tamers_talisman-256x256.png`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Маячок горного патрульного",
       image_src: imageSrc(`${ArtifactSetKeys.ScrollOfTheHeroOfCinderCity}/mountain_rangers_marker-256x256.png`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Золотые часы мистика",
       image_src: imageSrc(`${ArtifactSetKeys.ScrollOfTheHeroOfCinderCity}/mystics_gold_dial-256x256.png`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Кубок бродячего исследователя",
       image_src: imageSrc(`${ArtifactSetKeys.ScrollOfTheHeroOfCinderCity}/wandering_scholars_claw_cup-256x256.png`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Перьевая маска воина-демона",
       image_src: imageSrc(`${ArtifactSetKeys.ScrollOfTheHeroOfCinderCity}/demon_warriors_feather_mask-256x256.png`),
     },
@@ -913,21 +919,21 @@ export default {
       name: "Опутывающий цветок",
       image_src: imageSrc(`${ArtifactSetKeys.ShimenawasReminiscence}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Стрела воспоминаний",
-      image_src: imageSrc(`${ArtifactSetKeys.ShimenawasReminiscence}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ShimenawasReminiscence}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Мгновение росы",
-      image_src: imageSrc(`${ArtifactSetKeys.ShimenawasReminiscence}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ShimenawasReminiscence}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Полное надежд сердце",
-      image_src: imageSrc(`${ArtifactSetKeys.ShimenawasReminiscence}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ShimenawasReminiscence}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Непостоянный лик",
-      image_src: imageSrc(`${ArtifactSetKeys.ShimenawasReminiscence}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ShimenawasReminiscence}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.SongOfDaysPast]: {
@@ -943,21 +949,21 @@ export default {
       name: "Забытая клятва былых времён",
       image_src: imageSrc(`${ArtifactSetKeys.SongOfDaysPast}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Воспоминания о былых временах",
-      image_src: imageSrc(`${ArtifactSetKeys.SongOfDaysPast}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.SongOfDaysPast}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Отзвуки былых времён",
-      image_src: imageSrc(`${ArtifactSetKeys.SongOfDaysPast}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.SongOfDaysPast}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Обещанный сон былых времён",
-      image_src: imageSrc(`${ArtifactSetKeys.SongOfDaysPast}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.SongOfDaysPast}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Поэзия былых времён",
-      image_src: imageSrc(`${ArtifactSetKeys.SongOfDaysPast}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.SongOfDaysPast}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.TenacityOfTheMillelith]: {
@@ -973,21 +979,21 @@ export default {
       name: "Цветок почестей",
       image_src: imageSrc(`${ArtifactSetKeys.TenacityOfTheMillelith}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Боевое перо командира",
-      image_src: imageSrc(`${ArtifactSetKeys.TenacityOfTheMillelith}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.TenacityOfTheMillelith}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Золотые часы",
-      image_src: imageSrc(`${ArtifactSetKeys.TenacityOfTheMillelith}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.TenacityOfTheMillelith}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Золотой кубок клятвы",
-      image_src: imageSrc(`${ArtifactSetKeys.TenacityOfTheMillelith}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.TenacityOfTheMillelith}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Древний шлем генерала",
-      image_src: imageSrc(`${ArtifactSetKeys.TenacityOfTheMillelith}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.TenacityOfTheMillelith}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.ThunderingFury]: {
@@ -1003,21 +1009,21 @@ export default {
       name: "Милосердие Громовой птицы",
       image_src: imageSrc(`${ArtifactSetKeys.ThunderingFury}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Переживший катастрофу",
-      image_src: imageSrc(`${ArtifactSetKeys.ThunderingFury}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ThunderingFury}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Песочные часы грома",
-      image_src: imageSrc(`${ArtifactSetKeys.ThunderingFury}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ThunderingFury}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Предвестник бури",
-      image_src: imageSrc(`${ArtifactSetKeys.ThunderingFury}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ThunderingFury}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Корона призывателя грома",
-      image_src: imageSrc(`${ArtifactSetKeys.ThunderingFury}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ThunderingFury}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.Thundersoother]: {
@@ -1033,21 +1039,21 @@ export default {
       name: "Сердце усмиряющего гром",
       image_src: imageSrc(`${ArtifactSetKeys.Thundersoother}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Перо усмиряющего гром",
-      image_src: imageSrc(`${ArtifactSetKeys.Thundersoother}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Thundersoother}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Время усмиряющего гром",
-      image_src: imageSrc(`${ArtifactSetKeys.Thundersoother}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Thundersoother}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Бокал усмиряющего гром",
-      image_src: imageSrc(`${ArtifactSetKeys.Thundersoother}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Thundersoother}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Корона усмиряющего гром",
-      image_src: imageSrc(`${ArtifactSetKeys.Thundersoother}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.Thundersoother}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.VermillionHereafter]: {
@@ -1063,21 +1069,21 @@ export default {
       name: "Цветение жизни",
       image_src: imageSrc(`${ArtifactSetKeys.VermillionHereafter}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Перо скрытого сияния",
-      image_src: imageSrc(`${ArtifactSetKeys.VermillionHereafter}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.VermillionHereafter}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Солнечная реликвия",
-      image_src: imageSrc(`${ArtifactSetKeys.VermillionHereafter}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.VermillionHereafter}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Мгновение договора",
-      image_src: imageSrc(`${ArtifactSetKeys.VermillionHereafter}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.VermillionHereafter}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Громогласный облик",
-      image_src: imageSrc(`${ArtifactSetKeys.VermillionHereafter}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.VermillionHereafter}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.ViridescentVenerer]: {
@@ -1093,21 +1099,21 @@ export default {
       name: "Воспоминания об изумрудных лугах",
       image_src: imageSrc(`${ArtifactSetKeys.ViridescentVenerer}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Оперение стрелы изумрудного охотника",
-      image_src: imageSrc(`${ArtifactSetKeys.ViridescentVenerer}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ViridescentVenerer}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Решимость изумрудного охотника",
-      image_src: imageSrc(`${ArtifactSetKeys.ViridescentVenerer}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ViridescentVenerer}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Сосуд изумрудного охотника",
-      image_src: imageSrc(`${ArtifactSetKeys.ViridescentVenerer}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ViridescentVenerer}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Венок изумрудного охотника",
-      image_src: imageSrc(`${ArtifactSetKeys.ViridescentVenerer}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.ViridescentVenerer}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.VourukashasGlow]: {
@@ -1123,21 +1129,21 @@ export default {
       name: "Тычинка истока Хварны",
       image_src: imageSrc(`${ArtifactSetKeys.VourukashasGlow}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Самоцветное перо",
-      image_src: imageSrc(`${ArtifactSetKeys.VourukashasGlow}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.VourukashasGlow}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Древнее увядание",
-      image_src: imageSrc(`${ArtifactSetKeys.VourukashasGlow}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.VourukashasGlow}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Пир необузданного веселья",
-      image_src: imageSrc(`${ArtifactSetKeys.VourukashasGlow}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.VourukashasGlow}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Сердце светозарности Хварны",
-      image_src: imageSrc(`${ArtifactSetKeys.VourukashasGlow}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.VourukashasGlow}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
   [ArtifactSetKeys.WanderersTroupe]: {
@@ -1154,21 +1160,21 @@ export default {
       name: "Рассвет ансамбля",
       image_src: imageSrc(`${ArtifactSetKeys.WanderersTroupe}/${ArtifactSlotKeys.Flower}_icon.webp`),
     },
-    [ArtifactSlotKeys.PlumeOfDeath]: {
+    [ArtifactSlotKeys.Plume]: {
       name: "Оперение стрелы барда",
-      image_src: imageSrc(`${ArtifactSetKeys.WanderersTroupe}/${ArtifactSlotKeys.PlumeOfDeath}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.WanderersTroupe}/${ArtifactSlotKeys.Plume}_icon.webp`),
     },
-    [ArtifactSlotKeys.SandsOfEon]: {
+    [ArtifactSlotKeys.Sands]: {
       name: "Окончание концерта",
-      image_src: imageSrc(`${ArtifactSetKeys.WanderersTroupe}/${ArtifactSlotKeys.SandsOfEon}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.WanderersTroupe}/${ArtifactSlotKeys.Sands}_icon.webp`),
     },
-    [ArtifactSlotKeys.GobletOfEonothem]: {
+    [ArtifactSlotKeys.Goblet]: {
       name: "Фляжка странника",
-      image_src: imageSrc(`${ArtifactSetKeys.WanderersTroupe}/${ArtifactSlotKeys.GobletOfEonothem}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.WanderersTroupe}/${ArtifactSlotKeys.Goblet}_icon.webp`),
     },
-    [ArtifactSlotKeys.CircletOfLogos]: {
+    [ArtifactSlotKeys.Circlet]: {
       name: "Цилиндр дирижёра",
-      image_src: imageSrc(`${ArtifactSetKeys.WanderersTroupe}/${ArtifactSlotKeys.CircletOfLogos}_icon.webp`),
+      image_src: imageSrc(`${ArtifactSetKeys.WanderersTroupe}/${ArtifactSlotKeys.Circlet}_icon.webp`),
     },
   },
 } as Record<ArtifactSetKey, ArtifactSet>;

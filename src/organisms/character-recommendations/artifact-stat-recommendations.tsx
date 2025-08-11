@@ -63,9 +63,9 @@ export default function ArtifactStatRecommendations({ recommendations }: Artifac
               <TableRow className="hover:bg-inherit" key={`${recommendationsKey}-${recommendation.key}`}>
                 {index === 0 && (
                   <TableHead className="p-2 w-18" rowSpan={recommendations[recommendationsKey].length}>
-                    {recommendationsKey === ArtifactSlotKeys.SandsOfEon && "Часы"}
-                    {recommendationsKey === ArtifactSlotKeys.GobletOfEonothem && "Кубок"}
-                    {recommendationsKey === ArtifactSlotKeys.CircletOfLogos && "Корона"}
+                    {recommendationsKey === ArtifactSlotKeys.Sands && "Часы"}
+                    {recommendationsKey === ArtifactSlotKeys.Goblet && "Кубок"}
+                    {recommendationsKey === ArtifactSlotKeys.Circlet && "Корона"}
                     {recommendationsKey === "additional" && "Доп."}
                   </TableHead>
                 )}

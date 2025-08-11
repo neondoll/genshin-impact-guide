@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StatKeys } from "../enums/stat";
+import { StAtkeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -10,25 +10,25 @@ export default {
   artifacts: {
     sets: [{ key: ArtifactSetKeys.GoldenTroupe }],
     stats: {
-      [ArtifactSlotKeys.SandsOfEon]: [
-        { key: StatKeys.ATKPercentage, percent: 0.785 },
-        { key: StatKeys.ElementalMastery, percent: 0.125 },
-        { key: StatKeys.EnergyRecharge, percent: 0.062 },
+      [ArtifactSlotKeys.Sands]: [
+        { key: StAtkeys.AtkPercentage, percent: 0.785 },
+        { key: StAtkeys.ElementalMastery, percent: 0.125 },
+        { key: StAtkeys.EnergyRecharge, percent: 0.062 },
       ],
-      [ArtifactSlotKeys.GobletOfEonothem]: [
-        { key: StatKeys.ElectroDMGBonus, percent: 0.830 },
-        { key: StatKeys.ATKPercentage, percent: 0.119 },
-        { key: StatKeys.ElementalMastery, percent: 0.018 },
+      [ArtifactSlotKeys.Goblet]: [
+        { key: StAtkeys.ElectroDmgBonus, percent: 0.830 },
+        { key: StAtkeys.AtkPercentage, percent: 0.119 },
+        { key: StAtkeys.ElementalMastery, percent: 0.018 },
       ],
-      [ArtifactSlotKeys.CircletOfLogos]: [
-        { key: StatKeys.CRITRate, percent: 0.669 },
-        { key: StatKeys.CRITDMG, percent: 0.266 },
-        { key: StatKeys.ATKPercentage, percent: 0.034 },
+      [ArtifactSlotKeys.Circlet]: [
+        { key: StAtkeys.CritRate, percent: 0.669 },
+        { key: StAtkeys.CritDMG, percent: 0.266 },
+        { key: StAtkeys.AtkPercentage, percent: 0.034 },
       ],
       additional: [
-        { key: StatKeys.CRITRate, description: "Приоритетно" },
-        { key: StatKeys.CRITDMG, description: "Приоритетно" },
-        { key: StatKeys.ATKPercentage },
+        { key: StAtkeys.CritRate, description: "Приоритетно" },
+        { key: StAtkeys.CritDMG, description: "Приоритетно" },
+        { key: StAtkeys.AtkPercentage },
       ],
     },
   },

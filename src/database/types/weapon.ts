@@ -1,6 +1,6 @@
 import { WeaponKeys } from "../enums/weapon";
 import type { Rarity } from "./rarity";
-import type { StatKey } from "./stat";
+import type { StAtkey } from "./stat";
 import type { WeaponTypeKey } from "./weapon-type";
 
 type WeaponStatValue = { min_value: string | number; max_value: string | number };
@@ -11,8 +11,8 @@ export type Weapon = {
   /* Редкость                      */ rarity: Rarity;
   /* Где найти                     */ source?: string;
   /* Тип                           */ type_key: WeaponTypeKey;
-  /* Базовая атака                 */ base_atk: WeaponStatValue;
-  /* Дополнительные характеристики */ secondary_stats?: WeaponStatValue & { key: StatKey };
+  /* Базовая атака                 */ base_Atk: WeaponStatValue;
+  /* Дополнительные характеристики */ secondary_stats?: WeaponStatValue & { key: StAtkey };
   image_src: string;
 };
 export type WeaponKey = typeof WeaponKeys[keyof typeof WeaponKeys];
