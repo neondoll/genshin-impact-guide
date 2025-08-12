@@ -81,7 +81,7 @@ export default function Character() {
               <TableCell className="p-2">
                 <div className="flex gap-1 items-center">
                   <img alt={characterWeaponType.name} className="shrink-0 size-5" src={characterWeaponType.icon_src} />
-                  <span children={characterWeaponType.abbreviation} />
+                  <span children={characterWeaponType.abbr} />
                 </div>
               </TableCell>
             </TableRow>

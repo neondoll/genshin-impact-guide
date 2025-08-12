@@ -31,7 +31,7 @@ export default {
       youtube_url: "https://youtu.be/CU-BxsNF-qw",
     },
   },
-  [weaponTypes[WeaponTypeKeys.Catalyst].name]: {
+  [weaponTypes[WeaponTypeKeys["💥"]].name]: {
     list: [
       {
         tier: "S",
@@ -90,7 +90,7 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239231",
     },
   },
-  [weaponTypes[WeaponTypeKeys.Bow].name]: {
+  [weaponTypes[WeaponTypeKeys["🏹"]].name]: {
     list: [
       {
         tier: "S",
@@ -140,7 +140,7 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239218",
     },
   },
-  [weaponTypes[WeaponTypeKeys.Polearm].name]: {
+  [weaponTypes[WeaponTypeKeys["🔱"]].name]: {
     list: [
       {
         tier: "S",
@@ -188,7 +188,7 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239209",
     },
   },
-  [weaponTypes[WeaponTypeKeys.Claymore].name]: {
+  [weaponTypes[WeaponTypeKeys["🗡️"]].name]: {
     list: [
       {
         tier: "S",
@@ -238,7 +238,7 @@ export default {
       vk_url: "https://vkvideo.ru/video-227044935_456239205",
     },
   },
-  [weaponTypes[WeaponTypeKeys.Sword].name]: {
+  [weaponTypes[WeaponTypeKeys["⚔️"]].name]: {
     list: [
       {
         tier: "S",

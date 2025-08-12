@@ -110,8 +110,8 @@ export function sortCharacters(a: Character, b: Character) {
 }
 
 export function sortStats(a: Stat, b: Stat) {
-  const aName = a.abbreviation || a.name;
-  const bName = b.abbreviation || b.name;
+  const aName = a.abbr || a.name;
+  const bName = b.abbr || b.name;
 
   return aName.localeCompare(bName);
 }

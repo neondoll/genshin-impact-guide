@@ -18,12 +18,12 @@ const recommendations = {
 } as Omit<CharacterRecommendations, "character_key">;
 
 export default {
-  [ElementKeys.Anemo]: { ...recommendations, character_key: CharacterKeys.TravelerAnemo },
-  [ElementKeys.Dendro]: { ...recommendations, character_key: CharacterKeys.TravelerDendro },
-  [ElementKeys.Electro]: { ...recommendations, character_key: CharacterKeys.TravelerElectro },
-  [ElementKeys.Geo]: { ...recommendations, character_key: CharacterKeys.TravelerGeo },
-  [ElementKeys.Hydro]: { ...recommendations, character_key: CharacterKeys.TravelerHydro },
-  [ElementKeys.Pyro]: {
+  [ElementKeys["🍃"]]: { ...recommendations, character_key: CharacterKeys.TravelerAnemo },
+  [ElementKeys["🌿"]]: { ...recommendations, character_key: CharacterKeys.TravelerDendro },
+  [ElementKeys["⚡️"]]: { ...recommendations, character_key: CharacterKeys.TravelerElectro },
+  [ElementKeys["🪨"]]: { ...recommendations, character_key: CharacterKeys.TravelerGeo },
+  [ElementKeys["💧"]]: { ...recommendations, character_key: CharacterKeys.TravelerHydro },
+  [ElementKeys["🔥"]]: {
     artifacts: {
       sets: [
         { key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity, description: "для игры из кармана" },
@@ -89,4 +89,4 @@ export default {
       ],
     },
   },
-} as Record<Exclude<ElementKey, typeof ElementKeys.Cryo>, CharacterRecommendations>;
+} as Record<Exclude<ElementKey, typeof ElementKeys["❄️"]>, CharacterRecommendations>;

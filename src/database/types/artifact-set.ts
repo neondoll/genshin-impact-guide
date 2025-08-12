@@ -5,14 +5,21 @@ import type { Rarity } from "./rarity";
 
 type ArtifactSetCharacterRecommendation = { key: CharacterKey; notes: string };
 
-export interface ArtifactSet extends Record<ArtifactSlotKey, ArtifactSetSlot> {
+export interface ArtifactSet {
   key: ArtifactSetKey;
   name: string;
   rarities: Rarity[];
   source: string | string[];
   item_bonuses: Record<2 | 4, string>;
+  slots: Record<ArtifactSlotKey, ArtifactSetSlot | undefined>;
   character_recommendations?: ArtifactSetCharacterRecommendation[];
+
+  imageSrc(): ArtifactSetSlot["image_src"] | undefined;
+}
+
+export interface ArtifactSetSlot {
+  name: string;
+  image_src: string;
 }
 
 export type ArtifactSetKey = typeof ArtifactSetKeys[keyof typeof ArtifactSetKeys];
-export type ArtifactSetSlot = { name: string; image_src: string };

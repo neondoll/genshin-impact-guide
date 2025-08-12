@@ -71,7 +71,7 @@ export default function ArtifactStatRecommendations({ recommendations }: Artifac
                 )}
                 <TableCell className="text-pretty whitespace-normal">
                   <Badge
-                    children={stat.abbreviation || stat.name}
+                    children={stat.abbr || stat.name}
                     className="flex justify-center w-full text-center text-pretty whitespace-normal"
                     variant="secondary"
                   />

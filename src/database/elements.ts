@@ -1,58 +1,35 @@
 import { ElementKeys } from "./enums/element";
 import { publicImageSrc } from "@/lib/utils";
 import { RegionKeys } from "./enums/region";
-import type { Element, ElementKey } from "./types/element";
+import type { Element } from "./types/element";
 
-const imageSrc: typeof publicImageSrc = src => publicImageSrc(`elements/${src}`);
+class _Element implements Element {
+  readonly key: Element["key"];
+  readonly name: Element["name"];
+  readonly image_src: Element["image_src"];
+  readonly region_key: Element["region_key"];
+  readonly reacts_with: Element["reacts_with"];
+
+  constructor(
+    key: keyof typeof ElementKeys,
+    name: Element["name"],
+    regionKey: keyof typeof RegionKeys,
+    reactsWith: (keyof typeof ElementKeys)[],
+  ) {
+    this.key = ElementKeys[key];
+    this.name = name;
+    this.image_src = publicImageSrc(`elements/${this.key}-84x84.png`);
+    this.region_key = RegionKeys[regionKey];
+    this.reacts_with = reactsWith.map(reactWith => ElementKeys[reactWith]);
+  }
+}
 
 export default {
-  [ElementKeys.Anemo]: {
-    key: ElementKeys.Anemo,
-    name: "Анемо",
-    image_src: imageSrc("anemo-84x84.png"),
-    region_key: RegionKeys.Mondstadt,
-    reacts_with: [ElementKeys.Electro, ElementKeys.Hydro, ElementKeys.Pyro, ElementKeys.Cryo],
-  },
-  [ElementKeys.Cryo]: {
-    key: ElementKeys.Cryo,
-    name: "Крио",
-    image_src: imageSrc("cryo-84x84.png"),
-    region_key: RegionKeys.Snezhnaya,
-    reacts_with: [ElementKeys.Anemo, ElementKeys.Geo, ElementKeys.Electro, ElementKeys.Hydro, ElementKeys.Pyro],
-  },
-  [ElementKeys.Dendro]: {
-    key: ElementKeys.Dendro,
-    name: "Дендро",
-    image_src: imageSrc("dendro-84x84.png"),
-    region_key: RegionKeys.Sumeru,
-    reacts_with: [ElementKeys.Electro, ElementKeys.Hydro, ElementKeys.Pyro],
-  },
-  [ElementKeys.Electro]: {
-    key: ElementKeys.Electro,
-    name: "Электро",
-    image_src: imageSrc("electro-84x84.png"),
-    region_key: RegionKeys.Inazuma,
-    reacts_with: [ElementKeys.Anemo, ElementKeys.Geo, ElementKeys.Dendro, ElementKeys.Hydro, ElementKeys.Pyro, ElementKeys.Cryo],
-  },
-  [ElementKeys.Geo]: {
-    key: ElementKeys.Geo,
-    name: "Гео",
-    image_src: imageSrc("geo-84x84.png"),
-    region_key: RegionKeys.Liyue,
-    reacts_with: [ElementKeys.Electro, ElementKeys.Hydro, ElementKeys.Pyro, ElementKeys.Cryo],
-  },
-  [ElementKeys.Hydro]: {
-    key: ElementKeys.Hydro,
-    name: "Гидро",
-    image_src: imageSrc("hydro-84x84.png"),
-    region_key: RegionKeys.Fontaine,
-    reacts_with: [ElementKeys.Anemo, ElementKeys.Geo, ElementKeys.Electro, ElementKeys.Dendro, ElementKeys.Pyro, ElementKeys.Cryo],
-  },
-  [ElementKeys.Pyro]: {
-    key: ElementKeys.Pyro,
-    name: "Пиро",
-    image_src: imageSrc("pyro-84x84.png"),
-    region_key: RegionKeys.Natlan,
-    reacts_with: [ElementKeys.Anemo, ElementKeys.Geo, ElementKeys.Electro, ElementKeys.Dendro, ElementKeys.Hydro, ElementKeys.Cryo],
-  },
-} as Record<ElementKey, Element>;
+  [ElementKeys["🍃"]]: new _Element("🍃", "Анемо", "Mondstadt", ["⚡️", "💧", "🔥", "❄️"]),
+  [ElementKeys["❄️"]]: new _Element("❄️", "Крио", "Snezhnaya", ["🍃", "🪨", "⚡️", "💧", "🔥"]),
+  [ElementKeys["🌿"]]: new _Element("🌿", "Дендро", "Sumeru", ["⚡️", "💧", "🔥"]),
+  [ElementKeys["⚡️"]]: new _Element("⚡️", "Электро", "Inazuma", ["🍃", "🪨", "🌿", "💧", "🔥", "❄️"]),
+  [ElementKeys["🪨"]]: new _Element("🪨", "Гео", "Liyue", ["⚡️", "💧", "🔥", "❄️"]),
+  [ElementKeys["💧"]]: new _Element("💧", "Гидро", "Fontaine", ["🍃", "🪨", "⚡️", "🌿", "🔥", "❄️"]),
+  [ElementKeys["🔥"]]: new _Element("🔥", "Пиро", "Natlan", ["🍃", "🪨", "⚡️", "🌿", "💧", "❄️"]),
+} as Record<Element["key"], Element>;

@@ -1,38 +1,30 @@
 import { ArtifactSlotKeys } from "./enums/artifact-slot";
 import { publicImageSrc } from "@/lib/utils";
-import type { ArtifactSlot, ArtifactSlotKey } from "./types/artifact-slot";
+import type { ArtifactSlot } from "./types/artifact-slot";
 
-const imageSrc: typeof publicImageSrc = src => publicImageSrc(`artifact-slots/${src}`);
+class _ArtifactSlot implements ArtifactSlot {
+  readonly key: ArtifactSlot["key"];
+  readonly name: ArtifactSlot["name"];
+  readonly image_src: ArtifactSlot["image_src"];
+  readonly sort_by: ArtifactSlot["sort_by"];
+
+  constructor(
+    key: keyof typeof ArtifactSlotKeys,
+    name: ArtifactSlot["name"],
+    imageName: string,
+    sortBy: ArtifactSlot["sort_by"],
+  ) {
+    this.key = ArtifactSlotKeys[key];
+    this.name = name;
+    this.image_src = publicImageSrc(`artifact-slots/${imageName}`);
+    this.sort_by = sortBy;
+  }
+}
 
 export default {
-  [ArtifactSlotKeys.Circlet]: {
-    key: ArtifactSlotKeys.Circlet,
-    name: "Корона разума",
-    image_src: imageSrc("circlet_of_logos-64x64.png"),
-    sort_by: 5,
-  },
-  [ArtifactSlotKeys.Flower]: {
-    key: ArtifactSlotKeys.Flower,
-    name: "Цветок жизни",
-    image_src: imageSrc("flower-64x64.png"),
-    sort_by: 1,
-  },
-  [ArtifactSlotKeys.Goblet]: {
-    key: ArtifactSlotKeys.Goblet,
-    name: "Кубок пространства",
-    image_src: imageSrc("goblet_of_eonothem-64x64.png"),
-    sort_by: 4,
-  },
-  [ArtifactSlotKeys.Plume]: {
-    key: ArtifactSlotKeys.Plume,
-    name: "Перо смерти",
-    image_src: imageSrc("plume_of_death-64x64.png"),
-    sort_by: 2,
-  },
-  [ArtifactSlotKeys.Sands]: {
-    key: ArtifactSlotKeys.Sands,
-    name: "Пески времени",
-    image_src: imageSrc("sands_of_eon-64x64.png"),
-    sort_by: 3,
-  },
-} as Record<ArtifactSlotKey, ArtifactSlot>;
+  [ArtifactSlotKeys.Circlet]: new _ArtifactSlot("Circlet", "Корона разума", "circlet-64x64.png", 5),
+  [ArtifactSlotKeys.Flower]: new _ArtifactSlot("Flower", "Цветок жизни", "flower-64x64.png", 1),
+  [ArtifactSlotKeys.Goblet]: new _ArtifactSlot("Goblet", "Кубок пространства", "goblet-64x64.png", 4),
+  [ArtifactSlotKeys.Plume]: new _ArtifactSlot("Plume", "Перо смерти", "plume-64x64.png", 2),
+  [ArtifactSlotKeys.Sands]: new _ArtifactSlot("Sands", "Пески времени", "sands-64x64.png", 3),
+} as Record<ArtifactSlot["key"], ArtifactSlot>;

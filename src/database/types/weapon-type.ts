@@ -3,7 +3,7 @@ import { WeaponTypeKeys } from "../enums/weapon-type";
 export type WeaponType = {
   key: WeaponTypeKey;
   name: string;
-  abbreviation: string;
+  abbr: string;
   image_src: string;
   icon_src: string;
 };

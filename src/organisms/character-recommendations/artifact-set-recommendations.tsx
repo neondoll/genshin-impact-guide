@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Paths from "@/constants/paths";
-import { ArtifactSlotKeys } from "@/database/enums/artifact-slot";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
@@ -11,7 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import type { ArtifactSetRecommendationsProps } from "./types";
 import type { ArtifactSetKey } from "@/database/types/artifact-set";
 
-function ArtifactSetBage({ artifactSetKey, isSignature }: { artifactSetKey: ArtifactSetKey; isSignature: boolean }) {
+function ArtifactSetBage({ artifactSetKey }: { artifactSetKey: ArtifactSetKey }) {
   const artifactSet = getArtifactSet(artifactSetKey);
 
   return (
@@ -30,18 +29,15 @@ function ArtifactSetBage({ artifactSetKey, isSignature }: { artifactSetKey: Arti
             "shrink-0 size-12 rounded-md rounded-br-2xl",
             backgroundClassByRarity(...artifactSet.rarities),
           )}
-          src={artifactSet[ArtifactSlotKeys.Flower].image_src}
+          src={artifactSet.imageSrc()}
         />
-        <span>
-          {artifactSet.name}
-          {isSignature && " (сигнатурное)"}
-        </span>
+        <span children={artifactSet.name} />
       </Link>
     </Badge>
   );
 }
 
-export default function ArtifactSetRecommendations({ character, recommendations }: ArtifactSetRecommendationsProps) {
+export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
   const [diffPercent, setDiffPercent] = useState(0);
   const [hasDescription, setHasDescription] = useState(false);
   const [hasIsBetter, setHasIsBetter] = useState(false);
@@ -118,18 +114,12 @@ export default function ArtifactSetRecommendations({ character, recommendations 
             <TableCell className="text-pretty whitespace-normal sm:w-48">
               {"key" in recommendation
                 ? (
-                    <ArtifactSetBage
-                      artifactSetKey={recommendation.key}
-                      isSignature={recommendation.key === character.signature_artifact_set_key}
-                    />
+                    <ArtifactSetBage artifactSetKey={recommendation.key} />
                   )
                 : (
                     <div className="flex flex-col gap-2">
                       {recommendation.keys.map(key => (
-                        <ArtifactSetBage
-                          artifactSetKey={key}
-                          isSignature={key === character.signature_artifact_set_key}
-                        />
+                        <ArtifactSetBage artifactSetKey={key} />
                       ))}
                     </div>
                   )}

@@ -1,43 +1,29 @@
 import { publicImageSrc } from "@/lib/utils";
 import { WeaponTypeKeys } from "./enums/weapon-type";
-import type { WeaponType, WeaponTypeKey } from "./types/weapon-type";
+import type { WeaponType } from "./types/weapon-type";
 
-const imageSrc: typeof publicImageSrc = src => publicImageSrc(`weapon-types/${src}`);
+class _WeaponType implements WeaponType {
+  readonly key: WeaponType["key"];
+  readonly name: WeaponType["name"];
+  readonly abbr: WeaponType["abbr"];
+  readonly image_src: WeaponType["image_src"];
+  readonly icon_src: WeaponType["icon_src"];
+
+  static PATH = "weapon-types";
+
+  constructor(key: keyof typeof WeaponTypeKeys, name: WeaponType["name"], abbr: WeaponType["abbr"]) {
+    this.key = WeaponTypeKeys[key];
+    this.name = name;
+    this.abbr = abbr;
+    this.image_src = publicImageSrc(`${_WeaponType.PATH}/${this.key}-128x128.png`);
+    this.icon_src = publicImageSrc(`${_WeaponType.PATH}/${this.key}-icon-20x20.png`);
+  }
+}
 
 export default {
-  [WeaponTypeKeys.Bow]: {
-    key: WeaponTypeKeys.Bow,
-    name: "Стрелковое оружие",
-    abbreviation: "Стрелковое",
-    image_src: imageSrc("bow-128x128.png"),
-    icon_src: imageSrc("bow-icon-20x20.png"),
-  },
-  [WeaponTypeKeys.Catalyst]: {
-    key: WeaponTypeKeys.Catalyst,
-    name: "Катализатор",
-    abbreviation: "Катализатор",
-    image_src: imageSrc("catalyst-128x128.png"),
-    icon_src: imageSrc("catalyst-icon-20x20.png"),
-  },
-  [WeaponTypeKeys.Claymore]: {
-    key: WeaponTypeKeys.Claymore,
-    name: "Двуручное оружие",
-    abbreviation: "Двуручное оружие",
-    image_src: imageSrc("claymore-128x128.png"),
-    icon_src: imageSrc("claymore-icon-20x20.png"),
-  },
-  [WeaponTypeKeys.Polearm]: {
-    key: WeaponTypeKeys.Polearm,
-    name: "Древковое оружие",
-    abbreviation: "Древковое",
-    image_src: imageSrc("polearm-128x128.png"),
-    icon_src: imageSrc("polearm-icon-20x20.png"),
-  },
-  [WeaponTypeKeys.Sword]: {
-    key: WeaponTypeKeys.Sword,
-    name: "Одноручное оружие",
-    abbreviation: "Одноручное",
-    image_src: imageSrc("sword-128x128.png"),
-    icon_src: imageSrc("sword-icon-20x20.png"),
-  },
-} as Record<WeaponTypeKey, WeaponType>;
+  [WeaponTypeKeys["🏹"]]: new _WeaponType("🏹", "Стрелковое оружие", "Стрелковое"),
+  [WeaponTypeKeys["💥"]]: new _WeaponType("💥", "Катализатор", "Катализатор"),
+  [WeaponTypeKeys["🗡️"]]: new _WeaponType("🗡️", "Двуручное оружие", "Двуручное"),
+  [WeaponTypeKeys["🔱"]]: new _WeaponType("🔱", "Древковое оружие", "Древковое"),
+  [WeaponTypeKeys["⚔️"]]: new _WeaponType("⚔️", "Одноручное оружие", "Одноручное"),
+} as Record<WeaponType["key"], WeaponType>;

@@ -1,7 +1,6 @@
 import artifactSets from "../artifact-sets";
 import Paths from "@/constants/paths";
 import weapons from "../weapons";
-import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn, publicSrc } from "@/lib/utils";
 import { StAtkeys } from "../enums/stat";
@@ -20,7 +19,7 @@ export function artifactSetByKey(key: ArtifactSetKey) {
 
   return `
     <a class="${cn(badgeVariants({ variant: "secondary" }), "pl-1 py-0 text-sm/none")}" href="${publicSrc(`#${Paths.ArtifactSet.to(artifactSet.key)}`)}">
-      <img alt="" class="size-4.5" src="${artifactSet[ArtifactSlotKeys.Flower].image_src}" />
+      <img alt="" class="size-4.5" src="${artifactSet.imageSrc()}" />
       <span>${Paths.ArtifactSet.title(artifactSet)}</span>
     </a>
   `;

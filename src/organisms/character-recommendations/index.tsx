@@ -103,7 +103,7 @@ export default function CharacterRecommendations({ character, recommendations }:
                     Рекомендации по артефактам
                   </AccordionTrigger>
                   <AccordionContent className="px-6">
-                    <ArtifactRecommendations character={character} recommendations={recommendations.artifacts} />
+                    <ArtifactRecommendations recommendations={recommendations.artifacts} />
                   </AccordionContent>
                 </AccordionItem>
               )}

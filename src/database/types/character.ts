@@ -1,5 +1,4 @@
 import { CharacterKeys } from "../enums/character";
-import type { ArtifactSetKey } from "./artifact-set";
 import type { CharacterRoleKey } from "./character-role";
 import type { ElementKey } from "./element";
 import type { Rarity } from "./rarity";
@@ -15,9 +14,8 @@ export type Character = {
   /* Оружие   */ weapon_type_key: WeaponTypeKey;
   /* Элемент  */ element_key: ElementKey;
   /* Архэ     */ arkhe?: CharacterArkhe | CharacterArkhe[];
-  /* Роли     */ roles_key?: CharacterRoleKey[];
-  signature_artifact_set_key?: ArtifactSetKey;
-  signature_weapon_key?: WeaponKey;
+  /* Роли     */ role_keys?: CharacterRoleKey[];
   image_src: string;
+  signature_weapon_key?: WeaponKey;
 };
 export type CharacterKey = typeof CharacterKeys[keyof typeof CharacterKeys];

@@ -7,11 +7,9 @@ import type {
 } from "@/database/types/character-recommendations";
 
 export type ArtifactRecommendationsProps = {
-  character: CharacterRecommendationsProps["character"];
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["artifacts"]>;
 };
 export type ArtifactSetRecommendationsProps = {
-  character: ArtifactRecommendationsProps["character"];
   recommendations: ArtifactRecommendationsProps["recommendations"]["sets"];
 };
 export type ArtifactStatRecommendationsProps = {

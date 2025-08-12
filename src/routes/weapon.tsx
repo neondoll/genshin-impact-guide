@@ -71,7 +71,7 @@ export default function Weapon() {
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Тип:" className="p-2 text-right whitespace-normal" />
-              <TableCell children={weaponType.abbreviation} className="p-2 whitespace-normal" />
+              <TableCell children={weaponType.abbr} className="p-2 whitespace-normal" />
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Базовая атака:" className="p-2 text-right whitespace-normal" />

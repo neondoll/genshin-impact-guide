@@ -3,7 +3,6 @@ import { Link, useLoaderData } from "react-router-dom";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
-import { ArtifactSlotKeys } from "@/database/enums/artifact-slot";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -44,7 +43,7 @@ function ArtifactSetHeading({ item }: { item: ArtifactSetLoaderData["artifactSet
       <img
         alt={item.name}
         className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByRarity(...item.rarities))}
-        src={item[ArtifactSlotKeys.Flower].image_src}
+        src={item.imageSrc()}
       />
       <div className="space-y-1">
         <div className="flex gap-x-1 items-center">
@@ -110,21 +109,27 @@ export default function ArtifactSet() {
         <CardContent>
           <Table>
             <TableBody>
-              {artifactSlots.map(artifactSlot => (
-                <TableRow className="hover:bg-inherit" key={artifactSlot.key}>
-                  <TableHead children={artifactSlot.name} className="p-2 text-pretty whitespace-normal" />
-                  <TableCell className="p-2 text-pretty whitespace-normal">
-                    <div className="flex gap-2.5 items-center">
-                      <img
-                        alt={artifactSet[artifactSlot.key].name}
-                        className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
-                        src={artifactSet[artifactSlot.key].image_src}
-                      />
-                      <span children={artifactSet[artifactSlot.key].name} />
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
+              {artifactSlots.map((artifactSlot) => {
+                const artifactSetSlot = artifactSet.slots[artifactSlot.key];
+
+                return artifactSetSlot !== undefined
+                  ? (
+                      <TableRow className="hover:bg-inherit" key={artifactSlot.key}>
+                        <TableHead children={artifactSlot.name} className="p-2 text-pretty whitespace-normal" />
+                        <TableCell className="p-2 text-pretty whitespace-normal">
+                          <div className="flex gap-2.5 items-center">
+                            <img
+                              alt={artifactSetSlot.name}
+                              className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
+                              src={artifactSetSlot.image_src}
+                            />
+                            <span children={artifactSetSlot.name} />
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  : undefined;
+              })}
             </TableBody>
           </Table>
         </CardContent>
