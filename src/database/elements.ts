@@ -10,6 +10,8 @@ class _Element implements Element {
   readonly region_key: Element["region_key"];
   readonly reacts_with: Element["reacts_with"];
 
+  static PATH = "elements";
+
   constructor(
     key: keyof typeof ElementKeys,
     name: Element["name"],
@@ -18,18 +20,18 @@ class _Element implements Element {
   ) {
     this.key = ElementKeys[key];
     this.name = name;
-    this.image_src = publicImageSrc(`elements/${this.key}-84x84.png`);
+    this.image_src = publicImageSrc(`${_Element.PATH}/${this.key}-84x84.png`);
     this.region_key = RegionKeys[regionKey];
     this.reacts_with = reactsWith.map(reactWith => ElementKeys[reactWith]);
   }
 }
 
 export default {
-  [ElementKeys["🍃"]]: new _Element("🍃", "Анемо", "Mondstadt", ["⚡️", "💧", "🔥", "❄️"]),
-  [ElementKeys["❄️"]]: new _Element("❄️", "Крио", "Snezhnaya", ["🍃", "🪨", "⚡️", "💧", "🔥"]),
+  [ElementKeys["🌪️"]]: new _Element("🌪️", "Анемо", "Mondstadt", ["⚡️", "💧", "🔥", "❄️"]),
+  [ElementKeys["❄️"]]: new _Element("❄️", "Крио", "Snezhnaya", ["🌪️", "🏔️", "⚡️", "💧", "🔥"]),
   [ElementKeys["🌿"]]: new _Element("🌿", "Дендро", "Sumeru", ["⚡️", "💧", "🔥"]),
-  [ElementKeys["⚡️"]]: new _Element("⚡️", "Электро", "Inazuma", ["🍃", "🪨", "🌿", "💧", "🔥", "❄️"]),
-  [ElementKeys["🪨"]]: new _Element("🪨", "Гео", "Liyue", ["⚡️", "💧", "🔥", "❄️"]),
-  [ElementKeys["💧"]]: new _Element("💧", "Гидро", "Fontaine", ["🍃", "🪨", "⚡️", "🌿", "🔥", "❄️"]),
-  [ElementKeys["🔥"]]: new _Element("🔥", "Пиро", "Natlan", ["🍃", "🪨", "⚡️", "🌿", "💧", "❄️"]),
+  [ElementKeys["⚡️"]]: new _Element("⚡️", "Электро", "Inazuma", ["🌪️", "🏔️", "🌿", "💧", "🔥", "❄️"]),
+  [ElementKeys["🏔️"]]: new _Element("🏔️", "Гео", "Liyue", ["⚡️", "💧", "🔥", "❄️"]),
+  [ElementKeys["💧"]]: new _Element("💧", "Гидро", "Fontaine", ["🌪️", "🏔️", "⚡️", "🌿", "🔥", "❄️"]),
+  [ElementKeys["🔥"]]: new _Element("🔥", "Пиро", "Natlan", ["🌪️", "🏔️", "⚡️", "🌿", "💧", "❄️"]),
 } as Record<Element["key"], Element>;

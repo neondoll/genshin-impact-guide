@@ -10,22 +10,18 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
 import { cn, publicImageSrc } from "@/lib/utils";
-import { getCharacter, getCharacterRecommendations, getCharacterRole, getElement, getWeaponType } from "@/database";
+import { getCharacter } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
-export type CharacterLoaderData = {
-  character: Awaited<ReturnType<typeof getCharacter>>;
-  characterElement: Awaited<ReturnType<typeof getElement>>;
-  characterRecommendations: Awaited<ReturnType<typeof getCharacterRecommendations>>;
-  characterRoles: Awaited<ReturnType<typeof getCharacterRole>>[] | undefined;
-  characterWeaponType: Awaited<ReturnType<typeof getWeaponType>>;
-};
+export type CharacterLoaderData = { character: Awaited<ReturnType<typeof getCharacter>> };
 
 export default function Character() {
-  const {
-    character, characterElement, characterRecommendations, characterRoles, characterWeaponType,
-  } = useLoaderData<CharacterLoaderData>();
+  const { character } = useLoaderData<CharacterLoaderData>();
+  const characterElement = character.element;
+  const characterRecommendations = character.recommendations;
+  const characterRoles = character.roles;
+  const characterWeaponType = character.weapon_type;
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -51,10 +47,7 @@ export default function Character() {
       <div className="flex gap-x-3">
         <img
           alt={character.name}
-          className={cn(
-            "shrink-0 size-16 rounded-md rounded-br-2xl",
-            backgroundClassByRarity(character.rarity),
-          )}
+          className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByRarity(character.rarity))}
           src={character.image_src}
         />
         <div className="space-y-1">

@@ -2,7 +2,7 @@ import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import type { ArtifactSetKey } from "./artifact-set";
 import type { CharacterKey } from "./character";
 import type { ElementKey } from "./element";
-import type { StAtkey } from "./stat";
+import type { StatKey } from "./stat";
 import type { TalentKey } from "./talent";
 import type { VideoSource } from "./video-source";
 import type { WeaponKey } from "./weapon";
@@ -28,7 +28,7 @@ type CharacterArtifactRecommendations = {
 };
 type CharacterArtifactSetRecommendations = CharacterArtifactSetRecommendation[];
 type CharacterArtifactStatRecommendation = {
-  key: StAtkey;
+  key: StatKey;
   percent?: number;
   use_percent?: number;
   description?: string;

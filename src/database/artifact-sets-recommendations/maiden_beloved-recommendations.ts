@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
 export default {
@@ -13,10 +13,10 @@ export default {
     { key: CharacterKeys.SangonomiyaKokomi, is_better: true },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.Sands]: [StAtkeys.AtkPercentage, StAtkeys.EnergyRecharge, StAtkeys.HpPercentage],
-    [ArtifactSlotKeys.Goblet]: [StAtkeys.AtkPercentage, StAtkeys.EnergyRecharge, StAtkeys.HpPercentage],
-    [ArtifactSlotKeys.Circlet]: [StAtkeys.AtkPercentage, StAtkeys.Heal, StAtkeys.HpPercentage],
-    additional: [StAtkeys.AtkPercentage, StAtkeys.EnergyRecharge, StAtkeys.HpPercentage],
+    [ArtifactSlotKeys.Sands]: [StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotKeys.Goblet]: [StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotKeys.Circlet]: [StatKeys.AtkPercentage, StatKeys.Heal, StatKeys.HpPercentage],
+    additional: [StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
   },
   video_sources: [
     {

@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -37,23 +37,23 @@ export default {
     ],
     stats: {
       [ArtifactSlotKeys.Sands]: [
-        { key: StAtkeys.ElementalMastery, use_percent: 0.894 },
-        { key: StAtkeys.HpPercentage, use_percent: 0.073 },
-        { key: StAtkeys.AtkPercentage, use_percent: 0.016 },
+        { key: StatKeys.ElementalMastery, use_percent: 0.894 },
+        { key: StatKeys.HpPercentage, use_percent: 0.073 },
+        { key: StatKeys.AtkPercentage, use_percent: 0.016 },
       ],
       [ArtifactSlotKeys.Goblet]: [
-        { key: StAtkeys.ElementalMastery, use_percent: 0.810 },
-        { key: StAtkeys.HpPercentage, use_percent: 0.114 },
-        { key: StAtkeys.ElectroDmgBonus, use_percent: 0.044 },
+        { key: StatKeys.ElementalMastery, use_percent: 0.810 },
+        { key: StatKeys.HpPercentage, use_percent: 0.114 },
+        { key: StatKeys.ElectroDmgBonus, use_percent: 0.044 },
       ],
       [ArtifactSlotKeys.Circlet]: [
-        { key: StAtkeys.ElementalMastery, use_percent: 0.807 },
-        { key: StAtkeys.Heal, use_percent: 0.071 },
-        { key: StAtkeys.HpPercentage, use_percent: 0.056 },
+        { key: StatKeys.ElementalMastery, use_percent: 0.807 },
+        { key: StatKeys.Heal, use_percent: 0.071 },
+        { key: StatKeys.HpPercentage, use_percent: 0.056 },
       ],
       additional: [
-        { key: StAtkeys.ElementalMastery, notes: ["Приоритетно", "от 700"] },
-        { key: StAtkeys.HpPercentage, notes: ["от 30000"] },
+        { key: StatKeys.ElementalMastery, notes: ["Приоритетно", "от 700"] },
+        { key: StatKeys.HpPercentage, notes: ["от 30000"] },
       ],
     },
   },

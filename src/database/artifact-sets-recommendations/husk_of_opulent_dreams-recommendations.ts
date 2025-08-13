@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { StatsCrit } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -14,10 +14,10 @@ export default {
     { key: CharacterKeys.YunJin },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.Sands]: [StAtkeys.DefPercentage],
-    [ArtifactSlotKeys.Goblet]: [StAtkeys.DefPercentage, StAtkeys.GeoDmgBonus],
+    [ArtifactSlotKeys.Sands]: [StatKeys.DefPercentage],
+    [ArtifactSlotKeys.Goblet]: [StatKeys.DefPercentage, StatKeys.GeoDmgBonus],
     [ArtifactSlotKeys.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StAtkeys.DefPercentage, StAtkeys.EnergyRecharge],
+    additional: [...StatsCrit, StatKeys.DefPercentage, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

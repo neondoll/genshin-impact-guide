@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -26,25 +26,25 @@ export default {
     ],
     stats: {
       [ArtifactSlotKeys.Sands]: [
-        { key: StAtkeys.AtkPercentage, use_percent: 0.525 },
-        { key: StAtkeys.EnergyRecharge, use_percent: 0.410 },
-        { key: StAtkeys.HpPercentage, use_percent: 0.030 },
+        { key: StatKeys.AtkPercentage, use_percent: 0.525 },
+        { key: StatKeys.EnergyRecharge, use_percent: 0.410 },
+        { key: StatKeys.HpPercentage, use_percent: 0.030 },
       ],
       [ArtifactSlotKeys.Goblet]: [
-        { key: StAtkeys.HydroDmgBonus, use_percent: 0.844 },
-        { key: StAtkeys.AtkPercentage, use_percent: 0.108 },
-        { key: StAtkeys.HpPercentage, use_percent: 0.025 },
+        { key: StatKeys.HydroDmgBonus, use_percent: 0.844 },
+        { key: StatKeys.AtkPercentage, use_percent: 0.108 },
+        { key: StatKeys.HpPercentage, use_percent: 0.025 },
       ],
       [ArtifactSlotKeys.Circlet]: [
-        { key: StAtkeys.CritRate, use_percent: 0.650 },
-        { key: StAtkeys.CritDMG, use_percent: 0.258 },
-        { key: StAtkeys.AtkPercentage, use_percent: 0.055 },
+        { key: StatKeys.CritRate, use_percent: 0.650 },
+        { key: StatKeys.CritDMG, use_percent: 0.258 },
+        { key: StatKeys.AtkPercentage, use_percent: 0.055 },
       ],
       additional: [
-        { key: StAtkeys.CritRate, notes: ["Приоритетно", "от 60%"] },
-        { key: StAtkeys.CritDMG, notes: ["Приоритетно", "от 120%"] },
-        { key: StAtkeys.AtkPercentage, notes: ["от 1400"] },
-        { key: StAtkeys.EnergyRecharge, notes: ["от 220%"] },
+        { key: StatKeys.CritRate, notes: ["Приоритетно", "от 60%"] },
+        { key: StatKeys.CritDMG, notes: ["Приоритетно", "от 120%"] },
+        { key: StatKeys.AtkPercentage, notes: ["от 1400"] },
+        { key: StatKeys.EnergyRecharge, notes: ["от 220%"] },
       ],
     },
   },

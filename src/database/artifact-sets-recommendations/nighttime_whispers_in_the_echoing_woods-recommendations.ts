@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { StatsCrit } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -15,10 +15,10 @@ export default {
     },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.Sands]: [StAtkeys.AtkPercentage],
-    [ArtifactSlotKeys.Goblet]: [StAtkeys.AtkPercentage, StAtkeys.GeoDmgBonus],
+    [ArtifactSlotKeys.Sands]: [StatKeys.AtkPercentage],
+    [ArtifactSlotKeys.Goblet]: [StatKeys.AtkPercentage, StatKeys.GeoDmgBonus],
     [ArtifactSlotKeys.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StAtkeys.AtkPercentage, StAtkeys.EnergyRecharge],
+    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.EnergyRecharge],
   },
   video_sources: [
     {

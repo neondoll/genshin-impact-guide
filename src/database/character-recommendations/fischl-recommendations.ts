@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -11,24 +11,24 @@ export default {
     sets: [{ key: ArtifactSetKeys.GoldenTroupe }],
     stats: {
       [ArtifactSlotKeys.Sands]: [
-        { key: StAtkeys.AtkPercentage, percent: 0.785 },
-        { key: StAtkeys.ElementalMastery, percent: 0.125 },
-        { key: StAtkeys.EnergyRecharge, percent: 0.062 },
+        { key: StatKeys.AtkPercentage, percent: 0.785 },
+        { key: StatKeys.ElementalMastery, percent: 0.125 },
+        { key: StatKeys.EnergyRecharge, percent: 0.062 },
       ],
       [ArtifactSlotKeys.Goblet]: [
-        { key: StAtkeys.ElectroDmgBonus, percent: 0.830 },
-        { key: StAtkeys.AtkPercentage, percent: 0.119 },
-        { key: StAtkeys.ElementalMastery, percent: 0.018 },
+        { key: StatKeys.ElectroDmgBonus, percent: 0.830 },
+        { key: StatKeys.AtkPercentage, percent: 0.119 },
+        { key: StatKeys.ElementalMastery, percent: 0.018 },
       ],
       [ArtifactSlotKeys.Circlet]: [
-        { key: StAtkeys.CritRate, percent: 0.669 },
-        { key: StAtkeys.CritDMG, percent: 0.266 },
-        { key: StAtkeys.AtkPercentage, percent: 0.034 },
+        { key: StatKeys.CritRate, percent: 0.669 },
+        { key: StatKeys.CritDMG, percent: 0.266 },
+        { key: StatKeys.AtkPercentage, percent: 0.034 },
       ],
       additional: [
-        { key: StAtkeys.CritRate, description: "Приоритетно" },
-        { key: StAtkeys.CritDMG, description: "Приоритетно" },
-        { key: StAtkeys.AtkPercentage },
+        { key: StatKeys.CritRate, description: "Приоритетно" },
+        { key: StatKeys.CritDMG, description: "Приоритетно" },
+        { key: StatKeys.AtkPercentage },
       ],
     },
   },

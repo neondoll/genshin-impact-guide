@@ -4,7 +4,7 @@ import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
 import { ElementKeys } from "../enums/element";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -45,22 +45,22 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.AtkPercentage }],
+      [ArtifactSlotKeys.Sands]: [{ key: StatKeys.AtkPercentage }],
       [ArtifactSlotKeys.Goblet]: [
-        { key: StAtkeys.CryoDmgBonus, notes: ["Лучше"] },
-        { key: StAtkeys.AtkPercentage, notes: ["Можно поставить, если в отряде Фурина"] },
+        { key: StatKeys.CryoDmgBonus, notes: ["Лучше"] },
+        { key: StatKeys.AtkPercentage, notes: ["Можно поставить, если в отряде Фурина"] },
       ],
-      [ArtifactSlotKeys.Circlet]: [{ key: StAtkeys.CritRate }, { key: StAtkeys.CritDMG }],
+      [ArtifactSlotKeys.Circlet]: [{ key: StatKeys.CritRate }, { key: StatKeys.CritDMG }],
       additional: [
         {
-          key: StAtkeys.CritRate,
+          key: StatKeys.CritRate,
           notes: [
             "В обычной ситуации от 65% до 85%",
             "При использовании полного комплекта Охотник Сумеречного двора не должно быть больше 64%, но так как Скирк играет минимум с 2 крио персонажами, то не должно быть больше 39%",
           ],
         },
-        { key: StAtkeys.CritDMG, notes: ["от 160%"] },
-        { key: StAtkeys.AtkPercentage, notes: ["от 2000"] },
+        { key: StatKeys.CritDMG, notes: ["от 160%"] },
+        { key: StatKeys.AtkPercentage, notes: ["от 2000"] },
       ],
     },
   },

@@ -3,7 +3,7 @@ import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
 import { CharacterRoleKeys } from "../enums/character-role";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -39,7 +39,7 @@ export default {
     stats: {
       [ArtifactSlotKeys.Sands]: [
         {
-          key: StAtkeys.AtkPercentage,
+          key: StatKeys.AtkPercentage,
           notes: [
             "Гиперкерри\\Перегрузка - Всегда",
             `Вейп\\Мелт - Лучше, если в отряде есть инструктор и отсутствует ${characters[CharacterKeys.Bennett].name} или ${characters[CharacterKeys.Iansan].name}`,
@@ -47,19 +47,19 @@ export default {
           ],
         },
         {
-          key: StAtkeys.ElementalMastery,
+          key: StatKeys.ElementalMastery,
           notes: [
             `Вейп\\Мелт - Всегда, если есть в команде ${characters[CharacterKeys.Bennett].name} или ${characters[CharacterKeys.Iansan].name} и мало МС в доп. статах`,
           ],
         },
       ],
-      [ArtifactSlotKeys.Goblet]: [{ key: StAtkeys.PyroDmgBonus, notes: ["Всегда"] }],
-      [ArtifactSlotKeys.Circlet]: [{ key: StAtkeys.CritRate }, { key: StAtkeys.CritDMG }],
+      [ArtifactSlotKeys.Goblet]: [{ key: StatKeys.PyroDmgBonus, notes: ["Всегда"] }],
+      [ArtifactSlotKeys.Circlet]: [{ key: StatKeys.CritRate }, { key: StatKeys.CritDMG }],
       additional: [
-        { key: StAtkeys.AtkPercentage },
-        { key: StAtkeys.CritRate },
-        { key: StAtkeys.CritDMG },
-        { key: StAtkeys.ElementalMastery, notes: ["Если играем в Вейпе\\Мелте"] },
+        { key: StatKeys.AtkPercentage },
+        { key: StatKeys.CritRate },
+        { key: StatKeys.CritDMG },
+        { key: StatKeys.ElementalMastery, notes: ["Если играем в Вейпе\\Мелте"] },
       ],
     },
   },

@@ -3,7 +3,7 @@ import weapons from "../weapons";
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -26,13 +26,13 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.HpPercentage }],
-      [ArtifactSlotKeys.Goblet]: [{ key: StAtkeys.HpPercentage }],
+      [ArtifactSlotKeys.Sands]: [{ key: StatKeys.HpPercentage }],
+      [ArtifactSlotKeys.Goblet]: [{ key: StatKeys.HpPercentage }],
       [ArtifactSlotKeys.Circlet]: [
-        { key: StAtkeys.HpPercentage },
-        { key: StAtkeys.CritRate, description: `Если в руках ${weapons[WeaponKeys.FavoniusLance].name}` },
+        { key: StatKeys.HpPercentage },
+        { key: StatKeys.CritRate, description: `Если в руках ${weapons[WeaponKeys.FavoniusLance].name}` },
       ],
-      additional: [{ key: StAtkeys.HpPercentage }, { key: StAtkeys.EnergyRecharge }],
+      additional: [{ key: StatKeys.HpPercentage }, { key: StatKeys.EnergyRecharge }],
     },
   },
   character_key: CharacterKeys.Chevreuse,

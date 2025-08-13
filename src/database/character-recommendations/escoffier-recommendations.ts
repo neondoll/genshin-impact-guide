@@ -3,7 +3,7 @@ import weapons from "../weapons";
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -26,25 +26,25 @@ export default {
     ],
     stats: {
       [ArtifactSlotKeys.Sands]: [
-        { key: StAtkeys.AtkPercentage, notes: ["Личный урон важнее, чем ульта по откату"] },
+        { key: StatKeys.AtkPercentage, notes: ["Личный урон важнее, чем ульта по откату"] },
         {
-          key: StAtkeys.EnergyRecharge,
+          key: StatKeys.EnergyRecharge,
           notes: ["В меньшинстве случаев, когда есть Фурина, лечение нужно и лечить больше некому"],
         },
       ],
       [ArtifactSlotKeys.Goblet]: [
-        { key: StAtkeys.CryoDmgBonus, notes: ["В 99% случаев"] },
-        { key: StAtkeys.AtkPercentage, notes: ["В 1% случаев"] },
+        { key: StatKeys.CryoDmgBonus, notes: ["В 99% случаев"] },
+        { key: StatKeys.AtkPercentage, notes: ["В 1% случаев"] },
       ],
       [ArtifactSlotKeys.Circlet]: [
-        { key: StAtkeys.CritRate },
-        { key: StAtkeys.CritDMG, notes: ["Почти всегда"] },
+        { key: StatKeys.CritRate },
+        { key: StatKeys.CritDMG, notes: ["Почти всегда"] },
       ],
       additional: [
-        { key: StAtkeys.CritRate, notes: ["Приоритетно"] },
-        { key: StAtkeys.CritDMG, notes: ["Приоритетно"] },
-        { key: StAtkeys.AtkPercentage },
-        { key: StAtkeys.EnergyRecharge },
+        { key: StatKeys.CritRate, notes: ["Приоритетно"] },
+        { key: StatKeys.CritDMG, notes: ["Приоритетно"] },
+        { key: StatKeys.AtkPercentage },
+        { key: StatKeys.EnergyRecharge },
       ],
     },
   },

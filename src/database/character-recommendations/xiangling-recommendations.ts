@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -11,24 +11,24 @@ export default {
     sets: [{ key: ArtifactSetKeys.EmblemOfSeveredFate }],
     stats: {
       [ArtifactSlotKeys.Sands]: [
-        { key: StAtkeys.EnergyRecharge, percent: 0.748 },
-        { key: StAtkeys.AtkPercentage, percent: 0.171 },
-        { key: StAtkeys.ElementalMastery, percent: 0.055 },
+        { key: StatKeys.EnergyRecharge, percent: 0.748 },
+        { key: StatKeys.AtkPercentage, percent: 0.171 },
+        { key: StatKeys.ElementalMastery, percent: 0.055 },
       ],
       [ArtifactSlotKeys.Goblet]: [
-        { key: StAtkeys.PyroDmgBonus, percent: 0.841 },
-        { key: StAtkeys.AtkPercentage, percent: 0.118 },
-        { key: StAtkeys.HpPercentage, percent: 0.013 },
+        { key: StatKeys.PyroDmgBonus, percent: 0.841 },
+        { key: StatKeys.AtkPercentage, percent: 0.118 },
+        { key: StatKeys.HpPercentage, percent: 0.013 },
       ],
       [ArtifactSlotKeys.Circlet]: [
-        { key: StAtkeys.CritRate, percent: 0.642 },
-        { key: StAtkeys.CritDMG, percent: 0.291 },
-        { key: StAtkeys.AtkPercentage, percent: 0.042 },
+        { key: StatKeys.CritRate, percent: 0.642 },
+        { key: StatKeys.CritDMG, percent: 0.291 },
+        { key: StatKeys.AtkPercentage, percent: 0.042 },
       ],
       additional: [
-        { key: StAtkeys.CritRate, description: "Приоритетно" },
-        { key: StAtkeys.CritDMG, description: "Приоритетно" },
-        { key: StAtkeys.EnergyRecharge },
+        { key: StatKeys.CritRate, description: "Приоритетно" },
+        { key: StatKeys.CritDMG, description: "Приоритетно" },
+        { key: StatKeys.EnergyRecharge },
       ],
     },
   },

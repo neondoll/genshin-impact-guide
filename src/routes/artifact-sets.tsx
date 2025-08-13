@@ -51,7 +51,7 @@ export default function ArtifactSets() {
                   alt={artifactSet.name}
                   className="object-cover size-full rounded-lg rounded-br-3xl"
                   draggable={false}
-                  src={artifactSet.imageSrc()}
+                  src={artifactSet.image_src}
                 />
               </span>
               <Link

@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { StatsCrit, StatsElementDamageBonus } from "./help";
 import type { ArtifactSetRecommendations } from "../types/artifact-set-recommendations";
 
@@ -15,10 +15,10 @@ export default {
     { key: CharacterKeys.Zhongli, is_better: true },
   ],
   preferred_stats: {
-    [ArtifactSlotKeys.Sands]: [StAtkeys.EnergyRecharge, StAtkeys.HpPercentage],
-    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StAtkeys.HpPercentage],
-    [ArtifactSlotKeys.Circlet]: [...StatsCrit, StAtkeys.HpPercentage],
-    additional: [...StatsCrit, StAtkeys.AtkPercentage, StAtkeys.EnergyRecharge, StAtkeys.HpPercentage],
+    [ArtifactSlotKeys.Sands]: [StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StatKeys.HpPercentage],
+    [ArtifactSlotKeys.Circlet]: [...StatsCrit, StatKeys.HpPercentage],
+    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
   },
   video_sources: [
     {

@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -18,27 +18,27 @@ export default {
       },
     ],
     stats: {
-      [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.HpPercentage }],
+      [ArtifactSlotKeys.Sands]: [{ key: StatKeys.HpPercentage }],
       [ArtifactSlotKeys.Goblet]: [
-        { key: StAtkeys.HpPercentage, notes: ["Если в команде Фурина"] },
-        { key: StAtkeys.HydroDmgBonus },
+        { key: StatKeys.HpPercentage, notes: ["Если в команде Фурина"] },
+        { key: StatKeys.HydroDmgBonus },
       ],
       [ArtifactSlotKeys.Circlet]: [
-        { key: StAtkeys.CritRate },
-        { key: StAtkeys.CritDMG, notes: ["Чаще всего"] },
-        { key: StAtkeys.HpPercentage, notes: ["Иногда, особенно с Сигной"] },
+        { key: StatKeys.CritRate },
+        { key: StatKeys.CritDMG, notes: ["Чаще всего"] },
+        { key: StatKeys.HpPercentage, notes: ["Иногда, особенно с Сигной"] },
       ],
       additional: [
-        { key: StAtkeys.HpPercentage, notes: ["от 30000"] },
+        { key: StatKeys.HpPercentage, notes: ["от 30000"] },
         {
-          key: StAtkeys.CritRate,
+          key: StatKeys.CritRate,
           notes: [
             "от 65% в обычной ситуации",
             "от 35% при использовании полного комплекта Охотник Сумеречного двора и стремимся к 64%",
           ],
         },
-        { key: StAtkeys.CritDMG, notes: ["от 160%"] },
-        { key: StAtkeys.EnergyRecharge, notes: ["Специально не охотиться", "от 120%"] },
+        { key: StatKeys.CritDMG, notes: ["от 160%"] },
+        { key: StatKeys.EnergyRecharge, notes: ["Специально не охотиться", "от 120%"] },
       ],
     },
   },

@@ -1,7 +1,7 @@
 import type { ArtifactSetLoaderData } from "@/routes/artifact-set";
 
 export type ArtifactSetRecommendationsProps = {
-  recommendations: NonNullable<ArtifactSetLoaderData["artifactSetRecommendations"]>;
+  recommendations: NonNullable<ArtifactSetLoaderData["artifactSet"]["recommendations"]>;
 };
 export type CharacterRecommendationsProps = {
   recommendations: ArtifactSetRecommendationsProps["recommendations"]["characters"];

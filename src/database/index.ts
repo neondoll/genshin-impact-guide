@@ -12,12 +12,12 @@ import tierListsWeapons from "./tier-lists-weapons";
 import weaponTypes from "./weapon-types";
 import weapons from "./weapons";
 import type { ArtifactSet, ArtifactSetKey } from "./types/artifact-set";
-import type { ArtifactSlot } from "./types/artifact-slot";
+import type { ArtifactSlot, ArtifactSlotKey } from "./types/artifact-slot";
 import type { Character, CharacterKey } from "./types/character";
 import type { CharacterRoleKey } from "./types/character-role";
 import type { ElementKey } from "./types/element";
 import type { RegionKey } from "./types/region";
-import type { Stat, StAtkey } from "./types/stat";
+import type { Stat, StatKey } from "./types/stat";
 import type { TalentKey } from "./types/talent";
 import type { Weapon, WeaponKey } from "./types/weapon";
 import type { WeaponTypeKey } from "./types/weapon-type";
@@ -32,6 +32,10 @@ export function getArtifactSetRecommendations(artifactSetKey: ArtifactSetKey) {
 
 export function getArtifactSets() {
   return Object.values(artifactSets).sort(sortArtifactSets);
+}
+
+export function getArtifactSlot(key: ArtifactSlotKey) {
+  return artifactSlots[key];
 }
 
 export function getArtifactSlots() {
@@ -66,8 +70,8 @@ export function getRegion(regionKey: RegionKey) {
   return regions[regionKey];
 }
 
-export function getStat(stAtkey: StAtkey) {
-  return stats[stAtkey];
+export function getStat(key: StatKey) {
+  return stats[key];
 }
 
 export function getTalent(talentKey: TalentKey) {

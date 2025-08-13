@@ -1,299 +1,173 @@
 import weaponTypes from "./weapon-types";
+import { _VideoSource } from "./video-source";
 import { WeaponKeys } from "./enums/weapon";
 import { WeaponTypeKeys } from "./enums/weapon-type";
-import type { TierListWeapons } from "./types/tier-list-weapons";
+import type { TierListWeapons, TierListWeaponsListItem } from "./types/tier-list-weapons";
+
+class _TierListWeapons implements TierListWeapons {
+  readonly list: TierListWeapons["list"];
+  readonly video_source: TierListWeapons["video_source"];
+
+  constructor(list: TierListWeapons["list"], video_source: TierListWeapons["video_source"]) {
+    this.list = list;
+    this.video_source = video_source;
+  }
+}
+
+class _TierListWeaponsListItem implements TierListWeaponsListItem {
+  readonly tier: TierListWeaponsListItem["tier"];
+  readonly description: TierListWeaponsListItem["description"];
+  readonly weapon_keys: TierListWeaponsListItem["weapon_keys"];
+
+  constructor(
+    tier: TierListWeaponsListItem["tier"],
+    description: TierListWeaponsListItem["description"],
+    weaponKeys: (keyof typeof WeaponKeys)[],
+  ) {
+    this.tier = tier;
+    this.description = description;
+    this.weapon_keys = weaponKeys.map(weaponKey => WeaponKeys[weaponKey]);
+  }
+}
+
+const WeaponTypeNameByKey = (key: keyof typeof WeaponTypeKeys) => {
+  return weaponTypes[WeaponTypeKeys[key]].name;
+};
 
 export default {
-  "Крафтовое оружие": {
-    list: [
-      {
-        tier: "Могут быть полезны",
-        weapon_keys: [
-          WeaponKeys.EarthShaker, WeaponKeys.FinaleOfTheDeep, WeaponKeys.FlowingPurity, WeaponKeys.FluteOfEzpitzal,
-          WeaponKeys.FootprintOfTheRainbow, WeaponKeys.IronSting, WeaponKeys.KitainCrossSpear, WeaponKeys.MappaMare,
-          WeaponKeys.PrototypeAmber, WeaponKeys.RightfulReward, WeaponKeys.RingOfYaxche, WeaponKeys.SapwoodBlade,
-          WeaponKeys.SongOfStillness, WeaponKeys.TidalShadow, WeaponKeys.Whiteblind,
-        ],
-      },
-      {
-        tier: "Трата ресурсов",
-        weapon_keys: [
-          WeaponKeys.AmenomaKageuchi, WeaponKeys.ChainBreaker, WeaponKeys.CompoundBow, WeaponKeys.CrescentPike,
-          WeaponKeys.DragonspineSpear, WeaponKeys.ForestRegalia, WeaponKeys.Frostbearer, WeaponKeys.FruitOfFulfillment,
-          WeaponKeys.HakushinRing, WeaponKeys.Hamayumi, WeaponKeys.KatsuragikiriNagamasa, WeaponKeys.KingsSquire,
-          WeaponKeys.Moonpiercer, WeaponKeys.PrototypeArchaic, WeaponKeys.PrototypeCrescent,
-          WeaponKeys.PrototypeRancour, WeaponKeys.PrototypeStarglitter, WeaponKeys.SnowTombedStarsilver,
-        ],
-      },
+  "Крафтовое оружие": new _TierListWeapons(
+    [
+      new _TierListWeaponsListItem("Могут быть полезны", undefined, [
+        "EarthShaker", "FinaleOfTheDeep", "FlowingPurity", "FluteOfEzpitzal", "FootprintOfTheRainbow", "IronSting",
+        "KitainCrossSpear", "MappaMare", "PrototypeAmber", "RightfulReward", "RingOfYaxche", "SapwoodBlade",
+        "SongOfStillness", "TidalShadow", "Whiteblind",
+      ]),
+      new _TierListWeaponsListItem("Трата ресурсов", undefined, [
+        "AmenomaKageuchi", "ChainBreaker", "CompoundBow", "CrescentPike", "DragonspineSpear", "ForestRegalia",
+        "Frostbearer", "FruitOfFulfillment", "HakushinRing", "Hamayumi", "KatsuragikiriNagamasa", "KingsSquire",
+        "Moonpiercer", "PrototypeArchaic", "PrototypeCrescent", "PrototypeRancour", "PrototypeStarglitter",
+        "SnowTombedStarsilver",
+      ]),
     ],
-    video_source: {
-      title: "Анимекул: Анализ ВСЕГО Крафтового Оружия | Тир-лист полезности [Genshin Impact]",
-      youtube_url: "https://youtu.be/CU-BxsNF-qw",
-    },
-  },
-  [weaponTypes[WeaponTypeKeys["💥"]].name]: {
-    list: [
-      {
-        tier: "S",
-        description: "Лучшие",
-        weapon_keys: [
-          WeaponKeys.LostPrayerToTheSacredWinds, WeaponKeys.StarcallersWatch, WeaponKeys.SurfsUp,
-          WeaponKeys.TomeOfTheEternalFlow, WeaponKeys.VividNotions,
-        ],
-      },
-      {
-        tier: "A",
-        description: "Хорошие",
-        weapon_keys: [
-          WeaponKeys.AThousandFloatingDreams, WeaponKeys.CashflowSupervision, WeaponKeys.CranesEchoingCall,
-          WeaponKeys.KagurasVerity, WeaponKeys.TheWidsith, WeaponKeys.ThrillingTalesOfDragonSlayers,
-          WeaponKeys.TulaytullahsRemembrance,
-        ],
-      },
-      {
-        tier: "B",
-        description: "Опциональные",
-        weapon_keys: [
-          WeaponKeys.FavoniusCodex, WeaponKeys.FlowingPurity, WeaponKeys.PrototypeAmber, WeaponKeys.RingOfYaxche,
-          WeaponKeys.SacrificialFragments, WeaponKeys.SacrificialJade, WeaponKeys.SkywardAtlas,
-          WeaponKeys.WanderingEvenstar,
-        ],
-      },
-      {
-        tier: "C",
-        description: "Если нет вариантов лучше",
-        weapon_keys: [
-          WeaponKeys.AshGravenDrinkingHorn, WeaponKeys.BlackcliffAgate, WeaponKeys.EverlastingMoonglow,
-          WeaponKeys.HakushinRing, WeaponKeys.JadefallsSplendor, WeaponKeys.MemoryOfDust, WeaponKeys.OathswornEye,
-          WeaponKeys.SolarPearl, WeaponKeys.SunnyMorningSleepIn,
-        ],
-      },
-      {
-        tier: "D",
-        description: "На крайний случай",
-        weapon_keys: [
-          WeaponKeys.BalladOfTheBoundlessBlue, WeaponKeys.DodocoTales, WeaponKeys.MagicGkeye, WeaponKeys.MappaMare,
-          WeaponKeys.WineAndSong,
-        ],
-      },
-      {
-        tier: "F",
-        description: "Худшие",
-        weapon_keys: [
-          WeaponKeys.EmeraldOrb, WeaponKeys.EyeOfPerception, WeaponKeys.Frostbearer, WeaponKeys.FruitOfFulfillment,
-          WeaponKeys.OtherworldlyStory, WeaponKeys.RoyalGrimoire, WeaponKeys.TwinNephrite, WeaponKeys.WaveridingWhirl,
-        ],
-      },
+    new _VideoSource("Анимекул: Анализ ВСЕГО Крафтового Оружия | Тир-лист полезности [Genshin Impact]").setYoutubeUrl("https://youtu.be/CU-BxsNF-qw"),
+  ),
+  [WeaponTypeNameByKey("💥")]: new _TierListWeapons(
+    [
+      new _TierListWeaponsListItem("S", "Лучшие", [
+        "LostPrayerToTheSacredWinds", "StarcallersWatch", "SurfsUp", "TomeOfTheEternalFlow", "VividNotions",
+      ]),
+      new _TierListWeaponsListItem("A", "Хорошие", [
+        "AThousandFloatingDreams", "CashflowSupervision", "CranesEchoingCall", "KagurasVerity", "TheWidsith",
+        "ThrillingTalesOfDragonSlayers", "TulaytullahsRemembrance",
+      ]),
+      new _TierListWeaponsListItem("B", "Опциональные", [
+        "FavoniusCodex", "FlowingPurity", "PrototypeAmber", "RingOfYaxche", "SacrificialFragments", "SacrificialJade",
+        "SkywardAtlas", "WanderingEvenstar",
+      ]),
+      new _TierListWeaponsListItem("C", "Если нет вариантов лучше", [
+        "AshGravenDrinkingHorn", "BlackcliffAgate", "EverlastingMoonglow", "HakushinRing", "JadefallsSplendor",
+        "MemoryOfDust", "OathswornEye", "SolarPearl", "SunnyMorningSleepIn",
+      ]),
+      new _TierListWeaponsListItem("D", "На крайний случай", [
+        "BalladOfTheBoundlessBlue", "DodocoTales", "MagicGkeye", "MappaMare", "WineAndSong",
+      ]),
+      new _TierListWeaponsListItem("F", "Худшие", [
+        "EmeraldOrb", "EyeOfPerception", "Frostbearer", "FruitOfFulfillment", "OtherworldlyStory", "RoyalGrimoire",
+        "TwinNephrite", "WaveridingWhirl",
+      ]),
     ],
-    video_source: {
-      title: "Miron MinMax: Лучшие и Худшие Катализаторы | Тир-лист | 2025",
-      vk_url: "https://vkvideo.ru/video-227044935_456239231",
-    },
-  },
-  [weaponTypes[WeaponTypeKeys["🏹"]].name]: {
-    list: [
-      {
-        tier: "S",
-        description: "Лучшие",
-        weapon_keys: [
-          WeaponKeys.AquaSimulacra, WeaponKeys.ElegyForTheEnd, WeaponKeys.FavoniusWarbow, WeaponKeys.SkywardHarp,
-        ],
-      },
-      {
-        tier: "A",
-        description: "Отличные",
-        weapon_keys: [
-          WeaponKeys.AstralVulturesCrimsonPlumage, WeaponKeys.HuntersPath, WeaponKeys.PolarStar,
-          WeaponKeys.TheFirstGreatMagic, WeaponKeys.ThunderingPulse,
-        ],
-      },
-      {
-        tier: "B",
-        description: "Хорошие",
-        weapon_keys: [
-          WeaponKeys.AlleyHunter, WeaponKeys.AmosBow, WeaponKeys.BlackcliffWarbow, WeaponKeys.ChainBreaker,
-          WeaponKeys.FlowerWreathedFeathers, WeaponKeys.RangeGauge, WeaponKeys.SacrificialBow,
-          WeaponKeys.ScionOfTheBlazingSun, WeaponKeys.Slingshot, WeaponKeys.SongOfStillness, WeaponKeys.TheStringless,
-        ],
-      },
-      {
-        tier: "C",
-        description: "Ситуативные",
-        weapon_keys: [
-          WeaponKeys.FadingTwilight, WeaponKeys.Hamayumi, WeaponKeys.IbisPiercer, WeaponKeys.MouunsMoon,
-          WeaponKeys.PrototypeCrescent, WeaponKeys.RecurveBow, WeaponKeys.Rust, WeaponKeys.SilvershowerHeartstrings,
-          WeaponKeys.TheViridescentHunt, WeaponKeys.WindblumeOde,
-        ],
-      },
-      {
-        tier: "D",
-        description: "Плохие",
-        weapon_keys: [
-          WeaponKeys.Cloudforged, WeaponKeys.CompoundBow, WeaponKeys.EndOfTheLine, WeaponKeys.KingsSquire,
-          WeaponKeys.Messenger, WeaponKeys.MitternachtsWaltz, WeaponKeys.Predator, WeaponKeys.RavenBow,
-          WeaponKeys.RoyalBow, WeaponKeys.SharpshootersOath,
-        ],
-      },
+    new _VideoSource("Miron MinMax: Лучшие и Худшие Катализаторы | Тир-лист | 2025").setVkUrl("https://vkvideo.ru/video-227044935_456239231"),
+  ),
+  [WeaponTypeNameByKey("🏹")]: new _TierListWeapons(
+    [
+      new _TierListWeaponsListItem("S", "Лучшие", ["AquaSimulacra", "ElegyForTheEnd", "FavoniusWarbow", "SkywardHarp"]),
+      new _TierListWeaponsListItem("A", "Отличные", [
+        "AstralVulturesCrimsonPlumage", "HuntersPath", "PolarStar", "TheFirstGreatMagic", "ThunderingPulse",
+      ]),
+      new _TierListWeaponsListItem("B", "Хорошие", [
+        "AlleyHunter", "AmosBow", "BlackcliffWarbow", "ChainBreaker", "FlowerWreathedFeathers", "RangeGauge",
+        "SacrificialBow", "ScionOfTheBlazingSun", "Slingshot", "SongOfStillness", "TheStringless",
+      ]),
+      new _TierListWeaponsListItem("C", "Ситуативные", [
+        "FadingTwilight", "Hamayumi", "IbisPiercer", "MouunsMoon", "PrototypeCrescent", "RecurveBow", "Rust",
+        "SilvershowerHeartstrings", "TheViridescentHunt", "WindblumeOde",
+      ]),
+      new _TierListWeaponsListItem("D", "Плохие", [
+        "Cloudforged", "CompoundBow", "EndOfTheLine", "KingsSquire", "Messenger", "MitternachtsWaltz", "Predator",
+        "RavenBow", "RoyalBow", "SharpshootersOath",
+      ]),
     ],
-    video_source: {
-      title: "Miron MinMax: Лучшие и Худшие Луки | Тир-лист (2025)",
-      vk_url: "https://vkvideo.ru/video-227044935_456239218",
-    },
-  },
-  [weaponTypes[WeaponTypeKeys["🔱"]].name]: {
-    list: [
-      {
-        tier: "S",
-        description: "Лучшие",
-        weapon_keys: [WeaponKeys.FavoniusLance, WeaponKeys.StaffOfHoma, WeaponKeys.StaffOfTheScarletSands],
-      },
-      {
-        tier: "A",
-        description: "Отличные",
-        weapon_keys: [
-          WeaponKeys.CrimsonMoonsSemblance, WeaponKeys.EngulfingLightning, WeaponKeys.LumidouceElegy,
-          WeaponKeys.PrimordialJadeWingedSpear,
-        ],
-      },
-      {
-        tier: "B",
-        description: "Хорошие",
-        weapon_keys: [
-          WeaponKeys.BalladOfTheFjords, WeaponKeys.BlackcliffPole, WeaponKeys.CalamityQueller, WeaponKeys.Deathmatch,
-          WeaponKeys.DragonsBane, WeaponKeys.SkywardSpine, WeaponKeys.TamayurateiNoOhanashi, WeaponKeys.TheCatch,
-          WeaponKeys.VortexVanquisher, WeaponKeys.WavebreakersFin,
-        ],
-      },
-      {
-        tier: "C",
-        description: "Ситуативные",
-        weapon_keys: [
-          WeaponKeys.BlackTassel, WeaponKeys.DialoguesOfTheDesertSages, WeaponKeys.FootprintOfTheRainbow,
-          WeaponKeys.LithicSpear, WeaponKeys.KitainCrossSpear, WeaponKeys.MissiveWindspear,
-          WeaponKeys.MountainBracingBolt, WeaponKeys.ProspectorsDrill, WeaponKeys.RightfulReward, WeaponKeys.RoyalSpear,
-          WeaponKeys.WhiteTassel,
-        ],
-      },
-      {
-        tier: "D",
-        description: "Плохие",
-        weapon_keys: [
-          WeaponKeys.CrescentPike, WeaponKeys.DragonspineSpear, WeaponKeys.Halberd, WeaponKeys.Moonpiercer,
-          WeaponKeys.PrototypeStarglitter,
-        ],
-      },
+    new _VideoSource("Miron MinMax: Лучшие и Худшие Луки | Тир-лист (2025)").setVkUrl("https://vkvideo.ru/video-227044935_456239218"),
+  ),
+  [WeaponTypeNameByKey("🔱")]: new _TierListWeapons(
+    [
+      new _TierListWeaponsListItem("S", "Лучшие", ["FavoniusLance", "StaffOfHoma", "StaffOfTheScarletSands"]),
+      new _TierListWeaponsListItem("A", "Отличные", [
+        "CrimsonMoonsSemblance", "EngulfingLightning", "LumidouceElegy", "PrimordialJadeWingedSpear",
+      ]),
+      new _TierListWeaponsListItem("B", "Хорошие", [
+        "BalladOfTheFjords", "BlackcliffPole", "CalamityQueller", "Deathmatch", "DragonsBane", "SkywardSpine",
+        "TamayurateiNoOhanashi", "TheCatch", "VortexVanquisher", "WavebreakersFin",
+      ]),
+      new _TierListWeaponsListItem("C", "Ситуативные", [
+        "BlackTassel", "DialoguesOfTheDesertSages", "FootprintOfTheRainbow", "LithicSpear", "KitainCrossSpear",
+        "MissiveWindspear", "MountainBracingBolt", "ProspectorsDrill", "RightfulReward", "RoyalSpear", "WhiteTassel",
+      ]),
+      new _TierListWeaponsListItem("D", "Плохие", [
+        "CrescentPike", "DragonspineSpear", "Halberd", "Moonpiercer", "PrototypeStarglitter",
+      ]),
     ],
-    video_source: {
-      title: "Miron MinMax: Лучшие и Худшие Копья | Тирлист Древкового Оружия | 2025",
-      vk_url: "https://vkvideo.ru/video-227044935_456239209",
-    },
-  },
-  [weaponTypes[WeaponTypeKeys["🗡️"]].name]: {
-    list: [
-      {
-        tier: "S",
-        description: "Лучшие",
-        weapon_keys: [
-          WeaponKeys.AThousandBlazingSuns, WeaponKeys.BeaconOfTheReedSea, WeaponKeys.SerpentSpine, WeaponKeys.Verdict,
-        ],
-      },
-      {
-        tier: "A",
-        description: "Хорошие",
-        weapon_keys: [
-          WeaponKeys.Akuoumaru, WeaponKeys.FangOfTheMountainKing, WeaponKeys.FruitfulHook,
-          WeaponKeys.RedhornStonethresher, WeaponKeys.WolfsGravestone,
-        ],
-      },
-      {
-        tier: "B",
-        description: "Середнячки",
-        weapon_keys: [
-          WeaponKeys.BlackcliffSlasher, WeaponKeys.EarthShaker, WeaponKeys.FavoniusGreatsword, WeaponKeys.MailedFlower,
-          WeaponKeys.Rainslasher, WeaponKeys.SkywardPride, WeaponKeys.SongOfBrokenPines, WeaponKeys.TheUnforged,
-          WeaponKeys.TidalShadow, WeaponKeys.UltimateOverlordsMegaMagicSword,
-        ],
-      },
-      {
-        tier: "C",
-        description: "Ситуативное оружие",
-        weapon_keys: [
-          WeaponKeys.BloodtaintedGreatsword, WeaponKeys.KatsuragikiriNagamasa, WeaponKeys.LithicBlade,
-          WeaponKeys.MakhairaAquamarine, WeaponKeys.PortablePowerSaw, WeaponKeys.PrototypeArchaic,
-          WeaponKeys.Whiteblind,
-        ],
-      },
-      {
-        tier: "D",
-        description: "Не рекомендуется к прокачке",
-        weapon_keys: [
-          WeaponKeys.DebateClub, WeaponKeys.FerrousShadow, WeaponKeys.ForestRegalia, WeaponKeys.LuxuriousSeaLord,
-          WeaponKeys.RoyalGreatsword, WeaponKeys.SacrificialGreatsword, WeaponKeys.SkyriderGreatsword,
-          WeaponKeys.SnowTombedStarsilver, WeaponKeys.TalkingStick, WeaponKeys.TheBell, WeaponKeys.WhiteIronGreatsword,
-        ],
-      },
+    new _VideoSource("Miron MinMax: Лучшие и Худшие Копья | Тирлист Древкового Оружия | 2025").setVkUrl("https://vkvideo.ru/video-227044935_456239209"),
+  ),
+  [WeaponTypeNameByKey("🗡️")]: new _TierListWeapons(
+    [
+      new _TierListWeaponsListItem("S", "Лучшие", [
+        "AThousandBlazingSuns", "BeaconOfTheReedSea", "SerpentSpine", "Verdict",
+      ]),
+      new _TierListWeaponsListItem("A", "Хорошие", [
+        "Akuoumaru", "FangOfTheMountainKing", "FruitfulHook", "RedhornStonethresher", "WolfsGravestone",
+      ]),
+      new _TierListWeaponsListItem("B", "Середнячки", [
+        "BlackcliffSlasher", "EarthShaker", "FavoniusGreatsword", "MailedFlower", "Rainslasher", "SkywardPride",
+        "SongOfBrokenPines", "TheUnforged", "TidalShadow", "UltimateOverlordsMegaMagicSword",
+      ]),
+      new _TierListWeaponsListItem("C", "Ситуативное оружие", [
+        "BloodtaintedGreatsword", "KatsuragikiriNagamasa", "LithicBlade", "MakhairaAquamarine", "PortablePowerSaw",
+        "PrototypeArchaic", "Whiteblind",
+      ]),
+      new _TierListWeaponsListItem("D", "Не рекомендуется к прокачке", [
+        "DebateClub", "FerrousShadow", "ForestRegalia", "LuxuriousSeaLord", "RoyalGreatsword", "SacrificialGreatsword",
+        "SkyriderGreatsword", "SnowTombedStarsilver", "TalkingStick", "TheBell", "WhiteIronGreatsword",
+      ]),
     ],
-    video_source: {
-      title: "Miron MinMax: Лучшие и Худшие Двуручные Мечи | Тир-лист (2025)",
-      vk_url: "https://vkvideo.ru/video-227044935_456239205",
-    },
-  },
-  [weaponTypes[WeaponTypeKeys["⚔️"]].name]: {
-    list: [
-      {
-        tier: "S",
-        description: "Лучшее оружие",
-        weapon_keys: [
-          WeaponKeys.Absolution, WeaponKeys.FavoniusSword, WeaponKeys.MistsplitterReforged, WeaponKeys.PeakPatrolSong,
-        ],
-      },
-      {
-        tier: "A",
-        description: "Хорошее оружие",
-        weapon_keys: [
-          WeaponKeys.FreedomSworn, WeaponKeys.HaranGeppakuFutsu, WeaponKeys.LightOfFoliarIncision,
-          WeaponKeys.PrimordialJadeCutter, WeaponKeys.SacrificialSword, WeaponKeys.SplendorOfTranquilWaters,
-          WeaponKeys.UrakuMisugiri, WeaponKeys.XiphosMoonlight,
-        ],
-      },
-      {
-        tier: "B",
-        description: "Опциональное оружие",
-        weapon_keys: [
-          WeaponKeys.FesteringDesire, WeaponKeys.FleuveCendreFerryman, WeaponKeys.IronSting, WeaponKeys.KeyOfKhajNisut,
-          WeaponKeys.SkywardBlade, WeaponKeys.TheBlackSword, WeaponKeys.ToukabouShigure, WeaponKeys.WolfFang,
-        ],
-      },
-      {
-        tier: "C",
-        description: "Если нет альтернатив",
-        weapon_keys: [
-          WeaponKeys.BlackcliffLongsword, WeaponKeys.CalamityOfEshu, WeaponKeys.FinaleOfTheDeep,
-          WeaponKeys.HarbingerOfDawn, WeaponKeys.SapwoodBlade, WeaponKeys.SturdyBone, WeaponKeys.SummitShaper,
-          WeaponKeys.TheAlleyFlash, WeaponKeys.TheDockhandsAssistant,
-        ],
-      },
-      {
-        tier: "D",
-        description: "На крайний случай",
-        weapon_keys: [
-          WeaponKeys.AmenomaKageuchi, WeaponKeys.AquilaFavonia, WeaponKeys.CinnabarSpindle, WeaponKeys.FluteOfEzpitzal,
-          WeaponKeys.KagotsurubeIsshin, WeaponKeys.LionsRoar, WeaponKeys.RoyalLongsword,
-          WeaponKeys.SwordOfNarzissenkreuz,
-        ],
-      },
-      {
-        tier: "F",
-        description: "Худшее оружие",
-        weapon_keys: [
-          WeaponKeys.CoolSteel, WeaponKeys.DarkIronSword, WeaponKeys.FilletBlade, WeaponKeys.PrototypeRancour,
-          WeaponKeys.SkyriderSword, WeaponKeys.SwordOfDescension, WeaponKeys.TheFlute, WeaponKeys.TravelersHandySword,
-        ],
-      },
+    new _VideoSource("Miron MinMax: Лучшие и Худшие Двуручные Мечи | Тир-лист (2025)").setVkUrl("https://vkvideo.ru/video-227044935_456239205"),
+  ),
+  [WeaponTypeNameByKey("⚔️")]: new _TierListWeapons(
+    [
+      new _TierListWeaponsListItem("S", "Лучшее оружие", [
+        "Absolution", "FavoniusSword", "MistsplitterReforged", "PeakPatrolSong",
+      ]),
+      new _TierListWeaponsListItem("A", "Хорошее оружие", [
+        "FreedomSworn", "HaranGeppakuFutsu", "LightOfFoliarIncision", "PrimordialJadeCutter", "SacrificialSword",
+        "SplendorOfTranquilWaters", "UrakuMisugiri", "XiphosMoonlight",
+      ]),
+      new _TierListWeaponsListItem("B", "Опциональное оружие", [
+        "FesteringDesire", "FleuveCendreFerryman", "IronSting", "KeyOfKhajNisut", "SkywardBlade", "TheBlackSword",
+        "ToukabouShigure", "WolfFang",
+      ]),
+      new _TierListWeaponsListItem("C", "Если нет альтернатив", [
+        "BlackcliffLongsword", "CalamityOfEshu", "FinaleOfTheDeep", "HarbingerOfDawn", "SapwoodBlade", "SturdyBone",
+        "SummitShaper", "TheAlleyFlash", "TheDockhandsAssistant",
+      ]),
+      new _TierListWeaponsListItem("D", "На крайний случай", [
+        "AmenomaKageuchi", "AquilaFavonia", "CinnabarSpindle", "FluteOfEzpitzal", "KagotsurubeIsshin", "LionsRoar",
+        "RoyalLongsword", "SwordOfNarzissenkreuz",
+      ]),
+      new _TierListWeaponsListItem("F", "Худшее оружие", [
+        "CoolSteel", "DarkIronSword", "FilletBlade", "PrototypeRancour", "SkyriderSword", "SwordOfDescension",
+        "TheFlute", "TravelersHandySword",
+      ]),
     ],
-    video_source: {
-      title: "Miron MinMax: Лучшие и Худшие Одноручные Мечи | Тир-лист (2025)",
-      vk_url: "https://vkvideo.ru/video-227044935_456239200",
-    },
-  },
+    new _VideoSource("Miron MinMax: Лучшие и Худшие Одноручные Мечи | Тир-лист (2025)").setVkUrl("https://vkvideo.ru/video-227044935_456239200"),
+  ),
 } as Record<string, TierListWeapons>;

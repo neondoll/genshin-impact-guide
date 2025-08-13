@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -10,20 +10,20 @@ export default {
   artifacts: {
     sets: [{ key: ArtifactSetKeys.GoldenTroupe }],
     stats: {
-      [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.EnergyRecharge }, { key: StAtkeys.HpPercentage }],
+      [ArtifactSlotKeys.Sands]: [{ key: StatKeys.EnergyRecharge }, { key: StatKeys.HpPercentage }],
       [ArtifactSlotKeys.Goblet]: [
-        { key: StAtkeys.HydroDmgBonus },
-        { key: StAtkeys.HpPercentage, description: "Лучше в подавляющем числе ситуаций" },
+        { key: StatKeys.HydroDmgBonus },
+        { key: StatKeys.HpPercentage, description: "Лучше в подавляющем числе ситуаций" },
       ],
-      [ArtifactSlotKeys.Circlet]: [{ key: StAtkeys.CritRate }, { key: StAtkeys.CritDMG }],
+      [ArtifactSlotKeys.Circlet]: [{ key: StatKeys.CritRate }, { key: StatKeys.CritDMG }],
       additional: [
         {
-          key: StAtkeys.EnergyRecharge,
+          key: StatKeys.EnergyRecharge,
           description: "В отрядах без доп. подкачки - 200% - 220% ВЭ\nВ отрядах с доп. подкачкой - 160% - 180% ВЭ\nВ отрядах с Е Лань или Син Цю - 130% - 140% ВЭ\nВ отрядах с 3 Гидро и более - 100% ВЭ",
         },
-        { key: StAtkeys.HpPercentage },
-        { key: StAtkeys.CritRate },
-        { key: StAtkeys.CritDMG },
+        { key: StatKeys.HpPercentage },
+        { key: StatKeys.CritRate },
+        { key: StatKeys.CritDMG },
       ],
     },
   },

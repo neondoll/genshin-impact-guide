@@ -2,7 +2,7 @@ import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
 import { ElementKeys } from "../enums/element";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 import type { ElementKey } from "../types/element";
@@ -18,11 +18,11 @@ const recommendations = {
 } as Omit<CharacterRecommendations, "character_key">;
 
 export default {
-  [ElementKeys["🍃"]]: { ...recommendations, character_key: CharacterKeys.TravelerAnemo },
-  [ElementKeys["🌿"]]: { ...recommendations, character_key: CharacterKeys.TravelerDendro },
-  [ElementKeys["⚡️"]]: { ...recommendations, character_key: CharacterKeys.TravelerElectro },
-  [ElementKeys["🪨"]]: { ...recommendations, character_key: CharacterKeys.TravelerGeo },
-  [ElementKeys["💧"]]: { ...recommendations, character_key: CharacterKeys.TravelerHydro },
+  [ElementKeys["🌪️"]]: { ...recommendations, character_key: CharacterKeys["Traveler🌪️"] },
+  [ElementKeys["🌿"]]: { ...recommendations, character_key: CharacterKeys["Traveler🌿"] },
+  [ElementKeys["⚡️"]]: { ...recommendations, character_key: CharacterKeys["Traveler⚡️"] },
+  [ElementKeys["🏔️"]]: { ...recommendations, character_key: CharacterKeys["Traveler🏔️"] },
+  [ElementKeys["💧"]]: { ...recommendations, character_key: CharacterKeys["Traveler💧"] },
   [ElementKeys["🔥"]]: {
     artifacts: {
       sets: [
@@ -48,19 +48,19 @@ export default {
         },
       ],
       stats: {
-        [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.AtkPercentage }],
-        [ArtifactSlotKeys.Goblet]: [{ key: StAtkeys.PyroDmgBonus }, { key: StAtkeys.AtkPercentage }],
-        [ArtifactSlotKeys.Circlet]: [{ key: StAtkeys.CritRate }, { key: StAtkeys.CritDMG }],
+        [ArtifactSlotKeys.Sands]: [{ key: StatKeys.AtkPercentage }],
+        [ArtifactSlotKeys.Goblet]: [{ key: StatKeys.PyroDmgBonus }, { key: StatKeys.AtkPercentage }],
+        [ArtifactSlotKeys.Circlet]: [{ key: StatKeys.CritRate }, { key: StatKeys.CritDMG }],
         additional: [
-          { key: StAtkeys.CritDMG },
-          { key: StAtkeys.CritRate },
-          { key: StAtkeys.AtkPercentage },
-          { key: StAtkeys.EnergyRecharge, notes: ["Намеренно собирать не нужно"] },
-          { key: StAtkeys.Atk },
+          { key: StatKeys.CritDMG },
+          { key: StatKeys.CritRate },
+          { key: StatKeys.AtkPercentage },
+          { key: StatKeys.EnergyRecharge, notes: ["Намеренно собирать не нужно"] },
+          { key: StatKeys.Atk },
         ],
       },
     },
-    character_key: CharacterKeys.TravelerPyro,
+    character_key: CharacterKeys["Traveler🔥"],
     video_sources: [
       {
         title: "Зачем нужен Пиро Путешественник? | Подробный гайд на Пиро ГГ {Анимекул}",

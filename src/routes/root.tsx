@@ -17,7 +17,7 @@ export default function Root() {
                   <img alt={item.title} src={item.image_src} />
                 </TableCell>
                 <TableCell>
-                  <Link className="before:absolute before:inset-0" to={item.to}>{item.title}</Link>
+                  <Link children={item.title} className="before:absolute before:inset-0" to={item.to} />
                 </TableCell>
               </TableRow>
             ))}

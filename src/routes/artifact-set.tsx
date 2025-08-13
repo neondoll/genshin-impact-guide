@@ -10,63 +10,50 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getArtifactSlots, getArtifactSet, getArtifactSetRecommendations, getCharacter } from "@/database";
+import { getArtifactSet, getCharacter } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 
-function ArtifactSetBreadcrumbs({ item }: { item: ArtifactSetLoaderData["artifactSet"] }) {
-  return (
-    <Breadcrumb>
-      <BreadcrumbList className="gap-1 text-xs sm:gap-2">
-        <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link children={Paths.Root.title} to={Paths.Root.to} />
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link children={Paths.ArtifactSets.title} to={Paths.ArtifactSets.to} />
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage children={Paths.ArtifactSet.title(item)} />
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
-  );
-}
-
-function ArtifactSetHeading({ item }: { item: ArtifactSetLoaderData["artifactSet"] }) {
-  return (
-    <div className="flex gap-x-3">
-      <img
-        alt={item.name}
-        className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByRarity(...item.rarities))}
-        src={item.imageSrc()}
-      />
-      <div className="space-y-1">
-        <div className="flex gap-x-1 items-center">
-          <h1 children={Paths.ArtifactSet.title(item)} className="text-3xl" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export type ArtifactSetLoaderData = {
-  artifactSlots: ReturnType<typeof getArtifactSlots>;
+export interface ArtifactSetLoaderData {
   artifactSet: ReturnType<typeof getArtifactSet>;
-  artifactSetRecommendations: ReturnType<typeof getArtifactSetRecommendations>;
-};
+}
 
 export default function ArtifactSet() {
-  const { artifactSlots, artifactSet, artifactSetRecommendations } = useLoaderData<ArtifactSetLoaderData>();
+  const { artifactSet } = useLoaderData<ArtifactSetLoaderData>();
+  const artifactSetRecommendations = artifactSet.recommendations;
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
-      <ArtifactSetBreadcrumbs item={artifactSet} />
-      <ArtifactSetHeading item={artifactSet} />
+      <Breadcrumb>
+        <BreadcrumbList className="gap-1 text-xs sm:gap-2">
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link children={Paths.Root.title} to={Paths.Root.to} />
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link children={Paths.ArtifactSets.title} to={Paths.ArtifactSets.to} />
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage children={Paths.ArtifactSet.title(artifactSet)} />
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <div className="flex gap-x-3">
+        <img
+          alt={artifactSet.name}
+          className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByRarity(...artifactSet.rarities))}
+          src={artifactSet.image_src}
+        />
+        <div className="space-y-1">
+          <div className="flex gap-x-1 items-center">
+            <h1 children={Paths.ArtifactSet.title(artifactSet)} className="text-3xl" />
+          </div>
+        </div>
+      </div>
       <Card>
         <CardHeader>
           <CardTitle>Характеристики</CardTitle>
@@ -109,26 +96,30 @@ export default function ArtifactSet() {
         <CardContent>
           <Table>
             <TableBody>
-              {artifactSlots.map((artifactSlot) => {
-                const artifactSetSlot = artifactSet.slots[artifactSlot.key];
+              {Object.values(artifactSet.slots).map((artifactSetSlot) => {
+                if (artifactSetSlot !== undefined) {
+                  const artifactSlot = artifactSetSlot.slot;
 
-                return artifactSetSlot !== undefined
-                  ? (
-                      <TableRow className="hover:bg-inherit" key={artifactSlot.key}>
-                        <TableHead children={artifactSlot.name} className="p-2 text-pretty whitespace-normal" />
-                        <TableCell className="p-2 text-pretty whitespace-normal">
-                          <div className="flex gap-2.5 items-center">
-                            <img
-                              alt={artifactSetSlot.name}
-                              className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
-                              src={artifactSetSlot.image_src}
-                            />
-                            <span children={artifactSetSlot.name} />
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    )
-                  : undefined;
+                  return (
+                    <TableRow className="hover:bg-inherit" key={artifactSlot.key}>
+                      <TableHead children={artifactSlot.name} className="p-2 text-pretty whitespace-normal" />
+                      <TableCell className="p-2 text-pretty whitespace-normal">
+                        <div className="flex gap-2.5 items-center">
+                          <img
+                            alt={artifactSetSlot.name}
+                            className={cn(
+                              "shrink-0 size-12 bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl",
+                            )}
+                            src={artifactSetSlot.image_src}
+                          />
+                          <span children={artifactSetSlot.name} />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  );
+                }
+
+                return undefined;
               })}
             </TableBody>
           </Table>

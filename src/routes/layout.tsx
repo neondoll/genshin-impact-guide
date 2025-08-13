@@ -18,8 +18,7 @@ export default function Layout() {
             <h2 className="text-base font-medium">
               <Link to={Paths.Root.to}>
                 <span className="font-(family-name:--font-genshin-drip)">Genshin Impact</span>
-                {" "}
-                Гайд
+                {" Гайд"}
               </Link>
             </h2>
             <div className="ml-auto">

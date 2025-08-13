@@ -29,7 +29,7 @@ function ArtifactSetBage({ artifactSetKey }: { artifactSetKey: ArtifactSetKey })
             "shrink-0 size-12 rounded-md rounded-br-2xl",
             backgroundClassByRarity(...artifactSet.rarities),
           )}
-          src={artifactSet.imageSrc()}
+          src={artifactSet.image_src}
         />
         <span children={artifactSet.name} />
       </Link>

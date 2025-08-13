@@ -1,81 +1,33 @@
 import { ArtifactSetKeys } from "./enums/artifact-set";
 import { DungeonKeys } from "./enums/dungeon";
-import type { Dungeon, DungeonKey } from "./types/dungeon";
+import type { Dungeon } from "./types/dungeon";
+
+class _Dungeon implements Dungeon {
+  readonly key: Dungeon["key"];
+  readonly name: Dungeon["name"];
+  readonly artifact_set_keys: Dungeon["artifact_set_keys"];
+
+  constructor(key: keyof typeof DungeonKeys, name: Dungeon["name"], artifactSetKeys: (keyof typeof ArtifactSetKeys)[]) {
+    this.key = DungeonKeys[key];
+    this.name = name;
+    this.artifact_set_keys = artifactSetKeys.map(artifactSetKey => ArtifactSetKeys[artifactSetKey]);
+  }
+}
 
 export default {
-  [DungeonKeys.CityOfGold]: {
-    key: DungeonKeys.CityOfGold,
-    name: "Город золота",
-    artifact_set_keys: [ArtifactSetKeys.DesertPavilionChronicle, ArtifactSetKeys.FlowerOfParadiseLost],
-  }, // Крайне не выгодный
-  [DungeonKeys.ClearPoolAndMountainCavern]: {
-    key: DungeonKeys.ClearPoolAndMountainCavern,
-    name: "Чистая вода и горная пещера",
-    artifact_set_keys: [ArtifactSetKeys.BloodstainedChivalry, ArtifactSetKeys.NoblesseOblige],
-  }, // Крайне не выгодный
-  [DungeonKeys.DenouementOfSin]: {
-    key: DungeonKeys.DenouementOfSin,
-    name: "Конец греха",
-    artifact_set_keys: [ArtifactSetKeys.GoldenTroupe, ArtifactSetKeys.MarechausseeHunter],
-  }, // Крайне выгодный
-  [DungeonKeys.DomainOfGuyun]: {
-    key: DungeonKeys.DomainOfGuyun,
-    name: "Владения Гуюнь",
-    artifact_set_keys: [ArtifactSetKeys.ArchaicPetra, ArtifactSetKeys.RetracingBolide],
-  }, // Крайне не выгодный
-  [DungeonKeys.HiddenPalaceOfZhouFormula]: {
-    key: DungeonKeys.HiddenPalaceOfZhouFormula,
-    name: "Скрытый дворец Уван",
-    artifact_set_keys: [ArtifactSetKeys.CrimsonWitchOfFlames, ArtifactSetKeys.Lavawalker],
-  }, // Может быть полезен
-  [DungeonKeys.MidsummerCourtyard]: {
-    key: DungeonKeys.MidsummerCourtyard,
-    name: "Июльские сады",
-    artifact_set_keys: [ArtifactSetKeys.ThunderingFury, ArtifactSetKeys.Thundersoother],
-  }, // Крайне не выгодный
-  [DungeonKeys.MoltenIronFortress]: {
-    key: DungeonKeys.MoltenIronFortress,
-    name: "Расплавленная крепость",
-    artifact_set_keys: [ArtifactSetKeys.NymphsDream, ArtifactSetKeys.VourukashasGlow],
-  }, // Крайне не выгодный
-  [DungeonKeys.MomijiDyedCourt]: {
-    key: DungeonKeys.MomijiDyedCourt,
-    name: "Кленовый зал",
-    artifact_set_keys: [ArtifactSetKeys.EmblemOfSeveredFate, ArtifactSetKeys.ShimenawasReminiscence],
-  }, // Крайне выгодный
-  [DungeonKeys.PeakOfVindagnyr]: {
-    key: DungeonKeys.PeakOfVindagnyr,
-    name: "Пик Виндагнира",
-    artifact_set_keys: [ArtifactSetKeys.BlizzardStrayer, ArtifactSetKeys.HeartOfDepth],
-  }, // Выгодный
-  [DungeonKeys.RidgeWatch]: {
-    key: DungeonKeys.RidgeWatch,
-    name: "Горный дозор",
-    artifact_set_keys: [ArtifactSetKeys.PaleFlame, ArtifactSetKeys.TenacityOfTheMillelith],
-  }, // Крайне не выгодный
-  [DungeonKeys.SlumberingCourt]: {
-    key: DungeonKeys.SlumberingCourt,
-    name: "Дремлющий сад",
-    artifact_set_keys: [ArtifactSetKeys.HuskOfOpulentDreams, ArtifactSetKeys.OceanHuedClam],
-  }, // Крайне не выгодный
-  [DungeonKeys.SpireOfSolitaryEnlightenment]: {
-    key: DungeonKeys.SpireOfSolitaryEnlightenment,
-    name: "Шпиль одинокого просветления",
-    artifact_set_keys: [ArtifactSetKeys.DeepwoodMemories, ArtifactSetKeys.GildedDreams],
-  }, // Крайне выгодный
-  [DungeonKeys.TheLostValley]: {
-    key: DungeonKeys.TheLostValley,
-    name: "Затерянная долина",
-    artifact_set_keys: [ArtifactSetKeys.EchoesOfAnOffering, ArtifactSetKeys.VermillionHereafter],
-  }, // Крайне не выгодный
-  [DungeonKeys.ValleyOfRemembrance]: {
-    key: DungeonKeys.ValleyOfRemembrance,
-    name: "Долина воспоминаний",
-    artifact_set_keys: [ArtifactSetKeys.MaidenBeloved, ArtifactSetKeys.ViridescentVenerer],
-  }, // Может быть полезен
-  [DungeonKeys.WaterfallWen]: {
-    key: DungeonKeys.WaterfallWen,
-    name: "Город гроз",
-    artifact_set_keys: [ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods, ArtifactSetKeys.SongOfDaysPast],
-  }, // Крайне не выгодный
-} as Record<DungeonKey, Dungeon>;
+  [DungeonKeys.CityOfGold]: new _Dungeon("CityOfGold", "Город золота", ["DesertPavilionChronicle", "FlowerOfParadiseLost"]), /* Крайне не выгодный */
+  [DungeonKeys.ClearPoolAndMountainCavern]: new _Dungeon("ClearPoolAndMountainCavern", "Чистая вода и горная пещера", ["BloodstainedChivalry", "NoblesseOblige"]), /* Крайне не выгодный */
+  [DungeonKeys.DenouementOfSin]: new _Dungeon("DenouementOfSin", "Конец греха", ["GoldenTroupe", "MarechausseeHunter"]), /* Крайне выгодный */
+  [DungeonKeys.DomainOfGuyun]: new _Dungeon("DomainOfGuyun", "Владения Гуюнь", ["ArchaicPetra", "RetracingBolide"]), /* Крайне не выгодный */
+  [DungeonKeys.HiddenPalaceOfZhouFormula]: new _Dungeon("HiddenPalaceOfZhouFormula", "Скрытый дворец Уван", ["CrimsonWitchOfFlames", "Lavawalker"]), /* Может быть полезен */
+  [DungeonKeys.MidsummerCourtyard]: new _Dungeon("MidsummerCourtyard", "Июльские сады", ["ThunderingFury", "Thundersoother"]), /* Крайне не выгодный */
+  [DungeonKeys.MoltenIronFortress]: new _Dungeon("MoltenIronFortress", "Расплавленная крепость", ["NymphsDream", "VourukashasGlow"]), /* Крайне не выгодный */
+  [DungeonKeys.MomijiDyedCourt]: new _Dungeon("MomijiDyedCourt", "Кленовый зал", ["EmblemOfSeveredFate", "ShimenawasReminiscence"]), /* Крайне выгодный */
+  [DungeonKeys.PeakOfVindagnyr]: new _Dungeon("PeakOfVindagnyr", "Пик Виндагнира", ["BlizzardStrayer", "HeartOfDepth"]), /* Выгодный */
+  [DungeonKeys.RidgeWatch]: new _Dungeon("RidgeWatch", "Горный дозор", ["PaleFlame", "TenacityOfTheMillelith"]), /* Крайне не выгодный */
+  [DungeonKeys.SlumberingCourt]: new _Dungeon("SlumberingCourt", "Дремлющий сад", ["HuskOfOpulentDreams", "OceanHuedClam"]), /* Крайне не выгодный */
+  [DungeonKeys.SpireOfSolitaryEnlightenment]: new _Dungeon("SpireOfSolitaryEnlightenment", "Шпиль одинокого просветления", ["DeepwoodMemories", "GildedDreams"]), /* Крайне выгодный */
+  [DungeonKeys.TheLostValley]: new _Dungeon("TheLostValley", "Затерянная долина", ["EchoesOfAnOffering", "VermillionHereafter"]), /* Крайне не выгодный */
+  [DungeonKeys.ValleyOfRemembrance]: new _Dungeon("ValleyOfRemembrance", "Долина воспоминаний", ["MaidenBeloved", "ViridescentVenerer"]), /* Может быть полезен */
+  [DungeonKeys.WaterfallWen]: new _Dungeon("WaterfallWen", "Город гроз", ["NighttimeWhispersInTheEchoingWoods", "SongOfDaysPast"]), /* Крайне не выгодный */
+} as Record<Dungeon["key"], Dungeon>;

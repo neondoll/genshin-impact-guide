@@ -1,7 +1,7 @@
 import { ElementKeys } from "./element";
 
-export const StAtkeys = {
-  /* Бонус Анемо урона     */ AnemoDmgBonus: `${ElementKeys["🍃"]}_dmg_`,
+export const StatKeys = {
+  /* Бонус Анемо урона     */ AnemoDmgBonus: `${ElementKeys["🌪️"]}_dmg_`,
   /* Сила атаки            */ Atk: "atk",
   /* Процент от силы атаки */ AtkPercentage: "atk_",
   /* Крит. урон            */ CritDMG: "critDMG_",
@@ -13,7 +13,7 @@ export const StAtkeys = {
   /* Бонус Электро урона   */ ElectroDmgBonus: `${ElementKeys["⚡️"]}_dmg_`,
   /* Мастерство стихий     */ ElementalMastery: "eleMas",
   /* Восст. энергии        */ EnergyRecharge: "enerRech_",
-  /* Бонус Гео урона       */ GeoDmgBonus: `${ElementKeys["🪨"]}_dmg_`,
+  /* Бонус Гео урона       */ GeoDmgBonus: `${ElementKeys["🏔️"]}_dmg_`,
   /* Бонус лечения         */ Heal: "heal_",
   /* HP                    */ Hp: "hp",
   /* Процент от HP         */ HpPercentage: "hp_",

@@ -1,7 +1,7 @@
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
-import { StAtkeys } from "../enums/stat";
+import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";
@@ -10,16 +10,16 @@ export default {
   artifacts: {
     sets: [{ key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity }],
     stats: {
-      [ArtifactSlotKeys.Sands]: [{ key: StAtkeys.DefPercentage }, { key: StAtkeys.EnergyRecharge }],
-      [ArtifactSlotKeys.Goblet]: [{ key: StAtkeys.DefPercentage }],
+      [ArtifactSlotKeys.Sands]: [{ key: StatKeys.DefPercentage }, { key: StatKeys.EnergyRecharge }],
+      [ArtifactSlotKeys.Goblet]: [{ key: StatKeys.DefPercentage }],
       [ArtifactSlotKeys.Circlet]: [
-        { key: StAtkeys.DefPercentage },
-        { key: StAtkeys.CritRate },
-        { key: StAtkeys.Heal },
+        { key: StatKeys.DefPercentage },
+        { key: StatKeys.CritRate },
+        { key: StatKeys.Heal },
       ],
       additional: [
-        { key: StAtkeys.DefPercentage },
-        { key: StAtkeys.EnergyRecharge, description: "~160% ВЭ для стабильной ульты" },
+        { key: StatKeys.DefPercentage },
+        { key: StatKeys.EnergyRecharge, description: "~160% ВЭ для стабильной ульты" },
       ],
     },
   },

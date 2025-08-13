@@ -15,8 +15,7 @@ import Weapon, { type WeaponLoaderData } from "@/routes/weapon";
 import Weapons, { type WeaponsLoaderData } from "@/routes/weapons";
 import WeaponsTierList, { type WeaponsTierListLoaderData } from "@/routes/weapons-tier-list";
 import {
-  getArtifactSet, getArtifactSetRecommendations, getArtifactSets, getArtifactSlots, getCharacter,
-  getCharacterRecommendations, getCharacterRole, getCharacters, getElement, getElements, getRegion, getTierListsWeapons,
+  getArtifactSet, getArtifactSets, getCharacter, getCharacters, getElement, getElements, getRegion, getTierListsWeapons,
   getWeapon, getWeapons, getWeaponType, getWeaponTypes,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -38,9 +37,7 @@ const router = createHashRouter([
       },
       {
         loader: ({ params }): ArtifactSetLoaderData => ({
-          artifactSlots: getArtifactSlots(),
           artifactSet: getArtifactSet(params.artifactSetKey as ArtifactSetKey),
-          artifactSetRecommendations: getArtifactSetRecommendations(params.artifactSetKey as ArtifactSetKey),
         }),
         path: Paths.ArtifactSet.to(":artifactSetKey"),
         element: <ArtifactSet />,
@@ -55,17 +52,9 @@ const router = createHashRouter([
         element: <Characters />,
       },
       {
-        loader: ({ params }): CharacterLoaderData => {
-          const character = getCharacter(params.characterKey as CharacterKey);
-
-          return {
-            character,
-            characterElement: getElement(character.element_key),
-            characterRecommendations: getCharacterRecommendations(params.characterKey as CharacterKey),
-            characterRoles: character.role_keys ? character.role_keys.map(getCharacterRole) : undefined,
-            characterWeaponType: getWeaponType(character.weapon_type_key),
-          };
-        },
+        loader: ({ params }): CharacterLoaderData => ({
+          character: getCharacter(params.characterKey as CharacterKey),
+        }),
         path: Paths.Character.to(":characterKey"),
         element: <Character />,
       },
