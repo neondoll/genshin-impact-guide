@@ -13,4 +13,5 @@ class _FoodType implements FoodType {
 
 export default {
   [FoodTypeKeys.ATKBoostingDish]: new _FoodType("ATKBoostingDish", "Блюдо для атаки"),
+  [FoodTypeKeys.RecoveryDish]: new _FoodType("RecoveryDish", "Восстанавливающее блюдо"),
 } as Record<FoodType["key"], FoodType>;

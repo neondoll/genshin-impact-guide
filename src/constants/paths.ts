@@ -15,6 +15,7 @@ export default {
   },
   Characters: { title: "Персонажи", to: "/characters" },
   Element: { to: (key: ElementKey | string) => `/elements/${key}` },
+  Resources: { title: "Материалы", to: "/resources" },
   Root: { title: "Главная", to: "/" },
   Weapon: {
     title: (item: Weapon) => item.name,

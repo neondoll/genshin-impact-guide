@@ -15,8 +15,8 @@ import Weapon, { type WeaponLoaderData } from "@/routes/weapon";
 import Weapons, { type WeaponsLoaderData } from "@/routes/weapons";
 import WeaponsTierList, { type WeaponsTierListLoaderData } from "@/routes/weapons-tier-list";
 import {
-  getArtifactSet, getArtifactSets, getCharacter, getCharacters, getElement, getElements, getRegion, getTierListsWeapons,
-  getWeapon, getWeapons, getWeaponType, getWeaponTypes,
+  getArtifactSet, getArtifactSets, getCharacter, getCharacters, getElement, getElements, getRegion,
+  getTierListsWeapons, getWeapon, getWeapons, getWeaponType, getWeaponTypes,
 } from "@/database";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { ArtifactSetKey } from "@/database/types/artifact-set";
