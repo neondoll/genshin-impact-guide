@@ -1,8 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
-import Container from "@/components/container";
-import Paths from "@/constants/paths";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,16 +7,19 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getArtifactSet, getCharacter } from "@/database";
+import { getArtifactSet, getArtifactSetRecommendations, getCharacter } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
+import Container from "@/components/container";
+import Paths from "@/constants/paths";
 
 export interface ArtifactSetLoaderData {
-  artifactSet: ReturnType<typeof getArtifactSet>;
+  artifactSet: Awaited<ReturnType<typeof getArtifactSet>>;
+  artifactSetRecommendations: Awaited<ReturnType<typeof getArtifactSetRecommendations>>;
 }
 
 export default function ArtifactSet() {
-  const { artifactSet } = useLoaderData<ArtifactSetLoaderData>();
-  const artifactSetRecommendations = artifactSet.recommendations;
+  const { artifactSet, artifactSetRecommendations } = useLoaderData<ArtifactSetLoaderData>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -96,9 +96,9 @@ export default function ArtifactSet() {
         <CardContent>
           <Table>
             <TableBody>
-              {Object.values(artifactSet.slots).map((artifactSetSlot) => {
+              {Object.values(artifactSet.slots).map(async (artifactSetSlot) => {
                 if (artifactSetSlot !== undefined) {
-                  const artifactSlot = artifactSetSlot.slot;
+                  const artifactSlot = await artifactSetSlot.getSlot();
 
                   return (
                     <TableRow className="hover:bg-inherit" key={artifactSlot.key}>
@@ -136,8 +136,8 @@ export default function ArtifactSet() {
           <CardContent>
             <Table>
               <TableBody>
-                {artifactSet.character_recommendations.map((characterRecommendation) => {
-                  const character = getCharacter(characterRecommendation.key);
+                {artifactSet.character_recommendations.map(async (characterRecommendation) => {
+                  const character = await getCharacter(characterRecommendation.key);
 
                   return (
                     <TableRow className="hover:bg-inherit" key={character.key}>

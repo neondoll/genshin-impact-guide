@@ -1,101 +1,104 @@
-import artifactSets from "./artifact-sets";
-import artifactSetsRecommendations from "./artifact-sets-recommendations";
-import artifactSlots from "./artifact-slots";
-import characterRecommendations from "./character-recommendations";
-import characterRoles from "./character-roles";
-import characters from "./characters";
-import elements from "./elements";
-import regions from "./regions";
-import stats from "./stats";
-import talents from "./talents";
-import tierListsWeapons from "./tier-lists-weapons";
-import weaponTypes from "./weapon-types";
-import weapons from "./weapons";
-import type { ArtifactSet, ArtifactSetKey } from "./types/artifact-set";
-import type { ArtifactSlot, ArtifactSlotKey } from "./types/artifact-slot";
-import type { Character, CharacterKey } from "./types/character";
+import type { ArtifactSet } from "./types/artifact-set";
+import type { ArtifactSlot } from "./types/artifact-slot";
+import type { Character } from "./types/character";
 import type { CharacterRoleKey } from "./types/character-role";
 import type { ElementKey } from "./types/element";
 import type { RegionKey } from "./types/region";
-import type { Stat, StatKey } from "./types/stat";
+import type { Stat } from "./types/stat";
 import type { TalentKey } from "./types/talent";
-import type { Weapon, WeaponKey } from "./types/weapon";
+import type { Weapon } from "./types/weapon";
 import type { WeaponTypeKey } from "./types/weapon-type";
 
-export function getArtifactSet(artifactSetKey: ArtifactSetKey) {
-  return artifactSets[artifactSetKey];
+export async function getArtifactSet(key: ArtifactSet["key"]) {
+  return (await import("./artifact-sets")).default[key];
 }
 
-export function getArtifactSetRecommendations(artifactSetKey: ArtifactSetKey) {
-  return artifactSetKey in artifactSetsRecommendations ? artifactSetsRecommendations[artifactSetKey] : undefined;
+export async function getArtifactSetRecommendations(key: ArtifactSet["key"]) {
+  const data = (await import("./artifact-sets-recommendations")).default;
+
+  return key in data ? data[key] : undefined;
 }
 
-export function getArtifactSets() {
-  return Object.values(artifactSets).sort(sortArtifactSets);
+export async function getArtifactSets() {
+  return Object.values((await import("./artifact-sets")).default).sort(sortArtifactSets);
 }
 
-export function getArtifactSlot(key: ArtifactSlotKey) {
-  return artifactSlots[key];
+export async function getArtifactSlot(key: ArtifactSlot["key"]) {
+  return (await import("./artifact-slots")).default[key];
 }
 
-export function getArtifactSlots() {
-  return Object.values(artifactSlots).sort(sortArtifactSlots);
+export async function getCharacter(key: Character["key"]) {
+  return (await import("./characters")).default[key];
 }
 
-export function getCharacter(characterKey: CharacterKey) {
-  return characters[characterKey];
+export async function getCharacterRecommendations(key: Character["key"]) {
+  const data = (await import("./character-recommendations")).default;
+
+  return key in data ? data[key] : undefined;
 }
 
-export function getCharacterRecommendations(characterKey: CharacterKey) {
-  return characterKey in characterRecommendations ? characterRecommendations[characterKey] : undefined;
+export async function getCharacterRole(key: CharacterRoleKey) {
+  return (await import("./character-roles")).default[key];
 }
 
-export function getCharacterRole(characterRoleKey: CharacterRoleKey) {
-  return characterRoles[characterRoleKey];
+export async function getCharacters() {
+  return Object.values((await import("./characters")).default).sort(sortCharacters);
 }
 
-export function getCharacters() {
-  return Object.values(characters).sort(sortCharacters);
+export async function getElement(key: ElementKey) {
+  return (await import("./elements")).default[key];
 }
 
-export function getElement(elementKey: ElementKey) {
-  return elements[elementKey];
+export async function getElements() {
+  return (await import("./elements")).default;
 }
 
-export function getElements() {
-  return elements;
+export async function getRegion(key: RegionKey) {
+  return (await import("./regions")).default[key];
 }
 
-export function getRegion(regionKey: RegionKey) {
-  return regions[regionKey];
+export async function getStat(key: Stat["key"]) {
+  return (await import("./stats")).default[key];
 }
 
-export function getStat(key: StatKey) {
-  return stats[key];
+export async function getStats(keys?: Stat["key"][]) {
+  let stats = Object.values((await import("./stats")).default);
+
+  if (keys) {
+    stats = stats.filter(stat => keys.includes(stat.key));
+  }
+
+  return stats.sort(sortStats);
 }
 
-export function getTalent(talentKey: TalentKey) {
-  return talents[talentKey];
+export async function getTalent(key: TalentKey) {
+  return (await import("./talents")).default[key];
 }
 
-export function getTierListsWeapons() {
-  return tierListsWeapons;
+export async function getTierListsWeapons() {
+  return (await import("./tier-lists-weapons")).default;
 }
 
-export function getWeapon(weaponKey: WeaponKey) {
-  return weapons[weaponKey];
+export async function getWeapon(key: Weapon["key"]) {
+  return (await import("./weapons")).default[key];
 }
 
-export function getWeapons() {
-  return Object.values(weapons).sort(sortWeapons);
+export async function getWeapons(keys?: Weapon["key"][]) {
+  let weapons = Object.values((await import("./weapons")).default);
+
+  if (keys) {
+    weapons = weapons.filter(weapon => keys.includes(weapon.key));
+  }
+
+  return weapons.sort(sortWeapons);
 }
 
-export function getWeaponType(weaponTypeKey: WeaponTypeKey) {
-  return weaponTypes[weaponTypeKey];
+export async function getWeaponType(key: WeaponTypeKey) {
+  return (await import("./weapon-types")).default[key];
 }
 
-export function getWeaponTypes() {
-  return weaponTypes;
+export async function getWeaponTypes() {
+  return (await import("./weapon-types")).default;
 }
 
 export function sortArtifactSets(a: ArtifactSet, b: ArtifactSet) {

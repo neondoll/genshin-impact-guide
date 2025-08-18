@@ -10,8 +10,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import type { ArtifactSetRecommendationsProps } from "./types";
 import type { ArtifactSetKey } from "@/database/types/artifact-set";
 
-function ArtifactSetBage({ artifactSetKey }: { artifactSetKey: ArtifactSetKey }) {
-  const artifactSet = getArtifactSet(artifactSetKey);
+async function ArtifactSetBage({ artifactSetKey }: { artifactSetKey: ArtifactSetKey }) {
+  const artifactSet = await getArtifactSet(artifactSetKey);
 
   return (
     <Badge

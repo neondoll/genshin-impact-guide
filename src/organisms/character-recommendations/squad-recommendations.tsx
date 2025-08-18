@@ -6,10 +6,10 @@ import { getCharacter, getElement } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import type { SquadRecommendationsItemProps, SquadRecommendationsProps } from "./types";
 
-function SquadRecommendationsItem({ item }: { item: SquadRecommendationsItemProps }) {
+async function SquadRecommendationsItem({ item }: { item: SquadRecommendationsItemProps }) {
   switch (item.type) {
     case "character": {
-      const character = getCharacter(item.key);
+      const character = await getCharacter(item.key);
 
       return (
         <Badge asChild variant="secondary">
@@ -21,7 +21,7 @@ function SquadRecommendationsItem({ item }: { item: SquadRecommendationsItemProp
       );
     }
     case "element": {
-      const element = getElement(item.key);
+      const element = await getElement(item.key);
 
       return (
         <Badge variant="secondary">

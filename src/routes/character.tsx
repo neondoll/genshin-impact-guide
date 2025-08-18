@@ -16,12 +16,13 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 
 export type CharacterLoaderData = { character: Awaited<ReturnType<typeof getCharacter>> };
 
-export default function Character() {
+export default async function Character() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { character } = useLoaderData<CharacterLoaderData>();
-  const characterElement = character.element;
-  const characterRecommendations = character.recommendations;
-  const characterRoles = character.roles;
-  const characterWeaponType = character.weapon_type;
+  const characterElement = await character.getElement();
+  const characterRecommendations = await character.getRecommendations();
+  const characterRoles = await character.getRoles();
+  const characterWeaponType = await character.getWeaponType();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">

@@ -1,12 +1,12 @@
-import artifactSets from "../artifact-sets";
-import weapons from "../weapons";
+import type { CharacterRecommendations } from "../types/character-recommendations";
+import { artifactSetByKey } from "./help";
 import { ArtifactSetKeys } from "../enums/artifact-set";
 import { ArtifactSlotKeys } from "../enums/artifact-slot";
 import { CharacterKeys } from "../enums/character";
 import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
-import type { CharacterRecommendations } from "../types/character-recommendations";
+import weapons from "../weapons";
 
 export default {
   artifacts: {
@@ -18,11 +18,11 @@ export default {
       },
       {
         key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity,
-        description: `Если ${artifactSets[ArtifactSetKeys.NoblesseOblige].name} занята`,
+        description: `Если ${artifactSetByKey(ArtifactSetKeys.NoblesseOblige)} занята`,
       },
       {
         key: ArtifactSetKeys.EmblemOfSeveredFate,
-        description: `Если ${artifactSets[ArtifactSetKeys.NoblesseOblige].name} и ${artifactSets[ArtifactSetKeys.ScrollOfTheHeroOfCinderCity].name} заняты`,
+        description: `Если ${artifactSetByKey(ArtifactSetKeys.NoblesseOblige)} и ${artifactSetByKey(ArtifactSetKeys.ScrollOfTheHeroOfCinderCity)} заняты`,
       },
     ],
     stats: {

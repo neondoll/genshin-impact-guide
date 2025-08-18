@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getTierListsWeapons, getWeapon, sortWeapons } from "@/database";
+import { getTierListsWeapons, getWeapons } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -71,8 +71,8 @@ export default function WeaponsTierList() {
               <Card className="py-0">
                 <Table>
                   <TableBody>
-                    {tierListWeapons.list.map((item) => {
-                      const weapons = item.weapon_keys.map(getWeapon).sort(sortWeapons);
+                    {tierListWeapons.list.map(async (item) => {
+                      const weapons = await getWeapons(item.weapon_keys);
 
                       return (
                         <TableRow

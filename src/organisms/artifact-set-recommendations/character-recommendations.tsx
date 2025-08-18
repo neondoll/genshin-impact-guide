@@ -12,16 +12,23 @@ import type { CharacterRecommendationsProps } from "./types";
 
 export default function CharacterRecommendations({ recommendations }: CharacterRecommendationsProps) {
   const [characterRecommendations, setCharacterRecommendations] = useState<{
-    character: ReturnType<typeof getCharacter>;
+    character: Awaited<ReturnType<typeof getCharacter>>;
     recommendation: ArtifactSetCharacterRecommendation;
   }[]>([]);
   const [hasIsBetter, setHasIsBetter] = useState(false);
   const [hasNotes, setHasNotes] = useState(false);
 
   useEffect(() => {
-    setCharacterRecommendations(recommendations.map((recommendation) => {
-      return { character: getCharacter(recommendation.key), recommendation };
-    }).sort((a, b) => {
+    const characterRecommendations: {
+      character: Awaited<ReturnType<typeof getCharacter>>;
+      recommendation: ArtifactSetCharacterRecommendation;
+    }[] = [];
+
+    recommendations.forEach(async (recommendation) => {
+      characterRecommendations.push({ character: await getCharacter(recommendation.key), recommendation });
+    });
+
+    setCharacterRecommendations(characterRecommendations.sort((a, b) => {
       return sortCharacters(a.character, b.character);
     }));
     setHasIsBetter(recommendations.some((recommendation) => {

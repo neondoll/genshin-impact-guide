@@ -16,7 +16,8 @@ export type WeaponLoaderData = {
   weaponType: Awaited<ReturnType<typeof getWeaponType>>;
 };
 
-export default function Weapon() {
+export default async function Weapon() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { weapon, weaponType } = useLoaderData<WeaponLoaderData>();
 
   return (
@@ -89,7 +90,7 @@ export default function Weapon() {
                     rowSpan={2}
                   />
                   <TableCell
-                    children={getStat(weapon.secondary_stats.key).name}
+                    children={(await getStat(weapon.secondary_stats.key)).name}
                     className="p-2 whitespace-normal"
                   />
                 </TableRow>

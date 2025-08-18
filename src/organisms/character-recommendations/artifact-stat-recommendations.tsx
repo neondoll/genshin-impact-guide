@@ -56,8 +56,8 @@ export default function ArtifactStatRecommendations({ recommendations }: Artifac
       </TableHeader>
       <TableBody>
         {recommendationsKeys.map((recommendationsKey) => {
-          return recommendations[recommendationsKey].map((recommendation, index) => {
-            const stat = getStat(recommendation.key);
+          return recommendations[recommendationsKey].map(async (recommendation, index) => {
+            const stat = await getStat(recommendation.key);
 
             return (
               <TableRow className="hover:bg-inherit" key={`${recommendationsKey}-${recommendation.key}`}>

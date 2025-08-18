@@ -17,12 +17,16 @@ export const StatsElementDamageBonus = [
 export function artifactSetByKey(key: ArtifactSetKey) {
   const artifactSet = artifactSets[key];
 
-  return `
-    <a class="${cn(badgeVariants({ variant: "secondary" }), "pl-1 py-0 text-sm/none")}" href="${publicSrc(`#${Paths.ArtifactSet.to(artifactSet.key)}`)}">
-      <img alt="" class="size-4.5" src="${artifactSet.image_src}" />
-      <span>${Paths.ArtifactSet.title(artifactSet)}</span>
-    </a>
-  `;
+  if (artifactSet) {
+    return `
+     <a class="${cn(badgeVariants({ variant: "secondary" }), "pl-1 py-0 text-sm/none")}" href="${publicSrc(`#${Paths.ArtifactSet.to(artifactSet.key)}`)}">
+       <img alt="" class="size-4.5" src="${artifactSet.image_src}" />
+       <span>${Paths.ArtifactSet.title(artifactSet)}</span>
+     </a>
+   `;
+  }
+
+  return "";
 }
 
 export function weaponByKey(key: WeaponKey) {

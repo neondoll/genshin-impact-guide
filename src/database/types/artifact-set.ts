@@ -3,6 +3,7 @@ import type { ArtifactSetRecommendations } from "./artifact-set-recommendations"
 import type { ArtifactSlot } from "./artifact-slot";
 import type { CharacterKey } from "./character";
 import type { Rarity } from "./rarity";
+import { getArtifactSetRecommendations, getArtifactSlot } from "..";
 
 type ArtifactSetCharacterRecommendation = { key: CharacterKey; notes: string };
 
@@ -17,6 +18,8 @@ export interface ArtifactSet {
 
   image_src?: ArtifactSetSlot["image_src"];
   recommendations?: ArtifactSetRecommendations;
+
+  getRecommendations: () => ReturnType<typeof getArtifactSetRecommendations>;
 }
 
 export interface ArtifactSetSlot {
@@ -24,7 +27,7 @@ export interface ArtifactSetSlot {
   name: string;
   image_src: string;
 
-  slot: ArtifactSlot;
+  getSlot: () => ReturnType<typeof getArtifactSlot>;
 }
 
 export type ArtifactSetKey = typeof ArtifactSetKeys[keyof typeof ArtifactSetKeys];

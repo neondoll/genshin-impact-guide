@@ -49,8 +49,8 @@ function WeaponRecommendationsTable({ character, recommendations }: WeaponRecomm
   return (
     <Table className="sm:table-fixed">
       <TableBody>
-        {recommendations.map((recommendation) => {
-          const weapon = getWeapon(recommendation.key);
+        {recommendations.map(async (recommendation) => {
+          const weapon = await getWeapon(recommendation.key);
 
           return (
             <TableRow

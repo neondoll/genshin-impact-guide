@@ -40,27 +40,37 @@ class _Character implements Character {
     return this._arkhe;
   }
 
-  get element() {
-    return getElement(this.element_key);
-  }
-
-  get recommendations() {
-    return getCharacterRecommendations(this.key);
-  }
-
   get role_keys() {
     return this._role_keys;
-  }
-
-  get roles() {
-    return this._role_keys ? this._role_keys.map(getCharacterRole) : undefined;
   }
 
   get signature_weapon_key() {
     return this._signature_weapon_key;
   }
 
-  get weapon_type() {
+  getElement() {
+    return getElement(this.element_key);
+  }
+
+  getRecommendations() {
+    return getCharacterRecommendations(this.key);
+  }
+
+  async getRoles() {
+    if (this._role_keys) {
+      const roles: Awaited<ReturnType<typeof getCharacterRole>>[] = [];
+
+      for (const key of this._role_keys) {
+        roles.push(await getCharacterRole(key));
+      }
+
+      return roles;
+    }
+
+    return undefined;
+  }
+
+  getWeaponType() {
     return getWeaponType(this.weapon_type_key);
   }
 

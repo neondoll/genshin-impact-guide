@@ -17,7 +17,7 @@ export type ArtifactStatRecommendationsProps = {
 };
 export type CharacterRecommendationsProps = {
   character: CharacterLoaderData["character"];
-  recommendations: NonNullable<CharacterLoaderData["character"]["recommendations"]>;
+  recommendations: NonNullable<Awaited<ReturnType<CharacterLoaderData["character"]["getRecommendations"]>>>;
 };
 export type ReferencePointRecommendationsProps = {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["reference_point"]>;

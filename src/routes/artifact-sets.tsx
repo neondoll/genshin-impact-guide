@@ -9,7 +9,9 @@ import {
 import { cn } from "@/lib/utils";
 import { getArtifactSets } from "@/database";
 
-export type ArtifactSetsLoaderData = { artifactSets: Awaited<ReturnType<typeof getArtifactSets>> };
+export interface ArtifactSetsLoaderData {
+  artifactSets: Awaited<ReturnType<typeof getArtifactSets>>;
+}
 
 export default function ArtifactSets() {
   const { artifactSets } = useLoaderData<ArtifactSetsLoaderData>();
@@ -29,7 +31,7 @@ export default function ArtifactSets() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className="text-2xl">Артефакты</h1>
+      <h1 children={Paths.ArtifactSets.title} className="text-2xl" />
       <ul className="flex flex-wrap gap-2 justify-center items-stretch md:gap-4">
         {artifactSets.map((artifactSet) => {
           return (
