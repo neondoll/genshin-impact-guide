@@ -10,10 +10,10 @@
   font-family: 'GenshinImpactDRIPFONT';
   src: url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.eot'); /* IE 9 Compatibility Mode */
   src: url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-  url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.woff2') format('woff2'), /* Super Modern Browsers */
-  url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-  url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.ttf') format('truetype'), /* Safari, Android, iOS */
-  url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.svg#genshinimpactdripfont') format('svg'); /* Chrome < 4, Legacy iOS */
+       url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+       url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('./assets/fonts/GenshinImpactDRIPFONT/genshinimpactdripfont.svg#genshinimpactdripfont') format('svg'); /* Chrome < 4, Legacy iOS */
 }
 
 @custom-variant dark (&:is(.dark *));
