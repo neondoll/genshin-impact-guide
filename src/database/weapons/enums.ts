@@ -89,7 +89,7 @@ export const WeaponKeys = {
   /* Молитва святым ветрам                 */ LostPrayerToTheSacredWinds: "lost_prayer_to_the_sacred_winds",
   /* Элегия Люмидус                        */ LumidouceElegy: "lumidouce_elegy",
   /* Благодатный владыка вод               */ LuxuriousSeaLord: "luxurious_sea_lord",
-  /* Руководство по магии                  */ MagicGkeye: "magic_gkeye",
+  /* Руководство по магии                  */ MagicGuide: "magic_guide",
   /* Цветок в латах                        */ MailedFlower: "mailed_flower",
   /* Аквамарин Махайры                     */ MakhairaAquamarine: "makhaira_aquamarine",
   /* Морской атлас                         */ MappaMare: "mappa_mare",

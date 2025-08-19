@@ -997,15 +997,15 @@ export default {
     base_atk: { min_value: "41", max_value: "454" },
     secondary_stats: { key: StatKeys.Atk, min_value: "12%", max_value: "55.1%" },
   },
-  [WeaponKeys.MagicGkeye]: {
-    key: WeaponKeys.MagicGkeye,
+  [WeaponKeys.MagicGuide]: {
+    key: WeaponKeys.MagicGuide,
     name: "Руководство по магии",
     rarity: 3,
     source: WeaponSource.Wish,
     type_key: WeaponTypeKeys["💥"],
     base_atk: { min_value: 38, max_value: 354 },
     secondary_stats: { key: StatKeys.ElementalMastery, min_value: 41, max_value: 187 },
-    image_src: imageSrc("magic_gkeye-256x256.webp"),
+    image_src: imageSrc("magic_guide-256x256.webp"),
   },
   [WeaponKeys.MailedFlower]: {
     key: WeaponKeys.MailedFlower,

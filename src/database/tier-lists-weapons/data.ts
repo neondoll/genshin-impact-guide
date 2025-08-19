@@ -43,7 +43,7 @@ export default {
         "MemoryOfDust", "OathswornEye", "SolarPearl", "SunnyMorningSleepIn",
       ]),
       new CTierListWeaponsListItem("D", "На крайний случай", [
-        "BalladOfTheBoundlessBlue", "DodocoTales", "MagicGkeye", "MappaMare", "WineAndSong",
+        "BalladOfTheBoundlessBlue", "DodocoTales", "MagicGuide", "MappaMare", "WineAndSong",
       ]),
       new CTierListWeaponsListItem("F", "Худшие", [
         "EmeraldOrb", "EyeOfPerception", "Frostbearer", "FruitOfFulfillment", "OtherworldlyStory", "RoyalGrimoire",
