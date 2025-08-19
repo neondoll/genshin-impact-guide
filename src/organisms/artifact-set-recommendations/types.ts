@@ -1,11 +1,13 @@
-import type { ArtifactSetLoaderData } from "@/routes/artifact-set";
+import type { IArtifactSetRecommendations } from "@/database/artifact-sets-recommendations/types";
 
-export type ArtifactSetRecommendationsProps = {
-  recommendations: NonNullable<Awaited<ReturnType<ArtifactSetLoaderData["artifactSet"]["getRecommendations"]>>>;
-};
-export type CharacterRecommendationsProps = {
-  recommendations: ArtifactSetRecommendationsProps["recommendations"]["characters"];
-};
-export type PreferredStatsRecommendationsProps = {
-  recommendations: ArtifactSetRecommendationsProps["recommendations"]["preferred_stats"];
-};
+export interface ArtifactSetRecommendationsProps {
+  recommendations: IArtifactSetRecommendations;
+}
+
+export interface CharacterRecommendationsProps {
+  recommendations: NonNullable<ArtifactSetRecommendationsProps["recommendations"]["characters"]>;
+}
+
+export interface PreferredStatsRecommendationsProps {
+  recommendations: NonNullable<ArtifactSetRecommendationsProps["recommendations"]["preferred_stats"]>;
+}

@@ -1,14 +1,59 @@
 import { useEffect, useState } from "react";
 
+import type { ICharacterWeaponRecommendation } from "@/database/characters-recommendations/types";
+import type { TWeaponKey } from "@/database/weapons/types";
+import type { WeaponRecommendationsProps } from "./types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
-import { getWeapon } from "@/database";
+import { getWeapon } from "@/database/weapons";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { WeaponRecommendationsProps, WeaponRecommendationsTableProps } from "./types";
 
-function WeaponRecommendationsTable({ character, recommendations }: WeaponRecommendationsTableProps) {
+function WeaponBadge({ postfix, refinement, signatureWeaponKey, weaponKey }: {
+  postfix: ICharacterWeaponRecommendation["postfix"];
+  refinement: ICharacterWeaponRecommendation["refinement"];
+  signatureWeaponKey: WeaponRecommendationsProps["character"]["signature_weapon_key"];
+  weaponKey: TWeaponKey;
+}) {
+  const [weapon, setWeapon] = useState<Awaited<ReturnType<typeof getWeapon>>>();
+
+  useEffect(() => {
+    getWeapon(weaponKey).then(setWeapon);
+  }, [weaponKey]);
+
+  return weapon !== undefined && (
+    <Badge
+      className={cn(
+        "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row",
+        "sm:text-left",
+      )}
+      variant="secondary"
+    >
+      <img
+        alt={weapon.name}
+        className={cn("shrink-0 size-12 rounded-md rounded-br-2xl", backgroundClassByRarity(weapon.rarity))}
+        src={weapon.image_src}
+      />
+      <span>
+        {weapon.name}
+        {refinement !== undefined && ` R${refinement}`}
+        {weapon.key === signatureWeaponKey && " (сигнатурное)"}
+        {postfix !== undefined && (
+          <>
+            {" "}
+            <sub children={postfix} />
+          </>
+        )}
+      </span>
+    </Badge>
+  );
+}
+
+function WeaponRecommendationsTable({ character, recommendations }: {
+  character: WeaponRecommendationsProps["character"];
+  recommendations: ICharacterWeaponRecommendation[];
+}) {
   const [diffPercent, setDiffPercent] = useState(0);
   const [hasIsBetter, setHasIsBetter] = useState(false);
   const [hasPercent, setHasPercent] = useState(false);
@@ -49,71 +94,46 @@ function WeaponRecommendationsTable({ character, recommendations }: WeaponRecomm
   return (
     <Table className="sm:table-fixed">
       <TableBody>
-        {recommendations.map(async (recommendation) => {
-          const weapon = await getWeapon(recommendation.key);
-
-          return (
-            <TableRow
-              className="hover:bg-inherit"
-              key={
-                weapon.key
-                + (recommendation.refinement === undefined ? "" : `-r${recommendation.refinement}`)
-                + (recommendation.postfix === undefined ? "" : `-${recommendation.postfix}`)
-              }
-            >
-              {hasIsBetter && (
-                <TableCell className="w-16">
-                  {recommendation.is_better && (
-                    <img
-                      alt="Является лучшим выбором"
-                      className="size-12 rounded-full"
-                      src={publicImageSrc("better-logo-128x128.png")}
-                    />
-                  )}
-                </TableCell>
-              )}
-              <TableCell className="text-pretty whitespace-normal">
-                <Badge
-                  className={cn(
-                    "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal",
-                    "sm:flex-row sm:text-left",
-                  )}
-                  variant="secondary"
-                >
+        {recommendations.map(recommendation => (
+          <TableRow
+            className="hover:bg-inherit"
+            key={
+              recommendation.key
+              + (recommendation.refinement === undefined ? "" : `-r${recommendation.refinement}`)
+              + (recommendation.postfix === undefined ? "" : `-${recommendation.postfix}`)
+            }
+          >
+            {hasIsBetter && (
+              <TableCell className="w-16">
+                {recommendation.is_better && (
                   <img
-                    alt={weapon.name}
-                    className={cn(
-                      "shrink-0 size-12 rounded-md rounded-br-2xl",
-                      backgroundClassByRarity(weapon.rarity),
-                    )}
-                    src={weapon.image_src}
+                    alt="Является лучшим выбором"
+                    className="size-12 rounded-full"
+                    src={publicImageSrc("better-logo-128x128.png")}
                   />
-                  <span>
-                    {weapon.name}
-                    {recommendation.refinement !== undefined && ` R${recommendation.refinement}`}
-                    {weapon.key === character.signature_weapon_key && " (сигнатурное)"}
-                    {recommendation.postfix !== undefined && (
-                      <>
-                        {" "}
-                        <sub children={recommendation.postfix} />
-                      </>
-                    )}
-                  </span>
-                </Badge>
+                )}
               </TableCell>
-              {hasPercent && (
-                <TableCell
-                  children={recommendation.percent !== undefined ? numberFormatPercent(recommendation.percent, 2) : ""}
-                  className={cn("text-center", recommendation.percent !== undefined && {
-                    "text-green-500": recommendation.percent >= (minPercent + (diffPercent * 2)),
-                    "text-yellow-500": recommendation.percent >= (minPercent + diffPercent) && recommendation.percent < (minPercent + (diffPercent * 2)),
-                    "text-red-500": recommendation.percent < (minPercent + diffPercent),
-                  })}
-                />
-              )}
-            </TableRow>
-          );
-        })}
+            )}
+            <TableCell className="text-pretty whitespace-normal">
+              <WeaponBadge
+                postfix={recommendation.postfix}
+                refinement={recommendation.refinement}
+                signatureWeaponKey={character.signature_weapon_key}
+                weaponKey={recommendation.key}
+              />
+            </TableCell>
+            {hasPercent && (
+              <TableCell
+                children={recommendation.percent !== undefined ? numberFormatPercent(recommendation.percent, 2) : ""}
+                className={cn("text-center", recommendation.percent !== undefined && {
+                  "text-green-500": recommendation.percent >= (minPercent + (diffPercent * 2)),
+                  "text-yellow-500": recommendation.percent >= (minPercent + diffPercent) && recommendation.percent < (minPercent + (diffPercent * 2)),
+                  "text-red-500": recommendation.percent < (minPercent + diffPercent),
+                })}
+              />
+            )}
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );

@@ -1,5 +1,5 @@
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import type { RotationRecommendationsProps } from "./types";
+import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 
 export default function RotationRecommendations({ recommendations }: RotationRecommendationsProps) {
   if (typeof recommendations === "string") {

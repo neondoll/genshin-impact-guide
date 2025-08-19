@@ -1,22 +1,15 @@
 import type { IArtifactSetRecommendations } from "../artifact-sets-recommendations/types";
 import type { IArtifactSlot } from "../artifact-slots/types";
-import type { Rarity } from "../types/rarity";
-import type { TCharacterKey } from "../characters/types";
+import type { TRarity } from "../rarities/types";
 import { ArtifactSetKeys } from "./enums";
-
-interface IArtifactSetCharacterRecommendation {
-  key: TCharacterKey;
-  notes: string;
-}
 
 export interface IArtifactSet {
   key: TArtifactSetKey;
   name: string;
-  rarities: Rarity[];
+  rarities: TRarity[];
   source: string | string[];
   item_bonuses: Record<2 | 4, string>;
   slots: Record<IArtifactSlot["key"], IArtifactSetSlot | undefined>;
-  character_recommendations?: IArtifactSetCharacterRecommendation[];
 
   image_src?: IArtifactSetSlot["image_src"];
   getRecommendations: () => Promise<IArtifactSetRecommendations | undefined>;

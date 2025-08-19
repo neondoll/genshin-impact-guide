@@ -1,8 +1,8 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import Container from "@/components/container";
-import Paths from "@/constants/paths";
+import type { TRarity } from "@/database/rarities/types";
+import type { TWeaponTypeKey } from "@/database/weapon-types/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -10,21 +10,25 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn, publicImageSrc } from "@/lib/utils";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
-import { getWeapons, getWeaponTypes } from "@/database";
-import type { Rarity } from "@/database/types/rarity";
-import type { WeaponTypeKey } from "@/database/types/weapon-type";
+import { getWeapons } from "@/database/weapons";
+import { getWeaponTypes } from "@/database/weapon-types";
+import Container from "@/components/container";
+import Paths from "@/constants/paths";
 
-export type WeaponsLoaderData = {
-  weapons: Awaited<ReturnType<typeof getWeapons>>;
-  weaponTypes: Awaited<ReturnType<typeof getWeaponTypes>>;
-};
+/* eslint-disable-next-line react-refresh/only-export-components */
+export async function loader() {
+  const weapons = await getWeapons();
+  const weaponTypes = await getWeaponTypes();
+
+  return { weapons, weaponTypes };
+}
 
 export default function Weapons() {
-  const { weapons, weaponTypes } = useLoaderData<WeaponsLoaderData>();
-  const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
-  const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<WeaponTypeKey[]>([]);
+  const { weapons, weaponTypes } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+  const [filterRarities, setFilterRarities] = useState<TRarity[]>([]);
+  const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<TWeaponTypeKey[]>([]);
   const [filteredWeapons, setFilteredWeapons] = useState<typeof weapons>([]);
-  const [rarities, setRarities] = useState<Rarity[]>([]);
+  const [rarities, setRarities] = useState<TRarity[]>([]);
 
   useEffect(() => {
     setRarities(Array.from(new Set(weapons.map(weapon => weapon.rarity))).sort((a, b) => b - a));

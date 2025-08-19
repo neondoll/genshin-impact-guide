@@ -1,6 +1,6 @@
+import type { ArtifactRecommendationsProps } from "./types";
 import ArtifactSetRecommendations from "./artifact-set-recommendations";
 import ArtifactStatRecommendations from "./artifact-stat-recommendations";
-import type { ArtifactRecommendationsProps } from "./types";
 
 export default function ArtifactRecommendations({ recommendations }: ArtifactRecommendationsProps) {
   return (

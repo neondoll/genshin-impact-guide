@@ -1,36 +1,48 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import Paths from "@/constants/paths";
+import type { CharacterRecommendationsProps } from "./types";
+import type { TCharacterKey } from "@/database/characters/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, publicImageSrc } from "@/lib/utils";
-import { getCharacter, sortCharacters } from "@/database/characters";
+import { getCharacter } from "@/database/characters";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import type { CharacterRecommendationsProps } from "./types";
-import type { IArtifactSetCharacterRecommendation } from "@/database/artifact-sets-recommendations/types";
+import Paths from "@/constants/paths";
+
+function CharacterBadge({ characterKey }: { characterKey: TCharacterKey }) {
+  const [character, setCharacter] = useState<Awaited<ReturnType<typeof getCharacter>>>();
+
+  useEffect(() => {
+    getCharacter(characterKey).then(setCharacter);
+  }, [characterKey]);
+
+  return character !== undefined && (
+    <Badge
+      asChild
+      className={cn(
+        "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row",
+        "sm:text-left",
+      )}
+      variant="secondary"
+    >
+      <Link to={Paths.Character.to(character.key)}>
+        <img
+          alt={character.name}
+          className={cn("shrink-0 size-12 rounded-md rounded-br-2xl", backgroundClassByRarity(character.rarity))}
+          src={character.image_src}
+        />
+        <span children={character.name} />
+      </Link>
+    </Badge>
+  );
+}
 
 export default function CharacterRecommendations({ recommendations }: CharacterRecommendationsProps) {
-  const [characterRecommendations, setCharacterRecommendations] = useState<{
-    character: Awaited<ReturnType<typeof getCharacter>>;
-    recommendation: IArtifactSetCharacterRecommendation;
-  }[]>([]);
   const [hasIsBetter, setHasIsBetter] = useState(false);
   const [hasNotes, setHasNotes] = useState(false);
 
   useEffect(() => {
-    const characterRecommendations: {
-      character: Awaited<ReturnType<typeof getCharacter>>;
-      recommendation: IArtifactSetCharacterRecommendation;
-    }[] = [];
-
-    recommendations.forEach(async (recommendation) => {
-      characterRecommendations.push({ character: await getCharacter(recommendation.key), recommendation });
-    });
-
-    setCharacterRecommendations(characterRecommendations.sort((a, b) => {
-      return sortCharacters(a.character, b.character);
-    }));
     setHasIsBetter(recommendations.some((recommendation) => {
       return recommendation.is_better === true;
     }));
@@ -49,11 +61,11 @@ export default function CharacterRecommendations({ recommendations }: CharacterR
         </TableRow>
       </TableHeader>
       <TableBody>
-        {characterRecommendations.map(item => (
-          <TableRow className="hover:bg-inherit" key={item.character.key}>
+        {recommendations.map(recommendation => (
+          <TableRow className="hover:bg-inherit" key={recommendation.key}>
             {hasIsBetter && (
               <TableCell className="w-16">
-                {item.recommendation.is_better && (
+                {recommendation.is_better && (
                   <img
                     alt="Является лучшим выбором"
                     className="size-12 rounded-full"
@@ -63,40 +75,23 @@ export default function CharacterRecommendations({ recommendations }: CharacterR
               </TableCell>
             )}
             <TableCell className="text-pretty whitespace-normal sm:min-w-[166px]">
-              <Badge
-                asChild
-                className={cn(
-                  "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal",
-                  "sm:flex-row sm:text-left",
-                )}
-                variant="secondary"
-              >
-                <Link to={Paths.Character.to(item.character.key)}>
-                  <img
-                    alt={item.character.name}
-                    className={cn(
-                      "shrink-0 size-12 rounded-md rounded-br-2xl",
-                      backgroundClassByRarity(item.character.rarity),
-                    )}
-                    src={item.character.image_src}
-                  />
-                  <span children={item.character.name} />
-                </Link>
-              </Badge>
+              <CharacterBadge characterKey={recommendation.key} />
             </TableCell>
             {hasNotes && (
               <TableCell className="text-pretty whitespace-pre-line">
-                {item.recommendation.notes !== undefined && (Array.isArray(item.recommendation.notes)
-                  ? (
-                      <ul className="ml-4 list-outside list-disc">
-                        {item.recommendation.notes.map((note, index) => (
-                          <li dangerouslySetInnerHTML={{ __html: note }} key={index + 1} />
-                        ))}
-                      </ul>
-                    )
-                  : (
-                      <span dangerouslySetInnerHTML={{ __html: item.recommendation.notes }} />
-                    ))}
+                {recommendation.notes !== undefined && (
+                  Array.isArray(recommendation.notes)
+                    ? (
+                        <ul className="ml-4 list-outside list-disc">
+                          {recommendation.notes.map((note, index) => (
+                            <li dangerouslySetInnerHTML={{ __html: note }} key={index + 1} />
+                          ))}
+                        </ul>
+                      )
+                    : (
+                        <span dangerouslySetInnerHTML={{ __html: recommendation.notes }} />
+                      )
+                )}
               </TableCell>
             )}
           </TableRow>

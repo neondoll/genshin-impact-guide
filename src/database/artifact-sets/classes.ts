@@ -12,7 +12,6 @@ export class CArtifactSet implements IArtifactSet {
   readonly source: IArtifactSet["source"];
   readonly item_bonuses: IArtifactSet["item_bonuses"];
   readonly slots: IArtifactSet["slots"];
-  private _character_recommendations: IArtifactSet["character_recommendations"];
 
   static PATH = "artifact-sets";
 
@@ -48,10 +47,6 @@ export class CArtifactSet implements IArtifactSet {
     });
   }
 
-  get character_recommendations() {
-    return this._character_recommendations;
-  }
-
   get image_src() {
     return this.slots[ArtifactSlotKeys.Flower]?.image_src || this.slots[ArtifactSlotKeys.Plume]?.image_src
       || this.slots[ArtifactSlotKeys.Sands]?.image_src || this.slots[ArtifactSlotKeys.Goblet]?.image_src
@@ -60,12 +55,6 @@ export class CArtifactSet implements IArtifactSet {
 
   getRecommendations() {
     return getArtifactSetRecommendations(this.key);
-  }
-
-  setCharacterRecommendations(val: NonNullable<IArtifactSet["character_recommendations"]>) {
-    this._character_recommendations = val;
-
-    return this;
   }
 
   static init(params: ConstructorParameters<typeof CArtifactSet>) {

@@ -1,9 +1,10 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import type { ElementKey } from "@/database/types/element";
-import type { Rarity } from "@/database/types/rarity";
-import type { WeaponTypeKey } from "@/database/types/weapon-type";
+import type { ICharacter } from "@/database/characters/types";
+import type { IElement } from "@/database/elements/types";
+import type { TRarity } from "@/database/rarities/types";
+import type { TWeaponTypeKey } from "@/database/weapon-types/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -11,26 +12,72 @@ import {
 import { cn, publicImageSrc } from "@/lib/utils";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
 import { getCharacters } from "@/database/characters";
-import { getElements, getWeaponTypes } from "@/database";
+import { getElements } from "@/database/elements";
+import { getWeaponTypes } from "@/database/weapon-types";
+import { sortRarities } from "@/database/rarities";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
 
-export type CharactersLoaderData = {
-  characters: Awaited<ReturnType<typeof getCharacters>>;
-  elements: Awaited<ReturnType<typeof getElements>>;
-  weaponTypes: Awaited<ReturnType<typeof getWeaponTypes>>;
-};
-
-export default function Characters() {
-  const { characters, elements, weaponTypes } = useLoaderData<CharactersLoaderData>();
-  const [filterElementKeys, setFilterElementKeys] = useState<ElementKey[]>([]);
-  const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
-  const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<WeaponTypeKey[]>([]);
-  const [filteredCharacters, setFilteredCharacters] = useState<typeof characters>([]);
-  const [rarities, setRarities] = useState<Rarity[]>([]);
+function CharactersListItem({ item }: { item: ICharacter }) {
+  const [element, setElement] = useState<IElement>();
 
   useEffect(() => {
-    setRarities(Array.from(new Set(characters.map(character => character.rarity))).sort((a, b) => b - a));
+    item.getElement().then(setElement);
+  }, [item]);
+
+  return (
+    <li
+      className={cn(
+        "flex relative flex-col gap-4 px-5.5 py-4 w-36 h-45 text-card-foreground bg-card rounded-xl border",
+        "shadow-sm transition-all has-hover:scale-104 has-focus-visible:ring-3 has-focus-visible:ring-ring/50",
+      )}
+    >
+      <span className="relative shrink-0 size-24.5">
+        {element !== undefined && (
+          <img
+            alt={element.name}
+            className="absolute top-0 left-0 p-1 size-8.5 bg-card rounded-full border -translate-1/4"
+            src={element.image_src}
+          />
+        )}
+        <img
+          alt={item.name}
+          className={cn("object-cover size-full rounded-lg rounded-br-3xl", backgroundClassByRarity(item.rarity))}
+          draggable={false}
+          src={item.image_src}
+        />
+      </span>
+      <Link
+        children={Paths.Character.title(item)}
+        className={cn(
+          "inline-flex flex-1 justify-center items-center text-sm text-center outline-none before:absolute",
+          "before:inset-0",
+        )}
+        to={Paths.Character.to(item.key)}
+      />
+    </li>
+  );
+}
+
+/* eslint-disable-next-line react-refresh/only-export-components */
+export async function loader() {
+  const characters = await getCharacters();
+  const elements = await getElements();
+  const weaponTypes = await getWeaponTypes();
+
+  return { characters, elements, weaponTypes };
+}
+
+export default function Characters() {
+  const { characters, elements, weaponTypes } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+  const [filterElementKeys, setFilterElementKeys] = useState<IElement["key"][]>([]);
+  const [filterRarities, setFilterRarities] = useState<TRarity[]>([]);
+  const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<TWeaponTypeKey[]>([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<typeof characters>([]);
+  const [rarities, setRarities] = useState<TRarity[]>([]);
+
+  useEffect(() => {
+    setRarities(Array.from(new Set(characters.map(character => character.rarity))).sort(sortRarities));
   }, [characters]);
   useEffect(() => {
     let filteredCharacters = characters;
@@ -69,7 +116,7 @@ export default function Characters() {
       <Filter>
         <FilterGroup label="Элемент">
           <div className="flex flex-wrap gap-3">
-            {Object.values(elements).map(element => (
+            {elements.map(element => (
               <FilterCheckbox
                 asChild
                 checked={filterElementKeys.includes(element.key)}
@@ -160,45 +207,9 @@ export default function Characters() {
         </FilterGroup>
       </Filter>
       <ul className="flex flex-wrap gap-2 justify-center items-stretch md:gap-4">
-        {filteredCharacters.map((character) => {
-          const element = elements[character.element_key];
-
-          return (
-            <li
-              className={cn(
-                "flex relative flex-col gap-4 px-5.5 py-4 w-36 h-45 text-card-foreground bg-card rounded-xl",
-                "border shadow-sm transition-all has-hover:scale-104 has-focus-visible:ring-3",
-                "has-focus-visible:ring-ring/50",
-              )}
-              key={character.key}
-            >
-              <span className="relative shrink-0 size-24.5">
-                <img
-                  alt={element.name}
-                  className="absolute top-0 left-0 p-1 size-8.5 bg-card rounded-full border -translate-1/4"
-                  src={element.image_src}
-                />
-                <img
-                  alt={character.name}
-                  className={cn(
-                    "object-cover size-full rounded-lg rounded-br-3xl",
-                    backgroundClassByRarity(character.rarity),
-                  )}
-                  draggable={false}
-                  src={character.image_src}
-                />
-              </span>
-              <Link
-                children={Paths.Character.title(character)}
-                className={cn(
-                  "inline-flex flex-1 justify-center items-center text-sm text-center outline-none",
-                  "before:absolute before:inset-0",
-                )}
-                to={Paths.Character.to(character.key)}
-              />
-            </li>
-          );
-        })}
+        {filteredCharacters.map(character => (
+          <CharactersListItem item={character} key={character.key} />
+        ))}
       </ul>
     </Container>
   );

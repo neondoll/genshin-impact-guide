@@ -1,15 +1,14 @@
-import type { Dungeon } from "../types/dungeon";
 import type { IArtifactSet } from "./types";
+import type { TDungeonKey } from "../dungeons/types";
 import { ArtifactSetKeys } from "./enums";
 import { ArtifactSlotKeys } from "../artifact-slots/enums";
 import { CArtifactSet } from "./classes";
-import { CharacterKeys } from "../characters/enums";
-import { DungeonKeys } from "../enums/dungeon";
-import dungeons from "../dungeons";
+import { DungeonKeys } from "../dungeons/enums";
+import dungeons from "../dungeons/data";
 
 const ArtifactSetSource = {
   Alchemy: "Мистическое подношение (Алхимия)",
-  Dungeon: (key: Dungeon["key"]) => `Подземелье «${dungeons[key].name}»`,
+  Dungeon: (key: TDungeonKey) => `Подземелье «${dungeons[key].name}»`,
 };
 
 export default {
@@ -199,11 +198,6 @@ export default {
       [ArtifactSlotKeys.Goblet]: "Неистовая рапсодия ихора",
       [ArtifactSlotKeys.Circlet]: "Вальс увядших фантазий",
     },
-  ]).setCharacterRecommendations([
-    {
-      key: CharacterKeys.Arlecchino,
-      notes: "Один из лучших комплектов для Арлекино, так как повышает важную силу атаки и увеличивает наносимый урон. Так как Арлекино сама накладывает на себя Долг жизни, она выполняет условие 4 предметов.",
-    },
   ]),
   [ArtifactSetKeys.GildedDreams]: CArtifactSet.init([
     ArtifactSetKeys.GildedDreams,
@@ -345,11 +339,6 @@ export default {
       [ArtifactSlotKeys.Goblet]: "Умолкнувший рог",
       [ArtifactSlotKeys.Circlet]: "Окрашенный шлем",
     },
-  ]).setCharacterRecommendations([
-    {
-      key: CharacterKeys.Varesa,
-      notes: "Варесе будет очень полезно увеличение урона атак в падении, которые она использует. Поскольку она часто активирует элементальный навык, а также заряженную атаку и атаку в падении после навыка, она может получить максимальный бонус урона.",
-    },
   ]),
   [ArtifactSetKeys.MaidenBeloved]: CArtifactSet.init([
     ArtifactSetKeys.MaidenBeloved,
@@ -452,8 +441,6 @@ export default {
       [ArtifactSlotKeys.Goblet]: "Банкет перед состязанием",
       [ArtifactSlotKeys.Circlet]: "Корона святых",
     },
-  ]).setCharacterRecommendations([
-    { key: CharacterKeys.Varesa, notes: "" },
   ]),
   [ArtifactSetKeys.OceanHuedClam]: CArtifactSet.init([
     ArtifactSetKeys.OceanHuedClam,
@@ -522,10 +509,6 @@ export default {
       [ArtifactSlotKeys.Goblet]: "Кубок бродячего исследователя",
       [ArtifactSlotKeys.Circlet]: "Перьевая маска воина-демона",
     },
-  ]).setCharacterRecommendations([
-    { key: CharacterKeys.Chevreuse, notes: "" },
-    { key: CharacterKeys.Iansan, notes: "" },
-    { key: CharacterKeys.Xilonen, notes: "" },
   ]),
   [ArtifactSetKeys.ShimenawasReminiscence]: CArtifactSet.init([
     ArtifactSetKeys.ShimenawasReminiscence,

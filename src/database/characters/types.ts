@@ -1,9 +1,9 @@
-import type { CharacterRecommendations } from "../types/character-recommendations";
-import type { Element } from "../types/element";
+import type { ICharacterRecommendations } from "../characters-recommendations/types";
 import type { ICharacterRole } from "../character-roles/types";
-import type { Rarity } from "../types/rarity";
-import type { WeaponKey } from "../types/weapon";
-import type { WeaponType } from "../types/weapon-type";
+import type { IElement } from "../elements/types";
+import type { IWeaponType } from "../weapon-types/types";
+import type { TRarity } from "../rarities/types";
+import type { TWeaponKey } from "../weapons/types";
 import { CharacterKeys } from "../characters/enums";
 
 export interface ICharacter {
@@ -11,22 +11,22 @@ export interface ICharacter {
   /* Имя */
   name: string;
   /* Редкость */
-  rarity: Rarity;
+  rarity: TRarity;
   /* Оружие */
-  weapon_type_key: WeaponType["key"];
+  weapon_type_key: IWeaponType["key"];
   /* Элемент */
-  element_key: Element["key"];
+  element_key: IElement["key"];
   /* Архэ */
   arkhe?: TCharacterArkhe | TCharacterArkhe[];
   /* Роли */
   role_keys?: ICharacterRole["key"][];
   image_src: string;
-  signature_weapon_key?: WeaponKey;
+  signature_weapon_key?: TWeaponKey;
 
-  getElement: () => Promise<Element>;
-  getRecommendations: () => Promise<CharacterRecommendations | undefined>;
+  getElement: () => Promise<IElement>;
+  getRecommendations: () => Promise<ICharacterRecommendations | undefined>;
   getRoles: () => Promise<ICharacterRole[] | undefined>;
-  getWeaponType: () => Promise<WeaponType>;
+  getWeaponType: () => Promise<IWeaponType>;
 }
 
 export type TCharacterArkhe = "Усия" | "Пневма";

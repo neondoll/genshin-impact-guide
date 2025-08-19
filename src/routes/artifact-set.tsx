@@ -1,28 +1,21 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { IArtifactSet } from "@/database/artifact-sets/types";
+import type { TArtifactSetKey } from "@/database/artifact-sets/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
-import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { getArtifactSet } from "@/database/artifact-sets";
-import { getCharacter } from "@/database/characters";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
 
-export interface ArtifactSetLoaderData {
-  artifactSet: IArtifactSet;
-  artifactSetRecommendations: Awaited<ReturnType<IArtifactSet["getRecommendations"]>>;
-}
-
 /* eslint-disable-next-line react-refresh/only-export-components */
 export async function loader({ params }: { params: Record<string, string | undefined> }) {
-  const artifactSet = await getArtifactSet(params.artifactSetKey as IArtifactSet["key"]);
+  const artifactSet = await getArtifactSet(params.artifactSetKey as TArtifactSetKey);
   const artifactSetRecommendations = await artifactSet.getRecommendations();
 
   return { artifactSet, artifactSetRecommendations };
@@ -137,46 +130,6 @@ export default function ArtifactSet() {
       </Card>
       {artifactSetRecommendations !== undefined && (
         <ArtifactSetRecommendations recommendations={artifactSetRecommendations} />
-      )}
-      {artifactSet.character_recommendations !== undefined && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Рекомендации по персонажам</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableBody>
-                {artifactSet.character_recommendations.map(async (characterRecommendation) => {
-                  const character = await getCharacter(characterRecommendation.key);
-
-                  return (
-                    <TableRow className="hover:bg-inherit" key={character.key}>
-                      <TableCell className="text-pretty whitespace-normal sm:w-[166px]">
-                        <Badge
-                          asChild
-                          className="flex flex-col gap-2.5 justify-start p-2 w-full sm:flex-row sm:text-sm"
-                          variant="secondary"
-                        >
-                          <Link to={Paths.Character.to(character.key)}>
-                            <img
-                              alt={character.name}
-                              className="shrink-0 size-12 bg-[linear-gradient(180deg,#323947,#4a5366)] rounded-md rounded-br-2xl"
-                              src={character.image_src}
-                            />
-                            <span>{character.name}</span>
-                          </Link>
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-center text-pretty whitespace-normal">
-                        {characterRecommendation.notes}
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
       )}
     </Container>
   );

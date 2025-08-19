@@ -1,19 +1,23 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import Paths from "@/constants/paths";
+import type { ArtifactSetRecommendationsProps } from "./types";
+import type { TArtifactSetKey } from "@/database/artifact-sets/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
 import { getArtifactSet } from "@/database/artifact-sets";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import type { ArtifactSetRecommendationsProps } from "./types";
-import type { TArtifactSetKey } from "@/database/artifact-sets/types";
+import Paths from "@/constants/paths";
 
-async function ArtifactSetBage({ artifactSetKey }: { artifactSetKey: TArtifactSetKey }) {
-  const artifactSet = await getArtifactSet(artifactSetKey);
+function ArtifactSetBadge({ artifactSetKey }: { artifactSetKey: TArtifactSetKey }) {
+  const [artifactSet, setArtifactSet] = useState<Awaited<ReturnType<typeof getArtifactSet>>>();
 
-  return (
+  useEffect(() => {
+    getArtifactSet(artifactSetKey).then(setArtifactSet);
+  }, [artifactSetKey]);
+
+  return artifactSet !== undefined && (
     <Badge
       asChild
       className={cn(
@@ -114,12 +118,12 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
             <TableCell className="text-pretty whitespace-normal sm:w-48">
               {"key" in recommendation
                 ? (
-                    <ArtifactSetBage artifactSetKey={recommendation.key} />
+                    <ArtifactSetBadge artifactSetKey={recommendation.key} />
                   )
                 : (
                     <div className="flex flex-col gap-2">
                       {recommendation.keys.map(key => (
-                        <ArtifactSetBage artifactSetKey={key} />
+                        <ArtifactSetBadge artifactSetKey={key} />
                       ))}
                     </div>
                   )}

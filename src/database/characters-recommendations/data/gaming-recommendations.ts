@@ -1,0 +1,15 @@
+import type { ICharacterRecommendations } from "../types";
+import { CharacterKeys } from "../../characters/enums";
+import { WeaponKeys } from "../../weapons/enums";
+
+export default {
+  character_key: CharacterKeys.Gaming,
+  video_sources: [
+    { title: "Miron MinMax: Лучшее Оружие для Каждого Персонажа", youtube_url: "https://youtu.be/cjatyGw0EO0" },
+  ],
+  weapons: [
+    { key: WeaponKeys.SerpentSpine, refinement: 5, is_better: true },
+    { key: WeaponKeys.RedhornStonethresher, refinement: 1 },
+    { key: WeaponKeys.WolfsGravestone, refinement: 1 },
+  ],
+} as ICharacterRecommendations;

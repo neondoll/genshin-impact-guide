@@ -1,9 +1,7 @@
-import * as React from "react";
+import { type ComponentProps, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
-import Container from "@/components/container";
-import Paths from "@/constants/paths";
-import VideoSources from "@/organisms/video-sources";
+import type { TWeaponKey } from "@/database/weapons/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -11,12 +9,16 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getTierListsWeapons, getWeapons } from "@/database";
+import { getTierListsWeapons } from "@/database/tier-lists-weapons";
+import { getWeapons } from "@/database/weapons";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import Container from "@/components/container";
+import Paths from "@/constants/paths";
+import VideoSources from "@/organisms/video-sources";
 
-function TierBadge(props: Pick<React.ComponentProps<typeof Badge>, "children">) {
+function TierBadge(props: Pick<ComponentProps<typeof Badge>, "children">) {
   return (
     <Badge
       className={cn(
@@ -28,12 +30,38 @@ function TierBadge(props: Pick<React.ComponentProps<typeof Badge>, "children">) 
   );
 }
 
-export type WeaponsTierListLoaderData = {
-  tierListsWeapons: Awaited<ReturnType<typeof getTierListsWeapons>>;
-};
+function WeaponsList({ weaponKeys }: { weaponKeys: TWeaponKey[] }) {
+  const [weapons, setWeapons] = useState<Awaited<ReturnType<typeof getWeapons>>>([]);
+
+  useEffect(() => {
+    getWeapons(weaponKeys).then(setWeapons);
+  }, [weaponKeys]);
+
+  return (
+    <ul className="flex flex-wrap gap-2">
+      {weapons.map(weapon => (
+        <li
+          className={cn(
+            "shrink-0 size-12 rounded-md", backgroundClassByRarity(weapon.rarity),
+          )}
+          key={weapon.key}
+        >
+          <img alt={weapon.name} className="size-12" src={weapon.image_src} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/* eslint-disable-next-line react-refresh/only-export-components */
+export async function loader() {
+  const tierListsWeapons = await getTierListsWeapons();
+
+  return { tierListsWeapons };
+}
 
 export default function WeaponsTierList() {
-  const { tierListsWeapons } = useLoaderData<WeaponsTierListLoaderData>();
+  const { tierListsWeapons } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
 
   const tierListsWeaponsEntries = Object.entries(tierListsWeapons) as [keyof typeof tierListsWeapons, typeof tierListsWeapons[keyof typeof tierListsWeapons]][];
 
@@ -71,50 +99,35 @@ export default function WeaponsTierList() {
               <Card className="py-0">
                 <Table>
                   <TableBody>
-                    {tierListWeapons.list.map(async (item) => {
-                      const weapons = await getWeapons(item.weapon_keys);
-
-                      return (
-                        <TableRow
-                          className={cn(
-                            "hover:bg-inherit first:*:pt-6 first:*:first:rounded-tl-xl first:*:last:rounded-tr-xl",
-                            "last:*:pb-6 last:*:first:rounded-bl-xl last:*:last:rounded-br-xl *:first:pl-6 *:last:pr-6",
-                          )}
-                          key={item.tier}
-                        >
-                          <TableHead className="p-2 text-center">
-                            {item.description !== undefined
-                              ? (
-                                  <Tooltip>
-                                    <TooltipTrigger asChild>
-                                      <TierBadge children={item.tier} />
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                      <p children={item.description} />
-                                    </TooltipContent>
-                                  </Tooltip>
-                                )
-                              : (
-                                  <TierBadge children={item.tier} />
-                                )}
-                          </TableHead>
-                          <TableCell className="p-2">
-                            <ul className="flex flex-wrap gap-2">
-                              {weapons.map(weapon => (
-                                <li
-                                  className={cn(
-                                    "shrink-0 size-12 rounded-md", backgroundClassByRarity(weapon.rarity),
-                                  )}
-                                  key={weapon.key}
-                                >
-                                  <img alt={weapon.name} className="size-12" src={weapon.image_src} />
-                                </li>
-                              ))}
-                            </ul>
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
+                    {tierListWeapons.list.map(item => (
+                      <TableRow
+                        className={cn(
+                          "hover:bg-inherit first:*:pt-6 first:*:first:rounded-tl-xl first:*:last:rounded-tr-xl",
+                          "last:*:pb-6 last:*:first:rounded-bl-xl last:*:last:rounded-br-xl *:first:pl-6 *:last:pr-6",
+                        )}
+                        key={item.tier}
+                      >
+                        <TableHead className="p-2 text-center">
+                          {item.description !== undefined
+                            ? (
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <TierBadge children={item.tier} />
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p children={item.description} />
+                                  </TooltipContent>
+                                </Tooltip>
+                              )
+                            : (
+                                <TierBadge children={item.tier} />
+                              )}
+                        </TableHead>
+                        <TableCell className="p-2">
+                          <WeaponsList weaponKeys={item.weapon_keys} />
+                        </TableCell>
+                      </TableRow>
+                    ))}
                   </TableBody>
                 </Table>
               </Card>

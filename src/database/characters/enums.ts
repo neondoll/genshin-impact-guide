@@ -1,4 +1,4 @@
-import { ElementKeys } from "../enums/element";
+import { ElementKeys } from "../elements/enums";
 
 export const CharacterKeys = {
   /* Альбедо                  */ "Albedo": "albedo",

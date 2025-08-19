@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
+import type { TCharacterKey } from "@/database/characters/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -14,15 +15,25 @@ import CharacterRecommendations from "@/organisms/character-recommendations";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
 
-export type CharacterLoaderData = { character: Awaited<ReturnType<typeof getCharacter>> };
-
-export default async function Character() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { character } = useLoaderData<CharacterLoaderData>();
+/* eslint-disable-next-line react-refresh/only-export-components */
+export async function loader({ params }: { params: Record<string, string | undefined> }) {
+  const character = await getCharacter(params.characterKey as TCharacterKey);
   const characterElement = await character.getElement();
   const characterRecommendations = await character.getRecommendations();
   const characterRoles = await character.getRoles();
   const characterWeaponType = await character.getWeaponType();
+
+  return { character, characterElement, characterRecommendations, characterRoles, characterWeaponType };
+}
+
+export default function Character() {
+  const {
+    character,
+    characterElement,
+    characterRecommendations,
+    characterRoles,
+    characterWeaponType,
+  } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">

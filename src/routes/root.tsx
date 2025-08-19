@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { AppSidebar } from "@/components/app-sidebar";
@@ -8,12 +8,13 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import Paths from "@/constants/paths";
 
 export default function Root() {
+  const location = useLocation();
   const navigation = useNavigation();
   const [isRoot, setIsRoot] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsRoot(navigation.location?.pathname === Paths.Root.to);
-  }, [navigation.location]);
+    setIsRoot(location.pathname === Paths.Root.to);
+  }, [location]);
 
   return (
     <SidebarProvider>

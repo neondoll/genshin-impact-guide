@@ -1,7 +1,7 @@
-import type { StatKey } from "../types/stat";
+import type { IVideoSource } from "../video-sources/types";
 import type { TArtifactSetKey } from "../artifact-sets/types";
 import type { TCharacterKey } from "../characters/types";
-import type { VideoSource } from "../types/video-source";
+import type { TStatKey } from "../stats/types";
 import { ArtifactSlotKeys } from "../artifact-slots/enums";
 
 export interface IArtifactSetCharacterRecommendation {
@@ -13,6 +13,6 @@ export interface IArtifactSetCharacterRecommendation {
 export interface IArtifactSetRecommendations {
   artifact_set_key: TArtifactSetKey;
   characters: IArtifactSetCharacterRecommendation[];
-  preferred_stats: Record<typeof ArtifactSlotKeys["Sands" | "Goblet" | "Circlet"] | "additional", StatKey[]>;
-  video_sources?: VideoSource[];
+  preferred_stats?: Record<typeof ArtifactSlotKeys["Sands" | "Goblet" | "Circlet"] | "additional", TStatKey[]>;
+  video_sources?: IVideoSource[];
 }

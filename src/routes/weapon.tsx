@@ -1,24 +1,48 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import Container from "@/components/container";
-import Paths from "@/constants/paths";
+import type { TStatKey } from "@/database/stats/types";
+import type { TWeaponKey } from "@/database/weapons/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
+import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
 import { cn, publicImageSrc } from "@/lib/utils";
-import { getStat, getWeapon, getWeaponType } from "@/database";
+import { getStat } from "@/database/stats";
+import { getWeapon } from "@/database/weapons";
+import { getWeaponType } from "@/database/weapon-types";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import Container from "@/components/container";
+import Paths from "@/constants/paths";
 
-export type WeaponLoaderData = {
-  weapon: Awaited<ReturnType<typeof getWeapon>>;
-  weaponType: Awaited<ReturnType<typeof getWeaponType>>;
-};
+function StatBadge({ statKey }: { statKey: TStatKey }) {
+  const [stat, setStat] = useState<Awaited<ReturnType<typeof getStat>>>();
 
-export default async function Weapon() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { weapon, weaponType } = useLoaderData<WeaponLoaderData>();
+  useEffect(() => {
+    getStat(statKey).then(setStat);
+  }, [statKey]);
+
+  return stat !== undefined && (
+    <Badge
+      children={stat.name}
+      className="flex justify-center w-full text-center text-pretty whitespace-normal"
+      variant="secondary"
+    />
+  );
+}
+
+/* eslint-disable-next-line react-refresh/only-export-components */
+export async function loader({ params }: { params: Record<string, string | undefined> }) {
+  const weapon = await getWeapon(params.weaponKey as TWeaponKey);
+  const weaponType = await getWeaponType(weapon.type_key);
+
+  return { weapon, weaponType };
+}
+
+export default function Weapon() {
+  const { weapon, weaponType } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -89,10 +113,9 @@ export default async function Weapon() {
                     className="p-2 text-right whitespace-normal"
                     rowSpan={2}
                   />
-                  <TableCell
-                    children={(await getStat(weapon.secondary_stats.key)).name}
-                    className="p-2 whitespace-normal"
-                  />
+                  <TableCell className="p-2 whitespace-normal">
+                    <StatBadge statKey={weapon.secondary_stats.key} />
+                  </TableCell>
                 </TableRow>
                 <TableRow className="hover:bg-inherit">
                   <TableCell

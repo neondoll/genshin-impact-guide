@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 
-import type { SquadRecommendationsItemProps, SquadRecommendationsProps } from "./types";
+import type { SquadRecommendationsProps } from "./types";
+import type { TCharacterSquadItemRecommendation } from "@/database/characters-recommendations/types";
 import { Badge } from "@/components/ui/badge";
 import { getCharacter } from "@/database/characters";
-import { getElement } from "@/database";
+import { getElement } from "@/database/elements";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import Paths from "@/constants/paths";
 
-async function SquadRecommendationsItem({ item }: { item: SquadRecommendationsItemProps }) {
+async function SquadRecommendationsItem({ item }: { item: TCharacterSquadItemRecommendation }) {
   switch (item.type) {
     case "character": {
       const character = await getCharacter(item.key);

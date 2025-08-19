@@ -1,5 +1,12 @@
 import { ChevronDownIcon } from "lucide-react";
 
+import type { CharacterRecommendationsProps } from "./types";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactRecommendations from "./artifact-recommendations";
 import ReferencePointRecommendations from "./reference-point-recommendations";
 import RotationRecommendations from "./rotation-recommendations";
@@ -7,13 +14,6 @@ import SquadRecommendations from "./squad-recommendations";
 import TalentLevelingRecommendations from "./talent-leveling-recommendations";
 import VideoSources from "../video-sources";
 import WeaponRecommendations from "./weapon-recommendations";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import type { CharacterRecommendationsProps } from "./types";
 
 export default function CharacterRecommendations({ character, recommendations }: CharacterRecommendationsProps) {
   const showAccordion = recommendations.artifacts !== undefined || recommendations.reference_point !== undefined || recommendations.rotation !== undefined || recommendations.squads !== undefined || recommendations.talent_leveling !== undefined || recommendations.video_sources !== undefined || recommendations.weapons !== undefined;

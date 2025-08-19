@@ -42,7 +42,7 @@ export default {
   [CharacterKeys.Jean]: new CCharacter("Jean", "Джинн", 5, "⚔️", "🌪️", "jean-256x256.webp").setRoleKeys("👥🛡️"),
   [CharacterKeys.Kachina]: new CCharacter("Kachina", "Качина", 4, "🔱", "🏔️", "kachina-256x256.webp").setRoleKeys("👥🗡️"),
   [CharacterKeys.KaedeharaKazuha]: new CCharacter("KaedeharaKazuha", "Кадзуха", 5, "⚔️", "🌪️", "kaedehara_kazuha-256x256.webp").setRoleKeys("👥🤝").setSignatureWeaponKey("FreedomSworn"),
-  [CharacterKeys.Kaeya]: new CCharacter("Kaeya", "Кэйа", 3, "⚔️", "❄️", "kaeya-256x256.webp").setRoleKeys("👥🗡️"),
+  [CharacterKeys.Kaeya]: new CCharacter("Kaeya", "Кэйа", 4, "⚔️", "❄️", "kaeya-256x256.webp").setRoleKeys("👥🗡️"),
   [CharacterKeys.KamisatoAyaka]: new CCharacter("KamisatoAyaka", "Аяка", 5, "⚔️", "❄️", "kamisato_ayaka-256x256.webp").setRoleKeys("👤🗡️").setSignatureWeaponKey("MistsplitterReforged"),
   [CharacterKeys.KamisatoAyato]: new CCharacter("KamisatoAyato", "Аято", 5, "⚔️", "💧", "kamisato_ayato-256x256.webp").setRoleKeys("👤🗡️").setSignatureWeaponKey("HaranGeppakuFutsu"),
   [CharacterKeys.Kaveh]: new CCharacter("Kaveh", "Кавех", 4, "🗡️", "🌿", "kaveh-256x256.webp").setRoleKeys("👤🗡️"),

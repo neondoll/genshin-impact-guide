@@ -1,9 +1,9 @@
+import type { IVideoSource } from "@/database/video-sources/types";
+import { Button } from "@/components/ui/button";
 import VK from "@/icons/VK";
 import Youtube from "@/icons/Youtube";
-import { Button } from "@/components/ui/button";
-import type { VideoSource } from "@/database/types/video-source";
 
-export default function VideoSources({ items }: { items: VideoSource[] }) {
+export default function VideoSources({ items }: { items: IVideoSource[] }) {
   return (
     <ul className="list-inside list-disc">
       {items.map((item, index) => (

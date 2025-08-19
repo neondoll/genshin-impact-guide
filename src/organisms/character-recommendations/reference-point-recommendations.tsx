@@ -1,8 +1,11 @@
+import type { ReferencePointRecommendationsProps } from "./types";
+import type { TCharacterReferencePointRecommendations } from "@/database/characters-recommendations/types";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { ReferencePointRecommendationsProps, ReferencePointRecommendationsTableProps } from "./types";
 
-function ReferencePointRecommendationsTable({ recommendations }: ReferencePointRecommendationsTableProps) {
+function ReferencePointRecommendationsTable({ recommendations }: {
+  recommendations: TCharacterReferencePointRecommendations;
+}) {
   return (
     <Table className="table-fixed">
       <TableBody>

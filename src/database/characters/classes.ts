@@ -2,12 +2,14 @@ import type { ICharacter, TCharacterArkhe } from "./types";
 import type { ICharacterRole } from "../character-roles/types";
 import { CharacterKeys } from "./enums";
 import { CharacterRoleKeys } from "../character-roles/enums";
-import { ElementKeys } from "../enums/element";
-import { getCharacterRecommendations, getElement, getWeaponType } from "..";
+import { ElementKeys } from "../elements/enums";
+import { getCharacterRecommendations } from "../characters-recommendations";
 import { getCharacterRole } from "../character-roles";
+import { getElement } from "../elements";
+import { getWeaponType } from "../weapon-types";
 import { publicImageSrc } from "@/lib/utils";
-import { WeaponKeys } from "../enums/weapon";
-import { WeaponTypeKeys } from "../enums/weapon-type";
+import { WeaponKeys } from "../weapons/enums";
+import { WeaponTypeKeys } from "../weapon-types/enums";
 
 const Arkhe = {
   "🟡": "Пневма",
