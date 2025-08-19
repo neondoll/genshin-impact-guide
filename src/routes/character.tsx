@@ -1,8 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import CharacterRecommendations from "@/organisms/character-recommendations";
-import Container from "@/components/container";
-import Paths from "@/constants/paths";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,9 +7,12 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
 import { cn, publicImageSrc } from "@/lib/utils";
-import { getCharacter } from "@/database";
+import { getCharacter } from "@/database/characters";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import CharacterRecommendations from "@/organisms/character-recommendations";
+import Container from "@/components/container";
+import Paths from "@/constants/paths";
 
 export type CharacterLoaderData = { character: Awaited<ReturnType<typeof getCharacter>> };
 

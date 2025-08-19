@@ -1,4 +1,4 @@
-import { ArtifactSetKeys } from "./enums/artifact-set";
+import { ArtifactSetKeys } from "./artifact-sets/enums";
 import { DungeonKeys } from "./enums/dungeon";
 import type { Dungeon } from "./types/dungeon";
 

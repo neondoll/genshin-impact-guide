@@ -1,8 +1,8 @@
+import type { TArtifactSetKey } from "../artifact-sets/types";
 import { DungeonKeys } from "../enums/dungeon";
-import type { ArtifactSetKey } from "./artifact-set";
 
 export interface Dungeon {
   key: typeof DungeonKeys[keyof typeof DungeonKeys];
   name: string;
-  artifact_set_keys: ArtifactSetKey[];
+  artifact_set_keys: TArtifactSetKey[];
 }

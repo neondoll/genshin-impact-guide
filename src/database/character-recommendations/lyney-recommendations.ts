@@ -1,4 +1,4 @@
-import { CharacterKeys } from "../enums/character";
+import { CharacterKeys } from "../characters/enums";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
 import type { CharacterRecommendations } from "../types/character-recommendations";

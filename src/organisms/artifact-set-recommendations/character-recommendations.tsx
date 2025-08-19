@@ -5,15 +5,15 @@ import Paths from "@/constants/paths";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, publicImageSrc } from "@/lib/utils";
-import { getCharacter, sortCharacters } from "@/database";
+import { getCharacter, sortCharacters } from "@/database/characters";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import type { ArtifactSetCharacterRecommendation } from "@/database/types/artifact-set-recommendations";
 import type { CharacterRecommendationsProps } from "./types";
+import type { IArtifactSetCharacterRecommendation } from "@/database/artifact-sets-recommendations/types";
 
 export default function CharacterRecommendations({ recommendations }: CharacterRecommendationsProps) {
   const [characterRecommendations, setCharacterRecommendations] = useState<{
     character: Awaited<ReturnType<typeof getCharacter>>;
-    recommendation: ArtifactSetCharacterRecommendation;
+    recommendation: IArtifactSetCharacterRecommendation;
   }[]>([]);
   const [hasIsBetter, setHasIsBetter] = useState(false);
   const [hasNotes, setHasNotes] = useState(false);
@@ -21,7 +21,7 @@ export default function CharacterRecommendations({ recommendations }: CharacterR
   useEffect(() => {
     const characterRecommendations: {
       character: Awaited<ReturnType<typeof getCharacter>>;
-      recommendation: ArtifactSetCharacterRecommendation;
+      recommendation: IArtifactSetCharacterRecommendation;
     }[] = [];
 
     recommendations.forEach(async (recommendation) => {

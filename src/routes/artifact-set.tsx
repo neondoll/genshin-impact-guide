@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
+import type { IArtifactSet } from "@/database/artifact-sets/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -7,19 +8,28 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getArtifactSet, getArtifactSetRecommendations, getCharacter } from "@/database";
+import { getArtifactSet } from "@/database/artifact-sets";
+import { getCharacter } from "@/database/characters";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
 import Container from "@/components/container";
 import Paths from "@/constants/paths";
 
 export interface ArtifactSetLoaderData {
-  artifactSet: Awaited<ReturnType<typeof getArtifactSet>>;
-  artifactSetRecommendations: Awaited<ReturnType<typeof getArtifactSetRecommendations>>;
+  artifactSet: IArtifactSet;
+  artifactSetRecommendations: Awaited<ReturnType<IArtifactSet["getRecommendations"]>>;
+}
+
+/* eslint-disable-next-line react-refresh/only-export-components */
+export async function loader({ params }: { params: Record<string, string | undefined> }) {
+  const artifactSet = await getArtifactSet(params.artifactSetKey as IArtifactSet["key"]);
+  const artifactSetRecommendations = await artifactSet.getRecommendations();
+
+  return { artifactSet, artifactSetRecommendations };
 }
 
 export default function ArtifactSet() {
-  const { artifactSet, artifactSetRecommendations } = useLoaderData<ArtifactSetLoaderData>();
+  const { artifactSet, artifactSetRecommendations } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">

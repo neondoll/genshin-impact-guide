@@ -1,10 +1,10 @@
-import type { ArtifactSetKey } from "../types/artifact-set";
+import type { TArtifactSetKey } from "../artifact-sets/types";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn, publicSrc } from "@/lib/utils";
-import artifactSets from "../artifact-sets";
+import artifactSets from "../artifact-sets/data";
 import Paths from "@/constants/paths";
 
-export function artifactSetByKey(key: ArtifactSetKey) {
+export function artifactSetByKey(key: TArtifactSetKey) {
   const artifactSet = artifactSets[key];
 
   if (artifactSet) {

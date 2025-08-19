@@ -5,12 +5,12 @@ import Paths from "@/constants/paths";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
-import { getArtifactSet } from "@/database";
+import { getArtifactSet } from "@/database/artifact-sets";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { ArtifactSetRecommendationsProps } from "./types";
-import type { ArtifactSetKey } from "@/database/types/artifact-set";
+import type { TArtifactSetKey } from "@/database/artifact-sets/types";
 
-async function ArtifactSetBage({ artifactSetKey }: { artifactSetKey: ArtifactSetKey }) {
+async function ArtifactSetBage({ artifactSetKey }: { artifactSetKey: TArtifactSetKey }) {
   const artifactSet = await getArtifactSet(artifactSetKey);
 
   return (

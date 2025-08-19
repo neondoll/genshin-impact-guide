@@ -1,6 +1,5 @@
-import { CharacterKeys } from "../enums/character";
+import { CharacterKeys } from "../characters/enums";
 import { ElementKeys } from "../enums/element";
-import type { CharacterKey } from "../types/character";
 import type { CharacterRecommendations } from "../types/character-recommendations";
 
 export default {
@@ -103,4 +102,4 @@ export default {
   [CharacterKeys.Yoimiya]: (await import("./yoimiya-recommendations")).default,
   [CharacterKeys.YunJin]: (await import("./yun_jin-recommendations")).default,
   [CharacterKeys.Zhongli]: (await import("./zhongli-recommendations")).default,
-} as Record<CharacterKey, CharacterRecommendations>;
+} as Record<CharacterRecommendations["character_key"], CharacterRecommendations>;

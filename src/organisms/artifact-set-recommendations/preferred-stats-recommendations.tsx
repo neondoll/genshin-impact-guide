@@ -1,8 +1,8 @@
-import { ArtifactSlotKeys } from "@/database/enums/artifact-slot";
+import type { PreferredStatsRecommendationsProps } from "./types";
+import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
 import { Badge } from "@/components/ui/badge";
 import { getStat, getStats } from "@/database";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import type { PreferredStatsRecommendationsProps } from "./types";
 
 export default async function PreferredStatsRecommendations({ recommendations }: PreferredStatsRecommendationsProps) {
   const recommendationsKeys = Object.keys(recommendations) as (keyof typeof recommendations)[];

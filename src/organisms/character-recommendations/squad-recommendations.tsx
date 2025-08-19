@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 
-import Paths from "@/constants/paths";
-import { Badge } from "@/components/ui/badge";
-import { getCharacter, getElement } from "@/database";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import type { SquadRecommendationsItemProps, SquadRecommendationsProps } from "./types";
+import { Badge } from "@/components/ui/badge";
+import { getCharacter } from "@/database/characters";
+import { getElement } from "@/database";
+import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import Paths from "@/constants/paths";
 
 async function SquadRecommendationsItem({ item }: { item: SquadRecommendationsItemProps }) {
   switch (item.type) {

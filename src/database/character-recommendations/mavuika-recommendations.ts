@@ -1,12 +1,12 @@
-import characters from "../characters";
-import { ArtifactSetKeys } from "../enums/artifact-set";
-import { ArtifactSlotKeys } from "../enums/artifact-slot";
-import { CharacterKeys } from "../enums/character";
-import { CharacterRoleKeys } from "../enums/character-role";
+import type { CharacterRecommendations } from "../types/character-recommendations";
+import { ArtifactSetKeys } from "../artifact-sets/enums";
+import { ArtifactSlotKeys } from "../artifact-slots/enums";
+import { CharacterKeys } from "../characters/enums";
+import { CharacterRoleKeys } from "../character-roles/enums";
 import { StatKeys } from "../enums/stat";
 import { TalentKeys } from "../enums/talent";
 import { WeaponKeys } from "../enums/weapon";
-import type { CharacterRecommendations } from "../types/character-recommendations";
+import characters from "../characters/data";
 
 type GameVariantkey = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 

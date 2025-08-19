@@ -1,48 +1,15 @@
-import type { ArtifactSet } from "./types/artifact-set";
-import type { ArtifactSlot } from "./types/artifact-slot";
-import type { Character } from "./types/character";
-import type { CharacterRoleKey } from "./types/character-role";
 import type { ElementKey } from "./types/element";
+import type { ICharacter } from "./characters/types";
 import type { RegionKey } from "./types/region";
 import type { Stat } from "./types/stat";
 import type { TalentKey } from "./types/talent";
 import type { Weapon } from "./types/weapon";
 import type { WeaponTypeKey } from "./types/weapon-type";
 
-export async function getArtifactSet(key: ArtifactSet["key"]) {
-  return (await import("./artifact-sets")).default[key];
-}
-
-export async function getArtifactSetRecommendations(key: ArtifactSet["key"]) {
-  const data = (await import("./artifact-sets-recommendations")).default;
-
-  return key in data ? data[key] : undefined;
-}
-
-export async function getArtifactSets() {
-  return Object.values((await import("./artifact-sets")).default).sort(sortArtifactSets);
-}
-
-export async function getArtifactSlot(key: ArtifactSlot["key"]) {
-  return (await import("./artifact-slots")).default[key];
-}
-
-export async function getCharacter(key: Character["key"]) {
-  return (await import("./characters")).default[key];
-}
-
-export async function getCharacterRecommendations(key: Character["key"]) {
+export async function getCharacterRecommendations(key: ICharacter["key"]) {
   const data = (await import("./character-recommendations")).default;
 
   return key in data ? data[key] : undefined;
-}
-
-export async function getCharacterRole(key: CharacterRoleKey) {
-  return (await import("./character-roles")).default[key];
-}
-
-export async function getCharacters() {
-  return Object.values((await import("./characters")).default).sort(sortCharacters);
 }
 
 export async function getElement(key: ElementKey) {
@@ -99,21 +66,6 @@ export async function getWeaponType(key: WeaponTypeKey) {
 
 export async function getWeaponTypes() {
   return (await import("./weapon-types")).default;
-}
-
-export function sortArtifactSets(a: ArtifactSet, b: ArtifactSet) {
-  const aMaxRarity = Math.max(...a.rarities);
-  const bMaxRarity = Math.max(...b.rarities);
-
-  return aMaxRarity === bMaxRarity ? a.name.localeCompare(b.name) : bMaxRarity - aMaxRarity;
-}
-
-export function sortArtifactSlots(a: ArtifactSlot, b: ArtifactSlot) {
-  return a.sort_by - b.sort_by;
-}
-
-export function sortCharacters(a: Character, b: Character) {
-  return a.rarity === b.rarity ? a.name.localeCompare(b.name) : b.rarity - a.rarity;
 }
 
 export function sortStats(a: Stat, b: Stat) {

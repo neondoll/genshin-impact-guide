@@ -1,25 +1,25 @@
-import { ArtifactSlotKeys } from "../enums/artifact-slot";
-import type { ArtifactSetKey } from "./artifact-set";
-import type { CharacterKey } from "./character";
 import type { ElementKey } from "./element";
 import type { StatKey } from "./stat";
+import type { TArtifactSetKey } from "../artifact-sets/types";
+import type { TCharacterKey } from "../characters/types";
 import type { TalentKey } from "./talent";
 import type { VideoSource } from "./video-source";
 import type { WeaponKey } from "./weapon";
+import { ArtifactSlotKeys } from "../artifact-slots/enums";
 
-type _CharacterArtifactSetRecommendation = {
+interface _CharacterArtifactSetRecommendation {
   is_better?: boolean;
   percent?: number;
   description?: string;
   notes?: string[];
-};
-
-interface CharacterArtifactSetRecommendationWithkey extends _CharacterArtifactSetRecommendation {
-  key: ArtifactSetKey;
 }
 
-interface CharacterArtifactSetRecommendationWithkeys extends _CharacterArtifactSetRecommendation {
-  keys: [ArtifactSetKey, ArtifactSetKey];
+interface CharacterArtifactSetRecommendationWithKey extends _CharacterArtifactSetRecommendation {
+  key: TArtifactSetKey;
+}
+
+interface CharacterArtifactSetRecommendationWithKeys extends _CharacterArtifactSetRecommendation {
+  keys: [TArtifactSetKey, TArtifactSetKey];
 }
 
 type CharacterArtifactRecommendations = {
@@ -36,7 +36,7 @@ type CharacterArtifactStatRecommendation = {
 };
 type CharacterArtifactStatRecommendations = Record<typeof ArtifactSlotKeys["Sands" | "Goblet" | "Circlet"] | "additional", CharacterArtifactStatRecommendation[]>;
 type CharacterSquadElementRecommendation = { type: "element"; key: ElementKey };
-type CharacterSquadCharacterRecommendation = { type: "character"; key: CharacterKey };
+type CharacterSquadCharacterRecommendation = { type: "character"; key: TCharacterKey };
 type CharacterTalentLevelingRecommendation = { key: TalentKey; priority: string };
 type CharacterWeaponRecommendation = {
   key: WeaponKey;
@@ -48,10 +48,10 @@ type CharacterWeaponRecommendation = {
 type CharacterRecommendationSquadBestTeammates = CharacterSquadItemRecommendation[];
 
 export type CharacterArtifactSetRecommendation
-  = CharacterArtifactSetRecommendationWithkey | CharacterArtifactSetRecommendationWithkeys;
+  = CharacterArtifactSetRecommendationWithKey | CharacterArtifactSetRecommendationWithKeys;
 export type CharacterRecommendations = {
   artifacts?: CharacterArtifactRecommendations;
-  character_key: CharacterKey;
+  character_key: TCharacterKey;
   first_constellation_or_signature_weapon?: string;
   key_constellations?: (1 | 2 | 3 | 4 | 5 | 6)[];
   reference_point?: CharacterReferencePointRecommendations | Record<string, CharacterReferencePointRecommendations>;

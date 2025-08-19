@@ -1,18 +1,19 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import Container from "@/components/container";
-import Paths from "@/constants/paths";
+import type { ElementKey } from "@/database/types/element";
+import type { Rarity } from "@/database/types/rarity";
+import type { WeaponTypeKey } from "@/database/types/weapon-type";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { cn, publicImageSrc } from "@/lib/utils";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
-import { getCharacters, getElements, getWeaponTypes } from "@/database";
-import type { ElementKey } from "@/database/types/element";
-import type { Rarity } from "@/database/types/rarity";
-import type { WeaponTypeKey } from "@/database/types/weapon-type";
+import { getCharacters } from "@/database/characters";
+import { getElements, getWeaponTypes } from "@/database";
+import Container from "@/components/container";
+import Paths from "@/constants/paths";
 
 export type CharactersLoaderData = {
   characters: Awaited<ReturnType<typeof getCharacters>>;
