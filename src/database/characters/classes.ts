@@ -4,10 +4,10 @@ import { CharacterKeys } from "./enums";
 import { CharacterRoleKeys } from "../character-roles/enums";
 import { ElementKeys } from "../elements/enums";
 import { getCharacterRecommendations } from "../characters-recommendations";
-import { getCharacterRole } from "../character-roles";
 import { getElement } from "../elements";
 import { getWeaponType } from "../weapon-types";
 import { publicImageSrc } from "@/lib/utils";
+import { selectCharacterRoleById } from "@/features/character-roles/characterRolesSelectors";
 import { WeaponKeys } from "../weapons/enums";
 import { WeaponTypeKeys } from "../weapon-types/enums";
 
@@ -79,12 +79,12 @@ export class CCharacter implements ICharacter {
     return getCharacterRecommendations(this.key);
   }
 
-  async getRoles() {
+  getRoles() {
     if (this._role_keys) {
       const roles: ICharacterRole[] = [];
 
       for (const key of this._role_keys) {
-        roles.push(await getCharacterRole(key));
+        roles.push(selectCharacterRoleById(key));
       }
 
       return roles;

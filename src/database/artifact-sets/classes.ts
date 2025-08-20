@@ -1,15 +1,13 @@
 import type { IArtifactSet, IArtifactSetSlot } from "./types";
 import type { TArtifactSlotKey } from "../artifact-slots/types";
 import { ArtifactSlotKeys } from "../artifact-slots/enums";
-import { getArtifactSetRecommendations } from "../artifact-sets-recommendations";
-import { getArtifactSlot } from "../artifact-slots";
 import { publicImageSrc } from "@/lib/utils";
 
 export class CArtifactSet implements IArtifactSet {
   readonly key: IArtifactSet["key"];
   readonly name: IArtifactSet["name"];
   readonly rarities: IArtifactSet["rarities"];
-  readonly source: IArtifactSet["source"];
+  readonly sources: IArtifactSet["sources"];
   readonly item_bonuses: IArtifactSet["item_bonuses"];
   readonly slots: IArtifactSet["slots"];
 
@@ -19,14 +17,14 @@ export class CArtifactSet implements IArtifactSet {
     key: IArtifactSet["key"],
     name: IArtifactSet["name"],
     rarities: IArtifactSet["rarities"],
-    source: IArtifactSet["source"],
+    sources: IArtifactSet["sources"],
     itemBonuses: IArtifactSet["item_bonuses"],
     slots: Record<TArtifactSlotKey, IArtifactSetSlot["name"] | undefined>,
   ) {
     this.key = key;
     this.name = name;
     this.rarities = rarities;
-    this.source = source;
+    this.sources = sources;
     this.item_bonuses = itemBonuses;
     this.slots = {
       [ArtifactSlotKeys.Flower]: undefined,
@@ -53,9 +51,9 @@ export class CArtifactSet implements IArtifactSet {
       || this.slots[ArtifactSlotKeys.Circlet]?.image_src;
   }
 
-  getRecommendations() {
-    return getArtifactSetRecommendations(this.key);
-  }
+  // getRecommendations() {
+  //   return artifactSetsRecommendationsSelectors.selectById(store.getState(), this.key);
+  // }
 
   static init(params: ConstructorParameters<typeof CArtifactSet>) {
     return new CArtifactSet(...params);
@@ -77,9 +75,9 @@ export class CArtifactSetSlot implements IArtifactSetSlot {
     this.image_src = imageSrc;
   }
 
-  async getSlot() {
-    return await getArtifactSlot(this.key);
-  }
+  // getSlot() {
+  //   return selectArtifactSlotById(this.key);
+  // }
 
   static init(params: ConstructorParameters<typeof CArtifactSetSlot>) {
     return new CArtifactSetSlot(...params);

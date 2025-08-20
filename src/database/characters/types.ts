@@ -25,7 +25,9 @@ export interface ICharacter {
 
   getElement: () => Promise<IElement>;
   getRecommendations: () => Promise<ICharacterRecommendations | undefined>;
-  getRoles: () => Promise<ICharacterRole[] | undefined>;
+
+  getRoles(): ICharacterRole[] | undefined;
+
   getWeaponType: () => Promise<IWeaponType>;
 }
 

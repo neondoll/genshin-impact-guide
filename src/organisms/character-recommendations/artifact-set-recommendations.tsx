@@ -6,15 +6,15 @@ import type { TArtifactSetKey } from "@/database/artifact-sets/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
-import { getArtifactSet } from "@/database/artifact-sets";
+import { selectArtifactSetById } from "@/features/artifact-sets/artifactSetsSelectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Paths from "@/constants/paths";
 
 function ArtifactSetBadge({ artifactSetKey }: { artifactSetKey: TArtifactSetKey }) {
-  const [artifactSet, setArtifactSet] = useState<Awaited<ReturnType<typeof getArtifactSet>>>();
+  const [artifactSet, setArtifactSet] = useState<ReturnType<typeof selectArtifactSetById>>();
 
   useEffect(() => {
-    getArtifactSet(artifactSetKey).then(setArtifactSet);
+    setArtifactSet(selectArtifactSetById(artifactSetKey));
   }, [artifactSetKey]);
 
   return artifactSet !== undefined && (
@@ -29,10 +29,7 @@ function ArtifactSetBadge({ artifactSetKey }: { artifactSetKey: TArtifactSetKey 
       <Link to={Paths.ArtifactSet.to(artifactSet.key)}>
         <img
           alt={artifactSet.name}
-          className={cn(
-            "shrink-0 size-12 rounded-md rounded-br-2xl",
-            backgroundClassByRarity(...artifactSet.rarities),
-          )}
+          className={cn("shrink-0 size-12 rounded-md rounded-br-2xl", backgroundClassByRarity(...artifactSet.rarities))}
           src={artifactSet.image_src}
         />
         <span children={artifactSet.name} />

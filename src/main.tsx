@@ -1,13 +1,15 @@
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import { StrictMode } from "react";
 
+import { store } from "./app/store";
 import { ThemeProvider } from "./components/theme-provider";
-import ArtifactSet, { loader as artifactSetLoader } from "./routes/artifact-set";
-import ArtifactSets, { loader as artifactSetsLoader } from "./routes/artifact-sets";
+import ArtifactSet from "./routes/artifact-set";
+import ArtifactSets from "./routes/artifact-sets";
 import Character, { loader as characterLoader } from "./routes/character";
 import Characters, { loader as charactersLoader } from "./routes/characters";
-import ErrorPage from "./error-page";
+// import ErrorPage from "./error-page";
 import Index from "./routes/index";
 import Paths from "./constants/paths";
 import Root from "./routes/root";
@@ -20,11 +22,11 @@ const router = createHashRouter([
   {
     path: Paths.Root.to,
     element: <Root />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Index /> },
-      { path: Paths.ArtifactSets.to, element: <ArtifactSets />, loader: artifactSetsLoader },
-      { path: Paths.ArtifactSet.to(":artifactSetKey"), element: <ArtifactSet />, loader: artifactSetLoader },
+      { path: Paths.ArtifactSets.to, element: <ArtifactSets /> },
+      { path: Paths.ArtifactSet.to(":artifactSetKey"), element: <ArtifactSet /> },
       { path: Paths.Characters.to, element: <Characters />, loader: charactersLoader },
       { path: Paths.Character.to(":characterKey"), element: <Character />, loader: characterLoader },
       // {
@@ -50,7 +52,9 @@ const router = createHashRouter([
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </ThemeProvider>
   </StrictMode>,
 );
