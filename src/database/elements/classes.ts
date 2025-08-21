@@ -1,7 +1,5 @@
 import type { IElement } from "./types";
-import { ElementKeys } from "./enums";
 import { publicImageSrc } from "@/lib/utils";
-import { RegionKeys } from "../regions/enums";
 
 export class CElement implements IElement {
   readonly key: IElement["key"];
@@ -13,15 +11,19 @@ export class CElement implements IElement {
   static PATH = "elements";
 
   constructor(
-    key: keyof typeof ElementKeys,
+    key: IElement["key"],
     name: IElement["name"],
-    regionKey: keyof typeof RegionKeys,
-    reactsWith: (keyof typeof ElementKeys)[],
+    regionKey: IElement["region_key"],
+    reactsWith: IElement["reacts_with"],
   ) {
-    this.key = ElementKeys[key];
+    this.key = key;
     this.name = name;
-    this.image_src = publicImageSrc(`${CElement.PATH}/${this.key}-84x84.png`);
-    this.region_key = RegionKeys[regionKey];
-    this.reacts_with = reactsWith.map(reactWith => ElementKeys[reactWith]);
+    this.image_src = publicImageSrc(`${CElement.PATH}/${key}-84x84.png`);
+    this.region_key = regionKey;
+    this.reacts_with = reactsWith;
+  }
+
+  static init(params: ConstructorParameters<typeof CElement>) {
+    return new CElement(...params);
   }
 }

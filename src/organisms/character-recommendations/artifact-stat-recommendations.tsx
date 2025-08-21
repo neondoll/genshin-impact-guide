@@ -1,28 +1,10 @@
 import { useEffect, useState } from "react";
 
 import type { ArtifactStatRecommendationsProps } from "./types";
-import type { TStatKey } from "@/database/stats/types";
 import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
-import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent } from "@/lib/utils";
-import { getStat } from "@/database/stats";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-
-function StatBadge({ statKey }: { statKey: TStatKey }) {
-  const [stat, setStat] = useState<Awaited<ReturnType<typeof getStat>>>();
-
-  useEffect(() => {
-    getStat(statKey).then(setStat);
-  }, [statKey]);
-
-  return stat !== undefined && (
-    <Badge
-      children={stat.abbr || stat.name}
-      className="flex justify-center w-full text-center text-pretty whitespace-normal"
-      variant="secondary"
-    />
-  );
-}
+import StatBadge from "@/features/stats/stat-badge";
 
 export default function ArtifactStatRecommendations({ recommendations }: ArtifactStatRecommendationsProps) {
   const [hasDescription, setHasDescription] = useState(false);

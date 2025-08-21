@@ -1,9 +1,8 @@
-import type { ICharacterRecommendations } from "../characters-recommendations/types";
-import type { ICharacterRole } from "../character-roles/types";
-import type { IElement } from "../elements/types";
-import type { IWeaponType } from "../weapon-types/types";
+import type { TCharacterRoleKey } from "../character-roles/types";
+import type { TElementKey } from "../elements/types";
 import type { TRarity } from "../rarities/types";
 import type { TWeaponKey } from "../weapons/types";
+import type { TWeaponTypeKey } from "../weapon-types/types";
 import { CharacterKeys } from "../characters/enums";
 
 export interface ICharacter {
@@ -13,22 +12,15 @@ export interface ICharacter {
   /* Редкость */
   rarity: TRarity;
   /* Оружие */
-  weapon_type_key: IWeaponType["key"];
+  weapon_type_key: TWeaponTypeKey;
   /* Элемент */
-  element_key: IElement["key"];
+  element_key: TElementKey;
   /* Архэ */
   arkhe?: TCharacterArkhe | TCharacterArkhe[];
   /* Роли */
-  role_keys?: ICharacterRole["key"][];
+  role_keys?: TCharacterRoleKey[];
   image_src: string;
   signature_weapon_key?: TWeaponKey;
-
-  getElement: () => Promise<IElement>;
-  getRecommendations: () => Promise<ICharacterRecommendations | undefined>;
-
-  getRoles(): ICharacterRole[] | undefined;
-
-  getWeaponType: () => Promise<IWeaponType>;
 }
 
 export type TCharacterArkhe = "Усия" | "Пневма";

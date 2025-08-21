@@ -1,5 +1,5 @@
+import { publicImageSrc } from "../lib/utils";
 import Paths from "./paths";
-import { publicImageSrc } from "@/lib/utils";
 
 export default [
   { ...Paths.Characters, image_src: publicImageSrc("characters-logo-85x84.png") },

@@ -7,21 +7,28 @@ import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
-import { cn, publicImageSrc } from "@/lib/utils";
-import { getCharacter } from "@/database/characters";
+import { cn } from "@/lib/utils";
+import { Container } from "@/components/container";
+import { selectCharacterById } from "@/features/characters/charactersSelectors";
+import {
+  selectCharacterRecommendationsById,
+} from "@/features/characters-recommendations/charactersRecommendationsSelectors";
+import { selectCharacterRolesByIds } from "@/features/character-roles/characterRolesSelectors";
+import { selectElementById } from "@/features/elements/elementsSelectors";
+import { selectWeaponTypeById } from "@/features/weapon-types/weaponTypesSelectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import CharacterRecommendations from "@/organisms/character-recommendations";
-import Container from "@/components/container";
 import Paths from "@/constants/paths";
+import Rarity from "@/features/rarities/rarity";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader({ params }: { params: Record<string, string | undefined> }) {
-  const character = await getCharacter(params.characterKey as TCharacterKey);
-  const characterElement = await character.getElement();
-  const characterRecommendations = await character.getRecommendations();
-  const characterRoles = await character.getRoles();
-  const characterWeaponType = await character.getWeaponType();
+export function loader({ params }: { params: Record<string, string | undefined> }) {
+  const character = selectCharacterById(params.characterKey as TCharacterKey);
+  const characterElement = selectElementById(character.element_key);
+  const characterRecommendations = selectCharacterRecommendationsById(character.key);
+  const characterRoles = character.role_keys ? selectCharacterRolesByIds(character.role_keys) : undefined;
+  const characterWeaponType = selectWeaponTypeById(character.weapon_type_key);
 
   return { character, characterElement, characterRecommendations, characterRoles, characterWeaponType };
 }
@@ -33,7 +40,7 @@ export default function Character() {
     characterRecommendations,
     characterRoles,
     characterWeaponType,
-  } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+  } = useLoaderData<ReturnType<typeof loader>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -67,11 +74,7 @@ export default function Character() {
             <h1 children={Paths.Character.title(character)} className="text-3xl" />
             <img alt={characterElement.name} className="size-6" src={characterElement.image_src} />
           </div>
-          <div className="flex gap-x-1">
-            {Array.from({ length: character.rarity }, (_, i) => i).map(index => (
-              <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
-            ))}
-          </div>
+          <Rarity length={character.rarity} />
         </div>
       </div>
       <Card>

@@ -1,7 +1,6 @@
-import type { IArtifactSet } from "@/database/artifact-sets/types";
-import type { ICharacter } from "@/database/characters/types";
-import type { IElement } from "@/database/elements/types";
-import type { IWeapon } from "@/database/weapons/types";
+import type { IArtifactSet } from "../database/artifact-sets/types";
+import type { ICharacter } from "../database/characters/types";
+import type { IWeapon } from "../database/weapons/types";
 
 export default {
   ArtifactSet: {
@@ -14,10 +13,6 @@ export default {
     to: (key: ICharacter["key"] | string) => `/characters/${key}`,
   },
   Characters: { title: "Персонажи", to: "/characters" },
-  Element: {
-    title: (item: IElement) => item.name,
-    to: (key: IElement["key"] | string) => `/elements/${key}`,
-  },
   Resources: { title: "Материалы", to: "/resources" },
   Root: { title: "Главная", to: "/" },
   Weapon: {

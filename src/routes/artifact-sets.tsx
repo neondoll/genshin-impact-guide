@@ -1,16 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
+import { Container } from "@/components/container";
 import { selectArtifactSetsAll } from "@/features/artifact-sets/artifactSetsSelectors";
-import Container from "@/components/container";
 import Paths from "@/constants/paths";
 
-export default function ArtifactSets() {
+/* eslint-disable-next-line react-refresh/only-export-components */
+export function loader() {
   const artifactSets = selectArtifactSetsAll();
+
+  return { artifactSets };
+}
+
+export default function ArtifactSets() {
+  const { artifactSets } = useLoaderData<ReturnType<typeof loader>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">

@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import artifactSetsRecommendationsSlice
-  from "../features/artifact-sets-recommendations/artifactSetsRecommendationsSlice";
-import artifactSetsSlice from "../features/artifact-sets/artifactSetsSlice";
-import artifactSlotsSlice from "../features/artifact-slots/artifactSlotsSlice";
-import characterRolesSlice from "../features/character-roles/characterRolesSlice";
-import statsSlice from "../features/stats/statsSlice";
+import {
+  artifactSetsRecommendationsSlice, artifactSetsSlice, artifactSlotsSlice, characterRolesSlice,
+  charactersRecommendationsSlice, charactersSlice, dungeonsSlice, elementsSlice, raritiesSlice, regionsSlice,
+  statsSlice, talentsSlice, tierListsWeaponsSlice, weaponsSlice, weaponTypesSlice,
+} from "../features/slices";
 
 export const store = configureStore({
   reducer: {
@@ -13,9 +12,19 @@ export const store = configureStore({
     artifactSetsRecommendations: artifactSetsRecommendationsSlice.reducer,
     artifactSlots: artifactSlotsSlice.reducer,
     characterRoles: characterRolesSlice.reducer,
+    characters: charactersSlice.reducer,
+    charactersRecommendations: charactersRecommendationsSlice.reducer,
+    dungeons: dungeonsSlice.reducer,
+    elements: elementsSlice.reducer,
+    rarities: raritiesSlice.reducer,
+    regions: regionsSlice.reducer,
     stats: statsSlice.reducer,
+    talents: talentsSlice.reducer,
+    tierListsWeapons: tierListsWeaponsSlice.reducer,
+    weapons: weaponsSlice.reducer,
+    weaponTypes: weaponTypesSlice.reducer,
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;

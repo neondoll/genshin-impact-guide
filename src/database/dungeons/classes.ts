@@ -10,4 +10,8 @@ export class CDungeon implements IDungeon {
     this.name = name;
     this.artifact_set_keys = artifactSetKeys;
   }
+
+  static init(params: ConstructorParameters<typeof CDungeon>) {
+    return new CDungeon(...params);
+  }
 }

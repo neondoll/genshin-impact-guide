@@ -8,4 +8,12 @@ export function selectCharacterRoleById(id: TCharacterRoleKey) {
   return characterRolesSelectors.selectById(store.getState(), id);
 }
 
+export function selectCharacterRolesAll() {
+  return characterRolesSelectors.selectAll(store.getState());
+}
+
+export function selectCharacterRolesByIds(ids: TCharacterRoleKey[]) {
+  return selectCharacterRolesAll().filter(value => ids.includes(value.key));
+}
+
 export default characterRolesSelectors;

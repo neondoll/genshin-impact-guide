@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import type { ICharacterTalentLevelingRecommendation } from "@/database/characters-recommendations/types";
 import type { TalentLevelingRecommendationsProps } from "./types";
-import { getTalent } from "@/database/talents";
+import { selectTalentById } from "@/features/talents/talentsSelectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -23,10 +23,10 @@ function TalentLevelingRecommendationsTable({ recommendations }: {
 function TalentLevelingRecommendationsTableRow({ recommendation }: {
   recommendation: ICharacterTalentLevelingRecommendation;
 }) {
-  const [talent, setTalent] = useState<Awaited<ReturnType<typeof getTalent>>>();
+  const [talent, setTalent] = useState<ReturnType<typeof selectTalentById>>();
 
   useEffect(() => {
-    getTalent(recommendation.key).then(setTalent);
+    setTalent(selectTalentById(recommendation.key));
   }, [recommendation]);
 
   return talent !== undefined && (

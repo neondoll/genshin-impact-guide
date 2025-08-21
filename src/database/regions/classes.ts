@@ -1,6 +1,5 @@
 import type { IRegion } from "./types";
 import { publicImageSrc } from "@/lib/utils";
-import { RegionKeys } from "./enums";
 
 export class CRegion implements IRegion {
   readonly key: IRegion["key"];
@@ -9,9 +8,13 @@ export class CRegion implements IRegion {
 
   static PATH = "regions";
 
-  constructor(key: keyof typeof RegionKeys, name: IRegion["name"], imageName?: string) {
-    this.key = RegionKeys[key];
+  constructor(key: IRegion["key"], name: IRegion["name"], imageName?: string) {
+    this.key = key;
     this.name = name;
     this.emblem_image_src = imageName ? publicImageSrc(`${CRegion.PATH}/${imageName}`) : undefined;
+  }
+
+  static init(params: ConstructorParameters<typeof CRegion>) {
+    return new CRegion(...params);
   }
 }

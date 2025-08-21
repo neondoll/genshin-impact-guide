@@ -6,7 +6,7 @@ import type { WeaponRecommendationsProps } from "./types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
-import { getWeapon } from "@/database/weapons";
+import { selectWeaponById } from "@/features/weapons/weaponsSelectors";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -16,10 +16,10 @@ function WeaponBadge({ postfix, refinement, signatureWeaponKey, weaponKey }: {
   signatureWeaponKey: WeaponRecommendationsProps["character"]["signature_weapon_key"];
   weaponKey: TWeaponKey;
 }) {
-  const [weapon, setWeapon] = useState<Awaited<ReturnType<typeof getWeapon>>>();
+  const [weapon, setWeapon] = useState<ReturnType<typeof selectWeaponById>>();
 
   useEffect(() => {
-    getWeapon(weaponKey).then(setWeapon);
+    setWeapon(selectWeaponById(weaponKey));
   }, [weaponKey]);
 
   return weapon !== undefined && (

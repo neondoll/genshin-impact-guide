@@ -1,10 +1,21 @@
 import { NavLink } from "react-router-dom";
 
-import MenuItems from "@/constants/menu-items";
 import {
-  Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton,
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
   SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
 } from "./ui/sidebar";
+import MenuItems from "../constants/menu-items";
+
+export const AppSidebarProvider = SidebarProvider;
+export const AppSidebarTrigger = SidebarTrigger;
 
 export function AppSidebar() {
   return (

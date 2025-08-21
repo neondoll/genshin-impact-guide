@@ -1,13 +1,13 @@
 import { ChevronDownIcon } from "lucide-react";
 
-import CharacterRecommendations from "./character-recommendations";
-import PreferredStatsRecommendations from "./preferred-stats-recommendations";
-import VideoSources from "../video-sources";
+import type { ArtifactSetRecommendationsProps } from "./types";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import type { ArtifactSetRecommendationsProps } from "./types";
+import CharacterRecommendations from "./character-recommendations";
+import PreferredStatsRecommendations from "./preferred-stats-recommendations";
+import VideoSources from "../video-sources";
 
 export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
   const showAccordion = recommendations.characters !== undefined || recommendations.preferred_stats !== undefined || recommendations.video_sources !== undefined;

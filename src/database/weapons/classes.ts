@@ -1,8 +1,5 @@
 import type { IWeapon } from "./types";
 import { publicImageSrc } from "@/lib/utils";
-import { StatKeys } from "../stats/enums";
-import { WeaponKeys } from "./enums";
-import { WeaponTypeKeys } from "../weapon-types/enums";
 
 export class CWeapon implements IWeapon {
   readonly key: IWeapon["key"];
@@ -17,23 +14,27 @@ export class CWeapon implements IWeapon {
   static PATH = "weapons";
 
   constructor(
-    key: keyof typeof WeaponKeys,
+    key: IWeapon["key"],
     name: IWeapon["name"],
     rarity: IWeapon["rarity"],
     source: IWeapon["source"],
-    typeKey: keyof typeof WeaponTypeKeys,
+    typeKey: IWeapon["type_key"],
     baseAtk: IWeapon["base_atk"],
-    secondaryStatsKey: keyof typeof StatKeys,
+    secondaryStatsKey: IWeapon["secondary_stats"]["key"],
     secondaryStats: Omit<IWeapon["secondary_stats"], "key">,
     imageName: string,
   ) {
-    this.key = WeaponKeys[key];
+    this.key = key;
     this.name = name;
     this.rarity = rarity;
     this.source = source;
-    this.type_key = WeaponTypeKeys[typeKey];
+    this.type_key = typeKey;
     this.base_atk = baseAtk;
-    this.secondary_stats = { key: StatKeys[secondaryStatsKey], ...secondaryStats };
+    this.secondary_stats = { key: secondaryStatsKey, ...secondaryStats };
     this.image_src = publicImageSrc(`${CWeapon.PATH}/${imageName}`);
+  }
+
+  static init(params: ConstructorParameters<typeof CWeapon>) {
+    return new CWeapon(...params);
   }
 }

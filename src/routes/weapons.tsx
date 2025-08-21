@@ -8,31 +8,30 @@ import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import { cn, publicImageSrc } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { Container } from "@/components/container";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
-import { getWeapons } from "@/database/weapons";
-import { getWeaponTypes } from "@/database/weapon-types";
-import Container from "@/components/container";
+import { selectRaritiesByIds } from "@/features/rarities/raritiesSelectors";
+import { selectWeaponTypesAll } from "@/features/weapon-types/weaponTypesSelectors";
+import { selectWeaponsAll } from "@/features/weapons/weaponsSelectors";
 import Paths from "@/constants/paths";
+import Rarity from "@/features/rarities/rarity";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader() {
-  const weapons = await getWeapons();
-  const weaponTypes = await getWeaponTypes();
+export function loader() {
+  const weapons = selectWeaponsAll();
+  const rarities = selectRaritiesByIds(weapons.map(weapon => weapon.rarity));
+  const weaponTypes = selectWeaponTypesAll();
 
-  return { weapons, weaponTypes };
+  return { rarities, weapons, weaponTypes };
 }
 
 export default function Weapons() {
-  const { weapons, weaponTypes } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+  const { rarities, weapons, weaponTypes } = useLoaderData<ReturnType<typeof loader>>();
   const [filterRarities, setFilterRarities] = useState<TRarity[]>([]);
   const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<TWeaponTypeKey[]>([]);
   const [filteredWeapons, setFilteredWeapons] = useState<typeof weapons>([]);
-  const [rarities, setRarities] = useState<TRarity[]>([]);
 
-  useEffect(() => {
-    setRarities(Array.from(new Set(weapons.map(weapon => weapon.rarity))).sort((a, b) => b - a));
-  }, [weapons]);
   useEffect(() => {
     let filteredWeapons = weapons;
 
@@ -71,7 +70,7 @@ export default function Weapons() {
       <Filter>
         <FilterGroup label="Тип">
           <div className="flex flex-wrap gap-3">
-            {Object.values(weaponTypes).map(weaponType => (
+            {weaponTypes.map(weaponType => (
               <FilterCheckbox
                 asChild
                 checked={filterWeaponTypeKeys.includes(weaponType.key)}
@@ -103,8 +102,9 @@ export default function Weapons() {
           <div className="flex flex-wrap gap-3">
             {rarities.map(rarity => (
               <FilterCheckbox
+                asChild
                 checked={filterRarities.includes(rarity)}
-                className="flex gap-x-0.5 align-center"
+                className="gap-x-0.5 align-center"
                 key={rarity}
                 name="rarities"
                 onChange={(event) => {
@@ -123,9 +123,7 @@ export default function Weapons() {
                 }}
                 value={rarity}
               >
-                {Array.from({ length: rarity }, (_, i) => i).map(index => (
-                  <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
-                ))}
+                <Rarity length={rarity} />
               </FilterCheckbox>
             ))}
           </div>

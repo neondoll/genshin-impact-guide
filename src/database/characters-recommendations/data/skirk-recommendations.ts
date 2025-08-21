@@ -95,9 +95,9 @@ export default {
   squads: {
     general_template: [
       { type: "character", key: CharacterKeys.Skirk },
-      { type: "element", key: ElementKeys["💧"] },
-      { type: "element", key: ElementKeys["❄️"] },
-      [{ type: "element", key: ElementKeys["❄️"] }, { type: "element", key: ElementKeys["💧"] }],
+      { type: "element", key: ElementKeys.Hydro },
+      { type: "element", key: ElementKeys.Cryo },
+      [{ type: "element", key: ElementKeys.Cryo }, { type: "element", key: ElementKeys.Hydro }],
     ],
     best_teammates: [
       { type: "character", key: CharacterKeys.Escoffier },

@@ -1,5 +1,4 @@
 import type { IArtifactSlot } from "./types";
-import { ArtifactSlotKeys } from "./enums";
 import { publicImageSrc } from "@/lib/utils";
 
 export class CArtifactSlot implements IArtifactSlot {
@@ -11,13 +10,13 @@ export class CArtifactSlot implements IArtifactSlot {
   static PATH = "artifact-slots";
 
   constructor(
-    key: keyof typeof ArtifactSlotKeys,
+    key: IArtifactSlot["key"],
     name: IArtifactSlot["name"],
     sortBy: IArtifactSlot["sort_by"],
   ) {
-    this.key = ArtifactSlotKeys[key];
+    this.key = key;
     this.name = name;
-    this.image_src = publicImageSrc(`${CArtifactSlot.PATH}/${this.key}-64x64.png`);
+    this.image_src = publicImageSrc(`${CArtifactSlot.PATH}/${key}-64x64.png`);
     this.sort_by = sortBy;
   }
 

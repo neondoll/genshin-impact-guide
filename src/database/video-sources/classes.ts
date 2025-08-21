@@ -1,4 +1,4 @@
-import type { IVideoSource } from "@/database/video-sources/types.ts";
+import type { IVideoSource } from "./types";
 
 export class CVideoSource implements IVideoSource {
   private _vk_url: IVideoSource["vk_url"];

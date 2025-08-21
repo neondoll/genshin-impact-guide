@@ -1,6 +1,5 @@
 import type { IWeaponType } from "./types";
 import { publicImageSrc } from "@/lib/utils";
-import { WeaponTypeKeys } from "./enums";
 
 export class CWeaponType implements IWeaponType {
   readonly key: IWeaponType["key"];
@@ -11,11 +10,15 @@ export class CWeaponType implements IWeaponType {
 
   static PATH = "weapon-types";
 
-  constructor(key: keyof typeof WeaponTypeKeys, name: IWeaponType["name"], abbr: IWeaponType["abbr"]) {
-    this.key = WeaponTypeKeys[key];
+  constructor(key: IWeaponType["key"], name: IWeaponType["name"], abbr: IWeaponType["abbr"]) {
+    this.key = key;
     this.name = name;
     this.abbr = abbr;
-    this.image_src = publicImageSrc(`${CWeaponType.PATH}/${this.key}-128x128.png`);
-    this.icon_src = publicImageSrc(`${CWeaponType.PATH}/${this.key}-icon-20x20.png`);
+    this.image_src = publicImageSrc(`${CWeaponType.PATH}/${key}-128x128.png`);
+    this.icon_src = publicImageSrc(`${CWeaponType.PATH}/${key}-icon-20x20.png`);
+  }
+
+  static init(params: ConstructorParameters<typeof CWeaponType>) {
+    return new CWeaponType(...params);
   }
 }

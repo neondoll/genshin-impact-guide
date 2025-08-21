@@ -1,12 +1,15 @@
 import type { IFoodType } from "./types";
-import { FoodTypeKeys } from "./enums";
 
 export class CFoodType implements IFoodType {
   readonly key: IFoodType["key"];
   readonly name: IFoodType["name"];
 
-  constructor(key: keyof typeof FoodTypeKeys, name: IFoodType["name"]) {
-    this.key = FoodTypeKeys[key];
+  constructor(key: IFoodType["key"], name: IFoodType["name"]) {
+    this.key = key;
     this.name = name;
+  }
+
+  static init(params: ConstructorParameters<typeof CFoodType>) {
+    return new CFoodType(...params);
   }
 }

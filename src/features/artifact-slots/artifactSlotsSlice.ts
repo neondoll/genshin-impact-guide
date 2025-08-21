@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import artifactSlotsAdapter from "./artifactSlotsAdapter";
 
-export default createSlice({
+const artifactSlotsSlice = createSlice({
   name: "artifactSlots",
-  initialState: artifactSlotsAdapter.getInitialState({ loading: "idle" }, (await import("@/database/artifact-slots/data.ts")).default),
+  initialState: artifactSlotsAdapter.getInitialState({ loading: "idle" }, (await import("@/database/artifact-slots/data")).default),
   reducers: {},
 });
+
+export default artifactSlotsSlice;

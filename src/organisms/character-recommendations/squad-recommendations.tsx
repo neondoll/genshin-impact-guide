@@ -1,36 +1,16 @@
-import { Link } from "react-router-dom";
-
 import type { SquadRecommendationsProps } from "./types";
 import type { TCharacterSquadItemRecommendation } from "@/database/characters-recommendations/types";
-import { Badge } from "@/components/ui/badge";
-import { getCharacter } from "@/database/characters";
-import { getElement } from "@/database/elements";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import Paths from "@/constants/paths";
+import CharacterBadge from "@/features/characters/character-badge";
+import ElementCharacterBadge from "@/features/elements/element-character-badge";
 
-async function SquadRecommendationsItem({ item }: { item: TCharacterSquadItemRecommendation }) {
+function SquadRecommendationsItem({ item }: { item: TCharacterSquadItemRecommendation }) {
   switch (item.type) {
     case "character": {
-      const character = await getCharacter(item.key);
-
-      return (
-        <Badge asChild variant="secondary">
-          <Link to={Paths.Character.to(item.key)}>
-            <img alt={character.name} className="shrink-0 size-8 rounded-md" src={character.image_src} />
-            <span children={character.name} />
-          </Link>
-        </Badge>
-      );
+      return <CharacterBadge characterKey={item.key} />;
     }
     case "element": {
-      const element = await getElement(item.key);
-
-      return (
-        <Badge variant="secondary">
-          <img alt={element.name} className="shrink-0 size-8 rounded-md" src={element.image_src} />
-          <span children={`${element.name} герой`} />
-        </Badge>
-      );
+      return <ElementCharacterBadge elementKey={item.key} />;
     }
   }
 }

@@ -1,6 +1,6 @@
+import type { ComponentProps } from "react";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
 import { Slot } from "@radix-ui/react-slot";
-import type { ComponentProps } from "react";
 
 import { cn } from "@/lib/utils";
 

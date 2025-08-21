@@ -3,9 +3,9 @@ import { CWeaponType } from "./classes";
 import { WeaponTypeKeys } from "./enums";
 
 export default {
-  [WeaponTypeKeys["🏹"]]: new CWeaponType("🏹", "Стрелковое оружие", "Стрелковое"),
-  [WeaponTypeKeys["💥"]]: new CWeaponType("💥", "Катализатор", "Катализатор"),
-  [WeaponTypeKeys["🗡️"]]: new CWeaponType("🗡️", "Двуручное оружие", "Двуручное"),
-  [WeaponTypeKeys["🔱"]]: new CWeaponType("🔱", "Древковое оружие", "Древковое"),
-  [WeaponTypeKeys["⚔️"]]: new CWeaponType("⚔️", "Одноручное оружие", "Одноручное"),
+  [WeaponTypeKeys.Bow]: CWeaponType.init([WeaponTypeKeys.Bow, "Стрелковое оружие", "Стрелковое"]),
+  [WeaponTypeKeys.Catalyst]: CWeaponType.init([WeaponTypeKeys.Catalyst, "Катализатор", "Катализатор"]),
+  [WeaponTypeKeys.Claymore]: CWeaponType.init([WeaponTypeKeys.Claymore, "Двуручное оружие", "Двуручное"]),
+  [WeaponTypeKeys.Polearm]: CWeaponType.init([WeaponTypeKeys.Polearm, "Древковое оружие", "Древковое"]),
+  [WeaponTypeKeys.Sword]: CWeaponType.init([WeaponTypeKeys.Sword, "Одноручное оружие", "Одноручное"]),
 } as Record<IWeaponType["key"], IWeaponType>;

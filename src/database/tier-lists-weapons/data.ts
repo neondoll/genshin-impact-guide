@@ -1,147 +1,284 @@
 import type { ITierListWeapons } from "./types";
 import { CTierListWeapons, CTierListWeaponsListItem } from "./classes";
 import { CVideoSource } from "../video-sources/classes";
-import { WeaponTypeKeys } from "../weapon-types/enums";
-import weaponTypes from "../weapon-types/data";
-
-const WeaponTypeNameByKey = (key: keyof typeof WeaponTypeKeys) => {
-  return weaponTypes[WeaponTypeKeys[key]].name;
-};
+import { TierListWeaponsKeys } from "./enums";
+import { WeaponKeys } from "../weapons/enums";
 
 export default {
-  "Крафтовое оружие": new CTierListWeapons(
+  [TierListWeaponsKeys.Crafted]: CTierListWeapons.init([
+    TierListWeaponsKeys.Crafted,
     [
-      new CTierListWeaponsListItem("Могут быть полезны", undefined, [
-        "EarthShaker", "FinaleOfTheDeep", "FlowingPurity", "FluteOfEzpitzal", "FootprintOfTheRainbow", "IronSting",
-        "KitainCrossSpear", "MappaMare", "PrototypeAmber", "RightfulReward", "RingOfYaxche", "SapwoodBlade",
-        "SongOfStillness", "TidalShadow", "Whiteblind",
+      CTierListWeaponsListItem.init([
+        "Могут быть полезны",
+        undefined,
+        [
+          WeaponKeys.EarthShaker, WeaponKeys.FinaleOfTheDeep, WeaponKeys.FlowingPurity, WeaponKeys.FluteOfEzpitzal,
+          WeaponKeys.FootprintOfTheRainbow, WeaponKeys.IronSting, WeaponKeys.KitainCrossSpear, WeaponKeys.MappaMare,
+          WeaponKeys.PrototypeAmber, WeaponKeys.RightfulReward, WeaponKeys.RingOfYaxche, WeaponKeys.SapwoodBlade,
+          WeaponKeys.SongOfStillness, WeaponKeys.TidalShadow, WeaponKeys.Whiteblind,
+        ],
       ]),
-      new CTierListWeaponsListItem("Трата ресурсов", undefined, [
-        "AmenomaKageuchi", "ChainBreaker", "CompoundBow", "CrescentPike", "DragonspineSpear", "ForestRegalia",
-        "Frostbearer", "FruitOfFulfillment", "HakushinRing", "Hamayumi", "KatsuragikiriNagamasa", "KingsSquire",
-        "Moonpiercer", "PrototypeArchaic", "PrototypeCrescent", "PrototypeRancour", "PrototypeStarglitter",
-        "SnowTombedStarsilver",
+      CTierListWeaponsListItem.init([
+        "Трата ресурсов",
+        undefined,
+        [
+          WeaponKeys.AmenomaKageuchi, WeaponKeys.ChainBreaker, WeaponKeys.CompoundBow, WeaponKeys.CrescentPike,
+          WeaponKeys.DragonspineSpear, WeaponKeys.ForestRegalia, WeaponKeys.Frostbearer, WeaponKeys.FruitOfFulfillment,
+          WeaponKeys.HakushinRing, WeaponKeys.Hamayumi, WeaponKeys.KatsuragikiriNagamasa, WeaponKeys.KingsSquire,
+          WeaponKeys.Moonpiercer, WeaponKeys.PrototypeArchaic, WeaponKeys.PrototypeCrescent,
+          WeaponKeys.PrototypeRancour, WeaponKeys.PrototypeStarglitter, WeaponKeys.SnowTombedStarsilver,
+        ],
       ]),
     ],
     new CVideoSource("Анимекул: Анализ ВСЕГО Крафтового Оружия | Тир-лист полезности [Genshin Impact]").setYoutubeUrl("https://youtu.be/CU-BxsNF-qw"),
-  ),
-  [WeaponTypeNameByKey("💥")]: new CTierListWeapons(
+  ]),
+  [TierListWeaponsKeys.Catalyst]: CTierListWeapons.init([
+    TierListWeaponsKeys.Catalyst,
     [
-      new CTierListWeaponsListItem("S", "Лучшие", [
-        "LostPrayerToTheSacredWinds", "StarcallersWatch", "SurfsUp", "TomeOfTheEternalFlow", "VividNotions",
+      CTierListWeaponsListItem.init([
+        "S",
+        "Лучшие",
+        [
+          WeaponKeys.LostPrayerToTheSacredWinds, WeaponKeys.StarcallersWatch, WeaponKeys.SurfsUp,
+          WeaponKeys.TomeOfTheEternalFlow, WeaponKeys.VividNotions,
+        ],
       ]),
-      new CTierListWeaponsListItem("A", "Хорошие", [
-        "AThousandFloatingDreams", "CashflowSupervision", "CranesEchoingCall", "KagurasVerity", "TheWidsith",
-        "ThrillingTalesOfDragonSlayers", "TulaytullahsRemembrance",
+      CTierListWeaponsListItem.init([
+        "A",
+        "Хорошие",
+        [
+          WeaponKeys.AThousandFloatingDreams, WeaponKeys.CashflowSupervision, WeaponKeys.CranesEchoingCall,
+          WeaponKeys.KagurasVerity, WeaponKeys.TheWidsith, WeaponKeys.ThrillingTalesOfDragonSlayers,
+          WeaponKeys.TulaytullahsRemembrance,
+        ],
       ]),
-      new CTierListWeaponsListItem("B", "Опциональные", [
-        "FavoniusCodex", "FlowingPurity", "PrototypeAmber", "RingOfYaxche", "SacrificialFragments", "SacrificialJade",
-        "SkywardAtlas", "WanderingEvenstar",
+      CTierListWeaponsListItem.init([
+        "B",
+        "Опциональные",
+        [
+          WeaponKeys.FavoniusCodex, WeaponKeys.FlowingPurity, WeaponKeys.PrototypeAmber, WeaponKeys.RingOfYaxche,
+          WeaponKeys.SacrificialFragments, WeaponKeys.SacrificialJade, WeaponKeys.SkywardAtlas,
+          WeaponKeys.WanderingEvenstar,
+        ],
       ]),
-      new CTierListWeaponsListItem("C", "Если нет вариантов лучше", [
-        "AshGravenDrinkingHorn", "BlackcliffAgate", "EverlastingMoonglow", "HakushinRing", "JadefallsSplendor",
-        "MemoryOfDust", "OathswornEye", "SolarPearl", "SunnyMorningSleepIn",
+      CTierListWeaponsListItem.init([
+        "C",
+        "Если нет вариантов лучше",
+        [
+          WeaponKeys.AshGravenDrinkingHorn, WeaponKeys.BlackcliffAgate, WeaponKeys.EverlastingMoonglow,
+          WeaponKeys.HakushinRing, WeaponKeys.JadefallsSplendor, WeaponKeys.MemoryOfDust, WeaponKeys.OathswornEye,
+          WeaponKeys.SolarPearl, WeaponKeys.SunnyMorningSleepIn,
+        ],
       ]),
-      new CTierListWeaponsListItem("D", "На крайний случай", [
-        "BalladOfTheBoundlessBlue", "DodocoTales", "MagicGuide", "MappaMare", "WineAndSong",
+      CTierListWeaponsListItem.init([
+        "D",
+        "На крайний случай",
+        [
+          WeaponKeys.BalladOfTheBoundlessBlue, WeaponKeys.DodocoTales, WeaponKeys.MagicGuide, WeaponKeys.MappaMare,
+          WeaponKeys.WineAndSong,
+        ],
       ]),
-      new CTierListWeaponsListItem("F", "Худшие", [
-        "EmeraldOrb", "EyeOfPerception", "Frostbearer", "FruitOfFulfillment", "OtherworldlyStory", "RoyalGrimoire",
-        "TwinNephrite", "WaveridingWhirl",
+      CTierListWeaponsListItem.init([
+        "F",
+        "Худшие",
+        [
+          WeaponKeys.EmeraldOrb, WeaponKeys.EyeOfPerception, WeaponKeys.Frostbearer, WeaponKeys.FruitOfFulfillment,
+          WeaponKeys.OtherworldlyStory, WeaponKeys.RoyalGrimoire, WeaponKeys.TwinNephrite, WeaponKeys.WaveridingWhirl,
+        ],
       ]),
     ],
     new CVideoSource("Miron MinMax: Лучшие и Худшие Катализаторы | Тир-лист | 2025").setVkUrl("https://vkvideo.ru/video-227044935_456239231"),
-  ),
-  [WeaponTypeNameByKey("🏹")]: new CTierListWeapons(
+  ]),
+  [TierListWeaponsKeys.Bow]: CTierListWeapons.init([
+    TierListWeaponsKeys.Bow,
     [
-      new CTierListWeaponsListItem("S", "Лучшие", ["AquaSimulacra", "ElegyForTheEnd", "FavoniusWarbow", "SkywardHarp"]),
-      new CTierListWeaponsListItem("A", "Отличные", [
-        "AstralVulturesCrimsonPlumage", "HuntersPath", "PolarStar", "TheFirstGreatMagic", "ThunderingPulse",
+      CTierListWeaponsListItem.init([
+        "S",
+        "Лучшие",
+        [WeaponKeys.AquaSimulacra, WeaponKeys.ElegyForTheEnd, WeaponKeys.FavoniusWarbow, WeaponKeys.SkywardHarp],
       ]),
-      new CTierListWeaponsListItem("B", "Хорошие", [
-        "AlleyHunter", "AmosBow", "BlackcliffWarbow", "ChainBreaker", "FlowerWreathedFeathers", "RangeGauge",
-        "SacrificialBow", "ScionOfTheBlazingSun", "Slingshot", "SongOfStillness", "TheStringless",
+      CTierListWeaponsListItem.init([
+        "A",
+        "Отличные",
+        [
+          WeaponKeys.AstralVulturesCrimsonPlumage, WeaponKeys.HuntersPath, WeaponKeys.PolarStar,
+          WeaponKeys.TheFirstGreatMagic, WeaponKeys.ThunderingPulse,
+        ],
       ]),
-      new CTierListWeaponsListItem("C", "Ситуативные", [
-        "FadingTwilight", "Hamayumi", "IbisPiercer", "MouunsMoon", "PrototypeCrescent", "RecurveBow", "Rust",
-        "SilvershowerHeartstrings", "TheViridescentHunt", "WindblumeOde",
+      CTierListWeaponsListItem.init([
+        "B",
+        "Хорошие",
+        [
+          WeaponKeys.AlleyHunter, WeaponKeys.AmosBow, WeaponKeys.BlackcliffWarbow, WeaponKeys.ChainBreaker,
+          WeaponKeys.FlowerWreathedFeathers, WeaponKeys.RangeGauge, WeaponKeys.SacrificialBow,
+          WeaponKeys.ScionOfTheBlazingSun, WeaponKeys.Slingshot, WeaponKeys.SongOfStillness, WeaponKeys.TheStringless,
+        ],
       ]),
-      new CTierListWeaponsListItem("D", "Плохие", [
-        "Cloudforged", "CompoundBow", "EndOfTheLine", "KingsSquire", "Messenger", "MitternachtsWaltz", "Predator",
-        "RavenBow", "RoyalBow", "SharpshootersOath",
+      CTierListWeaponsListItem.init([
+        "C",
+        "Ситуативные",
+        [
+          WeaponKeys.FadingTwilight, WeaponKeys.Hamayumi, WeaponKeys.IbisPiercer, WeaponKeys.MouunsMoon,
+          WeaponKeys.PrototypeCrescent, WeaponKeys.RecurveBow, WeaponKeys.Rust, WeaponKeys.SilvershowerHeartstrings,
+          WeaponKeys.TheViridescentHunt, WeaponKeys.WindblumeOde,
+        ],
+      ]),
+      CTierListWeaponsListItem.init([
+        "D",
+        "Плохие",
+        [
+          WeaponKeys.Cloudforged, WeaponKeys.CompoundBow, WeaponKeys.EndOfTheLine, WeaponKeys.KingsSquire,
+          WeaponKeys.Messenger, WeaponKeys.MitternachtsWaltz, WeaponKeys.Predator, WeaponKeys.RavenBow,
+          WeaponKeys.RoyalBow, WeaponKeys.SharpshootersOath,
+        ],
       ]),
     ],
     new CVideoSource("Miron MinMax: Лучшие и Худшие Луки | Тир-лист (2025)").setVkUrl("https://vkvideo.ru/video-227044935_456239218"),
-  ),
-  [WeaponTypeNameByKey("🔱")]: new CTierListWeapons(
+  ]),
+  [TierListWeaponsKeys.Polearm]: CTierListWeapons.init([
+    TierListWeaponsKeys.Polearm,
     [
-      new CTierListWeaponsListItem("S", "Лучшие", ["FavoniusLance", "StaffOfHoma", "StaffOfTheScarletSands"]),
-      new CTierListWeaponsListItem("A", "Отличные", [
-        "CrimsonMoonsSemblance", "EngulfingLightning", "LumidouceElegy", "PrimordialJadeWingedSpear",
+      CTierListWeaponsListItem.init([
+        "S",
+        "Лучшие",
+        [WeaponKeys.FavoniusLance, WeaponKeys.StaffOfHoma, WeaponKeys.StaffOfTheScarletSands],
       ]),
-      new CTierListWeaponsListItem("B", "Хорошие", [
-        "BalladOfTheFjords", "BlackcliffPole", "CalamityQueller", "Deathmatch", "DragonsBane", "SkywardSpine",
-        "TamayurateiNoOhanashi", "TheCatch", "VortexVanquisher", "WavebreakersFin",
+      CTierListWeaponsListItem.init([
+        "A",
+        "Отличные",
+        [
+          WeaponKeys.CrimsonMoonsSemblance, WeaponKeys.EngulfingLightning, WeaponKeys.LumidouceElegy,
+          WeaponKeys.PrimordialJadeWingedSpear,
+        ],
       ]),
-      new CTierListWeaponsListItem("C", "Ситуативные", [
-        "BlackTassel", "DialoguesOfTheDesertSages", "FootprintOfTheRainbow", "LithicSpear", "KitainCrossSpear",
-        "MissiveWindspear", "MountainBracingBolt", "ProspectorsDrill", "RightfulReward", "RoyalSpear", "WhiteTassel",
+      CTierListWeaponsListItem.init([
+        "B",
+        "Хорошие",
+        [
+          WeaponKeys.BalladOfTheFjords, WeaponKeys.BlackcliffPole, WeaponKeys.CalamityQueller, WeaponKeys.Deathmatch,
+          WeaponKeys.DragonsBane, WeaponKeys.SkywardSpine, WeaponKeys.TamayurateiNoOhanashi, WeaponKeys.TheCatch,
+          WeaponKeys.VortexVanquisher, WeaponKeys.WavebreakersFin,
+        ],
       ]),
-      new CTierListWeaponsListItem("D", "Плохие", [
-        "CrescentPike", "DragonspineSpear", "Halberd", "Moonpiercer", "PrototypeStarglitter",
+      CTierListWeaponsListItem.init([
+        "C",
+        "Ситуативные",
+        [
+          WeaponKeys.BlackTassel, WeaponKeys.DialoguesOfTheDesertSages, WeaponKeys.FootprintOfTheRainbow,
+          WeaponKeys.LithicSpear, WeaponKeys.KitainCrossSpear, WeaponKeys.MissiveWindspear,
+          WeaponKeys.MountainBracingBolt, WeaponKeys.ProspectorsDrill, WeaponKeys.RightfulReward, WeaponKeys.RoyalSpear,
+          WeaponKeys.WhiteTassel,
+        ],
+      ]),
+      CTierListWeaponsListItem.init([
+        "D",
+        "Плохие",
+        [
+          WeaponKeys.CrescentPike, WeaponKeys.DragonspineSpear, WeaponKeys.Halberd, WeaponKeys.Moonpiercer,
+          WeaponKeys.PrototypeStarglitter,
+        ],
       ]),
     ],
     new CVideoSource("Miron MinMax: Лучшие и Худшие Копья | Тирлист Древкового Оружия | 2025").setVkUrl("https://vkvideo.ru/video-227044935_456239209"),
-  ),
-  [WeaponTypeNameByKey("🗡️")]: new CTierListWeapons(
+  ]),
+  [TierListWeaponsKeys.Claymore]: CTierListWeapons.init([
+    TierListWeaponsKeys.Claymore,
     [
-      new CTierListWeaponsListItem("S", "Лучшие", [
-        "AThousandBlazingSuns", "BeaconOfTheReedSea", "SerpentSpine", "Verdict",
+      CTierListWeaponsListItem.init([
+        "S",
+        "Лучшие",
+        [WeaponKeys.AThousandBlazingSuns, WeaponKeys.BeaconOfTheReedSea, WeaponKeys.SerpentSpine, WeaponKeys.Verdict],
       ]),
-      new CTierListWeaponsListItem("A", "Хорошие", [
-        "Akuoumaru", "FangOfTheMountainKing", "FruitfulHook", "RedhornStonethresher", "WolfsGravestone",
+      CTierListWeaponsListItem.init([
+        "A",
+        "Хорошие",
+        [
+          WeaponKeys.Akuoumaru, WeaponKeys.FangOfTheMountainKing, WeaponKeys.FruitfulHook,
+          WeaponKeys.RedhornStonethresher, WeaponKeys.WolfsGravestone,
+        ],
       ]),
-      new CTierListWeaponsListItem("B", "Середнячки", [
-        "BlackcliffSlasher", "EarthShaker", "FavoniusGreatsword", "MailedFlower", "Rainslasher", "SkywardPride",
-        "SongOfBrokenPines", "TheUnforged", "TidalShadow", "UltimateOverlordsMegaMagicSword",
+      CTierListWeaponsListItem.init([
+        "B",
+        "Середнячки",
+        [
+          WeaponKeys.BlackcliffSlasher, WeaponKeys.EarthShaker, WeaponKeys.FavoniusGreatsword, WeaponKeys.MailedFlower,
+          WeaponKeys.Rainslasher, WeaponKeys.SkywardPride, WeaponKeys.SongOfBrokenPines, WeaponKeys.TheUnforged,
+          WeaponKeys.TidalShadow, WeaponKeys.UltimateOverlordsMegaMagicSword,
+        ],
       ]),
-      new CTierListWeaponsListItem("C", "Ситуативное оружие", [
-        "BloodtaintedGreatsword", "KatsuragikiriNagamasa", "LithicBlade", "MakhairaAquamarine", "PortablePowerSaw",
-        "PrototypeArchaic", "Whiteblind",
+      CTierListWeaponsListItem.init([
+        "C",
+        "Ситуативное оружие",
+        [
+          WeaponKeys.BloodtaintedGreatsword, WeaponKeys.KatsuragikiriNagamasa, WeaponKeys.LithicBlade,
+          WeaponKeys.MakhairaAquamarine, WeaponKeys.PortablePowerSaw, WeaponKeys.PrototypeArchaic,
+          WeaponKeys.Whiteblind,
+        ],
       ]),
-      new CTierListWeaponsListItem("D", "Не рекомендуется к прокачке", [
-        "DebateClub", "FerrousShadow", "ForestRegalia", "LuxuriousSeaLord", "RoyalGreatsword", "SacrificialGreatsword",
-        "SkyriderGreatsword", "SnowTombedStarsilver", "TalkingStick", "TheBell", "WhiteIronGreatsword",
+      CTierListWeaponsListItem.init([
+        "D",
+        "Не рекомендуется к прокачке",
+        [
+          WeaponKeys.DebateClub, WeaponKeys.FerrousShadow, WeaponKeys.ForestRegalia, WeaponKeys.LuxuriousSeaLord,
+          WeaponKeys.RoyalGreatsword, WeaponKeys.SacrificialGreatsword, WeaponKeys.SkyriderGreatsword,
+          WeaponKeys.SnowTombedStarsilver, WeaponKeys.TalkingStick, WeaponKeys.TheBell, WeaponKeys.WhiteIronGreatsword,
+        ],
       ]),
     ],
     new CVideoSource("Miron MinMax: Лучшие и Худшие Двуручные Мечи | Тир-лист (2025)").setVkUrl("https://vkvideo.ru/video-227044935_456239205"),
-  ),
-  [WeaponTypeNameByKey("⚔️")]: new CTierListWeapons(
+  ]),
+  [TierListWeaponsKeys.Sword]: CTierListWeapons.init([
+    TierListWeaponsKeys.Sword,
     [
-      new CTierListWeaponsListItem("S", "Лучшее оружие", [
-        "Absolution", "FavoniusSword", "MistsplitterReforged", "PeakPatrolSong",
+      CTierListWeaponsListItem.init([
+        "S",
+        "Лучшее оружие",
+        [WeaponKeys.Absolution, WeaponKeys.FavoniusSword, WeaponKeys.MistsplitterReforged, WeaponKeys.PeakPatrolSong],
       ]),
-      new CTierListWeaponsListItem("A", "Хорошее оружие", [
-        "FreedomSworn", "HaranGeppakuFutsu", "LightOfFoliarIncision", "PrimordialJadeCutter", "SacrificialSword",
-        "SplendorOfTranquilWaters", "UrakuMisugiri", "XiphosMoonlight",
+      CTierListWeaponsListItem.init([
+        "A",
+        "Хорошее оружие",
+        [
+          WeaponKeys.FreedomSworn, WeaponKeys.HaranGeppakuFutsu, WeaponKeys.LightOfFoliarIncision,
+          WeaponKeys.PrimordialJadeCutter, WeaponKeys.SacrificialSword, WeaponKeys.SplendorOfTranquilWaters,
+          WeaponKeys.UrakuMisugiri, WeaponKeys.XiphosMoonlight,
+        ],
       ]),
-      new CTierListWeaponsListItem("B", "Опциональное оружие", [
-        "FesteringDesire", "FleuveCendreFerryman", "IronSting", "KeyOfKhajNisut", "SkywardBlade", "TheBlackSword",
-        "ToukabouShigure", "WolfFang",
+      CTierListWeaponsListItem.init([
+        "B",
+        "Опциональное оружие",
+        [
+          WeaponKeys.FesteringDesire, WeaponKeys.FleuveCendreFerryman, WeaponKeys.IronSting, WeaponKeys.KeyOfKhajNisut,
+          WeaponKeys.SkywardBlade, WeaponKeys.TheBlackSword, WeaponKeys.ToukabouShigure, WeaponKeys.WolfFang,
+        ],
       ]),
-      new CTierListWeaponsListItem("C", "Если нет альтернатив", [
-        "BlackcliffLongsword", "CalamityOfEshu", "FinaleOfTheDeep", "HarbingerOfDawn", "SapwoodBlade", "SturdyBone",
-        "SummitShaper", "TheAlleyFlash", "TheDockhandsAssistant",
+      CTierListWeaponsListItem.init([
+        "C",
+        "Если нет альтернатив",
+        [
+          WeaponKeys.BlackcliffLongsword, WeaponKeys.CalamityOfEshu, WeaponKeys.FinaleOfTheDeep,
+          WeaponKeys.HarbingerOfDawn, WeaponKeys.SapwoodBlade, WeaponKeys.SturdyBone, WeaponKeys.SummitShaper,
+          WeaponKeys.TheAlleyFlash, WeaponKeys.TheDockhandsAssistant,
+        ],
       ]),
-      new CTierListWeaponsListItem("D", "На крайний случай", [
-        "AmenomaKageuchi", "AquilaFavonia", "CinnabarSpindle", "FluteOfEzpitzal", "KagotsurubeIsshin", "LionsRoar",
-        "RoyalLongsword", "SwordOfNarzissenkreuz",
+      CTierListWeaponsListItem.init([
+        "D",
+        "На крайний случай",
+        [
+          WeaponKeys.AmenomaKageuchi, WeaponKeys.AquilaFavonia, WeaponKeys.CinnabarSpindle, WeaponKeys.FluteOfEzpitzal,
+          WeaponKeys.KagotsurubeIsshin, WeaponKeys.LionsRoar, WeaponKeys.RoyalLongsword,
+          WeaponKeys.SwordOfNarzissenkreuz,
+        ],
       ]),
-      new CTierListWeaponsListItem("F", "Худшее оружие", [
-        "CoolSteel", "DarkIronSword", "FilletBlade", "PrototypeRancour", "SkyriderSword", "SwordOfDescension",
-        "TheFlute", "TravelersHandySword",
+      CTierListWeaponsListItem.init([
+        "F",
+        "Худшее оружие",
+        [
+          WeaponKeys.CoolSteel, WeaponKeys.DarkIronSword, WeaponKeys.FilletBlade, WeaponKeys.PrototypeRancour,
+          WeaponKeys.SkyriderSword, WeaponKeys.SwordOfDescension, WeaponKeys.TheFlute, WeaponKeys.TravelersHandySword,
+        ],
       ]),
     ],
     new CVideoSource("Miron MinMax: Лучшие и Худшие Одноручные Мечи | Тир-лист (2025)").setVkUrl("https://vkvideo.ru/video-227044935_456239200"),
-  ),
-} as Record<string, ITierListWeapons>;
+  ]),
+} as Record<ITierListWeapons["key"], ITierListWeapons>;

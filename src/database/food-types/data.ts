@@ -3,6 +3,6 @@ import { CFoodType } from "./classes";
 import { FoodTypeKeys } from "./enums";
 
 export default {
-  [FoodTypeKeys.ATKBoostingDish]: new CFoodType("ATKBoostingDish", "Блюдо для атаки"),
-  [FoodTypeKeys.RecoveryDish]: new CFoodType("RecoveryDish", "Восстанавливающее блюдо"),
+  [FoodTypeKeys.ATKBoostingDish]: CFoodType.init([FoodTypeKeys.ATKBoostingDish, "Блюдо для атаки"]),
+  [FoodTypeKeys.RecoveryDish]: CFoodType.init([FoodTypeKeys.RecoveryDish, "Восстанавливающее блюдо"]),
 } as Record<IFoodType["key"], IFoodType>;

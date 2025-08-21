@@ -3,9 +3,9 @@ import { ArtifactSlotKeys } from "./enums";
 import { CArtifactSlot } from "./classes";
 
 export default {
-  [ArtifactSlotKeys.Circlet]: new CArtifactSlot("Circlet", "Корона разума", 5),
-  [ArtifactSlotKeys.Flower]: new CArtifactSlot("Flower", "Цветок жизни", 1),
-  [ArtifactSlotKeys.Goblet]: new CArtifactSlot("Goblet", "Кубок пространства", 4),
-  [ArtifactSlotKeys.Plume]: new CArtifactSlot("Plume", "Перо смерти", 2),
-  [ArtifactSlotKeys.Sands]: new CArtifactSlot("Sands", "Пески времени", 3),
+  [ArtifactSlotKeys.Circlet]: CArtifactSlot.init([ArtifactSlotKeys.Circlet, "Корона разума", 5]),
+  [ArtifactSlotKeys.Flower]: CArtifactSlot.init([ArtifactSlotKeys.Flower, "Цветок жизни", 1]),
+  [ArtifactSlotKeys.Goblet]: CArtifactSlot.init([ArtifactSlotKeys.Goblet, "Кубок пространства", 4]),
+  [ArtifactSlotKeys.Plume]: CArtifactSlot.init([ArtifactSlotKeys.Plume, "Перо смерти", 2]),
+  [ArtifactSlotKeys.Sands]: CArtifactSlot.init([ArtifactSlotKeys.Sands, "Пески времени", 3]),
 } as Record<IArtifactSlot["key"], IArtifactSlot>;

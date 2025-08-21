@@ -1,5 +1,4 @@
 import type { IArtifactSet, IArtifactSetSlot } from "./types";
-import type { TArtifactSlotKey } from "../artifact-slots/types";
 import { ArtifactSlotKeys } from "../artifact-slots/enums";
 import { publicImageSrc } from "@/lib/utils";
 
@@ -19,7 +18,7 @@ export class CArtifactSet implements IArtifactSet {
     rarities: IArtifactSet["rarities"],
     sources: IArtifactSet["sources"],
     itemBonuses: IArtifactSet["item_bonuses"],
-    slots: Record<TArtifactSlotKey, IArtifactSetSlot["name"] | undefined>,
+    slots: Record<IArtifactSetSlot["key"], IArtifactSetSlot["name"] | undefined>,
   ) {
     this.key = key;
     this.name = name;
@@ -51,10 +50,6 @@ export class CArtifactSet implements IArtifactSet {
       || this.slots[ArtifactSlotKeys.Circlet]?.image_src;
   }
 
-  // getRecommendations() {
-  //   return artifactSetsRecommendationsSelectors.selectById(store.getState(), this.key);
-  // }
-
   static init(params: ConstructorParameters<typeof CArtifactSet>) {
     return new CArtifactSet(...params);
   }
@@ -74,10 +69,6 @@ export class CArtifactSetSlot implements IArtifactSetSlot {
     this.name = name;
     this.image_src = imageSrc;
   }
-
-  // getSlot() {
-  //   return selectArtifactSlotById(this.key);
-  // }
 
   static init(params: ConstructorParameters<typeof CArtifactSetSlot>) {
     return new CArtifactSetSlot(...params);

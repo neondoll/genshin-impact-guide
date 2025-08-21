@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import { Card } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import Container from "@/components/container";
-import MenuItems from "@/constants/menu-items";
+import { Card } from "../components/ui/card";
+import { Container } from "../components/container";
+import { Table, TableBody, TableCell, TableRow } from "../components/ui/table";
+import MenuItems from "../constants/menu-items";
 
 export default function Index() {
   return (

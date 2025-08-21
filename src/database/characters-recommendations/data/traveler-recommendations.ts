@@ -18,12 +18,12 @@ const recommendations = {
 } as Omit<ICharacterRecommendations, "character_key">;
 
 export default {
-  [ElementKeys["🌪️"]]: { ...recommendations, character_key: CharacterKeys["Traveler🌪️"] },
-  [ElementKeys["🌿"]]: { ...recommendations, character_key: CharacterKeys["Traveler🌿"] },
-  [ElementKeys["⚡️"]]: { ...recommendations, character_key: CharacterKeys["Traveler⚡️"] },
-  [ElementKeys["🏔️"]]: { ...recommendations, character_key: CharacterKeys["Traveler🏔️"] },
-  [ElementKeys["💧"]]: { ...recommendations, character_key: CharacterKeys["Traveler💧"] },
-  [ElementKeys["🔥"]]: {
+  [ElementKeys.Anemo]: { ...recommendations, character_key: CharacterKeys.TravelerAnemo },
+  [ElementKeys.Dendro]: { ...recommendations, character_key: CharacterKeys.TravelerDendro },
+  [ElementKeys.Electro]: { ...recommendations, character_key: CharacterKeys.TravelerElectro },
+  [ElementKeys.Geo]: { ...recommendations, character_key: CharacterKeys.TravelerGeo },
+  [ElementKeys.Hydro]: { ...recommendations, character_key: CharacterKeys.TravelerHydro },
+  [ElementKeys.Pyro]: {
     artifacts: {
       sets: [
         { key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity, description: "для игры из кармана" },
@@ -60,7 +60,7 @@ export default {
         ],
       },
     },
-    character_key: CharacterKeys["Traveler🔥"],
+    character_key: CharacterKeys.TravelerPyro,
     video_sources: [
       {
         title: "Зачем нужен Пиро Путешественник? | Подробный гайд на Пиро ГГ {Анимекул}",
@@ -89,4 +89,4 @@ export default {
       ],
     },
   },
-} as Record<Exclude<TElementKey, typeof ElementKeys["❄️"]>, ICharacterRecommendations>;
+} as Record<Exclude<TElementKey, typeof ElementKeys.Cryo>, ICharacterRecommendations>;
