@@ -18,30 +18,41 @@ import Weapons, { loader as weaponsLoader } from "./routes/weapons";
 import WeaponsTierList, { loader as weaponsTierListLoader } from "./routes/weapons-tier-list";
 import "./index.css";
 
-const router = createHashRouter([
-  {
-    path: Paths.Root.to,
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    children: [
-      { index: true, element: <Index /> },
-      { path: Paths.ArtifactSets.to, element: <ArtifactSets />, loader: artifactSetsLoader },
-      { path: Paths.ArtifactSet.to(":artifactSetKey"), element: <ArtifactSet />, loader: artifactSetLoader },
-      { path: Paths.Characters.to, element: <Characters />, loader: charactersLoader },
-      { path: Paths.Character.to(":characterKey"), element: <Character />, loader: characterLoader },
-      { path: Paths.Weapons.to, element: <Weapons />, loader: weaponsLoader },
-      { path: Paths.Weapon.to(":weaponKey"), element: <Weapon />, loader: weaponLoader },
-      { path: Paths.WeaponsTierList.to, element: <WeaponsTierList />, loader: weaponsTierListLoader },
-    ],
-  },
-]);
+const container = document.getElementById("root");
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    </ThemeProvider>
-  </StrictMode>,
-);
+if (container) {
+  const root = createRoot(container);
+
+  const router = createHashRouter([
+    {
+      path: Paths.Root.to,
+      element: <Root />,
+      errorElement: <ErrorPage />,
+      children: [
+        { index: true, element: <Index /> },
+        { path: Paths.ArtifactSets.to, element: <ArtifactSets />, loader: artifactSetsLoader },
+        { path: Paths.ArtifactSet.to(":artifactSetId"), element: <ArtifactSet />, loader: artifactSetLoader },
+        { path: Paths.Characters.to, element: <Characters />, loader: charactersLoader },
+        { path: Paths.Character.to(":characterKey"), element: <Character />, loader: characterLoader },
+        { path: Paths.Weapons.to, element: <Weapons />, loader: weaponsLoader },
+        { path: Paths.Weapon.to(":weaponKey"), element: <Weapon />, loader: weaponLoader },
+        { path: Paths.WeaponsTierList.to, element: <WeaponsTierList />, loader: weaponsTierListLoader },
+      ],
+    },
+  ]);
+
+  root.render(
+    <StrictMode>
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+      </ThemeProvider>
+    </StrictMode>,
+  );
+}
+else {
+  throw new Error(
+    "Root element with ID 'root' was not found in the document. Ensure there is a corresponding HTML element with the ID 'root' in your HTML file.",
+  );
+}

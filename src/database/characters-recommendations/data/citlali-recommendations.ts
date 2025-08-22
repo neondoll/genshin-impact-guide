@@ -1,11 +1,11 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
 import { TalentKeys } from "../../talents/enums";
 import { WeaponKeys } from "../../weapons/enums";
-import artifactSets from "../../artifact-sets/data";
+import artifactSets from "@/features/artifact-sets/data";
 import characters from "../../characters/data";
 import weapons from "../../weapons/data";
 
@@ -13,7 +13,7 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity,
+        key: ArtifactSetIds.ScrollOfTheHeroOfCinderCity,
         is_better: true,
         notes: [
           "Лучший набор для Ситлали, так как восстановит ей энергию и увеличит элементальный урон основного персонажа.",
@@ -21,26 +21,26 @@ export default {
         ],
       },
       {
-        key: ArtifactSetKeys.TenacityOfTheMillelith,
+        key: ArtifactSetIds.TenacityOfTheMillelith,
         notes: [
           "Бонус 2 предметов не важен Ситлали, но бонус 4 предметов увеличит прочность щита и атаку других персонажей в отряде.",
         ],
       },
       {
-        key: ArtifactSetKeys.NoblesseOblige,
+        key: ArtifactSetIds.NoblesseOblige,
         notes: [
           "Увеличивает урон от взрыва стихии Ситлали и увеличивает силу атаки другим членам отряда.",
           "Рекомендуется, если никто другой в отряде не носит данный комплект.",
         ],
       },
       {
-        key: ArtifactSetKeys.Instructor,
+        key: ArtifactSetIds.Instructor,
         notes: [
           "Хоть данный комплект не бывает 5★, он повышает мастерство стихий как самой Ситлали, так и всем членам отряда.",
         ],
       },
       {
-        key: ArtifactSetKeys.ArchaicPetra,
+        key: ArtifactSetIds.ArchaicPetra,
         notes: [`Если в отряде есть ${characters[CharacterKeys.Xilonen].name}`, "Носитель должен подбирать осколок"],
       },
     ],
@@ -75,7 +75,7 @@ export default {
     ["Крит. шанс", "59.2%"],
     ["Крит. урон", "122.8%"],
     ["Оружие", weapons[WeaponKeys.ThrillingTalesOfDragonSlayers].name],
-    ["Набор артефактов", artifactSets[ArtifactSetKeys.ScrollOfTheHeroOfCinderCity].name],
+    ["Набор артефактов", artifactSets[ArtifactSetIds.ScrollOfTheHeroOfCinderCity].name],
   ],
   required_level: 80,
   talent_leveling: [

@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { TArtifactSetKey } from "@/database/artifact-sets/types";
+import type { ArtifactSetId } from "@/features/artifact-sets/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -8,10 +8,10 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectArtifactSetById } from "@/features/artifact-sets/artifactSetsSelectors";
+import { selectArtifactSetById } from "@/features/artifact-sets/selectors.ts";
 import {
   selectArtifactSetRecommendationsById,
-} from "@/features/artifact-sets-recommendations/artifactSetsRecommendationsSelectors";
+} from "@/features/artifact-sets-recommendations/selectors.ts";
 import { selectArtifactSlotById } from "@/features/artifact-slots/artifactSlotsSelectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
@@ -19,8 +19,8 @@ import Paths from "@/constants/paths";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {
-  const artifactSet = selectArtifactSetById(params.artifactSetKey as TArtifactSetKey);
-  const artifactSetRecommendations = selectArtifactSetRecommendationsById(artifactSet.key);
+  const artifactSet = selectArtifactSetById(params.artifactSetId as ArtifactSetId);
+  const artifactSetRecommendations = selectArtifactSetRecommendationsById(artifactSet.id);
 
   return { artifactSet, artifactSetRecommendations };
 }
@@ -101,7 +101,7 @@ export default function ArtifactSet() {
             <TableBody>
               {Object.values(artifactSet.slots).map((artifactSetSlot) => {
                 if (artifactSetSlot !== undefined) {
-                  const artifactSlot = selectArtifactSlotById(artifactSetSlot.key);
+                  const artifactSlot = selectArtifactSlotById(artifactSetSlot.id);
 
                   return (
                     <TableRow className="hover:bg-inherit" key={artifactSlot.key}>

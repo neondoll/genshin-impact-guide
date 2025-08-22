@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectArtifactSetsAll } from "@/features/artifact-sets/artifactSetsSelectors";
+import { selectArtifactSetsAll } from "@/features/artifact-sets/selectors.ts";
 import Paths from "@/constants/paths";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
@@ -44,7 +44,7 @@ export default function ArtifactSets() {
                 "border shadow-sm transition-all has-hover:scale-104 has-focus-visible:ring-3",
                 "has-focus-visible:ring-ring/50",
               )}
-              key={artifactSet.key}
+              key={artifactSet.id}
             >
               <span
                 className={cn(
@@ -65,7 +65,7 @@ export default function ArtifactSets() {
                   "inline-flex flex-1 justify-center items-center text-sm text-center outline-none",
                   "before:absolute before:inset-0",
                 )}
-                to={Paths.ArtifactSet.to(artifactSet.key)}
+                to={Paths.ArtifactSet.to(artifactSet.id)}
               />
             </li>
           );

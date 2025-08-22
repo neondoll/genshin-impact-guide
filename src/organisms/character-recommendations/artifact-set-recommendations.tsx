@@ -81,10 +81,10 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
             )}
             <TableCell className="text-pretty whitespace-normal sm:w-48">
               {"key" in recommendation
-                ? <ArtifactSetBadge artifactSetKey={recommendation.key} />
+                ? <ArtifactSetBadge artifactSetId={recommendation.key} />
                 : (
                     <div className="flex flex-col gap-2">
-                      {recommendation.keys.map(key => <ArtifactSetBadge artifactSetKey={key} />)}
+                      {recommendation.keys.map(key => <ArtifactSetBadge artifactSetId={key} />)}
                     </div>
                   )}
             </TableCell>

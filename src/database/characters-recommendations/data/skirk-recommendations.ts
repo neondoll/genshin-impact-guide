@@ -1,12 +1,12 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { ElementKeys } from "../../elements/enums";
 import { StatKeys } from "../../stats/enums";
 import { TalentKeys } from "../../talents/enums";
 import { WeaponKeys } from "../../weapons/enums";
-import artifactSets from "../../artifact-sets/data";
+import artifactSets from "@/features/artifact-sets/data";
 import weapons from "../../weapons/data";
 
 type GameVariantkey = typeof GameVariantEnum[keyof typeof GameVariantEnum];
@@ -25,7 +25,7 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.MarechausseeHunter,
+        key: ArtifactSetIds.MarechausseeHunter,
         description: "Лучше при игре от обычных атак",
         notes: [
           "Если в команде с Скирк есть персонажи, периодически изменяющие HP отряда (например, Фурина), она сможет использовать бонус 4 предметов.",
@@ -35,7 +35,7 @@ export default {
         ],
       },
       {
-        key: ArtifactSetKeys.FinaleOfTheDeepGalleries,
+        key: ArtifactSetIds.FinaleOfTheDeepGalleries,
         description: "Лучше при игре от взрыва стихии",
         notes: [
           "Лучший комплект для Скирк, так как повышает Крио урон, а также урон обычных атаки и взрыва стихии.",
@@ -68,7 +68,7 @@ export default {
   first_constellation_or_signature_weapon: "Сигна > C1,\nC2 > Сигна",
   key_constellations: [1, 2, 5, 6],
   reference_point: {
-    [`${artifactSets[ArtifactSetKeys.MarechausseeHunter].name}\n+\n${weapons[WeaponKeys.FinaleOfTheDeep].name}`]: [
+    [`${artifactSets[ArtifactSetIds.MarechausseeHunter].name}\n+\n${weapons[WeaponKeys.FinaleOfTheDeep].name}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -77,7 +77,7 @@ export default {
       ["Крит. урон", "216.8%"],
       ["Восст. энергии", "111.0%"],
     ],
-    [`${artifactSets[ArtifactSetKeys.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponKeys.CalamityOfEshu].name}`]: [
+    [`${artifactSets[ArtifactSetIds.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponKeys.CalamityOfEshu].name}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],

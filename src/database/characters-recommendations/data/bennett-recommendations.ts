@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -10,14 +10,14 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.NoblesseOblige,
+        key: ArtifactSetIds.NoblesseOblige,
         is_better: true,
         notes: [
           "Лучший комплект для Беннета в роли поддержки. Увеличивает собственный урон от взрыва стихий и даёт дополнительный бонус к атаке. Используется, когда никто другой не носит данный комплект артефактов.",
         ],
       },
       {
-        key: ArtifactSetKeys.EmblemOfSeveredFate,
+        key: ArtifactSetIds.EmblemOfSeveredFate,
         notes: [
           "Комплект не даёт никаких бонусов другим членам отряда, но увеличивает восстановление энергии Беннета и урон от его взрыва стихий. Комплект используется, если хочется, чтобы Беннет наносил дополнительный урон.",
         ],

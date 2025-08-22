@@ -1,5 +1,5 @@
 import type { IDungeon } from "./types";
-import { ArtifactSetKeys } from "../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { CDungeon } from "./classes";
 import { DungeonKeys } from "./enums";
 
@@ -7,86 +7,86 @@ export default {
   [DungeonKeys.CityOfGold]: CDungeon.init([
     DungeonKeys.CityOfGold,
     "Город золота",
-    [ArtifactSetKeys.DesertPavilionChronicle, ArtifactSetKeys.FlowerOfParadiseLost],
+    [ArtifactSetIds.DesertPavilionChronicle, ArtifactSetIds.FlowerOfParadiseLost],
   ]), /* Крайне не выгодный */
   [DungeonKeys.ClearPoolAndMountainCavern]: CDungeon.init([
     DungeonKeys.ClearPoolAndMountainCavern,
     "Чистая вода и горная пещера",
-    [ArtifactSetKeys.BloodstainedChivalry, ArtifactSetKeys.NoblesseOblige],
+    [ArtifactSetIds.BloodstainedChivalry, ArtifactSetIds.NoblesseOblige],
   ]), /* Крайне не выгодный */
   [DungeonKeys.DenouementOfSin]: CDungeon.init([
     DungeonKeys.DenouementOfSin,
     "Конец греха",
-    [ArtifactSetKeys.GoldenTroupe, ArtifactSetKeys.MarechausseeHunter],
+    [ArtifactSetIds.GoldenTroupe, ArtifactSetIds.MarechausseeHunter],
   ]), /* Крайне выгодный */
   [DungeonKeys.DomainOfGuyun]: CDungeon.init([
     DungeonKeys.DomainOfGuyun,
     "Владения Гуюнь",
-    [ArtifactSetKeys.ArchaicPetra, ArtifactSetKeys.RetracingBolide],
+    [ArtifactSetIds.ArchaicPetra, ArtifactSetIds.RetracingBolide],
   ]), /* Крайне не выгодный */
   [DungeonKeys.FadedTheater]: CDungeon.init([
     DungeonKeys.FadedTheater,
     "Обветшалый театр",
-    [ArtifactSetKeys.FragmentOfHarmonicWhimsy],
+    [ArtifactSetIds.FragmentOfHarmonicWhimsy],
   ]),
   [DungeonKeys.HiddenPalaceOfZhouFormula]: CDungeon.init([
     DungeonKeys.HiddenPalaceOfZhouFormula,
     "Скрытый дворец Уван",
-    [ArtifactSetKeys.CrimsonWitchOfFlames, ArtifactSetKeys.Lavawalker],
+    [ArtifactSetIds.CrimsonWitchOfFlames, ArtifactSetIds.Lavawalker],
   ]), /* Может быть полезен */
   [DungeonKeys.MidsummerCourtyard]: CDungeon.init([
     DungeonKeys.MidsummerCourtyard,
     "Июльские сады",
-    [ArtifactSetKeys.ThunderingFury, ArtifactSetKeys.Thundersoother],
+    [ArtifactSetIds.ThunderingFury, ArtifactSetIds.Thundersoother],
   ]), /* Крайне не выгодный */
   [DungeonKeys.MoltenIronFortress]: CDungeon.init([
     DungeonKeys.MoltenIronFortress,
     "Расплавленная крепость",
-    [ArtifactSetKeys.NymphsDream, ArtifactSetKeys.VourukashasGlow],
+    [ArtifactSetIds.NymphsDream, ArtifactSetIds.VourukashasGlow],
   ]), /* Крайне не выгодный */
   [DungeonKeys.MomijiDyedCourt]: CDungeon.init([
     DungeonKeys.MomijiDyedCourt,
     "Кленовый зал",
-    [ArtifactSetKeys.EmblemOfSeveredFate, ArtifactSetKeys.ShimenawasReminiscence],
+    [ArtifactSetIds.EmblemOfSeveredFate, ArtifactSetIds.ShimenawasReminiscence],
   ]), /* Крайне выгодный */
   [DungeonKeys.PeakOfVindagnyr]: CDungeon.init([
     DungeonKeys.PeakOfVindagnyr,
     "Пик Виндагнира",
-    [ArtifactSetKeys.BlizzardStrayer, ArtifactSetKeys.HeartOfDepth],
+    [ArtifactSetIds.BlizzardStrayer, ArtifactSetIds.HeartOfDepth],
   ]), /* Выгодный */
   [DungeonKeys.RidgeWatch]: CDungeon.init([
     DungeonKeys.RidgeWatch,
     "Горный дозор",
-    [ArtifactSetKeys.PaleFlame, ArtifactSetKeys.TenacityOfTheMillelith],
+    [ArtifactSetIds.PaleFlame, ArtifactSetIds.TenacityOfTheMillelith],
   ]), /* Крайне не выгодный */
   [DungeonKeys.SanctumOfRainbowSpirits]: CDungeon.init([
     DungeonKeys.SanctumOfRainbowSpirits,
     "Святилище мириадов духов",
-    [ArtifactSetKeys.ObsidianCodex, ArtifactSetKeys.ScrollOfTheHeroOfCinderCity],
+    [ArtifactSetIds.ObsidianCodex, ArtifactSetIds.ScrollOfTheHeroOfCinderCity],
   ]),
   [DungeonKeys.SlumberingCourt]: CDungeon.init([
     DungeonKeys.SlumberingCourt,
     "Дремлющий сад",
-    [ArtifactSetKeys.HuskOfOpulentDreams, ArtifactSetKeys.OceanHuedClam],
+    [ArtifactSetIds.HuskOfOpulentDreams, ArtifactSetIds.OceanHuedClam],
   ]), /* Крайне не выгодный */
   [DungeonKeys.SpireOfSolitaryEnlightenment]: CDungeon.init([
     DungeonKeys.SpireOfSolitaryEnlightenment,
     "Шпиль одинокого просветления",
-    [ArtifactSetKeys.DeepwoodMemories, ArtifactSetKeys.GildedDreams],
+    [ArtifactSetIds.DeepwoodMemories, ArtifactSetIds.GildedDreams],
   ]), /* Крайне выгодный */
   [DungeonKeys.TheLostValley]: CDungeon.init([
     DungeonKeys.TheLostValley,
     "Затерянная долина",
-    [ArtifactSetKeys.EchoesOfAnOffering, ArtifactSetKeys.VermillionHereafter],
+    [ArtifactSetIds.EchoesOfAnOffering, ArtifactSetIds.VermillionHereafter],
   ]), /* Крайне не выгодный */
   [DungeonKeys.ValleyOfRemembrance]: CDungeon.init([
     DungeonKeys.ValleyOfRemembrance,
     "Долина воспоминаний",
-    [ArtifactSetKeys.MaidenBeloved, ArtifactSetKeys.ViridescentVenerer],
+    [ArtifactSetIds.MaidenBeloved, ArtifactSetIds.ViridescentVenerer],
   ]), /* Может быть полезен */
   [DungeonKeys.WaterfallWen]: CDungeon.init([
     DungeonKeys.WaterfallWen,
     "Город гроз",
-    [ArtifactSetKeys.NighttimeWhispersInTheEchoingWoods, ArtifactSetKeys.SongOfDaysPast],
+    [ArtifactSetIds.NighttimeWhispersInTheEchoingWoods, ArtifactSetIds.SongOfDaysPast],
   ]), /* Крайне не выгодный */
 } as Record<IDungeon["key"], IDungeon>;

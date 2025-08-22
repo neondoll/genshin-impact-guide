@@ -1,11 +1,11 @@
-import type { IArtifactSet } from "../database/artifact-sets/types";
+import type { ArtifactSet } from "@/features/artifact-sets/types";
 import type { ICharacter } from "../database/characters/types";
 import type { IWeapon } from "../database/weapons/types";
 
 export default {
   ArtifactSet: {
-    title: (item: IArtifactSet) => item.name,
-    to: (key: IArtifactSet["key"] | string) => `/artifact-sets/${key}`,
+    title: (item: ArtifactSet) => item.name,
+    to: (id: ArtifactSet["id"] | string) => `/artifact-sets/${id}`,
   },
   ArtifactSets: { title: "Артефакты", to: "/artifact-sets" },
   Character: {

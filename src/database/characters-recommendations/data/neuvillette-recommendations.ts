@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -10,7 +10,7 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.MarechausseeHunter,
+        key: ArtifactSetIds.MarechausseeHunter,
         notes: [
           "Лучший комплект для Нёвиллета, так как увеличивает урон заряженной атаки и повышает шанс крит. попадания в сумме на 36%.",
           "Так как Нёвиллет при заряженной атаке теряет HP, он выполняет условие 4 предметов.",

@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -10,14 +10,14 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.EmblemOfSeveredFate,
+        key: ArtifactSetIds.EmblemOfSeveredFate,
         is_better: true,
         notes: [
           "Лучший комплект для Син Цю, так как повысит очень важное восстановление энергии и увеличит урон от взрыва стихии, который является основным талантом Син Цю.",
         ],
       },
       {
-        key: ArtifactSetKeys.NoblesseOblige,
+        key: ArtifactSetIds.NoblesseOblige,
         notes: [
           "Увеличивает как урон Син Цю от взрыва стихии, так и силу атаки всего отряда.",
           "Рекомендуется, только если никто другой в команде не носит данный комплект артефактов.",

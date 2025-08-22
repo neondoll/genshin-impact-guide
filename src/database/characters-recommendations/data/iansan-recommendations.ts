@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -10,7 +10,7 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity,
+        key: ArtifactSetIds.ScrollOfTheHeroOfCinderCity,
         is_better: true,
         notes: [
           "Лучший набор для Иансан, так как восстановит ей энергию и увеличит элементальный урон основного персонажа.",
@@ -18,7 +18,7 @@ export default {
         ],
       },
       {
-        key: ArtifactSetKeys.NoblesseOblige,
+        key: ArtifactSetIds.NoblesseOblige,
         notes: [
           "Увеличит урон взрыва стихии Иансан и силу атаки отряду.",
           "Рекомендуется использовать, если другие члены отряда не носят данный комплект.",

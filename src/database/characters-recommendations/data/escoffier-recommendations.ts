@@ -1,23 +1,23 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
 import { TalentKeys } from "../../talents/enums";
 import { WeaponKeys } from "../../weapons/enums";
-import artifactSets from "../../artifact-sets/data";
+import artifactSets from "@/features/artifact-sets/data";
 import weapons from "../../weapons/data";
 
 export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.GoldenTroupe,
+        key: ArtifactSetIds.GoldenTroupe,
         is_better: true,
         notes: ["Значительно увеличит урон элементального навыка Эскофье, особенно когда она не на поле."],
       },
       {
-        key: ArtifactSetKeys.BlizzardStrayer,
+        key: ArtifactSetIds.BlizzardStrayer,
         notes: [
           "Комплект увеличит Крио урон и шанс крит. попадания Эскофье.",
           "Поскольку Эскофье играет в отрядах с Крио и Гидро персонажами, она выполняет условие комплекта.",
@@ -56,7 +56,7 @@ export default {
     ["Восст. энергии", "110% - 115%"],
     ["Крит. шанс", "80%"],
     ["Крит. урон", "175%"],
-    ["Артефакты", artifactSets[ArtifactSetKeys.GoldenTroupe].name],
+    ["Артефакты", artifactSets[ArtifactSetIds.GoldenTroupe].name],
   ],
   required_level: 90,
   talent_leveling: [

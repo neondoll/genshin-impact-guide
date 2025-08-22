@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -10,11 +10,11 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.LongNightsOath,
+        key: ArtifactSetIds.LongNightsOath,
         notes: ["Лучший набор для Варесы, поскольку значительно увеличивает её урон от атак в падении."],
       },
       {
-        key: ArtifactSetKeys.ObsidianCodex,
+        key: ArtifactSetIds.ObsidianCodex,
         notes: [
           "Комплект увеличивает урон Варесы и повышает шанс крит. попадания в сумме до 40%, позволяя сосредоточиться на крит. уроне в артефактах.",
           "Так как Вареса обладает Благословением Ночного духа, она полностью реализует условия комплекта.",

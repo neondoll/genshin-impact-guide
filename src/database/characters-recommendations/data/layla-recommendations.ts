@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -10,7 +10,7 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.TenacityOfTheMillelith,
+        key: ArtifactSetIds.TenacityOfTheMillelith,
         is_better: true,
         notes: [
           "Лучший комплект, так как бонус к HP повысит прочность щита и урон Лайлы.",
@@ -18,14 +18,14 @@ export default {
         ],
       },
       {
-        key: ArtifactSetKeys.NoblesseOblige,
+        key: ArtifactSetIds.NoblesseOblige,
         notes: [
           "Увеличивает урон от взрыва стихии Лайлы и увеличивает силу атаки другим членам отряда.",
           "Рекомендуется, если никто другой в отряде не носит данный комплект.",
         ],
       },
       {
-        key: ArtifactSetKeys.BlizzardStrayer,
+        key: ArtifactSetIds.BlizzardStrayer,
         notes: [
           "Рекомендуется, только если хочется получить больше урона от Лайлы.",
           "Рекомендуется иметь в отряде Гидро и других Крио персонажей для поддержания Заморозки.",

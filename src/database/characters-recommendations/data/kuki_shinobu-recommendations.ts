@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -10,25 +10,25 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.TenacityOfTheMillelith,
+        key: ArtifactSetIds.TenacityOfTheMillelith,
         notes: [
           "Набор увеличивает лечение Синобу благодаря бонусу HP и увеличивает силу атаки и прочность щита всего отряда, так как элементальный навык Синобу срабатывает каждые 1.5 секунды.",
           "Набор хорошо показывает себя в любом отряде",
         ],
       },
       {
-        key: ArtifactSetKeys.MaidenBeloved,
+        key: ArtifactSetIds.MaidenBeloved,
         notes: ["Набор хорошо работает, если Синобу используется исключительно для лечения команды."],
       },
       {
-        key: ArtifactSetKeys.FlowerOfParadiseLost,
+        key: ArtifactSetIds.FlowerOfParadiseLost,
         notes: [
           "Набор хорошо работает только в команде с Дендро и Гидро персонажами. Бонус мастерства стихий увеличивает лечение Синобу и урон от реакций.",
           "Так как элементальный навык Синобу срабатывает каждый 1.5 секунды, он активирует реакцию Вегетация и увеличивает урон реакции.",
         ],
       },
       {
-        key: ArtifactSetKeys.GildedDreams,
+        key: ArtifactSetIds.GildedDreams,
         notes: [
           "Бонус мастерства стихий увеличивает лечение Синобу и урон от реакций.",
           "Отлично подходит для отрядов, которые вызывают реакции с Дендро.",

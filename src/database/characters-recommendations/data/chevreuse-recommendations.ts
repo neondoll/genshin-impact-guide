@@ -1,6 +1,6 @@
 import type { ICharacterRecommendations } from "../types";
 import { artifactSetByKey } from "./help";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -11,18 +11,18 @@ import weapons from "../../weapons/data";
 export default {
   artifacts: {
     sets: [
-      { key: ArtifactSetKeys.NoblesseOblige },
+      { key: ArtifactSetIds.NoblesseOblige },
       {
-        key: ArtifactSetKeys.SongOfDaysPast,
+        key: ArtifactSetIds.SongOfDaysPast,
         description: "Не рекомендуется, слишком нестабильна и требует овер хил",
       },
       {
-        key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity,
-        description: `Если ${artifactSetByKey(ArtifactSetKeys.NoblesseOblige)} занята`,
+        key: ArtifactSetIds.ScrollOfTheHeroOfCinderCity,
+        description: `Если ${artifactSetByKey(ArtifactSetIds.NoblesseOblige)} занята`,
       },
       {
-        key: ArtifactSetKeys.EmblemOfSeveredFate,
-        description: `Если ${artifactSetByKey(ArtifactSetKeys.NoblesseOblige)} и ${artifactSetByKey(ArtifactSetKeys.ScrollOfTheHeroOfCinderCity)} заняты`,
+        key: ArtifactSetIds.EmblemOfSeveredFate,
+        description: `Если ${artifactSetByKey(ArtifactSetIds.NoblesseOblige)} и ${artifactSetByKey(ArtifactSetIds.ScrollOfTheHeroOfCinderCity)} заняты`,
       },
     ],
     stats: {

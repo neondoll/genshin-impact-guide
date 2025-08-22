@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { CharacterRoleKeys } from "../../character-roles/enums";
@@ -21,7 +21,7 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.ObsidianCodex,
+        key: ArtifactSetIds.ObsidianCodex,
         is_better: true,
         notes: [
           "Лучший комплект для Мавуики, поскольку увеличивает её урон и повышает шанс крит. попадания в сумме до 40%, позволяя сосредоточиться на крит. уроне в артефактах.",
@@ -29,7 +29,7 @@ export default {
         ],
       },
       {
-        key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity,
+        key: ArtifactSetIds.ScrollOfTheHeroOfCinderCity,
         notes: [
           "Бонус 2 предметов является неважным для Мавуики, но бонус 4 предметов значительно повысит бонус элементального урона всему отряду.",
           "Стоит учитывать, что лучше всего комплект работает в команде с персонажами из Натлана.",

@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -8,7 +8,7 @@ import { WeaponKeys } from "../../weapons/enums";
 
 export default {
   artifacts: {
-    sets: [{ key: ArtifactSetKeys.GoldenTroupe }],
+    sets: [{ key: ArtifactSetIds.GoldenTroupe }],
     stats: {
       [ArtifactSlotKeys.Sands]: [
         { key: StatKeys.AtkPercentage, percent: 0.785 },

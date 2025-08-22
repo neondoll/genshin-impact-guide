@@ -1,5 +1,5 @@
 import type { ICharacterRecommendations } from "../types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { StatKeys } from "../../stats/enums";
@@ -10,7 +10,7 @@ export default {
   artifacts: {
     sets: [
       {
-        key: ArtifactSetKeys.FragmentOfHarmonicWhimsy,
+        key: ArtifactSetIds.FragmentOfHarmonicWhimsy,
         is_better: true,
         notes: [
           "Лучший вариант для Арлекино, так как повышает важную силу атаки и наносимый урон.",
@@ -18,7 +18,7 @@ export default {
         ],
       },
       {
-        key: ArtifactSetKeys.GladiatorsFinale,
+        key: ArtifactSetIds.GladiatorsFinale,
         notes: [
           "Арлекино использует древковое оружие и наносит урон преимущественно обычными атаками, поэтому ей подходит бонус 4 предметов.",
         ],

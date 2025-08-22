@@ -1,6 +1,6 @@
 import type { ICharacterRecommendations } from "../types";
 import type { TElementKey } from "../../elements/types";
-import { ArtifactSetKeys } from "../../artifact-sets/enums";
+import { ArtifactSetIds } from "@/features/artifact-sets/enums";
 import { ArtifactSlotKeys } from "../../artifact-slots/enums";
 import { CharacterKeys } from "../../characters/enums";
 import { ElementKeys } from "../../elements/enums";
@@ -26,23 +26,23 @@ export default {
   [ElementKeys.Pyro]: {
     artifacts: {
       sets: [
-        { key: ArtifactSetKeys.ScrollOfTheHeroOfCinderCity, description: "для игры из кармана" },
-        { key: ArtifactSetKeys.TenacityOfTheMillelith, description: "для игры из кармана" },
-        { key: ArtifactSetKeys.Instructor, description: "для игры из кармана" },
-        { key: ArtifactSetKeys.ObsidianCodex, description: "для игры на поле", percent: 1.000 },
-        { key: ArtifactSetKeys.GildedDreams, description: "для игры на поле", percent: 0.884 },
+        { key: ArtifactSetIds.ScrollOfTheHeroOfCinderCity, description: "для игры из кармана" },
+        { key: ArtifactSetIds.TenacityOfTheMillelith, description: "для игры из кармана" },
+        { key: ArtifactSetIds.Instructor, description: "для игры из кармана" },
+        { key: ArtifactSetIds.ObsidianCodex, description: "для игры на поле", percent: 1.000 },
+        { key: ArtifactSetIds.GildedDreams, description: "для игры на поле", percent: 0.884 },
         {
-          keys: [ArtifactSetKeys.GladiatorsFinale, ArtifactSetKeys.ShimenawasReminiscence],
+          keys: [ArtifactSetIds.GladiatorsFinale, ArtifactSetIds.ShimenawasReminiscence],
           description: "для игры на поле",
           percent: 0.839,
         },
         {
-          keys: [ArtifactSetKeys.GladiatorsFinale, ArtifactSetKeys.CrimsonWitchOfFlames],
+          keys: [ArtifactSetIds.GladiatorsFinale, ArtifactSetIds.CrimsonWitchOfFlames],
           description: "для игры на поле",
           percent: 0.827,
         },
         {
-          keys: [ArtifactSetKeys.ObsidianCodex, ArtifactSetKeys.CrimsonWitchOfFlames],
+          keys: [ArtifactSetIds.ObsidianCodex, ArtifactSetIds.CrimsonWitchOfFlames],
           description: "для игры на поле",
           percent: 0.819,
         },

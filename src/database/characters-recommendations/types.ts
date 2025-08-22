@@ -1,5 +1,5 @@
+import type { ArtifactSetId } from "@/features/artifact-sets/types";
 import type { IVideoSource } from "../video-sources/types";
-import type { TArtifactSetKey } from "../artifact-sets/types";
 import type { TCharacterKey } from "../characters/types";
 import type { TElementKey } from "../elements/types";
 import type { TStatKey } from "../stats/types";
@@ -20,11 +20,11 @@ interface ICharacterArtifactRecommendations {
 }
 
 interface ICharacterArtifactSetRecommendationWithKey extends ICharacterArtifactSetRecommendation {
-  key: TArtifactSetKey;
+  key: ArtifactSetId;
 }
 
 interface ICharacterArtifactSetRecommendationWithKeys extends ICharacterArtifactSetRecommendation {
-  keys: [TArtifactSetKey, TArtifactSetKey];
+  keys: [ArtifactSetId, ArtifactSetId];
 }
 
 interface ICharacterArtifactStatRecommendation {
