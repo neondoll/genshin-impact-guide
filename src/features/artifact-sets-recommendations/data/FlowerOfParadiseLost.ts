@@ -1,26 +1,19 @@
-import type { ArtifactSetRecommendations } from "../types";
+import { ArtifactSetCharacterRecommendationClass, ArtifactSetRecommendationsClass } from "../classes";
 import { ArtifactSetIds } from "../../artifact-sets/enums";
-import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
-import { CharacterKeys } from "@/database/characters/enums";
+import { ArtifactSetRecommendationsVideoSources } from "../enums";
+import { ArtifactSlotIds } from "../../artifact-slots/enums";
+import { CharacterIds } from "../../characters/enums";
 import { StatKeys } from "@/database/stats/enums";
 
-export default {
-  artifact_set_id: ArtifactSetIds.FlowerOfParadiseLost,
-  characters: [
-    { key: CharacterKeys.KukiShinobu, is_better: true },
-    { key: CharacterKeys.Nilou, is_better: true },
-    { key: CharacterKeys.RaidenShogun, is_better: true },
-  ],
-  preferred_stats: {
-    [ArtifactSlotKeys.Sands]: [StatKeys.ElementalMastery, StatKeys.HpPercentage],
-    [ArtifactSlotKeys.Goblet]: [StatKeys.ElementalMastery, StatKeys.HpPercentage],
-    [ArtifactSlotKeys.Circlet]: [StatKeys.ElementalMastery, StatKeys.HpPercentage],
+export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.FlowerOfParadiseLost, [
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.KukiShinobu).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Nilou).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.RaidenShogun).setIsBetter(),
+]])
+  .setPreferredStats({
+    [ArtifactSlotIds.Sands]: [StatKeys.ElementalMastery, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Goblet]: [StatKeys.ElementalMastery, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Circlet]: [StatKeys.ElementalMastery, StatKeys.HpPercentage],
     additional: [StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
-  },
-  video_sources: [
-    {
-      title: "Miron MinMax: ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin",
-      youtube_url: "https://youtu.be/kCu0ux0hUCg",
-    },
-  ],
-} as ArtifactSetRecommendations;
+  })
+  .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

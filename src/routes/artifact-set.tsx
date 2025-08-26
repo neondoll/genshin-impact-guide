@@ -8,11 +8,9 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectArtifactSetById } from "@/features/artifact-sets/selectors.ts";
-import {
-  selectArtifactSetRecommendationsById,
-} from "@/features/artifact-sets-recommendations/selectors.ts";
-import { selectArtifactSlotById } from "@/features/artifact-slots/artifactSlotsSelectors";
+import { selectArtifactSetById } from "@/features/artifact-sets/selectors";
+import { selectArtifactSetRecommendationsById } from "@/features/artifact-sets-recommendations/selectors";
+import { selectArtifactSlotById } from "@/features/artifact-slots/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
 import Paths from "@/constants/paths";
@@ -104,7 +102,7 @@ export default function ArtifactSet() {
                   const artifactSlot = selectArtifactSlotById(artifactSetSlot.id);
 
                   return (
-                    <TableRow className="hover:bg-inherit" key={artifactSlot.key}>
+                    <TableRow className="hover:bg-inherit" key={artifactSlot.id}>
                       <TableHead children={artifactSlot.name} className="p-2 text-pretty whitespace-normal" />
                       <TableCell className="p-2 text-pretty whitespace-normal">
                         <div className="flex gap-2.5 items-center">

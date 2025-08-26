@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 import type { CharacterRecommendationsProps } from "./types";
+import { charactersAdapter } from "@/features/characters/slice";
 import { publicImageSrc } from "@/lib/utils";
-import { selectCharacterById } from "@/features/characters/charactersSelectors";
+import { selectCharacterById } from "@/features/characters/selectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import CharacterBadge from "@/features/characters/character-badge";
-import charactersAdapter from "@/features/characters/charactersAdapter";
 
 export default function CharacterRecommendations(props: CharacterRecommendationsProps) {
   const [hasIsBetter, setHasIsBetter] = useState(false);
@@ -22,7 +22,7 @@ export default function CharacterRecommendations(props: CharacterRecommendations
     setRecommendations(
       props.recommendations
         .map((recommendation) => {
-          return { character: selectCharacterById(recommendation.key), recommendation };
+          return { character: selectCharacterById(recommendation.id), recommendation };
         })
         .sort((a, b) => {
           return charactersAdapter.sortComparer ? charactersAdapter.sortComparer(a.character, b.character) : 0;
@@ -42,7 +42,7 @@ export default function CharacterRecommendations(props: CharacterRecommendations
       </TableHeader>
       <TableBody>
         {recommendations.map(recommendation => (
-          <TableRow className="hover:bg-inherit" key={recommendation.key}>
+          <TableRow className="hover:bg-inherit" key={recommendation.id}>
             {hasIsBetter && (
               <TableCell className="w-16">
                 {recommendation.is_better && (
@@ -55,7 +55,7 @@ export default function CharacterRecommendations(props: CharacterRecommendations
               </TableCell>
             )}
             <TableCell className="text-pretty whitespace-normal sm:min-w-[166px]">
-              <CharacterBadge characterKey={recommendation.key} />
+              <CharacterBadge characterId={recommendation.id} />
             </TableCell>
             {hasNotes && (
               <TableCell className="text-pretty whitespace-pre-line">

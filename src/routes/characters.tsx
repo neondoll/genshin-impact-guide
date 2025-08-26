@@ -11,7 +11,7 @@ import {
 import { cn } from "../lib/utils";
 import { Container } from "../components/container";
 import { Filter, FilterCheckbox, FilterGroup } from "../organisms/filter";
-import { selectCharactersAll } from "../features/characters/charactersSelectors";
+import { selectCharactersAll } from "../features/characters/selectors";
 import { selectElementById, selectElementsAll } from "../features/elements/elementsSelectors";
 import { selectRaritiesByIds } from "../features/rarities/raritiesSelectors";
 import { selectWeaponTypesAll } from "../features/weapon-types/weaponTypesSelectors";
@@ -39,7 +39,7 @@ export default function Characters() {
     let filteredCharacters = characters;
 
     if (filterElementKeys.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterElementKeys.includes(character.element_key));
+      filteredCharacters = filteredCharacters.filter(character => filterElementKeys.includes(character.element_id));
     }
 
     if (filterRarities.length) {
@@ -47,7 +47,7 @@ export default function Characters() {
     }
 
     if (filterWeaponTypeKeys.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeKeys.includes(character.weapon_type_key));
+      filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeKeys.includes(character.weapon_type_id));
     }
 
     setFilteredCharacters(filteredCharacters);
@@ -163,7 +163,7 @@ export default function Characters() {
       </Filter>
       <ul className="flex flex-wrap gap-2 justify-center items-stretch md:gap-4">
         {filteredCharacters.map((character) => {
-          const characterElement = selectElementById(character.element_key);
+          const characterElement = selectElementById(character.element_id);
 
           return (
             <li
@@ -172,7 +172,7 @@ export default function Characters() {
                 "border shadow-sm transition-all has-hover:scale-104 has-focus-visible:ring-3",
                 "has-focus-visible:ring-ring/50",
               )}
-              key={character.key}
+              key={character.id}
             >
               <span className="relative shrink-0 size-24.5">
                 <img
@@ -193,7 +193,7 @@ export default function Characters() {
                   "inline-flex flex-1 justify-center items-center text-sm text-center outline-none",
                   "before:absolute before:inset-0",
                 )}
-                to={Paths.Character.to(character.key)}
+                to={Paths.Character.to(character.id)}
               />
             </li>
           );

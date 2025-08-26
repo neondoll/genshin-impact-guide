@@ -1,5 +1,5 @@
 import type { PreferredStatsRecommendationsProps } from "./types";
-import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
+import { ArtifactSlotIds } from "@/features/artifact-slots/enums";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatBadge from "@/features/stats/stat-badge";
 
@@ -13,9 +13,9 @@ export default function PreferredStatsRecommendations({ recommendations }: Prefe
         <TableRow>
           {recommendationsKeys.map(recommendationsKey => (
             <TableHead className="text-center" key={recommendationsKey}>
-              {recommendationsKey === ArtifactSlotKeys.Sands && "Часы"}
-              {recommendationsKey === ArtifactSlotKeys.Goblet && "Кубок"}
-              {recommendationsKey === ArtifactSlotKeys.Circlet && "Корона"}
+              {recommendationsKey === ArtifactSlotIds.Sands && "Часы"}
+              {recommendationsKey === ArtifactSlotIds.Goblet && "Кубок"}
+              {recommendationsKey === ArtifactSlotIds.Circlet && "Корона"}
               {recommendationsKey === "additional" && "Доп."}
             </TableHead>
           ))}

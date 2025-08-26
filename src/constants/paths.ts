@@ -1,5 +1,5 @@
 import type { ArtifactSet } from "@/features/artifact-sets/types";
-import type { ICharacter } from "../database/characters/types";
+import type { Character } from "@/features/characters/types";
 import type { IWeapon } from "../database/weapons/types";
 
 export default {
@@ -9,8 +9,8 @@ export default {
   },
   ArtifactSets: { title: "Артефакты", to: "/artifact-sets" },
   Character: {
-    title: (item: ICharacter) => item.name,
-    to: (key: ICharacter["key"] | string) => `/characters/${key}`,
+    title: (item: Character) => item.name,
+    to: (id: Character["id"] | string) => `/characters/${id}`,
   },
   Characters: { title: "Персонажи", to: "/characters" },
   Resources: { title: "Материалы", to: "/resources" },

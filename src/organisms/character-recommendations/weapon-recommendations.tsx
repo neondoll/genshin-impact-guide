@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import type { ICharacterWeaponRecommendation } from "@/database/characters-recommendations/types";
+import type { CharacterWeaponRecommendation } from "@/features/characters-recommendations/types";
 import type { TWeaponKey } from "@/database/weapons/types";
 import type { WeaponRecommendationsProps } from "./types";
 import { backgroundClassByRarity } from "@/lib/rarity";
@@ -10,10 +10,10 @@ import { selectWeaponById } from "@/features/weapons/weaponsSelectors";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-function WeaponBadge({ postfix, refinement, signatureWeaponKey, weaponKey }: {
-  postfix: ICharacterWeaponRecommendation["postfix"];
-  refinement: ICharacterWeaponRecommendation["refinement"];
-  signatureWeaponKey: WeaponRecommendationsProps["character"]["signature_weapon_key"];
+function WeaponBadge({ postfix, refinement, signatureWeaponId, weaponKey }: {
+  postfix: CharacterWeaponRecommendation["postfix"];
+  refinement: CharacterWeaponRecommendation["refinement"];
+  signatureWeaponId: WeaponRecommendationsProps["character"]["signature_weapon_id"];
   weaponKey: TWeaponKey;
 }) {
   const [weapon, setWeapon] = useState<ReturnType<typeof selectWeaponById>>();
@@ -38,7 +38,7 @@ function WeaponBadge({ postfix, refinement, signatureWeaponKey, weaponKey }: {
       <span>
         {weapon.name}
         {refinement !== undefined && ` R${refinement}`}
-        {weapon.key === signatureWeaponKey && " (сигнатурное)"}
+        {weapon.key === signatureWeaponId && " (сигнатурное)"}
         {postfix !== undefined && (
           <>
             {" "}
@@ -52,7 +52,7 @@ function WeaponBadge({ postfix, refinement, signatureWeaponKey, weaponKey }: {
 
 function WeaponRecommendationsTable({ character, recommendations }: {
   character: WeaponRecommendationsProps["character"];
-  recommendations: ICharacterWeaponRecommendation[];
+  recommendations: CharacterWeaponRecommendation[];
 }) {
   const [diffPercent, setDiffPercent] = useState(0);
   const [hasIsBetter, setHasIsBetter] = useState(false);
@@ -98,7 +98,7 @@ function WeaponRecommendationsTable({ character, recommendations }: {
           <TableRow
             className="hover:bg-inherit"
             key={
-              recommendation.key
+              recommendation.id
               + (recommendation.refinement === undefined ? "" : `-r${recommendation.refinement}`)
               + (recommendation.postfix === undefined ? "" : `-${recommendation.postfix}`)
             }
@@ -118,8 +118,8 @@ function WeaponRecommendationsTable({ character, recommendations }: {
               <WeaponBadge
                 postfix={recommendation.postfix}
                 refinement={recommendation.refinement}
-                signatureWeaponKey={character.signature_weapon_key}
-                weaponKey={recommendation.key}
+                signatureWeaponId={character.signature_weapon_id}
+                weaponKey={recommendation.id}
               />
             </TableCell>
             {hasPercent && (

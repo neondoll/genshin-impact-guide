@@ -1,29 +1,22 @@
-import type { ArtifactSetRecommendations } from "../types";
+import { ArtifactSetCharacterRecommendationClass, ArtifactSetRecommendationsClass } from "../classes";
 import { ArtifactSetIds } from "../../artifact-sets/enums";
-import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
-import { CharacterKeys } from "@/database/characters/enums";
+import { ArtifactSetRecommendationsVideoSources } from "../enums";
+import { ArtifactSlotIds } from "../../artifact-slots/enums";
+import { CharacterIds } from "../../characters/enums";
 import { StatKeys } from "@/database/stats/enums";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
 
-export default {
-  artifact_set_id: ArtifactSetIds.TenacityOfTheMillelith,
-  characters: [
-    { key: CharacterKeys.Dehya },
-    { key: CharacterKeys.KukiShinobu },
-    { key: CharacterKeys.Mona, is_better: true },
-    { key: CharacterKeys.SangonomiyaKokomi, is_better: true },
-    { key: CharacterKeys.Zhongli, is_better: true },
-  ],
-  preferred_stats: {
-    [ArtifactSlotKeys.Sands]: [StatKeys.EnergyRecharge, StatKeys.HpPercentage],
-    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StatKeys.HpPercentage],
-    [ArtifactSlotKeys.Circlet]: [...StatsCrit, StatKeys.HpPercentage],
+export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.TenacityOfTheMillelith, [
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Dehya),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.KukiShinobu),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Mona).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.SangonomiyaKokomi).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Zhongli).setIsBetter(),
+]])
+  .setPreferredStats({
+    [ArtifactSlotIds.Sands]: [StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatKeys.HpPercentage],
     additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
-  },
-  video_sources: [
-    {
-      title: "Miron MinMax: ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin",
-      youtube_url: "https://youtu.be/kCu0ux0hUCg",
-    },
-  ],
-} as ArtifactSetRecommendations;
+  })
+  .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

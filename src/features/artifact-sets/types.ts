@@ -1,4 +1,4 @@
-import type { TArtifactSlotKey } from "@/database/artifact-slots/types";
+import type { ArtifactSlotId } from "../artifact-slots/types";
 import type { TRarity } from "@/database/rarities/types";
 import { ArtifactSetIds } from "./enums";
 
@@ -14,7 +14,7 @@ export interface ArtifactSet {
 }
 
 export interface ArtifactSetSlot {
-  id: TArtifactSlotKey;
+  id: ArtifactSlotId;
   name: string;
   image_src: string;
 }

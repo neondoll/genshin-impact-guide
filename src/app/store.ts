@@ -2,10 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import artifactSetsRecommendationsReducer from "../features/artifact-sets-recommendations/slice";
 import artifactSetsReducer from "../features/artifact-sets/slice";
-import artifactSlotsSlice from "../features/artifact-slots/artifactSlotsSlice";
-import characterRolesSlice from "../features/character-roles/characterRolesSlice";
-import charactersRecommendationsSlice from "../features/characters-recommendations/charactersRecommendationsSlice";
-import charactersSlice from "../features/characters/charactersSlice";
+import artifactSlotsReducer from "../features/artifact-slots/slice";
+import characterRolesReducer from "../features/character-roles/slice";
+import charactersRecommendationsReducer from "../features/characters-recommendations/slice";
+import charactersReducer from "../features/characters/slice";
 import dungeonsSlice from "../features/dungeons/dungeonsSlice";
 import elementsSlice from "../features/elements/elementsSlice";
 import raritiesSlice from "../features/rarities/raritiesSlice";
@@ -20,10 +20,10 @@ export const store = configureStore({
   reducer: {
     artifactSets: artifactSetsReducer,
     artifactSetsRecommendations: artifactSetsRecommendationsReducer,
-    artifactSlots: artifactSlotsSlice.reducer,
-    characterRoles: characterRolesSlice.reducer,
-    characters: charactersSlice.reducer,
-    charactersRecommendations: charactersRecommendationsSlice.reducer,
+    artifactSlots: artifactSlotsReducer,
+    characterRoles: characterRolesReducer,
+    characters: charactersReducer,
+    charactersRecommendations: charactersRecommendationsReducer,
     dungeons: dungeonsSlice.reducer,
     elements: elementsSlice.reducer,
     rarities: raritiesSlice.reducer,

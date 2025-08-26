@@ -1,7 +1,7 @@
 import type { ArtifactSet, ArtifactSetSlot } from "./types";
 import type { TDungeonKey } from "@/database/dungeons/types";
 import { ArtifactSetIds } from "./enums";
-import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
+import { ArtifactSlotIds } from "../artifact-slots/enums";
 import { DungeonKeys } from "@/database/dungeons/enums";
 import { publicImageSrc } from "@/lib/utils";
 import dungeons from "@/database/dungeons/data";
@@ -30,11 +30,11 @@ class ArtifactSetClass implements ArtifactSet {
     this.sources = sources;
     this.item_bonuses = itemBonuses;
     this.slots = {
-      [ArtifactSlotKeys.Flower]: undefined,
-      [ArtifactSlotKeys.Plume]: undefined,
-      [ArtifactSlotKeys.Sands]: undefined,
-      [ArtifactSlotKeys.Goblet]: undefined,
-      [ArtifactSlotKeys.Circlet]: undefined,
+      [ArtifactSlotIds.Flower]: undefined,
+      [ArtifactSlotIds.Plume]: undefined,
+      [ArtifactSlotIds.Sands]: undefined,
+      [ArtifactSlotIds.Goblet]: undefined,
+      [ArtifactSlotIds.Circlet]: undefined,
     };
 
     (Object.entries(slots) as [keyof typeof slots, typeof slots[keyof typeof slots]][]).forEach(([slotId, slotName]) => {
@@ -49,9 +49,9 @@ class ArtifactSetClass implements ArtifactSet {
   }
 
   get image_src() {
-    return this.slots[ArtifactSlotKeys.Flower]?.image_src || this.slots[ArtifactSlotKeys.Plume]?.image_src
-      || this.slots[ArtifactSlotKeys.Sands]?.image_src || this.slots[ArtifactSlotKeys.Goblet]?.image_src
-      || this.slots[ArtifactSlotKeys.Circlet]?.image_src;
+    return this.slots[ArtifactSlotIds.Flower]?.image_src || this.slots[ArtifactSlotIds.Plume]?.image_src
+      || this.slots[ArtifactSlotIds.Sands]?.image_src || this.slots[ArtifactSlotIds.Goblet]?.image_src
+      || this.slots[ArtifactSlotIds.Circlet]?.image_src;
   }
 
   static init(params: ConstructorParameters<typeof ArtifactSetClass>) {
@@ -91,11 +91,11 @@ export default {
       4: "Подобранный элементальный осколок, образованный реакцией Кристалл, увеличивает бонус элементального урона соответствующего элемента всех членов отряда на 35% в течение 10 сек. Одновременно можно иметь бонус урона только одного элемента.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Цветок скальных трещин",
-      [ArtifactSlotKeys.Plume]: "Перо зубчатых пиков",
-      [ArtifactSlotKeys.Sands]: "Часы из прочного нефрита",
-      [ArtifactSlotKeys.Goblet]: "Кубок из резного камня",
-      [ArtifactSlotKeys.Circlet]: "Маска из одинокого базальта",
+      [ArtifactSlotIds.Flower]: "Цветок скальных трещин",
+      [ArtifactSlotIds.Plume]: "Перо зубчатых пиков",
+      [ArtifactSlotIds.Sands]: "Часы из прочного нефрита",
+      [ArtifactSlotIds.Goblet]: "Кубок из резного камня",
+      [ArtifactSlotIds.Circlet]: "Маска из одинокого базальта",
     },
   ]),
   [ArtifactSetIds.BlizzardStrayer]: ArtifactSetClass.init([
@@ -108,11 +108,11 @@ export default {
       4: "Атаки по противникам с эффектом Крио увеличивают шанс крит. попадания на 20%. Если противник имеет статус Заморозка, то дополнительно увеличивает шанс крит. попадания на 20%.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Занесённая снегом память",
-      [ArtifactSlotKeys.Plume]: "Решимость крушителя льда",
-      [ArtifactSlotKeys.Sands]: "Гибель замёрзшей родины",
-      [ArtifactSlotKeys.Goblet]: "Морозная гордость",
-      [ArtifactSlotKeys.Circlet]: "Эхо осколков инея",
+      [ArtifactSlotIds.Flower]: "Занесённая снегом память",
+      [ArtifactSlotIds.Plume]: "Решимость крушителя льда",
+      [ArtifactSlotIds.Sands]: "Гибель замёрзшей родины",
+      [ArtifactSlotIds.Goblet]: "Морозная гордость",
+      [ArtifactSlotIds.Circlet]: "Эхо осколков инея",
     },
   ]),
   [ArtifactSetIds.BloodstainedChivalry]: ArtifactSetClass.init([
@@ -125,11 +125,11 @@ export default {
       4: "После победы над противником увеличивает урон заряженной атаки на 50% и обнуляет стоимость выносливости заряженной атаки на 10 сек.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Железное сердце рыцаря крови",
-      [ArtifactSlotKeys.Plume]: "Перо рыцаря крови",
-      [ArtifactSlotKeys.Sands]: "Час долга рыцаря крови",
-      [ArtifactSlotKeys.Goblet]: "Кубок рыцаря крови",
-      [ArtifactSlotKeys.Circlet]: "Железная маска рыцаря крови",
+      [ArtifactSlotIds.Flower]: "Железное сердце рыцаря крови",
+      [ArtifactSlotIds.Plume]: "Перо рыцаря крови",
+      [ArtifactSlotIds.Sands]: "Час долга рыцаря крови",
+      [ArtifactSlotIds.Goblet]: "Кубок рыцаря крови",
+      [ArtifactSlotIds.Circlet]: "Железная маска рыцаря крови",
     },
   ]),
   [ArtifactSetIds.CrimsonWitchOfFlames]: ArtifactSetClass.init([
@@ -142,11 +142,11 @@ export default {
       4: "Увеличивает урон статусов Перегрузка, Горение и Цветение на 40%, а урон статусов Пар и Таяние - на 15%. Использование элементального навыка увеличивает эффекты набора из двух вещей на 50% в течение 10 сек. Может складываться до 3 раз.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Ведьмин огненный цветок",
-      [ArtifactSlotKeys.Plume]: "Пылающее ведьмино перо",
-      [ArtifactSlotKeys.Sands]: "Ведьмин последний час",
-      [ArtifactSlotKeys.Goblet]: "Пламя ведьминого сердца",
-      [ArtifactSlotKeys.Circlet]: "Тлеющая ведьмина шляпа",
+      [ArtifactSlotIds.Flower]: "Ведьмин огненный цветок",
+      [ArtifactSlotIds.Plume]: "Пылающее ведьмино перо",
+      [ArtifactSlotIds.Sands]: "Ведьмин последний час",
+      [ArtifactSlotIds.Goblet]: "Пламя ведьминого сердца",
+      [ArtifactSlotIds.Circlet]: "Тлеющая ведьмина шляпа",
     },
   ]),
   [ArtifactSetIds.DeepwoodMemories]: ArtifactSetClass.init([
@@ -159,11 +159,11 @@ export default {
       4: "Попадание элементальным навыком или взрывом стихии снижает Дендро сопротивление врага на 30% на 8 сек. Этот эффект срабатывает, даже если экипированный этими артефактами персонаж не на поле боя.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Странник лабиринта",
-      [ArtifactSlotKeys.Plume]: "Мудрец лозы",
-      [ArtifactSlotKeys.Sands]: "Час осмысления",
-      [ArtifactSlotKeys.Goblet]: "Лампа заблудших",
-      [ArtifactSlotKeys.Circlet]: "Лавровый венец",
+      [ArtifactSlotIds.Flower]: "Странник лабиринта",
+      [ArtifactSlotIds.Plume]: "Мудрец лозы",
+      [ArtifactSlotIds.Sands]: "Час осмысления",
+      [ArtifactSlotIds.Goblet]: "Лампа заблудших",
+      [ArtifactSlotIds.Circlet]: "Лавровый венец",
     },
   ]),
   [ArtifactSetIds.DesertPavilionChronicle]: ArtifactSetClass.init([
@@ -176,11 +176,11 @@ export default {
       4: "Попадание заряженной атакой на 15 сек. повышает скорость обычной атаки на 10%, а урон обычной атаки, заряженной атаки и атаки в падении — на 40%.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Рождение города королей",
-      [ArtifactSlotKeys.Plume]: "Конец золотого царства",
-      [ArtifactSlotKeys.Sands]: "Часы потерянного пути",
-      [ArtifactSlotKeys.Goblet]: "Хранитель дивной мечты",
-      [ArtifactSlotKeys.Circlet]: "Наследие пустынной знати",
+      [ArtifactSlotIds.Flower]: "Рождение города королей",
+      [ArtifactSlotIds.Plume]: "Конец золотого царства",
+      [ArtifactSlotIds.Sands]: "Часы потерянного пути",
+      [ArtifactSlotIds.Goblet]: "Хранитель дивной мечты",
+      [ArtifactSlotIds.Circlet]: "Наследие пустынной знати",
     },
   ]),
   [ArtifactSetIds.EchoesOfAnOffering]: ArtifactSetClass.init([
@@ -193,11 +193,11 @@ export default {
       4: "Попадания обычной атакой с 36% шансом активируют Ритуал долины: урон обычной атаки повышается на 70% от силы атаки. Через 0,05 сек. после нанесения урона обычной атакой эффект исчезает. Если обычной атаке не удалось активировать этот эффект, шанс его активации следующим попаданием возрастает на 20%. Шанс активации возникает не чаще одного раза в 0,2 сек.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Цветок призрачного аромата",
-      [ArtifactSlotKeys.Plume]: "Нефритовый листок",
-      [ArtifactSlotKeys.Sands]: "Символ подношения",
-      [ArtifactSlotKeys.Goblet]: "Чаша истока",
-      [ArtifactSlotKeys.Circlet]: "Серьги текучести",
+      [ArtifactSlotIds.Flower]: "Цветок призрачного аромата",
+      [ArtifactSlotIds.Plume]: "Нефритовый листок",
+      [ArtifactSlotIds.Sands]: "Символ подношения",
+      [ArtifactSlotIds.Goblet]: "Чаша истока",
+      [ArtifactSlotIds.Circlet]: "Серьги текучести",
     },
   ]),
   [ArtifactSetIds.EmblemOfSeveredFate]: ArtifactSetClass.init([
@@ -210,11 +210,11 @@ export default {
       4: "Увеличивает урон взрыва стихий на величину, равную 25% от значения восстановления энергии. Эффект можно увеличить максимум до 75%.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Великолепная цуба",
-      [ArtifactSlotKeys.Plume]: "Обрезанное перо",
-      [ArtifactSlotKeys.Sands]: "Клетка грозовых облаков",
-      [ArtifactSlotKeys.Goblet]: "Алый сосуд",
-      [ArtifactSlotKeys.Circlet]: "Украшенный кабуто",
+      [ArtifactSlotIds.Flower]: "Великолепная цуба",
+      [ArtifactSlotIds.Plume]: "Обрезанное перо",
+      [ArtifactSlotIds.Sands]: "Клетка грозовых облаков",
+      [ArtifactSlotIds.Goblet]: "Алый сосуд",
+      [ArtifactSlotIds.Circlet]: "Украшенный кабуто",
     },
   ]),
   [ArtifactSetIds.FinaleOfTheDeepGalleries]: ArtifactSetClass.init([
@@ -227,11 +227,11 @@ export default {
       4: "Когда энергия экипированного персонажа равна 0, урон обычной атаки и взрыва стихии повышается на 60%. После того как экипированный персонаж наносит урон обычной атакой, данный эффект на 6 сек. перестаёт применяться для взрыва стихии. После того как экипированный персонаж наносит урон взрывом стихии, данный эффект на 6 сек. перестаёт применяться для обычной атаки. Этот эффект может возникнуть, даже если экипированный персонаж вне поля боя.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Отголоски песни галерей глубин",
-      [ArtifactSlotKeys.Plume]: "Дальние странствия галерей глубин",
-      [ArtifactSlotKeys.Sands]: "Часы забвения галерей глубин",
-      [ArtifactSlotKeys.Goblet]: "Ниспосланный пир галерей глубин",
-      [ArtifactSlotKeys.Circlet]: "Утраченная корона галерей глубин",
+      [ArtifactSlotIds.Flower]: "Отголоски песни галерей глубин",
+      [ArtifactSlotIds.Plume]: "Дальние странствия галерей глубин",
+      [ArtifactSlotIds.Sands]: "Часы забвения галерей глубин",
+      [ArtifactSlotIds.Goblet]: "Ниспосланный пир галерей глубин",
+      [ArtifactSlotIds.Circlet]: "Утраченная корона галерей глубин",
     },
   ]),
   [ArtifactSetIds.FlowerOfParadiseLost]: ArtifactSetClass.init([
@@ -244,11 +244,11 @@ export default {
       4: "Увеличивает урон реакций Бутонизация, Вегетация и Цветение экипированного этим набором персонажа на 40%. Кроме того, активация реакций Бутонизация, Вегетация и Цветение экипированным этим набором персонажем усилит этот эффект на 25%. Каждое суммирование длится 10 сек. Эффект складывается до 4 раз, может возникнуть раз в 1 сек. и активируется, даже если экипированный этим набором персонаж не активен.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Великолепие Ай-Ханум",
-      [ArtifactSlotKeys.Plume]: "Угасающий пир",
-      [ArtifactSlotKeys.Sands]: "Застывшее мгновение",
-      [ArtifactSlotKeys.Goblet]: "Магический сосуд хранителя тайн",
-      [ArtifactSlotKeys.Circlet]: "Аметистовый венец",
+      [ArtifactSlotIds.Flower]: "Великолепие Ай-Ханум",
+      [ArtifactSlotIds.Plume]: "Угасающий пир",
+      [ArtifactSlotIds.Sands]: "Застывшее мгновение",
+      [ArtifactSlotIds.Goblet]: "Магический сосуд хранителя тайн",
+      [ArtifactSlotIds.Circlet]: "Аметистовый венец",
     },
   ]),
   [ArtifactSetIds.FragmentOfHarmonicWhimsy]: ArtifactSetClass.init([
@@ -261,11 +261,11 @@ export default {
       4: "Когда значение Долга жизни увеличивается или уменьшается, наносимый персонажем урон увеличивается на 18% на 6 сек. Эффект может складываться до 3 раз.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Увертюра стройной симфонии",
-      [ArtifactSlotKeys.Plume]: "Ночные раздумья древнего моря",
-      [ArtifactSlotKeys.Sands]: "Скерцо поворотов судьбы",
-      [ArtifactSlotKeys.Goblet]: "Неистовая рапсодия ихора",
-      [ArtifactSlotKeys.Circlet]: "Вальс увядших фантазий",
+      [ArtifactSlotIds.Flower]: "Увертюра стройной симфонии",
+      [ArtifactSlotIds.Plume]: "Ночные раздумья древнего моря",
+      [ArtifactSlotIds.Sands]: "Скерцо поворотов судьбы",
+      [ArtifactSlotIds.Goblet]: "Неистовая рапсодия ихора",
+      [ArtifactSlotIds.Circlet]: "Вальс увядших фантазий",
     },
   ]),
   [ArtifactSetIds.GildedDreams]: ArtifactSetClass.init([
@@ -278,11 +278,11 @@ export default {
       4: "На 8 сек. после вызова элементальной реакции согласно элементам других персонажей в отряде экипированный этими артефактами персонаж получает следующие усиления: сила атаки повышается на 14% за каждого персонажа с таким же элементом, как и у экипированного персонажа; мастерство стихий повышается на 50 ед. за каждого персонажа с иным элементом. Каждое из этих усилений при подсчёте включает до 3 персонажей. Эффект может возникнуть один раз в 8 сек. Срабатывает, даже если экипированный этими артефактами персонаж не на поле боя.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Сон железного цветка",
-      [ArtifactSlotKeys.Plume]: "Перо суждения",
-      [ArtifactSlotKeys.Sands]: "Золотые годы",
-      [ArtifactSlotKeys.Goblet]: "Последний медовый пир",
-      [ArtifactSlotKeys.Circlet]: "Тень Короля песков",
+      [ArtifactSlotIds.Flower]: "Сон железного цветка",
+      [ArtifactSlotIds.Plume]: "Перо суждения",
+      [ArtifactSlotIds.Sands]: "Золотые годы",
+      [ArtifactSlotIds.Goblet]: "Последний медовый пир",
+      [ArtifactSlotIds.Circlet]: "Тень Короля песков",
     },
   ]),
   [ArtifactSetIds.GladiatorsFinale]: ArtifactSetClass.init([
@@ -300,11 +300,11 @@ export default {
       4: "Увеличивает урон обычной атаки на 35%, если персонаж использует одноручное, двуручное или древковое оружие.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Ностальгия гладиатора",
-      [ArtifactSlotKeys.Plume]: "Судьба гладиатора",
-      [ArtifactSlotKeys.Sands]: "Стремление гладиатора",
-      [ArtifactSlotKeys.Goblet]: "Пьянство гладиатора",
-      [ArtifactSlotKeys.Circlet]: "Триумф гладиатора",
+      [ArtifactSlotIds.Flower]: "Ностальгия гладиатора",
+      [ArtifactSlotIds.Plume]: "Судьба гладиатора",
+      [ArtifactSlotIds.Sands]: "Стремление гладиатора",
+      [ArtifactSlotIds.Goblet]: "Пьянство гладиатора",
+      [ArtifactSlotIds.Circlet]: "Триумф гладиатора",
     },
   ]),
   [ArtifactSetIds.GoldenTroupe]: ArtifactSetClass.init([
@@ -317,11 +317,11 @@ export default {
       4: "Увеличивает урон элементального навыка на 25%. Кроме того, когда персонаж не на поле боя, урон элементального навыка дополнительно увеличивается на 25%. Через 2 сек. после вступления в бой эффект исчезает.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Вариация золотой песни",
-      [ArtifactSlotKeys.Plume]: "Перо золотой птицы",
-      [ArtifactSlotKeys.Sands]: "Предзнаменование золотой эпохи",
-      [ArtifactSlotKeys.Goblet]: "Суета золотой ночи",
-      [ArtifactSlotKeys.Circlet]: "Награда Золотой труппы",
+      [ArtifactSlotIds.Flower]: "Вариация золотой песни",
+      [ArtifactSlotIds.Plume]: "Перо золотой птицы",
+      [ArtifactSlotIds.Sands]: "Предзнаменование золотой эпохи",
+      [ArtifactSlotIds.Goblet]: "Суета золотой ночи",
+      [ArtifactSlotIds.Circlet]: "Награда Золотой труппы",
     },
   ]),
   [ArtifactSetIds.HeartOfDepth]: ArtifactSetClass.init([
@@ -334,11 +334,11 @@ export default {
       4: "Увеличивает урон обычной и заряженной атаки на 30% в течение 15 сек. после использования элементального навыка.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Позолоченная брошь",
-      [ArtifactSlotKeys.Plume]: "Порыв ностальгии",
-      [ArtifactSlotKeys.Sands]: "Медный компас",
-      [ArtifactSlotKeys.Goblet]: "Кубок оглушающих глубин",
-      [ArtifactSlotKeys.Circlet]: "Треуголка в пятнах вина",
+      [ArtifactSlotIds.Flower]: "Позолоченная брошь",
+      [ArtifactSlotIds.Plume]: "Порыв ностальгии",
+      [ArtifactSlotIds.Sands]: "Медный компас",
+      [ArtifactSlotIds.Goblet]: "Кубок оглушающих глубин",
+      [ArtifactSlotIds.Circlet]: "Треуголка в пятнах вина",
     },
   ]),
   [ArtifactSetIds.HuskOfOpulentDreams]: ArtifactSetClass.init([
@@ -351,11 +351,11 @@ export default {
       4: "Персонаж, экипированный этим набором артефактов, получает эффект Любопытства в следующих ситуациях: 1 уровень Любопытства даётся активному персонажу после попадания по противнику атакой Гео (не чаще чем раз в 0,3 сек.); когда персонаж находится вне поля боя, он получает 1 ур. Любопытства каждые 3 сек. Любопытство может складываться до 4 ур., каждый ур. прибавляет 6% к защите и 6% к Гео урону. Если персонаж не получает Любопытство в течение 6 сек., то он теряет 1 накопленный уровень Любопытства.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Пора расцвета",
-      [ArtifactSlotKeys.Plume]: "Перо чертога",
-      [ArtifactSlotKeys.Sands]: "Песнь жизни",
-      [ArtifactSlotKeys.Goblet]: "Тыква пробуждения",
-      [ArtifactSlotKeys.Circlet]: "Шляпа телесности",
+      [ArtifactSlotIds.Flower]: "Пора расцвета",
+      [ArtifactSlotIds.Plume]: "Перо чертога",
+      [ArtifactSlotIds.Sands]: "Песнь жизни",
+      [ArtifactSlotIds.Goblet]: "Тыква пробуждения",
+      [ArtifactSlotIds.Circlet]: "Шляпа телесности",
     },
   ]),
   [ArtifactSetIds.Instructor]: ArtifactSetClass.init([
@@ -368,11 +368,11 @@ export default {
       4: "Вызов элементальной реакции увеличивает мастерство стихий всех членов отряда на 120 ед. в течение 8 сек.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Брошь инструктора",
-      [ArtifactSlotKeys.Plume]: "Перо инструктора",
-      [ArtifactSlotKeys.Sands]: "Карманные часы инструктора",
-      [ArtifactSlotKeys.Goblet]: "Чайная кружка инструктора",
-      [ArtifactSlotKeys.Circlet]: "Кепка инструктора",
+      [ArtifactSlotIds.Flower]: "Брошь инструктора",
+      [ArtifactSlotIds.Plume]: "Перо инструктора",
+      [ArtifactSlotIds.Sands]: "Карманные часы инструктора",
+      [ArtifactSlotIds.Goblet]: "Чайная кружка инструктора",
+      [ArtifactSlotIds.Circlet]: "Кепка инструктора",
     },
   ]),
   [ArtifactSetIds.Lavawalker]: ArtifactSetClass.init([
@@ -385,11 +385,11 @@ export default {
       4: "Увеличивает урон против врагов, находящихся под действием Пиро, на 35%.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Решительность ступающего по лаве",
-      [ArtifactSlotKeys.Plume]: "Спасение ступающего по лаве",
-      [ArtifactSlotKeys.Sands]: "Муки ступающего по лаве",
-      [ArtifactSlotKeys.Goblet]: "Просветление ступающего по лаве",
-      [ArtifactSlotKeys.Circlet]: "Мудрость ступающего по лаве",
+      [ArtifactSlotIds.Flower]: "Решительность ступающего по лаве",
+      [ArtifactSlotIds.Plume]: "Спасение ступающего по лаве",
+      [ArtifactSlotIds.Sands]: "Муки ступающего по лаве",
+      [ArtifactSlotIds.Goblet]: "Просветление ступающего по лаве",
+      [ArtifactSlotIds.Circlet]: "Мудрость ступающего по лаве",
     },
   ]),
   [ArtifactSetIds.LongNightsOath]: ArtifactSetClass.init([
@@ -402,11 +402,11 @@ export default {
       4: "После того как атака в падении, заряженная атака или элементальный навык экипированного персонажа поражают противника, экипированный персонаж получает 1/2/2 уровня Вечного сияния. Атаки в падении, заряженные атаки и элементальные навыки могут по отдельности вызывать этот эффект один раз в 1 сек. Вечное сияние: урон атаки в падении повышается на 15%. Эффект длится 6 сек. и складывается до 5 раз. Длительность каждого уровня рассчитывается отдельно.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Клятва светоносца",
-      [ArtifactSlotKeys.Plume]: "Соловьиное перо",
-      [ArtifactSlotKeys.Sands]: "Скорбный колокольчик бессмертного",
-      [ArtifactSlotKeys.Goblet]: "Умолкнувший рог",
-      [ArtifactSlotKeys.Circlet]: "Окрашенный шлем",
+      [ArtifactSlotIds.Flower]: "Клятва светоносца",
+      [ArtifactSlotIds.Plume]: "Соловьиное перо",
+      [ArtifactSlotIds.Sands]: "Скорбный колокольчик бессмертного",
+      [ArtifactSlotIds.Goblet]: "Умолкнувший рог",
+      [ArtifactSlotIds.Circlet]: "Окрашенный шлем",
     },
   ]),
   [ArtifactSetIds.MaidenBeloved]: ArtifactSetClass.init([
@@ -419,11 +419,11 @@ export default {
       4: "Увеличивает получаемое лечение всех членов отряда на 20% в течение 10 сек. после использования элементального навыка или взрыва стихии.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Далёкая душа юной девы",
-      [ArtifactSlotKeys.Plume]: "Тоска юной девы",
-      [ArtifactSlotKeys.Sands]: "Уходящая молодость юной девы",
-      [ArtifactSlotKeys.Goblet]: "Досуг юной девы",
-      [ArtifactSlotKeys.Circlet]: "Увядающая красота юной девы",
+      [ArtifactSlotIds.Flower]: "Далёкая душа юной девы",
+      [ArtifactSlotIds.Plume]: "Тоска юной девы",
+      [ArtifactSlotIds.Sands]: "Уходящая молодость юной девы",
+      [ArtifactSlotIds.Goblet]: "Досуг юной девы",
+      [ArtifactSlotIds.Circlet]: "Увядающая красота юной девы",
     },
   ]),
   [ArtifactSetIds.MarechausseeHunter]: ArtifactSetClass.init([
@@ -436,11 +436,11 @@ export default {
       4: "Увеличивает шанс крит. попадания на 12% на 5 сек., когда текущее HP увеличивается или снижается. Эффект может складываться до 3 раз.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Брошь охотника",
-      [ArtifactSlotKeys.Plume]: "Увертюра шедевра",
-      [ArtifactSlotKeys.Sands]: "Мгновение правосудия",
-      [ArtifactSlotKeys.Goblet]: "Забытый сосуд",
-      [ArtifactSlotKeys.Circlet]: "Лик старого солдата",
+      [ArtifactSlotIds.Flower]: "Брошь охотника",
+      [ArtifactSlotIds.Plume]: "Увертюра шедевра",
+      [ArtifactSlotIds.Sands]: "Мгновение правосудия",
+      [ArtifactSlotIds.Goblet]: "Забытый сосуд",
+      [ArtifactSlotIds.Circlet]: "Лик старого солдата",
     },
   ]),
   [ArtifactSetIds.NighttimeWhispersInTheEchoingWoods]: ArtifactSetClass.init([
@@ -453,11 +453,11 @@ export default {
       4: "После использования элементального навыка бонус Гео урона на 10 сек. увеличивается на 20%. Если персонаж находится под защитой щита, созданного реакцией Кристалл, этот эффект увеличивается на 150%. Через 1 сек. после потери щита это дополнительное увеличение исчезает.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Бескорыстный цветок",
-      [ArtifactSlotKeys.Plume]: "Искреннее перо",
-      [ArtifactSlotKeys.Sands]: "Верные песочные часы",
-      [ArtifactSlotKeys.Goblet]: "Великодушная чернильница",
-      [ArtifactSlotKeys.Circlet]: "Милостивая шляпка",
+      [ArtifactSlotIds.Flower]: "Бескорыстный цветок",
+      [ArtifactSlotIds.Plume]: "Искреннее перо",
+      [ArtifactSlotIds.Sands]: "Верные песочные часы",
+      [ArtifactSlotIds.Goblet]: "Великодушная чернильница",
+      [ArtifactSlotIds.Circlet]: "Милостивая шляпка",
     },
   ]),
   [ArtifactSetIds.NoblesseOblige]: ArtifactSetClass.init([
@@ -470,11 +470,11 @@ export default {
       4: "Активация взрыва стихии увеличивает силу атаки всех членов отряда на 20% в течение 12 сек. Эффект не складывается.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Королевский цветок",
-      [ArtifactSlotKeys.Plume]: "Королевское перо",
-      [ArtifactSlotKeys.Sands]: "Королевские карманные часы",
-      [ArtifactSlotKeys.Goblet]: "Королевская серебряная фляжка",
-      [ArtifactSlotKeys.Circlet]: "Королевская маска",
+      [ArtifactSlotIds.Flower]: "Королевский цветок",
+      [ArtifactSlotIds.Plume]: "Королевское перо",
+      [ArtifactSlotIds.Sands]: "Королевские карманные часы",
+      [ArtifactSlotIds.Goblet]: "Королевская серебряная фляжка",
+      [ArtifactSlotIds.Circlet]: "Королевская маска",
     },
   ]),
   [ArtifactSetIds.NymphsDream]: ArtifactSetClass.init([
@@ -487,11 +487,11 @@ export default {
       4: "Попадания обычной атакой, заряженной атакой, атакой в падении, элементальным навыком и взрывом стихий по противнику на 8 сек. создаёт 1 уровень Отражения нимфы. Когда действуют 1/2/3 и более уровня Отражения нимфы, сила атаки повышается на 7%/16%/25%, а бонус Гидро урона на 4%/9%/15%. Уровни Отражения нимфы, созданные обычными атаками, заряженными атаками, атаками в падении, элементальными навыками и взрывами стихий, существуют независимо друг от друга.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Цветок странствий",
-      [ArtifactSlotKeys.Plume]: "Перо злого мага",
-      [ArtifactSlotKeys.Sands]: "Постоянство нимфы",
-      [ArtifactSlotKeys.Goblet]: "Чаепитие героев",
-      [ArtifactSlotKeys.Circlet]: "Монокль свирепого дракона",
+      [ArtifactSlotIds.Flower]: "Цветок странствий",
+      [ArtifactSlotIds.Plume]: "Перо злого мага",
+      [ArtifactSlotIds.Sands]: "Постоянство нимфы",
+      [ArtifactSlotIds.Goblet]: "Чаепитие героев",
+      [ArtifactSlotIds.Circlet]: "Монокль свирепого дракона",
     },
   ]),
   [ArtifactSetIds.ObsidianCodex]: ArtifactSetClass.init([
@@ -504,11 +504,11 @@ export default {
       4: "После того как экипированный персонаж, будучи на поле боя, расходует 1 очко Ночного духа, шанс крит. попадания увеличивается на 40% на 6 сек. Этот эффект может возникнуть один раз в 1 сек.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Ожидания инородцев",
-      [ArtifactSlotKeys.Plume]: "Корень костного мозга души",
-      [ArtifactSlotKeys.Sands]: "Мифы владений ночи",
-      [ArtifactSlotKeys.Goblet]: "Банкет перед состязанием",
-      [ArtifactSlotKeys.Circlet]: "Корона святых",
+      [ArtifactSlotIds.Flower]: "Ожидания инородцев",
+      [ArtifactSlotIds.Plume]: "Корень костного мозга души",
+      [ArtifactSlotIds.Sands]: "Мифы владений ночи",
+      [ArtifactSlotIds.Goblet]: "Банкет перед состязанием",
+      [ArtifactSlotIds.Circlet]: "Корона святых",
     },
   ]),
   [ArtifactSetIds.OceanHuedClam]: ArtifactSetClass.init([
@@ -521,11 +521,11 @@ export default {
       4: "Экипированный этим набором артефактов персонаж при лечении соратников создаёт на 3 сек. Пузырь морских красок. Пузырь регистрирует восстановленное при лечении HP (в том числе избыточное, когда лечение превышает максимум здоровья). После окончания действия Пузырь взрывается и наносит окружающим врагам урон в размере 90% учтённого объёма лечения (урон рассчитывается так же, как для эффектов Заряжен и Сверхпроводник, но на него не действуют бонусы мастерства стихий, уровня и реакций). Пузырь морских красок можно создавать не чаще чем раз в 3,5 сек. Пузырь может записать до 30 000 восстановленного HP, в том числе HP избыточного лечения. Для отряда не может существовать больше одного Пузыря морских красок одновременно. Этот эффект действует, даже если персонаж, экипированный набором артефактов, не находится на поле боя.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Цветок морских красок",
-      [ArtifactSlotKeys.Plume]: "Перо глубинного дворца",
-      [ArtifactSlotKeys.Sands]: "Раковина разлуки",
-      [ArtifactSlotKeys.Goblet]: "Жемчужная клетка",
-      [ArtifactSlotKeys.Circlet]: "Корона Ватацуми",
+      [ArtifactSlotIds.Flower]: "Цветок морских красок",
+      [ArtifactSlotIds.Plume]: "Перо глубинного дворца",
+      [ArtifactSlotIds.Sands]: "Раковина разлуки",
+      [ArtifactSlotIds.Goblet]: "Жемчужная клетка",
+      [ArtifactSlotIds.Circlet]: "Корона Ватацуми",
     },
   ]),
   [ArtifactSetIds.PaleFlame]: ArtifactSetClass.init([
@@ -538,11 +538,11 @@ export default {
       4: "Когда элементальный навык попадает по врагам, атака увеличивается на 9% в течение 7 сек. Эффект может складываться до 2 раз и возникнуть не чаще 1 раза за 0,3 сек. На 2 уровне складывания эффект набора из 2 вещей увеличивается на 100%.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Незапятнанный цветок",
-      [ArtifactSlotKeys.Plume]: "Перо мудрого лекаря",
-      [ArtifactSlotKeys.Sands]: "Замершее мгновение",
-      [ArtifactSlotKeys.Goblet]: "Превосходящая чаша",
-      [ArtifactSlotKeys.Circlet]: "Смеющаяся маска",
+      [ArtifactSlotIds.Flower]: "Незапятнанный цветок",
+      [ArtifactSlotIds.Plume]: "Перо мудрого лекаря",
+      [ArtifactSlotIds.Sands]: "Замершее мгновение",
+      [ArtifactSlotIds.Goblet]: "Превосходящая чаша",
+      [ArtifactSlotIds.Circlet]: "Смеющаяся маска",
     },
   ]),
   [ArtifactSetIds.RetracingBolide]: ArtifactSetClass.init([
@@ -555,11 +555,11 @@ export default {
       4: "Под защитой щита увеличивает урон обычной и заряженной атаки на 40%.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Цветок равноденствия",
-      [ArtifactSlotKeys.Plume]: "Конец равноденствия",
-      [ArtifactSlotKeys.Sands]: "Час равноденствия",
-      [ArtifactSlotKeys.Goblet]: "Шар равноденствия",
-      [ArtifactSlotKeys.Circlet]: "Маска равноденствия",
+      [ArtifactSlotIds.Flower]: "Цветок равноденствия",
+      [ArtifactSlotIds.Plume]: "Конец равноденствия",
+      [ArtifactSlotIds.Sands]: "Час равноденствия",
+      [ArtifactSlotIds.Goblet]: "Шар равноденствия",
+      [ArtifactSlotIds.Circlet]: "Маска равноденствия",
     },
   ]),
   [ArtifactSetIds.ScrollOfTheHeroOfCinderCity]: ArtifactSetClass.init([
@@ -572,11 +572,11 @@ export default {
       4: "После того как экипированный персонаж активирует реакцию, связанную с его элементом, все члены отряда поблизости получают 12% бонус урона элементами, связанными с этой реакцией, на 15 сек. Если экипированный персонаж, активируя данный эффект, находится в состоянии Благословение Ночного духа, все персонажи отряда поблизости дополнительно получают 28% бонус урона элементами, связанными с этой реакцией, на 20 сек. Такой эффект может возникнуть, даже если персонаж не находится на поле боя. Бонусы одноимённых наборов артефактов не суммируются.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Талисман укротителя зверей",
-      [ArtifactSlotKeys.Plume]: "Маячок горного патрульного",
-      [ArtifactSlotKeys.Sands]: "Золотые часы мистика",
-      [ArtifactSlotKeys.Goblet]: "Кубок бродячего исследователя",
-      [ArtifactSlotKeys.Circlet]: "Перьевая маска воина-демона",
+      [ArtifactSlotIds.Flower]: "Талисман укротителя зверей",
+      [ArtifactSlotIds.Plume]: "Маячок горного патрульного",
+      [ArtifactSlotIds.Sands]: "Золотые часы мистика",
+      [ArtifactSlotIds.Goblet]: "Кубок бродячего исследователя",
+      [ArtifactSlotIds.Circlet]: "Перьевая маска воина-демона",
     },
   ]),
   [ArtifactSetIds.ShimenawasReminiscence]: ArtifactSetClass.init([
@@ -589,11 +589,11 @@ export default {
       4: "При использовании элементального навыка, если у персонажа 15 или более единиц энергии, он теряет 15 единиц энергии, а урон обычной атаки, заряженной атаки и атаки в падении увеличивается на 50% в течение 10 сек. Эффект нельзя активировать повторно в течение этого времени.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Опутывающий цветок",
-      [ArtifactSlotKeys.Plume]: "Стрела воспоминаний",
-      [ArtifactSlotKeys.Sands]: "Мгновение росы",
-      [ArtifactSlotKeys.Goblet]: "Полное надежд сердце",
-      [ArtifactSlotKeys.Circlet]: "Непостоянный лик",
+      [ArtifactSlotIds.Flower]: "Опутывающий цветок",
+      [ArtifactSlotIds.Plume]: "Стрела воспоминаний",
+      [ArtifactSlotIds.Sands]: "Мгновение росы",
+      [ArtifactSlotIds.Goblet]: "Полное надежд сердце",
+      [ArtifactSlotIds.Circlet]: "Непостоянный лик",
     },
   ]),
   [ArtifactSetIds.SongOfDaysPast]: ArtifactSetClass.init([
@@ -606,11 +606,11 @@ export default {
       4: "Экипированный персонаж при лечении членов отряда на 6 сек. создаёт эффект Стремления, который регистрирует осуществлённое лечение (в том числе избыточное). С завершением длительности Стремление превращается в Волны былых времён: при попадании обычной атаки, заряженной атаки, атаки в падении, элементального навыка или взрыва стихии вашего активного персонажа по противнику наносимый урон увеличивается на 8% от общего количества лечения, зарегистрированного Стремлением. После 5 активаций или через 10 сек. эффект Волн былых времён исчезает. Однократный эффект Стремления регистрирует до 15 000 ед. HP. Одновременно может существовать только одно Стремление, но оно регистрирует лечение, предоставляемое несколькими экипированными персонажами сразу. Этот эффект активируется, даже если экипированный персонаж не на поле боя.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Забытая клятва былых времён",
-      [ArtifactSlotKeys.Plume]: "Воспоминания о былых временах",
-      [ArtifactSlotKeys.Sands]: "Отзвуки былых времён",
-      [ArtifactSlotKeys.Goblet]: "Обещанный сон былых времён",
-      [ArtifactSlotKeys.Circlet]: "Поэзия былых времён",
+      [ArtifactSlotIds.Flower]: "Забытая клятва былых времён",
+      [ArtifactSlotIds.Plume]: "Воспоминания о былых временах",
+      [ArtifactSlotIds.Sands]: "Отзвуки былых времён",
+      [ArtifactSlotIds.Goblet]: "Обещанный сон былых времён",
+      [ArtifactSlotIds.Circlet]: "Поэзия былых времён",
     },
   ]),
   [ArtifactSetIds.TenacityOfTheMillelith]: ArtifactSetClass.init([
@@ -623,11 +623,11 @@ export default {
       4: "Когда элементальный навык попадает по врагам, атака всех находящихся поблизости персонажей в отряде, увеличивается на 20%, а прочность их щита увеличивается на 30%. Эффект длится 3 сек. и может возникнуть 1 раз в 0,5 сек. Этот эффект может быть активирован, даже если персонаж, экипированный этим набором артефактов, не находится на поле боя.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Цветок почестей",
-      [ArtifactSlotKeys.Plume]: "Боевое перо командира",
-      [ArtifactSlotKeys.Sands]: "Золотые часы",
-      [ArtifactSlotKeys.Goblet]: "Золотой кубок клятвы",
-      [ArtifactSlotKeys.Circlet]: "Древний шлем генерала",
+      [ArtifactSlotIds.Flower]: "Цветок почестей",
+      [ArtifactSlotIds.Plume]: "Боевое перо командира",
+      [ArtifactSlotIds.Sands]: "Золотые часы",
+      [ArtifactSlotIds.Goblet]: "Золотой кубок клятвы",
+      [ArtifactSlotIds.Circlet]: "Древний шлем генерала",
     },
   ]),
   [ArtifactSetIds.ThunderingFury]: ArtifactSetClass.init([
@@ -640,11 +640,11 @@ export default {
       4: "Увеличивает урон реакций Перегрузка, Заряжен, Сверхпроводник и Вегетация на 40%. Урон от реакции Обострение увеличивается на 20%. При активации этих реакций, а также реакции Стимуляция, время отката элементального навыка уменьшается на 1 сек. Эффект может возникнуть не чаще 1 раза в 0,8 сек.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Милосердие Громовой птицы",
-      [ArtifactSlotKeys.Plume]: "Переживший катастрофу",
-      [ArtifactSlotKeys.Sands]: "Песочные часы грома",
-      [ArtifactSlotKeys.Goblet]: "Предвестник бури",
-      [ArtifactSlotKeys.Circlet]: "Корона призывателя грома",
+      [ArtifactSlotIds.Flower]: "Милосердие Громовой птицы",
+      [ArtifactSlotIds.Plume]: "Переживший катастрофу",
+      [ArtifactSlotIds.Sands]: "Песочные часы грома",
+      [ArtifactSlotIds.Goblet]: "Предвестник бури",
+      [ArtifactSlotIds.Circlet]: "Корона призывателя грома",
     },
   ]),
   [ArtifactSetIds.Thundersoother]: ArtifactSetClass.init([
@@ -657,11 +657,11 @@ export default {
       4: "Увеличивает урон против врагов, находящихся под действием Электро, на 35%.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Сердце усмиряющего гром",
-      [ArtifactSlotKeys.Plume]: "Перо усмиряющего гром",
-      [ArtifactSlotKeys.Sands]: "Время усмиряющего гром",
-      [ArtifactSlotKeys.Goblet]: "Бокал усмиряющего гром",
-      [ArtifactSlotKeys.Circlet]: "Корона усмиряющего гром",
+      [ArtifactSlotIds.Flower]: "Сердце усмиряющего гром",
+      [ArtifactSlotIds.Plume]: "Перо усмиряющего гром",
+      [ArtifactSlotIds.Sands]: "Время усмиряющего гром",
+      [ArtifactSlotIds.Goblet]: "Бокал усмиряющего гром",
+      [ArtifactSlotIds.Circlet]: "Корона усмиряющего гром",
     },
   ]),
   [ArtifactSetIds.VermillionHereafter]: ArtifactSetClass.init([
@@ -674,11 +674,11 @@ export default {
       4: "После активации взрыва стихии на 16 сек. создаёт Скрытое сияние, которое повышает силу атаки на 8%. Сила атаки персонажа увеличивается ещё на 10%, когда он теряет HP. Этот эффект может возникнуть максимум 4 раза и не чаще, чем раз в 0,8 сек. Скрытое сияние исчезает, когда персонаж покидает поле боя. При повторной активации взрыва стихии существующее Скрытое сияние снимается.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Цветение жизни",
-      [ArtifactSlotKeys.Plume]: "Перо скрытого сияния",
-      [ArtifactSlotKeys.Sands]: "Солнечная реликвия",
-      [ArtifactSlotKeys.Goblet]: "Мгновение договора",
-      [ArtifactSlotKeys.Circlet]: "Громогласный облик",
+      [ArtifactSlotIds.Flower]: "Цветение жизни",
+      [ArtifactSlotIds.Plume]: "Перо скрытого сияния",
+      [ArtifactSlotIds.Sands]: "Солнечная реликвия",
+      [ArtifactSlotIds.Goblet]: "Мгновение договора",
+      [ArtifactSlotIds.Circlet]: "Громогласный облик",
     },
   ]),
   [ArtifactSetIds.ViridescentVenerer]: ArtifactSetClass.init([
@@ -691,11 +691,11 @@ export default {
       4: "Увеличивает урон Рассеивания на 60%. При взаимодействии Рассеивания с другим элементом, также понижает сопротивление противника к соответствующему элементу на 40% в течение 10 сек.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Воспоминания об изумрудных лугах",
-      [ArtifactSlotKeys.Plume]: "Оперение стрелы изумрудного охотника",
-      [ArtifactSlotKeys.Sands]: "Решимость изумрудного охотника",
-      [ArtifactSlotKeys.Goblet]: "Сосуд изумрудного охотника",
-      [ArtifactSlotKeys.Circlet]: "Венок изумрудного охотника",
+      [ArtifactSlotIds.Flower]: "Воспоминания об изумрудных лугах",
+      [ArtifactSlotIds.Plume]: "Оперение стрелы изумрудного охотника",
+      [ArtifactSlotIds.Sands]: "Решимость изумрудного охотника",
+      [ArtifactSlotIds.Goblet]: "Сосуд изумрудного охотника",
+      [ArtifactSlotIds.Circlet]: "Венок изумрудного охотника",
     },
   ]),
   [ArtifactSetIds.VourukashasGlow]: ArtifactSetClass.init([
@@ -708,11 +708,11 @@ export default {
       4: "Увеличивает урон элементального навыка и взрыва стихии на 10%. Если экипированный персонаж получает урон, этот эффект повышения урона увеличивается на 80% на 5 сек. Эффект может складываться до 5 раз. Отсчёт времени каждого уровня происходит отдельно. Эти эффекты активируются, даже если экипированный персонаж не на поле боя.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Тычинка истока Хварны",
-      [ArtifactSlotKeys.Plume]: "Самоцветное перо",
-      [ArtifactSlotKeys.Sands]: "Древнее увядание",
-      [ArtifactSlotKeys.Goblet]: "Пир необузданного веселья",
-      [ArtifactSlotKeys.Circlet]: "Сердце светозарности Хварны",
+      [ArtifactSlotIds.Flower]: "Тычинка истока Хварны",
+      [ArtifactSlotIds.Plume]: "Самоцветное перо",
+      [ArtifactSlotIds.Sands]: "Древнее увядание",
+      [ArtifactSlotIds.Goblet]: "Пир необузданного веселья",
+      [ArtifactSlotIds.Circlet]: "Сердце светозарности Хварны",
     },
   ]),
   [ArtifactSetIds.WanderersTroupe]: ArtifactSetClass.init([
@@ -729,11 +729,11 @@ export default {
       4: "Увеличивает урон заряженной атаки на 35%, если персонаж использует катализатор или стрелковое оружие.",
     },
     {
-      [ArtifactSlotKeys.Flower]: "Рассвет ансамбля",
-      [ArtifactSlotKeys.Plume]: "Оперение стрелы барда",
-      [ArtifactSlotKeys.Sands]: "Окончание концерта",
-      [ArtifactSlotKeys.Goblet]: "Фляжка странника",
-      [ArtifactSlotKeys.Circlet]: "Цилиндр дирижёра",
+      [ArtifactSlotIds.Flower]: "Рассвет ансамбля",
+      [ArtifactSlotIds.Plume]: "Оперение стрелы барда",
+      [ArtifactSlotIds.Sands]: "Окончание концерта",
+      [ArtifactSlotIds.Goblet]: "Фляжка странника",
+      [ArtifactSlotIds.Circlet]: "Цилиндр дирижёра",
     },
   ]),
 } as Record<ArtifactSet["id"], ArtifactSet>;

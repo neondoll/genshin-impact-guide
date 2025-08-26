@@ -1,37 +1,28 @@
-import type { ArtifactSetRecommendations } from "../types";
+import { ArtifactSetCharacterRecommendationClass, ArtifactSetRecommendationsClass } from "../classes";
 import { ArtifactSetIds } from "../../artifact-sets/enums";
-import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
-import { CharacterKeys } from "@/database/characters/enums";
+import { ArtifactSetRecommendationsVideoSources } from "../enums";
+import { ArtifactSlotIds } from "../../artifact-slots/enums";
+import { CharacterIds } from "../../characters/enums";
 import { StatKeys } from "@/database/stats/enums";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
 
-export default {
-  artifact_set_id: ArtifactSetIds.NoblesseOblige,
-  characters: [
-    { key: CharacterKeys.Bennett, is_better: true },
-    { key: CharacterKeys.Charlotte, is_better: true },
-    { key: CharacterKeys.Chevreuse, is_better: true },
-    { key: CharacterKeys.Ganyu, is_better: true },
-    { key: CharacterKeys.Gorou, is_better: true },
-    { key: CharacterKeys.Jean, is_better: true },
-    { key: CharacterKeys.KujouSara, is_better: true },
-    { key: CharacterKeys.Mona, is_better: true },
-    { key: CharacterKeys.Shenhe, is_better: true },
-    { key: CharacterKeys.Xingqiu, is_better: true },
-    { key: CharacterKeys.Zhongli, is_better: true },
-  ],
-  preferred_stats: {
-    [ArtifactSlotKeys.Sands]: [StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
-    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StatKeys.AtkPercentage, StatKeys.HpPercentage],
-    [ArtifactSlotKeys.Circlet]: [...StatsCrit, StatKeys.HpPercentage],
-    additional: [
-      ...StatsCrit, StatKeys.AtkPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HpPercentage,
-    ],
-  },
-  video_sources: [
-    {
-      title: "Miron MinMax: ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin",
-      youtube_url: "https://youtu.be/kCu0ux0hUCg",
-    },
-  ],
-} as ArtifactSetRecommendations;
+export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.NoblesseOblige, [
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Bennett).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Charlotte).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Chevreuse).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Ganyu).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Gorou).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Jean).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.KujouSara).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Mona).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Shenhe).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Xingqiu).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Zhongli).setIsBetter(),
+]])
+  .setPreferredStats({
+    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.AtkPercentage, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatKeys.HpPercentage],
+    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+  })
+  .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

@@ -1,5 +1,5 @@
-import type { ICharacter } from "@/database/characters/types";
-import type { ICharacterRecommendations } from "@/database/characters-recommendations/types";
+import type { Character } from "@/features/characters/types";
+import type { CharacterRecommendations } from "@/features/characters-recommendations/types";
 
 export type ArtifactRecommendationsProps = {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["artifacts"]>;
@@ -11,8 +11,8 @@ export type ArtifactStatRecommendationsProps = {
   recommendations: ArtifactRecommendationsProps["recommendations"]["stats"];
 };
 export type CharacterRecommendationsProps = {
-  character: ICharacter;
-  recommendations: ICharacterRecommendations;
+  character: Character;
+  recommendations: CharacterRecommendations;
 };
 export type ReferencePointRecommendationsProps = {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["reference_point"]>;

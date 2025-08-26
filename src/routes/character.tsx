@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { TCharacterKey } from "@/database/characters/types";
+import type { CharacterId } from "@/features/characters/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -9,11 +9,11 @@ import {
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectCharacterById } from "@/features/characters/charactersSelectors";
+import { selectCharacterById } from "@/features/characters/selectors";
 import {
   selectCharacterRecommendationsById,
-} from "@/features/characters-recommendations/charactersRecommendationsSelectors";
-import { selectCharacterRolesByIds } from "@/features/character-roles/characterRolesSelectors";
+} from "@/features/characters-recommendations/selectors.ts";
+import { selectCharacterRolesByIds } from "@/features/character-roles/selectors";
 import { selectElementById } from "@/features/elements/elementsSelectors";
 import { selectWeaponTypeById } from "@/features/weapon-types/weaponTypesSelectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
@@ -24,11 +24,11 @@ import Rarity from "@/features/rarities/rarity";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {
-  const character = selectCharacterById(params.characterKey as TCharacterKey);
-  const characterElement = selectElementById(character.element_key);
-  const characterRecommendations = selectCharacterRecommendationsById(character.key);
-  const characterRoles = character.role_keys ? selectCharacterRolesByIds(character.role_keys) : undefined;
-  const characterWeaponType = selectWeaponTypeById(character.weapon_type_key);
+  const character = selectCharacterById(params.characterKey as CharacterId);
+  const characterElement = selectElementById(character.element_id);
+  const characterRecommendations = selectCharacterRecommendationsById(character.id);
+  const characterRoles = character.role_ids ? selectCharacterRolesByIds(character.role_ids) : undefined;
+  const characterWeaponType = selectWeaponTypeById(character.weapon_type_id);
 
   return { character, characterElement, characterRecommendations, characterRoles, characterWeaponType };
 }
@@ -108,7 +108,7 @@ export default function Character() {
                 <TableCell className="p-2">
                   <div className="flex flex-wrap gap-2">
                     {characterRoles.map(characterRole => (
-                      <Tooltip key={characterRole.key}>
+                      <Tooltip key={characterRole.id}>
                         <TooltipTrigger asChild>
                           <Badge className="rounded-full">
                             <img alt={characterRole.name} className="shrink-0 size-5" src={characterRole.icon_src} />

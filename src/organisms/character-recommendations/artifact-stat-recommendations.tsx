@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import type { ArtifactStatRecommendationsProps } from "./types";
-import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
+import { ArtifactSlotIds } from "@/features/artifact-slots/enums";
 import { cn, numberFormatPercent } from "@/lib/utils";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatBadge from "@/features/stats/stat-badge";
@@ -56,17 +56,17 @@ export default function ArtifactStatRecommendations({ recommendations }: Artifac
       <TableBody>
         {recommendationsKeys.map((recommendationsKey) => {
           return recommendations[recommendationsKey].map((recommendation, index) => (
-            <TableRow className="hover:bg-inherit" key={`${recommendationsKey}-${recommendation.key}`}>
+            <TableRow className="hover:bg-inherit" key={`${recommendationsKey}-${recommendation.id}`}>
               {index === 0 && (
                 <TableHead className="p-2 w-18" rowSpan={recommendations[recommendationsKey].length}>
-                  {recommendationsKey === ArtifactSlotKeys.Sands && "Часы"}
-                  {recommendationsKey === ArtifactSlotKeys.Goblet && "Кубок"}
-                  {recommendationsKey === ArtifactSlotKeys.Circlet && "Корона"}
+                  {recommendationsKey === ArtifactSlotIds.Sands && "Часы"}
+                  {recommendationsKey === ArtifactSlotIds.Goblet && "Кубок"}
+                  {recommendationsKey === ArtifactSlotIds.Circlet && "Корона"}
                   {recommendationsKey === "additional" && "Доп."}
                 </TableHead>
               )}
               <TableCell className="text-pretty whitespace-normal">
-                <StatBadge statKey={recommendation.key} />
+                <StatBadge statKey={recommendation.id} />
               </TableCell>
               {hasPercent && (
                 <TableCell

@@ -1,34 +1,25 @@
-import type { ArtifactSetRecommendations } from "../types";
+import { ArtifactSetCharacterRecommendationClass, ArtifactSetRecommendationsClass } from "../classes";
 import { ArtifactSetIds } from "../../artifact-sets/enums";
-import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
-import { CharacterKeys } from "@/database/characters/enums";
+import { ArtifactSetRecommendationsVideoSources } from "../enums";
+import { ArtifactSlotIds } from "../../artifact-slots/enums";
+import { CharacterIds } from "../../characters/enums";
 import { StatKeys } from "@/database/stats/enums";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
 
-export default {
-  artifact_set_id: ArtifactSetIds.GildedDreams,
-  characters: [
-    { key: CharacterKeys.Alhaitham, is_better: true },
-    { key: CharacterKeys.Cyno, is_better: true },
-    { key: CharacterKeys.Keqing },
-    { key: CharacterKeys.KukiShinobu },
-    { key: CharacterKeys.Nahida, is_better: true },
-    { key: CharacterKeys.RaidenShogun },
-    { key: CharacterKeys.Tighnari, is_better: true },
-    { key: CharacterKeys.YaeMiko, is_better: true },
-  ],
-  preferred_stats: {
-    [ArtifactSlotKeys.Sands]: [StatKeys.AtkPercentage, StatKeys.ElementalMastery],
-    [ArtifactSlotKeys.Goblet]: [...StatsElementDamageBonus, StatKeys.ElementalMastery],
-    [ArtifactSlotKeys.Circlet]: [...StatsCrit, StatKeys.ElementalMastery],
-    additional: [
-      ...StatsCrit, StatKeys.AtkPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HpPercentage,
-    ],
-  },
-  video_sources: [
-    {
-      title: "Miron MinMax: ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin",
-      youtube_url: "https://youtu.be/kCu0ux0hUCg",
-    },
-  ],
-} as ArtifactSetRecommendations;
+export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.GildedDreams, [
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Alhaitham).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Cyno).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Keqing),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.KukiShinobu),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Nahida).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.RaidenShogun),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.Tighnari).setIsBetter(),
+  new ArtifactSetCharacterRecommendationClass(CharacterIds.YaeMiko).setIsBetter(),
+]])
+  .setPreferredStats({
+    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage, StatKeys.ElementalMastery],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.ElementalMastery],
+    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatKeys.ElementalMastery],
+    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+  })
+  .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

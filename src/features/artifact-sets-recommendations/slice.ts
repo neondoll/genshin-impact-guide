@@ -6,7 +6,7 @@ export const artifactSetsRecommendationsAdapter = createEntityAdapter({
   selectId: (model: ArtifactSetRecommendations) => model.artifact_set_id,
 });
 
-const initialState = artifactSetsRecommendationsAdapter.getInitialState({ loading: "idle" }, (await import("./data")).default);
+const initialState = artifactSetsRecommendationsAdapter.getInitialState({}, (await import("./data")).default);
 
 export const slice = createSlice({
   name: "artifactSetsRecommendations",

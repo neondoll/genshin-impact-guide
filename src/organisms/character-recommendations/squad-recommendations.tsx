@@ -1,16 +1,16 @@
+import type { CharacterSquadItemRecommendation } from "@/features/characters-recommendations/types";
 import type { SquadRecommendationsProps } from "./types";
-import type { TCharacterSquadItemRecommendation } from "@/database/characters-recommendations/types";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import CharacterBadge from "@/features/characters/character-badge";
 import ElementCharacterBadge from "@/features/elements/element-character-badge";
 
-function SquadRecommendationsItem({ item }: { item: TCharacterSquadItemRecommendation }) {
+function SquadRecommendationsItem({ item }: { item: CharacterSquadItemRecommendation }) {
   switch (item.type) {
     case "character": {
-      return <CharacterBadge characterKey={item.key} />;
+      return <CharacterBadge characterId={item.id} />;
     }
     case "element": {
-      return <ElementCharacterBadge elementKey={item.key} />;
+      return <ElementCharacterBadge elementKey={item.id} />;
     }
   }
 }

@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 
-import type { TCharacterKey } from "@/database/characters/types";
+import type { CharacterId } from "./types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { selectCharacterById } from "./charactersSelectors";
+import { selectCharacterById } from "./selectors";
 import Paths from "@/constants/paths";
 
-export default function CharacterBadge({ characterKey }: { characterKey: TCharacterKey }) {
-  const character = selectCharacterById(characterKey);
+export default function CharacterBadge({ characterId }: { characterId: CharacterId }) {
+  const character = selectCharacterById(characterId);
 
   return (
     <Badge
@@ -16,7 +16,7 @@ export default function CharacterBadge({ characterKey }: { characterKey: TCharac
       className="flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row sm:text-left"
       variant="secondary"
     >
-      <Link to={Paths.Character.to(character.key)}>
+      <Link to={Paths.Character.to(character.id)}>
         <img
           alt={character.name}
           className={cn("shrink-0 size-12 rounded-md rounded-br-2xl", backgroundClassByRarity(character.rarity))}

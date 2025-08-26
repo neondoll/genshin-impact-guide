@@ -66,7 +66,7 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
         {recommendations.map(recommendation => (
           <TableRow
             className="hover:bg-inherit"
-            key={"key" in recommendation ? recommendation.key : recommendation.keys.join("+")}
+            key={"id" in recommendation ? recommendation.id : recommendation.ids.join("+")}
           >
             {hasIsBetter && (
               <TableCell className="w-16">
@@ -80,13 +80,14 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
               </TableCell>
             )}
             <TableCell className="text-pretty whitespace-normal sm:w-48">
-              {"key" in recommendation
-                ? <ArtifactSetBadge artifactSetId={recommendation.key} />
-                : (
-                    <div className="flex flex-col gap-2">
-                      {recommendation.keys.map(key => <ArtifactSetBadge artifactSetId={key} />)}
-                    </div>
-                  )}
+              {"id" in recommendation && (
+                <ArtifactSetBadge artifactSetId={recommendation.id} />
+              )}
+              {"ids" in recommendation && (
+                <div className="flex flex-col gap-2">
+                  {recommendation.ids.map(id => <ArtifactSetBadge artifactSetId={id} />)}
+                </div>
+              )}
             </TableCell>
             {hasPercent && (
               <TableCell
