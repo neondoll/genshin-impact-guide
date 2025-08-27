@@ -3,7 +3,7 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.GildedDreams, [
@@ -17,9 +17,9 @@ export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.GildedDreams
   new ArtifactSetCharacterRecommendationClass(CharacterIds.YaeMiko).setIsBetter(),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage, StatKeys.ElementalMastery],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.ElementalMastery],
-    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatKeys.ElementalMastery],
-    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.ElementalMastery],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.ElementalMastery],
+    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatIds.ElementalMastery],
+    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

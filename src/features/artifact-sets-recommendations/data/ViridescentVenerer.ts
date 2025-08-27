@@ -4,7 +4,7 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.VermillionHereafter, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Jean).setIsBetter()
@@ -23,9 +23,9 @@ export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.VermillionHe
     .setNotes(`Персонаж, наносящий основной Анемо урон в команде, поэтому ему будут полезны бонусы 2 предметов. Для лучшего эффекта сочетать с 2 предметами набора ${artifactSetById(ArtifactSetIds.GladiatorsFinale)} или другими с аналогичными бонусами. 2 предмета набора ${artifactSetById(ArtifactSetIds.ViridescentVenerer)} можно заменить ${artifactSetById(ArtifactSetIds.DesertPavilionChronicle)}.`),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.ElementalMastery],
-    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatKeys.ElementalMastery],
-    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge],
+    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.ElementalMastery],
+    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatIds.ElementalMastery],
+    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

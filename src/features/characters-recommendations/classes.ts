@@ -2,15 +2,19 @@ import type {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendation,
   CharacterArtifactSetRecommendationWithId,
+  CharacterArtifactSetRecommendationWithIds,
   CharacterArtifactStatRecommendation,
   CharacterRecommendations,
+  CharacterSquadCharacterRecommendation,
+  CharacterSquadElementRecommendation,
+  CharacterSquadRecommendations,
   CharacterTalentLevelingRecommendation,
   CharacterWeaponRecommendation,
 } from "./types";
 
 class CharacterArtifactSetRecommendationClass implements CharacterArtifactSetRecommendation {
   private _is_better: CharacterArtifactSetRecommendation["is_better"] = false;
-  readonly percent: CharacterArtifactSetRecommendation["percent"];
+  private _percent: CharacterArtifactSetRecommendation["percent"];
   private _description: CharacterArtifactSetRecommendation["description"];
   private _notes: CharacterArtifactSetRecommendation["notes"];
 
@@ -24,6 +28,10 @@ class CharacterArtifactSetRecommendationClass implements CharacterArtifactSetRec
 
   get notes() {
     return this._notes;
+  }
+
+  get percent() {
+    return this._percent;
   }
 
   setDescription(val: NonNullable<CharacterArtifactSetRecommendation["description"]>) {
@@ -40,6 +48,12 @@ class CharacterArtifactSetRecommendationClass implements CharacterArtifactSetRec
 
   setNotes(val: NonNullable<CharacterArtifactSetRecommendation["notes"]>) {
     this._notes = val;
+
+    return this;
+  }
+
+  setPercent(val: NonNullable<CharacterArtifactSetRecommendation["percent"]>) {
+    this._percent = val;
 
     return this;
   }
@@ -65,6 +79,15 @@ export class CharacterArtifactSetRecommendationWithIdClass extends CharacterArti
   constructor(id: CharacterArtifactSetRecommendationWithId["id"]) {
     super();
     this.id = id;
+  }
+}
+
+export class CharacterArtifactSetRecommendationWithIdsClass extends CharacterArtifactSetRecommendationClass implements CharacterArtifactSetRecommendationWithIds {
+  readonly ids: CharacterArtifactSetRecommendationWithIds["ids"];
+
+  constructor(ids: CharacterArtifactSetRecommendationWithIds["ids"]) {
+    super();
+    this.ids = ids;
   }
 }
 
@@ -117,8 +140,8 @@ export class CharacterRecommendationsClass implements CharacterRecommendations {
   private _key_constellations: CharacterRecommendations["key_constellations"];
   private _reference_point: CharacterRecommendations["reference_point"];
   private _required_level: CharacterRecommendations["required_level"];
-  readonly rotation: CharacterRecommendations["rotation"];
-  readonly squads: CharacterRecommendations["squads"];
+  private _rotation: CharacterRecommendations["rotation"];
+  private _squads: CharacterRecommendations["squads"];
   private _talent_leveling: CharacterRecommendations["talent_leveling"];
   private _video_sources: CharacterRecommendations["video_sources"];
   private _weapons: CharacterRecommendations["weapons"];
@@ -145,6 +168,14 @@ export class CharacterRecommendationsClass implements CharacterRecommendations {
 
   get required_level() {
     return this._required_level;
+  }
+
+  get rotation() {
+    return this._rotation;
+  }
+
+  get squads() {
+    return this._squads;
   }
 
   get talent_leveling() {
@@ -189,6 +220,18 @@ export class CharacterRecommendationsClass implements CharacterRecommendations {
     return this;
   }
 
+  setRotation(val: NonNullable<CharacterRecommendations["rotation"]>) {
+    this._rotation = val;
+
+    return this;
+  }
+
+  setSquads(val: NonNullable<CharacterRecommendations["squads"]>) {
+    this._squads = val;
+
+    return this;
+  }
+
   setTalentLeveling(val: NonNullable<CharacterRecommendations["talent_leveling"]>) {
     this._talent_leveling = val;
 
@@ -205,6 +248,41 @@ export class CharacterRecommendationsClass implements CharacterRecommendations {
     this._weapons = val;
 
     return this;
+  }
+}
+
+export class CharacterSquadCharacterRecommendationClass implements CharacterSquadCharacterRecommendation {
+  readonly type: CharacterSquadCharacterRecommendation["type"] = "character";
+  readonly id: CharacterSquadCharacterRecommendation["id"];
+
+  constructor(id: CharacterSquadCharacterRecommendation["id"]) {
+    this.id = id;
+  }
+}
+
+export class CharacterSquadElementRecommendationClass implements CharacterSquadElementRecommendation {
+  readonly type: CharacterSquadElementRecommendation["type"] = "element";
+  readonly id: CharacterSquadElementRecommendation["id"];
+
+  constructor(id: CharacterSquadElementRecommendation["id"]) {
+    this.id = id;
+  }
+}
+
+export class CharacterSquadRecommendationsClass implements CharacterSquadRecommendations {
+  readonly general_template: CharacterSquadRecommendations["general_template"];
+  readonly best_teammates: CharacterSquadRecommendations["best_teammates"];
+
+  constructor(
+    generalTemplate: CharacterSquadRecommendations["general_template"],
+    bestTeammates: CharacterSquadRecommendations["best_teammates"],
+  ) {
+    this.general_template = generalTemplate;
+    this.best_teammates = bestTeammates;
+  }
+
+  static init(params: ConstructorParameters<typeof CharacterSquadRecommendationsClass>) {
+    return new CharacterSquadRecommendationsClass(...params);
   }
 }
 
@@ -229,7 +307,7 @@ export class CharacterWeaponRecommendationClass implements CharacterWeaponRecomm
   readonly id: CharacterWeaponRecommendation["id"];
   private _refinement: CharacterWeaponRecommendation["refinement"];
   private _is_better: CharacterWeaponRecommendation["is_better"] = false;
-  readonly postfix: CharacterWeaponRecommendation["postfix"];
+  private _postfix: CharacterWeaponRecommendation["postfix"];
   private _percent: CharacterWeaponRecommendation["percent"];
 
   constructor(id: CharacterWeaponRecommendation["id"]) {
@@ -244,6 +322,10 @@ export class CharacterWeaponRecommendationClass implements CharacterWeaponRecomm
     return this._percent;
   }
 
+  get postfix() {
+    return this._postfix;
+  }
+
   get refinement() {
     return this._refinement;
   }
@@ -256,6 +338,12 @@ export class CharacterWeaponRecommendationClass implements CharacterWeaponRecomm
 
   setPercent(val: NonNullable<CharacterWeaponRecommendation["percent"]>) {
     this._percent = val;
+
+    return this;
+  }
+
+  setPostfix(val: NonNullable<CharacterWeaponRecommendation["postfix"]>) {
+    this._postfix = val;
 
     return this;
   }

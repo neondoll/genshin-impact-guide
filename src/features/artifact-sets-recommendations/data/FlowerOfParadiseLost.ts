@@ -3,7 +3,7 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.FlowerOfParadiseLost, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.KukiShinobu).setIsBetter(),
@@ -11,9 +11,9 @@ export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.FlowerOfPara
   new ArtifactSetCharacterRecommendationClass(CharacterIds.RaidenShogun).setIsBetter(),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.ElementalMastery, StatKeys.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [StatKeys.ElementalMastery, StatKeys.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [StatKeys.ElementalMastery, StatKeys.HpPercentage],
-    additional: [StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.ElementalMastery, StatIds.HpPercentage],
+    [ArtifactSlotIds.Goblet]: [StatIds.ElementalMastery, StatIds.HpPercentage],
+    [ArtifactSlotIds.Circlet]: [StatIds.ElementalMastery, StatIds.HpPercentage],
+    additional: [StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

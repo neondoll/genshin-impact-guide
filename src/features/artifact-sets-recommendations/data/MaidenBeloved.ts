@@ -3,7 +3,7 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.MaidenBeloved, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Barbara).setIsBetter(),
@@ -12,9 +12,9 @@ export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.MaidenBelove
   new ArtifactSetCharacterRecommendationClass(CharacterIds.SangonomiyaKokomi).setIsBetter(),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [StatKeys.AtkPercentage, StatKeys.Heal, StatKeys.HpPercentage],
-    additional: [StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ArtifactSlotIds.Goblet]: [StatIds.AtkPercentage, StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ArtifactSlotIds.Circlet]: [StatIds.AtkPercentage, StatIds.Heal, StatIds.HpPercentage],
+    additional: [StatIds.AtkPercentage, StatIds.EnergyRecharge, StatIds.HpPercentage],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

@@ -4,7 +4,7 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.BlizzardStrayer, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Ganyu)
@@ -14,9 +14,9 @@ export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.BlizzardStra
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Wriothesley),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.AtkPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage],
     [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.EnergyRecharge],
+    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.EnergyRecharge],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

@@ -1,4 +1,4 @@
-import { StatKeys } from "./enums";
+import { StatIds } from "@/features/stats/enums";
 
 export interface IStat {
   key: TStatKey;
@@ -6,4 +6,4 @@ export interface IStat {
   abbr?: string;
 }
 
-export type TStatKey = typeof StatKeys[keyof typeof StatKeys];
+export type TStatKey = typeof StatIds[keyof typeof StatIds];

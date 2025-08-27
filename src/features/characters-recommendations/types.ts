@@ -1,21 +1,11 @@
 import type { ArtifactSetId } from "../artifact-sets/types";
 import type { CharacterId } from "../characters/types";
+import type { ElementId } from "../elements/types";
 import type { IVideoSource } from "@/database/video-sources/types";
-import type { TElementKey } from "@/database/elements/types";
 import type { TStatKey } from "@/database/stats/types";
 import type { TTalentKey } from "@/database/talents/types";
 import type { TWeaponKey } from "@/database/weapons/types";
 import { ArtifactSlotIds } from "../artifact-slots/enums";
-
-interface CharacterSquadCharacterRecommendation {
-  type: "character";
-  id: CharacterId;
-}
-
-interface CharacterSquadElementRecommendation {
-  type: "element";
-  id: TElementKey;
-}
 
 type CharacterArtifactSetRecommendations = (CharacterArtifactSetRecommendationWithId | CharacterArtifactSetRecommendationWithIds)[];
 type CharacterArtifactStatRecommendations = Record<typeof ArtifactSlotIds["Sands" | "Goblet" | "Circlet"] | "additional", CharacterArtifactStatRecommendation[]>;
@@ -59,13 +49,25 @@ export interface CharacterRecommendations {
   reference_point?: CharacterReferencePointRecommendations | Record<string, CharacterReferencePointRecommendations>;
   required_level?: 80 | 90;
   rotation?: string | Record<string, string>;
-  squads?: {
-    general_template: (CharacterSquadItemRecommendation | CharacterSquadItemRecommendation[])[];
-    best_teammates: CharacterRecommendationSquadBestTeammates | Record<string, CharacterRecommendationSquadBestTeammates>;
-  };
+  squads?: CharacterSquadRecommendations;
   talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
   video_sources?: IVideoSource[];
   weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
+}
+
+export interface CharacterSquadCharacterRecommendation {
+  type: "character";
+  id: CharacterId;
+}
+
+export interface CharacterSquadElementRecommendation {
+  type: "element";
+  id: ElementId;
+}
+
+export interface CharacterSquadRecommendations {
+  general_template: (CharacterSquadItemRecommendation | CharacterSquadItemRecommendation[])[];
+  best_teammates: CharacterRecommendationSquadBestTeammates | Record<string, CharacterRecommendationSquadBestTeammates>;
 }
 
 export interface CharacterTalentLevelingRecommendation {
@@ -83,5 +85,4 @@ export interface CharacterWeaponRecommendation {
 
 export type CharacterReferencePointRecommendations = [string, string][];
 export type CharacterSquadItemRecommendation
-  = CharacterSquadCharacterRecommendation
-    | CharacterSquadElementRecommendation;
+  = CharacterSquadCharacterRecommendation | CharacterSquadElementRecommendation;

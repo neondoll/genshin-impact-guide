@@ -10,7 +10,7 @@ import {
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 import { TalentKeys } from "@/database/talents/enums";
 import { WeaponKeys } from "@/database/weapons/enums";
 
@@ -26,28 +26,28 @@ export default new CharacterRecommendationsClass(CharacterIds.Bennett)
     ],
     {
       [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.EnergyRecharge).setUsePercent(0.703),
-        new CharacterArtifactStatRecommendationClass(StatKeys.HpPercentage).setUsePercent(0.187),
-        new CharacterArtifactStatRecommendationClass(StatKeys.AtkPercentage).setUsePercent(0.089),
+        new CharacterArtifactStatRecommendationClass(StatIds.EnergyRecharge).setUsePercent(0.703),
+        new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage).setUsePercent(0.187),
+        new CharacterArtifactStatRecommendationClass(StatIds.AtkPercentage).setUsePercent(0.089),
       ],
       [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.HpPercentage).setUsePercent(0.749),
-        new CharacterArtifactStatRecommendationClass(StatKeys.AtkPercentage).setUsePercent(0.109),
-        new CharacterArtifactStatRecommendationClass(StatKeys.PyroDmgBonus).setUsePercent(0.105),
+        new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage).setUsePercent(0.749),
+        new CharacterArtifactStatRecommendationClass(StatIds.AtkPercentage).setUsePercent(0.109),
+        new CharacterArtifactStatRecommendationClass(StatIds.PyroDmgBonus).setUsePercent(0.105),
       ],
       [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.Heal).setUsePercent(0.543),
-        new CharacterArtifactStatRecommendationClass(StatKeys.HpPercentage).setUsePercent(0.224),
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritRate).setUsePercent(0.111),
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritDMG),
+        new CharacterArtifactStatRecommendationClass(StatIds.Heal).setUsePercent(0.543),
+        new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage).setUsePercent(0.224),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setUsePercent(0.111),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritDMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.HpPercentage).setNotes(["Приоритетно", "от 25000"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.EnergyRecharge).setNotes(["Приоритетно", "от 220%"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritRate).setNotes([
+        new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage).setNotes(["Приоритетно", "от 25000"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.EnergyRecharge).setNotes(["Приоритетно", "от 220%"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setNotes([
           "от 50% (при использовании меча Фавония или если Беннет будет наносить дополнительный урон)",
         ]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritDMG).setNotes([
+        new CharacterArtifactStatRecommendationClass(StatIds.CritDMG).setNotes([
           "от 120% (если Беннет будет наносить дополнительный урон)",
         ]),
       ],

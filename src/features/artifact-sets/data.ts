@@ -1,10 +1,10 @@
 import type { ArtifactSet, ArtifactSetSlot } from "./types";
-import type { TDungeonKey } from "@/database/dungeons/types";
+import type { DungeonId } from "../dungeons/types";
 import { ArtifactSetIds } from "./enums";
 import { ArtifactSlotIds } from "../artifact-slots/enums";
-import { DungeonKeys } from "@/database/dungeons/enums";
+import { DungeonIds } from "../dungeons/enums";
 import { publicImageSrc } from "@/lib/utils";
-import dungeons from "@/database/dungeons/data";
+import dungeons from "../dungeons/data";
 
 class ArtifactSetClass implements ArtifactSet {
   readonly id: ArtifactSet["id"];
@@ -77,7 +77,7 @@ class ArtifactSetSlotClass implements ArtifactSetSlot {
 
 const ArtifactSetSource = {
   Alchemy: "Мистическое подношение (Алхимия)",
-  Dungeon: (key: TDungeonKey) => `Подземелье «${dungeons[key].name}»`,
+  Dungeon: (id: DungeonId) => `Подземелье «${dungeons[id].name}»`,
 };
 
 export default {
@@ -85,7 +85,7 @@ export default {
     ArtifactSetIds.ArchaicPetra,
     "Архаичный камень",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.DomainOfGuyun), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.DomainOfGuyun), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Гео урона на 15%.",
       4: "Подобранный элементальный осколок, образованный реакцией Кристалл, увеличивает бонус элементального урона соответствующего элемента всех членов отряда на 35% в течение 10 сек. Одновременно можно иметь бонус урона только одного элемента.",
@@ -102,7 +102,7 @@ export default {
     ArtifactSetIds.BlizzardStrayer,
     "Заблудший в метели",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.PeakOfVindagnyr), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.PeakOfVindagnyr), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Крио урона на 15%.",
       4: "Атаки по противникам с эффектом Крио увеличивают шанс крит. попадания на 20%. Если противник имеет статус Заморозка, то дополнительно увеличивает шанс крит. попадания на 20%.",
@@ -119,7 +119,7 @@ export default {
     ArtifactSetIds.BloodstainedChivalry,
     "Рыцарь крови",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.ClearPoolAndMountainCavern), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.ClearPoolAndMountainCavern), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает физ. урон на 25%.",
       4: "После победы над противником увеличивает урон заряженной атаки на 50% и обнуляет стоимость выносливости заряженной атаки на 10 сек.",
@@ -136,7 +136,7 @@ export default {
     ArtifactSetIds.CrimsonWitchOfFlames,
     "Горящая алая ведьма",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.HiddenPalaceOfZhouFormula), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.HiddenPalaceOfZhouFormula), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Пиро урона на 15%.",
       4: "Увеличивает урон статусов Перегрузка, Горение и Цветение на 40%, а урон статусов Пар и Таяние - на 15%. Использование элементального навыка увеличивает эффекты набора из двух вещей на 50% в течение 10 сек. Может складываться до 3 раз.",
@@ -153,7 +153,7 @@ export default {
     ArtifactSetIds.DeepwoodMemories,
     "Воспоминания дремучего леса",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.SpireOfSolitaryEnlightenment), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.SpireOfSolitaryEnlightenment), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Дендро урона на 15%.",
       4: "Попадание элементальным навыком или взрывом стихии снижает Дендро сопротивление врага на 30% на 8 сек. Этот эффект срабатывает, даже если экипированный этими артефактами персонаж не на поле боя.",
@@ -170,7 +170,7 @@ export default {
     ArtifactSetIds.DesertPavilionChronicle,
     "Хроники Чертогов в пустыне",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.CityOfGold), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.CityOfGold), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Анемо урона на 15%.",
       4: "Попадание заряженной атакой на 15 сек. повышает скорость обычной атаки на 10%, а урон обычной атаки, заряженной атаки и атаки в падении — на 40%.",
@@ -187,7 +187,7 @@ export default {
     ArtifactSetIds.EchoesOfAnOffering,
     "Отголоски подношения",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.TheLostValley), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.TheLostValley), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает силу атаки на 18%.",
       4: "Попадания обычной атакой с 36% шансом активируют Ритуал долины: урон обычной атаки повышается на 70% от силы атаки. Через 0,05 сек. после нанесения урона обычной атакой эффект исчезает. Если обычной атаке не удалось активировать этот эффект, шанс его активации следующим попаданием возрастает на 20%. Шанс активации возникает не чаще одного раза в 0,2 сек.",
@@ -204,7 +204,7 @@ export default {
     ArtifactSetIds.EmblemOfSeveredFate,
     "Эмблема рассечённой судьбы",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.MomijiDyedCourt), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.MomijiDyedCourt), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает скорость восстановления энергии на 20%.",
       4: "Увеличивает урон взрыва стихий на величину, равную 25% от значения восстановления энергии. Эффект можно увеличить максимум до 75%.",
@@ -238,7 +238,7 @@ export default {
     ArtifactSetIds.FlowerOfParadiseLost,
     "Цветок потерянного рая",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.CityOfGold), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.CityOfGold), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает мастерство стихий на 80 ед.",
       4: "Увеличивает урон реакций Бутонизация, Вегетация и Цветение экипированного этим набором персонажа на 40%. Кроме того, активация реакций Бутонизация, Вегетация и Цветение экипированным этим набором персонажем усилит этот эффект на 25%. Каждое суммирование длится 10 сек. Эффект складывается до 4 раз, может возникнуть раз в 1 сек. и активируется, даже если экипированный этим набором персонаж не активен.",
@@ -255,7 +255,7 @@ export default {
     ArtifactSetIds.FragmentOfHarmonicWhimsy,
     "Фрагмент гармонической фантазии",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.FadedTheater)],
+    [ArtifactSetSource.Dungeon(DungeonIds.FadedTheater)],
     {
       2: "Увеличивает силу атаки на 18%.",
       4: "Когда значение Долга жизни увеличивается или уменьшается, наносимый персонажем урон увеличивается на 18% на 6 сек. Эффект может складываться до 3 раз.",
@@ -272,7 +272,7 @@ export default {
     ArtifactSetIds.GildedDreams,
     "Позолоченные сны",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.SpireOfSolitaryEnlightenment), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.SpireOfSolitaryEnlightenment), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает мастерство стихий на 80 ед.",
       4: "На 8 сек. после вызова элементальной реакции согласно элементам других персонажей в отряде экипированный этими артефактами персонаж получает следующие усиления: сила атаки повышается на 14% за каждого персонажа с таким же элементом, как и у экипированного персонажа; мастерство стихий повышается на 50 ед. за каждого персонажа с иным элементом. Каждое из этих усилений при подсчёте включает до 3 персонажей. Эффект может возникнуть один раз в 8 сек. Срабатывает, даже если экипированный этими артефактами персонаж не на поле боя.",
@@ -311,7 +311,7 @@ export default {
     ArtifactSetIds.GoldenTroupe,
     "Золотая труппа",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.DenouementOfSin), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.DenouementOfSin), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает урон элементального навыка на 20%.",
       4: "Увеличивает урон элементального навыка на 25%. Кроме того, когда персонаж не на поле боя, урон элементального навыка дополнительно увеличивается на 25%. Через 2 сек. после вступления в бой эффект исчезает.",
@@ -328,7 +328,7 @@ export default {
     ArtifactSetIds.HeartOfDepth,
     "Сердце глубин",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.PeakOfVindagnyr), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.PeakOfVindagnyr), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Гидро урона на 15%.",
       4: "Увеличивает урон обычной и заряженной атаки на 30% в течение 15 сек. после использования элементального навыка.",
@@ -345,7 +345,7 @@ export default {
     ArtifactSetIds.HuskOfOpulentDreams,
     "Кокон сладких грёз",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.SlumberingCourt), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.SlumberingCourt), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает защиту на 30%.",
       4: "Персонаж, экипированный этим набором артефактов, получает эффект Любопытства в следующих ситуациях: 1 уровень Любопытства даётся активному персонажу после попадания по противнику атакой Гео (не чаще чем раз в 0,3 сек.); когда персонаж находится вне поля боя, он получает 1 ур. Любопытства каждые 3 сек. Любопытство может складываться до 4 ур., каждый ур. прибавляет 6% к защите и 6% к Гео урону. Если персонаж не получает Любопытство в течение 6 сек., то он теряет 1 накопленный уровень Любопытства.",
@@ -379,7 +379,7 @@ export default {
     ArtifactSetIds.Lavawalker,
     "Ступающий по лаве",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.HiddenPalaceOfZhouFormula), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.HiddenPalaceOfZhouFormula), ArtifactSetSource.Alchemy],
     {
       2: "Пиро сопротивление: +40%",
       4: "Увеличивает урон против врагов, находящихся под действием Пиро, на 35%.",
@@ -413,7 +413,7 @@ export default {
     ArtifactSetIds.MaidenBeloved,
     "Возлюбленная юная дева",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.ValleyOfRemembrance), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.ValleyOfRemembrance), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает эффективность лечения на 15%.",
       4: "Увеличивает получаемое лечение всех членов отряда на 20% в течение 10 сек. после использования элементального навыка или взрыва стихии.",
@@ -430,7 +430,7 @@ export default {
     ArtifactSetIds.MarechausseeHunter,
     "Охотник Сумеречного двора",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.DenouementOfSin), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.DenouementOfSin), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает урон обычной и заряженной атаки на 15%.",
       4: "Увеличивает шанс крит. попадания на 12% на 5 сек., когда текущее HP увеличивается или снижается. Эффект может складываться до 3 раз.",
@@ -447,7 +447,7 @@ export default {
     ArtifactSetIds.NighttimeWhispersInTheEchoingWoods,
     "Ночной шёпот в Лесу откликающегося эха",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.WaterfallWen)],
+    [ArtifactSetSource.Dungeon(DungeonIds.WaterfallWen)],
     {
       2: "Увеличивает силу атаки на 18%.",
       4: "После использования элементального навыка бонус Гео урона на 10 сек. увеличивается на 20%. Если персонаж находится под защитой щита, созданного реакцией Кристалл, этот эффект увеличивается на 150%. Через 1 сек. после потери щита это дополнительное увеличение исчезает.",
@@ -464,7 +464,7 @@ export default {
     ArtifactSetIds.NoblesseOblige,
     "Церемония древней знати",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.ClearPoolAndMountainCavern), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.ClearPoolAndMountainCavern), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает урон взрыва стихии на 20%.",
       4: "Активация взрыва стихии увеличивает силу атаки всех членов отряда на 20% в течение 12 сек. Эффект не складывается.",
@@ -481,7 +481,7 @@ export default {
     ArtifactSetIds.NymphsDream,
     "Сон нимфы",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.MoltenIronFortress), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.MoltenIronFortress), ArtifactSetSource.Alchemy],
     {
       2: "Даёт 15% бонус Гидро урона.",
       4: "Попадания обычной атакой, заряженной атакой, атакой в падении, элементальным навыком и взрывом стихий по противнику на 8 сек. создаёт 1 уровень Отражения нимфы. Когда действуют 1/2/3 и более уровня Отражения нимфы, сила атаки повышается на 7%/16%/25%, а бонус Гидро урона на 4%/9%/15%. Уровни Отражения нимфы, созданные обычными атаками, заряженными атаками, атаками в падении, элементальными навыками и взрывами стихий, существуют независимо друг от друга.",
@@ -498,7 +498,7 @@ export default {
     ArtifactSetIds.ObsidianCodex,
     "Обсидиановый фолиант",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.SanctumOfRainbowSpirits)],
+    [ArtifactSetSource.Dungeon(DungeonIds.SanctumOfRainbowSpirits)],
     {
       2: "Урон экипированного персонажа на поле в состоянии Благословения Ночного духа увеличивается на 15%.",
       4: "После того как экипированный персонаж, будучи на поле боя, расходует 1 очко Ночного духа, шанс крит. попадания увеличивается на 40% на 6 сек. Этот эффект может возникнуть один раз в 1 сек.",
@@ -515,7 +515,7 @@ export default {
     ArtifactSetIds.OceanHuedClam,
     "Моллюск морских красок",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.SlumberingCourt), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.SlumberingCourt), ArtifactSetSource.Alchemy],
     {
       2: "Повышает бонус лечения на 15%.",
       4: "Экипированный этим набором артефактов персонаж при лечении соратников создаёт на 3 сек. Пузырь морских красок. Пузырь регистрирует восстановленное при лечении HP (в том числе избыточное, когда лечение превышает максимум здоровья). После окончания действия Пузырь взрывается и наносит окружающим врагам урон в размере 90% учтённого объёма лечения (урон рассчитывается так же, как для эффектов Заряжен и Сверхпроводник, но на него не действуют бонусы мастерства стихий, уровня и реакций). Пузырь морских красок можно создавать не чаще чем раз в 3,5 сек. Пузырь может записать до 30 000 восстановленного HP, в том числе HP избыточного лечения. Для отряда не может существовать больше одного Пузыря морских красок одновременно. Этот эффект действует, даже если персонаж, экипированный набором артефактов, не находится на поле боя.",
@@ -532,7 +532,7 @@ export default {
     ArtifactSetIds.PaleFlame,
     "Бледный огонь",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.RidgeWatch), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.RidgeWatch), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает физ. урон на 25%.",
       4: "Когда элементальный навык попадает по врагам, атака увеличивается на 9% в течение 7 сек. Эффект может складываться до 2 раз и возникнуть не чаще 1 раза за 0,3 сек. На 2 уровне складывания эффект набора из 2 вещей увеличивается на 100%.",
@@ -549,7 +549,7 @@ export default {
     ArtifactSetIds.RetracingBolide,
     "Встречная комета",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.DomainOfGuyun), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.DomainOfGuyun), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает прочность щита на 35%.",
       4: "Под защитой щита увеличивает урон обычной и заряженной атаки на 40%.",
@@ -566,7 +566,7 @@ export default {
     ArtifactSetIds.ScrollOfTheHeroOfCinderCity,
     "Свиток героя сожжённого города",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.SanctumOfRainbowSpirits)],
+    [ArtifactSetSource.Dungeon(DungeonIds.SanctumOfRainbowSpirits)],
     {
       2: "Когда член отряда поблизости активирует Вспышку Ночного духа, экипированный персонаж восстанавливает 6 ед. энергии.",
       4: "После того как экипированный персонаж активирует реакцию, связанную с его элементом, все члены отряда поблизости получают 12% бонус урона элементами, связанными с этой реакцией, на 15 сек. Если экипированный персонаж, активируя данный эффект, находится в состоянии Благословение Ночного духа, все персонажи отряда поблизости дополнительно получают 28% бонус урона элементами, связанными с этой реакцией, на 20 сек. Такой эффект может возникнуть, даже если персонаж не находится на поле боя. Бонусы одноимённых наборов артефактов не суммируются.",
@@ -583,7 +583,7 @@ export default {
     ArtifactSetIds.ShimenawasReminiscence,
     "Воспоминания Симэнавы",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.MomijiDyedCourt), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.MomijiDyedCourt), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает силу атаки на 18%.",
       4: "При использовании элементального навыка, если у персонажа 15 или более единиц энергии, он теряет 15 единиц энергии, а урон обычной атаки, заряженной атаки и атаки в падении увеличивается на 50% в течение 10 сек. Эффект нельзя активировать повторно в течение этого времени.",
@@ -600,7 +600,7 @@ export default {
     ArtifactSetIds.SongOfDaysPast,
     "Песнь былых времён",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.WaterfallWen)],
+    [ArtifactSetSource.Dungeon(DungeonIds.WaterfallWen)],
     {
       2: "Повышает бонус лечения на 15%.",
       4: "Экипированный персонаж при лечении членов отряда на 6 сек. создаёт эффект Стремления, который регистрирует осуществлённое лечение (в том числе избыточное). С завершением длительности Стремление превращается в Волны былых времён: при попадании обычной атаки, заряженной атаки, атаки в падении, элементального навыка или взрыва стихии вашего активного персонажа по противнику наносимый урон увеличивается на 8% от общего количества лечения, зарегистрированного Стремлением. После 5 активаций или через 10 сек. эффект Волн былых времён исчезает. Однократный эффект Стремления регистрирует до 15 000 ед. HP. Одновременно может существовать только одно Стремление, но оно регистрирует лечение, предоставляемое несколькими экипированными персонажами сразу. Этот эффект активируется, даже если экипированный персонаж не на поле боя.",
@@ -617,7 +617,7 @@ export default {
     ArtifactSetIds.TenacityOfTheMillelith,
     "Стойкость Миллелита",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.RidgeWatch), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.RidgeWatch), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает НР на 20%",
       4: "Когда элементальный навык попадает по врагам, атака всех находящихся поблизости персонажей в отряде, увеличивается на 20%, а прочность их щита увеличивается на 30%. Эффект длится 3 сек. и может возникнуть 1 раз в 0,5 сек. Этот эффект может быть активирован, даже если персонаж, экипированный этим набором артефактов, не находится на поле боя.",
@@ -634,7 +634,7 @@ export default {
     ArtifactSetIds.ThunderingFury,
     "Громогласный рёв ярости",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.MidsummerCourtyard), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.MidsummerCourtyard), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Электро урона на 15%.",
       4: "Увеличивает урон реакций Перегрузка, Заряжен, Сверхпроводник и Вегетация на 40%. Урон от реакции Обострение увеличивается на 20%. При активации этих реакций, а также реакции Стимуляция, время отката элементального навыка уменьшается на 1 сек. Эффект может возникнуть не чаще 1 раза в 0,8 сек.",
@@ -651,7 +651,7 @@ export default {
     ArtifactSetIds.Thundersoother,
     "Усмиряющий гром",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.MidsummerCourtyard), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.MidsummerCourtyard), ArtifactSetSource.Alchemy],
     {
       2: "Повышает Электро сопротивление на +40%.",
       4: "Увеличивает урон против врагов, находящихся под действием Электро, на 35%.",
@@ -668,7 +668,7 @@ export default {
     ArtifactSetIds.VermillionHereafter,
     "Киноварное загробье",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.TheLostValley), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.TheLostValley), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает силу атаки на 18%.",
       4: "После активации взрыва стихии на 16 сек. создаёт Скрытое сияние, которое повышает силу атаки на 8%. Сила атаки персонажа увеличивается ещё на 10%, когда он теряет HP. Этот эффект может возникнуть максимум 4 раза и не чаще, чем раз в 0,8 сек. Скрытое сияние исчезает, когда персонаж покидает поле боя. При повторной активации взрыва стихии существующее Скрытое сияние снимается.",
@@ -685,7 +685,7 @@ export default {
     ArtifactSetIds.ViridescentVenerer,
     "Изумрудная тень",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.ValleyOfRemembrance), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.ValleyOfRemembrance), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Анемо урона на 15%.",
       4: "Увеличивает урон Рассеивания на 60%. При взаимодействии Рассеивания с другим элементом, также понижает сопротивление противника к соответствующему элементу на 40% в течение 10 сек.",
@@ -702,7 +702,7 @@ export default {
     ArtifactSetIds.VourukashasGlow,
     "Сияние Вурукаши",
     [4, 5],
-    [ArtifactSetSource.Dungeon(DungeonKeys.MoltenIronFortress), ArtifactSetSource.Alchemy],
+    [ArtifactSetSource.Dungeon(DungeonIds.MoltenIronFortress), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает HP на 20%.",
       4: "Увеличивает урон элементального навыка и взрыва стихии на 10%. Если экипированный персонаж получает урон, этот эффект повышения урона увеличивается на 80% на 5 сек. Эффект может складываться до 5 раз. Отсчёт времени каждого уровня происходит отдельно. Эти эффекты активируются, даже если экипированный персонаж не на поле боя.",

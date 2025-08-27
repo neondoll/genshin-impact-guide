@@ -4,7 +4,7 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.DesertPavilionChronicle, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.ShikanoinHeizou).setIsBetter()
@@ -15,9 +15,9 @@ export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.DesertPavili
     .setNotes(`Может использовать как 4 предмета, так и 2 предмета.\nДля реализации условия 4 предметов необходимо использовать заряженную атаку сразу перед взрывом стихии.\n2 предмета можно сочетать с ${artifactSetById(ArtifactSetIds.GladiatorsFinale)}, ${artifactSetById(ArtifactSetIds.ShimenawasReminiscence)}, ${artifactSetById(ArtifactSetIds.EchoesOfAnOffering)} и ${artifactSetById(ArtifactSetIds.VermillionHereafter)}. В данном случае комплект может быть заменён 2 предметами набора ${artifactSetById(ArtifactSetIds.ViridescentVenerer)}.`),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.AtkPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage],
     [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.EnergyRecharge],
+    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.EnergyRecharge],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

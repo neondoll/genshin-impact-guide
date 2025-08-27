@@ -11,7 +11,7 @@ import {
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 import { TalentKeys } from "@/database/talents/enums";
 import { WeaponKeys } from "@/database/weapons/enums";
 import weapons from "@/database/weapons/data";
@@ -25,15 +25,15 @@ export default new CharacterRecommendationsClass(CharacterIds.Chevreuse)
       new CharacterArtifactSetRecommendationWithIdClass(ArtifactSetIds.EmblemOfSeveredFate).setDescription(`Если ${artifactSetById(ArtifactSetIds.NoblesseOblige)} и ${artifactSetById(ArtifactSetIds.ScrollOfTheHeroOfCinderCity)} заняты`),
     ],
     {
-      [ArtifactSlotIds.Sands]: [new CharacterArtifactStatRecommendationClass(StatKeys.HpPercentage)],
-      [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendationClass(StatKeys.HpPercentage)],
+      [ArtifactSlotIds.Sands]: [new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage)],
+      [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage)],
       [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.HpPercentage),
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritRate).setDescription(`Если в руках ${weapons[WeaponKeys.FavoniusLance].name}`),
+        new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setDescription(`Если в руках ${weapons[WeaponKeys.FavoniusLance].name}`),
       ],
       additional: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.HpPercentage),
-        new CharacterArtifactStatRecommendationClass(StatKeys.EnergyRecharge),
+        new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage),
+        new CharacterArtifactStatRecommendationClass(StatIds.EnergyRecharge),
       ],
     },
   ]))

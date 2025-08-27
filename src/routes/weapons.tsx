@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import type { TRarity } from "@/database/rarities/types";
+import type { Rarity } from "@/features/rarities/types";
 import type { TWeaponTypeKey } from "@/database/weapon-types/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
@@ -11,11 +11,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
-import { selectRaritiesByIds } from "@/features/rarities/raritiesSelectors";
+import { selectRaritiesByIds } from "@/features/rarities/selectors";
 import { selectWeaponTypesAll } from "@/features/weapon-types/weaponTypesSelectors";
 import { selectWeaponsAll } from "@/features/weapons/weaponsSelectors";
 import Paths from "@/constants/paths";
-import Rarity from "@/features/rarities/rarity";
+import RarityStars from "@/features/rarities/rarity-stars";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader() {
@@ -28,7 +28,7 @@ export function loader() {
 
 export default function Weapons() {
   const { rarities, weapons, weaponTypes } = useLoaderData<ReturnType<typeof loader>>();
-  const [filterRarities, setFilterRarities] = useState<TRarity[]>([]);
+  const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
   const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<TWeaponTypeKey[]>([]);
   const [filteredWeapons, setFilteredWeapons] = useState<typeof weapons>([]);
 
@@ -123,7 +123,7 @@ export default function Weapons() {
                 }}
                 value={rarity}
               >
-                <Rarity length={rarity} />
+                <RarityStars length={rarity} />
               </FilterCheckbox>
             ))}
           </div>

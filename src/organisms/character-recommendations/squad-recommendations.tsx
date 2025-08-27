@@ -10,7 +10,7 @@ function SquadRecommendationsItem({ item }: { item: CharacterSquadItemRecommenda
       return <CharacterBadge characterId={item.id} />;
     }
     case "element": {
-      return <ElementCharacterBadge elementKey={item.id} />;
+      return <ElementCharacterBadge elementId={item.id} />;
     }
   }
 }

@@ -1,6 +1,6 @@
 import type { TStatKey } from "@/database/stats/types";
 import { Badge } from "@/components/ui/badge";
-import { selectStatById } from "./statsSelectors";
+import { selectStatById } from "./selectors.ts";
 
 export default function StatBadge({ statKey }: { statKey: TStatKey }) {
   const stat = selectStatById(statKey);

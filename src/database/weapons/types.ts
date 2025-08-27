@@ -1,4 +1,4 @@
-import type { TRarity } from "../rarities/types";
+import type { Rarity } from "@/features/rarities/types";
 import type { TStatKey } from "../stats/types";
 import type { TWeaponTypeKey } from "../weapon-types/types";
 import { WeaponKeys } from "./enums";
@@ -8,7 +8,7 @@ export interface IWeapon {
   /* Имя                           */
   name: string;
   /* Редкость                      */
-  rarity: TRarity;
+  rarity: Rarity;
   /* Где найти                     */
   source?: string;
   /* Тип                           */

@@ -10,7 +10,7 @@ import {
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 import { TalentKeys } from "@/database/talents/enums";
 import { WeaponKeys } from "@/database/weapons/enums";
 
@@ -27,23 +27,23 @@ export default new CharacterRecommendationsClass(CharacterIds.Arlecchino)
     ],
     {
       [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.AtkPercentage),
-        new CharacterArtifactStatRecommendationClass(StatKeys.ElementalMastery),
+        new CharacterArtifactStatRecommendationClass(StatIds.AtkPercentage),
+        new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery),
       ],
       [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.PyroDmgBonus).setNotes(["Лучше"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.AtkPercentage),
+        new CharacterArtifactStatRecommendationClass(StatIds.PyroDmgBonus).setNotes(["Лучше"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.AtkPercentage),
       ],
       [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritDMG),
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritRate),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritDMG),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritRate),
       ],
       additional: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritRate).setNotes(["Приоритетно", "от 65%"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritDMG).setNotes(["Приоритетно", "от 150%"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.AtkPercentage).setNotes(["от 2000"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.ElementalMastery).setNotes(["от 150 (если Арлекино активирует реакции)"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.EnergyRecharge).setNotes(["Специально не собирать"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setNotes(["Приоритетно", "от 65%"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritDMG).setNotes(["Приоритетно", "от 150%"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.AtkPercentage).setNotes(["от 2000"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery).setNotes(["от 150 (если Арлекино активирует реакции)"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.EnergyRecharge).setNotes(["Специально не собирать"]),
       ],
     },
   ]))

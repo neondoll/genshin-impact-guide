@@ -1,22 +1,22 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import type { TElementKey } from "../database/elements/types";
-import type { TRarity } from "../database/rarities/types";
-import type { TWeaponTypeKey } from "../database/weapon-types/types";
-import { backgroundClassByRarity } from "../lib/rarity";
+import type { ElementId } from "@/features/elements/types";
+import type { Rarity } from "@/features/rarities/types";
+import type { TWeaponTypeKey } from "@/database/weapon-types/types";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
-} from "../components/ui/breadcrumb";
-import { cn } from "../lib/utils";
-import { Container } from "../components/container";
-import { Filter, FilterCheckbox, FilterGroup } from "../organisms/filter";
-import { selectCharactersAll } from "../features/characters/selectors";
-import { selectElementById, selectElementsAll } from "../features/elements/elementsSelectors";
-import { selectRaritiesByIds } from "../features/rarities/raritiesSelectors";
-import { selectWeaponTypesAll } from "../features/weapon-types/weaponTypesSelectors";
-import Paths from "../constants/paths";
-import Rarity from "../features/rarities/rarity";
+} from "@/components/ui/breadcrumb";
+import { cn } from "@/lib/utils";
+import { Container } from "@/components/container";
+import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
+import { selectCharactersAll } from "@/features/characters/selectors";
+import { selectElementById, selectElementsAll } from "@/features/elements/selectors";
+import { selectRaritiesByIds } from "@/features/rarities/selectors.ts";
+import { selectWeaponTypesAll } from "@/features/weapon-types/weaponTypesSelectors";
+import Paths from "@/constants/paths";
+import RarityStars from "@/features/rarities/rarity-stars.tsx";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader() {
@@ -30,16 +30,16 @@ export function loader() {
 
 export default function Characters() {
   const { characters, elements, rarities, weaponTypes } = useLoaderData<ReturnType<typeof loader>>();
-  const [filterElementKeys, setFilterElementKeys] = useState<TElementKey[]>([]);
-  const [filterRarities, setFilterRarities] = useState<TRarity[]>([]);
+  const [filterElementIds, setFilterElementIds] = useState<ElementId[]>([]);
+  const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
   const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<TWeaponTypeKey[]>([]);
   const [filteredCharacters, setFilteredCharacters] = useState<typeof characters>([]);
 
   useEffect(() => {
     let filteredCharacters = characters;
 
-    if (filterElementKeys.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterElementKeys.includes(character.element_id));
+    if (filterElementIds.length) {
+      filteredCharacters = filteredCharacters.filter(character => filterElementIds.includes(character.element_id));
     }
 
     if (filterRarities.length) {
@@ -51,7 +51,7 @@ export default function Characters() {
     }
 
     setFilteredCharacters(filteredCharacters);
-  }, [characters, filterElementKeys, filterRarities, filterWeaponTypeKeys]);
+  }, [characters, filterElementIds, filterRarities, filterWeaponTypeKeys]);
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -75,25 +75,25 @@ export default function Characters() {
             {elements.map(element => (
               <FilterCheckbox
                 asChild
-                checked={filterElementKeys.includes(element.key)}
+                checked={filterElementIds.includes(element.id)}
                 className="p-1 size-8.5 rounded-full"
-                key={element.key}
+                key={element.id}
                 name="elements"
                 onChange={(event) => {
                   if (event.target.checked) {
-                    if (!filterElementKeys.includes(element.key)) {
-                      setFilterElementKeys(prev => prev.concat([element.key]));
+                    if (!filterElementIds.includes(element.id)) {
+                      setFilterElementIds(prev => prev.concat([element.id]));
                     }
                   }
                   else {
-                    const index = filterElementKeys.indexOf(element.key);
+                    const index = filterElementIds.indexOf(element.id);
 
                     if (index !== -1) {
-                      setFilterElementKeys(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterElementIds(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
-                value={element.key}
+                value={element.id}
               >
                 <img alt={element.name} src={element.image_src} />
               </FilterCheckbox>
@@ -155,7 +155,7 @@ export default function Characters() {
                 }}
                 value={rarity}
               >
-                <Rarity length={rarity} />
+                <RarityStars length={rarity} />
               </FilterCheckbox>
             ))}
           </div>

@@ -1,4 +1,4 @@
-import { ElementKeys } from "@/database/elements/enums";
+import { ElementIds } from "../elements/enums";
 
 export const CharacterIds = {
   /* Альбедо                  */ Albedo: "Albedo",
@@ -80,12 +80,12 @@ export const CharacterIds = {
   /* Тарталья                 */ Tartaglia: "Tartaglia",
   /* Тома                     */ Thoma: "Thoma",
   /* Тигнари                  */ Tighnari: "Tighnari",
-  /* Путешественник (Анемо)   */ TravelerAnemo: `Traveler_${ElementKeys.Anemo}`,
-  /* Путешественник (Дендро)  */ TravelerDendro: `Traveler_${ElementKeys.Dendro}`,
-  /* Путешественник (Электро) */ TravelerElectro: `Traveler_${ElementKeys.Electro}`,
-  /* Путешественник (Гео)     */ TravelerGeo: `Traveler_${ElementKeys.Geo}`,
-  /* Путешественник (Гидро)   */ TravelerHydro: `Traveler_${ElementKeys.Hydro}`,
-  /* Путешественник (Пиро)    */ TravelerPyro: `Traveler_${ElementKeys.Pyro}`,
+  /* Путешественник (Анемо)   */ TravelerAnemo: `Traveler_${ElementIds.Anemo}`,
+  /* Путешественник (Дендро)  */ TravelerDendro: `Traveler_${ElementIds.Dendro}`,
+  /* Путешественник (Электро) */ TravelerElectro: `Traveler_${ElementIds.Electro}`,
+  /* Путешественник (Гео)     */ TravelerGeo: `Traveler_${ElementIds.Geo}`,
+  /* Путешественник (Гидро)   */ TravelerHydro: `Traveler_${ElementIds.Hydro}`,
+  /* Путешественник (Пиро)    */ TravelerPyro: `Traveler_${ElementIds.Pyro}`,
   /* Вареса                   */ Varesa: "Varesa",
   /* Венти                    */ Venti: "Venti",
   /* Странник                 */ Wanderer: "Wanderer",

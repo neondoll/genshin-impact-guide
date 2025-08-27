@@ -3,7 +3,7 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.NoblesseOblige, [
@@ -20,9 +20,9 @@ export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.NoblesseObli
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Zhongli).setIsBetter(),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.AtkPercentage, StatKeys.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatKeys.HpPercentage],
-    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.ElementalMastery, StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage, StatIds.HpPercentage],
+    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatIds.HpPercentage],
+    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

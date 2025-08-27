@@ -12,7 +12,7 @@ import { selectWeaponById } from "@/features/weapons/weaponsSelectors";
 import { selectWeaponTypeById } from "@/features/weapon-types/weaponTypesSelectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import Paths from "@/constants/paths";
-import Rarity from "@/features/rarities/rarity";
+import RarityStars from "@/features/rarities/rarity-stars.tsx";
 import StatBadge from "@/features/stats/stat-badge";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
@@ -55,7 +55,7 @@ export default function Weapon() {
         />
         <div className="space-y-1">
           <h1 children={Paths.Weapon.title(weapon)} className="text-3xl" />
-          <Rarity length={weapon.rarity} />
+          <RarityStars length={weapon.rarity} />
         </div>
       </div>
       <Card>

@@ -3,16 +3,16 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.SongOfDaysPast, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Barbara).setIsBetter(),
   new ArtifactSetCharacterRecommendationClass(CharacterIds.SangonomiyaKokomi).setIsBetter(),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [StatKeys.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [StatKeys.Heal, StatKeys.HpPercentage],
-    additional: [StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.HpPercentage],
+    [ArtifactSlotIds.Goblet]: [StatIds.HpPercentage],
+    [ArtifactSlotIds.Circlet]: [StatIds.Heal, StatIds.HpPercentage],
+    additional: [StatIds.EnergyRecharge, StatIds.HpPercentage],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

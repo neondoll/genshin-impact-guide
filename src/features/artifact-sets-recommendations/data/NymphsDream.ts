@@ -4,7 +4,7 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.NymphsDream, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.KamisatoAyato).setIsBetter()
@@ -15,9 +15,9 @@ export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.NymphsDream,
     .setNotes(`Син Цю будет полезен бонус 2 предметов, так как ему важен Гидро урон. Можно сочетать с ${artifactSetById(ArtifactSetIds.EmblemOfSeveredFate)} или ${artifactSetById(ArtifactSetIds.NoblesseOblige)}. В таком случае ${artifactSetById(ArtifactSetIds.NymphsDream)} может быть заменён ${artifactSetById(ArtifactSetIds.HeartOfDepth)}.`),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.AtkPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage],
     [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatKeys.AtkPercentage],
+    additional: [...StatsCrit, StatIds.AtkPercentage],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

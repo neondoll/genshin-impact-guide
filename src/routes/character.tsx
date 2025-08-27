@@ -14,13 +14,13 @@ import {
   selectCharacterRecommendationsById,
 } from "@/features/characters-recommendations/selectors.ts";
 import { selectCharacterRolesByIds } from "@/features/character-roles/selectors";
-import { selectElementById } from "@/features/elements/elementsSelectors";
+import { selectElementById } from "@/features/elements/selectors.ts";
 import { selectWeaponTypeById } from "@/features/weapon-types/weaponTypesSelectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import CharacterRecommendations from "@/organisms/character-recommendations";
 import Paths from "@/constants/paths";
-import Rarity from "@/features/rarities/rarity";
+import RarityStars from "@/features/rarities/rarity-stars.tsx";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {
@@ -74,7 +74,7 @@ export default function Character() {
             <h1 children={Paths.Character.title(character)} className="text-3xl" />
             <img alt={characterElement.name} className="size-6" src={characterElement.image_src} />
           </div>
-          <Rarity length={character.rarity} />
+          <RarityStars length={character.rarity} />
         </div>
       </div>
       <Card>

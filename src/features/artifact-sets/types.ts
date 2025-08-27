@@ -1,11 +1,11 @@
 import type { ArtifactSlotId } from "../artifact-slots/types";
-import type { TRarity } from "@/database/rarities/types";
+import type { Rarity } from "../rarities/types";
 import { ArtifactSetIds } from "./enums";
 
 export interface ArtifactSet {
   id: ArtifactSetId;
   name: string;
-  rarities: TRarity[];
+  rarities: Rarity[];
   sources: string[];
   item_bonuses: Record<2 | 4, string>;
   slots: Record<ArtifactSetSlot["id"], ArtifactSetSlot | undefined>;

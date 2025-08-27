@@ -3,7 +3,7 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.OceanHuedClam, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Baizhu),
@@ -12,9 +12,9 @@ export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.OceanHuedCla
   new ArtifactSetCharacterRecommendationClass(CharacterIds.SangonomiyaKokomi).setIsBetter(),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.EnergyRecharge, StatKeys.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [StatKeys.EnergyRecharge, StatKeys.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [StatKeys.Heal, StatKeys.HpPercentage],
-    additional: [StatKeys.EnergyRecharge, StatKeys.HpPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ArtifactSlotIds.Goblet]: [StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ArtifactSlotIds.Circlet]: [StatIds.Heal, StatIds.HpPercentage],
+    additional: [StatIds.EnergyRecharge, StatIds.HpPercentage],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

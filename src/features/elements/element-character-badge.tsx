@@ -1,9 +1,9 @@
-import type { TElementKey } from "@/database/elements/types";
+import type { ElementId } from "./types";
 import { Badge } from "@/components/ui/badge";
-import { selectElementById } from "./elementsSelectors";
+import { selectElementById } from "./selectors";
 
-export default function ElementCharacterBadge({ elementKey }: { elementKey: TElementKey }) {
-  const element = selectElementById(elementKey);
+export default function ElementCharacterBadge({ elementId }: { elementId: ElementId }) {
+  const element = selectElementById(elementId);
 
   return (
     <Badge

@@ -3,16 +3,16 @@ import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.VermillionHereafter, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Xiao).setIsBetter(),
 ]])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatKeys.AtkPercentage],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatKeys.AtkPercentage],
+    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage],
+    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage],
     [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatKeys.AtkPercentage, StatKeys.EnergyRecharge],
+    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.EnergyRecharge],
   })
   .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);

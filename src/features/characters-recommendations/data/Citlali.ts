@@ -10,7 +10,7 @@ import {
   CharacterWeaponRecommendationClass,
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 import { TalentKeys } from "@/database/talents/enums";
 import { WeaponKeys } from "@/database/weapons/enums";
 import artifactSets from "../../artifact-sets/data";
@@ -41,19 +41,19 @@ export default new CharacterRecommendationsClass(CharacterIds.Citlali)
     ],
     {
       [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.EnergyRecharge).setNotes(["в 99% случаев"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.ElementalMastery),
+        new CharacterArtifactStatRecommendationClass(StatIds.EnergyRecharge).setNotes(["в 99% случаев"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery),
       ],
-      [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendationClass(StatKeys.ElementalMastery)],
+      [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery)],
       [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.ElementalMastery).setNotes(["всегда"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.CritRate).setNotes([
+        new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery).setNotes(["всегда"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setNotes([
           `можно рассмотреть, если в руках ${weapons[WeaponKeys.FavoniusCodex].name}`,
         ]),
       ],
       additional: [
-        new CharacterArtifactStatRecommendationClass(StatKeys.EnergyRecharge).setNotes(["приоритетно", "от 170%"]),
-        new CharacterArtifactStatRecommendationClass(StatKeys.ElementalMastery).setNotes(["от 800"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.EnergyRecharge).setNotes(["приоритетно", "от 170%"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery).setNotes(["от 800"]),
       ],
     },
   ]))

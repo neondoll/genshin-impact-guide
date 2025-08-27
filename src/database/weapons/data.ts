@@ -1,7 +1,7 @@
 import type { IWeapon } from "./types";
 import { CWeapon } from "./classes";
 import { numberFormatPercent, publicImageSrc } from "@/lib/utils";
-import { StatKeys } from "../stats/enums";
+import { StatIds } from "@/features/stats/enums";
 import { WeaponKeys } from "./enums";
 import { WeaponTypeKeys } from "../weapon-types/enums";
 
@@ -23,7 +23,7 @@ export default {
     WeaponSource.EventWishExclusive,
     WeaponTypeKeys.Claymore,
     { min_value: 49, max_value: 741 },
-    StatKeys.CritRate,
+    StatIds.CritRate,
     { min_value: numberFormatPercent(0.024, 1), max_value: numberFormatPercent(0.110, 1) },
     "a_thousand_blazing_suns-256x256.webp",
   ]),
@@ -34,7 +34,7 @@ export default {
     WeaponSource.EventWishExclusive,
     WeaponTypeKeys.Catalyst,
     { min_value: 44, max_value: 542 },
-    StatKeys.ElementalMastery,
+    StatIds.ElementalMastery,
     { min_value: 58, max_value: 265 },
     "a_thousand_floating_dreams-256x256.webp",
   ]),
@@ -45,7 +45,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "9.6%", max_value: "44.1%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponKeys.Akuoumaru]: {
     key: WeaponKeys.Akuoumaru,
@@ -54,7 +54,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.AlleyHunter]: {
     key: WeaponKeys.AlleyHunter,
@@ -64,7 +64,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -77,7 +77,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "12%", max_value: "55.1%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponKeys.AmosBow]: {
     key: WeaponKeys.AmosBow,
@@ -87,7 +87,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.108, 1),
       max_value: numberFormatPercent(0.496, 1),
     },
@@ -101,7 +101,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 542 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.192, 1),
       max_value: numberFormatPercent(0.882, 1),
     },
@@ -114,7 +114,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "48", max_value: "6774" },
-    secondary_stats: { key: StatKeys.PhysicalDmgBonus, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.PhysicalDmgBonus, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.AshGravenDrinkingHorn]: {
     key: WeaponKeys.AshGravenDrinkingHorn,
@@ -124,7 +124,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.HpPercentage,
+      key: StatIds.HpPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -138,7 +138,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.144, 1),
       max_value: numberFormatPercent(0.662, 1),
     },
@@ -153,7 +153,7 @@ export default {
     rarity: 5,
     base_atk: { min_value: 48, max_value: 674 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.048, 1),
       max_value: numberFormatPercent(0.221, 1),
     },
@@ -166,7 +166,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.067, 1),
       max_value: numberFormatPercent(0.306, 1),
     },
@@ -179,7 +179,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.BeaconOfTheReedSea]: {
     key: WeaponKeys.BeaconOfTheReedSea,
@@ -188,7 +188,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "7.2%", max_value: "33.1%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "7.2%", max_value: "33.1%" },
   },
   [WeaponKeys.BlackTassel]: {
     key: WeaponKeys.BlackTassel,
@@ -197,7 +197,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 3,
     base_atk: { min_value: "38", max_value: "354" },
-    secondary_stats: { key: StatKeys.Hp, min_value: "10.2%", max_value: "46.9%" },
+    secondary_stats: { key: StatIds.Hp, min_value: "10.2%", max_value: "46.9%" },
   },
   [WeaponKeys.BlackcliffAgate]: {
     key: WeaponKeys.BlackcliffAgate,
@@ -207,7 +207,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.120, 1),
       max_value: numberFormatPercent(0.551, 1),
     },
@@ -220,7 +220,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "8%", max_value: "36.8%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponKeys.BlackcliffPole]: {
     key: WeaponKeys.BlackcliffPole,
@@ -229,7 +229,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "12%", max_value: "55.1%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponKeys.BlackcliffSlasher]: {
     key: WeaponKeys.BlackcliffSlasher,
@@ -238,7 +238,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "12%", max_value: "55.1%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponKeys.BlackcliffWarbow]: {
     key: WeaponKeys.BlackcliffWarbow,
@@ -248,7 +248,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.080, 1),
       max_value: numberFormatPercent(0.368, 1),
     },
@@ -261,7 +261,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 3,
     base_atk: { min_value: "38", max_value: "354" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "41", max_value: "187" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "41", max_value: "187" },
   },
   [WeaponKeys.CalamityOfEshu]: {
     key: WeaponKeys.CalamityOfEshu,
@@ -270,7 +270,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.CalamityQueller]: {
     key: WeaponKeys.CalamityQueller,
@@ -279,7 +279,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 5,
     base_atk: { min_value: "49", max_value: "741" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "3.6%", max_value: "16.5%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "3.6%", max_value: "16.5%" },
   },
   [WeaponKeys.CashflowSupervision]: {
     key: WeaponKeys.CashflowSupervision,
@@ -289,7 +289,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 48, max_value: 674 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.048, 1),
       max_value: numberFormatPercent(0.221, 1),
     },
@@ -303,7 +303,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -316,7 +316,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.Def, min_value: "15%", max_value: "69.0%" },
+    secondary_stats: { key: StatIds.Def, min_value: "15%", max_value: "69.0%" },
   },
   [WeaponKeys.Cloudforged]: {
     key: WeaponKeys.Cloudforged,
@@ -325,7 +325,7 @@ export default {
     source: "Событие версии 4.7 «Моделирование взаимного повышения безопасности»",
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 36, max_value: 165 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 36, max_value: 165 },
     image_src: imageSrc("cloudforged-256x256.webp"),
   },
   [WeaponKeys.CompoundBow]: {
@@ -336,7 +336,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 41, max_value: 454 },
     secondary_stats: {
-      key: StatKeys.PhysicalDmgBonus,
+      key: StatIds.PhysicalDmgBonus,
       min_value: numberFormatPercent(0.150, 1),
       max_value: numberFormatPercent(0.690, 1),
     },
@@ -349,7 +349,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "7.7%", max_value: "35.2%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponKeys.CranesEchoingCall]: {
     key: WeaponKeys.CranesEchoingCall,
@@ -359,7 +359,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 49, max_value: 741 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.036, 1),
       max_value: numberFormatPercent(0.165, 1),
     },
@@ -372,7 +372,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.PhysicalDmgBonus, min_value: "7.5%", max_value: "34.5%" },
+    secondary_stats: { key: StatIds.PhysicalDmgBonus, min_value: "7.5%", max_value: "34.5%" },
   },
   [WeaponKeys.CrimsonMoonsSemblance]: {
     key: WeaponKeys.CrimsonMoonsSemblance,
@@ -381,7 +381,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "4.8%", max_value: "22.1%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "4.8%", max_value: "22.1%" },
   },
   [WeaponKeys.DarkIronSword]: {
     key: WeaponKeys.DarkIronSword,
@@ -390,7 +390,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "31", max_value: "141" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "31", max_value: "141" },
   },
   [WeaponKeys.Deathmatch]: {
     key: WeaponKeys.Deathmatch,
@@ -399,7 +399,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "8%", max_value: "36.8%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponKeys.DebateClub]: {
     key: WeaponKeys.DebateClub,
@@ -408,7 +408,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "7.7%", max_value: "35.2%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponKeys.DialoguesOfTheDesertSages]: {
     key: WeaponKeys.DialoguesOfTheDesertSages,
@@ -417,7 +417,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Hp, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Hp, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.DodocoTales]: {
     key: WeaponKeys.DodocoTales,
@@ -427,7 +427,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 41, max_value: 454 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.120, 1),
       max_value: numberFormatPercent(0.551, 1),
     },
@@ -440,7 +440,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "48", max_value: "221" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "48", max_value: "221" },
   },
   [WeaponKeys.DragonspineSpear]: {
     key: WeaponKeys.DragonspineSpear,
@@ -449,7 +449,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.PhysicalDmgBonus, min_value: "15%", max_value: "69.0%" },
+    secondary_stats: { key: StatIds.PhysicalDmgBonus, min_value: "15%", max_value: "69.0%" },
   },
   [WeaponKeys.EarthShaker]: {
     key: WeaponKeys.EarthShaker,
@@ -458,7 +458,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.ElegyForTheEnd]: {
     key: WeaponKeys.ElegyForTheEnd,
@@ -468,7 +468,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.120, 1),
       max_value: numberFormatPercent(0.551, 1),
     },
@@ -481,7 +481,7 @@ export default {
     source: WeaponSource.Wish,
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 40, max_value: 448 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 20, max_value: 94 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 20, max_value: 94 },
     image_src: imageSrc("emerald_orb-256x256.webp"),
   },
   [WeaponKeys.EndOfTheLine]: {
@@ -492,7 +492,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.100, 1),
       max_value: numberFormatPercent(0.459, 1),
     },
@@ -505,7 +505,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponKeys.EverlastingMoonglow]: {
     key: WeaponKeys.EverlastingMoonglow,
@@ -515,7 +515,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.HpPercentage,
+      key: StatIds.HpPercentage,
       min_value: numberFormatPercent(0.108, 1),
       max_value: numberFormatPercent(0.496, 1),
     },
@@ -529,7 +529,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 41, max_value: 454 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.120, 1),
       max_value: numberFormatPercent(0.551, 1),
     },
@@ -543,7 +543,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.067, 1),
       max_value: numberFormatPercent(0.306, 1),
     },
@@ -556,7 +556,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 5,
     base_atk: { min_value: "49", max_value: "741" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "2.4%", max_value: "11.0%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "2.4%", max_value: "11.0%" },
   },
   [WeaponKeys.FavoniusCodex]: {
     key: WeaponKeys.FavoniusCodex,
@@ -566,7 +566,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.100, 1),
       max_value: numberFormatPercent(0.459, 1),
     },
@@ -579,7 +579,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
   },
   [WeaponKeys.FavoniusLance]: {
     key: WeaponKeys.FavoniusLance,
@@ -588,7 +588,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponKeys.FavoniusSword]: {
     key: WeaponKeys.FavoniusSword,
@@ -597,7 +597,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
   },
   [WeaponKeys.FavoniusWarbow]: {
     key: WeaponKeys.FavoniusWarbow,
@@ -607,7 +607,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 41, max_value: 454 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.133, 1),
       max_value: numberFormatPercent(0.613, 1),
     },
@@ -620,7 +620,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_stats: { key: StatKeys.Hp, min_value: "7.7%", max_value: "35.2%" },
+    secondary_stats: { key: StatIds.Hp, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponKeys.FesteringDesire]: {
     key: WeaponKeys.FesteringDesire,
@@ -629,7 +629,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponKeys.FilletBlade]: {
     key: WeaponKeys.FilletBlade,
@@ -638,7 +638,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "7.7%", max_value: "35.2%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponKeys.FinaleOfTheDeep]: {
     key: WeaponKeys.FinaleOfTheDeep,
@@ -647,7 +647,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.FleuveCendreFerryman]: {
     key: WeaponKeys.FleuveCendreFerryman,
@@ -656,7 +656,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponKeys.FlowerWreathedFeathers]: {
     key: WeaponKeys.FlowerWreathedFeathers,
@@ -666,7 +666,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -680,7 +680,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -693,7 +693,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.Def, min_value: "15%", max_value: "69.0%" },
+    secondary_stats: { key: StatIds.Def, min_value: "15%", max_value: "69.0%" },
   },
   [WeaponKeys.FootprintOfTheRainbow]: {
     key: WeaponKeys.FootprintOfTheRainbow,
@@ -702,7 +702,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Def, min_value: "11.3%", max_value: "51.7%" },
+    secondary_stats: { key: StatIds.Def, min_value: "11.3%", max_value: "51.7%" },
   },
   [WeaponKeys.ForestRegalia]: {
     key: WeaponKeys.ForestRegalia,
@@ -711,7 +711,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponKeys.FreedomSworn]: {
     key: WeaponKeys.FreedomSworn,
@@ -720,7 +720,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "43", max_value: "198" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "43", max_value: "198" },
   },
   [WeaponKeys.Frostbearer]: {
     key: WeaponKeys.Frostbearer,
@@ -730,7 +730,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -744,7 +744,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.100, 1),
       max_value: numberFormatPercent(0.459, 1),
     },
@@ -757,7 +757,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.HakushinRing]: {
     key: WeaponKeys.HakushinRing,
@@ -767,7 +767,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.067, 1),
       max_value: numberFormatPercent(0.306, 1),
     },
@@ -780,7 +780,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 3,
     base_atk: { min_value: "40", max_value: "448" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "5.1%", max_value: "23.4%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "5.1%", max_value: "23.4%" },
   },
   [WeaponKeys.Hamayumi]: {
     key: WeaponKeys.Hamayumi,
@@ -790,7 +790,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 41, max_value: 454 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.120, 1),
       max_value: numberFormatPercent(0.551, 1),
     },
@@ -803,7 +803,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "7.2%", max_value: "33.1%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "7.2%", max_value: "33.1%" },
   },
   [WeaponKeys.HarbingerOfDawn]: {
     key: WeaponKeys.HarbingerOfDawn,
@@ -812,7 +812,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "10.2%", max_value: "46.9%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "10.2%", max_value: "46.9%" },
   },
   [WeaponKeys.HuntersPath]: {
     key: WeaponKeys.HuntersPath,
@@ -822,7 +822,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 542 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.096, 1),
       max_value: numberFormatPercent(0.441, 1),
     },
@@ -836,7 +836,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -849,7 +849,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponKeys.JadefallsSplendor]: {
     key: WeaponKeys.JadefallsSplendor,
@@ -859,7 +859,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.HpPercentage,
+      key: StatIds.HpPercentage,
       min_value: numberFormatPercent(0.108, 1),
       max_value: numberFormatPercent(0.496, 1),
     },
@@ -872,7 +872,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.KagurasVerity]: {
     key: WeaponKeys.KagurasVerity,
@@ -882,7 +882,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.144, 1),
       max_value: numberFormatPercent(0.662, 1),
     },
@@ -895,7 +895,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponKeys.KeyOfKhajNisut]: {
     key: WeaponKeys.KeyOfKhajNisut,
@@ -904,7 +904,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_stats: { key: StatKeys.Hp, min_value: "14.4%", max_value: "66.2%" },
+    secondary_stats: { key: StatIds.Hp, min_value: "14.4%", max_value: "66.2%" },
   },
   [WeaponKeys.KingsSquire]: {
     key: WeaponKeys.KingsSquire,
@@ -914,7 +914,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 41, max_value: 454 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.120, 1),
       max_value: numberFormatPercent(0.551, 1),
     },
@@ -927,7 +927,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "24", max_value: "110" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "24", max_value: "110" },
   },
   [WeaponKeys.LightOfFoliarIncision]: {
     key: WeaponKeys.LightOfFoliarIncision,
@@ -936,7 +936,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "19.2%", max_value: "88.2%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponKeys.LionsRoar]: {
     key: WeaponKeys.LionsRoar,
@@ -945,7 +945,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.LithicBlade]: {
     key: WeaponKeys.LithicBlade,
@@ -954,7 +954,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.LithicSpear]: {
     key: WeaponKeys.LithicSpear,
@@ -963,7 +963,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.LostPrayerToTheSacredWinds]: {
     key: WeaponKeys.LostPrayerToTheSacredWinds,
@@ -973,7 +973,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.072, 1),
       max_value: numberFormatPercent(0.331, 1),
     },
@@ -986,7 +986,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "7.2%", max_value: "33.1%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "7.2%", max_value: "33.1%" },
   },
   [WeaponKeys.LuxuriousSeaLord]: {
     key: WeaponKeys.LuxuriousSeaLord,
@@ -995,7 +995,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "12%", max_value: "55.1%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponKeys.MagicGuide]: {
     key: WeaponKeys.MagicGuide,
@@ -1004,7 +1004,7 @@ export default {
     source: WeaponSource.Wish,
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 38, max_value: 354 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 41, max_value: 187 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 41, max_value: 187 },
     image_src: imageSrc("magic_guide-256x256.webp"),
   },
   [WeaponKeys.MailedFlower]: {
@@ -1014,7 +1014,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "24", max_value: "110" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "24", max_value: "110" },
   },
   [WeaponKeys.MakhairaAquamarine]: {
     key: WeaponKeys.MakhairaAquamarine,
@@ -1023,7 +1023,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponKeys.MappaMare]: {
     key: WeaponKeys.MappaMare,
@@ -1032,7 +1032,7 @@ export default {
     source: WeaponSource.Forged,
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 565 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 24, max_value: 110 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 24, max_value: 110 },
     image_src: imageSrc("mappa_mare-256x256.webp"),
   },
   [WeaponKeys.MemoryOfDust]: {
@@ -1043,7 +1043,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.108, 1),
       max_value: numberFormatPercent(0.496, 1),
     },
@@ -1057,7 +1057,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 40, max_value: 448 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.068, 1),
       max_value: numberFormatPercent(0.312, 1),
     },
@@ -1070,7 +1070,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.MistsplitterReforged]: {
     key: WeaponKeys.MistsplitterReforged,
@@ -1079,7 +1079,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "9.6%", max_value: "44.1%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponKeys.MitternachtsWaltz]: {
     key: WeaponKeys.MitternachtsWaltz,
@@ -1089,7 +1089,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.PhysicalDmgBonus,
+      key: StatIds.PhysicalDmgBonus,
       min_value: numberFormatPercent(0.113, 1),
       max_value: numberFormatPercent(0.517, 1),
     },
@@ -1102,7 +1102,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "24", max_value: "110" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "24", max_value: "110" },
   },
   [WeaponKeys.MountainBracingBolt]: {
     key: WeaponKeys.MountainBracingBolt,
@@ -1111,7 +1111,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponKeys.MouunsMoon]: {
     key: WeaponKeys.MouunsMoon,
@@ -1121,7 +1121,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -1135,7 +1135,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -1149,7 +1149,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 39, max_value: 401 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.085, 1),
       max_value: numberFormatPercent(0.390, 1),
     },
@@ -1162,7 +1162,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_stats: { key: StatKeys.Def, min_value: "18%", max_value: "82.7%" },
+    secondary_stats: { key: StatIds.Def, min_value: "18%", max_value: "82.7%" },
   },
   [WeaponKeys.PolarStar]: {
     key: WeaponKeys.PolarStar,
@@ -1172,7 +1172,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.072, 1),
       max_value: numberFormatPercent(0.331, 1),
     },
@@ -1185,7 +1185,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.Hp, min_value: "12%", max_value: "55.1%" },
+    secondary_stats: { key: StatIds.Hp, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponKeys.Predator]: {
     key: WeaponKeys.Predator,
@@ -1195,7 +1195,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -1208,7 +1208,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "9.6%", max_value: "44.1%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponKeys.PrimordialJadeWingedSpear]: {
     key: WeaponKeys.PrimordialJadeWingedSpear,
@@ -1217,7 +1217,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "4.8%", max_value: "22.1%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "4.8%", max_value: "22.1%" },
   },
   [WeaponKeys.ProspectorsDrill]: {
     key: WeaponKeys.ProspectorsDrill,
@@ -1226,7 +1226,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.PrototypeAmber]: {
     key: WeaponKeys.PrototypeAmber,
@@ -1236,7 +1236,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.HpPercentage,
+      key: StatIds.HpPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -1249,7 +1249,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.PrototypeCrescent]: {
     key: WeaponKeys.PrototypeCrescent,
@@ -1259,7 +1259,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -1272,7 +1272,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.PhysicalDmgBonus, min_value: "7.5%", max_value: "34.5%" },
+    secondary_stats: { key: StatIds.PhysicalDmgBonus, min_value: "7.5%", max_value: "34.5%" },
   },
   [WeaponKeys.PrototypeStarglitter]: {
     key: WeaponKeys.PrototypeStarglitter,
@@ -1281,7 +1281,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponKeys.Rainslasher]: {
     key: WeaponKeys.Rainslasher,
@@ -1290,7 +1290,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponKeys.RangeGauge]: {
     key: WeaponKeys.RangeGauge,
@@ -1300,7 +1300,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -1313,7 +1313,7 @@ export default {
     source: WeaponSource.Wish,
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 40, max_value: 448 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 20, max_value: 94 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 20, max_value: 94 },
     image_src: imageSrc("raven_bow-256x256.webp"),
   },
   [WeaponKeys.RecurveBow]: {
@@ -1324,7 +1324,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 38, max_value: 354 },
     secondary_stats: {
-      key: StatKeys.HpPercentage,
+      key: StatIds.HpPercentage,
       min_value: numberFormatPercent(0.102, 1),
       max_value: numberFormatPercent(0.469, 1),
     },
@@ -1337,7 +1337,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "19.2%", max_value: "88.2%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponKeys.RightfulReward]: {
     key: WeaponKeys.RightfulReward,
@@ -1346,7 +1346,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Hp, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Hp, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.RingOfYaxche]: {
     key: WeaponKeys.RingOfYaxche,
@@ -1356,7 +1356,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.HpPercentage,
+      key: StatIds.HpPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -1370,7 +1370,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -1383,7 +1383,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.RoyalGrimoire]: {
     key: WeaponKeys.RoyalGrimoire,
@@ -1393,7 +1393,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -1406,7 +1406,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.RoyalSpear]: {
     key: WeaponKeys.RoyalSpear,
@@ -1415,7 +1415,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.Rust]: {
     key: WeaponKeys.Rust,
@@ -1425,7 +1425,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -1439,7 +1439,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.067, 1),
       max_value: numberFormatPercent(0.306, 1),
     },
@@ -1452,7 +1452,7 @@ export default {
     source: WeaponSource.Wish,
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 41, max_value: 454 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 48, max_value: 221 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 48, max_value: 221 },
     image_src: imageSrc("sacrificial_fragments-256x256.webp"),
   },
   [WeaponKeys.SacrificialGreatsword]: {
@@ -1462,7 +1462,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponKeys.SacrificialJade]: {
     key: WeaponKeys.SacrificialJade,
@@ -1472,7 +1472,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 41, max_value: 454 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.080, 1),
       max_value: numberFormatPercent(0.368, 1),
     },
@@ -1485,7 +1485,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "41", max_value: "454" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "13.3%", max_value: "61.3%" },
   },
   [WeaponKeys.SapwoodBlade]: {
     key: WeaponKeys.SapwoodBlade,
@@ -1494,7 +1494,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponKeys.ScionOfTheBlazingSun]: {
     key: WeaponKeys.ScionOfTheBlazingSun,
@@ -1504,7 +1504,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.040, 1),
       max_value: numberFormatPercent(0.184, 1),
     },
@@ -1518,7 +1518,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.HpPercentage,
+      key: StatIds.HpPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -1531,7 +1531,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.SharpshootersOath]: {
     key: WeaponKeys.SharpshootersOath,
@@ -1541,7 +1541,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 39, max_value: 401 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.102, 1),
       max_value: numberFormatPercent(0.469, 1),
     },
@@ -1555,7 +1555,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 44, max_value: 542 },
     secondary_stats: {
-      key: StatKeys.HpPercentage,
+      key: StatIds.HpPercentage,
       min_value: numberFormatPercent(0.144, 1),
       max_value: numberFormatPercent(0.662, 1),
     },
@@ -1568,7 +1568,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_stats: { key: StatKeys.PhysicalDmgBonus, min_value: "9.6%", max_value: "43.9%" },
+    secondary_stats: { key: StatIds.PhysicalDmgBonus, min_value: "9.6%", max_value: "43.9%" },
   },
   [WeaponKeys.SkyriderSword]: {
     key: WeaponKeys.SkyriderSword,
@@ -1577,7 +1577,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 3,
     base_atk: { min_value: "38", max_value: "354" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "11.3%", max_value: "51.7%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "11.3%", max_value: "51.7%" },
   },
   [WeaponKeys.SkywardAtlas]: {
     key: WeaponKeys.SkywardAtlas,
@@ -1587,7 +1587,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 48, max_value: 674 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.072, 1),
       max_value: numberFormatPercent(0.331, 1),
     },
@@ -1600,7 +1600,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "12%", max_value: "55.1%" },
   },
   [WeaponKeys.SkywardHarp]: {
     key: WeaponKeys.SkywardHarp,
@@ -1610,7 +1610,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 48, max_value: 674 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.048, 1),
       max_value: numberFormatPercent(0.221, 1),
     },
@@ -1623,7 +1623,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "8%", max_value: "36.8%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponKeys.SkywardSpine]: {
     key: WeaponKeys.SkywardSpine,
@@ -1632,7 +1632,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "8%", max_value: "36.8%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "8%", max_value: "36.8%" },
   },
   [WeaponKeys.Slingshot]: {
     key: WeaponKeys.Slingshot,
@@ -1642,7 +1642,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 38, max_value: 354 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.068, 1),
       max_value: numberFormatPercent(0.312, 1),
     },
@@ -1655,7 +1655,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.PhysicalDmgBonus, min_value: "7.5%", max_value: "34.5%" },
+    secondary_stats: { key: StatIds.PhysicalDmgBonus, min_value: "7.5%", max_value: "34.5%" },
   },
   [WeaponKeys.SolarPearl]: {
     key: WeaponKeys.SolarPearl,
@@ -1665,7 +1665,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -1678,7 +1678,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 5,
     base_atk: { min_value: "49", max_value: "741" },
-    secondary_stats: { key: StatKeys.PhysicalDmgBonus, min_value: "4.5%", max_value: "20.7%" },
+    secondary_stats: { key: StatIds.PhysicalDmgBonus, min_value: "4.5%", max_value: "20.7%" },
   },
   [WeaponKeys.SongOfStillness]: {
     key: WeaponKeys.SongOfStillness,
@@ -1688,7 +1688,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.AtkPercentage,
+      key: StatIds.AtkPercentage,
       min_value: numberFormatPercent(0.090, 1),
       max_value: numberFormatPercent(0.413, 1),
     },
@@ -1701,7 +1701,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "19.2%", max_value: "88.2%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponKeys.StaffOfHoma]: {
     key: WeaponKeys.StaffOfHoma,
@@ -1710,7 +1710,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "14.4%", max_value: "66.2%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "14.4%", max_value: "66.2%" },
   },
   [WeaponKeys.StaffOfTheScarletSands]: {
     key: WeaponKeys.StaffOfTheScarletSands,
@@ -1719,7 +1719,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "9.6%", max_value: "44.1%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "9.6%", max_value: "44.1%" },
   },
   [WeaponKeys.StarcallersWatch]: {
     key: WeaponKeys.StarcallersWatch,
@@ -1728,7 +1728,7 @@ export default {
     source: WeaponSource.EventWishExclusive,
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 542 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 58, max_value: 265 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 58, max_value: 265 },
     image_src: imageSrc("starcallers_watch-256x256.webp"),
   },
   [WeaponKeys.SturdyBone]: {
@@ -1738,7 +1738,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.SummitShaper]: {
     key: WeaponKeys.SummitShaper,
@@ -1747,7 +1747,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "10.8%", max_value: "49.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponKeys.SunnyMorningSleepIn]: {
     key: WeaponKeys.SunnyMorningSleepIn,
@@ -1756,7 +1756,7 @@ export default {
     source: WeaponSource.EventWishExclusive,
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 542 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 58, max_value: 265 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 58, max_value: 265 },
     image_src: imageSrc("sunny_morning_sleep_in-256x256.webp"),
   },
   [WeaponKeys.SurfsUp]: {
@@ -1767,7 +1767,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 542 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.192, 1),
       max_value: numberFormatPercent(0.882, 1),
     },
@@ -1780,7 +1780,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "39", max_value: "440" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "7.7%", max_value: "35.2%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "7.7%", max_value: "35.2%" },
   },
   [WeaponKeys.SwordOfNarzissenkreuz]: {
     key: WeaponKeys.SwordOfNarzissenkreuz,
@@ -1789,7 +1789,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.SymphonistOfScents]: {
     key: WeaponKeys.SymphonistOfScents,
@@ -1800,7 +1800,7 @@ export default {
     rarity: 5,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.144, 1),
       max_value: numberFormatPercent(0.662, 1),
     },
@@ -1812,7 +1812,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "4%", max_value: "18.4%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "4%", max_value: "18.4%" },
   },
   [WeaponKeys.TamayurateiNoOhanashi]: {
     key: WeaponKeys.TamayurateiNoOhanashi,
@@ -1823,7 +1823,7 @@ export default {
     rarity: 4,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.067, 1),
       max_value: numberFormatPercent(0.306, 1),
     },
@@ -1835,7 +1835,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "45", max_value: "620" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "12", max_value: "55" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "12", max_value: "55" },
   },
   [WeaponKeys.TheBell]: {
     key: WeaponKeys.TheBell,
@@ -1844,7 +1844,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Hp, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Hp, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.TheBlackSword]: {
     key: WeaponKeys.TheBlackSword,
@@ -1853,7 +1853,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.TheCatch]: {
     key: WeaponKeys.TheCatch,
@@ -1862,7 +1862,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "10.0%", max_value: "45.9%" },
   },
   [WeaponKeys.TheDockhandsAssistant]: {
     key: WeaponKeys.TheDockhandsAssistant,
@@ -1871,7 +1871,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Hp, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Hp, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.TheFirstGreatMagic]: {
     key: WeaponKeys.TheFirstGreatMagic,
@@ -1881,7 +1881,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.144, 1),
       max_value: numberFormatPercent(0.662, 1),
     },
@@ -1894,7 +1894,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.TheStringless]: {
     key: WeaponKeys.TheStringless,
@@ -1903,7 +1903,7 @@ export default {
     source: WeaponSource.Wish,
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 36, max_value: 165 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 36, max_value: 165 },
     image_src: imageSrc("the_stringless-256x256.webp"),
   },
   [WeaponKeys.TheUnforged]: {
@@ -1913,7 +1913,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "10.8%", max_value: "49.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponKeys.TheViridescentHunt]: {
     key: WeaponKeys.TheViridescentHunt,
@@ -1923,7 +1923,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.060, 1),
       max_value: numberFormatPercent(0.276, 1),
     },
@@ -1937,7 +1937,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.120, 1),
       max_value: numberFormatPercent(0.551, 1),
     },
@@ -1951,7 +1951,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 39, max_value: 401 },
     secondary_stats: {
-      key: StatKeys.HpPercentage,
+      key: StatIds.HpPercentage,
       min_value: numberFormatPercent(0.077, 1),
       max_value: numberFormatPercent(0.352, 1),
     },
@@ -1965,7 +1965,7 @@ export default {
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 46, max_value: 608 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.144, 1),
       max_value: numberFormatPercent(0.662, 1),
     },
@@ -1978,7 +1978,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "9%", max_value: "41.3%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "9%", max_value: "41.3%" },
   },
   [WeaponKeys.TomeOfTheEternalFlow]: {
     key: WeaponKeys.TomeOfTheEternalFlow,
@@ -1988,7 +1988,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 542 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.192, 1),
       max_value: numberFormatPercent(0.882, 1),
     },
@@ -2001,7 +2001,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "36", max_value: "165" },
   },
   [WeaponKeys.TravelersHandySword]: {
     key: WeaponKeys.TravelersHandySword,
@@ -2010,7 +2010,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 3,
     base_atk: { min_value: "40", max_value: "448" },
-    secondary_stats: { key: StatKeys.Def, min_value: "6.4%", max_value: "29.3%" },
+    secondary_stats: { key: StatIds.Def, min_value: "6.4%", max_value: "29.3%" },
   },
   [WeaponKeys.TulaytullahsRemembrance]: {
     key: WeaponKeys.TulaytullahsRemembrance,
@@ -2020,7 +2020,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 48, max_value: 674 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.096, 1),
       max_value: numberFormatPercent(0.441, 1),
     },
@@ -2034,7 +2034,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 40, max_value: 448 },
     secondary_stats: {
-      key: StatKeys.CritRate,
+      key: StatIds.CritRate,
       min_value: numberFormatPercent(0.034, 1),
       max_value: numberFormatPercent(0.156, 1),
     },
@@ -2047,7 +2047,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "44", max_value: "565" },
-    secondary_stats: { key: StatKeys.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
+    secondary_stats: { key: StatIds.EnergyRecharge, min_value: "6.7%", max_value: "30.6%" },
   },
   [WeaponKeys.UrakuMisugiri]: {
     key: WeaponKeys.UrakuMisugiri,
@@ -2056,7 +2056,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 5,
     base_atk: { min_value: "44", max_value: "542" },
-    secondary_stats: { key: StatKeys.CritDMG, min_value: "19.2%", max_value: "88.2%" },
+    secondary_stats: { key: StatIds.CritDMG, min_value: "19.2%", max_value: "88.2%" },
   },
   [WeaponKeys.Verdict]: {
     key: WeaponKeys.Verdict,
@@ -2065,7 +2065,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 5,
     base_atk: { min_value: "48", max_value: "674" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "4.8%", max_value: "22.1%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "4.8%", max_value: "22.1%" },
   },
   [WeaponKeys.VividNotions]: {
     key: WeaponKeys.VividNotions,
@@ -2075,7 +2075,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 48, max_value: 674 },
     secondary_stats: {
-      key: StatKeys.CritDMG,
+      key: StatIds.CritDMG,
       min_value: numberFormatPercent(0.096, 1),
       max_value: numberFormatPercent(0.441, 1),
     },
@@ -2088,7 +2088,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "10.8%", max_value: "49.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponKeys.WanderingEvenstar]: {
     key: WeaponKeys.WanderingEvenstar,
@@ -2097,7 +2097,7 @@ export default {
     source: WeaponSource.EventWishExclusive,
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 42, max_value: 510 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 36, max_value: 165 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 36, max_value: 165 },
     image_src: imageSrc("wandering_evenstar-256x256.webp"),
   },
   [WeaponKeys.WavebreakersFin]: {
@@ -2107,7 +2107,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 4,
     base_atk: { min_value: "45", max_value: "620" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "3%", max_value: "13.8%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "3%", max_value: "13.8%" },
   },
   [WeaponKeys.WaveridingWhirl]: {
     key: WeaponKeys.WaveridingWhirl,
@@ -2117,7 +2117,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 41, max_value: 454 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.133, 1),
       max_value: numberFormatPercent(0.613, 1),
     },
@@ -2130,7 +2130,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_stats: { key: StatKeys.Def, min_value: "9.6%", max_value: "43.9%" },
+    secondary_stats: { key: StatIds.Def, min_value: "9.6%", max_value: "43.9%" },
   },
   [WeaponKeys.WhiteTassel]: {
     key: WeaponKeys.WhiteTassel,
@@ -2139,7 +2139,7 @@ export default {
     type_key: WeaponTypeKeys.Polearm,
     rarity: 3,
     base_atk: { min_value: "39", max_value: "401" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "5.1%", max_value: "23.4%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "5.1%", max_value: "23.4%" },
   },
   [WeaponKeys.Whiteblind]: {
     key: WeaponKeys.Whiteblind,
@@ -2148,7 +2148,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.Def, min_value: "11.3%", max_value: "51.7%" },
+    secondary_stats: { key: StatIds.Def, min_value: "11.3%", max_value: "51.7%" },
   },
   [WeaponKeys.WindblumeOde]: {
     key: WeaponKeys.WindblumeOde,
@@ -2157,7 +2157,7 @@ export default {
     source: "Событие версии 1.4 «Приглашение ветряных цветов»",
     type_key: WeaponTypeKeys.Bow,
     base_atk: { min_value: 42, max_value: 510 },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: 36, max_value: 165 },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: 36, max_value: 165 },
     image_src: imageSrc("windblume_ode-256x256.webp"),
   },
   [WeaponKeys.WineAndSong]: {
@@ -2168,7 +2168,7 @@ export default {
     type_key: WeaponTypeKeys.Catalyst,
     base_atk: { min_value: 44, max_value: 565 },
     secondary_stats: {
-      key: StatKeys.EnergyRecharge,
+      key: StatIds.EnergyRecharge,
       min_value: numberFormatPercent(0.067, 1),
       max_value: numberFormatPercent(0.306, 1),
     },
@@ -2181,7 +2181,7 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.CritRate, min_value: "6%", max_value: "27.6%" },
+    secondary_stats: { key: StatIds.CritRate, min_value: "6%", max_value: "27.6%" },
   },
   [WeaponKeys.WolfsGravestone]: {
     key: WeaponKeys.WolfsGravestone,
@@ -2190,7 +2190,7 @@ export default {
     type_key: WeaponTypeKeys.Claymore,
     rarity: 5,
     base_atk: { min_value: "46", max_value: "608" },
-    secondary_stats: { key: StatKeys.Atk, min_value: "10.8%", max_value: "49.6%" },
+    secondary_stats: { key: StatIds.Atk, min_value: "10.8%", max_value: "49.6%" },
   },
   [WeaponKeys.XiphosMoonlight]: {
     key: WeaponKeys.XiphosMoonlight,
@@ -2199,6 +2199,6 @@ export default {
     type_key: WeaponTypeKeys.Sword,
     rarity: 4,
     base_atk: { min_value: "42", max_value: "510" },
-    secondary_stats: { key: StatKeys.ElementalMastery, min_value: "36", max_value: "165" },
+    secondary_stats: { key: StatIds.ElementalMastery, min_value: "36", max_value: "165" },
   },
 } as Record<IWeapon["key"], IWeapon>;

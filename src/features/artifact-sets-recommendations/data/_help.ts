@@ -2,16 +2,16 @@ import type { ArtifactSetId } from "../../artifact-sets/types";
 import type { TWeaponKey } from "@/database/weapons/types";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn, publicSrc } from "@/lib/utils";
-import { StatKeys } from "@/database/stats/enums";
+import { StatIds } from "../../stats/enums";
 import artifactSets from "../../artifact-sets/data";
 import Paths from "@/constants/paths";
 import weapons from "@/database/weapons/data";
 
-export const StatsCrit = [StatKeys.CritDMG, StatKeys.CritRate];
+export const StatsCrit = [StatIds.CritDMG, StatIds.CritRate];
 export const StatsElementDamageBonus = [
-  StatKeys.AnemoDmgBonus, StatKeys.CryoDmgBonus, StatKeys.DendroDmgBonus,
-  StatKeys.ElectroDmgBonus, StatKeys.GeoDmgBonus, StatKeys.HydroDmgBonus,
-  StatKeys.PyroDmgBonus,
+  StatIds.AnemoDmgBonus, StatIds.CryoDmgBonus, StatIds.DendroDmgBonus,
+  StatIds.ElectroDmgBonus, StatIds.GeoDmgBonus, StatIds.HydroDmgBonus,
+  StatIds.PyroDmgBonus,
 ];
 
 export function artifactSetById(id: ArtifactSetId) {
