@@ -271,6 +271,20 @@ const NineFruitNectar = {
   ]),
 };
 const ShrimpBisque = {
+  [ResourceFoodIds.DeliciousShrimpBisque]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousShrimpBisque,
+    "Вкусный биск с креветками",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersHealingBonus(20),
+    ResourceSource.ObtainedByCooking,
+  ]).setRecipeId(ResourceRecipeIds.RecipeShrimpBisque),
+  [ResourceFoodIds.ShrimpBisque]: ResourceFoodClass.init([
+    ResourceFoodIds.ShrimpBisque,
+    "Биск с креветками",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersHealingBonus(17),
+    [ResourceSource.ObtainedByCooking, "Покупка у Теучцицтли"],
+  ]).setRecipeId(ResourceRecipeIds.RecipeShrimpBisque),
   [ResourceFoodIds.SuspiciousShrimpBisque]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousShrimpBisque,
     "Странный биск с креветками",

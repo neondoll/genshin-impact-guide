@@ -116,7 +116,7 @@ export default function Resource() {
                 <TableRow className="hover:bg-inherit">
                   <TableHead children="Блюда:" className="p-2 text-right" />
                   <TableCell className="p-2 text-pretty whitespace-normal">
-                    <ul>
+                    <ul className="flex flex-wrap gap-2">
                       {resourceRecipeDishes.map(resourceRecipeDish => (
                         <li key={resourceRecipeDish.id}>
                           <Badge asChild className="flex-col p-0 w-16.5" variant="secondary">
