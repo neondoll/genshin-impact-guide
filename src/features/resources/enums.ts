@@ -1,5 +1,9 @@
 export const ResourceCookingIngredientIds = {
   /* Ягода         */ Berry: "berry",
+  /* Злакофрукт    */ Grainfruit: "grainfruit",
+  /* Лук           */ Onion: "onion",
+  /* Картофель     */ Potato: "potato",
+  /* Мясо креветки */ ShrimpMeat: "shrimp_meat",
   /* Персик зайтун */ ZaytunPeach: "zaytun_peach",
 } as const;
 export const ResourceFoodIds = {
@@ -12,10 +16,12 @@ export const ResourceFoodIds = {
   /* Закатник                       */ Sunsettia: "sunsettia",
   /* Странная «Радость мясоеда»     */ SuspiciousMeatLoversFeast: "suspicious_meat_lovers_feast",
   /* Странный нектар девяти фруктов */ SuspiciousNineFruitNectar: "suspicious_nine_fruit_nectar",
+  /* Странный биск с креветками     */ SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
 } as const;
 export const ResourceRecipeIds = {
   /* Рецепт: «Радость мясоеда»     */ RecipeMeatLoversFeast: "recipe_meat_lovers_feast",
   /* Рецепт: Нектар девяти фруктов */ RecipeNineFruitNectar: "recipe_nine_fruit_nectar",
+  /* Рецепт: Биск с креветками     */ RecipeShrimpBisque: "recipe_shrimp_bisque",
 } as const;
 export const ResourceIds = {
   ...ResourceCookingIngredientIds,

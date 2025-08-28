@@ -5,17 +5,17 @@ import {
   CharacterWeaponRecommendationClass,
 } from "../classes";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.KujouSara)
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "В первую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Во вторую очередь\n(8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
     CharacterRecommendationsVideoSources.AllAboutAllTalents,
   ])
-  .setWeapons([new CharacterWeaponRecommendationClass(WeaponKeys.ElegyForTheEnd).setIsBetter().setRefinement(1)]);
+  .setWeapons([new CharacterWeaponRecommendationClass(WeaponIds.ElegyForTheEnd).setIsBetter().setRefinement(1)]);

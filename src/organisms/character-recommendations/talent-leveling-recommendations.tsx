@@ -1,6 +1,6 @@
 import type { CharacterTalentLevelingRecommendation } from "@/features/characters-recommendations/types";
 import type { TalentLevelingRecommendationsProps } from "./types";
-import { selectTalentById } from "@/features/talents/talentsSelectors";
+import { selectTalentById } from "@/features/talents/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -14,7 +14,7 @@ function TalentLevelingRecommendationsTable({ recommendations }: {
           const talent = selectTalentById(recommendation.id);
 
           return (
-            <TableRow className="hover:bg-inherit" key={talent.key}>
+            <TableRow className="hover:bg-inherit" key={talent.id}>
               <TableHead children={talent.name} className="p-2 whitespace-normal" />
               <TableCell
                 children={recommendation.priority}

@@ -11,8 +11,8 @@ import {
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Bennett)
   .setArtifacts(CharacterArtifactRecommendationsClass.init([
@@ -56,17 +56,17 @@ export default new CharacterRecommendationsClass(CharacterIds.Bennett)
   .setKeyConstellations([6])
   .setRequiredLevel(90)
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
     CharacterRecommendationsVideoSources.AllAboutAllTalents,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.MistsplitterReforged).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.AquilaFavonia).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SkywardBlade).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SapwoodBlade),
+    new CharacterWeaponRecommendationClass(WeaponIds.MistsplitterReforged).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.AquilaFavonia).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.SkywardBlade).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.SapwoodBlade),
   ]);

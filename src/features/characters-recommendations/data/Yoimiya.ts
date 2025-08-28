@@ -5,15 +5,15 @@ import {
   CharacterWeaponRecommendationClass,
 } from "../classes";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Yoimiya)
   .setFirstConstellationOrSignatureWeapon("Сигна")
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "В первую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "Во вторую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "Во вторую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Не качаем\n(1)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.FirstConstellationOrSignatureWeapon,
@@ -21,6 +21,6 @@ export default new CharacterRecommendationsClass(CharacterIds.Yoimiya)
     CharacterRecommendationsVideoSources.AllAboutAllTalents,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.ThunderingPulse).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.Rust).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.ThunderingPulse).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.Rust).setRefinement(5),
   ]);

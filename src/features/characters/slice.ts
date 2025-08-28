@@ -11,10 +11,6 @@ export const charactersAdapter = createEntityAdapter({
 
 const initialState = charactersAdapter.getInitialState({}, (await import("./data")).default);
 
-export const slice = createSlice({
-  name: "characters",
-  initialState,
-  reducers: {},
-});
+export const charactersSlice = createSlice({ name: "characters", initialState, reducers: {} });
 
-export default slice.reducer;
+export default charactersSlice.reducer;

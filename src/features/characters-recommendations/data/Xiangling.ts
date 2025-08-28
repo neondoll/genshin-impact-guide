@@ -11,8 +11,8 @@ import {
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Xiangling)
   .setArtifacts(CharacterArtifactRecommendationsClass.init([
@@ -42,16 +42,16 @@ export default new CharacterRecommendationsClass(CharacterIds.Xiangling)
   ]))
   .setRequiredLevel(90)
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "Во вторую очередь\n(8)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "Во вторую очередь\n(8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
     CharacterRecommendationsVideoSources.AllAboutAllTalents,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.EngulfingLightning).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.StaffOfHoma).setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.StaffOfTheScarletSands).setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.EngulfingLightning).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.StaffOfHoma).setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.StaffOfTheScarletSands).setRefinement(1),
   ]);

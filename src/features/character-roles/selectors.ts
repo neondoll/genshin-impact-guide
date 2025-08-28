@@ -8,6 +8,10 @@ export function selectCharacterRoleById(id: CharacterRoleId) {
   return selectors.selectById(store.getState(), id);
 }
 
+export function selectCharacterRoleIds() {
+  return selectors.selectIds(store.getState());
+}
+
 export function selectCharacterRolesAll() {
   return selectors.selectAll(store.getState());
 }

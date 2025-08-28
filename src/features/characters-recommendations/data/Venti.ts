@@ -5,15 +5,15 @@ import {
   CharacterWeaponRecommendationClass,
 } from "../classes";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Venti)
   .setFirstConstellationOrSignatureWeapon("Сигна")
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "Во вторую очередь\n(8)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "В первую очередь\n(8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "Во вторую очередь\n(8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "В первую очередь\n(8)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.FirstConstellationOrSignatureWeapon,
@@ -21,6 +21,6 @@ export default new CharacterRecommendationsClass(CharacterIds.Venti)
     CharacterRecommendationsVideoSources.AllAboutAllTalents,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.ElegyForTheEnd).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.FavoniusWarbow).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.ElegyForTheEnd).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.FavoniusWarbow).setRefinement(5),
   ]);

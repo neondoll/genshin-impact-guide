@@ -11,8 +11,8 @@ import {
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Neuvillette)
   .setArtifacts(CharacterArtifactRecommendationsClass.init([
@@ -49,29 +49,29 @@ export default new CharacterRecommendationsClass(CharacterIds.Neuvillette)
   ]))
   .setFirstConstellationOrSignatureWeapon("Сигна > C1, Сигна > C2. Лучше Сигна и С1")
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "В первую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "Во вторую очередь\n(6 | 8)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "По необходимости\n(6 | 8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "Во вторую очередь\n(6 | 8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "По необходимости\n(6 | 8)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
     CharacterRecommendationsVideoSources.AllAboutAllTalents,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.TomeOfTheEternalFlow).setIsBetter().setPercent(1.000),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SacrificialJade).setPercent(0.998).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SurfsUp).setPercent(0.917),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SacrificialJade).setPercent(0.914).setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.AshGravenDrinkingHorn).setPercent(0.874).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.LostPrayerToTheSacredWinds).setPercent(0.847),
-    new CharacterWeaponRecommendationClass(WeaponKeys.CashflowSupervision).setPercent(0.831),
-    new CharacterWeaponRecommendationClass(WeaponKeys.AshGravenDrinkingHorn).setPercent(0.808).setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.KagurasVerity).setPercent(0.807),
-    new CharacterWeaponRecommendationClass(WeaponKeys.TheWidsith).setPercent(0.805).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.JadefallsSplendor).setPercent(0.796),
-    new CharacterWeaponRecommendationClass(WeaponKeys.TheWidsith).setPercent(0.791).setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.EverlastingMoonglow).setPercent(0.765),
-    new CharacterWeaponRecommendationClass(WeaponKeys.TulaytullahsRemembrance).setPercent(0.752),
-    new CharacterWeaponRecommendationClass(WeaponKeys.PrototypeAmber).setPercent(0.745),
-    new CharacterWeaponRecommendationClass(WeaponKeys.RingOfYaxche).setPercent(0.745),
+    new CharacterWeaponRecommendationClass(WeaponIds.TomeOfTheEternalFlow).setIsBetter().setPercent(1.000),
+    new CharacterWeaponRecommendationClass(WeaponIds.SacrificialJade).setPercent(0.998).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.SurfsUp).setPercent(0.917),
+    new CharacterWeaponRecommendationClass(WeaponIds.SacrificialJade).setPercent(0.914).setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.AshGravenDrinkingHorn).setPercent(0.874).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.LostPrayerToTheSacredWinds).setPercent(0.847),
+    new CharacterWeaponRecommendationClass(WeaponIds.CashflowSupervision).setPercent(0.831),
+    new CharacterWeaponRecommendationClass(WeaponIds.AshGravenDrinkingHorn).setPercent(0.808).setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.KagurasVerity).setPercent(0.807),
+    new CharacterWeaponRecommendationClass(WeaponIds.TheWidsith).setPercent(0.805).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.JadefallsSplendor).setPercent(0.796),
+    new CharacterWeaponRecommendationClass(WeaponIds.TheWidsith).setPercent(0.791).setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.EverlastingMoonglow).setPercent(0.765),
+    new CharacterWeaponRecommendationClass(WeaponIds.TulaytullahsRemembrance).setPercent(0.752),
+    new CharacterWeaponRecommendationClass(WeaponIds.PrototypeAmber).setPercent(0.745),
+    new CharacterWeaponRecommendationClass(WeaponIds.RingOfYaxche).setPercent(0.745),
   ]);

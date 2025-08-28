@@ -10,10 +10,10 @@ import {
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 import artifactSets from "../../artifact-sets/data";
-import weapons from "@/database/weapons/data";
+import weapons from "../../weapons/data";
 
 export default new CharacterRecommendationsClass(CharacterIds.Escoffier)
   .setArtifacts(CharacterArtifactRecommendationsClass.init([
@@ -53,7 +53,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Escoffier)
   ]))
   .setFirstConstellationOrSignatureWeapon("С1 лучше")
   .setReferencePoint([
-    ["Оружие", `${weapons[WeaponKeys.Deathmatch].name} R1 [${weapons[WeaponKeys.Deathmatch].rarity}⭐]`],
+    ["Оружие", `${weapons[WeaponIds.Deathmatch].name} R1 [${weapons[WeaponIds.Deathmatch].rarity}⭐]`],
     ["Атака", "2 100"],
     ["Восст. энергии", "110% - 115%"],
     ["Крит. шанс", "80%"],
@@ -62,27 +62,27 @@ export default new CharacterRecommendationsClass(CharacterIds.Escoffier)
   ])
   .setRequiredLevel(90)
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "В первую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Во вторую очередь\n(9)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Во вторую очередь\n(9)"]),
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.SymphonistOfScents).setPercent(1.2991),
-    new CharacterWeaponRecommendationClass(WeaponKeys.StaffOfHoma).setPercent(1.2247),
-    new CharacterWeaponRecommendationClass(WeaponKeys.LumidouceElegy).setPercent(1.1820),
-    new CharacterWeaponRecommendationClass(WeaponKeys.Deathmatch).setPercent(1.1568).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.PrimordialJadeWingedSpear).setPercent(1.1435),
-    new CharacterWeaponRecommendationClass(WeaponKeys.CrimsonMoonsSemblance).setPercent(1.1126),
-    new CharacterWeaponRecommendationClass(WeaponKeys.StaffOfTheScarletSands).setPercent(1.0994),
-    new CharacterWeaponRecommendationClass(WeaponKeys.Deathmatch).setPercent(1.0637).setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SkywardSpine).setPercent(1.0356),
-    new CharacterWeaponRecommendationClass(WeaponKeys.ProspectorsDrill).setPercent(1.0309).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.LithicSpear).setPercent(1.0118).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.BlackcliffPole).setPercent(1.0000),
-    new CharacterWeaponRecommendationClass(WeaponKeys.BalladOfTheFjords).setPercent(0.9927).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.BalladOfTheFjords).setPercent(0.9926).setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.ProspectorsDrill).setPercent(0.9819).setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.MissiveWindspear).setPercent(0.9801),
-    new CharacterWeaponRecommendationClass(WeaponKeys.KitainCrossSpear).setPercent(0.8818).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.FavoniusLance).setPercent(0.8526).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.SymphonistOfScents).setPercent(1.2991),
+    new CharacterWeaponRecommendationClass(WeaponIds.StaffOfHoma).setPercent(1.2247),
+    new CharacterWeaponRecommendationClass(WeaponIds.LumidouceElegy).setPercent(1.1820),
+    new CharacterWeaponRecommendationClass(WeaponIds.Deathmatch).setPercent(1.1568).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.PrimordialJadeWingedSpear).setPercent(1.1435),
+    new CharacterWeaponRecommendationClass(WeaponIds.CrimsonMoonsSemblance).setPercent(1.1126),
+    new CharacterWeaponRecommendationClass(WeaponIds.StaffOfTheScarletSands).setPercent(1.0994),
+    new CharacterWeaponRecommendationClass(WeaponIds.Deathmatch).setPercent(1.0637).setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.SkywardSpine).setPercent(1.0356),
+    new CharacterWeaponRecommendationClass(WeaponIds.ProspectorsDrill).setPercent(1.0309).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.LithicSpear).setPercent(1.0118).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.BlackcliffPole).setPercent(1.0000),
+    new CharacterWeaponRecommendationClass(WeaponIds.BalladOfTheFjords).setPercent(0.9927).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.BalladOfTheFjords).setPercent(0.9926).setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.ProspectorsDrill).setPercent(0.9819).setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.MissiveWindspear).setPercent(0.9801),
+    new CharacterWeaponRecommendationClass(WeaponIds.KitainCrossSpear).setPercent(0.8818).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.FavoniusLance).setPercent(0.8526).setRefinement(5),
   ]);

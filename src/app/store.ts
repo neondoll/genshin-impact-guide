@@ -14,10 +14,11 @@ import regionsReducer from "@/features/regions/slice";
 import resourceTypesReducer from "@/features/resource-types/slice";
 import resourcesReducer from "@/features/resources/slice";
 import statsReducer from "@/features/stats/slice";
-import talentsSlice from "@/features/talents/talentsSlice";
-import tierListsWeaponsSlice from "@/features/tier-lists-weapons/tierListsWeaponsSlice";
-import weaponsSlice from "@/features/weapons/weaponsSlice";
-import weaponTypesSlice from "@/features/weapon-types/weaponTypesSlice";
+import talentsReducer from "@/features/talents/slice";
+import tierListsWeaponsReducer from "@/features/tier-lists-weapons/slice";
+import weaponsReducer from "@/features/weapons/slice";
+import weaponTypesReducer from "@/features/weapon-types/slice";
+import worldsReducer from "@/features/worlds/slice";
 
 export const store = configureStore({
   reducer: {
@@ -35,10 +36,11 @@ export const store = configureStore({
     resourceTypes: resourceTypesReducer,
     resources: resourcesReducer,
     stats: statsReducer,
-    talents: talentsSlice.reducer,
-    tierListsWeapons: tierListsWeaponsSlice.reducer,
-    weapons: weaponsSlice.reducer,
-    weaponTypes: weaponTypesSlice.reducer,
+    talents: talentsReducer,
+    tierListsWeapons: tierListsWeaponsReducer,
+    weapons: weaponsReducer,
+    weaponTypes: weaponTypesReducer,
+    worlds: worldsReducer,
   },
 });
 

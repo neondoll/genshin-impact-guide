@@ -11,8 +11,8 @@ import {
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Arlecchino)
   .setArtifacts(CharacterArtifactRecommendationsClass.init([
@@ -49,45 +49,45 @@ export default new CharacterRecommendationsClass(CharacterIds.Arlecchino)
   ]))
   .setFirstConstellationOrSignatureWeapon("С1 и Сигна")
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "В первую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "По необходимости\n(6 | 8)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Во вторую очередь\n(6 | 8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "По необходимости\n(6 | 8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6 | 8)"]),
   ])
   .setVideoSources([CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter])
   .setWeapons({
     "Гиперкери | Прожарка | отр. Шеврёз": [
-      new CharacterWeaponRecommendationClass(WeaponKeys.CrimsonMoonsSemblance).setIsBetter().setPercent(1.316),
-      new CharacterWeaponRecommendationClass(WeaponKeys.PrimordialJadeWingedSpear).setPercent(1.124),
-      new CharacterWeaponRecommendationClass(WeaponKeys.StaffOfTheScarletSands).setPercent(1.112),
-      new CharacterWeaponRecommendationClass(WeaponKeys.LumidouceElegy).setPercent(1.103),
-      new CharacterWeaponRecommendationClass(WeaponKeys.Deathmatch).setPercent(1.087).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.StaffOfHoma).setPercent(1.085),
-      new CharacterWeaponRecommendationClass(WeaponKeys.CalamityQueller).setPercent(1.063),
-      new CharacterWeaponRecommendationClass(WeaponKeys.Deathmatch).setPercent(1.032).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.WhiteTassel).setPercent(1.000),
-      new CharacterWeaponRecommendationClass(WeaponKeys.BalladOfTheFjords).setPercent(0.968),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SkywardSpine).setPercent(0.948),
-      new CharacterWeaponRecommendationClass(WeaponKeys.BlackcliffPole).setPercent(0.899),
-      new CharacterWeaponRecommendationClass(WeaponKeys.MissiveWindspear).setPercent(0.875),
+      new CharacterWeaponRecommendationClass(WeaponIds.CrimsonMoonsSemblance).setIsBetter().setPercent(1.316),
+      new CharacterWeaponRecommendationClass(WeaponIds.PrimordialJadeWingedSpear).setPercent(1.124),
+      new CharacterWeaponRecommendationClass(WeaponIds.StaffOfTheScarletSands).setPercent(1.112),
+      new CharacterWeaponRecommendationClass(WeaponIds.LumidouceElegy).setPercent(1.103),
+      new CharacterWeaponRecommendationClass(WeaponIds.Deathmatch).setPercent(1.087).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.StaffOfHoma).setPercent(1.085),
+      new CharacterWeaponRecommendationClass(WeaponIds.CalamityQueller).setPercent(1.063),
+      new CharacterWeaponRecommendationClass(WeaponIds.Deathmatch).setPercent(1.032).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.WhiteTassel).setPercent(1.000),
+      new CharacterWeaponRecommendationClass(WeaponIds.BalladOfTheFjords).setPercent(0.968),
+      new CharacterWeaponRecommendationClass(WeaponIds.SkywardSpine).setPercent(0.948),
+      new CharacterWeaponRecommendationClass(WeaponIds.BlackcliffPole).setPercent(0.899),
+      new CharacterWeaponRecommendationClass(WeaponIds.MissiveWindspear).setPercent(0.875),
     ],
     "Пар | Таяние": [
-      new CharacterWeaponRecommendationClass(WeaponKeys.CrimsonMoonsSemblance).setIsBetter().setPercent(1.309),
-      new CharacterWeaponRecommendationClass(WeaponKeys.StaffOfTheScarletSands).setPercent(1.156),
-      new CharacterWeaponRecommendationClass(WeaponKeys.PrimordialJadeWingedSpear).setPercent(1.114),
-      new CharacterWeaponRecommendationClass(WeaponKeys.Deathmatch).setPercent(1.105).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.LumidouceElegy).setPercent(1.103),
-      new CharacterWeaponRecommendationClass(WeaponKeys.BalladOfTheFjords).setPercent(1.098).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.StaffOfHoma).setPercent(1.086),
-      new CharacterWeaponRecommendationClass(WeaponKeys.CalamityQueller).setPercent(1.062),
-      new CharacterWeaponRecommendationClass(WeaponKeys.VortexVanquisher).setPercent(1.044),
-      new CharacterWeaponRecommendationClass(WeaponKeys.LithicSpear).setPercent(1.043).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.Deathmatch).setPercent(1.043).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.BalladOfTheFjords).setPercent(1.023).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.WhiteTassel).setPercent(1.000),
-      new CharacterWeaponRecommendationClass(WeaponKeys.MissiveWindspear).setPercent(0.990),
-      new CharacterWeaponRecommendationClass(WeaponKeys.DragonsBane).setPercent(0.965),
-      new CharacterWeaponRecommendationClass(WeaponKeys.LithicSpear).setPercent(0.965).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SkywardSpine).setPercent(0.943),
-      new CharacterWeaponRecommendationClass(WeaponKeys.BlackcliffPole).setPercent(0.938),
+      new CharacterWeaponRecommendationClass(WeaponIds.CrimsonMoonsSemblance).setIsBetter().setPercent(1.309),
+      new CharacterWeaponRecommendationClass(WeaponIds.StaffOfTheScarletSands).setPercent(1.156),
+      new CharacterWeaponRecommendationClass(WeaponIds.PrimordialJadeWingedSpear).setPercent(1.114),
+      new CharacterWeaponRecommendationClass(WeaponIds.Deathmatch).setPercent(1.105).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.LumidouceElegy).setPercent(1.103),
+      new CharacterWeaponRecommendationClass(WeaponIds.BalladOfTheFjords).setPercent(1.098).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.StaffOfHoma).setPercent(1.086),
+      new CharacterWeaponRecommendationClass(WeaponIds.CalamityQueller).setPercent(1.062),
+      new CharacterWeaponRecommendationClass(WeaponIds.VortexVanquisher).setPercent(1.044),
+      new CharacterWeaponRecommendationClass(WeaponIds.LithicSpear).setPercent(1.043).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.Deathmatch).setPercent(1.043).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.BalladOfTheFjords).setPercent(1.023).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.WhiteTassel).setPercent(1.000),
+      new CharacterWeaponRecommendationClass(WeaponIds.MissiveWindspear).setPercent(0.990),
+      new CharacterWeaponRecommendationClass(WeaponIds.DragonsBane).setPercent(0.965),
+      new CharacterWeaponRecommendationClass(WeaponIds.LithicSpear).setPercent(0.965).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.SkywardSpine).setPercent(0.943),
+      new CharacterWeaponRecommendationClass(WeaponIds.BlackcliffPole).setPercent(0.938),
     ],
   });

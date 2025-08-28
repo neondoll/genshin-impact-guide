@@ -1,8 +1,8 @@
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsClass, CharacterWeaponRecommendationClass } from "../classes";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Kachina)
   .setVideoSources([CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter])
-  .setWeapons([new CharacterWeaponRecommendationClass(WeaponKeys.FavoniusLance).setIsBetter().setRefinement(5)]);
+  .setWeapons([new CharacterWeaponRecommendationClass(WeaponIds.FavoniusLance).setIsBetter().setRefinement(5)]);

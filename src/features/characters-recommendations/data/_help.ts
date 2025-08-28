@@ -1,10 +1,10 @@
 import type { ArtifactSetId } from "../../artifact-sets/types";
-import type { TWeaponKey } from "@/database/weapons/types";
+import type { WeaponId } from "../../weapons/types";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn, publicSrc } from "@/lib/utils";
 import artifactSets from "../../artifact-sets/data";
 import Paths from "@/constants/paths";
-import weapons from "@/database/weapons/data";
+import weapons from "../../weapons/data";
 
 export function artifactSetById(id: ArtifactSetId) {
   const artifactSet = artifactSets[id];
@@ -20,7 +20,7 @@ export function artifactSetById(id: ArtifactSetId) {
   `;
 }
 
-export function weaponById(id: TWeaponKey) {
+export function weaponById(id: WeaponId) {
   const weapon = weapons[id];
 
   return `

@@ -5,15 +5,15 @@ import {
   CharacterWeaponRecommendationClass,
 } from "../classes";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.KamisatoAyaka)
   .setFirstConstellationOrSignatureWeapon("Сигна")
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Во вторую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "По необходимости\n(8)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Во вторую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "По необходимости\n(8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.FirstConstellationOrSignatureWeapon,
@@ -21,7 +21,7 @@ export default new CharacterRecommendationsClass(CharacterIds.KamisatoAyaka)
     CharacterRecommendationsVideoSources.AllAboutAllTalents,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.MistsplitterReforged).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.FinaleOfTheDeep).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.AmenomaKageuchi).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.MistsplitterReforged).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.FinaleOfTheDeep).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.AmenomaKageuchi).setRefinement(5),
   ]);

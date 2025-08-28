@@ -1,11 +1,11 @@
-import type { TStatKey } from "@/database/stats/types";
+import type { StatId } from "./types";
 import { Badge } from "@/components/ui/badge";
-import { selectStatById } from "./selectors.ts";
+import { selectStatById } from "./selectors";
 
-export default function StatBadge({ statKey }: { statKey: TStatKey }) {
-  const stat = selectStatById(statKey);
+export default function StatBadge({ statId }: { statId: StatId }) {
+  const stat = selectStatById(statId);
 
-  return stat && (
+  return (
     <Badge
       children={stat.name}
       className="flex justify-center w-full text-center text-pretty whitespace-normal"

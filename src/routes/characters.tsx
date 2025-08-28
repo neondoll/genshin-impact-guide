@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import type { ElementId } from "@/features/elements/types";
 import type { Rarity } from "@/features/rarities/types";
-import type { TWeaponTypeKey } from "@/database/weapon-types/types";
+import type { WeaponTypeId } from "@/features/weapon-types/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -13,10 +13,10 @@ import { Container } from "@/components/container";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
 import { selectCharactersAll } from "@/features/characters/selectors";
 import { selectElementById, selectElementsAll } from "@/features/elements/selectors";
-import { selectRaritiesByIds } from "@/features/rarities/selectors.ts";
-import { selectWeaponTypesAll } from "@/features/weapon-types/weaponTypesSelectors";
+import { selectRaritiesByIds } from "@/features/rarities/selectors";
+import { selectWeaponTypesAll } from "@/features/weapon-types/selectors";
 import Paths from "@/constants/paths";
-import RarityStars from "@/features/rarities/rarity-stars.tsx";
+import RarityStars from "@/features/rarities/rarity-stars";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader() {
@@ -32,7 +32,7 @@ export default function Characters() {
   const { characters, elements, rarities, weaponTypes } = useLoaderData<ReturnType<typeof loader>>();
   const [filterElementIds, setFilterElementIds] = useState<ElementId[]>([]);
   const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
-  const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<TWeaponTypeKey[]>([]);
+  const [filterWeaponTypeIds, setFilterWeaponTypeIds] = useState<WeaponTypeId[]>([]);
   const [filteredCharacters, setFilteredCharacters] = useState<typeof characters>([]);
 
   useEffect(() => {
@@ -46,12 +46,12 @@ export default function Characters() {
       filteredCharacters = filteredCharacters.filter(character => filterRarities.includes(character.rarity));
     }
 
-    if (filterWeaponTypeKeys.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeKeys.includes(character.weapon_type_id));
+    if (filterWeaponTypeIds.length) {
+      filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeIds.includes(character.weapon_type_id));
     }
 
     setFilteredCharacters(filteredCharacters);
-  }, [characters, filterElementIds, filterRarities, filterWeaponTypeKeys]);
+  }, [characters, filterElementIds, filterRarities, filterWeaponTypeIds]);
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -105,25 +105,25 @@ export default function Characters() {
             {weaponTypes.map(weaponType => (
               <FilterCheckbox
                 asChild
-                checked={filterWeaponTypeKeys.includes(weaponType.key)}
+                checked={filterWeaponTypeIds.includes(weaponType.id)}
                 className="p-1 size-8.5 rounded-full"
-                key={weaponType.key}
+                key={weaponType.id}
                 name="weapon-types"
                 onChange={(event) => {
                   if (event.target.checked) {
-                    if (!filterWeaponTypeKeys.includes(weaponType.key)) {
-                      setFilterWeaponTypeKeys(prev => prev.concat([weaponType.key]));
+                    if (!filterWeaponTypeIds.includes(weaponType.id)) {
+                      setFilterWeaponTypeIds(prev => prev.concat([weaponType.id]));
                     }
                   }
                   else {
-                    const index = filterWeaponTypeKeys.indexOf(weaponType.key);
+                    const index = filterWeaponTypeIds.indexOf(weaponType.id);
 
                     if (index !== -1) {
-                      setFilterWeaponTypeKeys(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterWeaponTypeIds(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
-                value={weaponType.key}
+                value={weaponType.id}
               >
                 <img alt={weaponType.name} src={weaponType.image_src} />
               </FilterCheckbox>

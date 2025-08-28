@@ -1,10 +1,10 @@
 import type { ArtifactSetId } from "../artifact-sets/types";
 import type { CharacterId } from "../characters/types";
 import type { ElementId } from "../elements/types";
-import type { IVideoSource } from "@/database/video-sources/types";
-import type { TStatKey } from "@/database/stats/types";
-import type { TTalentKey } from "@/database/talents/types";
-import type { TWeaponKey } from "@/database/weapons/types";
+import type { StatId } from "../stats/types";
+import type { TalentId } from "../talents/types";
+import type { VideoSource } from "../video-sources/types";
+import type { WeaponId } from "../weapons/types";
 import { ArtifactSlotIds } from "../artifact-slots/enums";
 
 type CharacterArtifactSetRecommendations = (CharacterArtifactSetRecommendationWithId | CharacterArtifactSetRecommendationWithIds)[];
@@ -34,7 +34,7 @@ export interface CharacterArtifactSetRecommendationWithIds extends CharacterArti
 }
 
 export interface CharacterArtifactStatRecommendation {
-  id: TStatKey;
+  id: StatId;
   percent?: number;
   use_percent?: number;
   description?: string;
@@ -51,7 +51,7 @@ export interface CharacterRecommendations {
   rotation?: string | Record<string, string>;
   squads?: CharacterSquadRecommendations;
   talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
-  video_sources?: IVideoSource[];
+  video_sources?: VideoSource[];
   weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
 }
 
@@ -71,12 +71,12 @@ export interface CharacterSquadRecommendations {
 }
 
 export interface CharacterTalentLevelingRecommendation {
-  id: TTalentKey;
+  id: TalentId;
   priority: string;
 }
 
 export interface CharacterWeaponRecommendation {
-  id: TWeaponKey;
+  id: WeaponId;
   refinement?: 1 | 5;
   is_better?: boolean;
   postfix?: string;

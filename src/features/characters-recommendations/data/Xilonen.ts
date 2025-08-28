@@ -11,8 +11,8 @@ import {
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Xilonen)
   .setArtifacts(CharacterArtifactRecommendationsClass.init([
@@ -36,14 +36,14 @@ export default new CharacterRecommendationsClass(CharacterIds.Xilonen)
   ]))
   .setFirstConstellationOrSignatureWeapon("Сигна > С1, но С2 > Сигна")
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "В первую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Во вторую очередь\n(8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.PeakPatrolSong).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.FavoniusSword).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.PeakPatrolSong).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.FavoniusSword).setRefinement(5),
   ]);

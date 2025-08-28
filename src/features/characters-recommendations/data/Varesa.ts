@@ -10,8 +10,8 @@ import {
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Varesa)
   .setArtifacts(CharacterArtifactRecommendationsClass.init([
@@ -51,18 +51,18 @@ export default new CharacterRecommendationsClass(CharacterIds.Varesa)
   ]))
   .setFirstConstellationOrSignatureWeapon("Однозначно Сигна")
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "В первую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "По необходимости\n(8)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Во вторую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "По необходимости\n(8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Во вторую очередь\n(10)"]),
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.VividNotions).setPercent(1.28),
-    new CharacterWeaponRecommendationClass(WeaponKeys.LostPrayerToTheSacredWinds).setPercent(1.06),
-    new CharacterWeaponRecommendationClass(WeaponKeys.KagurasVerity).setPercent(1.05),
-    new CharacterWeaponRecommendationClass(WeaponKeys.TomeOfTheEternalFlow).setPercent(1.04),
-    new CharacterWeaponRecommendationClass(WeaponKeys.CashflowSupervision).setPercent(1.04),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SurfsUp).setPercent(1.03),
-    new CharacterWeaponRecommendationClass(WeaponKeys.TheWidsith).setPercent(1.00).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SacrificialJade).setPercent(0.92).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.FlowingPurity).setPercent(0.92).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.VividNotions).setPercent(1.28),
+    new CharacterWeaponRecommendationClass(WeaponIds.LostPrayerToTheSacredWinds).setPercent(1.06),
+    new CharacterWeaponRecommendationClass(WeaponIds.KagurasVerity).setPercent(1.05),
+    new CharacterWeaponRecommendationClass(WeaponIds.TomeOfTheEternalFlow).setPercent(1.04),
+    new CharacterWeaponRecommendationClass(WeaponIds.CashflowSupervision).setPercent(1.04),
+    new CharacterWeaponRecommendationClass(WeaponIds.SurfsUp).setPercent(1.03),
+    new CharacterWeaponRecommendationClass(WeaponIds.TheWidsith).setPercent(1.00).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.SacrificialJade).setPercent(0.92).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.FlowingPurity).setPercent(0.92).setRefinement(5),
   ]);

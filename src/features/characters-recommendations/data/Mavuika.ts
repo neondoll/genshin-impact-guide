@@ -1,6 +1,5 @@
 import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
-import { CVideoSource } from "@/database/video-sources/classes";
 import {
   CharacterArtifactRecommendationsClass,
   CharacterArtifactSetRecommendationWithIdClass,
@@ -12,10 +11,11 @@ import {
   CharacterWeaponRecommendationClass,
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
-import { CharacterRoleIds } from "@/features/character-roles/enums";
+import { CharacterRoleIds } from "../../character-roles/enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { VideoSourceClass } from "../../video-sources/classes";
+import { WeaponIds } from "../../weapons/enums";
 import characters from "../../characters/data";
 
 type GameVariantkey = typeof GameVariantEnum[keyof typeof GameVariantEnum];
@@ -120,52 +120,52 @@ export default new CharacterRecommendationsClass(CharacterIds.Mavuika)
     },
   ]))
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "Во вторую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "Во вторую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
   ])
   .setVideoSources([
-    new CVideoSource("Miron MinMax: Подробный и Актуальный | Гайд на Мавуику").setVkUrl("https://vkvideo.ru/video-227044935_456239238").setYoutubeUrl("https://youtu.be/bGkCi_aBNrI"),
+    new VideoSourceClass("Miron MinMax: Подробный и Актуальный | Гайд на Мавуику").setVkUrl("https://vkvideo.ru/video-227044935_456239238").setYoutubeUrl("https://youtu.be/bGkCi_aBNrI"),
   ])
   .setWeapons({
     "Вейп\\Мелт": [
-      new CharacterWeaponRecommendationClass(WeaponKeys.AThousandBlazingSuns).setPercent(1.3504).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SerpentSpine).setPercent(1.1990).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.BeaconOfTheReedSea).setPercent(1.1761).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.RedhornStonethresher).setPercent(1.1582).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.Verdict).setPercent(1.1546).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SerpentSpine).setPercent(1.1255).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.WolfsGravestone).setPercent(1.0832).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.TheUnforged).setPercent(1.0785).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.FangOfTheMountainKing).setPercent(1.0487).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SongOfBrokenPines).setPercent(1.0404).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.MakhairaAquamarine).setPercent(1.0012).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.MailedFlower).setPercent(1.0000).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.Akuoumaru).setPercent(0.9980).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.UltimateOverlordsMegaMagicSword).setPercent(0.9970).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.TalkingStick).setPercent(0.9928).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.BlackcliffSlasher).setPercent(0.9881).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SkywardPride).setPercent(0.9833).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.LuxuriousSeaLord).setPercent(0.9780).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.PrototypeArchaic).setPercent(0.9621).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.TidalShadow).setPercent(0.9413).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.AThousandBlazingSuns).setPercent(1.3504).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.SerpentSpine).setPercent(1.1990).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.BeaconOfTheReedSea).setPercent(1.1761).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.RedhornStonethresher).setPercent(1.1582).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.Verdict).setPercent(1.1546).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.SerpentSpine).setPercent(1.1255).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.WolfsGravestone).setPercent(1.0832).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.TheUnforged).setPercent(1.0785).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.FangOfTheMountainKing).setPercent(1.0487).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.SongOfBrokenPines).setPercent(1.0404).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.MakhairaAquamarine).setPercent(1.0012).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.MailedFlower).setPercent(1.0000).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.Akuoumaru).setPercent(0.9980).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.UltimateOverlordsMegaMagicSword).setPercent(0.9970).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.TalkingStick).setPercent(0.9928).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.BlackcliffSlasher).setPercent(0.9881).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.SkywardPride).setPercent(0.9833).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.LuxuriousSeaLord).setPercent(0.9780).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.PrototypeArchaic).setPercent(0.9621).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.TidalShadow).setPercent(0.9413).setRefinement(5),
     ],
     "Гиперкерри\\Перегрузка": [
-      new CharacterWeaponRecommendationClass(WeaponKeys.AThousandBlazingSuns).setPercent(1.3218).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SerpentSpine).setPercent(1.1805).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.BeaconOfTheReedSea).setPercent(1.1546).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.RedhornStonethresher).setPercent(1.1541).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.Verdict).setPercent(1.1437).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SerpentSpine).setPercent(1.1083).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.FangOfTheMountainKing).setPercent(1.0624).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SongOfBrokenPines).setPercent(1.0426).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.WolfsGravestone).setPercent(1.0418).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.SkywardPride).setPercent(1.0088).setRefinement(1),
-      new CharacterWeaponRecommendationClass(WeaponKeys.TidalShadow).setPercent(1.0000).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.BlackcliffSlasher).setPercent(0.9997).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.TalkingStick).setPercent(0.9879).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.UltimateOverlordsMegaMagicSword).setPercent(0.9642).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.PrototypeArchaic).setPercent(0.9508).setRefinement(5),
-      new CharacterWeaponRecommendationClass(WeaponKeys.LuxuriousSeaLord).setPercent(0.9195).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.AThousandBlazingSuns).setPercent(1.3218).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.SerpentSpine).setPercent(1.1805).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.BeaconOfTheReedSea).setPercent(1.1546).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.RedhornStonethresher).setPercent(1.1541).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.Verdict).setPercent(1.1437).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.SerpentSpine).setPercent(1.1083).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.FangOfTheMountainKing).setPercent(1.0624).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.SongOfBrokenPines).setPercent(1.0426).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.WolfsGravestone).setPercent(1.0418).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.SkywardPride).setPercent(1.0088).setRefinement(1),
+      new CharacterWeaponRecommendationClass(WeaponIds.TidalShadow).setPercent(1.0000).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.BlackcliffSlasher).setPercent(0.9997).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.TalkingStick).setPercent(0.9879).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.UltimateOverlordsMegaMagicSword).setPercent(0.9642).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.PrototypeArchaic).setPercent(0.9508).setRefinement(5),
+      new CharacterWeaponRecommendationClass(WeaponIds.LuxuriousSeaLord).setPercent(0.9195).setRefinement(5),
     ],
   });

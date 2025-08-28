@@ -1,11 +1,11 @@
 import type { ArtifactSetId } from "../../artifact-sets/types";
-import type { TWeaponKey } from "@/database/weapons/types";
+import type { WeaponId } from "../../weapons/types";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn, publicSrc } from "@/lib/utils";
 import { StatIds } from "../../stats/enums";
 import artifactSets from "../../artifact-sets/data";
 import Paths from "@/constants/paths";
-import weapons from "@/database/weapons/data";
+import weapons from "../../weapons/data";
 
 export const StatsCrit = [StatIds.CritDMG, StatIds.CritRate];
 export const StatsElementDamageBonus = [
@@ -28,7 +28,7 @@ export function artifactSetById(id: ArtifactSetId) {
   `;
 }
 
-export function weaponById(id: TWeaponKey) {
+export function weaponById(id: WeaponId) {
   const weapon = weapons[id];
 
   return `

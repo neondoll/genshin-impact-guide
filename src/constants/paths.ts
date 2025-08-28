@@ -1,6 +1,7 @@
 import type { ArtifactSet } from "@/features/artifact-sets/types";
 import type { Character } from "@/features/characters/types";
-import type { IWeapon } from "../database/weapons/types";
+import type { Resource } from "@/features/resources/types";
+import type { Weapon } from "@/features/weapons/types";
 
 export default {
   ArtifactSet: {
@@ -13,11 +14,15 @@ export default {
     to: (id: Character["id"] | string) => `/characters/${id}`,
   },
   Characters: { title: "Персонажи", to: "/characters" },
+  Resource: {
+    title: (item: Resource) => item.name,
+    to: (id: Resource["id"] | string) => `/resources/${id}`,
+  },
   Resources: { title: "Материалы", to: "/resources" },
   Root: { title: "Главная", to: "/" },
   Weapon: {
-    title: (item: IWeapon) => item.name,
-    to: (key: IWeapon["key"] | string) => `/weapons/${key}`,
+    title: (item: Weapon) => item.name,
+    to: (id: Weapon["id"] | string) => `/weapons/${id}`,
   },
   Weapons: { title: "Оружие", to: "/weapons" },
   WeaponsTierList: { title: "Тир-лист", to: "/weapons/tier-list" },

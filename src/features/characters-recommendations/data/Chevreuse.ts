@@ -12,9 +12,9 @@ import {
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
-import weapons from "@/database/weapons/data";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
+import weapons from "../../weapons/data";
 
 export default new CharacterRecommendationsClass(CharacterIds.Chevreuse)
   .setArtifacts(CharacterArtifactRecommendationsClass.init([
@@ -29,7 +29,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Chevreuse)
       [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage)],
       [ArtifactSlotIds.Circlet]: [
         new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage),
-        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setDescription(`Если в руках ${weapons[WeaponKeys.FavoniusLance].name}`),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setDescription(`Если в руках ${weapons[WeaponIds.FavoniusLance].name}`),
       ],
       additional: [
         new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage),
@@ -39,17 +39,17 @@ export default new CharacterRecommendationsClass(CharacterIds.Chevreuse)
   ]))
   .setRequiredLevel(90)
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "В первую очередь\n(8)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Во вторую очередь\n(8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "В первую очередь\n(8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
     CharacterRecommendationsVideoSources.AllAboutAllTalents,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.StaffOfHoma).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.DialoguesOfTheDesertSages).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.FavoniusLance).setRefinement(5),
-    new CharacterWeaponRecommendationClass(WeaponKeys.RightfulReward).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.StaffOfHoma).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.DialoguesOfTheDesertSages).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.FavoniusLance).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.RightfulReward).setRefinement(5),
   ]);

@@ -66,7 +66,7 @@ export default function ArtifactStatRecommendations({ recommendations }: Artifac
                 </TableHead>
               )}
               <TableCell className="text-pretty whitespace-normal">
-                <StatBadge statKey={recommendation.id} />
+                <StatBadge statId={recommendation.id} />
               </TableCell>
               {hasPercent && (
                 <TableCell

@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-import type { IStat } from "@/database/stats/types";
+import type { Stat } from "./types";
 
 export const statsAdapter = createEntityAdapter({
-  selectId: (model: IStat) => model.key,
-  sortComparer: (a: IStat, b: IStat) => {
+  selectId: (model: Stat) => model.id,
+  sortComparer: (a: Stat, b: Stat) => {
     const aName = a.abbr || a.name;
     const bName = b.abbr || b.name;
 
@@ -12,7 +12,7 @@ export const statsAdapter = createEntityAdapter({
   },
 });
 
-const initialState = statsAdapter.getInitialState({}, (await import("@/database/stats/data")).default);
+const initialState = statsAdapter.getInitialState({}, (await import("./data")).default);
 
 export const slice = createSlice({
   name: "stats",

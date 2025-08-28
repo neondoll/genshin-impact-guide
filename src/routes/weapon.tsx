@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { TWeaponKey } from "@/database/weapons/types";
+import type { WeaponId } from "@/features/weapons/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -8,17 +8,17 @@ import {
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectWeaponById } from "@/features/weapons/weaponsSelectors";
-import { selectWeaponTypeById } from "@/features/weapon-types/weaponTypesSelectors";
+import { selectWeaponById } from "@/features/weapons/selectors";
+import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import Paths from "@/constants/paths";
-import RarityStars from "@/features/rarities/rarity-stars.tsx";
+import RarityStars from "@/features/rarities/rarity-stars";
 import StatBadge from "@/features/stats/stat-badge";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {
-  const weapon = selectWeaponById(params.weaponKey as TWeaponKey);
-  const weaponType = selectWeaponTypeById(weapon.type_key);
+  const weapon = selectWeaponById(params.weaponId as WeaponId);
+  const weaponType = selectWeaponTypeById(weapon.type_id);
 
   return { weapon, weaponType };
 }
@@ -89,7 +89,7 @@ export default function Weapon() {
                     rowSpan={2}
                   />
                   <TableCell className="p-2 whitespace-normal">
-                    <StatBadge statKey={weapon.secondary_stats.key} />
+                    <StatBadge statId={weapon.secondary_stats.id} />
                   </TableCell>
                 </TableRow>
                 <TableRow className="hover:bg-inherit">

@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
 
 import type { CharacterWeaponRecommendation } from "@/features/characters-recommendations/types";
-import type { TWeaponKey } from "@/database/weapons/types";
+import type { WeaponId } from "@/features/weapons/types";
 import type { WeaponRecommendationsProps } from "./types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
-import { selectWeaponById } from "@/features/weapons/weaponsSelectors";
+import { selectWeaponById } from "@/features/weapons/selectors";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-function WeaponBadge({ postfix, refinement, signatureWeaponId, weaponKey }: {
+function WeaponBadge({ postfix, refinement, signatureWeaponId, weaponId }: {
   postfix: CharacterWeaponRecommendation["postfix"];
   refinement: CharacterWeaponRecommendation["refinement"];
   signatureWeaponId: WeaponRecommendationsProps["character"]["signature_weapon_id"];
-  weaponKey: TWeaponKey;
+  weaponId: WeaponId;
 }) {
-  const [weapon, setWeapon] = useState<ReturnType<typeof selectWeaponById>>();
+  const weapon = selectWeaponById(weaponId);
 
-  useEffect(() => {
-    setWeapon(selectWeaponById(weaponKey));
-  }, [weaponKey]);
-
-  return weapon !== undefined && (
+  return (
     <Badge
       className={cn(
         "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row",
@@ -38,7 +34,7 @@ function WeaponBadge({ postfix, refinement, signatureWeaponId, weaponKey }: {
       <span>
         {weapon.name}
         {refinement !== undefined && ` R${refinement}`}
-        {weapon.key === signatureWeaponId && " (сигнатурное)"}
+        {weapon.id === signatureWeaponId && " (сигнатурное)"}
         {postfix !== undefined && (
           <>
             {" "}
@@ -119,7 +115,7 @@ function WeaponRecommendationsTable({ character, recommendations }: {
                 postfix={recommendation.postfix}
                 refinement={recommendation.refinement}
                 signatureWeaponId={character.signature_weapon_id}
-                weaponKey={recommendation.id}
+                weaponId={recommendation.id}
               />
             </TableCell>
             {hasPercent && (

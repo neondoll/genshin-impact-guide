@@ -1,10 +1,10 @@
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsClass, CharacterWeaponRecommendationClass } from "../classes";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.Kinich)
   .setVideoSources([CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.FangOfTheMountainKing).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.FangOfTheMountainKing).setIsBetter().setRefinement(1),
   ]);

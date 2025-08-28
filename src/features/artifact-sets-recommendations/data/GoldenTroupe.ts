@@ -5,11 +5,11 @@ import { ArtifactSetRecommendationsVideoSources } from "../enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
 import { CharacterIds } from "../../characters/enums";
 import { StatIds } from "../../stats/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default ArtifactSetRecommendationsClass.init([ArtifactSetIds.GoldenTroupe, [
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Albedo).setNotes([
-    `Так как элементальный навык Альбедо наносит его основной урон, даже когда тот не находится на поле, этот набор подходит Альбедо, особенно при наличии ${weaponById(WeaponKeys.CinnabarSpindle)}.`,
+    `Так как элементальный навык Альбедо наносит его основной урон, даже когда тот не находится на поле, этот набор подходит Альбедо, особенно при наличии ${weaponById(WeaponIds.CinnabarSpindle)}.`,
     `2 предмета набора увеличат урон элементального навыка на 20%. Рекомендуется сочетать с 2 предметами ${artifactSetById(ArtifactSetIds.HuskOfOpulentDreams)}.`,
   ]),
   new ArtifactSetCharacterRecommendationClass(CharacterIds.Escoffier),

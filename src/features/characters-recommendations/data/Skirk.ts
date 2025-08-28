@@ -1,6 +1,5 @@
 import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
-import { CVideoSource } from "@/database/video-sources/classes";
 import {
   CharacterArtifactRecommendationsClass,
   CharacterArtifactSetRecommendationWithIdClass,
@@ -15,16 +14,17 @@ import {
 import { CharacterIds } from "../../characters/enums";
 import { ElementIds } from "../../elements/enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { VideoSourceClass } from "../../video-sources/classes";
+import { WeaponIds } from "../../weapons/enums";
 import artifactSets from "../../artifact-sets/data";
-import weapons from "@/database/weapons/data";
+import weapons from "../../weapons/data";
 
 type GameVariantkey = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 
 const GameVariantEnum = {
-  WhenPlayingThroughElementalBurst: `when_playing_through_${TalentKeys.ElementalBurst}`,
-  WhenPlayingThroughNormalAttack: `when_playing_through_${TalentKeys.NormalAttack}`,
+  WhenPlayingThroughElementalBurst: `when_playing_through_${TalentIds.ElementalBurst}`,
+  WhenPlayingThroughNormalAttack: `when_playing_through_${TalentIds.NormalAttack}`,
 } as const;
 
 const gameVariants: Record<GameVariantkey, string> = {
@@ -72,7 +72,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Skirk)
   .setFirstConstellationOrSignatureWeapon("Сигна > C1,\nC2 > Сигна")
   .setKeyConstellations([1, 2, 5, 6])
   .setReferencePoint({
-    [`${artifactSets[ArtifactSetIds.MarechausseeHunter].name}\n+\n${weapons[WeaponKeys.FinaleOfTheDeep].name}`]: [
+    [`${artifactSets[ArtifactSetIds.MarechausseeHunter].name}\n+\n${weapons[WeaponIds.FinaleOfTheDeep].name}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -81,7 +81,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Skirk)
       ["Крит. урон", "216.8%"],
       ["Восст. энергии", "111.0%"],
     ],
-    [`${artifactSets[ArtifactSetIds.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponKeys.CalamityOfEshu].name}`]: [
+    [`${artifactSets[ArtifactSetIds.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponIds.CalamityOfEshu].name}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -113,33 +113,33 @@ export default new CharacterRecommendationsClass(CharacterIds.Skirk)
   ]))
   .setTalentLeveling({
     [gameVariants[GameVariantEnum.WhenPlayingThroughNormalAttack]]: [
-      CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-      CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "В первую очередь\n(10)"]),
-      CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Во вторую очередь\n(10)"]),
+      CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+      CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
+      CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Во вторую очередь\n(10)"]),
     ],
     [gameVariants[GameVariantEnum.WhenPlayingThroughElementalBurst]]: [
-      CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-      CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "Не качаем\n(1)"]),
-      CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "В первую очередь\n(10)"]),
+      CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+      CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "Не качаем\n(1)"]),
+      CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
     ],
   })
   .setVideoSources([
-    new CVideoSource("Анимекул: Скирк – заложник Эскофье или имба? | Подробный гайд на Скирк").setYoutubeUrl("https://youtu.be/5ZoCR8bsSYM"),
-    new CVideoSource("Miron MinMax: Скирк - Сильнейший Крио (но есть нюанс)").setVkUrl("https://vkvideo.ru/video-227044935_456239232").setYoutubeUrl("https://youtu.be/jpAMI38M-LI"),
-    new CVideoSource("xPandaChannelx: Скирк Гайд | Ротации/Шмотки/Группы/F2P | Skirk Как Играть Геншин Импакт 5.7").setYoutubeUrl("https://youtu.be/Rr26SHvbmXE"),
+    new VideoSourceClass("Анимекул: Скирк – заложник Эскофье или имба? | Подробный гайд на Скирк").setYoutubeUrl("https://youtu.be/5ZoCR8bsSYM"),
+    new VideoSourceClass("Miron MinMax: Скирк - Сильнейший Крио (но есть нюанс)").setVkUrl("https://vkvideo.ru/video-227044935_456239232").setYoutubeUrl("https://youtu.be/jpAMI38M-LI"),
+    new VideoSourceClass("xPandaChannelx: Скирк Гайд | Ротации/Шмотки/Группы/F2P | Skirk Как Играть Геншин Импакт 5.7").setYoutubeUrl("https://youtu.be/Rr26SHvbmXE"),
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.Azurelight).setPercent(1.4256),
-    new CharacterWeaponRecommendationClass(WeaponKeys.HaranGeppakuFutsu).setPercent(1.2239),
-    new CharacterWeaponRecommendationClass(WeaponKeys.PrimordialJadeCutter).setPercent(1.2238),
-    new CharacterWeaponRecommendationClass(WeaponKeys.CalamityOfEshu).setPercent(1.1844).setPostfix("(щит)"),
-    new CharacterWeaponRecommendationClass(WeaponKeys.MistsplitterReforged).setPercent(1.1639),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SummitShaper).setPercent(1.1500).setPostfix("(щит)"),
-    new CharacterWeaponRecommendationClass(WeaponKeys.Absolution).setPercent(1.1291),
-    new CharacterWeaponRecommendationClass(WeaponKeys.UrakuMisugiri).setPercent(1.1264),
-    new CharacterWeaponRecommendationClass(WeaponKeys.LightOfFoliarIncision).setPercent(1.1176),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SplendorOfTranquilWaters).setPercent(1.1023),
-    new CharacterWeaponRecommendationClass(WeaponKeys.TheBlackSword).setPercent(1.0728),
-    new CharacterWeaponRecommendationClass(WeaponKeys.FinaleOfTheDeep).setPercent(1.0000),
-    new CharacterWeaponRecommendationClass(WeaponKeys.BlackcliffLongsword).setPercent(0.9451),
+    new CharacterWeaponRecommendationClass(WeaponIds.Azurelight).setPercent(1.4256),
+    new CharacterWeaponRecommendationClass(WeaponIds.HaranGeppakuFutsu).setPercent(1.2239),
+    new CharacterWeaponRecommendationClass(WeaponIds.PrimordialJadeCutter).setPercent(1.2238),
+    new CharacterWeaponRecommendationClass(WeaponIds.CalamityOfEshu).setPercent(1.1844).setPostfix("(щит)"),
+    new CharacterWeaponRecommendationClass(WeaponIds.MistsplitterReforged).setPercent(1.1639),
+    new CharacterWeaponRecommendationClass(WeaponIds.SummitShaper).setPercent(1.1500).setPostfix("(щит)"),
+    new CharacterWeaponRecommendationClass(WeaponIds.Absolution).setPercent(1.1291),
+    new CharacterWeaponRecommendationClass(WeaponIds.UrakuMisugiri).setPercent(1.1264),
+    new CharacterWeaponRecommendationClass(WeaponIds.LightOfFoliarIncision).setPercent(1.1176),
+    new CharacterWeaponRecommendationClass(WeaponIds.SplendorOfTranquilWaters).setPercent(1.1023),
+    new CharacterWeaponRecommendationClass(WeaponIds.TheBlackSword).setPercent(1.0728),
+    new CharacterWeaponRecommendationClass(WeaponIds.FinaleOfTheDeep).setPercent(1.0000),
+    new CharacterWeaponRecommendationClass(WeaponIds.BlackcliffLongsword).setPercent(0.9451),
   ]);

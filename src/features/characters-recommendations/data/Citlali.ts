@@ -1,6 +1,5 @@
 import { ArtifactSetIds } from "../../artifact-sets/enums";
 import { ArtifactSlotIds } from "../../artifact-slots/enums";
-import { CVideoSource } from "@/database/video-sources/classes";
 import {
   CharacterArtifactRecommendationsClass,
   CharacterArtifactSetRecommendationWithIdClass,
@@ -11,11 +10,12 @@ import {
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
 import { StatIds } from "../../stats/enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { VideoSourceClass } from "../../video-sources/classes";
+import { WeaponIds } from "../../weapons/enums";
 import artifactSets from "../../artifact-sets/data";
 import characters from "../../characters/data";
-import weapons from "@/database/weapons/data";
+import weapons from "../../weapons/data";
 
 export default new CharacterRecommendationsClass(CharacterIds.Citlali)
   .setArtifacts(CharacterArtifactRecommendationsClass.init([
@@ -48,7 +48,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Citlali)
       [ArtifactSlotIds.Circlet]: [
         new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery).setNotes(["всегда"]),
         new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setNotes([
-          `можно рассмотреть, если в руках ${weapons[WeaponKeys.FavoniusCodex].name}`,
+          `можно рассмотреть, если в руках ${weapons[WeaponIds.FavoniusCodex].name}`,
         ]),
       ],
       additional: [
@@ -67,23 +67,23 @@ export default new CharacterRecommendationsClass(CharacterIds.Citlali)
     ["МС", "342"],
     ["Крит. шанс", "59.2%"],
     ["Крит. урон", "122.8%"],
-    ["Оружие", weapons[WeaponKeys.ThrillingTalesOfDragonSlayers].name],
+    ["Оружие", weapons[WeaponIds.ThrillingTalesOfDragonSlayers].name],
     ["Набор артефактов", artifactSets[ArtifactSetIds.ScrollOfTheHeroOfCinderCity].name],
   ])
   .setRequiredLevel(80)
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "В первую очередь\n(6-8)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Во вторую очередь\n(6-8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "В первую очередь\n(6-8)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6-8)"]),
   ])
   .setVideoSources([
-    new CVideoSource("Miron MinMax: Подробный и Актуальный | Гайд на Ситлали в 5.8").setYoutubeUrl("https://youtu.be/GzR7Yx8UDSM?si=vX0FObdIigNnTZkg"),
+    new VideoSourceClass("Miron MinMax: Подробный и Актуальный | Гайд на Ситлали в 5.8").setYoutubeUrl("https://youtu.be/GzR7Yx8UDSM?si=vX0FObdIigNnTZkg"),
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.StarcallersWatch).setIsBetter(),
-    new CharacterWeaponRecommendationClass(WeaponKeys.FavoniusCodex),
-    new CharacterWeaponRecommendationClass(WeaponKeys.ThrillingTalesOfDragonSlayers),
-    new CharacterWeaponRecommendationClass(WeaponKeys.SacrificialFragments),
-    new CharacterWeaponRecommendationClass(WeaponKeys.PrototypeAmber),
-    new CharacterWeaponRecommendationClass(WeaponKeys.WanderingEvenstar),
+    new CharacterWeaponRecommendationClass(WeaponIds.StarcallersWatch).setIsBetter(),
+    new CharacterWeaponRecommendationClass(WeaponIds.FavoniusCodex),
+    new CharacterWeaponRecommendationClass(WeaponIds.ThrillingTalesOfDragonSlayers),
+    new CharacterWeaponRecommendationClass(WeaponIds.SacrificialFragments),
+    new CharacterWeaponRecommendationClass(WeaponIds.PrototypeAmber),
+    new CharacterWeaponRecommendationClass(WeaponIds.WanderingEvenstar),
   ]);

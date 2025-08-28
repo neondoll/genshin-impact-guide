@@ -142,21 +142,44 @@ class ResourceRecipeClass extends ResourceAbstractClass implements ResourceRecip
 const ResourceFoodUtility = {
   IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на ${atk} ед. и шанс крит. попадания на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersCritRate: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class='text-cyan-500'>${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   RestoresHpForTheSelectedCharacter: (hp: number | string) => `Восстанавливает ${hp} HP выбранному персонажу.`,
   RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp: (hp_: number | string, hp: number | string) => `Восстанавливает ${hp_}% от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает ${hp} HP.`,
 };
 const ResourceSource = {
   BuyingFromMerchants: "Покупка у торговцев",
   FoundInTheWild: "Дикая природа",
+  Gardening: "Садоводство",
   ObtainedByCooking: "Готовка",
   ObtainedFromNewRecipeRewardsMail: "Внутриигровая почта",
-};
+  TeyvatResearch: "Исследование Тейвата",
+} as const;
 
 const cookingIngredients = {
   [ResourceCookingIngredientIds.Berry]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Berry,
     "Ягода",
     ResourceSource.FoundInTheWild,
+  ]),
+  [ResourceCookingIngredientIds.Grainfruit]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Grainfruit,
+    "Злакофрукт",
+    [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, ResourceSource.Gardening],
+  ]),
+  [ResourceCookingIngredientIds.Onion]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Onion,
+    "Лук",
+    ResourceSource.BuyingFromMerchants,
+  ]),
+  [ResourceCookingIngredientIds.Potato]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Potato,
+    "Картофель",
+    [ResourceSource.TeyvatResearch, ResourceSource.BuyingFromMerchants],
+  ]),
+  [ResourceCookingIngredientIds.ShrimpMeat]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.ShrimpMeat,
+    "Мясо креветки",
+    ResourceSource.BuyingFromMerchants,
   ]),
   [ResourceCookingIngredientIds.ZaytunPeach]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.ZaytunPeach,
@@ -247,12 +270,35 @@ const NineFruitNectar = {
     ],
   ]),
 };
+const ShrimpBisque = {
+  [ResourceFoodIds.SuspiciousShrimpBisque]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousShrimpBisque,
+    "Странный биск с креветками",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersCritRate(10),
+    ResourceSource.ObtainedByCooking,
+  ]).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar),
+  [ResourceRecipeIds.RecipeShrimpBisque]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeShrimpBisque,
+    "Рецепт: Биск с креветками",
+    "Награда за диалог с Теучцицтли после диалога с Лавайей",
+    ResourceFoodUtility.IncreasesAllPartyMembersHealingBonus("15–20"),
+    15,
+    [
+      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Grainfruit], 2),
+      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Onion], 3),
+      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Potato], 3),
+      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ShrimpMeat], 4),
+    ],
+  ]),
+};
 
 export default {
   ...cookingIngredients,
   ...foods,
   ...MeatLoversFeast,
   ...NineFruitNectar,
+  ...ShrimpBisque,
   [ResourceFoodIds.ChatterOfJoyfulNights]: ResourceFoodClass.init([
     ResourceFoodIds.ChatterOfJoyfulNights,
     "«Беседы весёлых ночей»",

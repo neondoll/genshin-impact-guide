@@ -5,15 +5,15 @@ import {
   CharacterWeaponRecommendationClass,
 } from "../classes";
 import { CharacterRecommendationsVideoSources } from "../enums";
-import { TalentKeys } from "@/database/talents/enums";
-import { WeaponKeys } from "@/database/weapons/enums";
+import { TalentIds } from "../../talents/enums";
+import { WeaponIds } from "../../weapons/enums";
 
 export default new CharacterRecommendationsClass(CharacterIds.YaeMiko)
   .setFirstConstellationOrSignatureWeapon("Сигна")
   .setTalentLeveling([
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.NormalAttack, "Не качаем\n(1)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalSkill, "В первую очередь\n(10)"]),
-    CharacterTalentLevelingRecommendationClass.init([TalentKeys.ElementalBurst, "Во вторую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
+    CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalBurst, "Во вторую очередь\n(10)"]),
   ])
   .setVideoSources([
     CharacterRecommendationsVideoSources.FirstConstellationOrSignatureWeapon,
@@ -21,6 +21,6 @@ export default new CharacterRecommendationsClass(CharacterIds.YaeMiko)
     CharacterRecommendationsVideoSources.AllAboutAllTalents,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendationClass(WeaponKeys.KagurasVerity).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendationClass(WeaponKeys.TheWidsith).setRefinement(5),
+    new CharacterWeaponRecommendationClass(WeaponIds.KagurasVerity).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendationClass(WeaponIds.TheWidsith).setRefinement(5),
   ]);

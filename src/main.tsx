@@ -12,6 +12,8 @@ import Characters, { loader as charactersLoader } from "./routes/characters";
 import ErrorPage from "./error-page";
 import Index from "./routes/index";
 import Paths from "./constants/paths";
+import Resource, { loader as resourceLoader } from "./routes/resource";
+import Resources, { loader as resourcesLoader } from "./routes/resources";
 import Root from "./routes/root";
 import Weapon, { loader as weaponLoader } from "./routes/weapon";
 import Weapons, { loader as weaponsLoader } from "./routes/weapons";
@@ -33,9 +35,11 @@ if (container) {
         { path: Paths.ArtifactSets.to, element: <ArtifactSets />, loader: artifactSetsLoader },
         { path: Paths.ArtifactSet.to(":artifactSetId"), element: <ArtifactSet />, loader: artifactSetLoader },
         { path: Paths.Characters.to, element: <Characters />, loader: charactersLoader },
-        { path: Paths.Character.to(":characterKey"), element: <Character />, loader: characterLoader },
+        { path: Paths.Character.to(":characterId"), element: <Character />, loader: characterLoader },
+        { path: Paths.Resources.to, element: <Resources />, loader: resourcesLoader },
+        { path: Paths.Resource.to(":resourceId"), element: <Resource />, loader: resourceLoader },
         { path: Paths.Weapons.to, element: <Weapons />, loader: weaponsLoader },
-        { path: Paths.Weapon.to(":weaponKey"), element: <Weapon />, loader: weaponLoader },
+        { path: Paths.Weapon.to(":weaponId"), element: <Weapon />, loader: weaponLoader },
         { path: Paths.WeaponsTierList.to, element: <WeaponsTierList />, loader: weaponsTierListLoader },
       ],
     },
