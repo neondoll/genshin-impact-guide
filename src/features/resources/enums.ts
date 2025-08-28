@@ -21,6 +21,7 @@ export const ResourceFoodIds = {
   /* Странный биск с креветками     */ SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
 } as const;
 export const ResourceRecipeIds = {
+  /* Рецепт: «Лёгкий морской бриз» */ RecipeGentleSeaBreeze: "recipe_gentle_sea_breeze",
   /* Рецепт: «Радость мясоеда»     */ RecipeMeatLoversFeast: "recipe_meat_lovers_feast",
   /* Рецепт: Нектар девяти фруктов */ RecipeNineFruitNectar: "recipe_nine_fruit_nectar",
   /* Рецепт: Биск с креветками     */ RecipeShrimpBisque: "recipe_shrimp_bisque",

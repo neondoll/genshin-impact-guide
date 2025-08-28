@@ -140,6 +140,7 @@ class ResourceRecipeClass extends ResourceAbstractClass implements ResourceRecip
 }
 
 const ResourceFoodUtility = {
+  DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class='text-cyan-500'>${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на ${atk} ед. и шанс крит. попадания на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersCritRate: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class='text-cyan-500'>${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
@@ -201,6 +202,16 @@ const foods = {
     FoodTypeIds.RecoveryDish,
     ResourceFoodUtility.RestoresHpForTheSelectedCharacter(300),
     [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants],
+  ]),
+};
+const GentleSeaBreeze = {
+  [ResourceRecipeIds.RecipeGentleSeaBreeze]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeGentleSeaBreeze,
+    "Рецепт: «Лёгкий морской бриз»",
+    "Награда за диалог с Хайяк после выполнения поручения",
+    ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption("15–25"),
+    15,
+    [],
   ]),
 };
 const MeatLoversFeast = {
@@ -310,6 +321,7 @@ const ShrimpBisque = {
 export default {
   ...cookingIngredients,
   ...foods,
+  ...GentleSeaBreeze,
   ...MeatLoversFeast,
   ...NineFruitNectar,
   ...ShrimpBisque,
