@@ -145,7 +145,7 @@ const ResourceFoodUtility = {
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class='text-cyan-500'>${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   RestoresHpForTheSelectedCharacter: (hp: number | string) => `Восстанавливает ${hp} HP выбранному персонажу.`,
   RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp: (hp_: number | string, hp: number | string) => `Восстанавливает ${hp_}% от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает ${hp} HP.`,
-};
+} as const;
 const ResourceSource = {
   BuyingFromMerchants: "Покупка у торговцев",
   FoundInTheWild: "Дикая природа",
@@ -274,10 +274,10 @@ const ShrimpBisque = {
   [ResourceFoodIds.SuspiciousShrimpBisque]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousShrimpBisque,
     "Странный биск с креветками",
-    FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersCritRate(10),
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersHealingBonus(15),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar),
+  ]).setRecipeId(ResourceRecipeIds.RecipeShrimpBisque),
   [ResourceRecipeIds.RecipeShrimpBisque]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeShrimpBisque,
     "Рецепт: Биск с креветками",
