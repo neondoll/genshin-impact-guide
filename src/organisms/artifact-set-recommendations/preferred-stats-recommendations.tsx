@@ -1,27 +1,7 @@
-import { useEffect, useState } from "react";
-
 import type { PreferredStatsRecommendationsProps } from "./types";
-import type { TStatKey } from "@/database/stats/types";
-import { ArtifactSlotKeys } from "@/database/artifact-slots/enums";
-import { Badge } from "@/components/ui/badge";
-import { getStat } from "@/database/stats";
+import { ArtifactSlotIds } from "@/features/artifact-slots/enums";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-
-function StatBadge({ statKey }: { statKey: TStatKey }) {
-  const [stat, setStat] = useState<Awaited<ReturnType<typeof getStat>>>();
-
-  useEffect(() => {
-    getStat(statKey).then(setStat);
-  }, [statKey]);
-
-  return stat !== undefined && (
-    <Badge
-      children={stat.abbr || stat.name}
-      className="flex justify-center w-full text-center text-pretty whitespace-normal"
-      variant="secondary"
-    />
-  );
-}
+import StatBadge from "@/features/stats/stat-badge";
 
 export default function PreferredStatsRecommendations({ recommendations }: PreferredStatsRecommendationsProps) {
   const recommendationsKeys = Object.keys(recommendations) as (keyof typeof recommendations)[];
@@ -33,9 +13,9 @@ export default function PreferredStatsRecommendations({ recommendations }: Prefe
         <TableRow>
           {recommendationsKeys.map(recommendationsKey => (
             <TableHead className="text-center" key={recommendationsKey}>
-              {recommendationsKey === ArtifactSlotKeys.Sands && "Часы"}
-              {recommendationsKey === ArtifactSlotKeys.Goblet && "Кубок"}
-              {recommendationsKey === ArtifactSlotKeys.Circlet && "Корона"}
+              {recommendationsKey === ArtifactSlotIds.Sands && "Часы"}
+              {recommendationsKey === ArtifactSlotIds.Goblet && "Кубок"}
+              {recommendationsKey === ArtifactSlotIds.Circlet && "Корона"}
               {recommendationsKey === "additional" && "Доп."}
             </TableHead>
           ))}
@@ -46,7 +26,7 @@ export default function PreferredStatsRecommendations({ recommendations }: Prefe
           <TableRow className="hover:bg-inherit" key={index + 1}>
             {recommendationsKeys.map(recommendationsKey => (
               <TableCell className="text-pretty whitespace-normal" key={recommendationsKey}>
-                <StatBadge statKey={recommendations[recommendationsKey][index]} />
+                <StatBadge statId={recommendations[recommendationsKey][index]} />
               </TableCell>
             ))}
           </TableRow>

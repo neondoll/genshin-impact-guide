@@ -1,101 +1,57 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import type { ICharacter } from "@/database/characters/types";
-import type { IElement } from "@/database/elements/types";
-import type { TRarity } from "@/database/rarities/types";
-import type { TWeaponTypeKey } from "@/database/weapon-types/types";
+import type { ElementId } from "@/features/elements/types";
+import type { Rarity } from "@/features/rarities/types";
+import type { WeaponTypeId } from "@/features/weapon-types/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { cn, publicImageSrc } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { Container } from "@/components/container";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
-import { getCharacters } from "@/database/characters";
-import { getElements } from "@/database/elements";
-import { getWeaponTypes } from "@/database/weapon-types";
-import { sortRarities } from "@/database/rarities";
-import Container from "@/components/container";
+import { selectCharactersAll } from "@/features/characters/selectors";
+import { selectElementById, selectElementsAll } from "@/features/elements/selectors";
+import { selectRaritiesByIds } from "@/features/rarities/selectors";
+import { selectWeaponTypesAll } from "@/features/weapon-types/selectors";
 import Paths from "@/constants/paths";
-
-function CharactersListItem({ item }: { item: ICharacter }) {
-  const [element, setElement] = useState<IElement>();
-
-  useEffect(() => {
-    item.getElement().then(setElement);
-  }, [item]);
-
-  return (
-    <li
-      className={cn(
-        "flex relative flex-col gap-4 px-5.5 py-4 w-36 h-45 text-card-foreground bg-card rounded-xl border",
-        "shadow-sm transition-all has-hover:scale-104 has-focus-visible:ring-3 has-focus-visible:ring-ring/50",
-      )}
-    >
-      <span className="relative shrink-0 size-24.5">
-        {element !== undefined && (
-          <img
-            alt={element.name}
-            className="absolute top-0 left-0 p-1 size-8.5 bg-card rounded-full border -translate-1/4"
-            src={element.image_src}
-          />
-        )}
-        <img
-          alt={item.name}
-          className={cn("object-cover size-full rounded-lg rounded-br-3xl", backgroundClassByRarity(item.rarity))}
-          draggable={false}
-          src={item.image_src}
-        />
-      </span>
-      <Link
-        children={Paths.Character.title(item)}
-        className={cn(
-          "inline-flex flex-1 justify-center items-center text-sm text-center outline-none before:absolute",
-          "before:inset-0",
-        )}
-        to={Paths.Character.to(item.key)}
-      />
-    </li>
-  );
-}
+import RarityStars from "@/features/rarities/rarity-stars";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader() {
-  const characters = await getCharacters();
-  const elements = await getElements();
-  const weaponTypes = await getWeaponTypes();
+export function loader() {
+  const characters = selectCharactersAll();
+  const elements = selectElementsAll();
+  const rarities = selectRaritiesByIds(characters.map(character => character.rarity));
+  const weaponTypes = selectWeaponTypesAll();
 
-  return { characters, elements, weaponTypes };
+  return { characters, elements, rarities, weaponTypes };
 }
 
 export default function Characters() {
-  const { characters, elements, weaponTypes } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
-  const [filterElementKeys, setFilterElementKeys] = useState<IElement["key"][]>([]);
-  const [filterRarities, setFilterRarities] = useState<TRarity[]>([]);
-  const [filterWeaponTypeKeys, setFilterWeaponTypeKeys] = useState<TWeaponTypeKey[]>([]);
+  const { characters, elements, rarities, weaponTypes } = useLoaderData<ReturnType<typeof loader>>();
+  const [filterElementIds, setFilterElementIds] = useState<ElementId[]>([]);
+  const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
+  const [filterWeaponTypeIds, setFilterWeaponTypeIds] = useState<WeaponTypeId[]>([]);
   const [filteredCharacters, setFilteredCharacters] = useState<typeof characters>([]);
-  const [rarities, setRarities] = useState<TRarity[]>([]);
 
-  useEffect(() => {
-    setRarities(Array.from(new Set(characters.map(character => character.rarity))).sort(sortRarities));
-  }, [characters]);
   useEffect(() => {
     let filteredCharacters = characters;
 
-    if (filterElementKeys.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterElementKeys.includes(character.element_key));
+    if (filterElementIds.length) {
+      filteredCharacters = filteredCharacters.filter(character => filterElementIds.includes(character.element_id));
     }
 
     if (filterRarities.length) {
       filteredCharacters = filteredCharacters.filter(character => filterRarities.includes(character.rarity));
     }
 
-    if (filterWeaponTypeKeys.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeKeys.includes(character.weapon_type_key));
+    if (filterWeaponTypeIds.length) {
+      filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeIds.includes(character.weapon_type_id));
     }
 
     setFilteredCharacters(filteredCharacters);
-  }, [characters, filterElementKeys, filterRarities, filterWeaponTypeKeys]);
+  }, [characters, filterElementIds, filterRarities, filterWeaponTypeIds]);
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -119,25 +75,25 @@ export default function Characters() {
             {elements.map(element => (
               <FilterCheckbox
                 asChild
-                checked={filterElementKeys.includes(element.key)}
+                checked={filterElementIds.includes(element.id)}
                 className="p-1 size-8.5 rounded-full"
-                key={element.key}
+                key={element.id}
                 name="elements"
                 onChange={(event) => {
                   if (event.target.checked) {
-                    if (!filterElementKeys.includes(element.key)) {
-                      setFilterElementKeys(prev => prev.concat([element.key]));
+                    if (!filterElementIds.includes(element.id)) {
+                      setFilterElementIds(prev => prev.concat([element.id]));
                     }
                   }
                   else {
-                    const index = filterElementKeys.indexOf(element.key);
+                    const index = filterElementIds.indexOf(element.id);
 
                     if (index !== -1) {
-                      setFilterElementKeys(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterElementIds(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
-                value={element.key}
+                value={element.id}
               >
                 <img alt={element.name} src={element.image_src} />
               </FilterCheckbox>
@@ -146,28 +102,28 @@ export default function Characters() {
         </FilterGroup>
         <FilterGroup label="Тип">
           <div className="flex flex-wrap gap-3">
-            {Object.values(weaponTypes).map(weaponType => (
+            {weaponTypes.map(weaponType => (
               <FilterCheckbox
                 asChild
-                checked={filterWeaponTypeKeys.includes(weaponType.key)}
+                checked={filterWeaponTypeIds.includes(weaponType.id)}
                 className="p-1 size-8.5 rounded-full"
-                key={weaponType.key}
+                key={weaponType.id}
                 name="weapon-types"
                 onChange={(event) => {
                   if (event.target.checked) {
-                    if (!filterWeaponTypeKeys.includes(weaponType.key)) {
-                      setFilterWeaponTypeKeys(prev => prev.concat([weaponType.key]));
+                    if (!filterWeaponTypeIds.includes(weaponType.id)) {
+                      setFilterWeaponTypeIds(prev => prev.concat([weaponType.id]));
                     }
                   }
                   else {
-                    const index = filterWeaponTypeKeys.indexOf(weaponType.key);
+                    const index = filterWeaponTypeIds.indexOf(weaponType.id);
 
                     if (index !== -1) {
-                      setFilterWeaponTypeKeys(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterWeaponTypeIds(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
-                value={weaponType.key}
+                value={weaponType.id}
               >
                 <img alt={weaponType.name} src={weaponType.image_src} />
               </FilterCheckbox>
@@ -178,8 +134,9 @@ export default function Characters() {
           <div className="flex flex-wrap gap-3">
             {rarities.map(rarity => (
               <FilterCheckbox
+                asChild
                 checked={filterRarities.includes(rarity)}
-                className="flex gap-x-0.5 align-center"
+                className="gap-x-0.5 align-center"
                 key={rarity}
                 name="rarities"
                 onChange={(event) => {
@@ -198,18 +155,49 @@ export default function Characters() {
                 }}
                 value={rarity}
               >
-                {Array.from({ length: rarity }, (_, i) => i).map(index => (
-                  <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
-                ))}
+                <RarityStars length={rarity} />
               </FilterCheckbox>
             ))}
           </div>
         </FilterGroup>
       </Filter>
       <ul className="flex flex-wrap gap-2 justify-center items-stretch md:gap-4">
-        {filteredCharacters.map(character => (
-          <CharactersListItem item={character} key={character.key} />
-        ))}
+        {filteredCharacters.map((character) => {
+          const characterElement = selectElementById(character.element_id);
+
+          return (
+            <li
+              className={cn(
+                "flex relative flex-col gap-4 px-5.5 py-4 w-36 h-45 text-card-foreground bg-card rounded-xl",
+                "border shadow-sm transition-all has-hover:scale-104 has-focus-visible:ring-3",
+                "has-focus-visible:ring-ring/50",
+              )}
+              key={character.id}
+            >
+              <span className="relative shrink-0 size-24.5">
+                <img
+                  alt={characterElement.name}
+                  className="absolute top-0 left-0 p-1 size-8.5 bg-card rounded-full border -translate-1/4"
+                  src={characterElement.image_src}
+                />
+                <img
+                  alt={character.name}
+                  className={cn("object-cover size-full rounded-lg rounded-br-3xl", backgroundClassByRarity(character.rarity))}
+                  draggable={false}
+                  src={character.image_src}
+                />
+              </span>
+              <Link
+                children={Paths.Character.title(character)}
+                className={cn(
+                  "inline-flex flex-1 justify-center items-center text-sm text-center outline-none",
+                  "before:absolute before:inset-0",
+                )}
+                to={Paths.Character.to(character.id)}
+              />
+            </li>
+          );
+        })}
       </ul>
     </Container>
   );

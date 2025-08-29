@@ -1,45 +1,9 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import type { ArtifactSetRecommendationsProps } from "./types";
-import type { TArtifactSetKey } from "@/database/artifact-sets/types";
-import { backgroundClassByRarity } from "@/lib/rarity";
-import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
-import { getArtifactSet } from "@/database/artifact-sets";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import Paths from "@/constants/paths";
-
-function ArtifactSetBadge({ artifactSetKey }: { artifactSetKey: TArtifactSetKey }) {
-  const [artifactSet, setArtifactSet] = useState<Awaited<ReturnType<typeof getArtifactSet>>>();
-
-  useEffect(() => {
-    getArtifactSet(artifactSetKey).then(setArtifactSet);
-  }, [artifactSetKey]);
-
-  return artifactSet !== undefined && (
-    <Badge
-      asChild
-      className={cn(
-        "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row",
-        "sm:text-left",
-      )}
-      variant="secondary"
-    >
-      <Link to={Paths.ArtifactSet.to(artifactSet.key)}>
-        <img
-          alt={artifactSet.name}
-          className={cn(
-            "shrink-0 size-12 rounded-md rounded-br-2xl",
-            backgroundClassByRarity(...artifactSet.rarities),
-          )}
-          src={artifactSet.image_src}
-        />
-        <span children={artifactSet.name} />
-      </Link>
-    </Badge>
-  );
-}
+import ArtifactSetBadge from "@/features/artifact-sets/artifact-set-badge";
 
 export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
   const [diffPercent, setDiffPercent] = useState(0);
@@ -102,7 +66,7 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
         {recommendations.map(recommendation => (
           <TableRow
             className="hover:bg-inherit"
-            key={"key" in recommendation ? recommendation.key : recommendation.keys.join("+")}
+            key={"id" in recommendation ? recommendation.id : recommendation.ids.join("+")}
           >
             {hasIsBetter && (
               <TableCell className="w-16">
@@ -116,17 +80,14 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
               </TableCell>
             )}
             <TableCell className="text-pretty whitespace-normal sm:w-48">
-              {"key" in recommendation
-                ? (
-                    <ArtifactSetBadge artifactSetKey={recommendation.key} />
-                  )
-                : (
-                    <div className="flex flex-col gap-2">
-                      {recommendation.keys.map(key => (
-                        <ArtifactSetBadge artifactSetKey={key} />
-                      ))}
-                    </div>
-                  )}
+              {"id" in recommendation && (
+                <ArtifactSetBadge artifactSetId={recommendation.id} />
+              )}
+              {"ids" in recommendation && (
+                <div className="flex flex-col gap-2">
+                  {recommendation.ids.map(id => <ArtifactSetBadge artifactSetId={id} />)}
+                </div>
+              )}
             </TableCell>
             {hasPercent && (
               <TableCell

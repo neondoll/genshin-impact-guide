@@ -1,5 +1,5 @@
-import * as Primitive from "@radix-ui/react-separator";
 import type { ComponentProps } from "react";
+import * as Primitive from "@radix-ui/react-separator";
 
 import { cn } from "@/lib/utils";
 

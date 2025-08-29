@@ -1,6 +1,6 @@
-import type { TRarity } from "@/database/rarities/types";
+import type { Rarity } from "@/features/rarities/types";
 
-export function backgroundClassByRarity(...rarities: TRarity[]) {
+export function backgroundClassByRarity(...rarities: Rarity[]) {
   const rarity = Math.max(...rarities);
 
   // rarity === 1 -> "bg-[linear-gradient(180deg,#6a6d74,#868586)]"

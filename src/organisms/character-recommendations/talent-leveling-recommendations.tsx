@@ -1,42 +1,30 @@
-import { useEffect, useState } from "react";
-
-import type { ICharacterTalentLevelingRecommendation } from "@/database/characters-recommendations/types";
+import type { CharacterTalentLevelingRecommendation } from "@/features/characters-recommendations/types";
 import type { TalentLevelingRecommendationsProps } from "./types";
-import { getTalent } from "@/database/talents";
+import { selectTalentById } from "@/features/talents/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 function TalentLevelingRecommendationsTable({ recommendations }: {
-  recommendations: ICharacterTalentLevelingRecommendation[];
+  recommendations: CharacterTalentLevelingRecommendation[];
 }) {
   return (
     <Table className="table-fixed">
       <TableBody>
-        {recommendations.map(recommendation => (
-          <TalentLevelingRecommendationsTableRow key={recommendation.key} recommendation={recommendation} />
-        ))}
+        {recommendations.map((recommendation) => {
+          const talent = selectTalentById(recommendation.id);
+
+          return (
+            <TableRow className="hover:bg-inherit" key={talent.id}>
+              <TableHead children={talent.name} className="p-2 whitespace-normal" />
+              <TableCell
+                children={recommendation.priority}
+                className="p-2 text-center whitespace-pre-line md:whitespace-normal"
+              />
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
-  );
-}
-
-function TalentLevelingRecommendationsTableRow({ recommendation }: {
-  recommendation: ICharacterTalentLevelingRecommendation;
-}) {
-  const [talent, setTalent] = useState<Awaited<ReturnType<typeof getTalent>>>();
-
-  useEffect(() => {
-    getTalent(recommendation.key).then(setTalent);
-  }, [recommendation]);
-
-  return talent !== undefined && (
-    <TableRow className="hover:bg-inherit">
-      <TableHead children={talent.name} className="p-2 whitespace-normal" />
-      <TableCell
-        children={recommendation.priority}
-        className="p-2 text-center whitespace-pre-line md:whitespace-normal"
-      />
-    </TableRow>
   );
 }
 

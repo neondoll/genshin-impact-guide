@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
 
-import type { ICharacterWeaponRecommendation } from "@/database/characters-recommendations/types";
-import type { TWeaponKey } from "@/database/weapons/types";
+import type { CharacterWeaponRecommendation } from "@/features/characters-recommendations/types";
+import type { WeaponId } from "@/features/weapons/types";
 import type { WeaponRecommendationsProps } from "./types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
-import { getWeapon } from "@/database/weapons";
+import { selectWeaponById } from "@/features/weapons/selectors";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-function WeaponBadge({ postfix, refinement, signatureWeaponKey, weaponKey }: {
-  postfix: ICharacterWeaponRecommendation["postfix"];
-  refinement: ICharacterWeaponRecommendation["refinement"];
-  signatureWeaponKey: WeaponRecommendationsProps["character"]["signature_weapon_key"];
-  weaponKey: TWeaponKey;
+function WeaponBadge({ postfix, refinement, signatureWeaponId, weaponId }: {
+  postfix: CharacterWeaponRecommendation["postfix"];
+  refinement: CharacterWeaponRecommendation["refinement"];
+  signatureWeaponId: WeaponRecommendationsProps["character"]["signature_weapon_id"];
+  weaponId: WeaponId;
 }) {
-  const [weapon, setWeapon] = useState<Awaited<ReturnType<typeof getWeapon>>>();
+  const weapon = selectWeaponById(weaponId);
 
-  useEffect(() => {
-    getWeapon(weaponKey).then(setWeapon);
-  }, [weaponKey]);
-
-  return weapon !== undefined && (
+  return (
     <Badge
       className={cn(
         "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row",
@@ -38,7 +34,7 @@ function WeaponBadge({ postfix, refinement, signatureWeaponKey, weaponKey }: {
       <span>
         {weapon.name}
         {refinement !== undefined && ` R${refinement}`}
-        {weapon.key === signatureWeaponKey && " (сигнатурное)"}
+        {weapon.id === signatureWeaponId && " (сигнатурное)"}
         {postfix !== undefined && (
           <>
             {" "}
@@ -52,7 +48,7 @@ function WeaponBadge({ postfix, refinement, signatureWeaponKey, weaponKey }: {
 
 function WeaponRecommendationsTable({ character, recommendations }: {
   character: WeaponRecommendationsProps["character"];
-  recommendations: ICharacterWeaponRecommendation[];
+  recommendations: CharacterWeaponRecommendation[];
 }) {
   const [diffPercent, setDiffPercent] = useState(0);
   const [hasIsBetter, setHasIsBetter] = useState(false);
@@ -98,7 +94,7 @@ function WeaponRecommendationsTable({ character, recommendations }: {
           <TableRow
             className="hover:bg-inherit"
             key={
-              recommendation.key
+              recommendation.id
               + (recommendation.refinement === undefined ? "" : `-r${recommendation.refinement}`)
               + (recommendation.postfix === undefined ? "" : `-${recommendation.postfix}`)
             }
@@ -118,8 +114,8 @@ function WeaponRecommendationsTable({ character, recommendations }: {
               <WeaponBadge
                 postfix={recommendation.postfix}
                 refinement={recommendation.refinement}
-                signatureWeaponKey={character.signature_weapon_key}
-                weaponKey={recommendation.key}
+                signatureWeaponId={character.signature_weapon_id}
+                weaponId={recommendation.id}
               />
             </TableCell>
             {hasPercent && (

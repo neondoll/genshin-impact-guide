@@ -1,28 +1,30 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { TArtifactSetKey } from "@/database/artifact-sets/types";
+import type { ArtifactSetId } from "@/features/artifact-sets/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getArtifactSet } from "@/database/artifact-sets";
+import { Container } from "@/components/container";
+import { selectArtifactSetById } from "@/features/artifact-sets/selectors";
+import { selectArtifactSetRecommendationsById } from "@/features/artifact-sets-recommendations/selectors";
+import { selectArtifactSlotById } from "@/features/artifact-slots/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
-import Container from "@/components/container";
 import Paths from "@/constants/paths";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader({ params }: { params: Record<string, string | undefined> }) {
-  const artifactSet = await getArtifactSet(params.artifactSetKey as TArtifactSetKey);
-  const artifactSetRecommendations = await artifactSet.getRecommendations();
+export function loader({ params }: { params: Record<string, string | undefined> }) {
+  const artifactSet = selectArtifactSetById(params.artifactSetId as ArtifactSetId);
+  const artifactSetRecommendations = selectArtifactSetRecommendationsById(artifactSet.id);
 
   return { artifactSet, artifactSetRecommendations };
 }
 
 export default function ArtifactSet() {
-  const { artifactSet, artifactSetRecommendations } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+  const { artifactSet, artifactSetRecommendations } = useLoaderData<ReturnType<typeof loader>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -66,26 +68,22 @@ export default function ArtifactSet() {
             <TableBody>
               <TableRow className="hover:bg-inherit">
                 <TableHead className="p-2">Имя</TableHead>
-                <TableCell className="p-2 text-pretty whitespace-normal">{artifactSet.name}</TableCell>
+                <TableCell children={artifactSet.name} className="p-2 text-pretty whitespace-normal" />
               </TableRow>
               <TableRow className="hover:bg-inherit">
                 <TableHead className="p-2">Где найти</TableHead>
                 <TableCell className="p-2 text-pretty whitespace-normal">
-                  {Array.isArray(artifactSet.source)
-                    ? (
-                        <ul className="ml-4 list-outside list-disc">
-                          {artifactSet.source.map((item, index) => (
-                            <li key={index}>{item}</li>
-                          ))}
-                        </ul>
-                      )
-                    : artifactSet.source}
+                  <ul className="ml-4 list-outside list-disc">
+                    {artifactSet.sources.map((source, index) => (
+                      <li children={source} key={index} />
+                    ))}
+                  </ul>
                 </TableCell>
               </TableRow>
               {Object.entries(artifactSet.item_bonuses).map(([itemCount, itemBonus]) => (
                 <TableRow className="hover:bg-inherit" key={itemCount}>
-                  <TableHead className="p-2">{`${itemCount} предмет(а)`}</TableHead>
-                  <TableCell className="p-2 text-pretty whitespace-normal">{itemBonus}</TableCell>
+                  <TableHead children={`${itemCount} предмет(а)`} className="p-2" />
+                  <TableCell children={itemBonus} className="p-2 text-pretty whitespace-normal" />
                 </TableRow>
               ))}
             </TableBody>
@@ -99,12 +97,12 @@ export default function ArtifactSet() {
         <CardContent>
           <Table>
             <TableBody>
-              {Object.values(artifactSet.slots).map(async (artifactSetSlot) => {
+              {Object.values(artifactSet.slots).map((artifactSetSlot) => {
                 if (artifactSetSlot !== undefined) {
-                  const artifactSlot = await artifactSetSlot.getSlot();
+                  const artifactSlot = selectArtifactSlotById(artifactSetSlot.id);
 
                   return (
-                    <TableRow className="hover:bg-inherit" key={artifactSlot.key}>
+                    <TableRow className="hover:bg-inherit" key={artifactSlot.id}>
                       <TableHead children={artifactSlot.name} className="p-2 text-pretty whitespace-normal" />
                       <TableCell className="p-2 text-pretty whitespace-normal">
                         <div className="flex gap-2.5 items-center">

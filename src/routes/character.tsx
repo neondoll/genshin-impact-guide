@@ -1,27 +1,34 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { TCharacterKey } from "@/database/characters/types";
+import type { CharacterId } from "@/features/characters/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
-import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
-import { cn, publicImageSrc } from "@/lib/utils";
-import { getCharacter } from "@/database/characters";
+import { cn } from "@/lib/utils";
+import { Container } from "@/components/container";
+import { selectCharacterById } from "@/features/characters/selectors";
+import { selectCharacterRecommendationsById } from "@/features/characters-recommendations/selectors";
+import { selectCharacterRolesByIds } from "@/features/character-roles/selectors";
+import { selectElementById } from "@/features/elements/selectors";
+import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import CharacterRecommendations from "@/organisms/character-recommendations";
-import Container from "@/components/container";
+import CharacterRoleBadge from "@/features/character-roles/character-role-badge";
+import ElementBadge from "@/features/elements/element-badge";
+import ElementImg from "@/features/elements/element-img";
 import Paths from "@/constants/paths";
+import RarityStars from "@/features/rarities/rarity-stars";
+import WeaponTypeBadge from "@/features/weapon-types/weapon-type-badge";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader({ params }: { params: Record<string, string | undefined> }) {
-  const character = await getCharacter(params.characterKey as TCharacterKey);
-  const characterElement = await character.getElement();
-  const characterRecommendations = await character.getRecommendations();
-  const characterRoles = await character.getRoles();
-  const characterWeaponType = await character.getWeaponType();
+export function loader({ params }: { params: Record<string, string | undefined> }) {
+  const character = selectCharacterById(params.characterId as CharacterId);
+  const characterElement = selectElementById(character.element_id);
+  const characterRecommendations = selectCharacterRecommendationsById(character.id);
+  const characterRoles = character.role_ids ? selectCharacterRolesByIds(character.role_ids) : undefined;
+  const characterWeaponType = selectWeaponTypeById(character.weapon_type_id);
 
   return { character, characterElement, characterRecommendations, characterRoles, characterWeaponType };
 }
@@ -33,7 +40,7 @@ export default function Character() {
     characterRecommendations,
     characterRoles,
     characterWeaponType,
-  } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+  } = useLoaderData<ReturnType<typeof loader>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -65,13 +72,9 @@ export default function Character() {
         <div className="space-y-1">
           <div className="flex gap-x-1 items-center">
             <h1 children={Paths.Character.title(character)} className="text-3xl" />
-            <img alt={characterElement.name} className="size-6" src={characterElement.image_src} />
+            <ElementImg className="size-6" item={characterElement} />
           </div>
-          <div className="flex gap-x-1">
-            {Array.from({ length: character.rarity }, (_, i) => i).map(index => (
-              <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
-            ))}
-          </div>
+          <RarityStars length={character.rarity} />
         </div>
       </div>
       <Card>
@@ -83,21 +86,11 @@ export default function Character() {
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Оружие:" className="p-2 text-right" />
-              <TableCell className="p-2">
-                <div className="flex gap-1 items-center">
-                  <img alt={characterWeaponType.name} className="shrink-0 size-5" src={characterWeaponType.icon_src} />
-                  <span children={characterWeaponType.abbr} />
-                </div>
-              </TableCell>
+              <TableCell children={<WeaponTypeBadge item={characterWeaponType} />} className="p-2" />
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Элемент:" className="p-2 text-right" />
-              <TableCell className="p-2">
-                <div className="flex gap-1 items-center">
-                  <img alt={characterElement.name} className="shrink-0 size-5" src={characterElement.image_src} />
-                  <span children={characterElement.name} />
-                </div>
-              </TableCell>
+              <TableCell children={<ElementBadge item={characterElement} />} className="p-2" />
             </TableRow>
             {characterRoles !== undefined && (
               <TableRow className="hover:bg-inherit">
@@ -105,27 +98,7 @@ export default function Character() {
                 <TableCell className="p-2">
                   <div className="flex flex-wrap gap-2">
                     {characterRoles.map(characterRole => (
-                      <Tooltip key={characterRole.key}>
-                        <TooltipTrigger asChild>
-                          <Badge className="rounded-full">
-                            <img alt={characterRole.name} className="shrink-0 size-5" src={characterRole.icon_src} />
-                            <span children={characterRole.name} />
-                          </Badge>
-                        </TooltipTrigger>
-                        <TooltipContent
-                          className={cn(
-                            "max-w-[calc(var(--container-width)-(var(--container-padding-x)*2))] text-pretty",
-                            "[--container-width:var(--radix-popper-available-width)]",
-                            "[--container-padding-x:calc(var(--spacing)*4)]",
-                            "sm:[--container-width:var(--breakpoint-sm)] md:[--container-width:var(--breakpoint-md)]",
-                            "lg:[--container-width:var(--breakpoint-lg)]",
-                            "lg:[--container-padding-x:calc(var(--spacing)*6)]",
-                            "xl:[--container-width:var(--breakpoint-xl)] 2xl:[--container-width:var(--breakpoint-2xl)]",
-                          )}
-                        >
-                          <p dangerouslySetInnerHTML={{ __html: characterRole.description }} />
-                        </TooltipContent>
-                      </Tooltip>
+                      <CharacterRoleBadge item={characterRole} key={characterRole.id} />
                     ))}
                   </div>
                 </TableCell>

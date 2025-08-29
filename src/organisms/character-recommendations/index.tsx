@@ -34,32 +34,29 @@ export default function CharacterRecommendations({ character, recommendations }:
               <TableBody className={cn({ "[&_tr:last-child]:border-b": showAccordion })}>
                 {recommendations.key_constellations !== undefined && (
                   <TableRow className="hover:bg-inherit">
-                    <TableHead className="p-2 text-right whitespace-normal">
-                      Рекомендации по ключевым созвездиям
-                    </TableHead>
-                    <TableCell className="p-2 whitespace-normal">
-                      {recommendations.key_constellations.join(", ")}
-                    </TableCell>
+                    <TableHead
+                      children="Рекомендации по ключевым созвездиям"
+                      className="p-2 text-right whitespace-normal"
+                    />
+                    <TableCell
+                      children={recommendations.key_constellations.join(", ")}
+                      className="p-2 whitespace-normal"
+                    />
                   </TableRow>
                 )}
                 {recommendations.first_constellation_or_signature_weapon !== undefined && (
                   <TableRow className="hover:bg-inherit">
-                    <TableHead className="p-2 text-right whitespace-normal">
-                      C1 или Сигна?
-                    </TableHead>
-                    <TableCell className="p-2 whitespace-pre-line sm:whitespace-normal">
-                      {recommendations.first_constellation_or_signature_weapon}
-                    </TableCell>
+                    <TableHead children="C1 или Сигна?" className="p-2 text-right whitespace-normal" />
+                    <TableCell
+                      children={recommendations.first_constellation_or_signature_weapon}
+                      className="p-2 whitespace-pre-line sm:whitespace-normal"
+                    />
                   </TableRow>
                 )}
                 {recommendations.required_level !== undefined && (
                   <TableRow className="hover:bg-inherit">
-                    <TableHead className="p-2 text-right whitespace-normal">
-                      Рекомендации по уровню
-                    </TableHead>
-                    <TableCell className="p-2 whitespace-normal">
-                      {recommendations.required_level}
-                    </TableCell>
+                    <TableHead children="Рекомендации по уровню" className="p-2 text-right whitespace-normal" />
+                    <TableCell children={recommendations.required_level} className="p-2 whitespace-normal" />
                   </TableRow>
                 )}
               </TableBody>
@@ -69,9 +66,7 @@ export default function CharacterRecommendations({ character, recommendations }:
             <Accordion className="w-full" type="multiple">
               {recommendations.rotation !== undefined && (
                 <AccordionItem value="rotation">
-                  <AccordionTrigger className="px-6">
-                    Рекомендации по ротации
-                  </AccordionTrigger>
+                  <AccordionTrigger children="Рекомендации по ротации" className="px-6" />
                   <AccordionContent className="px-6">
                     <RotationRecommendations recommendations={recommendations.rotation} />
                   </AccordionContent>
@@ -79,9 +74,7 @@ export default function CharacterRecommendations({ character, recommendations }:
               )}
               {recommendations.talent_leveling !== undefined && (
                 <AccordionItem value="talent_leveling">
-                  <AccordionTrigger className="px-6">
-                    Рекомендации по возвышению талантов
-                  </AccordionTrigger>
+                  <AccordionTrigger children="Рекомендации по возвышению талантов" className="px-6" />
                   <AccordionContent className="px-6">
                     <TalentLevelingRecommendations recommendations={recommendations.talent_leveling} />
                   </AccordionContent>
@@ -89,9 +82,7 @@ export default function CharacterRecommendations({ character, recommendations }:
               )}
               {recommendations.weapons !== undefined && (
                 <AccordionItem value="weapons">
-                  <AccordionTrigger className="px-6">
-                    Рекомендации по оружию
-                  </AccordionTrigger>
+                  <AccordionTrigger children="Рекомендации по оружию" className="px-6" />
                   <AccordionContent className="px-6">
                     <WeaponRecommendations character={character} recommendations={recommendations.weapons} />
                   </AccordionContent>

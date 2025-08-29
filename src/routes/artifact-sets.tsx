@@ -5,19 +5,19 @@ import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
-import { getArtifactSets } from "@/database/artifact-sets";
-import Container from "@/components/container";
+import { Container } from "@/components/container";
+import { selectArtifactSetsAll } from "@/features/artifact-sets/selectors.ts";
 import Paths from "@/constants/paths";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader() {
-  const artifactSets = await getArtifactSets();
+export function loader() {
+  const artifactSets = selectArtifactSetsAll();
 
   return { artifactSets };
 }
 
 export default function ArtifactSets() {
-  const { artifactSets } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+  const { artifactSets } = useLoaderData<ReturnType<typeof loader>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -44,7 +44,7 @@ export default function ArtifactSets() {
                 "border shadow-sm transition-all has-hover:scale-104 has-focus-visible:ring-3",
                 "has-focus-visible:ring-ring/50",
               )}
-              key={artifactSet.key}
+              key={artifactSet.id}
             >
               <span
                 className={cn(
@@ -65,7 +65,7 @@ export default function ArtifactSets() {
                   "inline-flex flex-1 justify-center items-center text-sm text-center outline-none",
                   "before:absolute before:inset-0",
                 )}
-                to={Paths.ArtifactSet.to(artifactSet.key)}
+                to={Paths.ArtifactSet.to(artifactSet.id)}
               />
             </li>
           );

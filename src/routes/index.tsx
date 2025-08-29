@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import { Card } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import Container from "@/components/container";
-import MenuItems from "@/constants/menu-items";
+import { Card } from "../components/ui/card";
+import { Container } from "../components/container";
+import { Table, TableBody, TableCell, TableRow } from "../components/ui/table";
+import MenuItems from "../constants/menu-items";
 
 export default function Index() {
   return (
@@ -13,8 +13,8 @@ export default function Index() {
           <TableBody>
             {MenuItems.map(item => (
               <TableRow className="relative" key={item.title}>
-                <TableCell className="w-20">
-                  <img alt={item.title} src={item.image_src} />
+                <TableCell className="size-20">
+                  <img alt={item.title} className="object-cover object-center size-full" src={item.image_src} />
                 </TableCell>
                 <TableCell>
                   <Link children={item.title} className="before:absolute before:inset-0" to={item.to} />

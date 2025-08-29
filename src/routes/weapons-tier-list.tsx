@@ -1,7 +1,7 @@
-import { type ComponentProps, useEffect, useState } from "react";
+import type { ComponentProps } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { TWeaponKey } from "@/database/weapons/types";
+import type { WeaponId } from "@/features/weapons/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -9,12 +9,12 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { getTierListsWeapons } from "@/database/tier-lists-weapons";
-import { getWeapons } from "@/database/weapons";
+import { Container } from "@/components/container";
+import { selectTierListsWeaponsAll } from "@/features/tier-lists-weapons/selectors";
+import { selectWeaponsByIds } from "@/features/weapons/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import Container from "@/components/container";
 import Paths from "@/constants/paths";
 import VideoSources from "@/organisms/video-sources";
 
@@ -30,12 +30,8 @@ function TierBadge(props: Pick<ComponentProps<typeof Badge>, "children">) {
   );
 }
 
-function WeaponsList({ weaponKeys }: { weaponKeys: TWeaponKey[] }) {
-  const [weapons, setWeapons] = useState<Awaited<ReturnType<typeof getWeapons>>>([]);
-
-  useEffect(() => {
-    getWeapons(weaponKeys).then(setWeapons);
-  }, [weaponKeys]);
+function WeaponsList({ weaponIds }: { weaponIds: WeaponId[] }) {
+  const weapons = selectWeaponsByIds(weaponIds);
 
   return (
     <ul className="flex flex-wrap gap-2">
@@ -44,7 +40,7 @@ function WeaponsList({ weaponKeys }: { weaponKeys: TWeaponKey[] }) {
           className={cn(
             "shrink-0 size-12 rounded-md", backgroundClassByRarity(weapon.rarity),
           )}
-          key={weapon.key}
+          key={weapon.id}
         >
           <img alt={weapon.name} className="size-12" src={weapon.image_src} />
         </li>
@@ -54,16 +50,14 @@ function WeaponsList({ weaponKeys }: { weaponKeys: TWeaponKey[] }) {
 }
 
 /* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader() {
-  const tierListsWeapons = await getTierListsWeapons();
+export function loader() {
+  const tierListsWeapons = selectTierListsWeaponsAll();
 
   return { tierListsWeapons };
 }
 
 export default function WeaponsTierList() {
-  const { tierListsWeapons } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
-
-  const tierListsWeaponsEntries = Object.entries(tierListsWeapons) as [keyof typeof tierListsWeapons, typeof tierListsWeapons[keyof typeof tierListsWeapons]][];
+  const { tierListsWeapons } = useLoaderData<ReturnType<typeof loader>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -87,14 +81,14 @@ export default function WeaponsTierList() {
         </BreadcrumbList>
       </Breadcrumb>
       <h1 children={Paths.WeaponsTierList.title} className="text-2xl" />
-      <Tabs defaultValue={tierListsWeaponsEntries[0][0]}>
+      <Tabs defaultValue={tierListsWeapons[0].title}>
         <TabsList className="flex flex-wrap w-full h-auto min-h-9">
-          {tierListsWeaponsEntries.map(([tierListWeaponsTitle]) => (
-            <TabsTrigger children={tierListWeaponsTitle} key={tierListWeaponsTitle} value={tierListWeaponsTitle} />
+          {tierListsWeapons.map(tierListWeapons => (
+            <TabsTrigger children={tierListWeapons.title} key={tierListWeapons.title} value={tierListWeapons.title} />
           ))}
         </TabsList>
-        {tierListsWeaponsEntries.map(([tierListWeaponsTitle, tierListWeapons]) => (
-          <TabsContent className="flex flex-col gap-2" key={tierListWeaponsTitle} value={tierListWeaponsTitle}>
+        {tierListsWeapons.map(tierListWeapons => (
+          <TabsContent className="flex flex-col gap-2" key={tierListWeapons.title} value={tierListWeapons.title}>
             {tierListWeapons.list !== undefined && (
               <Card className="py-0">
                 <Table>
@@ -124,7 +118,7 @@ export default function WeaponsTierList() {
                               )}
                         </TableHead>
                         <TableCell className="p-2">
-                          <WeaponsList weaponKeys={item.weapon_keys} />
+                          <WeaponsList weaponIds={item.weapon_ids} />
                         </TableCell>
                       </TableRow>
                     ))}

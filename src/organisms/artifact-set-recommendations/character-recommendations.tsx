@@ -1,55 +1,35 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import type { CharacterRecommendationsProps } from "./types";
-import type { TCharacterKey } from "@/database/characters/types";
-import { backgroundClassByRarity } from "@/lib/rarity";
-import { Badge } from "@/components/ui/badge";
-import { cn, publicImageSrc } from "@/lib/utils";
-import { getCharacter } from "@/database/characters";
+import { charactersAdapter } from "@/features/characters/slice";
+import { publicImageSrc } from "@/lib/utils";
+import { selectCharacterById } from "@/features/characters/selectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import Paths from "@/constants/paths";
+import CharacterBadge from "@/features/characters/character-badge";
 
-function CharacterBadge({ characterKey }: { characterKey: TCharacterKey }) {
-  const [character, setCharacter] = useState<Awaited<ReturnType<typeof getCharacter>>>();
-
-  useEffect(() => {
-    getCharacter(characterKey).then(setCharacter);
-  }, [characterKey]);
-
-  return character !== undefined && (
-    <Badge
-      asChild
-      className={cn(
-        "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row",
-        "sm:text-left",
-      )}
-      variant="secondary"
-    >
-      <Link to={Paths.Character.to(character.key)}>
-        <img
-          alt={character.name}
-          className={cn("shrink-0 size-12 rounded-md rounded-br-2xl", backgroundClassByRarity(character.rarity))}
-          src={character.image_src}
-        />
-        <span children={character.name} />
-      </Link>
-    </Badge>
-  );
-}
-
-export default function CharacterRecommendations({ recommendations }: CharacterRecommendationsProps) {
+export default function CharacterRecommendations(props: CharacterRecommendationsProps) {
   const [hasIsBetter, setHasIsBetter] = useState(false);
   const [hasNotes, setHasNotes] = useState(false);
+  const [recommendations, setRecommendations] = useState<CharacterRecommendationsProps["recommendations"]>([]);
 
   useEffect(() => {
-    setHasIsBetter(recommendations.some((recommendation) => {
+    setHasIsBetter(props.recommendations.some((recommendation) => {
       return recommendation.is_better === true;
     }));
-    setHasNotes(recommendations.some((recommendation) => {
+    setHasNotes(props.recommendations.some((recommendation) => {
       return recommendation.notes !== undefined;
     }));
-  }, [recommendations]);
+    setRecommendations(
+      props.recommendations
+        .map((recommendation) => {
+          return { character: selectCharacterById(recommendation.id), recommendation };
+        })
+        .sort((a, b) => {
+          return charactersAdapter.sortComparer ? charactersAdapter.sortComparer(a.character, b.character) : 0;
+        })
+        .map(model => model.recommendation),
+    );
+  }, [props.recommendations]);
 
   return (
     <Table>
@@ -62,7 +42,7 @@ export default function CharacterRecommendations({ recommendations }: CharacterR
       </TableHeader>
       <TableBody>
         {recommendations.map(recommendation => (
-          <TableRow className="hover:bg-inherit" key={recommendation.key}>
+          <TableRow className="hover:bg-inherit" key={recommendation.id}>
             {hasIsBetter && (
               <TableCell className="w-16">
                 {recommendation.is_better && (
@@ -75,7 +55,7 @@ export default function CharacterRecommendations({ recommendations }: CharacterR
               </TableCell>
             )}
             <TableCell className="text-pretty whitespace-normal sm:min-w-[166px]">
-              <CharacterBadge characterKey={recommendation.key} />
+              <CharacterBadge characterId={recommendation.id} />
             </TableCell>
             {hasNotes && (
               <TableCell className="text-pretty whitespace-pre-line">

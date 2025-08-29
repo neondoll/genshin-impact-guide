@@ -1,48 +1,30 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-import type { TStatKey } from "@/database/stats/types";
-import type { TWeaponKey } from "@/database/weapons/types";
+import type { WeaponId } from "@/features/weapons/types";
 import { backgroundClassByRarity } from "@/lib/rarity";
-import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
-import { cn, publicImageSrc } from "@/lib/utils";
-import { getStat } from "@/database/stats";
-import { getWeapon } from "@/database/weapons";
-import { getWeaponType } from "@/database/weapon-types";
+import { cn } from "@/lib/utils";
+import { Container } from "@/components/container";
+import { selectWeaponById } from "@/features/weapons/selectors";
+import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import Container from "@/components/container";
 import Paths from "@/constants/paths";
-
-function StatBadge({ statKey }: { statKey: TStatKey }) {
-  const [stat, setStat] = useState<Awaited<ReturnType<typeof getStat>>>();
-
-  useEffect(() => {
-    getStat(statKey).then(setStat);
-  }, [statKey]);
-
-  return stat !== undefined && (
-    <Badge
-      children={stat.name}
-      className="flex justify-center w-full text-center text-pretty whitespace-normal"
-      variant="secondary"
-    />
-  );
-}
+import RarityStars from "@/features/rarities/rarity-stars";
+import StatBadge from "@/features/stats/stat-badge";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
-export async function loader({ params }: { params: Record<string, string | undefined> }) {
-  const weapon = await getWeapon(params.weaponKey as TWeaponKey);
-  const weaponType = await getWeaponType(weapon.type_key);
+export function loader({ params }: { params: Record<string, string | undefined> }) {
+  const weapon = selectWeaponById(params.weaponId as WeaponId);
+  const weaponType = selectWeaponTypeById(weapon.type_id);
 
   return { weapon, weaponType };
 }
 
 export default function Weapon() {
-  const { weapon, weaponType } = useLoaderData<Awaited<ReturnType<typeof loader>>>();
+  const { weapon, weaponType } = useLoaderData<ReturnType<typeof loader>>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -68,19 +50,12 @@ export default function Weapon() {
       <div className="flex gap-x-3">
         <img
           alt={weapon.name}
-          className={cn(
-            "shrink-0 size-16 rounded-md rounded-br-2xl",
-            backgroundClassByRarity(weapon.rarity),
-          )}
+          className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByRarity(weapon.rarity))}
           src={weapon.image_src}
         />
         <div className="space-y-1">
           <h1 children={Paths.Weapon.title(weapon)} className="text-3xl" />
-          <div className="flex gap-x-1">
-            {Array.from({ length: weapon.rarity }, (_, i) => i).map(index => (
-              <img alt="star" className="size-3.5" key={index + 1} src={publicImageSrc("star-icon-28x28.png")} />
-            ))}
-          </div>
+          <RarityStars length={weapon.rarity} />
         </div>
       </div>
       <Card>
@@ -114,7 +89,7 @@ export default function Weapon() {
                     rowSpan={2}
                   />
                   <TableCell className="p-2 whitespace-normal">
-                    <StatBadge statKey={weapon.secondary_stats.key} />
+                    <StatBadge statId={weapon.secondary_stats.id} />
                   </TableCell>
                 </TableRow>
                 <TableRow className="hover:bg-inherit">

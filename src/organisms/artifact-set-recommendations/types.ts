@@ -1,7 +1,7 @@
-import type { IArtifactSetRecommendations } from "@/database/artifact-sets-recommendations/types";
+import type { ArtifactSetRecommendations } from "@/features/artifact-sets-recommendations/types";
 
 export interface ArtifactSetRecommendationsProps {
-  recommendations: IArtifactSetRecommendations;
+  recommendations: ArtifactSetRecommendations;
 }
 
 export interface CharacterRecommendationsProps {
