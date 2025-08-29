@@ -3,13 +3,21 @@ import type {
   ResourceAbstract,
   ResourceCookingIngredient,
   ResourceFood,
-  ResourceIngredient,
+  ResourceLocalSpecialtyNatlan,
   ResourceRecipe,
+  ResourceRecipeIngredient,
 } from "./types";
 import { FoodTypeIds } from "../food-types/enums";
 import { publicImageSrc } from "@/lib/utils";
-import { ResourceCookingIngredientIds, ResourceFoodIds, ResourceRecipeIds } from "./enums";
+import { RegionIds } from "../regions/enums";
+import {
+  ResourceCookingIngredientIds,
+  ResourceFoodIds,
+  ResourceLocalSpecialtyNatlanIds,
+  ResourceRecipeIds,
+} from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
+import regions from "../regions/data";
 
 abstract class ResourceAbstractClass implements ResourceAbstract {
   readonly id: ResourceAbstract["id"];
@@ -20,7 +28,7 @@ abstract class ResourceAbstractClass implements ResourceAbstract {
 
   static PATH = "resources";
 
-  constructor(
+  protected constructor(
     id: ResourceAbstract["id"],
     imageName: string,
     name: ResourceAbstract["name"],
@@ -65,7 +73,7 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
   readonly food_type_id: ResourceFood["food_type_id"];
   readonly utility: ResourceFood["utility"];
   declare readonly source: ResourceFood["source"];
-  private _recipe_id: ResourceFood["recipe_id"];
+  protected _recipe_id: ResourceFood["recipe_id"];
 
   static PATH = "foods";
 
@@ -97,13 +105,25 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
   }
 }
 
-class ResourceIngredientClass<Type extends (ResourceCookingIngredient | ResourceFood)> implements ResourceIngredient {
-  readonly id: ResourceIngredient["id"];
-  readonly count: ResourceIngredient["count"];
+class ResourceLocalSpecialtyNatlanClass extends ResourceAbstractClass implements ResourceLocalSpecialtyNatlan {
+  declare readonly id: ResourceLocalSpecialtyNatlan["id"];
+  declare readonly image_src: ResourceLocalSpecialtyNatlan["image_src"];
+  declare readonly name: ResourceLocalSpecialtyNatlan["name"];
+  declare readonly type_id: ResourceLocalSpecialtyNatlan["type_id"];
+  declare readonly source: ResourceLocalSpecialtyNatlan["source"];
 
-  constructor(item: Type, count: ResourceIngredient["count"]) {
-    this.id = item.id;
-    this.count = count;
+  static PATH = "local-specialty-natlan";
+
+  constructor(
+    id: ResourceLocalSpecialtyNatlan["id"],
+    name: ResourceLocalSpecialtyNatlan["name"],
+    source: ResourceLocalSpecialtyNatlan["source"],
+  ) {
+    super(id, `${ResourceLocalSpecialtyNatlanClass.PATH}/${id}.webp`, name, ResourceTypeIds.LocalSpecialtyNatlan, source);
+  }
+
+  static init(params: ConstructorParameters<typeof ResourceLocalSpecialtyNatlanClass>) {
+    return new ResourceLocalSpecialtyNatlanClass(...params);
   }
 }
 
@@ -139,6 +159,16 @@ class ResourceRecipeClass extends ResourceAbstractClass implements ResourceRecip
   }
 }
 
+class ResourceRecipeIngredientClass<Type extends (ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyNatlan)> implements ResourceRecipeIngredient {
+  readonly id: ResourceRecipeIngredient["id"];
+  readonly count: ResourceRecipeIngredient["count"];
+
+  constructor(item: Type, count: ResourceRecipeIngredient["count"]) {
+    this.id = item.id;
+    this.count = count;
+  }
+}
+
 const ResourceFoodUtility = {
   DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class='text-cyan-500'>${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на ${atk} ед. и шанс крит. попадания на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
@@ -151,8 +181,10 @@ const ResourceSource = {
   BuyingFromMerchants: "Покупка у торговцев",
   FoundInTheWild: "Дикая природа",
   Gardening: "Садоводство",
+  Natlan: regions[RegionIds.Natlan].name,
   ObtainedByCooking: "Готовка",
   ObtainedFromNewRecipeRewardsMail: "Внутриигровая почта",
+  Processed: "Заготовка ингредиентов",
   TeyvatResearch: "Исследование Тейвата",
 } as const;
 
@@ -165,6 +197,11 @@ const cookingIngredients = {
   [ResourceCookingIngredientIds.Grainfruit]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Grainfruit,
     "Злакофрукт",
+    [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, ResourceSource.Gardening],
+  ]),
+  [ResourceCookingIngredientIds.Mint]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Mint,
+    "Мята",
     [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, ResourceSource.Gardening],
   ]),
   [ResourceCookingIngredientIds.Onion]: ResourceCookingIngredientClass.init([
@@ -181,6 +218,11 @@ const cookingIngredients = {
     ResourceCookingIngredientIds.ShrimpMeat,
     "Мясо креветки",
     ResourceSource.BuyingFromMerchants,
+  ]),
+  [ResourceCookingIngredientIds.Sugar]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Sugar,
+    "Сахар",
+    [ResourceSource.Processed, ResourceSource.BuyingFromMerchants],
   ]),
   [ResourceCookingIngredientIds.ZaytunPeach]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.ZaytunPeach,
@@ -204,14 +246,47 @@ const foods = {
     [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants],
   ]),
 };
+const localSpecialtyNatlan = {
+  [ResourceLocalSpecialtyNatlanIds.QuenepaBerry]: ResourceLocalSpecialtyNatlanClass.init([
+    ResourceLocalSpecialtyNatlanIds.QuenepaBerry,
+    "Ягода квенепа",
+    [ResourceSource.Natlan, ResourceSource.BuyingFromMerchants],
+  ]),
+};
+
 const GentleSeaBreeze = {
+  [ResourceFoodIds.DeliciousGentleSeaBreeze]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousGentleSeaBreeze,
+    "Вкусный «Лёгкий морской бриз»",
+    FoodTypeIds.AdventurersDish,
+    ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption(25),
+    ResourceSource.ObtainedByCooking,
+  ]).setRecipeId(ResourceRecipeIds.RecipeGentleSeaBreeze),
+  [ResourceFoodIds.GentleSeaBreeze]: ResourceFoodClass.init([
+    ResourceFoodIds.GentleSeaBreeze,
+    "«Лёгкий морской бриз»",
+    FoodTypeIds.AdventurersDish,
+    ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption(20),
+    ResourceSource.ObtainedByCooking,
+  ]).setRecipeId(ResourceRecipeIds.RecipeGentleSeaBreeze),
+  [ResourceFoodIds.SuspiciousGentleSeaBreeze]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousGentleSeaBreeze,
+    "Странный «Лёгкий морской бриз»",
+    FoodTypeIds.AdventurersDish,
+    ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption(15),
+    ResourceSource.ObtainedByCooking,
+  ]).setRecipeId(ResourceRecipeIds.RecipeGentleSeaBreeze),
   [ResourceRecipeIds.RecipeGentleSeaBreeze]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeGentleSeaBreeze,
     "Рецепт: «Лёгкий морской бриз»",
     "Награда за диалог с Хайяк после выполнения поручения",
     ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption("15–25"),
     15,
-    [],
+    [
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Mint], 2),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Sugar], 1),
+      new ResourceRecipeIngredientClass(localSpecialtyNatlan[ResourceLocalSpecialtyNatlanIds.QuenepaBerry], 2),
+    ],
   ]),
 };
 const MeatLoversFeast = {
@@ -274,10 +349,10 @@ const NineFruitNectar = {
     ResourceFoodUtility.IncreasesAllPartyMembersCritRate("10–20"),
     15,
     [
-      new ResourceIngredientClass(foods[ResourceFoodIds.Apple], 2),
-      new ResourceIngredientClass(foods[ResourceFoodIds.Sunsettia], 2),
-      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Berry], 2),
-      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ZaytunPeach], 2),
+      new ResourceRecipeIngredientClass(foods[ResourceFoodIds.Apple], 2),
+      new ResourceRecipeIngredientClass(foods[ResourceFoodIds.Sunsettia], 2),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Berry], 2),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ZaytunPeach], 2),
     ],
   ]),
 };
@@ -310,10 +385,10 @@ const ShrimpBisque = {
     ResourceFoodUtility.IncreasesAllPartyMembersHealingBonus("15–20"),
     15,
     [
-      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Grainfruit], 2),
-      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Onion], 3),
-      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Potato], 3),
-      new ResourceIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ShrimpMeat], 4),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Grainfruit], 2),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Onion], 3),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Potato], 3),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ShrimpMeat], 4),
     ],
   ]),
 };
@@ -321,6 +396,7 @@ const ShrimpBisque = {
 export default {
   ...cookingIngredients,
   ...foods,
+  ...localSpecialtyNatlan,
   ...GentleSeaBreeze,
   ...MeatLoversFeast,
   ...NineFruitNectar,

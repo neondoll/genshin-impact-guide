@@ -24,6 +24,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
 
 export default function Resource() {
   const { resource, resourceRecipeDishes, resourceType } = useLoaderData<ReturnType<typeof loader>>();
+  const showProperties = "dish_effects" in resource || "proficiency" in resource || Boolean(resourceRecipeDishes) || "ingredients" in resource;
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -90,96 +91,100 @@ export default function Resource() {
           </Table>
         </CardContent>
       </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle children="Подробности" />
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableBody>
-              {"dish_effects" in resource && (
-                <TableRow className="hover:bg-inherit">
-                  <TableHead children="Эффекты приготовления блюд:" className="p-2 text-right" />
-                  <TableCell
-                    className="p-2 text-pretty whitespace-normal"
-                    dangerouslySetInnerHTML={{ __html: resource.dish_effects }}
-                  />
-                </TableRow>
-              )}
-              {"proficiency" in resource && (
-                <TableRow className="hover:bg-inherit">
-                  <TableHead children="Умение:" className="p-2 text-right" />
-                  <TableCell children={resource.proficiency} className="p-2 text-pretty whitespace-normal" />
-                </TableRow>
-              )}
-              {resourceRecipeDishes && (
-                <TableRow className="hover:bg-inherit">
-                  <TableHead children="Блюда:" className="p-2 text-right" />
-                  <TableCell className="p-2 text-pretty whitespace-normal">
-                    <ul className="flex flex-wrap gap-2">
-                      {resourceRecipeDishes.map(resourceRecipeDish => (
-                        <li key={resourceRecipeDish.id}>
-                          <Badge asChild className="flex-col p-0 w-16.5" variant="secondary">
-                            <Link to={Paths.Resource.to(resourceRecipeDish.id)}>
-                              <span className="shrink-0 size-16">
-                                <img
-                                  alt={resourceRecipeDish.id}
-                                  className="size-full bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl rounded-bl-none"
-                                  src={resourceRecipeDish.image_src}
-                                />
-                              </span>
-                              <span
-                                children={Paths.Resource.title(resourceRecipeDish)}
-                                className="p-0.5 w-full text-center truncate"
-                              />
-                            </Link>
-                          </Badge>
-                        </li>
-                      ))}
-                    </ul>
-                  </TableCell>
-                </TableRow>
-              )}
-              {"ingredients" in resource && (
-                <TableRow className="hover:bg-inherit">
-                  <TableHead children="Ингредиенты:" className="p-2 text-right" />
-                  <TableCell className="p-2 text-pretty whitespace-normal">
-                    <ul className="flex flex-wrap gap-2">
-                      {resource.ingredients.map((ingredient) => {
-                        const resourceIngredient = selectResourceById(ingredient.id);
-
-                        return (
-                          <li key={ingredient.id}>
+      {showProperties && (
+        <Card>
+          <CardHeader>
+            <CardTitle children="Подробности" />
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableBody>
+                {"dish_effects" in resource && (
+                  <TableRow className="hover:bg-inherit">
+                    <TableHead children="Эффекты приготовления блюд:" className="p-2 text-right" />
+                    <TableCell
+                      className="p-2 text-pretty whitespace-normal"
+                      dangerouslySetInnerHTML={{ __html: resource.dish_effects }}
+                    />
+                  </TableRow>
+                )}
+                {"proficiency" in resource && (
+                  <TableRow className="hover:bg-inherit">
+                    <TableHead children="Умение:" className="p-2 text-right" />
+                    <TableCell children={resource.proficiency} className="p-2 text-pretty whitespace-normal" />
+                  </TableRow>
+                )}
+                {resourceRecipeDishes && (
+                  <TableRow className="hover:bg-inherit">
+                    <TableHead children="Блюда:" className="p-2 text-right" />
+                    <TableCell className="p-2 text-pretty whitespace-normal">
+                      <ul className="flex flex-wrap gap-2">
+                        {resourceRecipeDishes.map(resourceRecipeDish => (
+                          <li key={resourceRecipeDish.id}>
                             <Badge asChild className="flex-col p-0 w-16.5" variant="secondary">
-                              <Link to={Paths.Resource.to(resourceIngredient.id)}>
-                                <span className="relative shrink-0 size-16">
+                              <Link to={Paths.Resource.to(resourceRecipeDish.id)}>
+                                <span className="shrink-0 size-16">
                                   <img
-                                    alt={resourceIngredient.id}
+                                    alt={resourceRecipeDish.id}
                                     className="size-full bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl rounded-bl-none"
-                                    src={resourceIngredient.image_src}
-                                  />
-                                  <span
-                                    children={ingredient.count}
-                                    className="absolute top-0 right-0 p-1 text-[0.625rem] text-white bg-black/65 rounded-tr-md rounded-bl-md"
+                                    src={resourceRecipeDish.image_src}
                                   />
                                 </span>
                                 <span
-                                  children={Paths.Resource.title(resourceIngredient)}
+                                  children={Paths.Resource.title(resourceRecipeDish)}
                                   className="p-0.5 w-full text-center truncate"
                                 />
                               </Link>
                             </Badge>
                           </li>
-                        );
-                      })}
-                    </ul>
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+                        ))}
+                      </ul>
+                    </TableCell>
+                  </TableRow>
+                )}
+                {"ingredients" in resource && (
+                  <TableRow className="hover:bg-inherit">
+                    <TableHead children="Ингредиенты:" className="p-2 text-right" />
+                    <TableCell className="p-2 text-pretty whitespace-normal">
+                      <ul className="flex flex-wrap gap-2">
+                        {resource.ingredients.map((ingredient) => {
+                          const resourceIngredient = selectResourceById(ingredient.id);
+
+                          return (
+                            <li key={ingredient.id}>
+                              <Badge asChild className="flex-col p-0 w-16.5" variant="secondary">
+                                <Link to={Paths.Resource.to(resourceIngredient.id)}>
+                                  <span className="relative shrink-0 size-16">
+                                    <img
+                                      alt={resourceIngredient.id}
+                                      className="size-full bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl rounded-bl-none"
+                                      src={resourceIngredient.image_src}
+                                    />
+                                    {ingredient.count > 1 && (
+                                      <span
+                                        children={ingredient.count}
+                                        className="absolute top-0 right-0 p-1 text-[0.625rem] text-white bg-black/65 rounded-tr-md rounded-bl-md"
+                                      />
+                                    )}
+                                  </span>
+                                  <span
+                                    children={Paths.Resource.title(resourceIngredient)}
+                                    className="p-0.5 w-full text-center truncate"
+                                  />
+                                </Link>
+                              </Badge>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      )}
     </Container>
   );
 }

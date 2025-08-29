@@ -1,6 +1,12 @@
 import type { FoodTypeId } from "../food-types/types";
 import type { ResourceTypeId } from "../resource-types/types";
-import { ResourceCookingIngredientIds, ResourceFoodIds, ResourceIds, ResourceRecipeIds } from "./enums";
+import {
+  ResourceCookingIngredientIds,
+  ResourceFoodIds,
+  ResourceIds,
+  ResourceLocalSpecialtyNatlanIds,
+  ResourceRecipeIds,
+} from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
 
 export interface ResourceAbstract {
@@ -42,9 +48,15 @@ export interface ResourceFood extends ResourceAbstract {
   recipe_id?: ResourceRecipeId;
 }
 
-export interface ResourceIngredient {
-  id: ResourceCookingIngredientId | ResourceFoodId;
-  count: number;
+export interface ResourceLocalSpecialtyNatlan extends ResourceAbstract {
+  id: ResourceLocalSpecialtyNatlanId;
+  image_src: string;
+  /* Имя */
+  name: string;
+  /* Тип */
+  type_id: typeof ResourceTypeIds.LocalSpecialtyNatlan;
+  /* Где найти */
+  source: string | string[];
 }
 
 export interface ResourceRecipe extends ResourceAbstract {
@@ -59,11 +71,17 @@ export interface ResourceRecipe extends ResourceAbstract {
   dish_effects: string;
   proficiency: 15 | 20;
   /* Ингредиенты */
-  ingredients: ResourceIngredient[];
+  ingredients: ResourceRecipeIngredient[];
 }
 
-export type Resource = ResourceCookingIngredient | ResourceFood | ResourceRecipe;
+export interface ResourceRecipeIngredient {
+  id: ResourceCookingIngredientId | ResourceFoodId | ResourceLocalSpecialtyNatlanId;
+  count: number;
+}
+
+export type Resource = ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyNatlan | ResourceRecipe;
 export type ResourceCookingIngredientId = typeof ResourceCookingIngredientIds[keyof typeof ResourceCookingIngredientIds];
 export type ResourceFoodId = typeof ResourceFoodIds[keyof typeof ResourceFoodIds];
 export type ResourceId = typeof ResourceIds[keyof typeof ResourceIds];
+export type ResourceLocalSpecialtyNatlanId = typeof ResourceLocalSpecialtyNatlanIds[keyof typeof ResourceLocalSpecialtyNatlanIds];
 export type ResourceRecipeId = typeof ResourceRecipeIds[keyof typeof ResourceRecipeIds];
