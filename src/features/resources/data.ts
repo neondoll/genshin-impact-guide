@@ -3,7 +3,7 @@ import type {
   ResourceAbstract,
   ResourceCookingIngredient,
   ResourceFood,
-  ResourceLocalSpecialtyNatlan,
+  ResourceLocalSpecialtyNatlan, ResourceMaterial,
   ResourceRecipe,
   ResourceRecipeIngredient,
 } from "./types";
@@ -13,7 +13,7 @@ import { RegionIds } from "../regions/enums";
 import {
   ResourceCookingIngredientIds,
   ResourceFoodIds,
-  ResourceLocalSpecialtyNatlanIds,
+  ResourceLocalSpecialtyNatlanIds, ResourceMaterialIds,
   ResourceRecipeIds,
 } from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
@@ -112,7 +112,7 @@ class ResourceLocalSpecialtyNatlanClass extends ResourceAbstractClass implements
   declare readonly type_id: ResourceLocalSpecialtyNatlan["type_id"];
   declare readonly source: ResourceLocalSpecialtyNatlan["source"];
 
-  static PATH = "local-specialty-natlan";
+  static PATH = "local-specialties-natlan";
 
   constructor(
     id: ResourceLocalSpecialtyNatlan["id"],
@@ -124,6 +124,24 @@ class ResourceLocalSpecialtyNatlanClass extends ResourceAbstractClass implements
 
   static init(params: ConstructorParameters<typeof ResourceLocalSpecialtyNatlanClass>) {
     return new ResourceLocalSpecialtyNatlanClass(...params);
+  }
+}
+
+class ResourceMaterialClass extends ResourceAbstractClass implements ResourceMaterial {
+  declare readonly id: ResourceMaterial["id"];
+  declare readonly image_src: ResourceMaterial["image_src"];
+  declare readonly name: ResourceMaterial["name"];
+  declare readonly type_id: ResourceMaterial["type_id"];
+  declare readonly source: ResourceMaterial["source"];
+
+  static PATH = "materials";
+
+  constructor(id: ResourceMaterial["id"], name: ResourceMaterial["name"], source: ResourceMaterial["source"]) {
+    super(id, `${ResourceMaterialClass.PATH}/${id}.webp`, name, ResourceTypeIds.Material, source);
+  }
+
+  static init(params: ConstructorParameters<typeof ResourceMaterialClass>) {
+    return new ResourceMaterialClass(...params);
   }
 }
 
@@ -159,7 +177,7 @@ class ResourceRecipeClass extends ResourceAbstractClass implements ResourceRecip
   }
 }
 
-class ResourceRecipeIngredientClass<Type extends (ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyNatlan)> implements ResourceRecipeIngredient {
+class ResourceRecipeIngredientClass<Type extends (ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyNatlan | ResourceMaterial)> implements ResourceRecipeIngredient {
   readonly id: ResourceRecipeIngredient["id"];
   readonly count: ResourceRecipeIngredient["count"];
 
@@ -171,6 +189,7 @@ class ResourceRecipeIngredientClass<Type extends (ResourceCookingIngredient | Re
 
 const ResourceFoodUtility = {
   DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class='text-cyan-500'>${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class='text-cyan-500'>${atk}</span> ед. на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на ${atk} ед. и шанс крит. попадания на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersCritRate: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class='text-cyan-500'>${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
@@ -193,6 +212,16 @@ const cookingIngredients = {
     ResourceCookingIngredientIds.Berry,
     "Ягода",
     ResourceSource.FoundInTheWild,
+  ]),
+  [ResourceCookingIngredientIds.BirdEgg]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.BirdEgg,
+    "Яйцо",
+    ["Дикая природа", "Купить у торговцев"],
+  ]),
+  [ResourceCookingIngredientIds.Flour]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Flour,
+    "Мука",
+    ["Заготовка ингредиентов", "Купить у торговцев"],
   ]),
   [ResourceCookingIngredientIds.Grainfruit]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Grainfruit,
@@ -222,7 +251,7 @@ const cookingIngredients = {
   [ResourceCookingIngredientIds.Sugar]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Sugar,
     "Сахар",
-    [ResourceSource.Processed, ResourceSource.BuyingFromMerchants],
+    ["Заготовка ингредиентов", "Купить у торговцев"],
   ]),
   [ResourceCookingIngredientIds.ZaytunPeach]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.ZaytunPeach,
@@ -246,11 +275,18 @@ const foods = {
     [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants],
   ]),
 };
-const localSpecialtyNatlan = {
+const localSpecialtiesNatlan = {
   [ResourceLocalSpecialtyNatlanIds.QuenepaBerry]: ResourceLocalSpecialtyNatlanClass.init([
     ResourceLocalSpecialtyNatlanIds.QuenepaBerry,
     "Ягода квенепа",
     [ResourceSource.Natlan, ResourceSource.BuyingFromMerchants],
+  ]),
+};
+const materials = {
+  [ResourceMaterialIds.Cacahuatl]: ResourceMaterialClass.init([
+    ResourceMaterialIds.Cacahuatl,
+    "Какауатль",
+    [ResourceSource.Natlan, "Купить у торговцев", "Садоводство"],
   ]),
 };
 
@@ -285,7 +321,7 @@ const GentleSeaBreeze = {
     [
       new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Mint], 2),
       new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Sugar], 1),
-      new ResourceRecipeIngredientClass(localSpecialtyNatlan[ResourceLocalSpecialtyNatlanIds.QuenepaBerry], 2),
+      new ResourceRecipeIngredientClass(localSpecialtiesNatlan[ResourceLocalSpecialtyNatlanIds.QuenepaBerry], 2),
     ],
   ]),
 };
@@ -318,6 +354,42 @@ const MeatLoversFeast = {
     ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate("224–320", "6–10"),
     20,
     [],
+  ]),
+};
+const NanasCake = {
+  [ResourceFoodIds.DeliciousNanasCake]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousNanasCake,
+    "Вкусный нанасовый пирог",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersAtk(228),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
+  [ResourceFoodIds.NanasCake]: ResourceFoodClass.init([
+    ResourceFoodIds.NanasCake,
+    "Нанасовый пирог",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersAtk(194),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
+  [ResourceFoodIds.SuspiciousNanasCake]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousNanasCake,
+    "Странный нанасовый пирог",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersAtk(160),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
+  [ResourceRecipeIds.RecipeNanasCake]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeNanasCake,
+    "Рецепт: Нанасовый пирог",
+    "Задание легенд «Лето! Жара? Курорт!»",
+    ResourceFoodUtility.IncreasesAllPartyMembersAtk("160–228"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.BirdEgg], 4),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Flour], 2),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Sugar], 1),
+      new ResourceRecipeIngredientClass(materials[ResourceMaterialIds.Cacahuatl], 2),
+    ],
   ]),
 };
 const NineFruitNectar = {
@@ -396,9 +468,11 @@ const ShrimpBisque = {
 export default {
   ...cookingIngredients,
   ...foods,
-  ...localSpecialtyNatlan,
+  ...localSpecialtiesNatlan,
+  ...materials,
   ...GentleSeaBreeze,
   ...MeatLoversFeast,
+  ...NanasCake,
   ...NineFruitNectar,
   ...ShrimpBisque,
   [ResourceFoodIds.ChatterOfJoyfulNights]: ResourceFoodClass.init([

@@ -4,7 +4,7 @@ import {
   ResourceCookingIngredientIds,
   ResourceFoodIds,
   ResourceIds,
-  ResourceLocalSpecialtyNatlanIds,
+  ResourceLocalSpecialtyNatlanIds, ResourceMaterialIds,
   ResourceRecipeIds,
 } from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
@@ -59,6 +59,17 @@ export interface ResourceLocalSpecialtyNatlan extends ResourceAbstract {
   source: string | string[];
 }
 
+export interface ResourceMaterial extends ResourceAbstract {
+  id: ResourceMaterialId;
+  image_src: string;
+  /* Имя */
+  name: string;
+  /* Тип */
+  type_id: typeof ResourceTypeIds.Material;
+  /* Где найти */
+  source: string | string[];
+}
+
 export interface ResourceRecipe extends ResourceAbstract {
   id: ResourceRecipeId;
   image_src: string;
@@ -75,13 +86,15 @@ export interface ResourceRecipe extends ResourceAbstract {
 }
 
 export interface ResourceRecipeIngredient {
-  id: ResourceCookingIngredientId | ResourceFoodId | ResourceLocalSpecialtyNatlanId;
+  id: ResourceCookingIngredientId | ResourceFoodId | ResourceLocalSpecialtyNatlanId | ResourceMaterialId;
   count: number;
 }
 
-export type Resource = ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyNatlan | ResourceRecipe;
+export type Resource = ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyNatlan | ResourceMaterial
+  | ResourceRecipe;
 export type ResourceCookingIngredientId = typeof ResourceCookingIngredientIds[keyof typeof ResourceCookingIngredientIds];
 export type ResourceFoodId = typeof ResourceFoodIds[keyof typeof ResourceFoodIds];
 export type ResourceId = typeof ResourceIds[keyof typeof ResourceIds];
 export type ResourceLocalSpecialtyNatlanId = typeof ResourceLocalSpecialtyNatlanIds[keyof typeof ResourceLocalSpecialtyNatlanIds];
+export type ResourceMaterialId = typeof ResourceMaterialIds[keyof typeof ResourceMaterialIds];
 export type ResourceRecipeId = typeof ResourceRecipeIds[keyof typeof ResourceRecipeIds];

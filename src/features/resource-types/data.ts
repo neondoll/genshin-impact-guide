@@ -19,5 +19,6 @@ export default {
   [ResourceTypeIds.CookingIngredient]: ResourceTypeClass.init([ResourceTypeIds.CookingIngredient, "Кухонный ингредиент"]),
   [ResourceTypeIds.Food]: ResourceTypeClass.init([ResourceTypeIds.Food, "Еда"]),
   [ResourceTypeIds.LocalSpecialtyNatlan]: ResourceTypeClass.init([ResourceTypeIds.LocalSpecialtyNatlan, "Диковина Натлана"]),
+  [ResourceTypeIds.Material]: ResourceTypeClass.init([ResourceTypeIds.Material, "Материал"]),
   [ResourceTypeIds.Recipe]: ResourceTypeClass.init([ResourceTypeIds.Recipe, "Рецепт"]),
 } as Record<ResourceType["id"], ResourceType>;
