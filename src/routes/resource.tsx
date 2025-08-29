@@ -88,11 +88,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
 
       if (food.recipe_id) {
         foodRecipe = selectResourceRecipeById(food.recipe_id);
-        foodRelatedDishes = selectResourceFoodsByRecipeId(foodRecipe.id);
-
-        const foodIndex = foodRelatedDishes.findIndex(foodRelatedDish => foodRelatedDish.id === food.id);
-
-        foodRelatedDishes = foodRelatedDishes.slice(0, foodIndex).concat(foodRelatedDishes.slice(foodIndex + 1));
+        foodRelatedDishes = selectResourceFoodsByRecipeId(foodRecipe.id).filter(value => value.id !== food.id);
       }
 
       foodType = selectFoodTypeById(food.food_type_id);

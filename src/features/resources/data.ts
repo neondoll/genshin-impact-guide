@@ -3,7 +3,8 @@ import type {
   ResourceAbstract,
   ResourceCookingIngredient,
   ResourceFood,
-  ResourceLocalSpecialtyNatlan, ResourceMaterial,
+  ResourceLocalSpecialtyNatlan,
+  ResourceMaterial,
   ResourceRecipe,
   ResourceRecipeIngredient,
 } from "./types";
@@ -13,7 +14,8 @@ import { RegionIds } from "../regions/enums";
 import {
   ResourceCookingIngredientIds,
   ResourceFoodIds,
-  ResourceLocalSpecialtyNatlanIds, ResourceMaterialIds,
+  ResourceLocalSpecialtyNatlanIds,
+  ResourceMaterialIds,
   ResourceRecipeIds,
 } from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
@@ -193,6 +195,7 @@ const ResourceFoodUtility = {
   IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и шанс крит. попадания на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersCritRate: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersDef: (def: number | string) => `Увеличивает защиту всех членов отряда на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class="text-cyan-500">${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   RestoresHpForTheSelectedCharacter: (hp: number | string) => `Восстанавливает ${hp} HP выбранному персонажу.`,
   RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp: (hp_: number | string, hp: number | string) => `Восстанавливает ${hp_}% от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает ${hp} HP.`,
@@ -219,6 +222,11 @@ const cookingIngredients = {
     "Яйцо",
     ["Дикая природа", "Купить у торговцев"],
   ]),
+  [ResourceCookingIngredientIds.Butter]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Butter,
+    "Сливочное масло",
+    ["Заготовка ингредиентов", "Покупка у торговцев"],
+  ]),
   [ResourceCookingIngredientIds.Cheese]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Cheese,
     "Сыр",
@@ -243,6 +251,11 @@ const cookingIngredients = {
     ResourceCookingIngredientIds.Grainfruit,
     "Злакофрукт",
     [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, ResourceSource.Gardening],
+  ]),
+  [ResourceCookingIngredientIds.Milk]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Milk,
+    "Молоко",
+    "Купить у торговцев",
   ]),
   [ResourceCookingIngredientIds.Mint]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Mint,
@@ -306,6 +319,42 @@ const materials = {
   ]),
 };
 
+const BubblemilkPie = {
+  [ResourceFoodIds.BubblemilkPie]: ResourceFoodClass.init([
+    ResourceFoodIds.BubblemilkPie,
+    "Молочный пирог с пузырьками",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersDef(200),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeBubblemilkPie),
+  [ResourceFoodIds.DeliciousBubblemilkPie]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousBubblemilkPie,
+    "Вкусный молочный пирог с пузырьками",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersDef(235),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeBubblemilkPie),
+  [ResourceFoodIds.SuspiciousBubblemilkPie]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousBubblemilkPie,
+    "Странный молочный пирог с пузырьками",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersDef(165),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeBubblemilkPie),
+  [ResourceRecipeIds.RecipeBubblemilkPie]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeBubblemilkPie,
+    "Рецепт: Молочный пирог с пузырьками",
+    "Внутриигровая почта",
+    ResourceFoodUtility.IncreasesAllPartyMembersDef("165–235"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Butter], 2),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Flour], 2),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Milk], 4),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Sugar], 1),
+    ],
+  ]),
+};
 const GentleSeaBreeze = {
   [ResourceFoodIds.DeliciousGentleSeaBreeze]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousGentleSeaBreeze,
@@ -366,7 +415,7 @@ const MeatLoversFeast = {
   [ResourceRecipeIds.RecipeMeatLoversFeast]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeMeatLoversFeast,
     "Рецепт: «Радость мясоеда»",
-    ResourceSource.ObtainedFromNewRecipeRewardsMail,
+    "Внутриигровая почта",
     ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate("224–320", "6–10"),
     20,
     [
@@ -475,7 +524,7 @@ const NineFruitNectar = {
   [ResourceRecipeIds.RecipeNineFruitNectar]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeNineFruitNectar,
     "Рецепт: Нектар девяти фруктов",
-    ResourceSource.ObtainedFromNewRecipeRewardsMail,
+    "Внутриигровая почта",
     ResourceFoodUtility.IncreasesAllPartyMembersCritRate("10–20"),
     15,
     [
@@ -528,6 +577,7 @@ export default {
   ...foods,
   ...localSpecialtiesNatlan,
   ...materials,
+  ...BubblemilkPie,
   ...GentleSeaBreeze,
   ...MeatLoversFeast,
   ...MiniAshaPockets,
