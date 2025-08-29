@@ -8,10 +8,18 @@ import type {
 } from "@/features/resources/types";
 import { Badge } from "@/components/ui/badge";
 import {
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/container";
+import { ResourceTypeIds } from "@/features/resource-types/enums";
+import { selectCharacterById } from "@/features/characters/selectors";
+import { selectFoodTypeById } from "@/features/food-types/selectors";
 import {
   selectResourceById,
   selectResourceFoodsByRecipeId,
@@ -19,9 +27,8 @@ import {
 } from "@/features/resources/selectors";
 import { selectResourceTypeById } from "@/features/resource-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import CharacterBadge from "@/organisms/character-badge";
 import Paths from "@/constants/paths";
-import { ResourceTypeIds } from "@/features/resource-types/enums.ts";
-import { selectFoodTypeById } from "@/features/food-types/selectors.ts";
 
 function RecipeIngredients({ items }: { items: ResourceRecipeIngredient[] }) {
   return (
@@ -77,18 +84,38 @@ export function loader({ params }: { params: Record<string, string | undefined> 
   const resource = selectResourceById(params.resourceId as ResourceType["id"]);
   const resourceType = selectResourceTypeById(resource.type_id);
 
+  let foodBaseDishes = undefined;
+  let foodCharacter = undefined;
   let foodRecipe = undefined;
   let foodRelatedDishes = undefined;
+  let foodSpecialDish = undefined;
   let foodType = undefined;
   let recipeDishes = undefined;
+  let recipeSpecialDish = undefined;
 
   switch (resource.type_id) {
     case ResourceTypeIds.Food: {
       const food = resource as ResourceFood;
 
+      if (food.character_id) {
+        foodCharacter = selectCharacterById(food.character_id);
+      }
+
       if (food.recipe_id) {
         foodRecipe = selectResourceRecipeById(food.recipe_id);
-        foodRelatedDishes = selectResourceFoodsByRecipeId(foodRecipe.id).filter(value => value.id !== food.id);
+
+        if (food.character_id) {
+          foodBaseDishes = selectResourceFoodsByRecipeId(foodRecipe.id).filter(value => value.id !== food.id);
+        }
+        else {
+          foodRelatedDishes = selectResourceFoodsByRecipeId(foodRecipe.id).filter(value => value.id !== food.id);
+
+          const foodSpecialDishIndex = foodRelatedDishes.findIndex(dish => Boolean(dish.character_id));
+
+          if (foodSpecialDishIndex !== -1) {
+            foodSpecialDish = foodRelatedDishes.splice(foodSpecialDishIndex, 1)[0];
+          }
+        }
       }
 
       foodType = selectFoodTypeById(food.food_type_id);
@@ -100,23 +127,45 @@ export function loader({ params }: { params: Record<string, string | undefined> 
 
       recipeDishes = selectResourceFoodsByRecipeId(recipe.id);
 
+      const recipeSpecialDishIndex = recipeDishes.findIndex(dish => Boolean(dish.character_id));
+
+      if (recipeSpecialDishIndex !== -1) {
+        recipeSpecialDish = recipeDishes.splice(recipeSpecialDishIndex, 1)[0];
+      }
+
       break;
     }
   }
 
-  return { foodRecipe, foodRelatedDishes, foodType, recipeDishes, resource, resourceType };
+  return {
+    foodBaseDishes,
+    foodCharacter,
+    foodRecipe,
+    foodRelatedDishes,
+    foodSpecialDish,
+    foodType,
+    recipeDishes,
+    recipeSpecialDish,
+    resource,
+    resourceType,
+  };
 }
 
 export default function Resource() {
   const {
+    foodBaseDishes,
+    foodCharacter,
     foodRecipe,
     foodRelatedDishes,
+    foodSpecialDish,
     foodType,
     recipeDishes,
+    recipeSpecialDish,
     resource,
     resourceType,
   } = useLoaderData<ReturnType<typeof loader>>();
-  const showProperties = Boolean(foodRecipe) || Boolean(foodRelatedDishes) || Boolean(recipeDishes)
+  const showProperties = Boolean(foodBaseDishes) || Boolean(foodCharacter) || Boolean(foodRecipe)
+    || Boolean(foodRelatedDishes) || Boolean(foodSpecialDish) || Boolean(recipeDishes) || Boolean(recipeSpecialDish)
     || "ingredients" in resource || "dish_effects" in resource || "proficiency" in resource;
 
   return (
@@ -210,20 +259,47 @@ export default function Resource() {
             <Table>
               <TableBody>
                 {foodRecipe && (
-                  <TableRow className="hover:bg-inherit">
-                    <TableHead children="Рецепт:" className="p-2 text-right" />
-                    <TableCell className="p-2 text-pretty whitespace-normal">
-                      <ResourceBadge
-                        resourceId={foodRecipe.id}
-                        resourceImageSrc={foodRecipe.image_src}
-                        resourceName={foodRecipe.name}
+                  <>
+                    <TableRow className="hover:bg-inherit">
+                      <TableHead children="Рецепт:" className="p-2 text-right" />
+                      <TableCell className="p-2 text-pretty whitespace-normal">
+                        <ResourceBadge
+                          resourceId={foodRecipe.id}
+                          resourceImageSrc={foodRecipe.image_src}
+                          resourceName={foodRecipe.name}
+                        />
+                      </TableCell>
+                    </TableRow>
+                    <TableRow className="hover:bg-inherit">
+                      <TableHead children="Ингредиенты:" className="p-2 text-right" />
+                      <TableCell
+                        children={<RecipeIngredients items={foodRecipe.ingredients} />}
+                        className="p-2 text-pretty whitespace-normal"
                       />
+                    </TableRow>
+                  </>
+                )}
+                {foodBaseDishes && (
+                  <TableRow className="hover:bg-inherit">
+                    <TableHead children="Основные блюда:" className="p-2 text-right" />
+                    <TableCell className="p-2 text-pretty whitespace-normal">
+                      <ul className="flex flex-wrap gap-2">
+                        {foodBaseDishes.map(foodBaseDish => (
+                          <li key={foodBaseDish.id}>
+                            <ResourceBadge
+                              resourceId={foodBaseDish.id}
+                              resourceImageSrc={foodBaseDish.image_src}
+                              resourceName={foodBaseDish.name}
+                            />
+                          </li>
+                        ))}
+                      </ul>
                     </TableCell>
                   </TableRow>
                 )}
                 {foodRelatedDishes && (
                   <TableRow className="hover:bg-inherit">
-                    <TableHead children="Блюда:" className="p-2 text-right" />
+                    <TableHead children="Связанные блюда:" className="p-2 text-right" />
                     <TableCell className="p-2 text-pretty whitespace-normal">
                       <ul className="flex flex-wrap gap-2">
                         {foodRelatedDishes.map(foodRelatedDish => (
@@ -239,13 +315,29 @@ export default function Resource() {
                     </TableCell>
                   </TableRow>
                 )}
-                {foodRecipe && (
+                {foodSpecialDish && (
                   <TableRow className="hover:bg-inherit">
-                    <TableHead children="Ингредиенты:" className="p-2 text-right" />
-                    <TableCell
-                      children={<RecipeIngredients items={foodRecipe.ingredients} />}
-                      className="p-2 text-pretty whitespace-normal"
-                    />
+                    <TableHead children="Особое блюдо:" className="p-2 text-right" />
+                    <TableCell className="p-2 text-pretty whitespace-normal">
+                      <ResourceBadge
+                        resourceId={foodSpecialDish.id}
+                        resourceImageSrc={foodSpecialDish.image_src}
+                        resourceName={foodSpecialDish.name}
+                      />
+                    </TableCell>
+                  </TableRow>
+                )}
+                {foodCharacter && (
+                  <TableRow className="hover:bg-inherit">
+                    <TableHead children="Персонаж:" className="p-2 text-right" />
+                    <TableCell className="p-2 text-pretty whitespace-normal">
+                      <CharacterBadge
+                        characterId={foodCharacter.id}
+                        characterImgSrc={foodCharacter.image_src}
+                        characterName={foodCharacter.name}
+                        characterRarity={foodCharacter.rarity}
+                      />
+                    </TableCell>
                   </TableRow>
                 )}
                 {"dish_effects" in resource && (
@@ -261,6 +353,15 @@ export default function Resource() {
                   <TableRow className="hover:bg-inherit">
                     <TableHead children="Умение:" className="p-2 text-right" />
                     <TableCell children={resource.proficiency} className="p-2 text-pretty whitespace-normal" />
+                  </TableRow>
+                )}
+                {"ingredients" in resource && (
+                  <TableRow className="hover:bg-inherit">
+                    <TableHead children="Ингредиенты:" className="p-2 text-right" />
+                    <TableCell
+                      children={<RecipeIngredients items={resource.ingredients} />}
+                      className="p-2 text-pretty whitespace-normal"
+                    />
                   </TableRow>
                 )}
                 {recipeDishes && (
@@ -281,13 +382,16 @@ export default function Resource() {
                     </TableCell>
                   </TableRow>
                 )}
-                {"ingredients" in resource && (
+                {recipeSpecialDish && (
                   <TableRow className="hover:bg-inherit">
-                    <TableHead children="Ингредиенты:" className="p-2 text-right" />
-                    <TableCell
-                      children={<RecipeIngredients items={resource.ingredients} />}
-                      className="p-2 text-pretty whitespace-normal"
-                    />
+                    <TableHead children="Особое блюдо:" className="p-2 text-right" />
+                    <TableCell className="p-2 text-pretty whitespace-normal">
+                      <ResourceBadge
+                        resourceId={recipeSpecialDish.id}
+                        resourceImageSrc={recipeSpecialDish.image_src}
+                        resourceName={recipeSpecialDish.name}
+                      />
+                    </TableCell>
                   </TableRow>
                 )}
               </TableBody>

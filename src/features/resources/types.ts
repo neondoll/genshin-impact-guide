@@ -10,6 +10,7 @@ import {
   ResourceRecipeIds,
 } from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
+import type { CharacterId } from "@/features/characters/types.ts";
 
 export interface ResourceAbstract {
   id: ResourceId;
@@ -48,6 +49,8 @@ export interface ResourceFood extends ResourceAbstract {
   source: string | string[];
   /* Рецепт */
   recipe_id?: ResourceRecipeId;
+  /* Персонаж */
+  character_id?: CharacterId;
 }
 
 export interface ResourceLocalSpecialtyInazuma extends ResourceAbstract {

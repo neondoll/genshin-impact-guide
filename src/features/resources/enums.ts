@@ -17,33 +17,66 @@ export const ResourceCookingIngredientIds = {
   /* Персик зайтун   */ ZaytunPeach: "zaytun_peach",
 } as const;
 export const ResourceFoodIds = {
-  /* Яблоко                               */ Apple: "apple",
-  /* Молочный пирог с пузырьками          */ BubblemilkPie: "bubblemilk_pie",
-  /* «Беседы весёлых ночей»               */ ChatterOfJoyfulNights: "chatter_of_joyful_nights",
-  /* Вкусный молочный пирог с пузырьками  */ DeliciousBubblemilkPie: "delicious_bubblemilk_pie",
-  /* Вкусный напиток 455                  */ DeliciousDrink455: "delicious_drink_455",
-  /* Вкусный «Лёгкий морской бриз»        */ DeliciousGentleSeaBreeze: "delicious_gentle_sea_breeze",
-  /* Вкусная «Радость мясоеда»            */ DeliciousMeatLoversFeast: "delicious_meat_lovers_feast",
-  /* Вкусные мини-мешочки аши             */ DeliciousMiniAshaPockets: "delicious_mini_asha_pockets",
-  /* Вкусный нанасовый пирог              */ DeliciousNanasCake: "delicious_nanas_cake",
-  /* Вкусный нектар девяти фруктов        */ DeliciousNineFruitNectar: "delicious_nine_fruit_nectar",
-  /* Вкусный биск с креветками            */ DeliciousShrimpBisque: "delicious_shrimp_bisque",
-  /* Напиток 455                          */ Drink455: "drink_455",
-  /* «Лёгкий морской бриз»                */ GentleSeaBreeze: "gentle_sea_breeze",
-  /* «Радость мясоеда»                    */ MeatLoversFeast: "meat_lovers_feast",
-  /* Мини-мешочки аши                     */ MiniAshaPockets: "mini_asha_pockets",
-  /* Нанасовый пирог                      */ NanasCake: "nanas_cake",
-  /* Нектар девяти фруктов                */ NineFruitNectar: "nine_fruit_nectar",
-  /* Биск с креветками                    */ ShrimpBisque: "shrimp_bisque",
-  /* Закатник                             */ Sunsettia: "sunsettia",
-  /* Странный молочный пирог с пузырьками */ SuspiciousBubblemilkPie: "suspicious_bubblemilk_pie",
-  /* Странный напиток 455                 */ SuspiciousDrink455: "suspicious_drink_455",
-  /* Странный «Лёгкий морской бриз»       */ SuspiciousGentleSeaBreeze: "suspicious_gentle_sea_breeze",
-  /* Странная «Радость мясоеда»           */ SuspiciousMeatLoversFeast: "suspicious_meat_lovers_feast",
-  /* Странные мини-мешочки аши            */ SuspiciousMiniAshaPockets: "suspicious_mini_asha_pockets",
-  /* Странный нанасовый пирог             */ SuspiciousNanasCake: "suspicious_nanas_cake",
-  /* Странный нектар девяти фруктов       */ SuspiciousNineFruitNectar: "suspicious_nine_fruit_nectar",
-  /* Странный биск с креветками           */ SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
+  /* Яблоко */
+  Apple: "apple",
+  /* Молочный пирог с пузырьками */
+  BubblemilkPie: "bubblemilk_pie",
+  /* «Беседы весёлых ночей» */
+  ChatterOfJoyfulNights: "chatter_of_joyful_nights",
+  /* Хрустящие креветки с картофелем */
+  CrispyPotatoShrimpPlatter: "crispy_potato_shrimp_platter",
+  /* Вкусный молочный пирог с пузырьками */
+  DeliciousBubblemilkPie: "delicious_bubblemilk_pie",
+  /* Вкусные хрустящие креветки с картофелем */
+  DeliciousCrispyPotatoShrimpPlatter: "delicious_crispy_potato_shrimp_platter",
+  /* Вкусный напиток 455 */
+  DeliciousDrink455: "delicious_drink_455",
+  /* Вкусный «Лёгкий морской бриз» */
+  DeliciousGentleSeaBreeze: "delicious_gentle_sea_breeze",
+  /* Вкусная «Радость мясоеда» */
+  DeliciousMeatLoversFeast: "delicious_meat_lovers_feast",
+  /* Вкусные мини-мешочки аши */
+  DeliciousMiniAshaPockets: "delicious_mini_asha_pockets",
+  /* Вкусный нанасовый пирог */
+  DeliciousNanasCake: "delicious_nanas_cake",
+  /* Вкусный нектар девяти фруктов */
+  DeliciousNineFruitNectar: "delicious_nine_fruit_nectar",
+  /* Вкусный биск с креветками */
+  DeliciousShrimpBisque: "delicious_shrimp_bisque",
+  /* Напиток 455 */
+  Drink455: "drink_455",
+  /* «Лёгкий морской бриз» */
+  GentleSeaBreeze: "gentle_sea_breeze",
+  /* «Радость мясоеда» */
+  MeatLoversFeast: "meat_lovers_feast",
+  /* Мини-мешочки аши */
+  MiniAshaPockets: "mini_asha_pockets",
+  /* Нанасовый пирог */
+  NanasCake: "nanas_cake",
+  /* Нектар девяти фруктов */
+  NineFruitNectar: "nine_fruit_nectar",
+  /* Биск с креветками */
+  ShrimpBisque: "shrimp_bisque",
+  /* Закатник */
+  Sunsettia: "sunsettia",
+  /* Странный молочный пирог с пузырьками */
+  SuspiciousBubblemilkPie: "suspicious_bubblemilk_pie",
+  /* Странные хрустящие креветки с картофелем */
+  SuspiciousCrispyPotatoShrimpPlatter: "suspicious_crispy_potato_shrimp_platter",
+  /* Странный напиток 455 */
+  SuspiciousDrink455: "suspicious_drink_455",
+  /* Странный «Лёгкий морской бриз» */
+  SuspiciousGentleSeaBreeze: "suspicious_gentle_sea_breeze",
+  /* Странная «Радость мясоеда» */
+  SuspiciousMeatLoversFeast: "suspicious_meat_lovers_feast",
+  /* Странные мини-мешочки аши */
+  SuspiciousMiniAshaPockets: "suspicious_mini_asha_pockets",
+  /* Странный нанасовый пирог */
+  SuspiciousNanasCake: "suspicious_nanas_cake",
+  /* Странный нектар девяти фруктов */
+  SuspiciousNineFruitNectar: "suspicious_nine_fruit_nectar",
+  /* Странный биск с креветками */
+  SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
 } as const;
 export const ResourceLocalSpecialtyInazumaIds = {
   /* Цвет сакуры */ SakuraBloom: "sakura_bloom",
@@ -55,14 +88,15 @@ export const ResourceMaterialIds = {
   /* Какауатль */ Cacahuatl: "cacahuatl",
 } as const;
 export const ResourceRecipeIds = {
-  /* Рецепт: Молочный пирог с пузырьками */ RecipeBubblemilkPie: "recipe_bubblemilk_pie",
-  /* Рецепт: Напиток 455                 */ RecipeDrink455: "recipe_drink_455",
-  /* Рецепт: «Лёгкий морской бриз»       */ RecipeGentleSeaBreeze: "recipe_gentle_sea_breeze",
-  /* Рецепт: «Радость мясоеда»           */ RecipeMeatLoversFeast: "recipe_meat_lovers_feast",
-  /* Рецепт: Мини-мешочки аши            */ RecipeMiniAshaPockets: "recipe_mini_asha_pockets",
-  /* Рецепт: Нанасовый пирог             */ RecipeNanasCake: "recipe_nanas_cake",
-  /* Рецепт: Нектар девяти фруктов       */ RecipeNineFruitNectar: "recipe_nine_fruit_nectar",
-  /* Рецепт: Биск с креветками           */ RecipeShrimpBisque: "recipe_shrimp_bisque",
+  /* Рецепт: Молочный пирог с пузырьками     */ RecipeBubblemilkPie: "recipe_bubblemilk_pie",
+  /* Рецепт: Хрустящие креветки с картофелем */ RecipeCrispyPotatoShrimpPlatter: "recipe_crispy_potato_shrimp_platter",
+  /* Рецепт: Напиток 455                     */ RecipeDrink455: "recipe_drink_455",
+  /* Рецепт: «Лёгкий морской бриз»           */ RecipeGentleSeaBreeze: "recipe_gentle_sea_breeze",
+  /* Рецепт: «Радость мясоеда»               */ RecipeMeatLoversFeast: "recipe_meat_lovers_feast",
+  /* Рецепт: Мини-мешочки аши                */ RecipeMiniAshaPockets: "recipe_mini_asha_pockets",
+  /* Рецепт: Нанасовый пирог                 */ RecipeNanasCake: "recipe_nanas_cake",
+  /* Рецепт: Нектар девяти фруктов           */ RecipeNineFruitNectar: "recipe_nine_fruit_nectar",
+  /* Рецепт: Биск с креветками               */ RecipeShrimpBisque: "recipe_shrimp_bisque",
 } as const;
 export const ResourceIds = {
   ...ResourceCookingIngredientIds,

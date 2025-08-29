@@ -22,6 +22,7 @@ import {
 } from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
 import regions from "../regions/data";
+import { CharacterIds } from "@/features/characters/enums.ts";
 
 abstract class ResourceAbstractClass implements ResourceAbstract {
   readonly id: ResourceAbstract["id"];
@@ -78,6 +79,7 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
   readonly utility: ResourceFood["utility"];
   declare readonly source: ResourceFood["source"];
   protected _recipe_id: ResourceFood["recipe_id"];
+  protected _character_id: ResourceFood["character_id"];
 
   static PATH = "foods";
 
@@ -94,8 +96,18 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
     this.utility = utility;
   }
 
+  get character_id() {
+    return this._character_id;
+  }
+
   get recipe_id() {
     return this._recipe_id;
+  }
+
+  setCharacterId(val: NonNullable<ResourceFood["character_id"]>) {
+    this._character_id = val;
+
+    return this;
   }
 
   setRecipeId(val: NonNullable<ResourceFood["recipe_id"]>) {
@@ -240,7 +252,7 @@ const cookingIngredients = {
   [ResourceCookingIngredientIds.Berry]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Berry,
     "Ягода",
-    ResourceSource.FoundInTheWild,
+    "Дикая природа",
   ]),
   [ResourceCookingIngredientIds.BirdEgg]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.BirdEgg,
@@ -295,7 +307,7 @@ const cookingIngredients = {
   [ResourceCookingIngredientIds.Potato]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Potato,
     "Картофель",
-    [ResourceSource.TeyvatResearch, ResourceSource.BuyingFromMerchants],
+    ["Исследование Тейвата", "Купить у торговцев"],
   ]),
   [ResourceCookingIngredientIds.Salt]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Salt,
@@ -392,13 +404,47 @@ const BubblemilkPie = {
     ],
   ]),
 };
-const ChatterOfJoyfulNights = {
+const CrispyPotatoShrimpPlatter = {
   [ResourceFoodIds.ChatterOfJoyfulNights]: ResourceFoodClass.init([
     ResourceFoodIds.ChatterOfJoyfulNights,
     "«Беседы весёлых ночей»",
     FoodTypeIds.RecoveryDish,
     ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(34, 980),
     "Готовка",
+  ]).setCharacterId(CharacterIds.Dahlia).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  [ResourceFoodIds.CrispyPotatoShrimpPlatter]: ResourceFoodClass.init([
+    ResourceFoodIds.CrispyPotatoShrimpPlatter,
+    "Хрустящие креветки с картофелем",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(28, 620),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  [ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter,
+    "Вкусные хрустящие креветки с картофелем",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(30, 790),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  [ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter,
+    "Странные хрустящие креветки с картофелем",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(26, 450),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  [ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter,
+    "Рецепт: Хрустящие креветки с картофелем",
+    "Купить у Сары в ресторане «Хороший охотник»",
+    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp("26–30", "450–790"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Berry], 2),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Mint], 4),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Potato], 3),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ShrimpMeat], 4),
+    ],
   ]),
 };
 const Drink455 = {
@@ -660,7 +706,7 @@ export default {
   ...localSpecialtiesNatlan,
   ...materials,
   ...BubblemilkPie,
-  ...ChatterOfJoyfulNights,
+  ...CrispyPotatoShrimpPlatter,
   ...Drink455,
   ...GentleSeaBreeze,
   ...MeatLoversFeast,
