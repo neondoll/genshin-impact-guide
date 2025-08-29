@@ -188,11 +188,12 @@ class ResourceRecipeIngredientClass<Type extends (ResourceCookingIngredient | Re
 }
 
 const ResourceFoodUtility = {
-  DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class='text-cyan-500'>${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class='text-cyan-500'>${atk}</span> ед. на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  ALittleSurpriseFromTheEasybreezeHolidayResort: (s: number | string) => `<span class="italic">Небольшой сюрприз от курорта «Оазис отдыха».</span><br>Восстанавливает 1 здоровье выбранного персонажа каждые 8 секунд в течение <span class="text-cyan-500">${s} секунд</span>. В кооперативном режиме этот эффект применяется только к вашим персонажам.`,
+  DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk}</span> ед. на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на ${atk} ед. и шанс крит. попадания на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersCritRate: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class='text-cyan-500'>${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class="text-cyan-500">${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   RestoresHpForTheSelectedCharacter: (hp: number | string) => `Восстанавливает ${hp} HP выбранному персонажу.`,
   RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp: (hp_: number | string, hp: number | string) => `Восстанавливает ${hp_}% от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает ${hp} HP.`,
 } as const;
@@ -218,10 +219,20 @@ const cookingIngredients = {
     "Яйцо",
     ["Дикая природа", "Купить у торговцев"],
   ]),
+  [ResourceCookingIngredientIds.Cheese]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Cheese,
+    "Сыр",
+    ["Заготовка ингредиентов", "Покупка у торговцев"],
+  ]),
   [ResourceCookingIngredientIds.Flour]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Flour,
     "Мука",
     ["Заготовка ингредиентов", "Купить у торговцев"],
+  ]),
+  [ResourceCookingIngredientIds.Fowl]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Fowl,
+    "Мясо птицы",
+    ["Животные", "Купить у торговцев", "Загадочный мясной продукт"],
   ]),
   [ResourceCookingIngredientIds.Grainfruit]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Grainfruit,
@@ -236,7 +247,7 @@ const cookingIngredients = {
   [ResourceCookingIngredientIds.Onion]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Onion,
     "Лук",
-    ResourceSource.BuyingFromMerchants,
+    "Купить у торговцев",
   ]),
   [ResourceCookingIngredientIds.Potato]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Potato,
@@ -356,6 +367,42 @@ const MeatLoversFeast = {
     [],
   ]),
 };
+const MiniAshaPockets = {
+  [ResourceFoodIds.DeliciousMiniAshaPockets]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousMiniAshaPockets,
+    "Вкусные мини-мешочки аши",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.ALittleSurpriseFromTheEasybreezeHolidayResort(48),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeMiniAshaPockets),
+  [ResourceFoodIds.MiniAshaPockets]: ResourceFoodClass.init([
+    ResourceFoodIds.MiniAshaPockets,
+    "Мини-мешочки аши",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.ALittleSurpriseFromTheEasybreezeHolidayResort(40),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeMiniAshaPockets),
+  [ResourceFoodIds.SuspiciousMiniAshaPockets]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousMiniAshaPockets,
+    "Странные мини-мешочки аши",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.ALittleSurpriseFromTheEasybreezeHolidayResort(32),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeMiniAshaPockets),
+  [ResourceRecipeIds.RecipeMiniAshaPockets]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeMiniAshaPockets,
+    "Рецепт: Мини-мешочки аши",
+    "Награда Семицветной статуи на курорте «Оазис отдыха»",
+    ResourceFoodUtility.ALittleSurpriseFromTheEasybreezeHolidayResort("32–48"),
+    20,
+    [
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Cheese], 1),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Flour], 1),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Fowl], 1),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Onion], 1),
+    ],
+  ]),
+};
 const NanasCake = {
   [ResourceFoodIds.DeliciousNanasCake]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousNanasCake,
@@ -472,6 +519,7 @@ export default {
   ...materials,
   ...GentleSeaBreeze,
   ...MeatLoversFeast,
+  ...MiniAshaPockets,
   ...NanasCake,
   ...NineFruitNectar,
   ...ShrimpBisque,
