@@ -190,8 +190,8 @@ class ResourceRecipeIngredientClass<Type extends (ResourceCookingIngredient | Re
 const ResourceFoodUtility = {
   ALittleSurpriseFromTheEasybreezeHolidayResort: (s: number | string) => `<span class="italic">Небольшой сюрприз от курорта «Оазис отдыха».</span><br>Восстанавливает 1 здоровье выбранного персонажа каждые 8 секунд в течение <span class="text-cyan-500">${s} секунд</span>. В кооперативном режиме этот эффект применяется только к вашим персонажам.`,
   DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk}</span> ед. на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на ${atk} ед. и шанс крит. попадания на ${critRate}% на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и шанс крит. попадания на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersCritRate: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class="text-cyan-500">${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   RestoresHpForTheSelectedCharacter: (hp: number | string) => `Восстанавливает ${hp} HP выбранному персонажу.`,
@@ -223,6 +223,11 @@ const cookingIngredients = {
     ResourceCookingIngredientIds.Cheese,
     "Сыр",
     ["Заготовка ингредиентов", "Покупка у торговцев"],
+  ]),
+  [ResourceCookingIngredientIds.CoffeeBeans]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.CoffeeBeans,
+    "Кофейные зёрна",
+    "Купить у Энтеки в кафе «Пуспа»",
   ]),
   [ResourceCookingIngredientIds.Flour]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Flour,
@@ -257,7 +262,7 @@ const cookingIngredients = {
   [ResourceCookingIngredientIds.ShrimpMeat]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.ShrimpMeat,
     "Мясо креветки",
-    ResourceSource.BuyingFromMerchants,
+    "Купить у торговцев",
   ]),
   [ResourceCookingIngredientIds.Sugar]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Sugar,
@@ -342,7 +347,7 @@ const MeatLoversFeast = {
     "Вкусная «Радость мясоеда»",
     FoodTypeIds.ATKBoostingDish,
     ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate(320, 10),
-    ResourceSource.ObtainedByCooking,
+    "Готовка",
   ]).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast),
   [ResourceFoodIds.MeatLoversFeast]: ResourceFoodClass.init([
     ResourceFoodIds.MeatLoversFeast,
@@ -364,7 +369,13 @@ const MeatLoversFeast = {
     ResourceSource.ObtainedFromNewRecipeRewardsMail,
     ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate("224–320", "6–10"),
     20,
-    [],
+    [
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.CoffeeBeans], 3),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Flour], 3),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Fowl], 5),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ShrimpMeat], 4),
+
+    ],
   ]),
 };
 const MiniAshaPockets = {

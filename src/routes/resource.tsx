@@ -193,12 +193,12 @@ export default function Resource() {
                   {typeof resource.source === "string"
                     ? resource.source
                     : (
-                      <ul className="ml-4 list-outside list-disc">
-                        {resource.source.map((source, index) => (
-                          <li children={source} key={index} />
-                        ))}
-                      </ul>
-                    )}
+                        <ul className="ml-4 list-outside list-disc">
+                          {resource.source.map((source, index) => (
+                            <li children={source} key={index} />
+                          ))}
+                        </ul>
+                      )}
                 </TableCell>
               </TableRow>
             </TableBody>
