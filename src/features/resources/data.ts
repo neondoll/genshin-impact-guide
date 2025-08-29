@@ -3,6 +3,7 @@ import type {
   ResourceAbstract,
   ResourceCookingIngredient,
   ResourceFood,
+  ResourceLocalSpecialtyInazuma,
   ResourceLocalSpecialtyNatlan,
   ResourceMaterial,
   ResourceRecipe,
@@ -14,6 +15,7 @@ import { RegionIds } from "../regions/enums";
 import {
   ResourceCookingIngredientIds,
   ResourceFoodIds,
+  ResourceLocalSpecialtyInazumaIds,
   ResourceLocalSpecialtyNatlanIds,
   ResourceMaterialIds,
   ResourceRecipeIds,
@@ -107,6 +109,28 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
   }
 }
 
+class ResourceLocalSpecialtyInazumaClass extends ResourceAbstractClass implements ResourceLocalSpecialtyInazuma {
+  declare readonly id: ResourceLocalSpecialtyInazuma["id"];
+  declare readonly image_src: ResourceLocalSpecialtyInazuma["image_src"];
+  declare readonly name: ResourceLocalSpecialtyInazuma["name"];
+  declare readonly type_id: ResourceLocalSpecialtyInazuma["type_id"];
+  declare readonly source: ResourceLocalSpecialtyInazuma["source"];
+
+  static PATH = "local-specialties-inazuma";
+
+  constructor(
+    id: ResourceLocalSpecialtyInazuma["id"],
+    name: ResourceLocalSpecialtyInazuma["name"],
+    source: ResourceLocalSpecialtyInazuma["source"],
+  ) {
+    super(id, `${ResourceLocalSpecialtyInazumaClass.PATH}/${id}.webp`, name, ResourceTypeIds.LocalSpecialtyInazuma, source);
+  }
+
+  static init(params: ConstructorParameters<typeof ResourceLocalSpecialtyInazumaClass>) {
+    return new ResourceLocalSpecialtyInazumaClass(...params);
+  }
+}
+
 class ResourceLocalSpecialtyNatlanClass extends ResourceAbstractClass implements ResourceLocalSpecialtyNatlan {
   declare readonly id: ResourceLocalSpecialtyNatlan["id"];
   declare readonly image_src: ResourceLocalSpecialtyNatlan["image_src"];
@@ -179,7 +203,7 @@ class ResourceRecipeClass extends ResourceAbstractClass implements ResourceRecip
   }
 }
 
-class ResourceRecipeIngredientClass<Type extends (ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyNatlan | ResourceMaterial)> implements ResourceRecipeIngredient {
+class ResourceRecipeIngredientClass<Type extends (ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyInazuma | ResourceLocalSpecialtyNatlan | ResourceMaterial)> implements ResourceRecipeIngredient {
   readonly id: ResourceRecipeIngredient["id"];
   readonly count: ResourceRecipeIngredient["count"];
 
@@ -197,8 +221,9 @@ const ResourceFoodUtility = {
   IncreasesAllPartyMembersCritRate: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersDef: (def: number | string) => `Увеличивает защиту всех членов отряда на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class="text-cyan-500">${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  RestoresHpForTheSelectedCharacter: (hp: number | string) => `Восстанавливает ${hp} HP выбранному персонажу.`,
-  RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp: (hp_: number | string, hp: number | string) => `Восстанавливает ${hp_}% от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает ${hp} HP.`,
+  RestoresHpForTheSelectedCharacter: (hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp}</span> HP выбранному персонажу.`,
+  RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp: (hp_: number | string, hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp_}%</span> от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает <span class="text-cyan-500">${hp}</span> HP.`,
+  RevivesACharacterAndRestoresHp: (hp: number | string) => `Воскрешает персонажа и восстанавливает ему <span class="text-cyan-500">${hp}</span> HP.`,
 } as const;
 const ResourceSource = {
   BuyingFromMerchants: "Покупка у торговцев",
@@ -260,7 +285,7 @@ const cookingIngredients = {
   [ResourceCookingIngredientIds.Mint]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Mint,
     "Мята",
-    [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, ResourceSource.Gardening],
+    ["Дикая природа", "Купить у торговцев", "Садоводство"],
   ]),
   [ResourceCookingIngredientIds.Onion]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.Onion,
@@ -271,6 +296,11 @@ const cookingIngredients = {
     ResourceCookingIngredientIds.Potato,
     "Картофель",
     [ResourceSource.TeyvatResearch, ResourceSource.BuyingFromMerchants],
+  ]),
+  [ResourceCookingIngredientIds.Salt]: ResourceCookingIngredientClass.init([
+    ResourceCookingIngredientIds.Salt,
+    "Соль",
+    "Купить у торговцев",
   ]),
   [ResourceCookingIngredientIds.ShrimpMeat]: ResourceCookingIngredientClass.init([
     ResourceCookingIngredientIds.ShrimpMeat,
@@ -302,6 +332,13 @@ const foods = {
     FoodTypeIds.RecoveryDish,
     ResourceFoodUtility.RestoresHpForTheSelectedCharacter(300),
     [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants],
+  ]),
+};
+const localSpecialtiesInazuma = {
+  [ResourceLocalSpecialtyInazumaIds.SakuraBloom]: ResourceLocalSpecialtyInazumaClass.init([
+    ResourceLocalSpecialtyInazumaIds.SakuraBloom,
+    "Цвет сакуры",
+    "Остров Наруками",
   ]),
 };
 const localSpecialtiesNatlan = {
@@ -352,6 +389,50 @@ const BubblemilkPie = {
       new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Flour], 2),
       new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Milk], 4),
       new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Sugar], 1),
+    ],
+  ]),
+};
+const ChatterOfJoyfulNights = {
+  [ResourceFoodIds.ChatterOfJoyfulNights]: ResourceFoodClass.init([
+    ResourceFoodIds.ChatterOfJoyfulNights,
+    "«Беседы весёлых ночей»",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(34, 980),
+    "Готовка",
+  ]),
+};
+const Drink455 = {
+  [ResourceFoodIds.DeliciousDrink455]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousDrink455,
+    "Вкусный напиток 455",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHp(1500),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeDrink455),
+  [ResourceFoodIds.Drink455]: ResourceFoodClass.init([
+    ResourceFoodIds.Drink455,
+    "Напиток 455",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHp(1200),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeDrink455),
+  [ResourceFoodIds.SuspiciousDrink455]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousDrink455,
+    "Странный напиток 455",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHp(900),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeDrink455),
+  [ResourceRecipeIds.RecipeDrink455]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeDrink455,
+    "Рецепт: Напиток 455",
+    "Совместное событие Genshin Impact × Mizone",
+    ResourceFoodUtility.RevivesACharacterAndRestoresHp("900–1500"),
+    undefined,
+    [
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Mint], 2),
+      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Salt], 1),
+      new ResourceRecipeIngredientClass(localSpecialtiesInazuma[ResourceLocalSpecialtyInazumaIds.SakuraBloom], 2),
     ],
   ]),
 };
@@ -575,20 +656,16 @@ const ShrimpBisque = {
 export default {
   ...cookingIngredients,
   ...foods,
+  ...localSpecialtiesInazuma,
   ...localSpecialtiesNatlan,
   ...materials,
   ...BubblemilkPie,
+  ...ChatterOfJoyfulNights,
+  ...Drink455,
   ...GentleSeaBreeze,
   ...MeatLoversFeast,
   ...MiniAshaPockets,
   ...NanasCake,
   ...NineFruitNectar,
   ...ShrimpBisque,
-  [ResourceFoodIds.ChatterOfJoyfulNights]: ResourceFoodClass.init([
-    ResourceFoodIds.ChatterOfJoyfulNights,
-    "«Беседы весёлых ночей»",
-    FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(34, 980),
-    ResourceSource.ObtainedByCooking,
-  ]),
 } as Record<Resource["id"], Resource>;
