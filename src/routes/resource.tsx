@@ -22,6 +22,7 @@ import { selectCharacterById } from "@/features/characters/selectors";
 import { selectFoodTypeById } from "@/features/food-types/selectors";
 import {
   selectResourceById,
+  selectResourceFoodsByIds,
   selectResourceFoodsByRecipeId,
   selectResourceRecipeById,
 } from "@/features/resources/selectors";
@@ -29,6 +30,9 @@ import { selectResourceTypeById } from "@/features/resource-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import CharacterBadge from "@/organisms/character-badge";
 import Paths from "@/constants/paths";
+import { cn } from "@/lib/utils.ts";
+import { backgroundClassByRarity } from "@/lib/rarity.ts";
+import ResourceBadge from "@/organisms/resource-badge.tsx";
 
 function RecipeIngredients({ items }: { items: ResourceRecipeIngredient[] }) {
   return (
@@ -38,7 +42,7 @@ function RecipeIngredients({ items }: { items: ResourceRecipeIngredient[] }) {
 
         return (
           <li key={item.id}>
-            <ResourceBadge
+            <ResourceRecipeIngredientBadge
               resourceCount={item.count}
               resourceId={ingredient.id}
               resourceImageSrc={ingredient.image_src}
@@ -51,7 +55,7 @@ function RecipeIngredients({ items }: { items: ResourceRecipeIngredient[] }) {
   );
 }
 
-function ResourceBadge({ resourceCount, resourceId, resourceImageSrc, resourceName }: {
+function ResourceRecipeIngredientBadge({ resourceCount, resourceId, resourceImageSrc, resourceName }: {
   resourceCount?: ResourceRecipeIngredient["count"];
   resourceId: ResourceType["id"];
   resourceImageSrc: ResourceType["image_src"];
@@ -88,6 +92,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
   let foodCharacter = undefined;
   let foodRecipe = undefined;
   let foodRelatedDishes = undefined;
+  let foodRelatedItems = undefined;
   let foodSpecialDish = undefined;
   let foodType = undefined;
   let recipeDishes = undefined;
@@ -118,6 +123,10 @@ export function loader({ params }: { params: Record<string, string | undefined> 
         }
       }
 
+      if (food.related_item_ids) {
+        foodRelatedItems = selectResourceFoodsByIds(food.related_item_ids);
+      }
+
       foodType = selectFoodTypeById(food.food_type_id);
 
       break;
@@ -142,6 +151,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
     foodCharacter,
     foodRecipe,
     foodRelatedDishes,
+    foodRelatedItems,
     foodSpecialDish,
     foodType,
     recipeDishes,
@@ -157,6 +167,7 @@ export default function Resource() {
     foodCharacter,
     foodRecipe,
     foodRelatedDishes,
+    foodRelatedItems,
     foodSpecialDish,
     foodType,
     recipeDishes,
@@ -165,8 +176,9 @@ export default function Resource() {
     resourceType,
   } = useLoaderData<ReturnType<typeof loader>>();
   const showProperties = Boolean(foodBaseDishes) || Boolean(foodCharacter) || Boolean(foodRecipe)
-    || Boolean(foodRelatedDishes) || Boolean(foodSpecialDish) || Boolean(recipeDishes) || Boolean(recipeSpecialDish)
-    || "ingredients" in resource || "dish_effects" in resource || "proficiency" in resource;
+    || Boolean(foodRelatedDishes) || Boolean(foodRelatedItems) || Boolean(foodSpecialDish) || Boolean(recipeDishes)
+    || Boolean(recipeSpecialDish) || "ingredients" in resource || "dish_effects" in resource
+    || "proficiency" in resource;
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -192,7 +204,10 @@ export default function Resource() {
       <div className="flex gap-x-3">
         <img
           alt={resource.id}
-          className="shrink-0 size-16 bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl"
+          className={cn(
+            "shrink-0 size-16 rounded-md rounded-br-2xl",
+            ("rarity" in resource && resource.rarity) ? backgroundClassByRarity(resource.rarity) : "bg-linear-to-b from-[#323947] to-[#4a5366]",
+          )}
           src={resource.image_src}
         />
         <div className="space-y-1">
@@ -232,20 +247,22 @@ export default function Resource() {
                   />
                 </TableRow>
               )}
-              <TableRow className="hover:bg-inherit">
-                <TableHead children="Где найти:" className="p-2 text-right" />
-                <TableCell className="p-2 text-pretty whitespace-normal">
-                  {typeof resource.source === "string"
-                    ? resource.source
-                    : (
-                        <ul className="ml-4 list-outside list-disc">
-                          {resource.source.map((source, index) => (
-                            <li children={source} key={index} />
-                          ))}
-                        </ul>
-                      )}
-                </TableCell>
-              </TableRow>
+              {resource.source && (
+                <TableRow className="hover:bg-inherit">
+                  <TableHead children="Где найти:" className="p-2 text-right" />
+                  <TableCell className="p-2 text-pretty whitespace-normal">
+                    {typeof resource.source === "string"
+                      ? resource.source
+                      : (
+                          <ul className="ml-4 list-outside list-disc">
+                            {resource.source.map((source, index) => (
+                              <li children={source} key={index} />
+                            ))}
+                          </ul>
+                        )}
+                  </TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </CardContent>
@@ -258,6 +275,25 @@ export default function Resource() {
           <CardContent>
             <Table>
               <TableBody>
+                {foodRelatedItems && (
+                  <TableRow className="hover:bg-inherit">
+                    <TableHead children="Связанные предметы:" className="p-2 text-right" />
+                    <TableCell className="p-2 text-pretty whitespace-normal">
+                      <ul className="flex flex-wrap gap-2">
+                        {foodRelatedItems.map(foodRelatedItem => (
+                          <li key={foodRelatedItem.id}>
+                            <ResourceBadge
+                              resourceId={foodRelatedItem.id}
+                              resourceImgSrc={foodRelatedItem.image_src}
+                              resourceName={foodRelatedItem.name}
+                              resourceRarity={foodRelatedItem.rarity}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </TableCell>
+                  </TableRow>
+                )}
                 {foodRecipe && (
                   <>
                     <TableRow className="hover:bg-inherit">
@@ -265,8 +301,9 @@ export default function Resource() {
                       <TableCell className="p-2 text-pretty whitespace-normal">
                         <ResourceBadge
                           resourceId={foodRecipe.id}
-                          resourceImageSrc={foodRecipe.image_src}
+                          resourceImgSrc={foodRecipe.image_src}
                           resourceName={foodRecipe.name}
+                          resourceRarity={foodRecipe.rarity}
                         />
                       </TableCell>
                     </TableRow>
@@ -288,8 +325,9 @@ export default function Resource() {
                           <li key={foodBaseDish.id}>
                             <ResourceBadge
                               resourceId={foodBaseDish.id}
-                              resourceImageSrc={foodBaseDish.image_src}
+                              resourceImgSrc={foodBaseDish.image_src}
                               resourceName={foodBaseDish.name}
+                              resourceRarity={foodBaseDish.rarity}
                             />
                           </li>
                         ))}
@@ -306,8 +344,9 @@ export default function Resource() {
                           <li key={foodRelatedDish.id}>
                             <ResourceBadge
                               resourceId={foodRelatedDish.id}
-                              resourceImageSrc={foodRelatedDish.image_src}
+                              resourceImgSrc={foodRelatedDish.image_src}
                               resourceName={foodRelatedDish.name}
+                              resourceRarity={foodRelatedDish.rarity}
                             />
                           </li>
                         ))}
@@ -321,8 +360,9 @@ export default function Resource() {
                     <TableCell className="p-2 text-pretty whitespace-normal">
                       <ResourceBadge
                         resourceId={foodSpecialDish.id}
-                        resourceImageSrc={foodSpecialDish.image_src}
+                        resourceImgSrc={foodSpecialDish.image_src}
                         resourceName={foodSpecialDish.name}
+                        resourceRarity={foodSpecialDish.rarity}
                       />
                     </TableCell>
                   </TableRow>
@@ -373,8 +413,9 @@ export default function Resource() {
                           <li key={recipeDish.id}>
                             <ResourceBadge
                               resourceId={recipeDish.id}
-                              resourceImageSrc={recipeDish.image_src}
+                              resourceImgSrc={recipeDish.image_src}
                               resourceName={recipeDish.name}
+                              resourceRarity={recipeDish.rarity}
                             />
                           </li>
                         ))}
@@ -388,8 +429,9 @@ export default function Resource() {
                     <TableCell className="p-2 text-pretty whitespace-normal">
                       <ResourceBadge
                         resourceId={recipeSpecialDish.id}
-                        resourceImageSrc={recipeSpecialDish.image_src}
+                        resourceImgSrc={recipeSpecialDish.image_src}
                         resourceName={recipeSpecialDish.name}
+                        resourceRarity={recipeSpecialDish.rarity}
                       />
                     </TableCell>
                   </TableRow>
