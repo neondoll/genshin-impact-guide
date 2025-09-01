@@ -10,6 +10,8 @@ import {
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
+import { elementalReactionById } from "../../elemental-reactions/help";
+import { ElementalReactionIds } from "../../elemental-reactions/enums";
 import { StatIds } from "../../stats/enums";
 import { TalentIds } from "../../talents/enums";
 import { WeaponIds } from "../../weapons/enums";
@@ -70,7 +72,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Arlecchino)
       new CharacterWeaponRecommendationClass(WeaponIds.BlackcliffPole).setPercent(0.899),
       new CharacterWeaponRecommendationClass(WeaponIds.MissiveWindspear).setPercent(0.875),
     ],
-    "Пар | Таяние": [
+    [`${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]: [
       new CharacterWeaponRecommendationClass(WeaponIds.CrimsonMoonsSemblance).setIsBetter().setPercent(1.309),
       new CharacterWeaponRecommendationClass(WeaponIds.StaffOfTheScarletSands).setPercent(1.156),
       new CharacterWeaponRecommendationClass(WeaponIds.PrimordialJadeWingedSpear).setPercent(1.114),

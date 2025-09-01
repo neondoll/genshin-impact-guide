@@ -56,8 +56,14 @@ export interface ResourceFood extends ResourceAbstract {
   related_item_ids?: ResourceFoodId[];
   /* Рецепт */
   recipe_id?: ResourceRecipeId;
+  /* Основное блюдо */
+  base_dish_id?: ResourceFoodId;
   /* Персонаж */
   character_id?: CharacterId;
+  /* Связанные блюда */
+  related_dish_ids?: ResourceFoodId[];
+  /* Особое блюдо */
+  special_dish_id?: ResourceFoodId;
 }
 
 export interface ResourceLocalSpecialtyInazuma extends ResourceAbstract {
@@ -104,10 +110,16 @@ export interface ResourceRecipe extends ResourceAbstract {
   rarity?: Rarity;
   /* Где найти */
   source?: string | string[];
+  /* Эффекты приготовления блюд */
   dish_effects: string;
+  /* Умение */
   proficiency?: 5 | 15 | 20;
   /* Ингредиенты */
   ingredients: ResourceRecipeIngredient[];
+  /* Блюда */
+  dish_ids?: ResourceFoodId[];
+  /* Особое блюдо */
+  special_dish_id?: ResourceFoodId;
 }
 
 export interface ResourceRecipeIngredient {

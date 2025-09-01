@@ -10,6 +10,8 @@ import {
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRecommendationsVideoSources } from "../enums";
+import { elementalReactionById } from "../../elemental-reactions/help";
+import { ElementalReactionIds } from "../../elemental-reactions/enums";
 import { StatIds } from "../../stats/enums";
 import { TalentIds } from "../../talents/enums";
 import { WeaponIds } from "../../weapons/enums";
@@ -26,7 +28,7 @@ export default new CharacterRecommendationsClass(CharacterIds.KukiShinobu)
       ]),
       new CharacterArtifactSetRecommendationWithIdClass(ArtifactSetIds.FlowerOfParadiseLost).setNotes([
         "Набор хорошо работает только в команде с Дендро и Гидро персонажами. Бонус мастерства стихий увеличивает лечение Синобу и урон от реакций.",
-        "Так как элементальный навык Синобу срабатывает каждый 1.5 секунды, он активирует реакцию Вегетация и увеличивает урон реакции.",
+        `Так как элементальный навык Синобу срабатывает каждый 1.5 секунды, он активирует реакцию ${elementalReactionById(ElementalReactionIds.Hyperbloom)} и увеличивает урон реакции.`,
       ]),
       new CharacterArtifactSetRecommendationWithIdClass(ArtifactSetIds.GildedDreams).setNotes([
         "Бонус мастерства стихий увеличивает лечение Синобу и урон от реакций.",

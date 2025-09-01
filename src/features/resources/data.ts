@@ -9,6 +9,7 @@ import type {
   ResourceRecipe,
   ResourceRecipeIngredient,
 } from "./types";
+import { CharacterIds } from "../characters/enums";
 import { FoodTypeIds } from "../food-types/enums";
 import { publicImageSrc } from "@/lib/utils";
 import { RegionIds } from "../regions/enums";
@@ -22,7 +23,6 @@ import {
 } from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
 import regions from "../regions/data";
-import { CharacterIds } from "@/features/characters/enums.ts";
 
 abstract class ResourceAbstractClass implements ResourceAbstract {
   readonly id: ResourceAbstract["id"];
@@ -92,7 +92,10 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
   declare readonly source: ResourceFood["source"];
   protected _related_item_ids: ResourceFood["related_item_ids"];
   protected _recipe_id: ResourceFood["recipe_id"];
+  protected _base_dish_id: ResourceFood["base_dish_id"];
   protected _character_id: ResourceFood["character_id"];
+  protected _related_dish_ids: ResourceFood["related_dish_ids"];
+  protected _special_dish_id: ResourceFood["special_dish_id"];
 
   static PATH = "foods";
 
@@ -109,6 +112,10 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
     this.utility = utility;
   }
 
+  get base_dish_id() {
+    return this._base_dish_id;
+  }
+
   get character_id() {
     return this._character_id;
   }
@@ -117,8 +124,22 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
     return this._recipe_id;
   }
 
+  get related_dish_ids() {
+    return this._related_dish_ids;
+  }
+
   get related_item_ids() {
     return this._related_item_ids;
+  }
+
+  get special_dish_id() {
+    return this._special_dish_id;
+  }
+
+  setBaseDishId(val: NonNullable<ResourceFood["base_dish_id"]>) {
+    this._base_dish_id = val;
+
+    return this;
   }
 
   setCharacterId(val: NonNullable<ResourceFood["character_id"]>) {
@@ -133,8 +154,20 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
     return this;
   }
 
+  setRelatedDishIds(val: NonNullable<ResourceFood["related_dish_ids"]>) {
+    this._related_dish_ids = val;
+
+    return this;
+  }
+
   setRelatedItemIds(val: NonNullable<ResourceFood["related_item_ids"]>) {
     this._related_item_ids = val;
+
+    return this;
+  }
+
+  setSpecialDishId(val: NonNullable<ResourceFood["special_dish_id"]>) {
+    this._special_dish_id = val;
 
     return this;
   }
@@ -216,6 +249,8 @@ class ResourceRecipeClass extends ResourceAbstractClass implements ResourceRecip
   readonly dish_effects: ResourceRecipe["dish_effects"];
   readonly proficiency: ResourceRecipe["proficiency"];
   readonly ingredients: ResourceRecipe["ingredients"];
+  protected _dish_ids: ResourceRecipe["dish_ids"];
+  protected _special_dish_id: ResourceRecipe["special_dish_id"];
 
   constructor(
     id: ResourceRecipe["id"],
@@ -232,6 +267,26 @@ class ResourceRecipeClass extends ResourceAbstractClass implements ResourceRecip
     this.dish_effects = dishEffects;
     this.proficiency = proficiency;
     this.ingredients = ingredients;
+  }
+
+  get dish_ids() {
+    return this._dish_ids;
+  }
+
+  get special_dish_id() {
+    return this._special_dish_id;
+  }
+
+  setDishIds(val: NonNullable<ResourceRecipe["dish_ids"]>) {
+    this._dish_ids = val;
+
+    return this;
+  }
+
+  setSpecialDishId(val: NonNullable<ResourceRecipe["special_dish_id"]>) {
+    this._special_dish_id = val;
+
+    return this;
   }
 
   static init(params: ConstructorParameters<typeof ResourceRecipeClass>) {
@@ -253,12 +308,12 @@ const ResourceFoodUtility = {
   ALittleSurpriseFromTheEasybreezeHolidayResort: (s: number | string) => `<span class="italic">Небольшой сюрприз от курорта «Оазис отдыха».</span><br>Восстанавливает 1 здоровье выбранного персонажа каждые 8 секунд в течение <span class="text-cyan-500">${s} секунд</span>. В кооперативном режиме этот эффект применяется только к вашим персонажам.`,
   DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и шанс крит. попадания на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersCritRate: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersATKAndCRITRate300s: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и шанс крит. попадания на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersCRITRateFor300s: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersDef: (def: number | string) => `Увеличивает защиту всех членов отряда на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class="text-cyan-500">${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   RestoresHP: (hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp}</span> HP выбранному персонажу.`,
-  RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp: (hp_: number | string, hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp_}%</span> от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает <span class="text-cyan-500">${hp}</span> HP.`,
+  RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s: (hp_: number | string, hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp_}%</span> от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает <span class="text-cyan-500">${hp}</span> HP.`,
   RevivesACharacterAndRestoresHP: (hp: number | string) => `Воскрешает персонажа и восстанавливает ему <span class="text-cyan-500">${hp}</span> HP.`,
 } as const;
 const ResourceSource = {
@@ -313,35 +368,35 @@ const CrispyPotatoShrimpPlatter = {
     ResourceFoodIds.ChatterOfJoyfulNights,
     "«Беседы весёлых ночей»",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(34, 980),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(34, 980),
     "Готовка",
-  ]).setCharacterId(CharacterIds.Dahlia).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  ]).setBaseDishId(ResourceFoodIds.CrispyPotatoShrimpPlatter).setCharacterId(CharacterIds.Dahlia).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
   [ResourceFoodIds.CrispyPotatoShrimpPlatter]: ResourceFoodClass.init([
     ResourceFoodIds.CrispyPotatoShrimpPlatter,
     "Хрустящие креветки с картофелем",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(28, 620),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(28, 620),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter).setRelatedDishIds([ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter, ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter]).setSpecialDishId(ResourceFoodIds.ChatterOfJoyfulNights),
   [ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter,
     "Вкусные хрустящие креветки с картофелем",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(30, 790),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(30, 790),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter).setRelatedDishIds([ResourceFoodIds.CrispyPotatoShrimpPlatter, ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter]).setSpecialDishId(ResourceFoodIds.ChatterOfJoyfulNights),
   [ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter,
     "Странные хрустящие креветки с картофелем",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(26, 450),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(26, 450),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter).setRelatedDishIds([ResourceFoodIds.CrispyPotatoShrimpPlatter, ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter]).setSpecialDishId(ResourceFoodIds.ChatterOfJoyfulNights),
   [ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter,
     "Рецепт: Хрустящие креветки с картофелем",
     "Купить у Сары в ресторане «Хороший охотник»",
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp("26–30", "450–790"),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s("26–30", "450–790"),
     15,
     [
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Berry, 2),
@@ -349,7 +404,7 @@ const CrispyPotatoShrimpPlatter = {
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Potato, 3),
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.ShrimpMeat, 4),
     ],
-  ]),
+  ]).setRarity(3).setDishIds([ResourceFoodIds.CrispyPotatoShrimpPlatter, ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter, ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter]).setSpecialDishId(ResourceFoodIds.ChatterOfJoyfulNights),
 };
 const Drink455 = {
   [ResourceFoodIds.DeliciousDrink455]: ResourceFoodClass.init([
@@ -426,28 +481,28 @@ const MeatLoversFeast = {
     ResourceFoodIds.DeliciousMeatLoversFeast,
     "Вкусная «Радость мясоеда»",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate(320, 10),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(320, 10),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast),
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast).setRelatedDishIds([ResourceFoodIds.MeatLoversFeast, ResourceFoodIds.SuspiciousMeatLoversFeast]),
   [ResourceFoodIds.MeatLoversFeast]: ResourceFoodClass.init([
     ResourceFoodIds.MeatLoversFeast,
     "«Радость мясоеда»",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate(272, 8),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(272, 8),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast),
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast).setRelatedDishIds([ResourceFoodIds.DeliciousMeatLoversFeast, ResourceFoodIds.SuspiciousMeatLoversFeast]),
   [ResourceFoodIds.SuspiciousMeatLoversFeast]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousMeatLoversFeast,
     "Странная «Радость мясоеда»",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate(224, 6),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(224, 6),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast),
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast).setRelatedDishIds([ResourceFoodIds.DeliciousMeatLoversFeast, ResourceFoodIds.MeatLoversFeast]),
   [ResourceRecipeIds.RecipeMeatLoversFeast]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeMeatLoversFeast,
     "Рецепт: «Радость мясоеда»",
     "Внутриигровая почта",
-    ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate("224–320", "6–10"),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s("224–320", "6–10"),
     20,
     [
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.CoffeeBeans, 3),
@@ -456,7 +511,7 @@ const MeatLoversFeast = {
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.ShrimpMeat, 4),
 
     ],
-  ]),
+  ]).setRarity(4).setDishIds([ResourceFoodIds.DeliciousMeatLoversFeast, ResourceFoodIds.MeatLoversFeast, ResourceFoodIds.SuspiciousMeatLoversFeast]),
 };
 const MiniAshaPockets = {
   [ResourceFoodIds.DeliciousMiniAshaPockets]: ResourceFoodClass.init([
@@ -535,28 +590,28 @@ const NineFruitNectar = {
     ResourceFoodIds.DeliciousNineFruitNectar,
     "Вкусный нектар девяти фруктов",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersCritRate(20),
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(20),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar).setRelatedDishIds([ResourceFoodIds.NineFruitNectar, ResourceFoodIds.SuspiciousNineFruitNectar]),
   [ResourceFoodIds.NineFruitNectar]: ResourceFoodClass.init([
     ResourceFoodIds.NineFruitNectar,
     "Нектар девяти фруктов",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersCritRate(15),
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(15),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar).setRelatedDishIds([ResourceFoodIds.DeliciousNineFruitNectar, ResourceFoodIds.SuspiciousNineFruitNectar]),
   [ResourceFoodIds.SuspiciousNineFruitNectar]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousNineFruitNectar,
     "Странный нектар девяти фруктов",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersCritRate(10),
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(10),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar).setRelatedDishIds([ResourceFoodIds.DeliciousNineFruitNectar, ResourceFoodIds.NineFruitNectar]),
   [ResourceRecipeIds.RecipeNineFruitNectar]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeNineFruitNectar,
     "Рецепт: Нектар девяти фруктов",
     "Внутриигровая почта",
-    ResourceFoodUtility.IncreasesAllPartyMembersCritRate("10–20"),
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s("10–20"),
     15,
     [
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Berry, 2),
@@ -564,7 +619,7 @@ const NineFruitNectar = {
       new ResourceRecipeIngredientClass(ResourceFoodIds.Apple, 2),
       new ResourceRecipeIngredientClass(ResourceFoodIds.Sunsettia, 2),
     ],
-  ]),
+  ]).setRarity(3).setDishIds([ResourceFoodIds.DeliciousNineFruitNectar, ResourceFoodIds.NineFruitNectar, ResourceFoodIds.SuspiciousNineFruitNectar]),
 };
 const ShrimpBisque = {
   [ResourceFoodIds.DeliciousShrimpBisque]: ResourceFoodClass.init([
@@ -648,7 +703,7 @@ export default {
     ResourceFoodIds.AbyssalBounty,
     "«Сокровище бездны»",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(34, 980),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(34, 980),
     "Готовка",
   ]).setCharacterId(CharacterIds.Dahlia).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
   /* Молочный пирог с пузырьками     */ ...BubblemilkPie,

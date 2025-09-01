@@ -12,6 +12,8 @@ import {
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
 import { CharacterRoleIds } from "../../character-roles/enums";
+import { elementalReactionById } from "../../elemental-reactions/help";
+import { ElementalReactionIds } from "../../elemental-reactions/enums";
 import { StatIds } from "../../stats/enums";
 import { TalentIds } from "../../talents/enums";
 import { VideoSourceClass } from "../../video-sources/classes";
@@ -42,12 +44,12 @@ export default new CharacterRecommendationsClass(CharacterIds.Mavuika)
     {
       [ArtifactSlotIds.Sands]: [
         new CharacterArtifactStatRecommendationClass(StatIds.AtkPercentage).setNotes([
-          "Гиперкерри\\Перегрузка - Всегда",
-          `Вейп\\Мелт - Лучше, если в отряде есть инструктор и отсутствует ${characters[CharacterIds.Bennett].name} или ${characters[CharacterIds.Iansan].name}`,
+          `Гиперкерри | ${elementalReactionById(ElementalReactionIds.Overloaded)} - Всегда`,
+          `${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)} - Лучше, если в отряде есть инструктор и отсутствует ${characters[CharacterIds.Bennett].name} или ${characters[CharacterIds.Iansan].name}`,
           `${gameVariants[GameVariantEnum.Support]} - Всегда`,
         ]),
         new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery).setNotes([
-          `Вейп\\Мелт - Всегда, если есть в команде ${characters[CharacterIds.Bennett].name} или ${characters[CharacterIds.Iansan].name} и мало МС в доп. статах`,
+          `${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)} - Всегда, если есть в команде ${characters[CharacterIds.Bennett].name} или ${characters[CharacterIds.Iansan].name} и мало МС в доп. статах`,
         ]),
       ],
       [ArtifactSlotIds.Goblet]: [
@@ -61,14 +63,14 @@ export default new CharacterRecommendationsClass(CharacterIds.Mavuika)
         new CharacterArtifactStatRecommendationClass(StatIds.AtkPercentage),
         new CharacterArtifactStatRecommendationClass(StatIds.CritRate),
         new CharacterArtifactStatRecommendationClass(StatIds.CritDMG),
-        new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery).setNotes(["Если играем в Вейпе\\Мелте"]),
+        new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery).setNotes([`Если играем в ${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]),
       ],
     },
   ]))
   .setFirstConstellationOrSignatureWeapon("C1 < Сигна < C2")
   .setKeyConstellations([2, 4])
   .setReferencePoint({
-    "Гиперкерри\\Перегрузка": [
+    [`Гиперкерри | ${elementalReactionById(ElementalReactionIds.Overloaded)}`]: [
       ["Макс. HP", "19 085"],
       ["Сила атаки", "2 179"],
       ["Защита", "929"],
@@ -77,7 +79,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Mavuika)
       ["Крит. урон", "216.8%"],
       ["Восст. энергии", "111.0%"],
     ],
-    "Вейп\\Мелт": [
+    [`${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]: [
       ["Макс. HP", "19 085"],
       ["Сила атаки", "1 526"],
       ["Защита", "929"],
@@ -90,10 +92,10 @@ export default new CharacterRecommendationsClass(CharacterIds.Mavuika)
   .setRotation({
     [`${gameVariants[GameVariantEnum.Dps]}: База`]: "Взрыв стихии (Q) > 7 секунд заряженные атаки (на взрыве стихий останется 9 секунд перезарядки)",
     [`${gameVariants[GameVariantEnum.Dps]}: H1C`]: "Взрыв стихии (Q) > 6 раз (1 тик заряженной атаки > рывок), на последний раз делается не рывок, а просто отпускается заряженная атака",
-    [`${gameVariants[GameVariantEnum.Dps]}: Мелт (1 уровень)`]: "Взрыв стихии (Q) [Мелт] > ждем > Заряженная атака (1 [Мелт], 2, 3, 4 [Мелт], 5, 6, 7, 8 тиков) > финальный удар",
-    [`${gameVariants[GameVariantEnum.Dps]}: Мелт (2 уровень)`]: "Взрыв стихии (Q) [Мелт] > ждем > Заряженная атака (1 [Мелт], 2, 3, 4 [Мелт] тика) > прыжок > Заряженная атака (1 [Мелт], 2, 3, (взрыв стихии закончился) 4 [Мелт] тика)",
-    [`${gameVariants[GameVariantEnum.Dps]}: Мелт (3 уровень)`]: "Взрыв стихии (Q) [Мелт] > ждем > Заряженная атака (1 [Мелт], 2, 3, 4 [Мелт] тика) > прыжок > Заряженная атака (1 [Мелт], 2, 3, 4 [Мелт] тика) (взрыв стихии закончился)",
-    [`${gameVariants[GameVariantEnum.Dps]}: Мелт (4 уровень)`]: "Взрыв стихии (Q) [Мелт] > ждем > Заряженная атака (1 [Мелт], 2, 3 тика, финальный удар [Мелт]) > рывок > Заряженная атака (1, 2 [Мелт], 3 тика, финальный удар [Мелт])",
+    [`${gameVariants[GameVariantEnum.Dps]}: ${elementalReactionById(ElementalReactionIds.Melt)} (1 уровень)`]: `Взрыв стихии (Q) [${elementalReactionById(ElementalReactionIds.Melt)}] > ждем > Заряженная атака (1 [${elementalReactionById(ElementalReactionIds.Melt)}], 2, 3, 4 [${elementalReactionById(ElementalReactionIds.Melt)}], 5, 6, 7, 8 тиков) > финальный удар`,
+    [`${gameVariants[GameVariantEnum.Dps]}: ${elementalReactionById(ElementalReactionIds.Melt)} (2 уровень)`]: `Взрыв стихии (Q) [${elementalReactionById(ElementalReactionIds.Melt)}] > ждем > Заряженная атака (1 [${elementalReactionById(ElementalReactionIds.Melt)}], 2, 3, 4 [${elementalReactionById(ElementalReactionIds.Melt)}] тика) > прыжок > Заряженная атака (1 [${elementalReactionById(ElementalReactionIds.Melt)}], 2, 3, (взрыв стихии закончился) 4 [${elementalReactionById(ElementalReactionIds.Melt)}] тика)`,
+    [`${gameVariants[GameVariantEnum.Dps]}: ${elementalReactionById(ElementalReactionIds.Melt)} (3 уровень)`]: `Взрыв стихии (Q) [${elementalReactionById(ElementalReactionIds.Melt)}] > ждем > Заряженная атака (1 [${elementalReactionById(ElementalReactionIds.Melt)}], 2, 3, 4 [${elementalReactionById(ElementalReactionIds.Melt)}] тика) > прыжок > Заряженная атака (1 [${elementalReactionById(ElementalReactionIds.Melt)}], 2, 3, 4 [${elementalReactionById(ElementalReactionIds.Melt)}] тика) (взрыв стихии закончился)`,
+    [`${gameVariants[GameVariantEnum.Dps]}: ${elementalReactionById(ElementalReactionIds.Melt)} (4 уровень)`]: `Взрыв стихии (Q) [${elementalReactionById(ElementalReactionIds.Melt)}] > ждем > Заряженная атака (1 [${elementalReactionById(ElementalReactionIds.Melt)}], 2, 3 тика, финальный удар [${elementalReactionById(ElementalReactionIds.Melt)}]) > рывок > Заряженная атака (1, 2 [${elementalReactionById(ElementalReactionIds.Melt)}], 3 тика, финальный удар [${elementalReactionById(ElementalReactionIds.Melt)}])`,
     [gameVariants[GameVariantEnum.Support]]: "Взрыв стихии (Q)",
   })
   .setSquads(CharacterSquadRecommendationsClass.init([
@@ -104,16 +106,16 @@ export default new CharacterRecommendationsClass(CharacterIds.Mavuika)
         new CharacterSquadCharacterRecommendationClass(CharacterIds.Bennett),
         new CharacterSquadCharacterRecommendationClass(CharacterIds.Iansan),
       ],
-      [`В мелте (${gameVariants[GameVariantEnum.Dps]})`]: [
+      [`${elementalReactionById(ElementalReactionIds.Melt)} (${gameVariants[GameVariantEnum.Dps]})`]: [
         new CharacterSquadCharacterRecommendationClass(CharacterIds.Citlali),
         new CharacterSquadCharacterRecommendationClass(CharacterIds.Escoffier),
         new CharacterSquadCharacterRecommendationClass(CharacterIds.Rosaria),
       ],
-      [`В вейпе (${gameVariants[GameVariantEnum.Dps]})`]: [
+      [`${elementalReactionById(ElementalReactionIds.Vaporize)} (${gameVariants[GameVariantEnum.Dps]})`]: [
         new CharacterSquadCharacterRecommendationClass(CharacterIds.Furina),
         new CharacterSquadCharacterRecommendationClass(CharacterIds.Yelan),
       ],
-      [`В перегрузе (${gameVariants[GameVariantEnum.Dps]})`]: [
+      [`${elementalReactionById(ElementalReactionIds.Overloaded)} (${gameVariants[GameVariantEnum.Dps]})`]: [
         new CharacterSquadCharacterRecommendationClass(CharacterIds.Chevreuse),
         new CharacterSquadCharacterRecommendationClass(CharacterIds.Ororon),
       ],
@@ -128,7 +130,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Mavuika)
     new VideoSourceClass("Miron MinMax: Подробный и Актуальный | Гайд на Мавуику").setVkUrl("https://vkvideo.ru/video-227044935_456239238").setYoutubeUrl("https://youtu.be/bGkCi_aBNrI"),
   ])
   .setWeapons({
-    "Вейп\\Мелт": [
+    [`${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]: [
       new CharacterWeaponRecommendationClass(WeaponIds.AThousandBlazingSuns).setPercent(1.3504).setRefinement(1),
       new CharacterWeaponRecommendationClass(WeaponIds.SerpentSpine).setPercent(1.1990).setRefinement(5),
       new CharacterWeaponRecommendationClass(WeaponIds.BeaconOfTheReedSea).setPercent(1.1761).setRefinement(1),
@@ -150,7 +152,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Mavuika)
       new CharacterWeaponRecommendationClass(WeaponIds.PrototypeArchaic).setPercent(0.9621).setRefinement(5),
       new CharacterWeaponRecommendationClass(WeaponIds.TidalShadow).setPercent(0.9413).setRefinement(5),
     ],
-    "Гиперкерри\\Перегрузка": [
+    [`Гиперкерри | ${elementalReactionById(ElementalReactionIds.Overloaded)}`]: [
       new CharacterWeaponRecommendationClass(WeaponIds.AThousandBlazingSuns).setPercent(1.3218).setRefinement(1),
       new CharacterWeaponRecommendationClass(WeaponIds.SerpentSpine).setPercent(1.1805).setRefinement(5),
       new CharacterWeaponRecommendationClass(WeaponIds.BeaconOfTheReedSea).setPercent(1.1546).setRefinement(1),

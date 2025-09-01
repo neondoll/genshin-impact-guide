@@ -9,6 +9,10 @@ export function selectResourceById(id: ResourceId) {
   return selectors.selectById(store.getState(), id);
 }
 
+export function selectResourceFoodById(id: ResourceFood["id"]) {
+  return selectors.selectById(store.getState(), id) as ResourceFood;
+}
+
 export function selectResourceFoodsAll() {
   return selectResourcesAll().filter(value => value.type_id === ResourceTypeIds.Food) as ResourceFood[];
 }

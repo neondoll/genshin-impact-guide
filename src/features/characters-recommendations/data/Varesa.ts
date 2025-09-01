@@ -9,6 +9,8 @@ import {
   CharacterWeaponRecommendationClass,
 } from "../classes";
 import { CharacterIds } from "../../characters/enums";
+import { elementalReactionById } from "../../elemental-reactions/help";
+import { ElementalReactionIds } from "../../elemental-reactions/enums";
 import { StatIds } from "../../stats/enums";
 import { TalentIds } from "../../talents/enums";
 import { WeaponIds } from "../../weapons/enums";
@@ -44,7 +46,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Varesa)
           "115% - 135% для Взрыва стихии",
         ]),
         new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery).setNotes([
-          "от 150 (при игре через реакцию Вегетация)",
+          `от 150 (при игре через реакцию ${elementalReactionById(ElementalReactionIds.Hyperbloom)})`,
         ]),
       ],
     },

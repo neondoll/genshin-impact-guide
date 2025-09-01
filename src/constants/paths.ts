@@ -1,5 +1,6 @@
 import type { ArtifactSet } from "@/features/artifact-sets/types";
 import type { Character } from "@/features/characters/types";
+import type { ElementalReaction } from "@/features/elemental-reactions/types";
 import type { Resource } from "@/features/resources/types";
 import type { Weapon } from "@/features/weapons/types";
 
@@ -14,6 +15,10 @@ export default {
     to: (id: Character["id"] | string) => `/characters/${id}`,
   },
   Characters: { title: "Персонажи", to: "/characters" },
+  ElementalReaction: {
+    title: (item: ElementalReaction) => item.name,
+    to: (id: ElementalReaction["id"] | string) => `/elemental-reactions/${id}`,
+  },
   Resource: {
     title: (item: Resource) => item.name,
     to: (id: Resource["id"] | string) => `/resources/${id}`,

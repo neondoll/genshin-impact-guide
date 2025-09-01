@@ -7,6 +7,7 @@ import characterRolesReducer from "@/features/character-roles/slice";
 import charactersRecommendationsReducer from "@/features/characters-recommendations/slice";
 import charactersReducer from "@/features/characters/slice";
 import dungeonsReducer from "@/features/dungeons/slice";
+import elementalReactionsReducer from "@/features/elemental-reactions/slice";
 import elementsReducer from "@/features/elements/slice";
 import foodTypesReducer from "@/features/food-types/slice";
 import raritiesReducer from "@/features/rarities/slice";
@@ -29,6 +30,7 @@ export const store = configureStore({
     characters: charactersReducer,
     charactersRecommendations: charactersRecommendationsReducer,
     dungeons: dungeonsReducer,
+    elementalReactions: elementalReactionsReducer,
     elements: elementsReducer,
     foodTypes: foodTypesReducer,
     rarities: raritiesReducer,
