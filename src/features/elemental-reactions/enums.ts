@@ -1,0 +1,18 @@
+export const ElementalReactionIds = {
+  /* Обострение     */ Aggravate: "aggravate",
+  /* Бутонизация    */ Bloom: "bloom",
+  /* Цветение       */ Burgeon: "burgeon",
+  /* Горение        */ Burning: "burning",
+  /* Кристалл       */ Crystallize: "crystallize",
+  /* Заряжен        */ ElectroCharged: "electro_charged",
+  /* Заморозка      */ Frozen: "frozen",
+  /* Вегетация      */ Hyperbloom: "hyperbloom",
+  /* Лунный заряд   */ LunarCharged: "lunar_charged",
+  /* Таяние         */ Melt: "melt",
+  /* Перегрузка     */ Overloaded: "overloaded",
+  /* Стимуляция     */ Quicken: "quicken",
+  /* Разрастание    */ Spread: "spread",
+  /* Сверхпроводник */ Superconduct: "superconduct",
+  /* Рассеивание    */ Swirl: "swirl",
+  /* Пар            */ Vaporize: "vaporize",
+} as const;

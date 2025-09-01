@@ -107,7 +107,7 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
                 {recommendation.notes !== undefined && (
                   <ul className="ml-4 list-outside list-disc">
                     {recommendation.notes.map((note, index) => (
-                      <li children={note} key={index} />
+                      <li dangerouslySetInnerHTML={{ __html: note }} key={index} />
                     ))}
                   </ul>
                 )}

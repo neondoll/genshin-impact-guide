@@ -3,6 +3,8 @@ import type { DungeonId } from "../dungeons/types";
 import { ArtifactSetIds } from "./enums";
 import { ArtifactSlotIds } from "../artifact-slots/enums";
 import { DungeonIds } from "../dungeons/enums";
+import { elementalReactionById } from "../elemental-reactions/help";
+import { ElementalReactionIds } from "../elemental-reactions/enums";
 import { publicImageSrc } from "@/lib/utils";
 import dungeons from "../dungeons/data";
 
@@ -88,7 +90,7 @@ export default {
     [ArtifactSetSource.Dungeon(DungeonIds.DomainOfGuyun), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Гео урона на 15%.",
-      4: "Подобранный элементальный осколок, образованный реакцией Кристалл, увеличивает бонус элементального урона соответствующего элемента всех членов отряда на 35% в течение 10 сек. Одновременно можно иметь бонус урона только одного элемента.",
+      4: `Подобранный элементальный осколок, образованный реакцией ${elementalReactionById(ElementalReactionIds.Crystallize)}, увеличивает бонус элементального урона соответствующего элемента всех членов отряда на 35% в течение 10 сек. Одновременно можно иметь бонус урона только одного элемента.`,
     },
     {
       [ArtifactSlotIds.Flower]: "Цветок скальных трещин",
@@ -105,7 +107,7 @@ export default {
     [ArtifactSetSource.Dungeon(DungeonIds.PeakOfVindagnyr), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Крио урона на 15%.",
-      4: "Атаки по противникам с эффектом Крио увеличивают шанс крит. попадания на 20%. Если противник имеет статус Заморозка, то дополнительно увеличивает шанс крит. попадания на 20%.",
+      4: `Атаки по противникам с эффектом Крио увеличивают шанс крит. попадания на 20%. Если противник имеет статус ${elementalReactionById(ElementalReactionIds.Frozen)}, то дополнительно увеличивает шанс крит. попадания на 20%.`,
     },
     {
       [ArtifactSlotIds.Flower]: "Занесённая снегом память",
@@ -139,7 +141,7 @@ export default {
     [ArtifactSetSource.Dungeon(DungeonIds.HiddenPalaceOfZhouFormula), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Пиро урона на 15%.",
-      4: "Увеличивает урон статусов Перегрузка, Горение и Цветение на 40%, а урон статусов Пар и Таяние - на 15%. Использование элементального навыка увеличивает эффекты набора из двух вещей на 50% в течение 10 сек. Может складываться до 3 раз.",
+      4: `Увеличивает урон статусов ${elementalReactionById(ElementalReactionIds.Overloaded)}, ${elementalReactionById(ElementalReactionIds.Burning)} и ${elementalReactionById(ElementalReactionIds.Burgeon)} на 40%, а урон статусов ${elementalReactionById(ElementalReactionIds.Vaporize)} и ${elementalReactionById(ElementalReactionIds.Melt)} - на 15%. Использование элементального навыка увеличивает эффекты набора из двух вещей на 50% в течение 10 сек. Может складываться до 3 раз.`,
     },
     {
       [ArtifactSlotIds.Flower]: "Ведьмин огненный цветок",
@@ -241,7 +243,7 @@ export default {
     [ArtifactSetSource.Dungeon(DungeonIds.CityOfGold), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает мастерство стихий на 80 ед.",
-      4: "Увеличивает урон реакций Бутонизация, Вегетация и Цветение экипированного этим набором персонажа на 40%. Кроме того, активация реакций Бутонизация, Вегетация и Цветение экипированным этим набором персонажем усилит этот эффект на 25%. Каждое суммирование длится 10 сек. Эффект складывается до 4 раз, может возникнуть раз в 1 сек. и активируется, даже если экипированный этим набором персонаж не активен.",
+      4: `Увеличивает урон реакций ${elementalReactionById(ElementalReactionIds.Bloom)}, ${elementalReactionById(ElementalReactionIds.Hyperbloom)} и ${elementalReactionById(ElementalReactionIds.Burgeon)} экипированного этим набором персонажа на 40%. Кроме того, активация реакций ${elementalReactionById(ElementalReactionIds.Bloom)}, ${elementalReactionById(ElementalReactionIds.Hyperbloom)} и ${elementalReactionById(ElementalReactionIds.Burgeon)} экипированным этим набором персонажем усилит этот эффект на 25%. Каждое суммирование длится 10 сек. Эффект складывается до 4 раз, может возникнуть раз в 1 сек. и активируется, даже если экипированный этим набором персонаж не активен.`,
     },
     {
       [ArtifactSlotIds.Flower]: "Великолепие Ай-Ханум",
@@ -450,7 +452,7 @@ export default {
     [ArtifactSetSource.Dungeon(DungeonIds.WaterfallWen)],
     {
       2: "Увеличивает силу атаки на 18%.",
-      4: "После использования элементального навыка бонус Гео урона на 10 сек. увеличивается на 20%. Если персонаж находится под защитой щита, созданного реакцией Кристалл, этот эффект увеличивается на 150%. Через 1 сек. после потери щита это дополнительное увеличение исчезает.",
+      4: `После использования элементального навыка бонус Гео урона на 10 сек. увеличивается на 20%. Если персонаж находится под защитой щита, созданного реакцией ${elementalReactionById(ElementalReactionIds.Crystallize)}, этот эффект увеличивается на 150%. Через 1 сек. после потери щита это дополнительное увеличение исчезает.`,
     },
     {
       [ArtifactSlotIds.Flower]: "Бескорыстный цветок",
@@ -518,7 +520,7 @@ export default {
     [ArtifactSetSource.Dungeon(DungeonIds.SlumberingCourt), ArtifactSetSource.Alchemy],
     {
       2: "Повышает бонус лечения на 15%.",
-      4: "Экипированный этим набором артефактов персонаж при лечении соратников создаёт на 3 сек. Пузырь морских красок. Пузырь регистрирует восстановленное при лечении HP (в том числе избыточное, когда лечение превышает максимум здоровья). После окончания действия Пузырь взрывается и наносит окружающим врагам урон в размере 90% учтённого объёма лечения (урон рассчитывается так же, как для эффектов Заряжен и Сверхпроводник, но на него не действуют бонусы мастерства стихий, уровня и реакций). Пузырь морских красок можно создавать не чаще чем раз в 3,5 сек. Пузырь может записать до 30 000 восстановленного HP, в том числе HP избыточного лечения. Для отряда не может существовать больше одного Пузыря морских красок одновременно. Этот эффект действует, даже если персонаж, экипированный набором артефактов, не находится на поле боя.",
+      4: `Экипированный этим набором артефактов персонаж при лечении соратников создаёт на 3 сек. Пузырь морских красок. Пузырь регистрирует восстановленное при лечении HP (в том числе избыточное, когда лечение превышает максимум здоровья). После окончания действия Пузырь взрывается и наносит окружающим врагам урон в размере 90% учтённого объёма лечения (урон рассчитывается так же, как для эффектов ${elementalReactionById(ElementalReactionIds.ElectroCharged)} и ${elementalReactionById(ElementalReactionIds.Superconduct)}, но на него не действуют бонусы мастерства стихий, уровня и реакций). Пузырь морских красок можно создавать не чаще чем раз в 3,5 сек. Пузырь может записать до 30 000 восстановленного HP, в том числе HP избыточного лечения. Для отряда не может существовать больше одного Пузыря морских красок одновременно. Этот эффект действует, даже если персонаж, экипированный набором артефактов, не находится на поле боя.`,
     },
     {
       [ArtifactSlotIds.Flower]: "Цветок морских красок",
@@ -637,7 +639,7 @@ export default {
     [ArtifactSetSource.Dungeon(DungeonIds.MidsummerCourtyard), ArtifactSetSource.Alchemy],
     {
       2: "Увеличивает бонус Электро урона на 15%.",
-      4: "Увеличивает урон реакций Перегрузка, Заряжен, Сверхпроводник и Вегетация на 40%. Урон от реакции Обострение увеличивается на 20%. При активации этих реакций, а также реакции Стимуляция, время отката элементального навыка уменьшается на 1 сек. Эффект может возникнуть не чаще 1 раза в 0,8 сек.",
+      4: `Увеличивает урон реакций ${elementalReactionById(ElementalReactionIds.Overloaded)}, ${elementalReactionById(ElementalReactionIds.ElectroCharged)}, ${elementalReactionById(ElementalReactionIds.Superconduct)} и ${elementalReactionById(ElementalReactionIds.Hyperbloom)} на 40%. Урон от реакции ${elementalReactionById(ElementalReactionIds.Aggravate)} увеличивается на 20%. При активации этих реакций, а также реакции ${elementalReactionById(ElementalReactionIds.Quicken)}, время отката элементального навыка уменьшается на 1 сек. Эффект может возникнуть не чаще 1 раза в 0,8 сек.`,
     },
     {
       [ArtifactSlotIds.Flower]: "Милосердие Громовой птицы",

@@ -17,10 +17,18 @@ export const ResourceCookingIngredientIds = {
   /* Персик зайтун   */ ZaytunPeach: "zaytun_peach",
 } as const;
 export const ResourceFoodIds = {
+  /* «Сокровище бездны» */
+  AbyssalBounty: "abyssal_bounty",
+  /* Оживлённый гриб-звезда */
+  ActivatedStarshroom: "activated_starshroom",
   /* Яблоко */
   Apple: "apple",
   /* Молочный пирог с пузырьками */
   BubblemilkPie: "bubblemilk_pie",
+  /* Пузырин */
+  BulleFruit: "bulle_fruit",
+  /* Свечевик */
+  CandlecapMushroom: "candlecap_mushroom",
   /* «Беседы весёлых ночей» */
   ChatterOfJoyfulNights: "chatter_of_joyful_nights",
   /* Хрустящие креветки с картофелем */
@@ -55,8 +63,12 @@ export const ResourceFoodIds = {
   NanasCake: "nanas_cake",
   /* Нектар девяти фруктов */
   NineFruitNectar: "nine_fruit_nectar",
+  /* Обожжённый гриб-звезда */
+  ScorchedStarshroom: "scorched_starshroom",
   /* Биск с креветками */
   ShrimpBisque: "shrimp_bisque",
+  /* Гриб-звезда */
+  Starshroom: "starshroom",
   /* Закатник */
   Sunsettia: "sunsettia",
   /* Странный молочный пирог с пузырьками */
@@ -77,6 +89,8 @@ export const ResourceFoodIds = {
   SuspiciousNineFruitNectar: "suspicious_nine_fruit_nectar",
   /* Странный биск с креветками */
   SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
+  /* Яичница по-тейватски */
+  TeyvatFriedEgg: "teyvat_fried_egg",
 } as const;
 export const ResourceLocalSpecialtyInazumaIds = {
   /* Цвет сакуры */ SakuraBloom: "sakura_bloom",
@@ -97,6 +111,7 @@ export const ResourceRecipeIds = {
   /* Рецепт: Нанасовый пирог                 */ RecipeNanasCake: "recipe_nanas_cake",
   /* Рецепт: Нектар девяти фруктов           */ RecipeNineFruitNectar: "recipe_nine_fruit_nectar",
   /* Рецепт: Биск с креветками               */ RecipeShrimpBisque: "recipe_shrimp_bisque",
+  /* Рецепт: Яичница по-тейватски            */ RecipeTeyvatFriedEgg: "recipe_teyvat_fried_egg",
 } as const;
 export const ResourceIds = {
   ...ResourceCookingIngredientIds,

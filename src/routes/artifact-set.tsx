@@ -83,7 +83,10 @@ export default function ArtifactSet() {
               {Object.entries(artifactSet.item_bonuses).map(([itemCount, itemBonus]) => (
                 <TableRow className="hover:bg-inherit" key={itemCount}>
                   <TableHead children={`${itemCount} предмет(а)`} className="p-2" />
-                  <TableCell children={itemBonus} className="p-2 text-pretty whitespace-normal" />
+                  <TableCell
+                    className="p-2 text-pretty whitespace-normal"
+                    dangerouslySetInnerHTML={{ __html: itemBonus }}
+                  />
                 </TableRow>
               ))}
             </TableBody>

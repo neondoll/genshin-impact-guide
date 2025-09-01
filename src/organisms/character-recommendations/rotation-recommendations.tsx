@@ -11,8 +11,11 @@ export default function RotationRecommendations({ recommendations }: RotationRec
       <TableBody>
         {Object.entries(recommendations).map(([recommendationKey, recommendation], index) => (
           <TableRow className="hover:bg-inherit" key={index}>
-            <TableHead children={recommendationKey} className="p-2 text-left" />
-            <TableCell children={recommendation} className="p-2 text-center text-pretty whitespace-normal" />
+            <TableHead className="p-2 text-left" dangerouslySetInnerHTML={{ __html: recommendationKey }} />
+            <TableCell
+              className="p-2 text-center text-pretty whitespace-normal"
+              dangerouslySetInnerHTML={{ __html: recommendation }}
+            />
           </TableRow>
         ))}
       </TableBody>

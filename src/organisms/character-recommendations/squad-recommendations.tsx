@@ -57,7 +57,7 @@ export default function SquadRecommendations({ recommendations }: SquadRecommend
                 {index === 0 && (
                   <TableHead rowSpan={Object.entries(recommendations.best_teammates).length}>Лучшие тиммейты</TableHead>
                 )}
-                <TableHead>{key}</TableHead>
+                <TableHead dangerouslySetInnerHTML={{ __html: key }} />
                 <TableCell>
                   <div className="flex flex-wrap gap-2">
                     {bestTeammates.map((bestTeammate, index) => (

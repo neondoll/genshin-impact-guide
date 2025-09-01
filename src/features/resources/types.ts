@@ -1,4 +1,6 @@
+import type { CharacterId } from "../characters/types";
 import type { FoodTypeId } from "../food-types/types";
+import type { Rarity } from "../rarities/types";
 import type { ResourceTypeId } from "../resource-types/types";
 import {
   ResourceCookingIngredientIds,
@@ -10,7 +12,6 @@ import {
   ResourceRecipeIds,
 } from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
-import type { CharacterId } from "@/features/characters/types.ts";
 
 export interface ResourceAbstract {
   id: ResourceId;
@@ -19,8 +20,10 @@ export interface ResourceAbstract {
   name: string;
   /* Тип */
   type_id: ResourceTypeId;
+  /* Редкость */
+  rarity?: Rarity;
   /* Где найти */
-  source: string | string[];
+  source?: string | string[];
 }
 
 export interface ResourceCookingIngredient extends ResourceAbstract {
@@ -43,14 +46,24 @@ export interface ResourceFood extends ResourceAbstract {
   type_id: typeof ResourceTypeIds.Food;
   /* Тип еды */
   food_type_id: FoodTypeId;
+  /* Редкость */
+  rarity?: Rarity;
   /* Назначение */
   utility: string;
   /* Где найти */
   source: string | string[];
+  /* Связанные предметы */
+  related_item_ids?: ResourceFoodId[];
   /* Рецепт */
   recipe_id?: ResourceRecipeId;
+  /* Основное блюдо */
+  base_dish_id?: ResourceFoodId;
   /* Персонаж */
   character_id?: CharacterId;
+  /* Связанные блюда */
+  related_dish_ids?: ResourceFoodId[];
+  /* Особое блюдо */
+  special_dish_id?: ResourceFoodId;
 }
 
 export interface ResourceLocalSpecialtyInazuma extends ResourceAbstract {
@@ -93,12 +106,20 @@ export interface ResourceRecipe extends ResourceAbstract {
   name: string;
   /* Тип */
   type_id: typeof ResourceTypeIds.Recipe;
+  /* Редкость */
+  rarity?: Rarity;
   /* Где найти */
-  source: string | string[];
+  source?: string | string[];
+  /* Эффекты приготовления блюд */
   dish_effects: string;
-  proficiency?: 15 | 20;
+  /* Умение */
+  proficiency?: 5 | 15 | 20;
   /* Ингредиенты */
   ingredients: ResourceRecipeIngredient[];
+  /* Блюда */
+  dish_ids?: ResourceFoodId[];
+  /* Особое блюдо */
+  special_dish_id?: ResourceFoodId;
 }
 
 export interface ResourceRecipeIngredient {

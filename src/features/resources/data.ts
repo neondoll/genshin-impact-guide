@@ -9,6 +9,7 @@ import type {
   ResourceRecipe,
   ResourceRecipeIngredient,
 } from "./types";
+import { CharacterIds } from "../characters/enums";
 import { FoodTypeIds } from "../food-types/enums";
 import { publicImageSrc } from "@/lib/utils";
 import { RegionIds } from "../regions/enums";
@@ -22,13 +23,13 @@ import {
 } from "./enums";
 import { ResourceTypeIds } from "../resource-types/enums";
 import regions from "../regions/data";
-import { CharacterIds } from "@/features/characters/enums.ts";
 
 abstract class ResourceAbstractClass implements ResourceAbstract {
   readonly id: ResourceAbstract["id"];
   readonly image_src: ResourceAbstract["image_src"];
   readonly name: ResourceAbstract["name"];
   readonly type_id: ResourceAbstract["type_id"];
+  protected _rarity: ResourceAbstract["rarity"];
   readonly source: ResourceAbstract["source"];
 
   static PATH = "resources";
@@ -45,6 +46,16 @@ abstract class ResourceAbstractClass implements ResourceAbstract {
     this.name = name;
     this.type_id = typeId;
     this.source = source;
+  }
+
+  get rarity() {
+    return this._rarity;
+  }
+
+  setRarity(val: NonNullable<ResourceAbstract["rarity"]>) {
+    this._rarity = val;
+
+    return this;
   }
 }
 
@@ -76,10 +87,15 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
   declare readonly name: ResourceFood["name"];
   declare readonly type_id: ResourceFood["type_id"];
   readonly food_type_id: ResourceFood["food_type_id"];
+  declare protected _rarity: ResourceFood["rarity"];
   readonly utility: ResourceFood["utility"];
   declare readonly source: ResourceFood["source"];
+  protected _related_item_ids: ResourceFood["related_item_ids"];
   protected _recipe_id: ResourceFood["recipe_id"];
+  protected _base_dish_id: ResourceFood["base_dish_id"];
   protected _character_id: ResourceFood["character_id"];
+  protected _related_dish_ids: ResourceFood["related_dish_ids"];
+  protected _special_dish_id: ResourceFood["special_dish_id"];
 
   static PATH = "foods";
 
@@ -96,12 +112,34 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
     this.utility = utility;
   }
 
+  get base_dish_id() {
+    return this._base_dish_id;
+  }
+
   get character_id() {
     return this._character_id;
   }
 
   get recipe_id() {
     return this._recipe_id;
+  }
+
+  get related_dish_ids() {
+    return this._related_dish_ids;
+  }
+
+  get related_item_ids() {
+    return this._related_item_ids;
+  }
+
+  get special_dish_id() {
+    return this._special_dish_id;
+  }
+
+  setBaseDishId(val: NonNullable<ResourceFood["base_dish_id"]>) {
+    this._base_dish_id = val;
+
+    return this;
   }
 
   setCharacterId(val: NonNullable<ResourceFood["character_id"]>) {
@@ -112,6 +150,24 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
 
   setRecipeId(val: NonNullable<ResourceFood["recipe_id"]>) {
     this._recipe_id = val;
+
+    return this;
+  }
+
+  setRelatedDishIds(val: NonNullable<ResourceFood["related_dish_ids"]>) {
+    this._related_dish_ids = val;
+
+    return this;
+  }
+
+  setRelatedItemIds(val: NonNullable<ResourceFood["related_item_ids"]>) {
+    this._related_item_ids = val;
+
+    return this;
+  }
+
+  setSpecialDishId(val: NonNullable<ResourceFood["special_dish_id"]>) {
+    this._special_dish_id = val;
 
     return this;
   }
@@ -188,10 +244,13 @@ class ResourceRecipeClass extends ResourceAbstractClass implements ResourceRecip
   declare readonly image_src: ResourceRecipe["image_src"];
   declare readonly name: ResourceRecipe["name"];
   declare readonly type_id: ResourceRecipe["type_id"];
+  declare protected _rarity: ResourceRecipe["rarity"];
   declare readonly source: ResourceRecipe["source"];
   readonly dish_effects: ResourceRecipe["dish_effects"];
   readonly proficiency: ResourceRecipe["proficiency"];
   readonly ingredients: ResourceRecipe["ingredients"];
+  protected _dish_ids: ResourceRecipe["dish_ids"];
+  protected _special_dish_id: ResourceRecipe["special_dish_id"];
 
   constructor(
     id: ResourceRecipe["id"],
@@ -210,17 +269,37 @@ class ResourceRecipeClass extends ResourceAbstractClass implements ResourceRecip
     this.ingredients = ingredients;
   }
 
+  get dish_ids() {
+    return this._dish_ids;
+  }
+
+  get special_dish_id() {
+    return this._special_dish_id;
+  }
+
+  setDishIds(val: NonNullable<ResourceRecipe["dish_ids"]>) {
+    this._dish_ids = val;
+
+    return this;
+  }
+
+  setSpecialDishId(val: NonNullable<ResourceRecipe["special_dish_id"]>) {
+    this._special_dish_id = val;
+
+    return this;
+  }
+
   static init(params: ConstructorParameters<typeof ResourceRecipeClass>) {
     return new ResourceRecipeClass(...params);
   }
 }
 
-class ResourceRecipeIngredientClass<Type extends (ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyInazuma | ResourceLocalSpecialtyNatlan | ResourceMaterial)> implements ResourceRecipeIngredient {
+class ResourceRecipeIngredientClass implements ResourceRecipeIngredient {
   readonly id: ResourceRecipeIngredient["id"];
   readonly count: ResourceRecipeIngredient["count"];
 
-  constructor(item: Type, count: ResourceRecipeIngredient["count"]) {
-    this.id = item.id;
+  constructor(id: ResourceRecipeIngredient["id"], count: ResourceRecipeIngredient["count"]) {
+    this.id = id;
     this.count = count;
   }
 }
@@ -229,13 +308,13 @@ const ResourceFoodUtility = {
   ALittleSurpriseFromTheEasybreezeHolidayResort: (s: number | string) => `<span class="italic">Небольшой сюрприз от курорта «Оазис отдыха».</span><br>Восстанавливает 1 здоровье выбранного персонажа каждые 8 секунд в течение <span class="text-cyan-500">${s} секунд</span>. В кооперативном режиме этот эффект применяется только к вашим персонажам.`,
   DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersAtkAndCritRate: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и шанс крит. попадания на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersCritRate: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersATKAndCRITRate300s: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и шанс крит. попадания на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersCRITRateFor300s: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersDef: (def: number | string) => `Увеличивает защиту всех членов отряда на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class="text-cyan-500">${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  RestoresHpForTheSelectedCharacter: (hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp}</span> HP выбранному персонажу.`,
-  RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp: (hp_: number | string, hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp_}%</span> от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает <span class="text-cyan-500">${hp}</span> HP.`,
-  RevivesACharacterAndRestoresHp: (hp: number | string) => `Воскрешает персонажа и восстанавливает ему <span class="text-cyan-500">${hp}</span> HP.`,
+  RestoresHP: (hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp}</span> HP выбранному персонажу.`,
+  RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s: (hp_: number | string, hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp_}%</span> от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает <span class="text-cyan-500">${hp}</span> HP.`,
+  RevivesACharacterAndRestoresHP: (hp: number | string) => `Воскрешает персонажа и восстанавливает ему <span class="text-cyan-500">${hp}</span> HP.`,
 } as const;
 const ResourceSource = {
   BuyingFromMerchants: "Покупка у торговцев",
@@ -247,126 +326,6 @@ const ResourceSource = {
   Processed: "Заготовка ингредиентов",
   TeyvatResearch: "Исследование Тейвата",
 } as const;
-
-const cookingIngredients = {
-  [ResourceCookingIngredientIds.Berry]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Berry,
-    "Ягода",
-    "Дикая природа",
-  ]),
-  [ResourceCookingIngredientIds.BirdEgg]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.BirdEgg,
-    "Яйцо",
-    ["Дикая природа", "Купить у торговцев"],
-  ]),
-  [ResourceCookingIngredientIds.Butter]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Butter,
-    "Сливочное масло",
-    ["Заготовка ингредиентов", "Покупка у торговцев"],
-  ]),
-  [ResourceCookingIngredientIds.Cheese]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Cheese,
-    "Сыр",
-    ["Заготовка ингредиентов", "Покупка у торговцев"],
-  ]),
-  [ResourceCookingIngredientIds.CoffeeBeans]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.CoffeeBeans,
-    "Кофейные зёрна",
-    "Купить у Энтеки в кафе «Пуспа»",
-  ]),
-  [ResourceCookingIngredientIds.Flour]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Flour,
-    "Мука",
-    ["Заготовка ингредиентов", "Купить у торговцев"],
-  ]),
-  [ResourceCookingIngredientIds.Fowl]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Fowl,
-    "Мясо птицы",
-    ["Животные", "Купить у торговцев", "Загадочный мясной продукт"],
-  ]),
-  [ResourceCookingIngredientIds.Grainfruit]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Grainfruit,
-    "Злакофрукт",
-    [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, ResourceSource.Gardening],
-  ]),
-  [ResourceCookingIngredientIds.Milk]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Milk,
-    "Молоко",
-    "Купить у торговцев",
-  ]),
-  [ResourceCookingIngredientIds.Mint]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Mint,
-    "Мята",
-    ["Дикая природа", "Купить у торговцев", "Садоводство"],
-  ]),
-  [ResourceCookingIngredientIds.Onion]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Onion,
-    "Лук",
-    "Купить у торговцев",
-  ]),
-  [ResourceCookingIngredientIds.Potato]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Potato,
-    "Картофель",
-    ["Исследование Тейвата", "Купить у торговцев"],
-  ]),
-  [ResourceCookingIngredientIds.Salt]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Salt,
-    "Соль",
-    "Купить у торговцев",
-  ]),
-  [ResourceCookingIngredientIds.ShrimpMeat]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.ShrimpMeat,
-    "Мясо креветки",
-    "Купить у торговцев",
-  ]),
-  [ResourceCookingIngredientIds.Sugar]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.Sugar,
-    "Сахар",
-    ["Заготовка ингредиентов", "Купить у торговцев"],
-  ]),
-  [ResourceCookingIngredientIds.ZaytunPeach]: ResourceCookingIngredientClass.init([
-    ResourceCookingIngredientIds.ZaytunPeach,
-    "Персик зайтун",
-    [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, "Садоводство"],
-  ]),
-};
-const foods = {
-  [ResourceFoodIds.Apple]: ResourceFoodClass.init([
-    ResourceFoodIds.Apple,
-    "Яблоко",
-    FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresHpForTheSelectedCharacter(300),
-    [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants],
-  ]),
-  [ResourceFoodIds.Sunsettia]: ResourceFoodClass.init([
-    ResourceFoodIds.Sunsettia,
-    "Закатник",
-    FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresHpForTheSelectedCharacter(300),
-    [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants],
-  ]),
-};
-const localSpecialtiesInazuma = {
-  [ResourceLocalSpecialtyInazumaIds.SakuraBloom]: ResourceLocalSpecialtyInazumaClass.init([
-    ResourceLocalSpecialtyInazumaIds.SakuraBloom,
-    "Цвет сакуры",
-    "Остров Наруками",
-  ]),
-};
-const localSpecialtiesNatlan = {
-  [ResourceLocalSpecialtyNatlanIds.QuenepaBerry]: ResourceLocalSpecialtyNatlanClass.init([
-    ResourceLocalSpecialtyNatlanIds.QuenepaBerry,
-    "Ягода квенепа",
-    [ResourceSource.Natlan, ResourceSource.BuyingFromMerchants],
-  ]),
-};
-const materials = {
-  [ResourceMaterialIds.Cacahuatl]: ResourceMaterialClass.init([
-    ResourceMaterialIds.Cacahuatl,
-    "Какауатль",
-    [ResourceSource.Natlan, "Купить у торговцев", "Садоводство"],
-  ]),
-};
 
 const BubblemilkPie = {
   [ResourceFoodIds.BubblemilkPie]: ResourceFoodClass.init([
@@ -397,10 +356,10 @@ const BubblemilkPie = {
     ResourceFoodUtility.IncreasesAllPartyMembersDef("165–235"),
     15,
     [
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Butter], 2),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Flour], 2),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Milk], 4),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Sugar], 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Butter, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Milk, 4),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 1),
     ],
   ]),
 };
@@ -409,76 +368,76 @@ const CrispyPotatoShrimpPlatter = {
     ResourceFoodIds.ChatterOfJoyfulNights,
     "«Беседы весёлых ночей»",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(34, 980),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(34, 980),
     "Готовка",
-  ]).setCharacterId(CharacterIds.Dahlia).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  ]).setBaseDishId(ResourceFoodIds.CrispyPotatoShrimpPlatter).setCharacterId(CharacterIds.Dahlia).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
   [ResourceFoodIds.CrispyPotatoShrimpPlatter]: ResourceFoodClass.init([
     ResourceFoodIds.CrispyPotatoShrimpPlatter,
     "Хрустящие креветки с картофелем",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(28, 620),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(28, 620),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter).setRelatedDishIds([ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter, ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter]).setSpecialDishId(ResourceFoodIds.ChatterOfJoyfulNights),
   [ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter,
     "Вкусные хрустящие креветки с картофелем",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(30, 790),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(30, 790),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter).setRelatedDishIds([ResourceFoodIds.CrispyPotatoShrimpPlatter, ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter]).setSpecialDishId(ResourceFoodIds.ChatterOfJoyfulNights),
   [ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter,
     "Странные хрустящие креветки с картофелем",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp(26, 450),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(26, 450),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter).setRelatedDishIds([ResourceFoodIds.CrispyPotatoShrimpPlatter, ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter]).setSpecialDishId(ResourceFoodIds.ChatterOfJoyfulNights),
   [ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter,
     "Рецепт: Хрустящие креветки с картофелем",
     "Купить у Сары в ресторане «Хороший охотник»",
-    ResourceFoodUtility.RestoresPercentOfMaxHpToTheSelectedCharacterAndRegeneratesHp("26–30", "450–790"),
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s("26–30", "450–790"),
     15,
     [
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Berry], 2),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Mint], 4),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Potato], 3),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ShrimpMeat], 4),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Berry, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Mint, 4),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Potato, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.ShrimpMeat, 4),
     ],
-  ]),
+  ]).setRarity(3).setDishIds([ResourceFoodIds.CrispyPotatoShrimpPlatter, ResourceFoodIds.DeliciousCrispyPotatoShrimpPlatter, ResourceFoodIds.SuspiciousCrispyPotatoShrimpPlatter]).setSpecialDishId(ResourceFoodIds.ChatterOfJoyfulNights),
 };
 const Drink455 = {
   [ResourceFoodIds.DeliciousDrink455]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousDrink455,
     "Вкусный напиток 455",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RevivesACharacterAndRestoresHp(1500),
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(1500),
     "Готовка",
   ]).setRecipeId(ResourceRecipeIds.RecipeDrink455),
   [ResourceFoodIds.Drink455]: ResourceFoodClass.init([
     ResourceFoodIds.Drink455,
     "Напиток 455",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RevivesACharacterAndRestoresHp(1200),
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(1200),
     "Готовка",
   ]).setRecipeId(ResourceRecipeIds.RecipeDrink455),
   [ResourceFoodIds.SuspiciousDrink455]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousDrink455,
     "Странный напиток 455",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RevivesACharacterAndRestoresHp(900),
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(900),
     "Готовка",
   ]).setRecipeId(ResourceRecipeIds.RecipeDrink455),
   [ResourceRecipeIds.RecipeDrink455]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeDrink455,
     "Рецепт: Напиток 455",
     "Совместное событие Genshin Impact × Mizone",
-    ResourceFoodUtility.RevivesACharacterAndRestoresHp("900–1500"),
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP("900–1500"),
     undefined,
     [
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Mint], 2),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Salt], 1),
-      new ResourceRecipeIngredientClass(localSpecialtiesInazuma[ResourceLocalSpecialtyInazumaIds.SakuraBloom], 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Mint, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Salt, 1),
+      new ResourceRecipeIngredientClass(ResourceLocalSpecialtyInazumaIds.SakuraBloom, 2),
     ],
   ]),
 };
@@ -511,9 +470,9 @@ const GentleSeaBreeze = {
     ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption("15–25"),
     15,
     [
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Mint], 2),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Sugar], 1),
-      new ResourceRecipeIngredientClass(localSpecialtiesNatlan[ResourceLocalSpecialtyNatlanIds.QuenepaBerry], 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Mint, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 1),
+      new ResourceRecipeIngredientClass(ResourceLocalSpecialtyNatlanIds.QuenepaBerry, 2),
     ],
   ]),
 };
@@ -522,37 +481,37 @@ const MeatLoversFeast = {
     ResourceFoodIds.DeliciousMeatLoversFeast,
     "Вкусная «Радость мясоеда»",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate(320, 10),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(320, 10),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast),
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast).setRelatedDishIds([ResourceFoodIds.MeatLoversFeast, ResourceFoodIds.SuspiciousMeatLoversFeast]),
   [ResourceFoodIds.MeatLoversFeast]: ResourceFoodClass.init([
     ResourceFoodIds.MeatLoversFeast,
     "«Радость мясоеда»",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate(272, 8),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(272, 8),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast),
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast).setRelatedDishIds([ResourceFoodIds.DeliciousMeatLoversFeast, ResourceFoodIds.SuspiciousMeatLoversFeast]),
   [ResourceFoodIds.SuspiciousMeatLoversFeast]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousMeatLoversFeast,
     "Странная «Радость мясоеда»",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate(224, 6),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(224, 6),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast),
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeMeatLoversFeast).setRelatedDishIds([ResourceFoodIds.DeliciousMeatLoversFeast, ResourceFoodIds.MeatLoversFeast]),
   [ResourceRecipeIds.RecipeMeatLoversFeast]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeMeatLoversFeast,
     "Рецепт: «Радость мясоеда»",
     "Внутриигровая почта",
-    ResourceFoodUtility.IncreasesAllPartyMembersAtkAndCritRate("224–320", "6–10"),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s("224–320", "6–10"),
     20,
     [
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.CoffeeBeans], 3),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Flour], 3),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Fowl], 5),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ShrimpMeat], 4),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.CoffeeBeans, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Fowl, 5),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.ShrimpMeat, 4),
 
     ],
-  ]),
+  ]).setRarity(4).setDishIds([ResourceFoodIds.DeliciousMeatLoversFeast, ResourceFoodIds.MeatLoversFeast, ResourceFoodIds.SuspiciousMeatLoversFeast]),
 };
 const MiniAshaPockets = {
   [ResourceFoodIds.DeliciousMiniAshaPockets]: ResourceFoodClass.init([
@@ -583,10 +542,10 @@ const MiniAshaPockets = {
     ResourceFoodUtility.ALittleSurpriseFromTheEasybreezeHolidayResort("32–48"),
     20,
     [
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Cheese], 1),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Flour], 1),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Fowl], 1),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Onion], 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Cheese, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Fowl, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Onion, 1),
     ],
   ]),
 };
@@ -619,10 +578,10 @@ const NanasCake = {
     ResourceFoodUtility.IncreasesAllPartyMembersAtk("160–228"),
     15,
     [
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.BirdEgg], 4),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Flour], 2),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Sugar], 1),
-      new ResourceRecipeIngredientClass(materials[ResourceMaterialIds.Cacahuatl], 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 4),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 1),
+      new ResourceRecipeIngredientClass(ResourceMaterialIds.Cacahuatl, 2),
     ],
   ]),
 };
@@ -631,36 +590,36 @@ const NineFruitNectar = {
     ResourceFoodIds.DeliciousNineFruitNectar,
     "Вкусный нектар девяти фруктов",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersCritRate(20),
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(20),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar).setRelatedDishIds([ResourceFoodIds.NineFruitNectar, ResourceFoodIds.SuspiciousNineFruitNectar]),
   [ResourceFoodIds.NineFruitNectar]: ResourceFoodClass.init([
     ResourceFoodIds.NineFruitNectar,
     "Нектар девяти фруктов",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersCritRate(15),
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(15),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar).setRelatedDishIds([ResourceFoodIds.DeliciousNineFruitNectar, ResourceFoodIds.SuspiciousNineFruitNectar]),
   [ResourceFoodIds.SuspiciousNineFruitNectar]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousNineFruitNectar,
     "Странный нектар девяти фруктов",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersCritRate(10),
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(10),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeNineFruitNectar).setRelatedDishIds([ResourceFoodIds.DeliciousNineFruitNectar, ResourceFoodIds.NineFruitNectar]),
   [ResourceRecipeIds.RecipeNineFruitNectar]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeNineFruitNectar,
     "Рецепт: Нектар девяти фруктов",
     "Внутриигровая почта",
-    ResourceFoodUtility.IncreasesAllPartyMembersCritRate("10–20"),
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s("10–20"),
     15,
     [
-      new ResourceRecipeIngredientClass(foods[ResourceFoodIds.Apple], 2),
-      new ResourceRecipeIngredientClass(foods[ResourceFoodIds.Sunsettia], 2),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Berry], 2),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ZaytunPeach], 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Berry, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.ZaytunPeach, 2),
+      new ResourceRecipeIngredientClass(ResourceFoodIds.Apple, 2),
+      new ResourceRecipeIngredientClass(ResourceFoodIds.Sunsettia, 2),
     ],
-  ]),
+  ]).setRarity(3).setDishIds([ResourceFoodIds.DeliciousNineFruitNectar, ResourceFoodIds.NineFruitNectar, ResourceFoodIds.SuspiciousNineFruitNectar]),
 };
 const ShrimpBisque = {
   [ResourceFoodIds.DeliciousShrimpBisque]: ResourceFoodClass.init([
@@ -691,27 +650,205 @@ const ShrimpBisque = {
     ResourceFoodUtility.IncreasesAllPartyMembersHealingBonus("15–20"),
     15,
     [
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Grainfruit], 2),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Onion], 3),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.Potato], 3),
-      new ResourceRecipeIngredientClass(cookingIngredients[ResourceCookingIngredientIds.ShrimpMeat], 4),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Grainfruit, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Onion, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Potato, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.ShrimpMeat, 4),
     ],
   ]),
 };
+const Starshroom = {
+  [ResourceFoodIds.ActivatedStarshroom]: ResourceFoodClass.init([
+    ResourceFoodIds.ActivatedStarshroom,
+    "Оживлённый гриб-звезда",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresHP(800),
+    "Дикая природа",
+  ]).setRelatedItemIds([ResourceFoodIds.ScorchedStarshroom, ResourceFoodIds.Starshroom]),
+  [ResourceFoodIds.ScorchedStarshroom]: ResourceFoodClass.init([
+    ResourceFoodIds.ScorchedStarshroom,
+    "Обожжённый гриб-звезда",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresHP(1),
+    "Дикая природа",
+  ]).setRelatedItemIds([ResourceFoodIds.ActivatedStarshroom, ResourceFoodIds.Starshroom]),
+  [ResourceFoodIds.Starshroom]: ResourceFoodClass.init([
+    ResourceFoodIds.Starshroom,
+    "Гриб-звезда",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresHP(300),
+    ["Дикая природа", "Покупка у торговцев"],
+  ]).setRelatedItemIds([ResourceFoodIds.ActivatedStarshroom, ResourceFoodIds.ScorchedStarshroom]),
+};
+const TeyvatFriedEgg = {
+  [ResourceFoodIds.TeyvatFriedEgg]: ResourceFoodClass.init([
+    ResourceFoodIds.TeyvatFriedEgg,
+    "Яичница по-тейватски",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(100),
+    ["Готовка", "Купить у торговцев"],
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeTeyvatFriedEgg),
+  [ResourceRecipeIds.RecipeTeyvatFriedEgg]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeTeyvatFriedEgg,
+    "Рецепт: Яичница по-тейватски",
+    undefined,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP("15–20"),
+    5,
+    [new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 1)],
+  ]).setRarity(1),
+};
 
 export default {
-  ...cookingIngredients,
-  ...foods,
-  ...localSpecialtiesInazuma,
-  ...localSpecialtiesNatlan,
-  ...materials,
-  ...BubblemilkPie,
-  ...CrispyPotatoShrimpPlatter,
-  ...Drink455,
-  ...GentleSeaBreeze,
-  ...MeatLoversFeast,
-  ...MiniAshaPockets,
-  ...NanasCake,
-  ...NineFruitNectar,
-  ...ShrimpBisque,
+  [ResourceFoodIds.AbyssalBounty]: ResourceFoodClass.init([
+    ResourceFoodIds.AbyssalBounty,
+    "«Сокровище бездны»",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(34, 980),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Dahlia).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  /* Молочный пирог с пузырьками     */ ...BubblemilkPie,
+  /* Хрустящие креветки с картофелем */ ...CrispyPotatoShrimpPlatter,
+  /* Напиток 455                     */ ...Drink455,
+  /* «Лёгкий морской бриз»           */ ...GentleSeaBreeze,
+  /* «Радость мясоеда»               */ ...MeatLoversFeast,
+  /* Мини-мешочки аши                */ ...MiniAshaPockets,
+  /* Нанасовый пирог                 */ ...NanasCake,
+  /* Нектар девяти фруктов           */ ...NineFruitNectar,
+  /* Биск с креветками               */ ...ShrimpBisque,
+  /* Гриб-звезда                     */ ...Starshroom,
+  /* Яичница по-тейватски            */ ...TeyvatFriedEgg,
+
+  /* Кухонные ингредиенты            */ ...{
+    [ResourceCookingIngredientIds.Berry]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Berry,
+      "Ягода",
+      "Дикая природа",
+    ]),
+    [ResourceCookingIngredientIds.BirdEgg]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.BirdEgg,
+      "Яйцо",
+      ["Дикая природа", "Купить у торговцев"],
+    ]),
+    [ResourceCookingIngredientIds.Butter]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Butter,
+      "Сливочное масло",
+      ["Заготовка ингредиентов", "Покупка у торговцев"],
+    ]),
+    [ResourceCookingIngredientIds.Cheese]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Cheese,
+      "Сыр",
+      ["Заготовка ингредиентов", "Покупка у торговцев"],
+    ]),
+    [ResourceCookingIngredientIds.CoffeeBeans]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.CoffeeBeans,
+      "Кофейные зёрна",
+      "Купить у Энтеки в кафе «Пуспа»",
+    ]),
+    [ResourceCookingIngredientIds.Flour]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Flour,
+      "Мука",
+      ["Заготовка ингредиентов", "Купить у торговцев"],
+    ]),
+    [ResourceCookingIngredientIds.Fowl]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Fowl,
+      "Мясо птицы",
+      ["Животные", "Купить у торговцев", "Загадочный мясной продукт"],
+    ]),
+    [ResourceCookingIngredientIds.Grainfruit]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Grainfruit,
+      "Злакофрукт",
+      [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, ResourceSource.Gardening],
+    ]),
+    [ResourceCookingIngredientIds.Milk]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Milk,
+      "Молоко",
+      "Купить у торговцев",
+    ]),
+    [ResourceCookingIngredientIds.Mint]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Mint,
+      "Мята",
+      ["Дикая природа", "Купить у торговцев", "Садоводство"],
+    ]),
+    [ResourceCookingIngredientIds.Onion]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Onion,
+      "Лук",
+      "Купить у торговцев",
+    ]),
+    [ResourceCookingIngredientIds.Potato]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Potato,
+      "Картофель",
+      ["Исследование Тейвата", "Купить у торговцев"],
+    ]),
+    [ResourceCookingIngredientIds.Salt]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Salt,
+      "Соль",
+      "Купить у торговцев",
+    ]),
+    [ResourceCookingIngredientIds.ShrimpMeat]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.ShrimpMeat,
+      "Мясо креветки",
+      "Купить у торговцев",
+    ]),
+    [ResourceCookingIngredientIds.Sugar]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Sugar,
+      "Сахар",
+      ["Заготовка ингредиентов", "Купить у торговцев"],
+    ]),
+    [ResourceCookingIngredientIds.ZaytunPeach]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.ZaytunPeach,
+      "Персик зайтун",
+      [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, "Садоводство"],
+    ]),
+  },
+  /* Еда                             */ ...{
+    [ResourceFoodIds.Apple]: ResourceFoodClass.init([
+      ResourceFoodIds.Apple,
+      "Яблоко",
+      FoodTypeIds.RecoveryDish,
+      ResourceFoodUtility.RestoresHP(300),
+      ["Дикая природа", "Купить у торговцев"],
+    ]),
+    [ResourceFoodIds.BulleFruit]: ResourceFoodClass.init([
+      ResourceFoodIds.BulleFruit,
+      "Пузырин",
+      FoodTypeIds.RecoveryDish,
+      ResourceFoodUtility.RestoresHP(300),
+      ["Дикая природа", "Купить у торговцев"],
+    ]),
+    [ResourceFoodIds.CandlecapMushroom]: ResourceFoodClass.init([
+      ResourceFoodIds.CandlecapMushroom,
+      "Свечевик",
+      FoodTypeIds.RecoveryDish,
+      ResourceFoodUtility.RestoresHP(300),
+      ["Натлан", "Купить у торговцев"],
+    ]),
+    [ResourceFoodIds.Sunsettia]: ResourceFoodClass.init([
+      ResourceFoodIds.Sunsettia,
+      "Закатник",
+      FoodTypeIds.RecoveryDish,
+      ResourceFoodUtility.RestoresHP(300),
+      ["Дикая природа", "Купить у торговцев"],
+    ]),
+  },
+  /* Диковинки Инадзумы              */ ...{
+    [ResourceLocalSpecialtyInazumaIds.SakuraBloom]: ResourceLocalSpecialtyInazumaClass.init([
+      ResourceLocalSpecialtyInazumaIds.SakuraBloom,
+      "Цвет сакуры",
+      "Остров Наруками",
+    ]),
+  },
+  /* Диковинки Натлана               */ ...{
+    [ResourceLocalSpecialtyNatlanIds.QuenepaBerry]: ResourceLocalSpecialtyNatlanClass.init([
+      ResourceLocalSpecialtyNatlanIds.QuenepaBerry,
+      "Ягода квенепа",
+      [ResourceSource.Natlan, ResourceSource.BuyingFromMerchants],
+    ]),
+  },
+  /* Материалы                       */ ...{
+    [ResourceMaterialIds.Cacahuatl]: ResourceMaterialClass.init([
+      ResourceMaterialIds.Cacahuatl,
+      "Какауатль",
+      [ResourceSource.Natlan, "Купить у торговцев", "Садоводство"],
+    ]),
+  },
 } as Record<Resource["id"], Resource>;

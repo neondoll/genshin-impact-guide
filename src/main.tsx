@@ -9,6 +9,7 @@ import ArtifactSet, { loader as artifactSetLoader } from "./routes/artifact-set"
 import ArtifactSets, { loader as artifactSetsLoader } from "./routes/artifact-sets";
 import Character, { loader as characterLoader } from "./routes/character";
 import Characters, { loader as charactersLoader } from "./routes/characters";
+import ElementalReaction, { loader as elementalReactionLoader } from "./routes/elemental-reaction";
 import ErrorPage from "./error-page";
 import Index from "./routes/index";
 import Paths from "./constants/paths";
@@ -36,6 +37,11 @@ if (container) {
         { path: Paths.ArtifactSet.to(":artifactSetId"), element: <ArtifactSet />, loader: artifactSetLoader },
         { path: Paths.Characters.to, element: <Characters />, loader: charactersLoader },
         { path: Paths.Character.to(":characterId"), element: <Character />, loader: characterLoader },
+        {
+          path: Paths.ElementalReaction.to(":elementalReactionId"),
+          element: <ElementalReaction />,
+          loader: elementalReactionLoader,
+        },
         { path: Paths.Resources.to, element: <Resources />, loader: resourcesLoader },
         { path: Paths.Resource.to(":resourceId"), element: <Resource />, loader: resourceLoader },
         { path: Paths.Weapons.to, element: <Weapons />, loader: weaponsLoader },

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
 import { selectResourcesAll } from "@/features/resources/selectors";
 import Paths from "@/constants/paths";
+import { backgroundClassByRarity } from "@/lib/rarity.ts";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader() {
@@ -46,7 +47,10 @@ export default function Resources() {
             <span className="relative shrink-0 size-12">
               <img
                 alt={resource.id}
-                className="object-cover size-full bg-linear-to-b from-[#323947] to-[#4a5366] rounded-sm rounded-br-xl"
+                className={cn(
+                  "object-cover size-full rounded-sm rounded-br-xl",
+                  ("rarity" in resource && resource.rarity) ? backgroundClassByRarity(resource.rarity) : "bg-linear-to-b from-[#323947] to-[#4a5366]",
+                )}
                 draggable={false}
                 src={resource.image_src}
               />
