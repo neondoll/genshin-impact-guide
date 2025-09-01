@@ -26,7 +26,9 @@ export default function PreferredStatsRecommendations({ recommendations }: Prefe
           <TableRow className="hover:bg-inherit" key={index + 1}>
             {recommendationsKeys.map(recommendationsKey => (
               <TableCell className="text-pretty whitespace-normal" key={recommendationsKey}>
-                <StatBadge statId={recommendations[recommendationsKey][index]} />
+                {recommendations[recommendationsKey][index] && (
+                  <StatBadge statId={recommendations[recommendationsKey][index]} />
+                )}
               </TableCell>
             ))}
           </TableRow>
