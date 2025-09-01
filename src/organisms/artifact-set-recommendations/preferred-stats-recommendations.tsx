@@ -24,17 +24,13 @@ export default function PreferredStatsRecommendations({ recommendations }: Prefe
       <TableBody>
         {Array.from({ length: rowsCount }, (_, i) => i).map(index => (
           <TableRow className="hover:bg-inherit" key={index + 1}>
-            {recommendationsKeys.map((recommendationsKey) => {
-              if (recommendations[recommendationsKey][index]) {
-                return (
-                  <TableCell className="text-pretty whitespace-normal" key={recommendationsKey}>
-                    <StatBadge statId={recommendations[recommendationsKey][index]} />
-                  </TableCell>
-                );
-              }
-
-              return undefined;
-            })}
+            {recommendationsKeys.map(recommendationsKey => (
+              <TableCell className="text-pretty whitespace-normal" key={recommendationsKey}>
+                {recommendations[recommendationsKey][index] && (
+                  <StatBadge statId={recommendations[recommendationsKey][index]} />
+                )}
+              </TableCell>
+            ))}
           </TableRow>
         ))}
       </TableBody>
