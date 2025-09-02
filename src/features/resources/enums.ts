@@ -11,6 +11,7 @@ export const ResourceCookingIngredientIds = {
   /* Мята            */ Mint: "mint",
   /* Лук             */ Onion: "onion",
   /* Картофель       */ Potato: "potato",
+  /* Сырое мясо      */ RawMeat: "raw_meat",
   /* Соль            */ Salt: "salt",
   /* Мясо креветки   */ ShrimpMeat: "shrimp_meat",
   /* Сахар           */ Sugar: "sugar",
@@ -49,6 +50,8 @@ export const ResourceFoodIds = {
   DeliciousNanasCake: "delicious_nanas_cake",
   /* Вкусный нектар девяти фруктов */
   DeliciousNineFruitNectar: "delicious_nine_fruit_nectar",
+  /* Вкусная «Расти гора» */
+  DeliciousPileEmUp: "delicious_pile_em_up",
   /* Вкусный биск с креветками */
   DeliciousShrimpBisque: "delicious_shrimp_bisque",
   /* Напиток 455 */
@@ -63,6 +66,10 @@ export const ResourceFoodIds = {
   NanasCake: "nanas_cake",
   /* Нектар девяти фруктов */
   NineFruitNectar: "nine_fruit_nectar",
+  /* «Однажды в Мондштадте» */
+  OnceUponATimeInMondstadt: "once_upon_a_time_in_mondstadt",
+  /* «Расти гора» */
+  PileEmUp: "pile_em_up",
   /* Обожжённый гриб-звезда */
   ScorchedStarshroom: "scorched_starshroom",
   /* Биск с креветками */
@@ -87,6 +94,8 @@ export const ResourceFoodIds = {
   SuspiciousNanasCake: "suspicious_nanas_cake",
   /* Странный нектар девяти фруктов */
   SuspiciousNineFruitNectar: "suspicious_nine_fruit_nectar",
+  /* Странная «Расти гора» */
+  SuspiciousPileEmUp: "suspicious_pile_em_up",
   /* Странный биск с креветками */
   SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
   /* Яичница по-тейватски */
@@ -94,6 +103,9 @@ export const ResourceFoodIds = {
 } as const;
 export const ResourceLocalSpecialtyInazumaIds = {
   /* Цвет сакуры */ SakuraBloom: "sakura_bloom",
+} as const;
+export const ResourceLocalSpecialtyMondstadtIds = {
+  /* Трава-светяшка */ SmallLampGrass: "small_lamp_grass",
 } as const;
 export const ResourceLocalSpecialtyNatlanIds = {
   /* Ягода квенепа */ QuenepaBerry: "quenepa_berry",
@@ -110,6 +122,7 @@ export const ResourceRecipeIds = {
   /* Рецепт: Мини-мешочки аши                */ RecipeMiniAshaPockets: "recipe_mini_asha_pockets",
   /* Рецепт: Нанасовый пирог                 */ RecipeNanasCake: "recipe_nanas_cake",
   /* Рецепт: Нектар девяти фруктов           */ RecipeNineFruitNectar: "recipe_nine_fruit_nectar",
+  /* Рецепт: «Расти гора»                    */ RecipePileEmUp: "recipe_pile_em_up",
   /* Рецепт: Биск с креветками               */ RecipeShrimpBisque: "recipe_shrimp_bisque",
   /* Рецепт: Яичница по-тейватски            */ RecipeTeyvatFriedEgg: "recipe_teyvat_fried_egg",
 } as const;
@@ -117,6 +130,7 @@ export const ResourceIds = {
   ...ResourceCookingIngredientIds,
   ...ResourceFoodIds,
   ...ResourceLocalSpecialtyInazumaIds,
+  ...ResourceLocalSpecialtyMondstadtIds,
   ...ResourceLocalSpecialtyNatlanIds,
   ...ResourceMaterialIds,
   ...ResourceRecipeIds,
