@@ -564,6 +564,47 @@ const MiniAshaPockets = {
     ],
   ]),
 };
+const MisoSoup = {
+  [ResourceFoodIds.DeliciousMisoSoup]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousMisoSoup,
+    "Вкусный мисо-суп",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(10, 300),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeMisoSoup),
+  [ResourceFoodIds.MisoSoup]: ResourceFoodClass.init([
+    ResourceFoodIds.MisoSoup,
+    "Мисо-суп",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(9, 260),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeMisoSoup),
+  [ResourceFoodIds.SuspiciousMisoSoup]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousMisoSoup,
+    "Странный мисо-суп",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(8, 210),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeMisoSoup),
+  [ResourceFoodIds.Warmth]: ResourceFoodClass.init([
+    ResourceFoodIds.Warmth,
+    "«Теплота»",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(14, 350),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Thoma).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeMisoSoup),
+  [ResourceRecipeIds.RecipeMisoSoup]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeMisoSoup,
+    "Рецепт: Мисо-суп",
+    "Купить у Симуры Камбэя в ресторане «Симура»",
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s("8–10", "210–300"),
+    5,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Seagrass, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Tofu, 1),
+    ],
+  ]).setRarity(1),
+};
 const NanasCake = {
   [ResourceFoodIds.DeliciousNanasCake]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousNanasCake,
@@ -771,6 +812,7 @@ export default {
   /* «Лёгкий морской бриз»           */ ...GentleSeaBreeze,
   /* «Радость мясоеда»               */ ...MeatLoversFeast,
   /* Мини-мешочки аши                */ ...MiniAshaPockets,
+  /* Мисо-суп                        */ ...MisoSoup,
   /* Нанасовый пирог                 */ ...NanasCake,
   /* Нектар девяти фруктов           */ ...NineFruitNectar,
   /* «Расти гора»                    */ ...PileEmUp,
@@ -854,6 +896,11 @@ export default {
       "Соль",
       "Купить у торговцев",
     ]),
+    [ResourceCookingIngredientIds.Seagrass]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Seagrass,
+      "Морская водоросль",
+      ["Инадзума", "Купить у торговцев", "Садоводство"],
+    ]),
     [ResourceCookingIngredientIds.ShrimpMeat]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.ShrimpMeat,
       "Мясо креветки",
@@ -863,6 +910,11 @@ export default {
       ResourceCookingIngredientIds.Sugar,
       "Сахар",
       ["Заготовка ингредиентов", "Купить у торговцев"],
+    ]),
+    [ResourceCookingIngredientIds.Tofu]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Tofu,
+      "Тофу",
+      "Купить у торговцев",
     ]),
     [ResourceCookingIngredientIds.ZaytunPeach]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.ZaytunPeach,

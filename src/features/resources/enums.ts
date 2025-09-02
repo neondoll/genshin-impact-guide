@@ -1,22 +1,24 @@
 export const ResourceCookingIngredientIds = {
-  /* Ягода           */ Berry: "berry",
-  /* Яйцо            */ BirdEgg: "bird_egg",
-  /* Сливочное масло */ Butter: "butter",
-  /* Сыр             */ Cheese: "cheese",
-  /* Кофейные зёрна  */ CoffeeBeans: "coffee_beans",
-  /* Мука            */ Flour: "flour",
-  /* Мясо птицы      */ Fowl: "fowl",
-  /* Злакофрукт      */ Grainfruit: "grainfruit",
-  /* Молоко          */ Milk: "milk",
-  /* Мята            */ Mint: "mint",
-  /* Лук             */ Onion: "onion",
-  /* Картофель       */ Potato: "potato",
-  /* Сырое мясо      */ RawMeat: "raw_meat",
-  /* Рис             */ Rice: "rice",
-  /* Соль            */ Salt: "salt",
-  /* Мясо креветки   */ ShrimpMeat: "shrimp_meat",
-  /* Сахар           */ Sugar: "sugar",
-  /* Персик зайтун   */ ZaytunPeach: "zaytun_peach",
+  /* Ягода             */ Berry: "berry",
+  /* Яйцо              */ BirdEgg: "bird_egg",
+  /* Сливочное масло   */ Butter: "butter",
+  /* Сыр               */ Cheese: "cheese",
+  /* Кофейные зёрна    */ CoffeeBeans: "coffee_beans",
+  /* Мука              */ Flour: "flour",
+  /* Мясо птицы        */ Fowl: "fowl",
+  /* Злакофрукт        */ Grainfruit: "grainfruit",
+  /* Молоко            */ Milk: "milk",
+  /* Мята              */ Mint: "mint",
+  /* Лук               */ Onion: "onion",
+  /* Картофель         */ Potato: "potato",
+  /* Сырое мясо        */ RawMeat: "raw_meat",
+  /* Рис               */ Rice: "rice",
+  /* Соль              */ Salt: "salt",
+  /* Морская водоросль */ Seagrass: "seagrass",
+  /* Мясо креветки     */ ShrimpMeat: "shrimp_meat",
+  /* Сахар             */ Sugar: "sugar",
+  /* Тофу              */ Tofu: "tofu",
+  /* Персик зайтун     */ ZaytunPeach: "zaytun_peach",
 } as const;
 export const ResourceFoodIds = {
   /* Стратегия неожиданности */
@@ -53,6 +55,8 @@ export const ResourceFoodIds = {
   DeliciousMeatLoversFeast: "delicious_meat_lovers_feast",
   /* Вкусные мини-мешочки аши */
   DeliciousMiniAshaPockets: "delicious_mini_asha_pockets",
+  /* Вкусный мисо-суп */
+  DeliciousMisoSoup: "delicious_miso_soup",
   /* Вкусный нанасовый пирог */
   DeliciousNanasCake: "delicious_nanas_cake",
   /* Вкусный нектар девяти фруктов */
@@ -69,6 +73,8 @@ export const ResourceFoodIds = {
   MeatLoversFeast: "meat_lovers_feast",
   /* Мини-мешочки аши */
   MiniAshaPockets: "mini_asha_pockets",
+  /* Мисо-суп */
+  MisoSoup: "miso_soup",
   /* Нанасовый пирог */
   NanasCake: "nanas_cake",
   /* Нектар девяти фруктов */
@@ -99,6 +105,8 @@ export const ResourceFoodIds = {
   SuspiciousMeatLoversFeast: "suspicious_meat_lovers_feast",
   /* Странные мини-мешочки аши */
   SuspiciousMiniAshaPockets: "suspicious_mini_asha_pockets",
+  /* Странный мисо-суп */
+  SuspiciousMisoSoup: "suspicious_miso_soup",
   /* Странный нанасовый пирог */
   SuspiciousNanasCake: "suspicious_nanas_cake",
   /* Странный нектар девяти фруктов */
@@ -109,6 +117,8 @@ export const ResourceFoodIds = {
   SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
   /* Яичница по-тейватски */
   TeyvatFriedEgg: "teyvat_fried_egg",
+  /* «Теплота» */
+  Warmth: "warmth",
 } as const;
 export const ResourceLocalSpecialtyInazumaIds = {
   /* Цвет сакуры */ SakuraBloom: "sakura_bloom",
@@ -130,6 +140,7 @@ export const ResourceRecipeIds = {
   /* Рецепт: «Лёгкий морской бриз»           */ RecipeGentleSeaBreeze: "recipe_gentle_sea_breeze",
   /* Рецепт: «Радость мясоеда»               */ RecipeMeatLoversFeast: "recipe_meat_lovers_feast",
   /* Рецепт: Мини-мешочки аши                */ RecipeMiniAshaPockets: "recipe_mini_asha_pockets",
+  /* Рецепт: Мисо-суп                        */ RecipeMisoSoup: "recipe_miso_soup",
   /* Рецепт: Нанасовый пирог                 */ RecipeNanasCake: "recipe_nanas_cake",
   /* Рецепт: Нектар девяти фруктов           */ RecipeNineFruitNectar: "recipe_nine_fruit_nectar",
   /* Рецепт: «Расти гора»                    */ RecipePileEmUp: "recipe_pile_em_up",
