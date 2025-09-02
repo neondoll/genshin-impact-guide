@@ -4,6 +4,7 @@ export const ResourceCookingIngredientIds = {
   /* Сливочное масло   */ Butter: "butter",
   /* Сыр               */ Cheese: "cheese",
   /* Кофейные зёрна    */ CoffeeBeans: "coffee_beans",
+  /* Рыба              */ Fish: "fish",
   /* Мука              */ Flour: "flour",
   /* Мясо птицы        */ Fowl: "fowl",
   /* Злакофрукт        */ Grainfruit: "grainfruit",
@@ -65,6 +66,8 @@ export const ResourceFoodIds = {
   DeliciousPileEmUp: "delicious_pile_em_up",
   /* Вкусный биск с креветками */
   DeliciousShrimpBisque: "delicious_shrimp_bisque",
+  /* Вкусная солнечная рыба */
+  DeliciousSunshineSprat: "delicious_sunshine_sprat",
   /* Напиток 455 */
   Drink455: "drink_455",
   /* «Лёгкий морской бриз» */
@@ -91,6 +94,8 @@ export const ResourceFoodIds = {
   Starshroom: "starshroom",
   /* Закатник */
   Sunsettia: "sunsettia",
+  /* Солнечная рыба */
+  SunshineSprat: "sunshine_sprat",
   /* Странные яичные суши */
   SuspiciousBirdEggSushi: "suspicious_bird_egg_sushi",
   /* Странный молочный пирог с пузырьками */
@@ -115,10 +120,14 @@ export const ResourceFoodIds = {
   SuspiciousPileEmUp: "suspicious_pile_em_up",
   /* Странный биск с креветками */
   SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
+  /* Странная солнечная рыба */
+  SuspiciousSunshineSprat: "suspicious_sunshine_sprat",
   /* Яичница по-тейватски */
   TeyvatFriedEgg: "teyvat_fried_egg",
   /* «Теплота» */
   Warmth: "warmth",
+  /* «Лесной сон» */
+  WoodlandDream: "woodland_dream",
 } as const;
 export const ResourceLocalSpecialtyInazumaIds = {
   /* Цвет сакуры */ SakuraBloom: "sakura_bloom",
@@ -145,6 +154,7 @@ export const ResourceRecipeIds = {
   /* Рецепт: Нектар девяти фруктов           */ RecipeNineFruitNectar: "recipe_nine_fruit_nectar",
   /* Рецепт: «Расти гора»                    */ RecipePileEmUp: "recipe_pile_em_up",
   /* Рецепт: Биск с креветками               */ RecipeShrimpBisque: "recipe_shrimp_bisque",
+  /* Рецепт: Солнечная рыба                  */ RecipeSunshineSprat: "recipe_sunshine_sprat",
   /* Рецепт: Яичница по-тейватски            */ RecipeTeyvatFriedEgg: "recipe_teyvat_fried_egg",
 } as const;
 export const ResourceIds = {

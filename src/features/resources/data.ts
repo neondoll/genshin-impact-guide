@@ -282,6 +282,7 @@ const ResourceFoodUtility = {
   IncreasesAllPartyMembersCRITRateFor300s: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersDef: (def: number | string) => `Увеличивает защиту всех членов отряда на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class="text-cyan-500">${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersShieldStrengthFor300s: (shieldStrength: number | string) => `Увеличивает прочность щита всех членов отряда на <span class="text-cyan-500">${shieldStrength}%</span> в течение 300 сек. В совместном режиме этот эффект применяется только к вашему персонажу.`,
   RestoresHP: (hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp}</span> HP выбранному персонажу.`,
   RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter: (hp_: number | string, hp: number | string) => `Восстанавливает выбранному персонажу <span class="text-cyan-500">${hp_}%</span> HP + <span class="text-cyan-500">${hp}</span> HP.`,
   RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s: (hp_: number | string, hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp_}%</span> от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает <span class="text-cyan-500">${hp}</span> HP.`,
@@ -779,6 +780,49 @@ const Starshroom = {
     ["Дикая природа", "Покупка у торговцев"],
   ]).setRelatedItemIds([ResourceFoodIds.ActivatedStarshroom, ResourceFoodIds.ScorchedStarshroom]),
 };
+const SunshineSprat = {
+  [ResourceFoodIds.DeliciousSunshineSprat]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousSunshineSprat,
+    "Вкусная солнечная рыба",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s(30),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSunshineSprat),
+  [ResourceFoodIds.SunshineSprat]: ResourceFoodClass.init([
+    ResourceFoodIds.SunshineSprat,
+    "Солнечная рыба",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s(25),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSunshineSprat),
+  [ResourceFoodIds.SuspiciousSunshineSprat]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousSunshineSprat,
+    "Странная солнечная рыба",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s(20),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSunshineSprat),
+  [ResourceFoodIds.WoodlandDream]: ResourceFoodClass.init([
+    ResourceFoodIds.WoodlandDream,
+    "«Лесной сон»",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s(35),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Albedo).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSunshineSprat),
+  [ResourceRecipeIds.RecipeSunshineSprat]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeSunshineSprat,
+    "Рецепт: Солнечная рыба",
+    "Задание легенд Альбедо «Меловой Принцепс. Глава I: Опыты над путешественником»",
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s("20–30"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Butter, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Fish, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Salt, 1),
+      new ResourceRecipeIngredientClass(ResourceLocalSpecialtyMondstadtIds.SmallLampGrass, 1),
+    ],
+  ]).setRarity(3),
+};
 const TeyvatFriedEgg = {
   [ResourceFoodIds.TeyvatFriedEgg]: ResourceFoodClass.init([
     ResourceFoodIds.TeyvatFriedEgg,
@@ -818,6 +862,7 @@ export default {
   /* «Расти гора»                    */ ...PileEmUp,
   /* Биск с креветками               */ ...ShrimpBisque,
   /* Гриб-звезда                     */ ...Starshroom,
+  /* Солнечная рыба                  */ ...SunshineSprat,
   /* Яичница по-тейватски            */ ...TeyvatFriedEgg,
 
   /* Кухонные ингредиенты            */ ...{
@@ -845,6 +890,11 @@ export default {
       ResourceCookingIngredientIds.CoffeeBeans,
       "Кофейные зёрна",
       "Купить у Энтеки в кафе «Пуспа»",
+    ]),
+    [ResourceCookingIngredientIds.Fish]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Fish,
+      "Рыба",
+      ["Водоёмы", "Купить у торговцев", "Заготовка", "Загадочный мясной продукт"],
     ]),
     [ResourceCookingIngredientIds.Flour]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Flour,
