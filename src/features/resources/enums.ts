@@ -64,6 +64,8 @@ export const ResourceFoodIds = {
   DeliciousNineFruitNectar: "delicious_nine_fruit_nectar",
   /* Вкусная «Расти гора» */
   DeliciousPileEmUp: "delicious_pile_em_up",
+  /* Вкусные моти с сакурой */
+  DeliciousSakuraMochi: "delicious_sakura_mochi",
   /* Вкусный биск с креветками */
   DeliciousShrimpBisque: "delicious_shrimp_bisque",
   /* Вкусная солнечная рыба */
@@ -86,10 +88,14 @@ export const ResourceFoodIds = {
   OnceUponATimeInMondstadt: "once_upon_a_time_in_mondstadt",
   /* «Расти гора» */
   PileEmUp: "pile_em_up",
+  /* Моти с сакурой */
+  SakuraMochi: "sakura_mochi",
   /* Обожжённый гриб-звезда */
   ScorchedStarshroom: "scorched_starshroom",
   /* Биск с креветками */
   ShrimpBisque: "shrimp_bisque",
+  /* «Снег на горне» */
+  SnowOnTheHearth: "snow_on_the_hearth",
   /* Гриб-звезда */
   Starshroom: "starshroom",
   /* Закатник */
@@ -118,6 +124,8 @@ export const ResourceFoodIds = {
   SuspiciousNineFruitNectar: "suspicious_nine_fruit_nectar",
   /* Странная «Расти гора» */
   SuspiciousPileEmUp: "suspicious_pile_em_up",
+  /* Странные моти с сакурой */
+  SuspiciousSakuraMochi: "suspicious_sakura_mochi",
   /* Странный биск с креветками */
   SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
   /* Странная солнечная рыба */
@@ -153,6 +161,7 @@ export const ResourceRecipeIds = {
   /* Рецепт: Нанасовый пирог                 */ RecipeNanasCake: "recipe_nanas_cake",
   /* Рецепт: Нектар девяти фруктов           */ RecipeNineFruitNectar: "recipe_nine_fruit_nectar",
   /* Рецепт: «Расти гора»                    */ RecipePileEmUp: "recipe_pile_em_up",
+  /* Рецепт: Моти с сакурой                  */ RecipeSakuraMochi: "recipe_sakura_mochi",
   /* Рецепт: Биск с креветками               */ RecipeShrimpBisque: "recipe_shrimp_bisque",
   /* Рецепт: Солнечная рыба                  */ RecipeSunshineSprat: "recipe_sunshine_sprat",
   /* Рецепт: Яичница по-тейватски            */ RecipeTeyvatFriedEgg: "recipe_teyvat_fried_egg",

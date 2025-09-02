@@ -287,6 +287,7 @@ const ResourceFoodUtility = {
   RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter: (hp_: number | string, hp: number | string) => `Восстанавливает выбранному персонажу <span class="text-cyan-500">${hp_}%</span> HP + <span class="text-cyan-500">${hp}</span> HP.`,
   RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s: (hp_: number | string, hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp_}%</span> от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает <span class="text-cyan-500">${hp}</span> HP.`,
   RevivesACharacterAndRestoresHP: (hp: number | string) => `Воскрешает персонажа и восстанавливает ему <span class="text-cyan-500">${hp}</span> HP.`,
+  RevivesACharacterAndRestoresPercentOfMaxHPThenRestoresAnAdditionalHP: (hp_: number | string, hp: number | string) => `Воскрешает персонажа и восстанавливает ему <span class="text-cyan-500">${hp_}%</span> от макс. HP + <span class="text-cyan-500">${hp}</span> HP.`,
 } as const;
 const ResourceSource = {
   BuyingFromMerchants: "Покупка у торговцев",
@@ -721,6 +722,48 @@ const PileEmUp = {
     ],
   ]).setRarity(3),
 };
+const SakuraMochi = {
+  [ResourceFoodIds.DeliciousSakuraMochi]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousSakuraMochi,
+    "Вкусные моти с сакурой",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(1500),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSakuraMochi),
+  [ResourceFoodIds.SakuraMochi]: ResourceFoodClass.init([
+    ResourceFoodIds.SakuraMochi,
+    "Моти с сакурой",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(1200),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSakuraMochi),
+  [ResourceFoodIds.SnowOnTheHearth]: ResourceFoodClass.init([
+    ResourceFoodIds.SnowOnTheHearth,
+    "«Снег на горне»",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresPercentOfMaxHPThenRestoresAnAdditionalHP(20, 1500),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.KamisatoAyaka).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSakuraMochi),
+  [ResourceFoodIds.SuspiciousSakuraMochi]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousSakuraMochi,
+    "Странные моти с сакурой",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(900),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSakuraMochi),
+  [ResourceRecipeIds.RecipeSakuraMochi]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeSakuraMochi,
+    "Рецепт: Моти с сакурой",
+    "Задание легенд Аяки «Белый Журавль. Глава I: Перешёптывания журавля и белого кролика»",
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP("900–1500"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Rice, 4),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 2),
+      new ResourceRecipeIngredientClass(ResourceLocalSpecialtyInazumaIds.SakuraBloom, 1),
+    ],
+  ]).setRarity(3),
+};
 const ShrimpBisque = {
   [ResourceFoodIds.DeliciousShrimpBisque]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousShrimpBisque,
@@ -860,6 +903,7 @@ export default {
   /* Нанасовый пирог                 */ ...NanasCake,
   /* Нектар девяти фруктов           */ ...NineFruitNectar,
   /* «Расти гора»                    */ ...PileEmUp,
+  /* Моти с сакурой                  */ ...SakuraMochi,
   /* Биск с креветками               */ ...ShrimpBisque,
   /* Гриб-звезда                     */ ...Starshroom,
   /* Солнечная рыба                  */ ...SunshineSprat,
