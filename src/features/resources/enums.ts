@@ -12,18 +12,23 @@ export const ResourceCookingIngredientIds = {
   /* Лук             */ Onion: "onion",
   /* Картофель       */ Potato: "potato",
   /* Сырое мясо      */ RawMeat: "raw_meat",
+  /* Рис             */ Rice: "rice",
   /* Соль            */ Salt: "salt",
   /* Мясо креветки   */ ShrimpMeat: "shrimp_meat",
   /* Сахар           */ Sugar: "sugar",
   /* Персик зайтун   */ ZaytunPeach: "zaytun_peach",
 } as const;
 export const ResourceFoodIds = {
+  /* Стратегия неожиданности */
+  AStunningStratagem: "a_stunning_stratagem",
   /* «Сокровище бездны» */
   AbyssalBounty: "abyssal_bounty",
   /* Оживлённый гриб-звезда */
   ActivatedStarshroom: "activated_starshroom",
   /* Яблоко */
   Apple: "apple",
+  /* Яичные суши */
+  BirdEggSushi: "bird_egg_sushi",
   /* Молочный пирог с пузырьками */
   BubblemilkPie: "bubblemilk_pie",
   /* Пузырин */
@@ -34,6 +39,8 @@ export const ResourceFoodIds = {
   ChatterOfJoyfulNights: "chatter_of_joyful_nights",
   /* Хрустящие креветки с картофелем */
   CrispyPotatoShrimpPlatter: "crispy_potato_shrimp_platter",
+  /* Вкусные яичные суши */
+  DeliciousBirdEggSushi: "delicious_bird_egg_sushi",
   /* Вкусный молочный пирог с пузырьками */
   DeliciousBubblemilkPie: "delicious_bubblemilk_pie",
   /* Вкусные хрустящие креветки с картофелем */
@@ -78,6 +85,8 @@ export const ResourceFoodIds = {
   Starshroom: "starshroom",
   /* Закатник */
   Sunsettia: "sunsettia",
+  /* Странные яичные суши */
+  SuspiciousBirdEggSushi: "suspicious_bird_egg_sushi",
   /* Странный молочный пирог с пузырьками */
   SuspiciousBubblemilkPie: "suspicious_bubblemilk_pie",
   /* Странные хрустящие креветки с картофелем */
@@ -114,6 +123,7 @@ export const ResourceMaterialIds = {
   /* Какауатль */ Cacahuatl: "cacahuatl",
 } as const;
 export const ResourceRecipeIds = {
+  /* Рецепт: Яичные суши                     */ RecipeBirdEggSushi: "recipe_bird_egg_sushi",
   /* Рецепт: Молочный пирог с пузырьками     */ RecipeBubblemilkPie: "recipe_bubblemilk_pie",
   /* Рецепт: Хрустящие креветки с картофелем */ RecipeCrispyPotatoShrimpPlatter: "recipe_crispy_potato_shrimp_platter",
   /* Рецепт: Напиток 455                     */ RecipeDrink455: "recipe_drink_455",

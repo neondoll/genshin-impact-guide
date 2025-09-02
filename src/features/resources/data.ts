@@ -283,6 +283,7 @@ const ResourceFoodUtility = {
   IncreasesAllPartyMembersDef: (def: number | string) => `Увеличивает защиту всех членов отряда на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class="text-cyan-500">${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   RestoresHP: (hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp}</span> HP выбранному персонажу.`,
+  RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter: (hp_: number | string, hp: number | string) => `Восстанавливает выбранному персонажу <span class="text-cyan-500">${hp_}%</span> HP + <span class="text-cyan-500">${hp}</span> HP.`,
   RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s: (hp_: number | string, hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp_}%</span> от макс. HP выбранному персонажу, затем в течение 30 сек. каждые 5 сек. восстанавливает <span class="text-cyan-500">${hp}</span> HP.`,
   RevivesACharacterAndRestoresHP: (hp: number | string) => `Воскрешает персонажа и восстанавливает ему <span class="text-cyan-500">${hp}</span> HP.`,
 } as const;
@@ -297,6 +298,47 @@ const ResourceSource = {
   TeyvatResearch: "Исследование Тейвата",
 } as const;
 
+const BirdEggSushi = {
+  [ResourceFoodIds.AStunningStratagem]: ResourceFoodClass.init([
+    ResourceFoodIds.AStunningStratagem,
+    "Стратегия неожиданности",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(16, 1350),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.SangonomiyaKokomi).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeBirdEggSushi),
+  [ResourceFoodIds.BirdEggSushi]: ResourceFoodClass.init([
+    ResourceFoodIds.BirdEggSushi,
+    "Яичные суши",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(9, 1000),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeBirdEggSushi),
+  [ResourceFoodIds.DeliciousBirdEggSushi]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousBirdEggSushi,
+    "Вкусные яичные суши",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(10, 1200),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeBirdEggSushi),
+  [ResourceFoodIds.SuspiciousBirdEggSushi]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousBirdEggSushi,
+    "Странные яичные суши",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(8, 800),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeBirdEggSushi),
+  [ResourceRecipeIds.RecipeBirdEggSushi]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeBirdEggSushi,
+    "Рецепт: Яичные суши",
+    "Купить у Симуры Камбэя в ресторане «Симура»",
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter("8–10", "800–1200"),
+    5,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Rice, 1),
+    ],
+  ]).setRarity(1),
+};
 const BubblemilkPie = {
   [ResourceFoodIds.BubblemilkPie]: ResourceFoodClass.init([
     ResourceFoodIds.BubblemilkPie,
@@ -721,7 +763,8 @@ export default {
     FoodTypeIds.RecoveryDish,
     ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(34, 980),
     "Готовка",
-  ]).setCharacterId(CharacterIds.Dahlia).setRecipeId(ResourceRecipeIds.RecipeCrispyPotatoShrimpPlatter),
+  ]).setCharacterId(CharacterIds.Dahlia),
+  /* Яичные суши                     */ ...BirdEggSushi,
   /* Молочный пирог с пузырьками     */ ...BubblemilkPie,
   /* Хрустящие креветки с картофелем */ ...CrispyPotatoShrimpPlatter,
   /* Напиток 455                     */ ...Drink455,
@@ -800,6 +843,11 @@ export default {
       ResourceCookingIngredientIds.RawMeat,
       "Сырое мясо",
       ["Дикие животные", "Купить у торговцев", "Загадочный мясной продукт"],
+    ]),
+    [ResourceCookingIngredientIds.Rice]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Rice,
+      "Рис",
+      "Купить у торговцев",
     ]),
     [ResourceCookingIngredientIds.Salt]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Salt,
