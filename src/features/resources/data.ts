@@ -3,6 +3,7 @@ import type {
   ResourceAbstract,
   ResourceCookingIngredient,
   ResourceFood,
+  ResourceLocalSpecialtyFontaine,
   ResourceLocalSpecialtyInazuma,
   ResourceLocalSpecialtyMondstadt,
   ResourceLocalSpecialtyNatlan,
@@ -17,6 +18,7 @@ import { RegionIds } from "../regions/enums";
 import {
   ResourceCookingIngredientIds,
   ResourceFoodIds,
+  ResourceLocalSpecialtyFontaineIds,
   ResourceLocalSpecialtyInazumaIds,
   ResourceLocalSpecialtyMondstadtIds,
   ResourceLocalSpecialtyNatlanIds,
@@ -143,6 +145,28 @@ class ResourceFoodClass extends ResourceAbstractClass implements ResourceFood {
 
   static init(params: ConstructorParameters<typeof ResourceFoodClass>) {
     return new ResourceFoodClass(...params);
+  }
+}
+
+class ResourceLocalSpecialtyFontaineClass extends ResourceAbstractClass implements ResourceLocalSpecialtyFontaine {
+  declare readonly id: ResourceLocalSpecialtyFontaine["id"];
+  declare readonly image_src: ResourceLocalSpecialtyFontaine["image_src"];
+  declare readonly name: ResourceLocalSpecialtyFontaine["name"];
+  declare readonly type_id: ResourceLocalSpecialtyFontaine["type_id"];
+  declare readonly source: ResourceLocalSpecialtyFontaine["source"];
+
+  static PATH = "local-specialties-fontaine";
+
+  constructor(
+    id: ResourceLocalSpecialtyFontaine["id"],
+    name: ResourceLocalSpecialtyFontaine["name"],
+    source: ResourceLocalSpecialtyFontaine["source"],
+  ) {
+    super(id, `${ResourceLocalSpecialtyFontaineClass.PATH}/${id}.webp`, name, ResourceTypeIds.LocalSpecialtyFontaine, source);
+  }
+
+  static init(params: ConstructorParameters<typeof ResourceLocalSpecialtyFontaineClass>) {
+    return new ResourceLocalSpecialtyFontaineClass(...params);
   }
 }
 
@@ -274,14 +298,18 @@ class ResourceRecipeIngredientClass implements ResourceRecipeIngredient {
 }
 
 const ResourceFoodUtility = {
+  ALittleSurpriseFromTheCollectiveOfPlenty: (s: number | string) => `<span class="italic">Небольшой сюрприз Удела Благодатных Земель.</span><br>Восстанавливает 1 здоровье выбранного персонажа каждые 8 секунд в течение <span class="text-cyan-500">${s} секунд</span> и отображает логотип "Коллектива Изобилия". В кооперативном режиме этот эффект применим только к вашим персонажам.`,
   ALittleSurpriseFromTheEasybreezeHolidayResort: (s: number | string) => `<span class="italic">Небольшой сюрприз от курорта «Оазис отдыха».</span><br>Восстанавливает 1 здоровье выбранного персонажа каждые 8 секунд в течение <span class="text-cyan-500">${s} секунд</span>. В кооперативном режиме этот эффект применяется только к вашим персонажам.`,
   DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  DecreasesAllPartyMembersSprintingAndSwimmingStaminaConsumptionFor900Seconds: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и плаванья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersATKAndCRITDMGFor300s: (atk: number | string, critDmg: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и крит. урон на <span class="text-cyan-500">${critDmg}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersATKAndCRITRate300s: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и шанс крит. попадания на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersCRITRateAndCRITDMGFor300s: (crit: number | string) => `Увеличивает шанс крит. попадания и крит. урон всех членов отряда на <span class="text-cyan-500">${crit}%</span> в течение 300 сек. В совместном режиме этот эффект применяется только к вашему персонажу.`,
   IncreasesAllPartyMembersCRITRateFor300s: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersDef: (def: number | string) => `Увеличивает защиту всех членов отряда на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersDEFFor300s: (def: number | string) => `Увеличивает защиту всех членов отряда на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersHealingBonus: (heal_: number | string) => `Увеличивает бонус лечения всех членов отряда на <span class="text-cyan-500">${heal_}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersShieldStrengthAndDEFFor300s: (shieldStrength: number | string, def: number | string) => `Увеличивает прочность щита всех членов отряда на <span class="text-cyan-500">${shieldStrength}%</span> и защиту на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersShieldStrengthFor300s: (shieldStrength: number | string) => `Увеличивает прочность щита всех членов отряда на <span class="text-cyan-500">${shieldStrength}%</span> в течение 300 сек. В совместном режиме этот эффект применяется только к вашему персонажу.`,
   RestoresHP: (hp: number | string) => `Восстанавливает <span class="text-cyan-500">${hp}</span> HP выбранному персонажу.`,
   RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter: (hp_: number | string, hp: number | string) => `Восстанавливает выбранному персонажу <span class="text-cyan-500">${hp_}%</span> HP + <span class="text-cyan-500">${hp}</span> HP.`,
@@ -346,31 +374,28 @@ const BubblemilkPie = {
     ResourceFoodIds.BubblemilkPie,
     "Молочный пирог с пузырьками",
     FoodTypeIds.DEFBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersDef(200),
+    ResourceFoodUtility.IncreasesAllPartyMembersDEFFor300s(200),
     "Готовка",
-  ])
-    .setRecipeId(ResourceRecipeIds.RecipeBubblemilkPie),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeBubblemilkPie),
   [ResourceFoodIds.DeliciousBubblemilkPie]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousBubblemilkPie,
     "Вкусный молочный пирог с пузырьками",
     FoodTypeIds.DEFBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersDef(235),
+    ResourceFoodUtility.IncreasesAllPartyMembersDEFFor300s(235),
     "Готовка",
-  ])
-    .setRecipeId(ResourceRecipeIds.RecipeBubblemilkPie),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeBubblemilkPie),
   [ResourceFoodIds.SuspiciousBubblemilkPie]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousBubblemilkPie,
     "Странный молочный пирог с пузырьками",
     FoodTypeIds.DEFBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersDef(165),
+    ResourceFoodUtility.IncreasesAllPartyMembersDEFFor300s(165),
     "Готовка",
-  ])
-    .setRecipeId(ResourceRecipeIds.RecipeBubblemilkPie),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeBubblemilkPie),
   [ResourceRecipeIds.RecipeBubblemilkPie]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeBubblemilkPie,
     "Рецепт: Молочный пирог с пузырьками",
     "Внутриигровая почта",
-    ResourceFoodUtility.IncreasesAllPartyMembersDef("165–235"),
+    ResourceFoodUtility.IncreasesAllPartyMembersDEFFor300s("165–235"),
     15,
     [
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Butter, 2),
@@ -378,7 +403,85 @@ const BubblemilkPie = {
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Milk, 4),
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 1),
     ],
-  ]),
+  ]).setRarity(3),
+};
+const CandyShells = {
+  [ResourceFoodIds.CandyShells]: ResourceFoodClass.init([
+    ResourceFoodIds.CandyShells,
+    "Конфеты «Ракушки»",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthAndDEFFor300s(30, 200),
+    "Готовка",
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeCandyShells),
+  [ResourceFoodIds.DeliciousCandyShells]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousCandyShells,
+    "Вкусные конфеты «Ракушки»",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthAndDEFFor300s(35, 235),
+    "Готовка",
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeCandyShells),
+  [ResourceFoodIds.SuspiciousCandyShells]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousCandyShells,
+    "Странные конфеты «Ракушки»",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthAndDEFFor300s(25, 165),
+    "Готовка",
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeCandyShells),
+  [ResourceRecipeIds.RecipeCandyShells]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeCandyShells,
+    "Рецепт: Конфеты «Ракушки»",
+    "Событие версии 5.6 «Кружащийся вальс»",
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthAndDEFFor300s("25–35", "165–235"),
+    20,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Mint, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Tidalga, 3),
+      new ResourceRecipeIngredientClass(ResourceFoodIds.BulleFruit, 3),
+    ],
+  ]).setRarity(4),
+};
+const CheesyMushroomSkewer = {
+  [ResourceFoodIds.CheesyMushroomSkewer]: ResourceFoodClass.init([
+    ResourceFoodIds.CheesyMushroomSkewer,
+    "Грибные шашлычки с сыром",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(9),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeCheesyMushroomSkewer),
+  [ResourceFoodIds.DeliciousCheesyMushroomSkewer]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousCheesyMushroomSkewer,
+    "Вкусные грибные шашлычки с сыром",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(12),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeCheesyMushroomSkewer),
+  [ResourceFoodIds.MtMushroomForOne]: ResourceFoodClass.init([
+    ResourceFoodIds.MtMushroomForOne,
+    "«Грибная гора» (порция на одного)",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(16),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Varesa).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeCheesyMushroomSkewer),
+  [ResourceFoodIds.SuspiciousCheesyMushroomSkewer]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousCheesyMushroomSkewer,
+    "Странные грибные шашлычки с сыром",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s(6),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeCheesyMushroomSkewer),
+  [ResourceRecipeIds.RecipeCheesyMushroomSkewer]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeCheesyMushroomSkewer,
+    "Рецепт: Грибные шашлычки с сыром",
+    "Задание хроник племени: Удел Благодатных Земель «Отдых в саду»",
+    ResourceFoodUtility.IncreasesAllPartyMembersCRITRateFor300s("6–12"),
+    10,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Cheese, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Grainfruit, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.RedBerryshroom, 2),
+    ],
+  ]).setRarity(2),
 };
 const CrispyPotatoShrimpPlatter = {
   [ResourceFoodIds.ChatterOfJoyfulNights]: ResourceFoodClass.init([
@@ -458,6 +561,49 @@ const Drink455 = {
     ],
   ]),
 };
+const ForestOfColor = {
+  [ResourceFoodIds.DeliciousForestOfColor]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousForestOfColor,
+    "Вкусный «Яркий лес»",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(550),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeForestOfColor),
+  [ResourceFoodIds.ForestOfColor]: ResourceFoodClass.init([
+    ResourceFoodIds.ForestOfColor,
+    "«Яркий лес»",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(400),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeForestOfColor),
+  [ResourceFoodIds.GoldStandardHealthyMeal]: ResourceFoodClass.init([
+    ResourceFoodIds.GoldStandardHealthyMeal,
+    "Эталонное здоровое блюдо",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresPercentOfMaxHPThenRestoresAnAdditionalHP(15, 550),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Iansan).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeForestOfColor),
+  [ResourceFoodIds.SuspiciousForestOfColor]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousForestOfColor,
+    "Странный «Яркий лес»",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(250),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeForestOfColor),
+  [ResourceRecipeIds.RecipeForestOfColor]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeForestOfColor,
+    "Рецепт: «Яркий лес»",
+    "Задание мира «Возвращение ночи в ночь»",
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP("250–550"),
+    10,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Grainfruit, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Mint, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Onion, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Tomato, 1),
+    ],
+  ]).setRarity(2),
+};
 const GentleSeaBreeze = {
   [ResourceFoodIds.DeliciousGentleSeaBreeze]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousGentleSeaBreeze,
@@ -492,6 +638,114 @@ const GentleSeaBreeze = {
       new ResourceRecipeIngredientClass(ResourceLocalSpecialtyNatlanIds.QuenepaBerry, 2),
     ],
   ]),
+};
+const GrilledFishInMintSauce = {
+  [ResourceFoodIds.AbyssalBounty]: ResourceFoodClass.init([
+    ResourceFoodIds.AbyssalBounty,
+    "«Сокровище бездны»",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(16, 1350),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Skirk).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeGrilledFishInMintSauce),
+  [ResourceFoodIds.DeliciousGrilledFishInMintSauce]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousGrilledFishInMintSauce,
+    "Вкусная жареная рыба в мятном соусе",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(10, 1200),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeGrilledFishInMintSauce),
+  [ResourceFoodIds.GrilledFishInMintSauce]: ResourceFoodClass.init([
+    ResourceFoodIds.GrilledFishInMintSauce,
+    "Жареная рыба в мятном соусе",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(9, 1000),
+    ["Готовка", "Покупка у торговцев"],
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeGrilledFishInMintSauce),
+  [ResourceFoodIds.SuspiciousGrilledFishInMintSauce]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousGrilledFishInMintSauce,
+    "Странная жареная рыба в мятном соусе",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(8, 800),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeGrilledFishInMintSauce),
+  [ResourceRecipeIds.RecipeGrilledFishInMintSauce]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeGrilledFishInMintSauce,
+    "Рецепт: Жареная рыба в мятном соусе",
+    "Купить у Сипака",
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter("8–10", "800–1200"),
+    5,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Fish, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Mint, 1),
+    ],
+  ]).setRarity(1),
+};
+const HarvestsBoon = {
+  [ResourceFoodIds.DeliciousHarvestsBoon]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousHarvestsBoon,
+    "Вкусный «Дар богатого урожая»",
+    FoodTypeIds.Other,
+    ResourceFoodUtility.ALittleSurpriseFromTheCollectiveOfPlenty(48),
+    "Готовка",
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeHarvestsBoon),
+  [ResourceFoodIds.HarvestsBoon]: ResourceFoodClass.init([
+    ResourceFoodIds.HarvestsBoon,
+    "«Дар богатого урожая»",
+    FoodTypeIds.Other,
+    ResourceFoodUtility.ALittleSurpriseFromTheCollectiveOfPlenty(40),
+    "Готовка",
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeHarvestsBoon),
+  [ResourceFoodIds.SuspiciousHarvestsBoon]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousHarvestsBoon,
+    "Странный «Дар богатого урожая»",
+    FoodTypeIds.Other,
+    ResourceFoodUtility.ALittleSurpriseFromTheCollectiveOfPlenty(32),
+    "Готовка",
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeHarvestsBoon),
+  [ResourceRecipeIds.RecipeHarvestsBoon]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeHarvestsBoon,
+    "Рецепт: «Дар богатого урожая»",
+    "Награда за 2 уровень репутации в Уделе Благодатных Земель",
+    ResourceFoodUtility.ALittleSurpriseFromTheCollectiveOfPlenty("32–48"),
+    20,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Grainfruit, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Milk, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.RawMeat, 1),
+    ],
+  ]).setRarity(4),
+};
+const MagmaEggs = {
+  [ResourceFoodIds.DeliciousMagmaEggs]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousMagmaEggs,
+    "Вкусные магмовые яйца",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(10, 1200),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeMagmaEggs),
+  [ResourceFoodIds.MagmaEggs]: ResourceFoodClass.init([
+    ResourceFoodIds.MagmaEggs,
+    "Магмовые яйца",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(9, 1000),
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeMagmaEggs),
+  [ResourceFoodIds.SuspiciousMagmaEggs]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousMagmaEggs,
+    "Странные магмовые яйца",
+    FoodTypeIds.RecoveryDish,
+    "Лучше не есть!",
+    "Готовка",
+  ]).setRarity(1).setRecipeId(ResourceRecipeIds.RecipeMagmaEggs),
+  [ResourceRecipeIds.RecipeMagmaEggs]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeMagmaEggs,
+    "Рецепт: Магмовые яйца",
+    "Награда за прохождение испытания Рунтума",
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter("9–10", "1000–1200"),
+    5,
+    [new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 2)],
+  ]).setRarity(1),
 };
 const MeatLoversFeast = {
   [ResourceFoodIds.DeliciousMeatLoversFeast]: ResourceFoodClass.init([
@@ -679,6 +933,49 @@ const NineFruitNectar = {
     ],
   ]).setRarity(3),
 };
+const PetitGateauDebordRevisedVersion = {
+  [ResourceFoodIds.DeliciousPetitGateauDebordRevisedVersion]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousPetitGateauDebordRevisedVersion,
+    "Вкусный тортик «Дебор»: Особый",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(320, 10),
+    "Готовка",
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipePetitGateauDebordRevisedVersion),
+  [ResourceFoodIds.GateauDebordMagnifique]: ResourceFoodClass.init([
+    ResourceFoodIds.GateauDebordMagnifique,
+    "Торт «Дебор»: Великолепие",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(384, 14),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Escoffier).setRarity(4).setRecipeId(ResourceRecipeIds.RecipePetitGateauDebordRevisedVersion),
+  [ResourceFoodIds.PetitGateauDebordRevisedVersion]: ResourceFoodClass.init([
+    ResourceFoodIds.PetitGateauDebordRevisedVersion,
+    "Тортик «Дебор»: Особый",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(272, 8),
+    "Готовка",
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipePetitGateauDebordRevisedVersion),
+  [ResourceFoodIds.SuspiciousPetitGateauDebordRevisedVersion]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousPetitGateauDebordRevisedVersion,
+    "Странный тортик «Дебор»: Особый",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(224, 6),
+    "Готовка",
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipePetitGateauDebordRevisedVersion),
+  [ResourceRecipeIds.RecipePetitGateauDebordRevisedVersion]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipePetitGateauDebordRevisedVersion,
+    "Рецепт: Тортик «Дебор»: Особый",
+    "Задание легенд Эскофье «Сладкое Творение. Глава I: Сокровище из сокровищ»",
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s("224–320", "6–10"),
+    20,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Cream, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 2),
+      new ResourceRecipeIngredientClass(ResourceLocalSpecialtyFontaineIds.RomaritimeFlower, 3),
+    ],
+  ]).setRarity(4),
+};
 const PileEmUp = {
   [ResourceFoodIds.DeliciousPileEmUp]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousPileEmUp,
@@ -721,6 +1018,40 @@ const PileEmUp = {
       new ResourceRecipeIngredientClass(ResourceLocalSpecialtyMondstadtIds.SmallLampGrass, 1),
     ],
   ]).setRarity(3),
+};
+const PuffedGrainfruitBars = {
+  [ResourceFoodIds.DeliciousPuffedGrainfruitBars]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousPuffedGrainfruitBars,
+    "Вкусные батончики из злакофрукта",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(24, 1500),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipePuffedGrainfruitBars),
+  [ResourceFoodIds.PuffedGrainfruitBars]: ResourceFoodClass.init([
+    ResourceFoodIds.PuffedGrainfruitBars,
+    "Батончики из злакофрукта",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(22, 1200),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipePuffedGrainfruitBars),
+  [ResourceFoodIds.SuspiciousPuffedGrainfruitBars]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousPuffedGrainfruitBars,
+    "Странные батончики из злакофрукта",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(20, 900),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipePuffedGrainfruitBars),
+  [ResourceRecipeIds.RecipePuffedGrainfruitBars]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipePuffedGrainfruitBars,
+    "Рецепт: Батончики из злакофрукта",
+    "Награда за диалог с Камотли",
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter("20-24", "900-1500"),
+    10,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Grainfruit, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 1),
+    ],
+  ]).setRarity(2),
 };
 const SakuraMochi = {
   [ResourceFoodIds.DeliciousSakuraMochi]: ResourceFoodClass.init([
@@ -883,31 +1214,105 @@ const TeyvatFriedEgg = {
     [new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 1)],
   ]).setRarity(1),
 };
+const Xocoatl = {
+  [ResourceFoodIds.DeliciousXocoatl]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousXocoatl,
+    "Вкусный шокоатль",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersDEFFor300s(235),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeXocoatl),
+  [ResourceFoodIds.EmotionalSupport]: ResourceFoodClass.init([
+    ResourceFoodIds.EmotionalSupport,
+    "«Эмоциональная поддержка»",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersDEFFor300s(282),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Ifa).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeXocoatl),
+  [ResourceFoodIds.SuspiciousXocoatl]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousXocoatl,
+    "Странный шокоатль",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersDEFFor300s(165),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeXocoatl),
+  [ResourceFoodIds.Xocoatl]: ResourceFoodClass.init([
+    ResourceFoodIds.Xocoatl,
+    "Шокоатль",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersDEFFor300s(235),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeXocoatl),
+  [ResourceRecipeIds.RecipeXocoatl]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeXocoatl,
+    "Рецепт: Шокоатль",
+    "Купить у Чанки",
+    ResourceFoodUtility.IncreasesAllPartyMembersDEFFor300s("165–235"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Milk, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Mint, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 1),
+      new ResourceRecipeIngredientClass(ResourceMaterialIds.Cacahuatl, 3),
+    ],
+  ]).setRarity(3),
+};
 
 export default {
-  [ResourceFoodIds.AbyssalBounty]: ResourceFoodClass.init([
-    ResourceFoodIds.AbyssalBounty,
-    "«Сокровище бездны»",
+  [ResourceFoodIds.AutumnFrost]: ResourceFoodClass.init([
+    ResourceFoodIds.AutumnFrost,
+    "«Осенний иней»",
     FoodTypeIds.RecoveryDish,
-    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(34, 980),
-    "Готовка",
-  ]).setCharacterId(CharacterIds.Dahlia),
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(42, 2850),
+    "Кулинарный мек: Импровизированное приготовление Эскофье",
+  ]).setRarity(4),
+  [ResourceFoodIds.GildedHall]: ResourceFoodClass.init([
+    ResourceFoodIds.GildedHall,
+    "«Позолоченный зал»",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITDMGFor300s(372, 24),
+    "Кулинарный мек: Импровизированное приготовление Эскофье",
+  ]).setRarity(5),
+  [ResourceFoodIds.VerdantGift]: ResourceFoodClass.init([
+    ResourceFoodIds.VerdantGift,
+    "«Зелёный дар»",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKAndCRITRate300s(320, 10),
+    "Кулинарный мек: Импровизированное приготовление Эскофье",
+  ]).setRarity(4),
+  [ResourceFoodIds.WaveKissedSands]: ResourceFoodClass.init([
+    ResourceFoodIds.WaveKissedSands,
+    "Прибрежные пески",
+    FoodTypeIds.AdventurersDish,
+    ResourceFoodUtility.DecreasesAllPartyMembersSprintingAndSwimmingStaminaConsumptionFor900Seconds(25),
+    "Кулинарный мек: Импровизированное приготовление Эскофье",
+  ]).setRarity(3),
+
   /* Яичные суши                     */ ...BirdEggSushi,
   /* Молочный пирог с пузырьками     */ ...BubblemilkPie,
+  /* Конфеты «Ракушки»               */ ...CandyShells,
+  /* Грибные шашлычки с сыром        */ ...CheesyMushroomSkewer,
   /* Хрустящие креветки с картофелем */ ...CrispyPotatoShrimpPlatter,
   /* Напиток 455                     */ ...Drink455,
+  /* «Яркий лес»                     */ ...ForestOfColor,
   /* «Лёгкий морской бриз»           */ ...GentleSeaBreeze,
+  /* Жареная рыба в мятном соусе     */ ...GrilledFishInMintSauce,
+  /* «Дар богатого урожая»           */ ...HarvestsBoon,
+  /* Магмовые яйца                   */ ...MagmaEggs,
   /* «Радость мясоеда»               */ ...MeatLoversFeast,
   /* Мини-мешочки аши                */ ...MiniAshaPockets,
   /* Мисо-суп                        */ ...MisoSoup,
   /* Нанасовый пирог                 */ ...NanasCake,
   /* Нектар девяти фруктов           */ ...NineFruitNectar,
+  /* Тортик «Дебор»: Особый          */ ...PetitGateauDebordRevisedVersion,
   /* «Расти гора»                    */ ...PileEmUp,
+  /* Батончики из злакофрукта        */ ...PuffedGrainfruitBars,
   /* Моти с сакурой                  */ ...SakuraMochi,
   /* Биск с креветками               */ ...ShrimpBisque,
   /* Гриб-звезда                     */ ...Starshroom,
   /* Солнечная рыба                  */ ...SunshineSprat,
   /* Яичница по-тейватски            */ ...TeyvatFriedEgg,
+  /* Шокоатль                        */ ...Xocoatl,
 
   /* Кухонные ингредиенты            */ ...{
     [ResourceCookingIngredientIds.Berry]: ResourceCookingIngredientClass.init([
@@ -935,6 +1340,11 @@ export default {
       "Кофейные зёрна",
       "Купить у Энтеки в кафе «Пуспа»",
     ]),
+    [ResourceCookingIngredientIds.Cream]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Cream,
+      "Сметана",
+      ["Заготовка ингредиентов", "Покупка у торговцев"],
+    ]),
     [ResourceCookingIngredientIds.Fish]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Fish,
       "Рыба",
@@ -953,7 +1363,7 @@ export default {
     [ResourceCookingIngredientIds.Grainfruit]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Grainfruit,
       "Злакофрукт",
-      [ResourceSource.FoundInTheWild, ResourceSource.BuyingFromMerchants, ResourceSource.Gardening],
+      ["Натлан", "Купить у торговцев", "Садоводство"],
     ]),
     [ResourceCookingIngredientIds.Milk]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Milk,
@@ -980,6 +1390,11 @@ export default {
       "Сырое мясо",
       ["Дикие животные", "Купить у торговцев", "Загадочный мясной продукт"],
     ]),
+    [ResourceCookingIngredientIds.RedBerryshroom]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.RedBerryshroom,
+      "Красный грибофрукт",
+      "Атокпан, Натлан",
+    ]),
     [ResourceCookingIngredientIds.Rice]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Rice,
       "Рис",
@@ -1005,9 +1420,19 @@ export default {
       "Сахар",
       ["Заготовка ингредиентов", "Купить у торговцев"],
     ]),
+    [ResourceCookingIngredientIds.Tidalga]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Tidalga,
+      "Тидалья",
+      "Подводные зоны Фонтейна",
+    ]),
     [ResourceCookingIngredientIds.Tofu]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Tofu,
       "Тофу",
+      "Купить у торговцев",
+    ]),
+    [ResourceCookingIngredientIds.Tomato]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Tomato,
+      "Помидор",
       "Купить у торговцев",
     ]),
     [ResourceCookingIngredientIds.ZaytunPeach]: ResourceCookingIngredientClass.init([
@@ -1046,6 +1471,13 @@ export default {
       ["Дикая природа", "Купить у торговцев"],
     ]),
   },
+  /* Диковинка Фонтейна              */ ...{
+    [ResourceLocalSpecialtyFontaineIds.RomaritimeFlower]: ResourceLocalSpecialtyFontaineClass.init([
+      ResourceLocalSpecialtyFontaineIds.RomaritimeFlower,
+      "Ромарин",
+      ["Дикая природа", "Салосское морское плато", "Купить у торговцев"],
+    ]),
+  },
   /* Диковинки Инадзумы              */ ...{
     [ResourceLocalSpecialtyInazumaIds.SakuraBloom]: ResourceLocalSpecialtyInazumaClass.init([
       ResourceLocalSpecialtyInazumaIds.SakuraBloom,
@@ -1071,7 +1503,7 @@ export default {
     [ResourceMaterialIds.Cacahuatl]: ResourceMaterialClass.init([
       ResourceMaterialIds.Cacahuatl,
       "Какауатль",
-      [ResourceSource.Natlan, "Купить у торговцев", "Садоводство"],
+      ["Натлан", "Купить у торговцев", "Садоводство"],
     ]),
   },
 } as Record<Resource["id"], Resource>;

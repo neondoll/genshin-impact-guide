@@ -39,6 +39,7 @@ export default {
   [CharacterIds.Gorou]: (await import("./Gorou")).default,
   [CharacterIds.HuTao]: (await import("./HuTao")).default,
   [CharacterIds.Iansan]: (await import("./Iansan")).default,
+  [CharacterIds.Ifa]: new CharacterRecommendationsClass(CharacterIds.Ifa),
   [CharacterIds.Ineffa]: new CharacterRecommendationsClass(CharacterIds.Ineffa),
   [CharacterIds.Jean]: (await import("./Jean")).default,
   [CharacterIds.Kachina]: (await import("./Kachina")).default,

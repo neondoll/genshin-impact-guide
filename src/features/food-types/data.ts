@@ -19,5 +19,6 @@ export default {
   [FoodTypeIds.AdventurersDish]: FoodTypeClass.init([FoodTypeIds.AdventurersDish, "Блюдо для приключений"]),
   [FoodTypeIds.ATKBoostingDish]: FoodTypeClass.init([FoodTypeIds.ATKBoostingDish, "Блюдо для атаки"]),
   [FoodTypeIds.DEFBoostingDish]: FoodTypeClass.init([FoodTypeIds.DEFBoostingDish, "Блюдо для защиты"]),
+  [FoodTypeIds.Other]: FoodTypeClass.init([FoodTypeIds.Other, ""]),
   [FoodTypeIds.RecoveryDish]: FoodTypeClass.init([FoodTypeIds.RecoveryDish, "Восстанавливающее блюдо"]),
 } as Record<FoodType["id"], FoodType>;

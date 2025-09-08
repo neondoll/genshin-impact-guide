@@ -36,6 +36,7 @@ export const CharacterIds = {
   /* Горо                     */ Gorou: "Gorou",
   /* Ху Тао                   */ HuTao: "HuTao",
   /* Иансан                   */ Iansan: "Iansan",
+  /* Ифа                      */ Ifa: "Ifa",
   /* Инеффа                   */ Ineffa: "Ineffa",
   /* Джинн                    */ Jean: "Jean",
   /* Качина                   */ Kachina: "Kachina",
