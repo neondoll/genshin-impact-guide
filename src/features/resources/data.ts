@@ -302,7 +302,7 @@ const ResourceFoodUtility = {
   ALittleSurpriseFromTheEasybreezeHolidayResort: (s: number | string) => `<span class="italic">Небольшой сюрприз от курорта «Оазис отдыха».</span><br>Восстанавливает 1 здоровье выбранного персонажа каждые 8 секунд в течение <span class="text-cyan-500">${s} секунд</span>. В кооперативном режиме этот эффект применяется только к вашим персонажам.`,
   DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   DecreasesAllPartyMembersSprintingAndSwimmingStaminaConsumptionFor900Seconds: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и плаванья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersAtk: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersATKFor300s: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersATKAndCRITDMGFor300s: (atk: number | string, critDmg: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и крит. урон на <span class="text-cyan-500">${critDmg}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersATKAndCRITRate300s: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и шанс крит. попадания на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersCRITRateAndCRITDMGFor300s: (crit: number | string) => `Увеличивает шанс крит. попадания и крит. урон всех членов отряда на <span class="text-cyan-500">${crit}%</span> в течение 300 сек. В совместном режиме этот эффект применяется только к вашему персонажу.`,
@@ -328,6 +328,48 @@ const ResourceSource = {
   TeyvatResearch: "Исследование Тейвата",
 } as const;
 
+const AlmondTofu = {
+  [ResourceFoodIds.AlmondTofu]: ResourceFoodClass.init([
+    ResourceFoodIds.AlmondTofu,
+    "Миндальный тофу",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(81),
+    ["Готовка", "Купить у торговцев"],
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeAlmondTofu),
+  [ResourceFoodIds.DeliciousAlmondTofu]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousAlmondTofu,
+    "Вкусный миндальный тофу",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(95),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeAlmondTofu),
+  [ResourceFoodIds.SuspiciousAlmondTofu]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousAlmondTofu,
+    "Странный миндальный тофу",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(66),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeAlmondTofu),
+  [ResourceFoodIds.SweetDream]: ResourceFoodClass.init([
+    ResourceFoodIds.SweetDream,
+    "«Сладкий сон»",
+    FoodTypeIds.ATKBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(114),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Xiao).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeAlmondTofu),
+  [ResourceRecipeIds.RecipeAlmondTofu]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeAlmondTofu,
+    "Рецепт: Миндальный тофу",
+    "Кухня на постоялом дворе «Ваншу»",
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s("66–95"),
+    10,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Almond, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Milk, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 1),
+    ],
+  ]).setRarity(2),
+};
 const BirdEggSushi = {
   [ResourceFoodIds.AStunningStratagem]: ResourceFoodClass.init([
     ResourceFoodIds.AStunningStratagem,
@@ -866,28 +908,28 @@ const NanasCake = {
     ResourceFoodIds.DeliciousNanasCake,
     "Вкусный нанасовый пирог",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersAtk(228),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(228),
     "Готовка",
   ]).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
   [ResourceFoodIds.NanasCake]: ResourceFoodClass.init([
     ResourceFoodIds.NanasCake,
     "Нанасовый пирог",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersAtk(194),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(194),
     "Готовка",
   ]).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
   [ResourceFoodIds.SuspiciousNanasCake]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousNanasCake,
     "Странный нанасовый пирог",
     FoodTypeIds.ATKBoostingDish,
-    ResourceFoodUtility.IncreasesAllPartyMembersAtk(160),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(160),
     "Готовка",
   ]).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
   [ResourceRecipeIds.RecipeNanasCake]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeNanasCake,
     "Рецепт: Нанасовый пирог",
     "Задание легенд «Лето! Жара? Курорт!»",
-    ResourceFoodUtility.IncreasesAllPartyMembersAtk("160–228"),
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s("160–228"),
     15,
     [
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 4),
@@ -1288,6 +1330,7 @@ export default {
     "Кулинарный мек: Импровизированное приготовление Эскофье",
   ]).setRarity(3),
 
+  /* Миндальный тофу                 */ ...AlmondTofu,
   /* Яичные суши                     */ ...BirdEggSushi,
   /* Молочный пирог с пузырьками     */ ...BubblemilkPie,
   /* Конфеты «Ракушки»               */ ...CandyShells,
@@ -1315,6 +1358,11 @@ export default {
   /* Шокоатль                        */ ...Xocoatl,
 
   /* Кухонные ингредиенты            */ ...{
+    [ResourceCookingIngredientIds.Almond]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Almond,
+      "Миндаль",
+      "Купить у торговцев",
+    ]),
     [ResourceCookingIngredientIds.Berry]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Berry,
       "Ягода",

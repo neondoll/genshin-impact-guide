@@ -1,4 +1,5 @@
 export const ResourceCookingIngredientIds = {
+  /* Миндаль            */ Almond: "almond",
   /* Ягода              */ Berry: "berry",
   /* Яйцо               */ BirdEgg: "bird_egg",
   /* Сливочное масло    */ Butter: "butter",
@@ -32,6 +33,8 @@ export const ResourceFoodIds = {
   AbyssalBounty: "abyssal_bounty",
   /* Оживлённый гриб-звезда */
   ActivatedStarshroom: "activated_starshroom",
+  /* Миндальный тофу */
+  AlmondTofu: "almond_tofu",
   /* Яблоко */
   Apple: "apple",
   /* «Осенний иней» */
@@ -52,6 +55,8 @@ export const ResourceFoodIds = {
   CheesyMushroomSkewer: "cheesy_mushroom_skewer",
   /* Хрустящие креветки с картофелем */
   CrispyPotatoShrimpPlatter: "crispy_potato_shrimp_platter",
+  /* Вкусный миндальный тофу */
+  DeliciousAlmondTofu: "delicious_almond_tofu",
   /* Вкусные яичные суши */
   DeliciousBirdEggSushi: "delicious_bird_egg_sushi",
   /* Вкусный молочный пирог с пузырьками */
@@ -152,6 +157,8 @@ export const ResourceFoodIds = {
   Sunsettia: "sunsettia",
   /* Солнечная рыба */
   SunshineSprat: "sunshine_sprat",
+  /* Странный миндальный тофу */
+  SuspiciousAlmondTofu: "suspicious_almond_tofu",
   /* Странные яичные суши */
   SuspiciousBirdEggSushi: "suspicious_bird_egg_sushi",
   /* Странный молочный пирог с пузырьками */
@@ -198,6 +205,8 @@ export const ResourceFoodIds = {
   SuspiciousSunshineSprat: "suspicious_sunshine_sprat",
   /* Странный шокоатль */
   SuspiciousXocoatl: "suspicious_xocoatl",
+  /* «Сладкий сон» */
+  SweetDream: "sweet_dream",
   /* Яичница по-тейватски */
   TeyvatFriedEgg: "teyvat_fried_egg",
   /* «Зелёный дар» */
@@ -227,6 +236,8 @@ export const ResourceMaterialIds = {
   /* Какауатль */ Cacahuatl: "cacahuatl",
 } as const;
 export const ResourceRecipeIds = {
+  /* Рецепт: Миндальный тофу */
+  RecipeAlmondTofu: "recipe_almond_tofu",
   /* Рецепт: Яичные суши */
   RecipeBirdEggSushi: "recipe_bird_egg_sushi",
   /* Рецепт: Молочный пирог с пузырьками */
