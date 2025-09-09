@@ -5,6 +5,7 @@ export const ResourceCookingIngredientIds = {
   /* Сливочное масло    */ Butter: "butter",
   /* Сыр                */ Cheese: "cheese",
   /* Кофейные зёрна     */ CoffeeBeans: "coffee_beans",
+  /* Крабовая икра      */ CrabRoe: "crab_roe",
   /* Сметана            */ Cream: "cream",
   /* Рыба               */ Fish: "fish",
   /* Мука               */ Flour: "flour",
@@ -53,6 +54,8 @@ export const ResourceFoodIds = {
   ChatterOfJoyfulNights: "chatter_of_joyful_nights",
   /* Грибные шашлычки с сыром */
   CheesyMushroomSkewer: "cheesy_mushroom_skewer",
+  /* Крабовый тофу */
+  CrabRoeTofu: "crab_roe_tofu",
   /* Хрустящие креветки с картофелем */
   CrispyPotatoShrimpPlatter: "crispy_potato_shrimp_platter",
   /* Вкусный миндальный тофу */
@@ -65,6 +68,8 @@ export const ResourceFoodIds = {
   DeliciousCandyShells: "delicious_candy_shells",
   /* Вкусные грибные шашлычки с сыром */
   DeliciousCheesyMushroomSkewer: "delicious_cheesy_mushroom_skewer",
+  /* Вкусный крабовый тофу */
+  DeliciousCrabRoeTofu: "delicious_crab_roe_tofu",
   /* Вкусные хрустящие креветки с картофелем */
   DeliciousCrispyPotatoShrimpPlatter: "delicious_crispy_potato_shrimp_platter",
   /* Вкусный напиток 455 */
@@ -131,6 +136,8 @@ export const ResourceFoodIds = {
   MisoSoup: "miso_soup",
   /* «Грибная гора» (порция на одного) */
   MtMushroomForOne: "mt_mushroom_for_one",
+  /* «Особое мнение» */
+  MyWay: "my_way",
   /* Нанасовый пирог */
   NanasCake: "nanas_cake",
   /* Нектар девяти фруктов */
@@ -167,6 +174,8 @@ export const ResourceFoodIds = {
   SuspiciousCandyShells: "suspicious_candy_shells",
   /* Странные грибные шашлычки с сыром */
   SuspiciousCheesyMushroomSkewer: "suspicious_cheesy_mushroom_skewer",
+  /* Странный крабовый тофу */
+  SuspiciousCrabRoeTofu: "suspicious_crab_roe_tofu",
   /* Странные хрустящие креветки с картофелем */
   SuspiciousCrispyPotatoShrimpPlatter: "suspicious_crispy_potato_shrimp_platter",
   /* Странный напиток 455 */
@@ -246,6 +255,8 @@ export const ResourceRecipeIds = {
   RecipeCandyShells: "recipe_candy_shells",
   /* Рецепт: Грибные шашлычки с сыром */
   RecipeCheesyMushroomSkewer: "recipe_cheesy_mushroom_skewer",
+  /* Рецепт: Крабовый тофу */
+  RecipeCrabRoeTofu: "recipe_crab_roe_tofu",
   /* Рецепт: Хрустящие креветки с картофелем */
   RecipeCrispyPotatoShrimpPlatter: "recipe_crispy_potato_shrimp_platter",
   /* Рецепт: Напиток 455 */

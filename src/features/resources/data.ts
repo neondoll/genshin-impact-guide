@@ -525,6 +525,47 @@ const CheesyMushroomSkewer = {
     ],
   ]).setRarity(2),
 };
+const CrabRoeTofu = {
+  [ResourceFoodIds.CrabRoeTofu]: ResourceFoodClass.init([
+    ResourceFoodIds.CrabRoeTofu,
+    "Крабовый тофу",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(400),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeCrabRoeTofu),
+  [ResourceFoodIds.DeliciousCrabRoeTofu]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousCrabRoeTofu,
+    "Вкусный крабовый тофу",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(550),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeCrabRoeTofu),
+  [ResourceFoodIds.MyWay]: ResourceFoodClass.init([
+    ResourceFoodIds.MyWay,
+    "«Особое мнение»",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresPercentOfMaxHPThenRestoresAnAdditionalHP(15, 550),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Yanfei).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeCrabRoeTofu),
+  [ResourceFoodIds.SuspiciousCrabRoeTofu]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousCrabRoeTofu,
+    "Странный крабовый тофу",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(250),
+    "Готовка",
+  ]).setRarity(2).setRecipeId(ResourceRecipeIds.RecipeCrabRoeTofu),
+  [ResourceRecipeIds.RecipeCrabRoeTofu]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeCrabRoeTofu,
+    "Рецепт: Крабовый тофу",
+    "Купить у шеф-повара Мао в ресторане «Народный выбор»",
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP("250–550"),
+    10,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.CrabRoe, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Tofu, 1),
+    ],
+  ]).setRarity(2),
+};
 const CrispyPotatoShrimpPlatter = {
   [ResourceFoodIds.ChatterOfJoyfulNights]: ResourceFoodClass.init([
     ResourceFoodIds.ChatterOfJoyfulNights,
@@ -1335,6 +1376,7 @@ export default {
   /* Молочный пирог с пузырьками     */ ...BubblemilkPie,
   /* Конфеты «Ракушки»               */ ...CandyShells,
   /* Грибные шашлычки с сыром        */ ...CheesyMushroomSkewer,
+  /* Крабовый тофу                   */ ...CrabRoeTofu,
   /* Хрустящие креветки с картофелем */ ...CrispyPotatoShrimpPlatter,
   /* Напиток 455                     */ ...Drink455,
   /* «Яркий лес»                     */ ...ForestOfColor,
@@ -1387,6 +1429,11 @@ export default {
       ResourceCookingIngredientIds.CoffeeBeans,
       "Кофейные зёрна",
       "Купить у Энтеки в кафе «Пуспа»",
+    ]),
+    [ResourceCookingIngredientIds.CrabRoe]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.CrabRoe,
+      "Крабовая икра",
+      ["Заготовка ингредиентов", "Купить у торговцев"],
     ]),
     [ResourceCookingIngredientIds.Cream]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Cream,
