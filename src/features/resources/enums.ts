@@ -11,6 +11,7 @@ export const ResourceCookingIngredientIds = {
   /* Мука               */ Flour: "flour",
   /* Мясо птицы         */ Fowl: "fowl",
   /* Злакофрукт         */ Grainfruit: "grainfruit",
+  /* Фиалковая дыня     */ LavenderMelon: "lavender_melon",
   /* Молоко             */ Milk: "milk",
   /* Мята               */ Mint: "mint",
   /* Лук                */ Onion: "onion",
@@ -102,6 +103,8 @@ export const ResourceFoodIds = {
   DeliciousPuffedGrainfruitBars: "delicious_puffed_grainfruit_bars",
   /* Вкусные моти с сакурой */
   DeliciousSakuraMochi: "delicious_sakura_mochi",
+  /* Вкусная тэмпура с сакурой */
+  DeliciousSakuraTempura: "delicious_sakura_tempura",
   /* Вкусный биск с креветками */
   DeliciousShrimpBisque: "delicious_shrimp_bisque",
   /* Вкусная солнечная рыба */
@@ -150,8 +153,12 @@ export const ResourceFoodIds = {
   PileEmUp: "pile_em_up",
   /* Батончики из злакофрукта */
   PuffedGrainfruitBars: "puffed_grainfruit_bars",
+  /* Изящная безмятежность */
+  QuietElegance: "quiet_elegance",
   /* Моти с сакурой */
   SakuraMochi: "sakura_mochi",
+  /* Тэмпура с сакурой */
+  SakuraTempura: "sakura_tempura",
   /* Обожжённый гриб-звезда */
   ScorchedStarshroom: "scorched_starshroom",
   /* Биск с креветками */
@@ -208,6 +215,8 @@ export const ResourceFoodIds = {
   SuspiciousPuffedGrainfruitBars: "suspicious_puffed_grainfruit_bars",
   /* Странные моти с сакурой */
   SuspiciousSakuraMochi: "suspicious_sakura_mochi",
+  /* Странная тэмпура с сакурой */
+  SuspiciousSakuraTempura: "suspicious_sakura_tempura",
   /* Странный биск с креветками */
   SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
   /* Странная солнечная рыба */
@@ -289,6 +298,8 @@ export const ResourceRecipeIds = {
   RecipePuffedGrainfruitBars: "recipe_puffed_grainfruit_bars",
   /* Рецепт: Моти с сакурой */
   RecipeSakuraMochi: "recipe_sakura_mochi",
+  /* Рецепт: Тэмпура с сакурой */
+  RecipeSakuraTempura: "recipe_sakura_tempura",
   /* Рецепт: Биск с креветками */
   RecipeShrimpBisque: "recipe_shrimp_bisque",
   /* Рецепт: Солнечная рыба */

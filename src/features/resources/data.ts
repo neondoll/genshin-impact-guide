@@ -1178,6 +1178,49 @@ const SakuraMochi = {
     ],
   ]).setRarity(3),
 };
+const SakuraTempura = {
+  [ResourceFoodIds.DeliciousSakuraTempura]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousSakuraTempura,
+    "Вкусная тэмпура с сакурой",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s(30),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSakuraTempura),
+  [ResourceFoodIds.QuietElegance]: ResourceFoodClass.init([
+    ResourceFoodIds.QuietElegance,
+    "Изящная безмятежность",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s(35),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.KamisatoAyato).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSakuraTempura),
+  [ResourceFoodIds.SakuraTempura]: ResourceFoodClass.init([
+    ResourceFoodIds.SakuraTempura,
+    "Тэмпура с сакурой",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s(25),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSakuraTempura),
+  [ResourceFoodIds.SuspiciousSakuraTempura]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousSakuraTempura,
+    "Странная тэмпура с сакурой",
+    FoodTypeIds.DEFBoostingDish,
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s(20),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeSakuraTempura),
+  [ResourceRecipeIds.RecipeSakuraTempura]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeSakuraTempura,
+    "Рецепт: Тэмпура с сакурой",
+    "Задание «Всеядные гурманы!»",
+    ResourceFoodUtility.IncreasesAllPartyMembersShieldStrengthFor300s("20–30"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.LavenderMelon, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.ShrimpMeat, 4),
+      new ResourceRecipeIngredientClass(ResourceLocalSpecialtyInazumaIds.SakuraBloom, 2),
+    ],
+  ]).setRarity(3),
+};
 const ShrimpBisque = {
   [ResourceFoodIds.DeliciousShrimpBisque]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousShrimpBisque,
@@ -1393,6 +1436,7 @@ export default {
   /* «Расти гора»                    */ ...PileEmUp,
   /* Батончики из злакофрукта        */ ...PuffedGrainfruitBars,
   /* Моти с сакурой                  */ ...SakuraMochi,
+  /* Тэмпура с сакурой               */ ...SakuraTempura,
   /* Биск с креветками               */ ...ShrimpBisque,
   /* Гриб-звезда                     */ ...Starshroom,
   /* Солнечная рыба                  */ ...SunshineSprat,
@@ -1459,6 +1503,11 @@ export default {
       ResourceCookingIngredientIds.Grainfruit,
       "Злакофрукт",
       ["Натлан", "Купить у торговцев", "Садоводство"],
+    ]),
+    [ResourceCookingIngredientIds.LavenderMelon]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.LavenderMelon,
+      "Фиалковая дыня",
+      ["Дикая природа Инадзумы", "Купить у торговцев"],
     ]),
     [ResourceCookingIngredientIds.Milk]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Milk,
