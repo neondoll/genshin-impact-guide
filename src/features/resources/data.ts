@@ -375,9 +375,9 @@ const ResourceFoodUtility = {
   ALittleSurpriseFromTheEasybreezeHolidayResort: (s: number | string) => `<span class="italic">Небольшой сюрприз от курорта «Оазис отдыха».</span><br>Восстанавливает 1 здоровье выбранного персонажа каждые 8 секунд в течение <span class="text-cyan-500">${s} секунд</span>. В кооперативном режиме этот эффект применяется только к вашим персонажам.`,
   DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и карабканья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   DecreasesAllPartyMembersSprintingAndSwimmingStaminaConsumptionFor900Seconds: (stamina: number | string) => `Уменьшает потребление выносливости всеми членами отряда во время спринта и плаванья на <span class="text-cyan-500">${stamina}%</span> на 900 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
-  IncreasesAllPartyMembersATKFor300s: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersATKAndCRITDMGFor300s: (atk: number | string, critDmg: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и крит. урон на <span class="text-cyan-500">${critDmg}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersATKAndCRITRateFor300s: (atk: number | string, critRate: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> и шанс крит. попадания на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
+  IncreasesAllPartyMembersATKFor300s: (atk: number | string) => `Увеличивает силу атаки всех членов отряда на <span class="text-cyan-500">${atk} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersCRITRateAndCRITDMGFor300s: (crit: number | string) => `Увеличивает шанс крит. попадания и крит. урон всех членов отряда на <span class="text-cyan-500">${crit}%</span> в течение 300 сек. В совместном режиме этот эффект применяется только к вашему персонажу.`,
   IncreasesAllPartyMembersCRITRateFor300s: (critRate: number | string) => `Увеличивает шанс крит. попадания всех членов отряда на <span class="text-cyan-500">${critRate}%</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
   IncreasesAllPartyMembersDEFFor300s: (def: number | string) => `Увеличивает защиту всех членов отряда на <span class="text-cyan-500">${def} ед.</span> на 300 сек. В совместном режиме этот эффект применяется только к вашим персонажам.`,
@@ -1591,6 +1591,45 @@ const TeyvatFriedEgg = {
     [new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 1)],
   ]),
 };
+const TriFlavoredSkewer = {
+  [ResourceFoodIds.DeliciousTriFlavoredSkewer]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousTriFlavoredSkewer,
+    "Вкусные тройные шашлычки",
+    FoodTypeIds.ATKBoostingDish,
+    3,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(228),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeTriFlavoredSkewer),
+  [ResourceFoodIds.SuspiciousTriFlavoredSkewer]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousTriFlavoredSkewer,
+    "Странные тройные шашлычки",
+    FoodTypeIds.ATKBoostingDish,
+    3,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(160),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeTriFlavoredSkewer),
+  [ResourceFoodIds.TriFlavoredSkewer]: ResourceFoodClass.init([
+    ResourceFoodIds.TriFlavoredSkewer,
+    "Тройные шашлычки",
+    FoodTypeIds.ATKBoostingDish,
+    3,
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(194),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeTriFlavoredSkewer),
+  [ResourceRecipeIds.RecipeTriFlavoredSkewer]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeTriFlavoredSkewer,
+    "Рецепт: Тройные шашлычки",
+    3,
+    "Купить у Киминами Анны в ресторане «Киминами»",
+    ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s("160–228"),
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.RawMeat, 4),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Snapdragon, 1),
+    ],
+  ]),
+};
 const TricolorDango = {
   [ResourceFoodIds.DeliciousTricolorDango]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousTricolorDango,
@@ -1788,6 +1827,7 @@ export default {
   /* Гриб-звезда                     */ ...Starshroom,
   /* Солнечная рыба                  */ ...SunshineSprat,
   /* Яичница по-тейватски            */ ...TeyvatFriedEgg,
+  /* Тройные шашлычки                */ ...TriFlavoredSkewer,
   /* Трёхцветное данго               */ ...TricolorDango,
   /* Шокоатль                        */ ...Xocoatl,
   /* Требуха «Чжун Юань»             */ ...ZhongyuanChopSuey,

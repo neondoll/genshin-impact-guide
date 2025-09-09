@@ -119,6 +119,8 @@ export const ResourceFoodIds = {
   DeliciousShrimpBisque: "delicious_shrimp_bisque",
   /* Вкусная солнечная рыба */
   DeliciousSunshineSprat: "delicious_sunshine_sprat",
+  /* Вкусные тройные шашлычки */
+  DeliciousTriFlavoredSkewer: "delicious_tri_flavored_skewer",
   /* Вкусное трёхцветное данго */
   DeliciousTricolorDango: "delicious_tricolor_dango",
   /* Вкусный шокоатль */
@@ -241,6 +243,8 @@ export const ResourceFoodIds = {
   SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
   /* Странная солнечная рыба */
   SuspiciousSunshineSprat: "suspicious_sunshine_sprat",
+  /* Странные тройные шашлычки */
+  SuspiciousTriFlavoredSkewer: "suspicious_tri_flavored_skewer",
   /* Странное трёхцветное данго */
   SuspiciousTricolorDango: "suspicious_tricolor_dango",
   /* Странный шокоатль */
@@ -251,6 +255,8 @@ export const ResourceFoodIds = {
   SweetDream: "sweet_dream",
   /* Яичница по-тейватски */
   TeyvatFriedEgg: "teyvat_fried_egg",
+  /* Тройные шашлычки */
+  TriFlavoredSkewer: "tri_flavored_skewer",
   /* Трёхцветное данго */
   TricolorDango: "tricolor_dango",
   /* «Зелёный дар» */
@@ -344,6 +350,8 @@ export const ResourceRecipeIds = {
   RecipeSunshineSprat: "recipe_sunshine_sprat",
   /* Рецепт: Яичница по-тейватски */
   RecipeTeyvatFriedEgg: "recipe_teyvat_fried_egg",
+  /* Рецепт: Тройные шашлычки */
+  RecipeTriFlavoredSkewer: "recipe_tri_flavored_skewer",
   /* Рецепт: Трёхцветное данго */
   RecipeTricolorDango: "recipe_tricolor_dango",
   /* Рецепт: Шокоатль */
