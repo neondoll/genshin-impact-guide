@@ -101,6 +101,8 @@ export const ResourceFoodIds = {
   DeliciousMiniAshaPockets: "delicious_mini_asha_pockets",
   /* Вкусный мисо-суп */
   DeliciousMisoSoup: "delicious_miso_soup",
+  /* Вкусная лепёшка «Мора» */
+  DeliciousMoraMeat: "delicious_mora_meat",
   /* Вкусный нанасовый пирог */
   DeliciousNanasCake: "delicious_nanas_cake",
   /* Вкусный нектар девяти фруктов */
@@ -157,6 +159,8 @@ export const ResourceFoodIds = {
   MiniAshaPockets: "mini_asha_pockets",
   /* Мисо-суп */
   MisoSoup: "miso_soup",
+  /* Лепёшка «Мора» */
+  MoraMeat: "mora_meat",
   /* «Грибная гора» (порция на одного) */
   MtMushroomForOne: "mt_mushroom_for_one",
   /* «Особое мнение» */
@@ -173,6 +177,8 @@ export const ResourceFoodIds = {
   PileEmUp: "pile_em_up",
   /* Батончики из злакофрукта */
   PuffedGrainfruitBars: "puffed_grainfruit_bars",
+  /* Лепёшка «Инь Ян» */
+  QiankunMoraMeat: "qiankun_mora_meat",
   /* Изящная безмятежность */
   QuietElegance: "quiet_elegance",
   /* Моти с сакурой */
@@ -229,6 +235,8 @@ export const ResourceFoodIds = {
   SuspiciousMiniAshaPockets: "suspicious_mini_asha_pockets",
   /* Странный мисо-суп */
   SuspiciousMisoSoup: "suspicious_miso_soup",
+  /* Странная лепёшка «Мора» */
+  SuspiciousMoraMeat: "suspicious_mora_meat",
   /* Странный нанасовый пирог */
   SuspiciousNanasCake: "suspicious_nanas_cake",
   /* Странный нектар девяти фруктов */
@@ -338,6 +346,8 @@ export const ResourceRecipeIds = {
   RecipeMiniAshaPockets: "recipe_mini_asha_pockets",
   /* Рецепт: Мисо-суп */
   RecipeMisoSoup: "recipe_miso_soup",
+  /* Рецепт: Лепёшка «Мора» */
+  RecipeMoraMeat: "recipe_mora_meat",
   /* Рецепт: Нанасовый пирог */
   RecipeNanasCake: "recipe_nanas_cake",
   /* Рецепт: Нектар девяти фруктов */

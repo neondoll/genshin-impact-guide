@@ -1159,6 +1159,51 @@ const MisoSoup = {
     ],
   ]),
 };
+const MoraMeat = {
+  [ResourceFoodIds.DeliciousMoraMeat]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousMoraMeat,
+    "Вкусная лепёшка «Мора»",
+    FoodTypeIds.RecoveryDish,
+    1,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(150),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeMoraMeat),
+  [ResourceFoodIds.MoraMeat]: ResourceFoodClass.init([
+    ResourceFoodIds.MoraMeat,
+    "Лепёшка «Мора»",
+    FoodTypeIds.RecoveryDish,
+    1,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(100),
+    ["Готовка", "Купить у торговцев"],
+  ]).setRecipeId(ResourceRecipeIds.RecipeMoraMeat),
+  [ResourceFoodIds.QiankunMoraMeat]: ResourceFoodClass.init([
+    ResourceFoodIds.QiankunMoraMeat,
+    "Лепёшка «Инь Ян»",
+    FoodTypeIds.RecoveryDish,
+    1,
+    ResourceFoodUtility.RevivesACharacterAndRestoresPercentOfMaxHPThenRestoresAnAdditionalHP(10, 150),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Ningguang).setRecipeId(ResourceRecipeIds.RecipeMoraMeat),
+  [ResourceFoodIds.SuspiciousMoraMeat]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousMoraMeat,
+    "Странная лепёшка «Мора»",
+    FoodTypeIds.RecoveryDish,
+    1,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(50),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeMoraMeat),
+  [ResourceRecipeIds.RecipeMoraMeat]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeMoraMeat,
+    "Рецепт: Лепёшка «Мора»",
+    1,
+    "Задание Архонтов «Том I. Глава I: Загадочная земля тысячи камней»",
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP("50–150"),
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.RawMeat, 1),
+    ],
+  ]),
+};
 const NanasCake = {
   [ResourceFoodIds.DeliciousNanasCake]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousNanasCake,
@@ -1862,6 +1907,7 @@ export default {
   /* «Радость мясоеда»               */ ...MeatLoversFeast,
   /* Мини-мешочки аши                */ ...MiniAshaPockets,
   /* Мисо-суп                        */ ...MisoSoup,
+  /* Лепёшка «Мора»                  */ ...MoraMeat,
   /* Нанасовый пирог                 */ ...NanasCake,
   /* Нектар девяти фруктов           */ ...NineFruitNectar,
   /* Тортик «Дебор»: Особый          */ ...PetitGateauDebordRevisedVersion,
