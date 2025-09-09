@@ -761,21 +761,21 @@ const GentleSeaBreeze = {
     FoodTypeIds.AdventurersDish,
     ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption(25),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeGentleSeaBreeze),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeGentleSeaBreeze),
   [ResourceFoodIds.GentleSeaBreeze]: ResourceFoodClass.init([
     ResourceFoodIds.GentleSeaBreeze,
     "«Лёгкий морской бриз»",
     FoodTypeIds.AdventurersDish,
     ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption(20),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeGentleSeaBreeze),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeGentleSeaBreeze),
   [ResourceFoodIds.SuspiciousGentleSeaBreeze]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousGentleSeaBreeze,
     "Странный «Лёгкий морской бриз»",
     FoodTypeIds.AdventurersDish,
     ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption(15),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeGentleSeaBreeze),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeGentleSeaBreeze),
   [ResourceRecipeIds.RecipeGentleSeaBreeze]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeGentleSeaBreeze,
     "Рецепт: «Лёгкий морской бриз»",
@@ -787,7 +787,7 @@ const GentleSeaBreeze = {
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 1),
       new ResourceRecipeIngredientClass(ResourceLocalSpecialtyNatlanIds.QuenepaBerry, 2),
     ],
-  ]),
+  ]).setRarity(3),
 };
 const GrilledFishInMintSauce = {
   [ResourceFoodIds.AbyssalBounty]: ResourceFoodClass.init([
@@ -941,21 +941,21 @@ const MiniAshaPockets = {
     FoodTypeIds.RecoveryDish,
     ResourceFoodUtility.ALittleSurpriseFromTheEasybreezeHolidayResort(48),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeMiniAshaPockets),
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeMiniAshaPockets),
   [ResourceFoodIds.MiniAshaPockets]: ResourceFoodClass.init([
     ResourceFoodIds.MiniAshaPockets,
     "Мини-мешочки аши",
     FoodTypeIds.RecoveryDish,
     ResourceFoodUtility.ALittleSurpriseFromTheEasybreezeHolidayResort(40),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeMiniAshaPockets),
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeMiniAshaPockets),
   [ResourceFoodIds.SuspiciousMiniAshaPockets]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousMiniAshaPockets,
     "Странные мини-мешочки аши",
     FoodTypeIds.RecoveryDish,
     ResourceFoodUtility.ALittleSurpriseFromTheEasybreezeHolidayResort(32),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeMiniAshaPockets),
+  ]).setRarity(4).setRecipeId(ResourceRecipeIds.RecipeMiniAshaPockets),
   [ResourceRecipeIds.RecipeMiniAshaPockets]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeMiniAshaPockets,
     "Рецепт: Мини-мешочки аши",
@@ -968,7 +968,7 @@ const MiniAshaPockets = {
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Fowl, 1),
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Onion, 1),
     ],
-  ]),
+  ]).setRarity(4),
 };
 const MisoSoup = {
   [ResourceFoodIds.DeliciousMisoSoup]: ResourceFoodClass.init([
@@ -1018,21 +1018,21 @@ const NanasCake = {
     FoodTypeIds.ATKBoostingDish,
     ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(228),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
   [ResourceFoodIds.NanasCake]: ResourceFoodClass.init([
     ResourceFoodIds.NanasCake,
     "Нанасовый пирог",
     FoodTypeIds.ATKBoostingDish,
     ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(194),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
   [ResourceFoodIds.SuspiciousNanasCake]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousNanasCake,
     "Странный нанасовый пирог",
     FoodTypeIds.ATKBoostingDish,
     ResourceFoodUtility.IncreasesAllPartyMembersATKFor300s(160),
     "Готовка",
-  ]).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeNanasCake),
   [ResourceRecipeIds.RecipeNanasCake]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeNanasCake,
     "Рецепт: Нанасовый пирог",
@@ -1045,7 +1045,7 @@ const NanasCake = {
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Sugar, 1),
       new ResourceRecipeIngredientClass(ResourceMaterialIds.Cacahuatl, 2),
     ],
-  ]),
+  ]).setRarity(3),
 };
 const NineFruitNectar = {
   [ResourceFoodIds.DeliciousNineFruitNectar]: ResourceFoodClass.init([
@@ -1295,21 +1295,21 @@ const ShrimpBisque = {
     FoodTypeIds.DEFBoostingDish,
     ResourceFoodUtility.IncreasesAllPartyMembersHealingBonus(20),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeShrimpBisque),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeShrimpBisque),
   [ResourceFoodIds.ShrimpBisque]: ResourceFoodClass.init([
     ResourceFoodIds.ShrimpBisque,
     "Биск с креветками",
     FoodTypeIds.DEFBoostingDish,
     ResourceFoodUtility.IncreasesAllPartyMembersHealingBonus(17),
     [ResourceSource.ObtainedByCooking, "Покупка у Теучцицтли"],
-  ]).setRecipeId(ResourceRecipeIds.RecipeShrimpBisque),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeShrimpBisque),
   [ResourceFoodIds.SuspiciousShrimpBisque]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousShrimpBisque,
     "Странный биск с креветками",
     FoodTypeIds.DEFBoostingDish,
     ResourceFoodUtility.IncreasesAllPartyMembersHealingBonus(15),
     ResourceSource.ObtainedByCooking,
-  ]).setRecipeId(ResourceRecipeIds.RecipeShrimpBisque),
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeShrimpBisque),
   [ResourceRecipeIds.RecipeShrimpBisque]: ResourceRecipeClass.init([
     ResourceRecipeIds.RecipeShrimpBisque,
     "Рецепт: Биск с креветками",
@@ -1322,7 +1322,7 @@ const ShrimpBisque = {
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Potato, 3),
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.ShrimpMeat, 4),
     ],
-  ]),
+  ]).setRarity(3),
 };
 const Starshroom = {
   [ResourceFoodIds.ActivatedStarshroom]: ResourceFoodClass.init([
@@ -1493,6 +1493,42 @@ const Xocoatl = {
     ],
   ]).setRarity(3),
 };
+const ZhongyuanChopSuey = {
+  [ResourceFoodIds.DeliciousZhongyuanChopSuey]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousZhongyuanChopSuey,
+    "Вкусная требуха «Чжун Юань»",
+    FoodTypeIds.AdventurersDish,
+    ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption(25),
+    ["Готовка", "Купить у торговцев"],
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeZhongyuanChopSuey),
+  [ResourceFoodIds.SuspiciousZhongyuanChopSuey]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousZhongyuanChopSuey,
+    "Странная требуха «Чжун Юань»",
+    FoodTypeIds.AdventurersDish,
+    ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption(15),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeZhongyuanChopSuey),
+  [ResourceFoodIds.ZhongyuanChopSuey]: ResourceFoodClass.init([
+    ResourceFoodIds.ZhongyuanChopSuey,
+    "Требуха «Чжун Юань»",
+    FoodTypeIds.AdventurersDish,
+    ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption(20),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeZhongyuanChopSuey),
+  [ResourceRecipeIds.RecipeZhongyuanChopSuey]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeZhongyuanChopSuey,
+    "Рецепт: Требуха «Чжун Юань»",
+    "Награда за выполнение задания «Незабываемый вкус»",
+    ResourceFoodUtility.DecreasesAllPartyMembersClimbingAndSprintingStaminaConsumption("15–25"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Fish, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.RawMeat, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Salt, 2),
+    ],
+  ]).setRarity(3),
+};
 
 export default {
   [ResourceFoodIds.AutumnFrost]: ResourceFoodClass.init([
@@ -1554,6 +1590,7 @@ export default {
   /* Яичница по-тейватски            */ ...TeyvatFriedEgg,
   /* Трёхцветное данго               */ ...TricolorDango,
   /* Шокоатль                        */ ...Xocoatl,
+  /* Требуха «Чжун Юань»             */ ...ZhongyuanChopSuey,
 
   /* Кухонные ингредиенты            */ ...{
     [ResourceCookingIngredientIds.Almond]: ResourceCookingIngredientClass.init([

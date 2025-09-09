@@ -118,6 +118,8 @@ export const ResourceFoodIds = {
   DeliciousTricolorDango: "delicious_tricolor_dango",
   /* Вкусный шокоатль */
   DeliciousXocoatl: "delicious_xocoatl",
+  /* Вкусная требуха «Чжун Юань» */
+  DeliciousZhongyuanChopSuey: "delicious_zhongyuan_chop_suey",
   /* Напиток 455 */
   Drink455: "drink_455",
   /* «Эмоциональная поддержка» */
@@ -236,6 +238,8 @@ export const ResourceFoodIds = {
   SuspiciousTricolorDango: "suspicious_tricolor_dango",
   /* Странный шокоатль */
   SuspiciousXocoatl: "suspicious_xocoatl",
+  /* Странная требуха «Чжун Юань» */
+  SuspiciousZhongyuanChopSuey: "suspicious_zhongyuan_chop_suey",
   /* «Сладкий сон» */
   SweetDream: "sweet_dream",
   /* Яичница по-тейватски */
@@ -254,6 +258,8 @@ export const ResourceFoodIds = {
   WoodlandDream: "woodland_dream",
   /* Шокоатль */
   Xocoatl: "xocoatl",
+  /* Требуха «Чжун Юань» */
+  ZhongyuanChopSuey: "zhongyuan_chop_suey",
 } as const;
 export const ResourceLocalSpecialtyFontaineIds = {
   /* Ромарин */ RomaritimeFlower: "romaritime_flower",
@@ -333,6 +339,8 @@ export const ResourceRecipeIds = {
   RecipeTricolorDango: "recipe_tricolor_dango",
   /* Рецепт: Шокоатль */
   RecipeXocoatl: "recipe_xocoatl",
+  /* Рецепт: Требуха «Чжун Юань» */
+  RecipeZhongyuanChopSuey: "recipe_zhongyuan_chop_suey",
 } as const;
 export const ResourceIds = {
   ...ResourceCookingIngredientIds,
