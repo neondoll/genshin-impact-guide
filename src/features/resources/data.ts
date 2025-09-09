@@ -1686,6 +1686,14 @@ const UdonNoodles = {
     ResourceFoodUtility.RevivesACharacterAndRestoresHP(550),
     "Готовка",
   ]).setRecipeId(ResourceRecipeIds.RecipeUdonNoodles),
+  [ResourceFoodIds.FukuuchiUdon]: ResourceFoodClass.init([
+    ResourceFoodIds.FukuuchiUdon,
+    "Лапша удон на удачу",
+    FoodTypeIds.RecoveryDish,
+    2,
+    ResourceFoodUtility.RevivesACharacterAndRestoresPercentOfMaxHPThenRestoresAnAdditionalHP(15, 550),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.YaeMiko).setRecipeId(ResourceRecipeIds.RecipeUdonNoodles),
   [ResourceFoodIds.SuspiciousUdonNoodles]: ResourceFoodClass.init([
     ResourceFoodIds.SuspiciousUdonNoodles,
     "Странная лапша удон",

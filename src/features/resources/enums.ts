@@ -135,6 +135,8 @@ export const ResourceFoodIds = {
   EmotionalSupport: "emotional_support",
   /* «Яркий лес» */
   ForestOfColor: "forest_of_color",
+  /* Лапша удон на удачу */
+  FukuuchiUdon: "fukuuchi_udon",
   /* Торт «Дебор»: Великолепие */
   GateauDebordMagnifique: "gateau_debord_magnifique",
   /* «Лёгкий морской бриз» */
