@@ -43,6 +43,8 @@ export const ResourceFoodIds = {
   AutumnFrost: "autumn_frost",
   /* Яичные суши */
   BirdEggSushi: "bird_egg_sushi",
+  /* Чёрный окунь */
+  BlackBackPerchStew: "black_back_perch_stew",
   /* Молочный пирог с пузырьками */
   BubblemilkPie: "bubblemilk_pie",
   /* Пузырин */
@@ -63,6 +65,8 @@ export const ResourceFoodIds = {
   DeliciousAlmondTofu: "delicious_almond_tofu",
   /* Вкусные яичные суши */
   DeliciousBirdEggSushi: "delicious_bird_egg_sushi",
+  /* Вкусный чёрный окунь */
+  DeliciousBlackBackPerchStew: "delicious_black_back_perch_stew",
   /* Вкусный молочный пирог с пузырьками */
   DeliciousBubblemilkPie: "delicious_bubblemilk_pie",
   /* Вкусные конфеты «Ракушки» */
@@ -175,6 +179,8 @@ export const ResourceFoodIds = {
   SuspiciousAlmondTofu: "suspicious_almond_tofu",
   /* Странные яичные суши */
   SuspiciousBirdEggSushi: "suspicious_bird_egg_sushi",
+  /* Странный чёрный окунь */
+  SuspiciousBlackBackPerchStew: "suspicious_black_back_perch_stew",
   /* Странный молочный пирог с пузырьками */
   SuspiciousBubblemilkPie: "suspicious_bubblemilk_pie",
   /* Странные конфеты «Ракушки» */
@@ -229,6 +235,8 @@ export const ResourceFoodIds = {
   TeyvatFriedEgg: "teyvat_fried_egg",
   /* «Зелёный дар» */
   VerdantGift: "verdant_gift",
+  /* Фирменная отварная рыба */
+  WanminRestaurantsBoiledFish: "wanmin_restaurants_boiled_fish",
   /* «Теплота» */
   Warmth: "warmth",
   /* Прибрежные пески */
@@ -244,6 +252,10 @@ export const ResourceLocalSpecialtyFontaineIds = {
 export const ResourceLocalSpecialtyInazumaIds = {
   /* Цвет сакуры */ SakuraBloom: "sakura_bloom",
 } as const;
+export const ResourceLocalSpecialtyLiyueIds = {
+  /* Заоблачный перчик       */ JueyunChili: "jueyun_chili",
+  /* Стеклянные колокольчики */ Violetgrass: "violetgrass",
+} as const;
 export const ResourceLocalSpecialtyMondstadtIds = {
   /* Трава-светяшка */ SmallLampGrass: "small_lamp_grass",
 } as const;
@@ -258,6 +270,8 @@ export const ResourceRecipeIds = {
   RecipeAlmondTofu: "recipe_almond_tofu",
   /* Рецепт: Яичные суши */
   RecipeBirdEggSushi: "recipe_bird_egg_sushi",
+  /* Рецепт: Чёрный окунь */
+  RecipeBlackBackPerchStew: "recipe_black_back_perch_stew",
   /* Рецепт: Молочный пирог с пузырьками */
   RecipeBubblemilkPie: "recipe_bubblemilk_pie",
   /* Рецепт: Конфеты «Ракушки» */
@@ -314,6 +328,7 @@ export const ResourceIds = {
   ...ResourceFoodIds,
   ...ResourceLocalSpecialtyFontaineIds,
   ...ResourceLocalSpecialtyInazumaIds,
+  ...ResourceLocalSpecialtyLiyueIds,
   ...ResourceLocalSpecialtyMondstadtIds,
   ...ResourceLocalSpecialtyNatlanIds,
   ...ResourceMaterialIds,

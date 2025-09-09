@@ -8,6 +8,7 @@ import {
   ResourceIds,
   ResourceLocalSpecialtyFontaineIds,
   ResourceLocalSpecialtyInazumaIds,
+  ResourceLocalSpecialtyLiyueIds,
   ResourceLocalSpecialtyMondstadtIds,
   ResourceLocalSpecialtyNatlanIds,
   ResourceMaterialIds,
@@ -90,6 +91,17 @@ export interface ResourceLocalSpecialtyInazuma extends ResourceAbstract {
   source: string | string[];
 }
 
+export interface ResourceLocalSpecialtyLiyue extends ResourceAbstract {
+  id: ResourceLocalSpecialtyLiyueId;
+  image_src: string;
+  /* Имя */
+  name: string;
+  /* Тип */
+  type_id: typeof ResourceTypeIds.LocalSpecialtyLiyue;
+  /* Где найти */
+  source: string | string[];
+}
+
 export interface ResourceLocalSpecialtyMondstadt extends ResourceAbstract {
   id: ResourceLocalSpecialtyMondstadtId;
   image_src: string;
@@ -143,18 +155,19 @@ export interface ResourceRecipe extends ResourceAbstract {
 }
 
 export interface ResourceRecipeIngredient {
-  id: ResourceCookingIngredientId | ResourceFoodId | ResourceLocalSpecialtyFontaineId | ResourceLocalSpecialtyInazumaId | ResourceLocalSpecialtyMondstadtId | ResourceLocalSpecialtyNatlanId | ResourceMaterialId;
+  id: ResourceCookingIngredientId | ResourceFoodId | ResourceLocalSpecialtyFontaineId | ResourceLocalSpecialtyInazumaId | ResourceLocalSpecialtyLiyueId | ResourceLocalSpecialtyMondstadtId | ResourceLocalSpecialtyNatlanId | ResourceMaterialId;
   count: number;
 }
 
 export type Resource = ResourceCookingIngredient | ResourceFood | ResourceLocalSpecialtyFontaine
-  | ResourceLocalSpecialtyInazuma | ResourceLocalSpecialtyMondstadt | ResourceLocalSpecialtyNatlan | ResourceMaterial
-  | ResourceRecipe;
+  | ResourceLocalSpecialtyInazuma | ResourceLocalSpecialtyLiyue | ResourceLocalSpecialtyMondstadt
+  | ResourceLocalSpecialtyNatlan | ResourceMaterial | ResourceRecipe;
 export type ResourceCookingIngredientId = typeof ResourceCookingIngredientIds[keyof typeof ResourceCookingIngredientIds];
 export type ResourceFoodId = typeof ResourceFoodIds[keyof typeof ResourceFoodIds];
 export type ResourceId = typeof ResourceIds[keyof typeof ResourceIds];
 export type ResourceLocalSpecialtyFontaineId = typeof ResourceLocalSpecialtyFontaineIds[keyof typeof ResourceLocalSpecialtyFontaineIds];
 export type ResourceLocalSpecialtyInazumaId = typeof ResourceLocalSpecialtyInazumaIds[keyof typeof ResourceLocalSpecialtyInazumaIds];
+export type ResourceLocalSpecialtyLiyueId = typeof ResourceLocalSpecialtyLiyueIds[keyof typeof ResourceLocalSpecialtyLiyueIds];
 export type ResourceLocalSpecialtyMondstadtId = typeof ResourceLocalSpecialtyMondstadtIds[keyof typeof ResourceLocalSpecialtyMondstadtIds];
 export type ResourceLocalSpecialtyNatlanId = typeof ResourceLocalSpecialtyNatlanIds[keyof typeof ResourceLocalSpecialtyNatlanIds];
 export type ResourceMaterialId = typeof ResourceMaterialIds[keyof typeof ResourceMaterialIds];

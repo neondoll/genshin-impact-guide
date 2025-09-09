@@ -5,6 +5,7 @@ import type {
   ResourceFood,
   ResourceLocalSpecialtyFontaine,
   ResourceLocalSpecialtyInazuma,
+  ResourceLocalSpecialtyLiyue,
   ResourceLocalSpecialtyMondstadt,
   ResourceLocalSpecialtyNatlan,
   ResourceMaterial,
@@ -20,6 +21,7 @@ import {
   ResourceFoodIds,
   ResourceLocalSpecialtyFontaineIds,
   ResourceLocalSpecialtyInazumaIds,
+  ResourceLocalSpecialtyLiyueIds,
   ResourceLocalSpecialtyMondstadtIds,
   ResourceLocalSpecialtyNatlanIds,
   ResourceMaterialIds,
@@ -189,6 +191,28 @@ class ResourceLocalSpecialtyInazumaClass extends ResourceAbstractClass implement
 
   static init(params: ConstructorParameters<typeof ResourceLocalSpecialtyInazumaClass>) {
     return new ResourceLocalSpecialtyInazumaClass(...params);
+  }
+}
+
+class ResourceLocalSpecialtyLiyueClass extends ResourceAbstractClass implements ResourceLocalSpecialtyLiyue {
+  declare readonly id: ResourceLocalSpecialtyLiyue["id"];
+  declare readonly image_src: ResourceLocalSpecialtyLiyue["image_src"];
+  declare readonly name: ResourceLocalSpecialtyLiyue["name"];
+  declare readonly type_id: ResourceLocalSpecialtyLiyue["type_id"];
+  declare readonly source: ResourceLocalSpecialtyLiyue["source"];
+
+  static PATH = "local-specialties-liyue";
+
+  constructor(
+    id: ResourceLocalSpecialtyLiyue["id"],
+    name: ResourceLocalSpecialtyLiyue["name"],
+    source: ResourceLocalSpecialtyLiyue["source"],
+  ) {
+    super(id, `${ResourceLocalSpecialtyLiyueClass.PATH}/${id}.webp`, name, ResourceTypeIds.LocalSpecialtyLiyue, source);
+  }
+
+  static init(params: ConstructorParameters<typeof ResourceLocalSpecialtyLiyueClass>) {
+    return new ResourceLocalSpecialtyLiyueClass(...params);
   }
 }
 
@@ -410,6 +434,49 @@ const BirdEggSushi = {
       new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Rice, 1),
     ],
   ]).setRarity(1),
+};
+const BlackBackPerchStew = {
+  [ResourceFoodIds.BlackBackPerchStew]: ResourceFoodClass.init([
+    ResourceFoodIds.BlackBackPerchStew,
+    "Чёрный окунь",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(28, 620),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeBlackBackPerchStew),
+  [ResourceFoodIds.DeliciousBlackBackPerchStew]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousBlackBackPerchStew,
+    "Вкусный чёрный окунь",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(30, 790),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeBlackBackPerchStew),
+  [ResourceFoodIds.SuspiciousBlackBackPerchStew]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousBlackBackPerchStew,
+    "Странный чёрный окунь",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(26, 450),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeBlackBackPerchStew),
+  [ResourceFoodIds.WanminRestaurantsBoiledFish]: ResourceFoodClass.init([
+    ResourceFoodIds.WanminRestaurantsBoiledFish,
+    "Фирменная отварная рыба",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s(34, 980),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Xiangling).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeBlackBackPerchStew),
+  [ResourceRecipeIds.RecipeBlackBackPerchStew]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeBlackBackPerchStew,
+    "Рецепт: Чёрный окунь",
+    "Купить у шеф-повара Мао в ресторане «Народный выбор»",
+    ResourceFoodUtility.RestoresPercentOfMaxHPToTheSelectedCharacterAndRegeneratesHPEvery5sFor30s("26–30", "450–790"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Fish, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Salt, 1),
+      new ResourceRecipeIngredientClass(ResourceLocalSpecialtyLiyueIds.JueyunChili, 1),
+      new ResourceRecipeIngredientClass(ResourceLocalSpecialtyLiyueIds.Violetgrass, 1),
+    ],
+  ]).setRarity(3),
 };
 const BubblemilkPie = {
   [ResourceFoodIds.BubblemilkPie]: ResourceFoodClass.init([
@@ -1416,6 +1483,7 @@ export default {
 
   /* Миндальный тофу                 */ ...AlmondTofu,
   /* Яичные суши                     */ ...BirdEggSushi,
+  /* Чёрный окунь                    */ ...BlackBackPerchStew,
   /* Молочный пирог с пузырьками     */ ...BubblemilkPie,
   /* Конфеты «Ракушки»               */ ...CandyShells,
   /* Грибные шашлычки с сыром        */ ...CheesyMushroomSkewer,
@@ -1627,6 +1695,18 @@ export default {
       ResourceLocalSpecialtyInazumaIds.SakuraBloom,
       "Цвет сакуры",
       "Остров Наруками",
+    ]),
+  },
+  /* Диковинка Ли Юэ                 */ ...{
+    [ResourceLocalSpecialtyLiyueIds.JueyunChili]: ResourceLocalSpecialtyLiyueClass.init([
+      ResourceLocalSpecialtyLiyueIds.JueyunChili,
+      "Заоблачный перчик",
+      ["Дикая природа", "Купить у шеф-повара Мао", "Садоводство"],
+    ]),
+    [ResourceLocalSpecialtyLiyueIds.Violetgrass]: ResourceLocalSpecialtyLiyueClass.init([
+      ResourceLocalSpecialtyLiyueIds.Violetgrass,
+      "Стеклянные колокольчики",
+      ["На скалах Ли Юэ", "Купить у торговцев", "Садоводство"],
     ]),
   },
   /* Диковинки Мондштадта            */ ...{
