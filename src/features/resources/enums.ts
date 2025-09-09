@@ -13,6 +13,7 @@ export const ResourceCookingIngredientIds = {
   /* Мясо птицы         */ Fowl: "fowl",
   /* Злакофрукт         */ Grainfruit: "grainfruit",
   /* Фиалковая дыня     */ LavenderMelon: "lavender_melon",
+  /* Чашечка лотоса     */ LotusHead: "lotus_head",
   /* Молоко             */ Milk: "milk",
   /* Мята               */ Mint: "mint",
   /* Лук                */ Onion: "onion",
@@ -61,6 +62,8 @@ export const ResourceFoodIds = {
   ChatterOfJoyfulNights: "chatter_of_joyful_nights",
   /* Грибные шашлычки с сыром */
   CheesyMushroomSkewer: "cheesy_mushroom_skewer",
+  /* Окутанный облаками нефрит */
+  CloudShroudedJade: "cloud_shrouded_jade",
   /* Крабовый тофу */
   CrabRoeTofu: "crab_roe_tofu",
   /* Хрустящие креветки с картофелем */
@@ -93,6 +96,8 @@ export const ResourceFoodIds = {
   DeliciousGrilledFishInMintSauce: "delicious_grilled_fish_in_mint_sauce",
   /* Вкусный «Дар богатого урожая» */
   DeliciousHarvestsBoon: "delicious_harvests_boon",
+  /* Вкусный яичный суп из лотоса */
+  DeliciousLotusSeedAndBirdEggSoup: "delicious_lotus_seed_and_bird_egg_soup",
   /* Вкусные магмовые яйца */
   DeliciousMagmaEggs: "delicious_magma_eggs",
   /* Вкусная «Радость мясоеда» */
@@ -151,6 +156,8 @@ export const ResourceFoodIds = {
   GrilledFishInMintSauce: "grilled_fish_in_mint_sauce",
   /* «Дар богатого урожая» */
   HarvestsBoon: "harvests_boon",
+  /* Яичный суп из лотоса */
+  LotusSeedAndBirdEggSoup: "lotus_seed_and_bird_egg_soup",
   /* Магмовые яйца */
   MagmaEggs: "magma_eggs",
   /* «Радость мясоеда» */
@@ -227,6 +234,8 @@ export const ResourceFoodIds = {
   SuspiciousGrilledFishInMintSauce: "suspicious_grilled_fish_in_mint_sauce",
   /* Странный «Дар богатого урожая» */
   SuspiciousHarvestsBoon: "suspicious_harvests_boon",
+  /* Странный яичный суп из лотоса */
+  SuspiciousLotusSeedAndBirdEggSoup: "suspicious_lotus_seed_and_bird_egg_soup",
   /* Странные магмовые яйца */
   SuspiciousMagmaEggs: "suspicious_magma_eggs",
   /* Странная «Радость мясоеда» */
@@ -338,6 +347,8 @@ export const ResourceRecipeIds = {
   RecipeGrilledFishInMintSauce: "recipe_grilled_fish_in_mint_sauce",
   /* Рецепт: «Дар богатого урожая» */
   RecipeHarvestsBoon: "recipe_harvests_boon",
+  /* Рецепт: Яичный суп из лотоса */
+  RecipeLotusSeedAndBirdEggSoup: "recipe_lotus_seed_and_bird_egg_soup",
   /* Рецепт: Магмовые яйца */
   RecipeMagmaEggs: "recipe_magma_eggs",
   /* Рецепт: «Радость мясоеда» */
