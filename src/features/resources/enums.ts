@@ -123,6 +123,8 @@ export const ResourceFoodIds = {
   DeliciousTriFlavoredSkewer: "delicious_tri_flavored_skewer",
   /* Вкусное трёхцветное данго */
   DeliciousTricolorDango: "delicious_tricolor_dango",
+  /* Вкусная лапша удон */
+  DeliciousUdonNoodles: "delicious_udon_noodles",
   /* Вкусный шокоатль */
   DeliciousXocoatl: "delicious_xocoatl",
   /* Вкусная требуха «Чжун Юань» */
@@ -247,6 +249,8 @@ export const ResourceFoodIds = {
   SuspiciousTriFlavoredSkewer: "suspicious_tri_flavored_skewer",
   /* Странное трёхцветное данго */
   SuspiciousTricolorDango: "suspicious_tricolor_dango",
+  /* Странная лапша удон */
+  SuspiciousUdonNoodles: "suspicious_udon_noodles",
   /* Странный шокоатль */
   SuspiciousXocoatl: "suspicious_xocoatl",
   /* Странная требуха «Чжун Юань» */
@@ -259,6 +263,8 @@ export const ResourceFoodIds = {
   TriFlavoredSkewer: "tri_flavored_skewer",
   /* Трёхцветное данго */
   TricolorDango: "tricolor_dango",
+  /* Лапша удон */
+  UdonNoodles: "udon_noodles",
   /* «Зелёный дар» */
   VerdantGift: "verdant_gift",
   /* Фирменная отварная рыба */
@@ -354,6 +360,8 @@ export const ResourceRecipeIds = {
   RecipeTriFlavoredSkewer: "recipe_tri_flavored_skewer",
   /* Рецепт: Трёхцветное данго */
   RecipeTricolorDango: "recipe_tricolor_dango",
+  /* Рецепт: Лапша удон */
+  RecipeUdonNoodles: "recipe_udon_noodles",
   /* Рецепт: Шокоатль */
   RecipeXocoatl: "recipe_xocoatl",
   /* Рецепт: Требуха «Чжун Юань» */

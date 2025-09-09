@@ -1677,6 +1677,44 @@ const TricolorDango = {
     ],
   ]),
 };
+const UdonNoodles = {
+  [ResourceFoodIds.DeliciousUdonNoodles]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousUdonNoodles,
+    "Вкусная лапша удон",
+    FoodTypeIds.RecoveryDish,
+    2,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(550),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeUdonNoodles),
+  [ResourceFoodIds.SuspiciousUdonNoodles]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousUdonNoodles,
+    "Странная лапша удон",
+    FoodTypeIds.RecoveryDish,
+    2,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(250),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeUdonNoodles),
+  [ResourceFoodIds.UdonNoodles]: ResourceFoodClass.init([
+    ResourceFoodIds.UdonNoodles,
+    "Лапша удон",
+    FoodTypeIds.RecoveryDish,
+    2,
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP(400),
+    "Готовка",
+  ]).setRecipeId(ResourceRecipeIds.RecipeUdonNoodles),
+  [ResourceRecipeIds.RecipeUdonNoodles]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeUdonNoodles,
+    "Рецепт: Лапша удон",
+    2,
+    "Купить у Симуры Камбэя в ресторане «Симура»",
+    ResourceFoodUtility.RevivesACharacterAndRestoresHP("250–550"),
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Fish, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Flour, 3),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Seagrass, 1),
+    ],
+  ]),
+};
 const Xocoatl = {
   [ResourceFoodIds.DeliciousXocoatl]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousXocoatl,
@@ -1829,6 +1867,7 @@ export default {
   /* Яичница по-тейватски            */ ...TeyvatFriedEgg,
   /* Тройные шашлычки                */ ...TriFlavoredSkewer,
   /* Трёхцветное данго               */ ...TricolorDango,
+  /* Лапша удон                      */ ...UdonNoodles,
   /* Шокоатль                        */ ...Xocoatl,
   /* Требуха «Чжун Юань»             */ ...ZhongyuanChopSuey,
 
