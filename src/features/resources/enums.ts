@@ -3,6 +3,7 @@ export const ResourceCookingIngredientIds = {
   /* Ягода              */ Berry: "berry",
   /* Яйцо               */ BirdEgg: "bird_egg",
   /* Сливочное масло    */ Butter: "butter",
+  /* Морковь            */ Carrot: "carrot",
   /* Сыр                */ Cheese: "cheese",
   /* Кофейные зёрна     */ CoffeeBeans: "coffee_beans",
   /* Крабовая икра      */ CrabRoe: "crab_roe",
@@ -46,6 +47,8 @@ export const ResourceFoodIds = {
   BirdEggSushi: "bird_egg_sushi",
   /* Чёрный окунь */
   BlackBackPerchStew: "black_back_perch_stew",
+  /* Благополучие и процветание */
+  BountifulYear: "bountiful_year",
   /* Молочный пирог с пузырьками */
   BubblemilkPie: "bubblemilk_pie",
   /* Пузырин */
@@ -68,6 +71,8 @@ export const ResourceFoodIds = {
   DeliciousBirdEggSushi: "delicious_bird_egg_sushi",
   /* Вкусный чёрный окунь */
   DeliciousBlackBackPerchStew: "delicious_black_back_perch_stew",
+  /* Вкусное благополучие и процветание */
+  DeliciousBountifulYear: "delicious_bountiful_year",
   /* Вкусный молочный пирог с пузырьками */
   DeliciousBubblemilkPie: "delicious_bubblemilk_pie",
   /* Вкусные конфеты «Ракушки» */
@@ -188,6 +193,8 @@ export const ResourceFoodIds = {
   SuspiciousBirdEggSushi: "suspicious_bird_egg_sushi",
   /* Странный чёрный окунь */
   SuspiciousBlackBackPerchStew: "suspicious_black_back_perch_stew",
+  /* Странное благополучие и процветание */
+  SuspiciousBountifulYear: "suspicious_bountiful_year",
   /* Странный молочный пирог с пузырьками */
   SuspiciousBubblemilkPie: "suspicious_bubblemilk_pie",
   /* Странные конфеты «Ракушки» */
@@ -287,6 +294,8 @@ export const ResourceRecipeIds = {
   RecipeBirdEggSushi: "recipe_bird_egg_sushi",
   /* Рецепт: Чёрный окунь */
   RecipeBlackBackPerchStew: "recipe_black_back_perch_stew",
+  /* Рецепт: Благополучие и процветание */
+  RecipeBountifulYear: "recipe_bountiful_year",
   /* Рецепт: Молочный пирог с пузырьками */
   RecipeBubblemilkPie: "recipe_bubblemilk_pie",
   /* Рецепт: Конфеты «Ракушки» */

@@ -36,6 +36,8 @@ export interface ResourceCookingIngredient extends ResourceAbstract {
   name: string;
   /* Тип */
   type_id: typeof ResourceTypeIds.CookingIngredient;
+  /* Редкость */
+  rarity?: Rarity;
   /* Где найти */
   source: string | string[];
 }
@@ -76,6 +78,8 @@ export interface ResourceLocalSpecialtyFontaine extends ResourceAbstract {
   name: string;
   /* Тип */
   type_id: typeof ResourceTypeIds.LocalSpecialtyFontaine;
+  /* Редкость */
+  rarity?: Rarity;
   /* Где найти */
   source: string | string[];
 }
@@ -87,6 +91,8 @@ export interface ResourceLocalSpecialtyInazuma extends ResourceAbstract {
   name: string;
   /* Тип */
   type_id: typeof ResourceTypeIds.LocalSpecialtyInazuma;
+  /* Редкость */
+  rarity?: Rarity;
   /* Где найти */
   source: string | string[];
 }
@@ -98,6 +104,8 @@ export interface ResourceLocalSpecialtyLiyue extends ResourceAbstract {
   name: string;
   /* Тип */
   type_id: typeof ResourceTypeIds.LocalSpecialtyLiyue;
+  /* Редкость */
+  rarity?: Rarity;
   /* Где найти */
   source: string | string[];
 }
@@ -109,6 +117,8 @@ export interface ResourceLocalSpecialtyMondstadt extends ResourceAbstract {
   name: string;
   /* Тип */
   type_id: typeof ResourceTypeIds.LocalSpecialtyMondstadt;
+  /* Редкость */
+  rarity?: Rarity;
   /* Где найти */
   source: string | string[];
 }
@@ -120,6 +130,8 @@ export interface ResourceLocalSpecialtyNatlan extends ResourceAbstract {
   name: string;
   /* Тип */
   type_id: typeof ResourceTypeIds.LocalSpecialtyNatlan;
+  /* Редкость */
+  rarity?: Rarity;
   /* Где найти */
   source: string | string[];
 }
@@ -131,6 +143,8 @@ export interface ResourceMaterial extends ResourceAbstract {
   name: string;
   /* Тип */
   type_id: typeof ResourceTypeIds.Material;
+  /* Редкость */
+  rarity?: Rarity;
   /* Где найти */
   source: string | string[];
 }
@@ -149,7 +163,7 @@ export interface ResourceRecipe extends ResourceAbstract {
   /* Эффекты приготовления блюд */
   dish_effects: string;
   /* Умение */
-  proficiency?: 5 | 10 | 15 | 20 | 25;
+  proficiency?: number;
   /* Ингредиенты */
   ingredients: ResourceRecipeIngredient[];
 }
