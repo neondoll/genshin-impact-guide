@@ -1407,6 +1407,49 @@ const TeyvatFriedEgg = {
     [new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.BirdEgg, 1)],
   ]).setRarity(1),
 };
+const TricolorDango = {
+  [ResourceFoodIds.DeliciousTricolorDango]: ResourceFoodClass.init([
+    ResourceFoodIds.DeliciousTricolorDango,
+    "Вкусное трёхцветное данго",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(34, 1900),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeTricolorDango),
+  [ResourceFoodIds.SummerFestivalFish]: ResourceFoodClass.init([
+    ResourceFoodIds.SummerFestivalFish,
+    "Рыба праздника лета",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(40, 2350),
+    "Готовка",
+  ]).setCharacterId(CharacterIds.Yoimiya).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeTricolorDango),
+  [ResourceFoodIds.SuspiciousTricolorDango]: ResourceFoodClass.init([
+    ResourceFoodIds.SuspiciousTricolorDango,
+    "Странное трёхцветное данго",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(30, 600),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeTricolorDango),
+  [ResourceFoodIds.TricolorDango]: ResourceFoodClass.init([
+    ResourceFoodIds.TricolorDango,
+    "Трёхцветное данго",
+    FoodTypeIds.RecoveryDish,
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter(32, 1250),
+    "Готовка",
+  ]).setRarity(3).setRecipeId(ResourceRecipeIds.RecipeTricolorDango),
+  [ResourceRecipeIds.RecipeTricolorDango]: ResourceRecipeClass.init([
+    ResourceRecipeIds.RecipeTricolorDango,
+    "Рецепт: Трёхцветное данго",
+    "Купить у Киминами Анны в ресторане «Киминами»",
+    ResourceFoodUtility.RestoresPercentOfMaxHPAndAnAdditionalHPToTheSelectedCharacter("30–34", "600–1900"),
+    15,
+    [
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Milk, 2),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Rice, 1),
+      new ResourceRecipeIngredientClass(ResourceCookingIngredientIds.Snapdragon, 2),
+      new ResourceRecipeIngredientClass(ResourceLocalSpecialtyInazumaIds.SakuraBloom, 2),
+    ],
+  ]).setRarity(3),
+};
 const Xocoatl = {
   [ResourceFoodIds.DeliciousXocoatl]: ResourceFoodClass.init([
     ResourceFoodIds.DeliciousXocoatl,
@@ -1509,6 +1552,7 @@ export default {
   /* Гриб-звезда                     */ ...Starshroom,
   /* Солнечная рыба                  */ ...SunshineSprat,
   /* Яичница по-тейватски            */ ...TeyvatFriedEgg,
+  /* Трёхцветное данго               */ ...TricolorDango,
   /* Шокоатль                        */ ...Xocoatl,
 
   /* Кухонные ингредиенты            */ ...{
@@ -1626,6 +1670,11 @@ export default {
       ResourceCookingIngredientIds.ShrimpMeat,
       "Мясо креветки",
       "Купить у торговцев",
+    ]),
+    [ResourceCookingIngredientIds.Snapdragon]: ResourceCookingIngredientClass.init([
+      ResourceCookingIngredientIds.Snapdragon,
+      "Львиный зев",
+      ["У рек и озёр", "Купить у торговцев", "Садоводство"],
     ]),
     [ResourceCookingIngredientIds.Sugar]: ResourceCookingIngredientClass.init([
       ResourceCookingIngredientIds.Sugar,

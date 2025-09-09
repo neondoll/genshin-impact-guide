@@ -22,6 +22,7 @@ export const ResourceCookingIngredientIds = {
   /* Соль               */ Salt: "salt",
   /* Морская водоросль  */ Seagrass: "seagrass",
   /* Мясо креветки      */ ShrimpMeat: "shrimp_meat",
+  /* Львиный зев        */ Snapdragon: "snapdragon",
   /* Сахар              */ Sugar: "sugar",
   /* Тидалья            */ Tidalga: "tidalga",
   /* Тофу               */ Tofu: "tofu",
@@ -113,6 +114,8 @@ export const ResourceFoodIds = {
   DeliciousShrimpBisque: "delicious_shrimp_bisque",
   /* Вкусная солнечная рыба */
   DeliciousSunshineSprat: "delicious_sunshine_sprat",
+  /* Вкусное трёхцветное данго */
+  DeliciousTricolorDango: "delicious_tricolor_dango",
   /* Вкусный шокоатль */
   DeliciousXocoatl: "delicious_xocoatl",
   /* Напиток 455 */
@@ -171,6 +174,8 @@ export const ResourceFoodIds = {
   SnowOnTheHearth: "snow_on_the_hearth",
   /* Гриб-звезда */
   Starshroom: "starshroom",
+  /* Рыба праздника лета */
+  SummerFestivalFish: "summer_festival_fish",
   /* Закатник */
   Sunsettia: "sunsettia",
   /* Солнечная рыба */
@@ -227,12 +232,16 @@ export const ResourceFoodIds = {
   SuspiciousShrimpBisque: "suspicious_shrimp_bisque",
   /* Странная солнечная рыба */
   SuspiciousSunshineSprat: "suspicious_sunshine_sprat",
+  /* Странное трёхцветное данго */
+  SuspiciousTricolorDango: "suspicious_tricolor_dango",
   /* Странный шокоатль */
   SuspiciousXocoatl: "suspicious_xocoatl",
   /* «Сладкий сон» */
   SweetDream: "sweet_dream",
   /* Яичница по-тейватски */
   TeyvatFriedEgg: "teyvat_fried_egg",
+  /* Трёхцветное данго */
+  TricolorDango: "tricolor_dango",
   /* «Зелёный дар» */
   VerdantGift: "verdant_gift",
   /* Фирменная отварная рыба */
@@ -320,6 +329,8 @@ export const ResourceRecipeIds = {
   RecipeSunshineSprat: "recipe_sunshine_sprat",
   /* Рецепт: Яичница по-тейватски */
   RecipeTeyvatFriedEgg: "recipe_teyvat_fried_egg",
+  /* Рецепт: Трёхцветное данго */
+  RecipeTricolorDango: "recipe_tricolor_dango",
   /* Рецепт: Шокоатль */
   RecipeXocoatl: "recipe_xocoatl",
 } as const;
