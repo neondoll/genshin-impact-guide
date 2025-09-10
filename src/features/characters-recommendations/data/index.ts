@@ -55,7 +55,7 @@ export default {
   [CharacterIds.Klee]: (await import("./Klee")).default,
   [CharacterIds.KujouSara]: (await import("./KujouSara")).default,
   [CharacterIds.KukiShinobu]: (await import("./KukiShinobu")).default,
-  [CharacterIds.Lauma]: new CharacterRecommendationsClass(CharacterIds.Lauma),
+  [CharacterIds.Lauma]: (await import("./Lauma")).default,
   [CharacterIds.Layla]: (await import("./Layla")).default,
   [CharacterIds.Lisa]: (await import("./Lisa")).default,
   [CharacterIds.Lynette]: (await import("./Lynette")).default,

@@ -1,5 +1,6 @@
 import type { ArtifactSetRecommendations } from "../types";
 import { ArtifactSetIds } from "../../artifact-sets/enums";
+import { ArtifactSetRecommendationsClass } from "../classes";
 
 export default {
   [ArtifactSetIds.ArchaicPetra]: (await import("./ArchaicPetra")).default,
@@ -32,6 +33,7 @@ export default {
   [ArtifactSetIds.RetracingBolide]: (await import("./RetracingBolide")).default,
   [ArtifactSetIds.ScrollOfTheHeroOfCinderCity]: (await import("./ScrollOfTheHeroOfCinderCity")).default,
   [ArtifactSetIds.ShimenawasReminiscence]: (await import("./ShimenawasReminiscence")).default,
+  [ArtifactSetIds.SilkenMoonsSerenade]: ArtifactSetRecommendationsClass.init([ArtifactSetIds.SilkenMoonsSerenade, []]),
   [ArtifactSetIds.SongOfDaysPast]: (await import("./SongOfDaysPast")).default,
   [ArtifactSetIds.TenacityOfTheMillelith]: (await import("./TenacityOfTheMillelith")).default,
   [ArtifactSetIds.ThunderingFury]: (await import("./ThunderingFury")).default,

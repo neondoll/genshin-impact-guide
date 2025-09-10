@@ -29,6 +29,7 @@ export const ArtifactSetIds = {
   /* Встречная комета                       */ RetracingBolide: "RetracingBolide",
   /* Свиток героя сожжённого города         */ ScrollOfTheHeroOfCinderCity: "ScrollOfTheHeroOfCinderCity",
   /* Воспоминания Симэнавы                  */ ShimenawasReminiscence: "ShimenawasReminiscence",
+  /* Серенада шёлковой луны                 */ SilkenMoonsSerenade: "SilkenMoonsSerenade",
   /* Песнь былых времён                     */ SongOfDaysPast: "SongOfDaysPast",
   /* Стойкость Миллелита                    */ TenacityOfTheMillelith: "TenacityOfTheMillelith",
   /* Громогласный рёв ярости                */ ThunderingFury: "ThunderingFury",

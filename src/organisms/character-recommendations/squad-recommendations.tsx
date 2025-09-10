@@ -1,6 +1,11 @@
-import type { CharacterSquadItemRecommendation } from "@/features/characters-recommendations/types";
+import type {
+  CharacterSquadItemRecommendation,
+  CharacterSquadRecommendations,
+} from "@/features/characters-recommendations/types";
 import type { SquadRecommendationsProps } from "./types";
+import { CharacterSquadRecommendationsClass } from "@/features/characters-recommendations/classes";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CharacterBadge from "@/features/characters/character-badge";
 import ElementCharacterBadge from "@/features/elements/element-character-badge";
 
@@ -15,7 +20,7 @@ function SquadRecommendationsItem({ item }: { item: CharacterSquadItemRecommenda
   }
 }
 
-export default function SquadRecommendations({ recommendations }: SquadRecommendationsProps) {
+function SquadRecommendationsTable({ recommendations }: { recommendations: CharacterSquadRecommendations }) {
   return (
     <Table>
       <TableBody>
@@ -69,5 +74,30 @@ export default function SquadRecommendations({ recommendations }: SquadRecommend
             ))}
       </TableBody>
     </Table>
+  );
+}
+
+export default function SquadRecommendations({ recommendations }: SquadRecommendationsProps) {
+  if (recommendations instanceof CharacterSquadRecommendationsClass) {
+    return (
+      <SquadRecommendationsTable recommendations={recommendations} />
+    );
+  }
+
+  const recommendationsEntries = Object.entries(recommendations);
+
+  return (
+    <Tabs defaultValue={recommendationsEntries[0][0]}>
+      <TabsList className="flex flex-wrap w-full h-auto min-h-9">
+        {recommendationsEntries.map(([key]) => (
+          <TabsTrigger dangerouslySetInnerHTML={{ __html: key }} key={key} value={key} />
+        ))}
+      </TabsList>
+      {recommendationsEntries.map(([key, recommendations]) => (
+        <TabsContent key={key} value={key}>
+          <SquadRecommendationsTable recommendations={recommendations} />
+        </TabsContent>
+      ))}
+    </Tabs>
   );
 }

@@ -49,7 +49,7 @@ export interface CharacterRecommendations {
   reference_point?: CharacterReferencePointRecommendations | Record<string, CharacterReferencePointRecommendations>;
   required_level?: 80 | 90;
   rotation?: string | Record<string, string>;
-  squads?: CharacterSquadRecommendations;
+  squads?: CharacterSquadRecommendations | Record<string, CharacterSquadRecommendations>;
   talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
   video_sources?: VideoSource[];
   weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
