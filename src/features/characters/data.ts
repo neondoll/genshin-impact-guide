@@ -70,6 +70,14 @@ export class CharacterClass implements Character {
 }
 
 export default {
+  [CharacterIds.Aino]: CharacterClass.init([
+    CharacterIds.Aino,
+    "Айно",
+    4,
+    WeaponTypeIds.Claymore,
+    ElementIds.Hydro,
+    undefined,
+  ]),
   [CharacterIds.Albedo]: CharacterClass.init([
     CharacterIds.Albedo,
     "Альбедо",
@@ -466,6 +474,14 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+  ]),
+  [CharacterIds.Lauma]: CharacterClass.init([
+    CharacterIds.Lauma,
+    "Лаума",
+    5,
+    WeaponTypeIds.Catalyst,
+    ElementIds.Dendro,
+    undefined,
   ]),
   [CharacterIds.Layla]: CharacterClass.init([
     CharacterIds.Layla,

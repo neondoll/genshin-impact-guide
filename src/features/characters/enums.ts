@@ -1,6 +1,7 @@
 import { ElementIds } from "../elements/enums";
 
 export const CharacterIds = {
+  /* Айно                     */ Aino: "Aino",
   /* Альбедо                  */ Albedo: "Albedo",
   /* Аль-Хайтам               */ Alhaitham: "Alhaitham",
   /* Эмбер                    */ Amber: "Amber",
@@ -51,6 +52,7 @@ export const CharacterIds = {
   /* Кли                      */ Klee: "Klee",
   /* Сара                     */ KujouSara: "KujouSara",
   /* Синобу                   */ KukiShinobu: "KukiShinobu",
+  /* Лаума                    */ Lauma: "Lauma",
   /* Лайла                    */ Layla: "Layla",
   /* Лиза                     */ Lisa: "Lisa",
   /* Линетт                   */ Lynette: "Lynette",
