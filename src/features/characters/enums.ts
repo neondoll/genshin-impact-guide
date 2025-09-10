@@ -1,6 +1,7 @@
 import { ElementIds } from "../elements/enums";
 
 export const CharacterIds = {
+  /* Айно                     */ Aino: "Aino",
   /* Альбедо                  */ Albedo: "Albedo",
   /* Аль-Хайтам               */ Alhaitham: "Alhaitham",
   /* Эмбер                    */ Amber: "Amber",
@@ -36,6 +37,7 @@ export const CharacterIds = {
   /* Горо                     */ Gorou: "Gorou",
   /* Ху Тао                   */ HuTao: "HuTao",
   /* Иансан                   */ Iansan: "Iansan",
+  /* Ифа                      */ Ifa: "Ifa",
   /* Инеффа                   */ Ineffa: "Ineffa",
   /* Джинн                    */ Jean: "Jean",
   /* Качина                   */ Kachina: "Kachina",
@@ -50,6 +52,7 @@ export const CharacterIds = {
   /* Кли                      */ Klee: "Klee",
   /* Сара                     */ KujouSara: "KujouSara",
   /* Синобу                   */ KukiShinobu: "KukiShinobu",
+  /* Лаума                    */ Lauma: "Lauma",
   /* Лайла                    */ Layla: "Layla",
   /* Лиза                     */ Lisa: "Lisa",
   /* Линетт                   */ Lynette: "Lynette",

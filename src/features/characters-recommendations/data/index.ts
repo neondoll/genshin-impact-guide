@@ -4,6 +4,7 @@ import { CharacterRecommendationsClass } from "../classes";
 import { ElementIds } from "../../elements/enums";
 
 export default {
+  [CharacterIds.Aino]: new CharacterRecommendationsClass(CharacterIds.Aino),
   [CharacterIds.Albedo]: (await import("./Albedo")).default,
   [CharacterIds.Alhaitham]: (await import("./Alhaitham")).default,
   [CharacterIds.Amber]: (await import("./Amber")).default,
@@ -39,6 +40,7 @@ export default {
   [CharacterIds.Gorou]: (await import("./Gorou")).default,
   [CharacterIds.HuTao]: (await import("./HuTao")).default,
   [CharacterIds.Iansan]: (await import("./Iansan")).default,
+  [CharacterIds.Ifa]: new CharacterRecommendationsClass(CharacterIds.Ifa),
   [CharacterIds.Ineffa]: new CharacterRecommendationsClass(CharacterIds.Ineffa),
   [CharacterIds.Jean]: (await import("./Jean")).default,
   [CharacterIds.Kachina]: (await import("./Kachina")).default,
@@ -53,6 +55,7 @@ export default {
   [CharacterIds.Klee]: (await import("./Klee")).default,
   [CharacterIds.KujouSara]: (await import("./KujouSara")).default,
   [CharacterIds.KukiShinobu]: (await import("./KukiShinobu")).default,
+  [CharacterIds.Lauma]: new CharacterRecommendationsClass(CharacterIds.Lauma),
   [CharacterIds.Layla]: (await import("./Layla")).default,
   [CharacterIds.Lisa]: (await import("./Lisa")).default,
   [CharacterIds.Lynette]: (await import("./Lynette")).default,

@@ -25,8 +25,8 @@ import { selectCharacterById } from "@/features/characters/selectors";
 import { selectFoodTypeById } from "@/features/food-types/selectors";
 import {
   selectResourceById,
-  selectResourceFoodById,
   selectResourceFoodsByIds,
+  selectResourceFoodsByRecipeId,
   selectResourceRecipeById,
 } from "@/features/resources/selectors";
 import { selectResourceTypeById } from "@/features/resource-types/selectors";
@@ -73,7 +73,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
   const resourceType = selectResourceTypeById(resource.type_id);
 
   let foodType = undefined;
-  let propertyBaseDish = undefined;
+  let propertyBaseDishes = undefined;
   let propertyCharacter = undefined;
   let propertyDishes = undefined;
   let propertyIngredients = undefined;
@@ -88,15 +88,13 @@ export function loader({ params }: { params: Record<string, string | undefined> 
 
       foodType = selectFoodTypeById(food.food_type_id);
 
-      if (food.base_dish_id) {
-        propertyBaseDish = selectResourceFoodById(food.base_dish_id);
-      }
-
       if (food.character_id) {
         propertyCharacter = selectCharacterById(food.character_id);
       }
 
       if (food.recipe_id) {
+        const foodRelatedDishes = selectResourceFoodsByRecipeId(food.recipe_id).filter(dish => dish.id !== food.id);
+
         propertyRecipe = selectResourceRecipeById(food.recipe_id);
         propertyIngredients = propertyRecipe.ingredients
           .map((ingredient) => {
@@ -105,18 +103,23 @@ export function loader({ params }: { params: Record<string, string | undefined> 
           .sort((a, b) => {
             return resourcesAdapter.sortComparer ? resourcesAdapter.sortComparer(a.item, b.item) : 0;
           });
-      }
 
-      if (food.related_dish_ids) {
-        propertyRelatedDishes = selectResourceFoodsByIds(food.related_dish_ids);
+        if (food.character_id) {
+          propertyBaseDishes = foodRelatedDishes;
+        }
+        else {
+          propertyRelatedDishes = foodRelatedDishes;
+
+          const propertySpecialDishIndex = propertyRelatedDishes.findIndex(dish => Boolean(dish.character_id));
+
+          if (propertySpecialDishIndex >= 0) {
+            propertySpecialDish = propertyRelatedDishes.splice(propertySpecialDishIndex, 1)[0];
+          }
+        }
       }
 
       if (food.related_item_ids) {
         propertyRelatedItems = selectResourceFoodsByIds(food.related_item_ids);
-      }
-
-      if (food.special_dish_id) {
-        propertySpecialDish = selectResourceFoodById(food.special_dish_id);
       }
 
       break;
@@ -124,6 +127,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
     case ResourceTypeIds.Recipe: {
       const recipe = resource as ResourceRecipe;
 
+      propertyDishes = selectResourceFoodsByRecipeId(recipe.id);
       propertyIngredients = recipe.ingredients
         .map((ingredient) => {
           return { ...ingredient, item: selectResourceById(ingredient.id) };
@@ -132,12 +136,10 @@ export function loader({ params }: { params: Record<string, string | undefined> 
           return resourcesAdapter.sortComparer ? resourcesAdapter.sortComparer(a.item, b.item) : 0;
         });
 
-      if (recipe.dish_ids) {
-        propertyDishes = selectResourceFoodsByIds(recipe.dish_ids);
-      }
+      const propertySpecialDishIndex = propertyDishes.findIndex(dish => Boolean(dish.character_id));
 
-      if (recipe.special_dish_id) {
-        propertySpecialDish = selectResourceFoodById(recipe.special_dish_id);
+      if (propertySpecialDishIndex >= 0) {
+        propertySpecialDish = propertyDishes.splice(propertySpecialDishIndex, 1)[0];
       }
 
       break;
@@ -146,7 +148,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
 
   return {
     foodType,
-    propertyBaseDish,
+    propertyBaseDishes,
     propertyCharacter,
     propertyDishes,
     propertyIngredients,
@@ -162,7 +164,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
 export default function Resource() {
   const {
     foodType,
-    propertyBaseDish,
+    propertyBaseDishes,
     propertyCharacter,
     propertyDishes,
     propertyIngredients,
@@ -173,7 +175,7 @@ export default function Resource() {
     resource,
     resourceType,
   } = useLoaderData<ReturnType<typeof loader>>();
-  const showProperties = Boolean(propertyBaseDish) || Boolean(propertyCharacter) || Boolean(propertyDishes)
+  const showProperties = Boolean(propertyBaseDishes) || Boolean(propertyCharacter) || Boolean(propertyDishes)
     || Boolean(propertyIngredients) || Boolean(propertyRecipe) || Boolean(propertyRelatedDishes)
     || Boolean(propertyRelatedItems) || Boolean(propertySpecialDish) || "dish_effects" in resource
     || "proficiency" in resource;
@@ -342,16 +344,22 @@ export default function Resource() {
                     </TableCell>
                   </TableRow>
                 )}
-                {propertyBaseDish && (
+                {propertyBaseDishes && (
                   <TableRow className="hover:bg-inherit">
-                    <TableHead children="Основное блюдо:" className="p-2 text-right" />
+                    <TableHead children="Основные блюда:" className="p-2 text-right" />
                     <TableCell className="p-2 text-pretty whitespace-normal">
-                      <ResourceBadge
-                        resourceId={propertyBaseDish.id}
-                        resourceImgSrc={propertyBaseDish.image_src}
-                        resourceName={propertyBaseDish.name}
-                        resourceRarity={propertyBaseDish.rarity}
-                      />
+                      <ul className="flex flex-wrap gap-2">
+                        {propertyBaseDishes.map(propertyBaseDish => (
+                          <li key={propertyBaseDish.id}>
+                            <ResourceBadge
+                              resourceId={propertyBaseDish.id}
+                              resourceImgSrc={propertyBaseDish.image_src}
+                              resourceName={propertyBaseDish.name}
+                              resourceRarity={propertyBaseDish.rarity}
+                            />
+                          </li>
+                        ))}
+                      </ul>
                     </TableCell>
                   </TableRow>
                 )}

@@ -18,7 +18,10 @@ class ResourceTypeClass implements ResourceType {
 export default {
   [ResourceTypeIds.CookingIngredient]: ResourceTypeClass.init([ResourceTypeIds.CookingIngredient, "Кухонный ингредиент"]),
   [ResourceTypeIds.Food]: ResourceTypeClass.init([ResourceTypeIds.Food, "Еда"]),
+  [ResourceTypeIds.LocalSpecialtyFontaine]: ResourceTypeClass.init([ResourceTypeIds.LocalSpecialtyFontaine, "Диковинка Фонтейна"]),
   [ResourceTypeIds.LocalSpecialtyInazuma]: ResourceTypeClass.init([ResourceTypeIds.LocalSpecialtyInazuma, "Диковинка Инадзумы"]),
+  [ResourceTypeIds.LocalSpecialtyLiyue]: ResourceTypeClass.init([ResourceTypeIds.LocalSpecialtyLiyue, "Диковинка Ли Юэ"]),
+  [ResourceTypeIds.LocalSpecialtyMondstadt]: ResourceTypeClass.init([ResourceTypeIds.LocalSpecialtyMondstadt, "Диковинка Мондштадта"]),
   [ResourceTypeIds.LocalSpecialtyNatlan]: ResourceTypeClass.init([ResourceTypeIds.LocalSpecialtyNatlan, "Диковинка Натлана"]),
   [ResourceTypeIds.Material]: ResourceTypeClass.init([ResourceTypeIds.Material, "Материал"]),
   [ResourceTypeIds.Recipe]: ResourceTypeClass.init([ResourceTypeIds.Recipe, "Рецепт"]),
