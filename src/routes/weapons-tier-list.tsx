@@ -42,7 +42,7 @@ function WeaponsList({ weaponIds }: { weaponIds: WeaponId[] }) {
           )}
           key={weapon.id}
         >
-          <img alt={weapon.name} className="size-12" src={weapon.image_src} />
+          <img alt={weapon.title} className="size-12" src={weapon.image_src} />
         </li>
       ))}
     </ul>

@@ -53,7 +53,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Escoffier)
   ]))
   .setFirstConstellationOrSignatureWeapon("С1 лучше")
   .setReferencePoint([
-    ["Оружие", `${weapons[WeaponIds.Deathmatch].name} R1 [${weapons[WeaponIds.Deathmatch].rarity}⭐]`],
+    ["Оружие", `${weapons[WeaponIds.Deathmatch].title} R1 [${weapons[WeaponIds.Deathmatch].rarity}⭐]`],
     ["Атака", "2 100"],
     ["Восст. энергии", "110% - 115%"],
     ["Крит. шанс", "80%"],

@@ -27,12 +27,12 @@ function WeaponBadge({ postfix, refinement, signatureWeaponId, weaponId }: {
       variant="secondary"
     >
       <img
-        alt={weapon.name}
+        alt=""
         className={cn("shrink-0 size-12 rounded-md rounded-br-2xl", backgroundClassByRarity(weapon.rarity))}
         src={weapon.image_src}
       />
       <span>
-        {weapon.name}
+        {weapon.title}
         {refinement !== undefined && ` R${refinement}`}
         {weapon.id === signatureWeaponId && " (сигнатурное)"}
         {postfix !== undefined && (

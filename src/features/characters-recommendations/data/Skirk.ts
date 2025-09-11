@@ -72,7 +72,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Skirk)
   .setFirstConstellationOrSignatureWeapon("Сигна > C1,\nC2 > Сигна")
   .setKeyConstellations([1, 2, 5, 6])
   .setReferencePoint({
-    [`${artifactSets[ArtifactSetIds.MarechausseeHunter].name}\n+\n${weapons[WeaponIds.FinaleOfTheDeep].name}`]: [
+    [`${artifactSets[ArtifactSetIds.MarechausseeHunter].name}\n+\n${weapons[WeaponIds.FinaleOfTheDeep].title}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -81,7 +81,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Skirk)
       ["Крит. урон", "216.8%"],
       ["Восст. энергии", "111.0%"],
     ],
-    [`${artifactSets[ArtifactSetIds.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponIds.CalamityOfEshu].name}`]: [
+    [`${artifactSets[ArtifactSetIds.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponIds.CalamityOfEshu].title}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],

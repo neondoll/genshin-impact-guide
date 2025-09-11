@@ -29,7 +29,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Chevreuse)
       [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage)],
       [ArtifactSlotIds.Circlet]: [
         new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage),
-        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setDescription(`Если в руках ${weapons[WeaponIds.FavoniusLance].name}`),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setDescription(`Если в руках ${weapons[WeaponIds.FavoniusLance].title}`),
       ],
       additional: [
         new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage),

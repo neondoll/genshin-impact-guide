@@ -34,7 +34,7 @@ export function weaponById(id: WeaponId) {
   return `
     <span class="${cn(badgeVariants({ variant: "secondary" }), "pl-1 py-0 text-sm/none")}">
       <img alt="" class="size-4.5" src="${weapon.image_src}" />
-      <span>${weapon.name}</span>
+      <span>${weapon.title}</span>
     </span>
   `;
 }

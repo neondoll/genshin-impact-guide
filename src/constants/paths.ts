@@ -11,7 +11,7 @@ export default {
   },
   ArtifactSets: { title: "Артефакты", to: "/artifact-sets" },
   Character: {
-    title: (item: Character) => item.name,
+    title: (item: Character) => item.title,
     to: (id: Character["id"] | string) => `/characters/${id}`,
   },
   Characters: { title: "Персонажи", to: "/characters" },
@@ -26,7 +26,7 @@ export default {
   Resources: { title: "Материалы", to: "/resources" },
   Root: { title: "Главная", to: "/" },
   Weapon: {
-    title: (item: Weapon) => item.name,
+    title: (item: Weapon) => item.title,
     to: (id: Weapon["id"] | string) => `/weapons/${id}`,
   },
   Weapons: { title: "Оружие", to: "/weapons" },

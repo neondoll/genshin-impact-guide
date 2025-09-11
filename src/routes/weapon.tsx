@@ -49,7 +49,7 @@ export default function Weapon() {
       </Breadcrumb>
       <div className="flex gap-x-3">
         <img
-          alt={weapon.name}
+          alt=""
           className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByRarity(weapon.rarity))}
           src={weapon.image_src}
         />
@@ -63,7 +63,7 @@ export default function Weapon() {
           <TableBody>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Имя:" className="p-2 text-right whitespace-normal" />
-              <TableCell children={weapon.name} className="p-2 whitespace-normal" />
+              <TableCell children={weapon.title} className="p-2 whitespace-normal" />
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Где найти:" className="p-2 text-right whitespace-normal" />

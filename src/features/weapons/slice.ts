@@ -5,7 +5,7 @@ import type { Weapon } from "./types";
 export const weaponsAdapter = createEntityAdapter({
   selectId: (model: Weapon) => model.id,
   sortComparer: (a: Weapon, b: Weapon) => {
-    return a.rarity === b.rarity ? a.name.localeCompare(b.name) : b.rarity - a.rarity;
+    return a.rarity === b.rarity ? a.title.localeCompare(b.title) : b.rarity - a.rarity;
   },
 });
 

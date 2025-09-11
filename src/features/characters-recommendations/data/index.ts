@@ -55,6 +55,7 @@ export default {
   [CharacterIds.Klee]: (await import("./Klee")).default,
   [CharacterIds.KujouSara]: (await import("./KujouSara")).default,
   [CharacterIds.KukiShinobu]: (await import("./KukiShinobu")).default,
+  [CharacterIds.KyryllChudomirovichFlins]: new CharacterRecommendationsClass(CharacterIds.KyryllChudomirovichFlins),
   [CharacterIds.Lauma]: (await import("./Lauma")).default,
   [CharacterIds.Layla]: (await import("./Layla")).default,
   [CharacterIds.Lisa]: (await import("./Lisa")).default,
@@ -107,6 +108,7 @@ export default {
   [CharacterIds.Yaoyao]: (await import("./Yaoyao")).default,
   [CharacterIds.Yelan]: (await import("./Yelan")).default,
   [CharacterIds.Yoimiya]: (await import("./Yoimiya")).default,
+  [CharacterIds.YumemizukiMizuki]: new CharacterRecommendationsClass(CharacterIds.YumemizukiMizuki),
   [CharacterIds.YunJin]: (await import("./YunJin")).default,
   [CharacterIds.Zhongli]: (await import("./Zhongli")).default,
 } as Record<CharacterRecommendations["character_id"], CharacterRecommendations>;

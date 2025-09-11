@@ -141,7 +141,7 @@ export default function Weapons() {
           >
             <span className="shrink-0 size-24.5">
               <img
-                alt={weapon.name}
+                alt=""
                 className={cn(
                   "object-cover size-full rounded-lg rounded-br-3xl",
                   backgroundClassByRarity(weapon.rarity),

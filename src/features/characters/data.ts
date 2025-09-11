@@ -14,20 +14,21 @@ const CharacterArkhe = {
 
 export class CharacterClass implements Character {
   readonly id: Character["id"];
-  readonly name: Character["name"];
+  readonly image_src: Character["image_src"];
+  readonly title: Character["title"];
   readonly rarity: Character["rarity"];
   readonly weapon_type_id: Character["weapon_type_id"];
   readonly element_id: Character["element_id"];
-  private _arkhe: Character["arkhe"];
+  protected _name: Character["name"];
+  protected _arkhe: Character["arkhe"];
   readonly role_ids: Character["role_ids"];
-  readonly image_src: Character["image_src"];
-  private _signature_weapon_id: Character["signature_weapon_id"];
+  protected _signature_weapon_id: Character["signature_weapon_id"];
 
   static PATH = "characters";
 
   constructor(
     id: Character["id"],
-    name: Character["name"],
+    title: Character["title"],
     rarity: Character["rarity"],
     weaponTypeId: Character["weapon_type_id"],
     elementId: Character["element_id"],
@@ -36,16 +37,21 @@ export class CharacterClass implements Character {
     const imageName = id.includes("Traveler_") ? "Traveler.gif" : `${id}.webp`;
 
     this.id = id;
-    this.name = name;
+    this.image_src = publicImageSrc(`${CharacterClass.PATH}/${imageName}`);
+    this.title = title;
     this.rarity = rarity;
     this.weapon_type_id = weaponTypeId;
     this.element_id = elementId;
+    this._name = title;
     this.role_ids = roleIds;
-    this.image_src = publicImageSrc(`${CharacterClass.PATH}/${imageName}`);
   }
 
   get arkhe() {
     return this._arkhe;
+  }
+
+  get name() {
+    return this._name;
   }
 
   get signature_weapon_id() {
@@ -54,6 +60,12 @@ export class CharacterClass implements Character {
 
   setArkhe(val: keyof typeof CharacterArkhe) {
     this._arkhe = CharacterArkhe[val];
+
+    return this;
+  }
+
+  setName(val: NonNullable<Character["name"]>) {
+    this._name = val;
 
     return this;
   }
@@ -109,7 +121,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Geo,
     [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
-  ]).setSignatureWeaponId(WeaponIds.RedhornStonethresher),
+  ]).setName("Аратаки Итто").setSignatureWeaponId(WeaponIds.RedhornStonethresher),
   [CharacterIds.Arlecchino]: CharacterClass.init([
     CharacterIds.Arlecchino,
     "Арлекино", 5,
@@ -370,7 +382,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
     [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
-  ]),
+  ]).setSignatureWeaponId(WeaponIds.FracturedHalo),
   [CharacterIds.Jean]: CharacterClass.init([
     CharacterIds.Jean,
     "Джинн",
@@ -394,7 +406,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Anemo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
-  ]).setSignatureWeaponId(WeaponIds.FreedomSworn),
+  ]).setName("Каэдэхара Кадзуха").setSignatureWeaponId(WeaponIds.FreedomSworn),
   [CharacterIds.Kaeya]: CharacterClass.init([
     CharacterIds.Kaeya,
     "Кэйа",
@@ -410,7 +422,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Cryo,
     [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
-  ]).setSignatureWeaponId(WeaponIds.MistsplitterReforged),
+  ]).setName("Камисато Аяка").setSignatureWeaponId(WeaponIds.MistsplitterReforged),
   [CharacterIds.KamisatoAyato]: CharacterClass.init([
     CharacterIds.KamisatoAyato,
     "Аято",
@@ -418,7 +430,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
     [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
-  ]).setSignatureWeaponId(WeaponIds.HaranGeppakuFutsu),
+  ]).setName("Камисато Аято").setSignatureWeaponId(WeaponIds.HaranGeppakuFutsu),
   [CharacterIds.Kaveh]: CharacterClass.init([
     CharacterIds.Kaveh,
     "Кавех",
@@ -466,7 +478,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
-  ]),
+  ]).setName("Кудзё Сара"),
   [CharacterIds.KukiShinobu]: CharacterClass.init([
     CharacterIds.KukiShinobu,
     "Синобу",
@@ -474,7 +486,15 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
-  ]),
+  ]).setName("Куки Синобу"),
+  [CharacterIds.KyryllChudomirovichFlins]: CharacterClass.init([
+    CharacterIds.KyryllChudomirovichFlins,
+    "Флинс",
+    5,
+    WeaponTypeIds.Polearm,
+    ElementIds.Electro,
+    undefined,
+  ]).setName("Кирилл Чудомирович Флинс"),
   [CharacterIds.Lauma]: CharacterClass.init([
     CharacterIds.Lauma,
     "Лаума",
@@ -482,7 +502,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Dendro,
     undefined,
-  ]),
+  ]).setSignatureWeaponId(WeaponIds.NightweaversLookingGlass),
   [CharacterIds.Layla]: CharacterClass.init([
     CharacterIds.Layla,
     "Лайла",
@@ -618,7 +638,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
     [CharacterRoleIds.Dps, CharacterRoleIds.OnField, CharacterRoleIds.Support],
-  ]).setSignatureWeaponId(WeaponIds.EngulfingLightning),
+  ]).setName("Сёгун Райдэн").setSignatureWeaponId(WeaponIds.EngulfingLightning),
   [CharacterIds.Razor]: CharacterClass.init([
     CharacterIds.Razor,
     "Рэйзор",
@@ -642,7 +662,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
-  ]).setSignatureWeaponId(WeaponIds.EverlastingMoonglow),
+  ]).setName("Сангономия Кокоми").setSignatureWeaponId(WeaponIds.EverlastingMoonglow),
   [CharacterIds.Sayu]: CharacterClass.init([
     CharacterIds.Sayu,
     "Саю",
@@ -674,7 +694,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
     [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
-  ]),
+  ]).setName("Сиканоин Хэйдзо"),
   [CharacterIds.Sigewinne]: CharacterClass.init([
     CharacterIds.Sigewinne,
     "Сиджвин",
@@ -730,7 +750,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Anemo,
     undefined,
-  ]),
+  ]).setName("Путешественник"),
   [CharacterIds.TravelerDendro]: CharacterClass.init([
     CharacterIds.TravelerDendro,
     "Путешественник (Дендро)",
@@ -738,7 +758,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Dendro,
     undefined,
-  ]),
+  ]).setName("Путешественник"),
   [CharacterIds.TravelerElectro]: CharacterClass.init([
     CharacterIds.TravelerElectro,
     "Путешественник (Электро)",
@@ -746,7 +766,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Electro,
     undefined,
-  ]),
+  ]).setName("Путешественник"),
   [CharacterIds.TravelerGeo]: CharacterClass.init([
     CharacterIds.TravelerGeo,
     "Путешественник (Гео)",
@@ -754,7 +774,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Geo,
     undefined,
-  ]),
+  ]).setName("Путешественник"),
   [CharacterIds.TravelerHydro]: CharacterClass.init([
     CharacterIds.TravelerHydro,
     "Путешественник (Гидро)",
@@ -762,7 +782,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
     undefined,
-  ]).setArkhe("🟡"),
+  ]).setArkhe("🟡").setName("Путешественник"),
   [CharacterIds.TravelerPyro]: CharacterClass.init([
     CharacterIds.TravelerPyro,
     "Путешественник (Пиро)",
@@ -770,7 +790,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Pyro,
     undefined,
-  ]),
+  ]).setName("Путешественник"),
   [CharacterIds.Varesa]: CharacterClass.init([
     CharacterIds.Varesa,
     "Вареса",
@@ -891,6 +911,14 @@ export default {
     ElementIds.Pyro,
     [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
   ]).setSignatureWeaponId(WeaponIds.ThunderingPulse),
+  [CharacterIds.YumemizukiMizuki]: CharacterClass.init([
+    CharacterIds.YumemizukiMizuki,
+    "Мидзуки",
+    5,
+    WeaponTypeIds.Catalyst,
+    ElementIds.Anemo,
+    [CharacterRoleIds.OnField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+  ]).setName("Юмэмидзуки Мидзуки").setSignatureWeaponId(WeaponIds.SunnyMorningSleepIn),
   [CharacterIds.YunJin]: CharacterClass.init([
     CharacterIds.YunJin,
     "Юнь Цзинь",

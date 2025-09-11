@@ -19,7 +19,7 @@ export default function CharacterRecommendations({ character, recommendations }:
   const showAccordion = recommendations.artifacts !== undefined || recommendations.reference_point !== undefined || recommendations.rotation !== undefined || recommendations.squads !== undefined || recommendations.talent_leveling !== undefined || recommendations.video_sources !== undefined || recommendations.weapons !== undefined;
   const showTable = recommendations.first_constellation_or_signature_weapon !== undefined || recommendations.key_constellations !== undefined || recommendations.required_level !== undefined;
 
-  return (
+  return (showAccordion && showTable) && (
     <Collapsible className="space-y-2 md:space-y-4" defaultOpen>
       <CollapsibleTrigger asChild>
         <Button className="flex justify-between w-full [&[data-state=open]>svg]:rotate-180">
