@@ -1,50 +1,13 @@
 import { useEffect, useState } from "react";
 
 import type { CharacterWeaponRecommendation } from "@/features/characters-recommendations/types";
-import type { WeaponId } from "@/features/weapons/types";
 import type { WeaponRecommendationsProps } from "./types";
-import { backgroundClassByRarity } from "@/lib/rarity";
-import { Badge } from "@/components/ui/badge";
-import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
+import { cn, numberFormatPercent } from "@/lib/utils";
 import { selectWeaponById } from "@/features/weapons/selectors";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-function WeaponBadge({ postfix, refinement, signatureWeaponId, weaponId }: {
-  postfix: CharacterWeaponRecommendation["postfix"];
-  refinement: CharacterWeaponRecommendation["refinement"];
-  signatureWeaponId: WeaponRecommendationsProps["character"]["signature_weapon_id"];
-  weaponId: WeaponId;
-}) {
-  const weapon = selectWeaponById(weaponId);
-
-  return (
-    <Badge
-      className={cn(
-        "flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row",
-        "sm:text-left",
-      )}
-      variant="secondary"
-    >
-      <img
-        alt=""
-        className={cn("shrink-0 size-12 rounded-md rounded-br-2xl", backgroundClassByRarity(weapon.rarity))}
-        src={weapon.image_src}
-      />
-      <span>
-        {weapon.title}
-        {refinement !== undefined && ` R${refinement}`}
-        {weapon.id === signatureWeaponId && " (сигнатурное)"}
-        {postfix !== undefined && (
-          <>
-            {" "}
-            <sub children={postfix} />
-          </>
-        )}
-      </span>
-    </Badge>
-  );
-}
+import IsBetter from "../is-better";
+import WeaponBadge from "../badges/weapon-badge";
 
 function WeaponRecommendationsTable({ character, recommendations }: {
   character: WeaponRecommendationsProps["character"];
@@ -52,7 +15,10 @@ function WeaponRecommendationsTable({ character, recommendations }: {
 }) {
   const [diffPercent, setDiffPercent] = useState(0);
   const [hasIsBetter, setHasIsBetter] = useState(false);
+  const [hasIsSignature, setHasIsSignature] = useState(false);
   const [hasPercent, setHasPercent] = useState(false);
+  const [hasPostfix, setHasPostfix] = useState(false);
+  const [hasRefinement, setHasRefinement] = useState(false);
   const [minPercent, setMinPercent] = useState(0);
 
   useEffect(() => {
@@ -63,7 +29,16 @@ function WeaponRecommendationsTable({ character, recommendations }: {
     setHasIsBetter(recommendations.some((recommendation) => {
       return recommendation.is_better === true;
     }));
+    setHasIsSignature(recommendations.some((recommendation) => {
+      return recommendation.id === character.signature_weapon_id;
+    }));
     setHasPercent(hasPercent);
+    setHasPostfix(recommendations.some((recommendation) => {
+      return recommendation.postfix !== undefined;
+    }));
+    setHasRefinement(recommendations.some((recommendation) => {
+      return recommendation.refinement !== undefined;
+    }));
 
     if (hasPercent) {
       let maxPercent = -Infinity, minPercent = Infinity;
@@ -85,51 +60,56 @@ function WeaponRecommendationsTable({ character, recommendations }: {
         setMinPercent(minPercent);
       }
     }
-  }, [recommendations]);
+  }, [character.signature_weapon_id, recommendations]);
 
   return (
-    <Table className="sm:table-fixed">
+    <Table>
       <TableBody>
-        {recommendations.map(recommendation => (
-          <TableRow
-            className="hover:bg-inherit"
-            key={
-              recommendation.id
-              + (recommendation.refinement === undefined ? "" : `-r${recommendation.refinement}`)
-              + (recommendation.postfix === undefined ? "" : `-${recommendation.postfix}`)
-            }
-          >
-            {hasIsBetter && (
-              <TableCell className="w-16">
-                {recommendation.is_better && (
-                  <img
-                    alt="Является лучшим выбором"
-                    className="size-12 rounded-full"
-                    src={publicImageSrc("better-logo-128x128.png")}
-                  />
-                )}
+        {recommendations.map((recommendation) => {
+          const weapon = selectWeaponById(recommendation.id);
+
+          return (
+            <TableRow
+              className="hover:bg-inherit"
+              key={
+                recommendation.id
+                + (recommendation.refinement === undefined ? "" : `-r${recommendation.refinement}`)
+                + (recommendation.postfix === undefined ? "" : `-${recommendation.postfix}`)
+              }
+            >
+              {hasIsBetter && (
+                <TableCell children={<IsBetter value={Boolean(recommendation.is_better)} />} className="w-16" />
+              )}
+              <TableCell className="text-pretty whitespace-normal">
+                <WeaponBadge
+                  weaponId={weapon.id}
+                  weaponImgSrc={weapon.image_src}
+                  weaponRarity={weapon.rarity}
+                  weaponTitle={weapon.title}
+                />
               </TableCell>
-            )}
-            <TableCell className="text-pretty whitespace-normal">
-              <WeaponBadge
-                postfix={recommendation.postfix}
-                refinement={recommendation.refinement}
-                signatureWeaponId={character.signature_weapon_id}
-                weaponId={recommendation.id}
-              />
-            </TableCell>
-            {hasPercent && (
-              <TableCell
-                children={recommendation.percent !== undefined ? numberFormatPercent(recommendation.percent, 2) : ""}
-                className={cn("text-center", recommendation.percent !== undefined && {
-                  "text-green-500": recommendation.percent >= (minPercent + (diffPercent * 2)),
-                  "text-yellow-500": recommendation.percent >= (minPercent + diffPercent) && recommendation.percent < (minPercent + (diffPercent * 2)),
-                  "text-red-500": recommendation.percent < (minPercent + diffPercent),
-                })}
-              />
-            )}
-          </TableRow>
-        ))}
+              {hasIsSignature && (
+                <TableCell children={weapon.id === character.signature_weapon_id ? "сигнатурное" : ""} />
+              )}
+              {hasRefinement && (
+                <TableCell children={recommendation.refinement !== undefined ? `R${recommendation.refinement}` : ""} />
+              )}
+              {hasPostfix && (
+                <TableCell children={recommendation.postfix !== undefined ? recommendation.postfix : ""} />
+              )}
+              {hasPercent && (
+                <TableCell
+                  children={recommendation.percent !== undefined ? numberFormatPercent(recommendation.percent, 2) : ""}
+                  className={cn("text-center", recommendation.percent !== undefined && {
+                    "text-green-500": recommendation.percent >= (minPercent + (diffPercent * 2)),
+                    "text-yellow-500": recommendation.percent >= (minPercent + diffPercent) && recommendation.percent < (minPercent + (diffPercent * 2)),
+                    "text-red-500": recommendation.percent < (minPercent + diffPercent),
+                  })}
+                />
+              )}
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

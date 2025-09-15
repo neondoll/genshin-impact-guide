@@ -120,7 +120,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Lauma)
     new CharacterWeaponRecommendationClass(WeaponIds.AThousandFloatingDreams),
     new CharacterWeaponRecommendationClass(WeaponIds.SunnyMorningSleepIn),
     new CharacterWeaponRecommendationClass(WeaponIds.StarcallersWatch),
-    new CharacterWeaponRecommendationClass(WeaponIds.LightweaversLute).setIsBetter(),
+    new CharacterWeaponRecommendationClass(WeaponIds.EtherlightSpindlelute).setIsBetter(),
     new CharacterWeaponRecommendationClass(WeaponIds.BlackmarrowLantern),
     new CharacterWeaponRecommendationClass(WeaponIds.SacrificialFragments),
     new CharacterWeaponRecommendationClass(WeaponIds.FavoniusCodex),

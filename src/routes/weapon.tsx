@@ -67,7 +67,17 @@ export default function Weapon() {
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Где найти:" className="p-2 text-right whitespace-normal" />
-              <TableCell children={weapon.source} className="p-2 whitespace-normal" />
+              <TableCell className="p-2 whitespace-normal">
+                {Array.isArray(weapon.source)
+                  ? (
+                      <ul className="ml-4 list-outside list-disc">
+                        {weapon.source.map((source, index) => (
+                          <li children={source} key={index} />
+                        ))}
+                      </ul>
+                    )
+                  : weapon.source}
+              </TableCell>
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Тип:" className="p-2 text-right whitespace-normal" />
@@ -80,26 +90,23 @@ export default function Weapon() {
                 className="p-2 whitespace-normal"
               />
             </TableRow>
-            {weapon.secondary_stats !== undefined && (
-              <>
-                <TableRow className="hover:bg-inherit">
-                  <TableHead
-                    children="Дополнительные характеристики:"
-                    className="p-2 text-right whitespace-normal"
-                    rowSpan={2}
-                  />
-                  <TableCell className="p-2 whitespace-normal">
-                    <StatBadge statId={weapon.secondary_stats.id} />
-                  </TableCell>
-                </TableRow>
-                <TableRow className="hover:bg-inherit">
-                  <TableCell
-                    children={`${weapon.secondary_stats.min_value} - ${weapon.secondary_stats.max_value}`}
-                    className="p-2 whitespace-normal"
-                  />
-                </TableRow>
-              </>
-            )}
+            <TableRow className="hover:bg-inherit">
+              <TableHead
+                children="Дополнительные характеристики:"
+                className="p-2 text-right whitespace-normal"
+                rowSpan={2}
+              />
+              <TableCell
+                children={<StatBadge statId={weapon.secondary_stats_id} />}
+                className="p-2 whitespace-normal"
+              />
+            </TableRow>
+            <TableRow className="hover:bg-inherit">
+              <TableCell
+                children={`${weapon.secondary_stats.min_value} - ${weapon.secondary_stats.max_value}`}
+                className="p-2 whitespace-normal"
+              />
+            </TableRow>
           </TableBody>
         </Table>
       </Card>

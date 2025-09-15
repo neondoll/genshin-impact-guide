@@ -12,13 +12,15 @@ export interface Weapon {
   /* Редкость */
   rarity: Rarity;
   /* Где найти */
-  source?: string;
+  source: string | string[];
   /* Тип */
   type_id: WeaponTypeId;
   /* Базовая атака */
   base_atk: WeaponStatValue;
   /* Дополнительные характеристики */
-  secondary_stats: WeaponStatValue & { id: StatId };
+  secondary_stats_id: StatId;
+  /* Дополнительные характеристики */
+  secondary_stats: WeaponStatValue;
 }
 
 export interface WeaponStatValue {

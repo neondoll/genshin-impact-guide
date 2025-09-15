@@ -31,9 +31,9 @@ import {
 } from "@/features/resources/selectors";
 import { selectResourceTypeById } from "@/features/resource-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import CharacterBadge from "@/organisms/character-badge";
+import CharacterBadge from "@/organisms/badges/character-badge.tsx";
 import Paths from "@/constants/paths";
-import ResourceBadge from "@/organisms/resource-badge";
+import ResourceBadge from "@/organisms/badges/resource-badge.tsx";
 
 function ResourceRecipeIngredientBadge({ resourceCount, resourceId, resourceImageSrc, resourceName, resourceRarity }: {
   resourceCount?: ResourceRecipeIngredient["count"];
@@ -402,8 +402,8 @@ export default function Resource() {
                       <CharacterBadge
                         characterId={propertyCharacter.id}
                         characterImgSrc={propertyCharacter.image_src}
-                        characterName={propertyCharacter.name}
                         characterRarity={propertyCharacter.rarity}
+                        characterTitle={propertyCharacter.title}
                       />
                     </TableCell>
                   </TableRow>
