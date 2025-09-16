@@ -13,7 +13,7 @@ export default function ResourceBadge({ resourceId, resourceImgSrc, resourceName
       imgAlt={resourceId}
       imgSrc={resourceImgSrc}
       linkTo={Paths.Resource.to(resourceId)}
-      rarity={resourceRarity}
+      rarities={resourceRarity ? [resourceRarity] : undefined}
       title={resourceName}
     />
   );

@@ -583,6 +583,14 @@ export default {
     ElementIds.Geo,
     [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
   ]).setSignatureWeaponId(WeaponIds.Verdict),
+  [CharacterIds.Nefer]: CharacterClass.init([
+    CharacterIds.Nefer,
+    "Нефер",
+    undefined,
+    undefined,
+    ElementIds.Dendro,
+    undefined,
+  ]),
   [CharacterIds.Neuvillette]: CharacterClass.init([
     CharacterIds.Neuvillette,
     "Нёвиллет",

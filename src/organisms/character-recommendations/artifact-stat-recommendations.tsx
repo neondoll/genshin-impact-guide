@@ -4,7 +4,7 @@ import type { ArtifactStatRecommendationsProps } from "./types";
 import { ArtifactSlotIds } from "@/features/artifact-slots/enums";
 import { cn, numberFormatPercent } from "@/lib/utils";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import StatBadge from "@/features/stats/stat-badge";
+import StatBadge from "../badges/stat-badge";
 
 export default function ArtifactStatRecommendations({ recommendations }: ArtifactStatRecommendationsProps) {
   const [hasDescription, setHasDescription] = useState(false);
@@ -39,7 +39,7 @@ export default function ArtifactStatRecommendations({ recommendations }: Artifac
   return (
     <Table>
       <TableHeader>
-        <TableRow>
+        <TableRow className="hover:bg-inherit">
           <TableHead />
           <TableHead children="Характеристики" className="text-center" />
           {hasPercent && <TableHead />}
@@ -58,7 +58,7 @@ export default function ArtifactStatRecommendations({ recommendations }: Artifac
           return recommendations[recommendationsKey].map((recommendation, index) => (
             <TableRow className="hover:bg-inherit" key={`${recommendationsKey}-${recommendation.id}`}>
               {index === 0 && (
-                <TableHead className="p-2 w-18" rowSpan={recommendations[recommendationsKey].length}>
+                <TableHead className="p-2 text-center" rowSpan={recommendations[recommendationsKey].length}>
                   {recommendationsKey === ArtifactSlotIds.Sands && "Часы"}
                   {recommendationsKey === ArtifactSlotIds.Goblet && "Кубок"}
                   {recommendationsKey === ArtifactSlotIds.Circlet && "Корона"}

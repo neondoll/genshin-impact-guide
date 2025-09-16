@@ -64,6 +64,7 @@ export const CharacterIds = {
   /* Муалани                  */ Mualani: "Mualani",
   /* Нахида                   */ Nahida: "Nahida",
   /* Навия                    */ Navia: "Navia",
+  /* Нефер                    */ Nefer: "Nefer",
   /* Нёвиллет                 */ Neuvillette: "Neuvillette",
   /* Нилу                     */ Nilou: "Nilou",
   /* Нин Гуан                 */ Ningguang: "Ningguang",

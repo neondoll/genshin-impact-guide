@@ -5,7 +5,7 @@ import { charactersAdapter } from "@/features/characters/slice";
 import { publicImageSrc } from "@/lib/utils";
 import { selectCharacterById } from "@/features/characters/selectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import CharacterBadge from "@/features/characters/character-badge";
+import CharacterBadge from "../badges/character-badge";
 
 export default function CharacterRecommendations(props: CharacterRecommendationsProps) {
   const [hasIsBetter, setHasIsBetter] = useState(false);

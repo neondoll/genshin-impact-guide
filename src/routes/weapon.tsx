@@ -12,8 +12,8 @@ import { selectWeaponById } from "@/features/weapons/selectors";
 import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import Paths from "@/constants/paths";
-import RarityStars from "@/features/rarities/rarity-stars";
-import StatBadge from "@/features/stats/stat-badge";
+import RarityStarsImg from "../organisms/imgs/rarity-stars-img";
+import StatBadge from "../organisms/badges/stat-badge";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {
@@ -55,7 +55,7 @@ export default function Weapon() {
         />
         <div className="space-y-1">
           <h1 children={Paths.Weapon.title(weapon)} className="text-3xl" />
-          <RarityStars length={weapon.rarity} />
+          <RarityStarsImg rarity={weapon.rarity} />
         </div>
       </div>
       <Card>

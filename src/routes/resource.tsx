@@ -399,12 +399,7 @@ export default function Resource() {
                   <TableRow className="hover:bg-inherit">
                     <TableHead children="Персонаж:" className="p-2 text-right" />
                     <TableCell className="p-2 text-pretty whitespace-normal">
-                      <CharacterBadge
-                        characterId={propertyCharacter.id}
-                        characterImgSrc={propertyCharacter.image_src}
-                        characterRarity={propertyCharacter.rarity}
-                        characterTitle={propertyCharacter.title}
-                      />
+                      <CharacterBadge characterId={propertyCharacter.id} />
                     </TableCell>
                   </TableRow>
                 )}

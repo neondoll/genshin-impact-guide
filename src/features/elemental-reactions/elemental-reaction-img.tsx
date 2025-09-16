@@ -32,7 +32,7 @@ function Image({ className, elementId }: {
   const element = selectElementById(elementId as ElementId);
 
   return (
-    <img alt={element.id} className={cn("aspect-square", className)} src={element.image_src} />
+    <img alt={element.id} className={cn("aspect-square", className)} src={element.img_src} />
   );
 }
 

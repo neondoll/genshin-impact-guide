@@ -15,7 +15,7 @@ import { selectRaritiesByIds } from "@/features/rarities/selectors";
 import { selectWeaponsAll } from "@/features/weapons/selectors";
 import { selectWeaponTypesAll } from "@/features/weapon-types/selectors";
 import Paths from "@/constants/paths";
-import RarityStars from "@/features/rarities/rarity-stars";
+import RarityStarsImg from "../organisms/imgs/rarity-stars-img";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader() {
@@ -123,7 +123,7 @@ export default function Weapons() {
                 }}
                 value={rarity}
               >
-                <RarityStars length={rarity} />
+                <RarityStarsImg rarity={rarity} />
               </FilterCheckbox>
             ))}
           </div>

@@ -13,7 +13,7 @@ export default function WeaponBadge({ weaponId, weaponImgSrc, weaponRarity, weap
       imgAlt={weaponId}
       imgSrc={weaponImgSrc}
       linkTo={Paths.Weapon.to(weaponId)}
-      rarity={weaponRarity}
+      rarities={weaponRarity ? [weaponRarity] : undefined}
       title={weaponTitle}
     />
   );

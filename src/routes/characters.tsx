@@ -1,28 +1,28 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import type { ElementId } from "@/features/elements/types";
-import type { Rarity } from "@/features/rarities/types";
-import type { WeaponTypeId } from "@/features/weapon-types/types";
-import { backgroundClassByRarity } from "@/lib/rarity";
+import type { ElementId } from "../features/elements/types";
+import type { Rarity } from "../features/rarities/types";
+import type { WeaponTypeId } from "../features/weapon-types/types";
+import { backgroundClassByRarity } from "../lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { cn } from "@/lib/utils";
-import { Container } from "@/components/container";
-import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
-import { selectCharactersAll } from "@/features/characters/selectors";
-import { selectElementById, selectElementsAll } from "@/features/elements/selectors";
-import { selectRaritiesByIds } from "@/features/rarities/selectors";
-import { selectWeaponTypesAll } from "@/features/weapon-types/selectors";
-import Paths from "@/constants/paths";
-import RarityStars from "@/features/rarities/rarity-stars";
+} from "../components/ui/breadcrumb";
+import { cn } from "../lib/utils";
+import { Container } from "../components/container";
+import { Filter, FilterCheckbox, FilterGroup } from "../organisms/filter";
+import { selectCharactersAll } from "../features/characters/selectors";
+import { selectElementById, selectElementsAll } from "../features/elements/selectors";
+import { selectRaritiesByIds } from "../features/rarities/selectors";
+import { selectWeaponTypesAll } from "../features/weapon-types/selectors";
+import Paths from "../constants/paths";
+import RarityStarsImg from "../organisms/imgs/rarity-stars-img";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader() {
   const characters = selectCharactersAll();
   const elements = selectElementsAll();
-  const rarities = selectRaritiesByIds(characters.map(character => character.rarity));
+  const rarities = selectRaritiesByIds(characters.map(character => character.rarity).filter(rarity => rarity !== undefined));
   const weaponTypes = selectWeaponTypesAll();
 
   return { characters, elements, rarities, weaponTypes };
@@ -43,11 +43,11 @@ export default function Characters() {
     }
 
     if (filterRarities.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterRarities.includes(character.rarity));
+      filteredCharacters = filteredCharacters.filter(character => character.rarity && filterRarities.includes(character.rarity));
     }
 
     if (filterWeaponTypeIds.length) {
-      filteredCharacters = filteredCharacters.filter(character => filterWeaponTypeIds.includes(character.weapon_type_id));
+      filteredCharacters = filteredCharacters.filter(character => character.weapon_type_id && filterWeaponTypeIds.includes(character.weapon_type_id));
     }
 
     setFilteredCharacters(filteredCharacters);
@@ -95,7 +95,7 @@ export default function Characters() {
                 }}
                 value={element.id}
               >
-                <img alt={element.name} src={element.image_src} />
+                <img alt={element.name} src={element.icon_src} />
               </FilterCheckbox>
             ))}
           </div>
@@ -155,7 +155,7 @@ export default function Characters() {
                 }}
                 value={rarity}
               >
-                <RarityStars length={rarity} />
+                <RarityStarsImg rarity={rarity} />
               </FilterCheckbox>
             ))}
           </div>
@@ -178,11 +178,14 @@ export default function Characters() {
                 <img
                   alt={characterElement.name}
                   className="absolute top-0 left-0 p-1 size-8.5 bg-card rounded-full border -translate-1/4"
-                  src={characterElement.image_src}
+                  src={characterElement.icon_src}
                 />
                 <img
                   alt={character.name}
-                  className={cn("object-cover size-full rounded-lg rounded-br-3xl", backgroundClassByRarity(character.rarity))}
+                  className={cn(
+                    "object-cover size-full rounded-lg rounded-br-3xl",
+                    character.rarity ? backgroundClassByRarity(character.rarity) : "bg-linear-to-b from-[#323947] to-[#4a5366]",
+                  )}
                   draggable={false}
                   src={character.image_src}
                 />

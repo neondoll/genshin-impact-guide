@@ -14,9 +14,9 @@ export interface Character {
   /* Заголовок */
   title: string;
   /* Редкость */
-  rarity: Rarity;
+  rarity?: Rarity;
   /* Оружие */
-  weapon_type_id: WeaponTypeId;
+  weapon_type_id?: WeaponTypeId;
   /* Элемент */
   element_id: ElementId;
   /* Имя */

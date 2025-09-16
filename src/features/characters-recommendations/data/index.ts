@@ -67,6 +67,7 @@ export default {
   [CharacterIds.Mualani]: (await import("./Mualani")).default,
   [CharacterIds.Nahida]: (await import("./Nahida")).default,
   [CharacterIds.Navia]: (await import("./Navia")).default,
+  [CharacterIds.Nefer]: new CharacterRecommendationsClass(CharacterIds.Nefer),
   [CharacterIds.Neuvillette]: (await import("./Neuvillette")).default,
   [CharacterIds.Nilou]: (await import("./Nilou")).default,
   [CharacterIds.Ningguang]: (await import("./Ningguang")).default,

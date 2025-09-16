@@ -1,7 +1,7 @@
 import type { PreferredStatsRecommendationsProps } from "./types";
 import { ArtifactSlotIds } from "@/features/artifact-slots/enums";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import StatBadge from "@/features/stats/stat-badge";
+import StatBadge from "../badges/stat-badge";
 
 export default function PreferredStatsRecommendations({ recommendations }: PreferredStatsRecommendationsProps) {
   const recommendationsKeys = Object.keys(recommendations) as (keyof typeof recommendations)[];

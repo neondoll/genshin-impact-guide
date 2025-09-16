@@ -1,20 +1,18 @@
-import type { Character } from "@/features/characters/types";
+import type { CharacterId } from "@/features/characters/types";
+import { selectCharacterById } from "@/features/characters/selectors";
 import AbstractBadge from "./abstract-badge";
 import Paths from "@/constants/paths";
 
-export default function CharacterBadge({ characterId, characterImgSrc, characterRarity, characterTitle }: {
-  characterId: Character["id"];
-  characterImgSrc: Character["image_src"];
-  characterRarity?: Character["rarity"];
-  characterTitle: Character["title"];
-}) {
+export default function CharacterBadge({ characterId }: { characterId: CharacterId }) {
+  const character = selectCharacterById(characterId);
+
   return (
     <AbstractBadge
       imgAlt={characterId}
-      imgSrc={characterImgSrc}
+      imgSrc={character.image_src}
       linkTo={Paths.Character.to(characterId)}
-      rarity={characterRarity}
-      title={characterTitle}
+      rarities={character.rarity ? [character.rarity] : undefined}
+      title={character.title}
     />
   );
 }

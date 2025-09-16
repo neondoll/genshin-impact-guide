@@ -106,6 +106,29 @@ export default function ArtifactSet() {
 
                   return (
                     <TableRow className="hover:bg-inherit" key={artifactSlot.id}>
+                      <TableCell className="p-2 w-16 text-pretty whitespace-normal">
+                        <img
+                          alt={artifactSetSlot.name}
+                          className="size-12 bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl"
+                          src={artifactSetSlot.image_src}
+                        />
+                      </TableCell>
+                      <TableCell className="p-2 text-pretty whitespace-normal">
+                        <p children={artifactSetSlot.name} className="text-sm" />
+                        <p children={artifactSlot.name} className="text-xs opacity-50" />
+                      </TableCell>
+                    </TableRow>
+                  );
+                }
+
+                return undefined;
+              })}
+              {/* Object.values(artifactSet.slots).map((artifactSetSlot) => {
+                if (artifactSetSlot !== undefined) {
+                  const artifactSlot = selectArtifactSlotById(artifactSetSlot.id);
+
+                  return (
+                    <TableRow className="hover:bg-inherit" key={artifactSlot.id}>
                       <TableHead children={artifactSlot.name} className="p-2 text-pretty whitespace-normal" />
                       <TableCell className="p-2 text-pretty whitespace-normal">
                         <div className="flex gap-2.5 items-center">
@@ -124,7 +147,7 @@ export default function ArtifactSet() {
                 }
 
                 return undefined;
-              })}
+              }) */}
             </TableBody>
           </Table>
         </CardContent>

@@ -8,11 +8,11 @@ import { cn } from "@/lib/utils";
 
 type ImgProps = ComponentProps<"img">;
 
-export default function AbstractBadge({ imgAlt, imgSrc, linkTo, rarity, title }: {
+export default function AbstractBadge({ imgAlt, imgSrc, linkTo, rarities, title }: {
   imgAlt: ImgProps["alt"];
   imgSrc: ImgProps["src"];
   linkTo: ComponentProps<typeof Link>["to"];
-  rarity?: Rarity;
+  rarities?: Rarity[];
   title: string;
 }) {
   return (
@@ -23,7 +23,7 @@ export default function AbstractBadge({ imgAlt, imgSrc, linkTo, rarity, title }:
             alt={imgAlt}
             className={cn(
               "size-full rounded-md rounded-br-2xl rounded-bl-none",
-              rarity ? backgroundClassByRarity(rarity) : "bg-linear-to-b from-[#323947] to-[#4a5366]",
+              rarities ? backgroundClassByRarity(...rarities) : "bg-linear-to-b from-[#323947] to-[#4a5366]",
             )}
             src={imgSrc}
           />
