@@ -1,6 +1,7 @@
-import type { ArtifactSetId } from "../artifact-sets/types";
-import { type RootState, store } from "@/app/store";
+import type { ArtifactSetId } from "@/types/artifact-set";
+import type { RootState } from "@/app/store";
 import { artifactSetsRecommendationsAdapter } from "./slice";
+import { store } from "@/app/store";
 
 const selectors = artifactSetsRecommendationsAdapter.getSelectors<RootState>(state => state.artifactSetsRecommendations);
 

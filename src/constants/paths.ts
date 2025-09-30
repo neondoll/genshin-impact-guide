@@ -1,4 +1,4 @@
-import type { ArtifactSet } from "@/features/artifact-sets/types";
+import type { ArtifactSet } from "@/types/artifact-set";
 import type { Character } from "@/features/characters/types";
 import type { ElementalReaction } from "@/features/elemental-reactions/types";
 import type { Resource } from "@/features/resources/types";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import type { ArtifactSetId } from "@/features/artifact-sets/types";
+import type { ArtifactSetId } from "@/types/artifact-set";
 import type { ArtifactSetRecommendationsProps } from "./types";
 import { cn, numberFormatPercent } from "@/lib/utils";
 import { selectArtifactSetById } from "@/features/artifact-sets/selectors";

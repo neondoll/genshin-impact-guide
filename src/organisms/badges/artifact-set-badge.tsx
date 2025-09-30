@@ -1,4 +1,4 @@
-import type { ArtifactSetId } from "@/features/artifact-sets/types";
+import type { ArtifactSetId } from "@/types/artifact-set";
 import { selectArtifactSetById } from "@/features/artifact-sets/selectors";
 import AbstractBadge from "./abstract-badge";
 import Paths from "@/constants/paths";

@@ -1,5 +1,5 @@
 import type { PreferredStatsRecommendationsProps } from "./types";
-import { ArtifactSlotIds } from "@/features/artifact-slots/enums";
+import { ArtifactSlotIds } from "@/enums/artifact-slot";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatBadge from "../badges/stat-badge";
 

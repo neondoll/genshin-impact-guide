@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "../../artifact-sets/enums";
-import { ArtifactSlotIds } from "../../artifact-slots/enums";
+import { ArtifactSetIds } from "@/enums/artifact-set";
+import { ArtifactSlotIds } from "@/enums/artifact-slot";
 import {
   CharacterArtifactRecommendationsClass,
   CharacterArtifactSetRecommendationWithIdClass,
@@ -12,7 +12,7 @@ import { CharacterIds } from "../../characters/enums";
 import { StatIds } from "../../stats/enums";
 import { TalentIds } from "../../talents/enums";
 import { WeaponIds } from "../../weapons/enums";
-import artifactSets from "../../artifact-sets/data";
+import artifactSets from "../../../data/artifact-sets";
 import weapons from "../../weapons/data";
 
 export default new CharacterRecommendationsClass(CharacterIds.Escoffier)
