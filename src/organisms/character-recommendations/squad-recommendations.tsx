@@ -6,7 +6,7 @@ import type { SquadRecommendationsProps } from "./types";
 import { CharacterSquadRecommendationsClass } from "@/features/characters-recommendations/classes";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import CharacterBadge from "@/features/characters/character-badge";
+import CharacterBadge from "../badges/character-badge";
 import ElementCharacterBadge from "@/features/elements/element-character-badge";
 
 function SquadRecommendationsItem({ item }: { item: CharacterSquadItemRecommendation }) {

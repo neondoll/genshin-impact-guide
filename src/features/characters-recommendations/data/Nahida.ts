@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "../../artifact-sets/enums";
-import { ArtifactSlotIds } from "../../artifact-slots/enums";
+import { ArtifactSetIds } from "@/enums/artifact-set";
+import { ArtifactSlotIds } from "@/enums/artifact-slot";
 import {
   CharacterArtifactRecommendationsClass,
   CharacterArtifactSetRecommendationWithIdClass,

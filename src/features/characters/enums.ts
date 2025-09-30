@@ -52,6 +52,7 @@ export const CharacterIds = {
   /* Кли                      */ Klee: "Klee",
   /* Сара                     */ KujouSara: "KujouSara",
   /* Синобу                   */ KukiShinobu: "KukiShinobu",
+  /* Флинс                    */ KyryllChudomirovichFlins: "KyryllChudomirovichFlins",
   /* Лаума                    */ Lauma: "Lauma",
   /* Лайла                    */ Layla: "Layla",
   /* Лиза                     */ Lisa: "Lisa",
@@ -63,6 +64,7 @@ export const CharacterIds = {
   /* Муалани                  */ Mualani: "Mualani",
   /* Нахида                   */ Nahida: "Nahida",
   /* Навия                    */ Navia: "Navia",
+  /* Нефер                    */ Nefer: "Nefer",
   /* Нёвиллет                 */ Neuvillette: "Neuvillette",
   /* Нилу                     */ Nilou: "Nilou",
   /* Нин Гуан                 */ Ningguang: "Ningguang",
@@ -104,6 +106,7 @@ export const CharacterIds = {
   /* Яо Яо                    */ Yaoyao: "Yaoyao",
   /* Е Лань                   */ Yelan: "Yelan",
   /* Ёимия                    */ Yoimiya: "Yoimiya",
+  /* Мидзуки                  */ YumemizukiMizuki: "YumemizukiMizuki",
   /* Юнь Цзинь                */ YunJin: "YunJin",
   /* Чжун Ли                  */ Zhongli: "Zhongli",
 } as const;

@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "../../artifact-sets/enums";
-import { ArtifactSlotIds } from "../../artifact-slots/enums";
+import { ArtifactSetIds } from "@/enums/artifact-set";
+import { ArtifactSlotIds } from "@/enums/artifact-slot";
 import {
   CharacterArtifactRecommendationsClass,
   CharacterArtifactSetRecommendationWithIdClass,
@@ -17,7 +17,7 @@ import { StatIds } from "../../stats/enums";
 import { TalentIds } from "../../talents/enums";
 import { VideoSourceClass } from "../../video-sources/classes";
 import { WeaponIds } from "../../weapons/enums";
-import artifactSets from "../../artifact-sets/data";
+import artifactSets from "../../../data/artifact-sets";
 import weapons from "../../weapons/data";
 
 type GameVariantkey = typeof GameVariantEnum[keyof typeof GameVariantEnum];
@@ -72,7 +72,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Skirk)
   .setFirstConstellationOrSignatureWeapon("Сигна > C1,\nC2 > Сигна")
   .setKeyConstellations([1, 2, 5, 6])
   .setReferencePoint({
-    [`${artifactSets[ArtifactSetIds.MarechausseeHunter].name}\n+\n${weapons[WeaponIds.FinaleOfTheDeep].name}`]: [
+    [`${artifactSets[ArtifactSetIds.MarechausseeHunter].name}\n+\n${weapons[WeaponIds.FinaleOfTheDeep].title}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -81,7 +81,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Skirk)
       ["Крит. урон", "216.8%"],
       ["Восст. энергии", "111.0%"],
     ],
-    [`${artifactSets[ArtifactSetIds.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponIds.CalamityOfEshu].name}`]: [
+    [`${artifactSets[ArtifactSetIds.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponIds.CalamityOfEshu].title}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],

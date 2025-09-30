@@ -5,19 +5,22 @@ import { WeaponIds } from "./enums";
 
 export interface Weapon {
   id: WeaponId;
-  /* Имя                           */
-  name: string;
-  /* Редкость                      */
+  /* Изображение */
+  image_src: string;
+  /* Имя */
+  title: string;
+  /* Редкость */
   rarity: Rarity;
-  /* Где найти                     */
-  source?: string;
-  /* Тип                           */
+  /* Где найти */
+  source: string | string[];
+  /* Тип */
   type_id: WeaponTypeId;
-  /* Базовая атака                 */
+  /* Базовая атака */
   base_atk: WeaponStatValue;
   /* Дополнительные характеристики */
-  secondary_stats: WeaponStatValue & { id: StatId };
-  image_src: string;
+  secondary_stats_id: StatId;
+  /* Дополнительные характеристики */
+  secondary_stats: WeaponStatValue;
 }
 
 export interface WeaponStatValue {

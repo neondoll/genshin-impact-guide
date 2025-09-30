@@ -1,5 +1,5 @@
 import type { Dungeon } from "./types";
-import { ArtifactSetIds } from "../artifact-sets/enums";
+import { ArtifactSetIds } from "@/enums/artifact-set";
 import { DungeonIds } from "./enums";
 
 class DungeonClass implements Dungeon {

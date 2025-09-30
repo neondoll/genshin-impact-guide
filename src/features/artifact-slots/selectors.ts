@@ -1,6 +1,7 @@
-import type { ArtifactSlotId } from "./types";
-import { type RootState, store } from "@/app/store";
+import type { ArtifactSlotId } from "@/types/artifact-slot";
+import type { RootState } from "@/app/store";
 import { artifactSlotsAdapter } from "./slice";
+import { store } from "@/app/store";
 
 const selectors = artifactSlotsAdapter.getSelectors<RootState>(state => state.artifactSlots);
 

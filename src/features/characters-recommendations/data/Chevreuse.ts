@@ -1,6 +1,6 @@
 import { artifactSetById } from "./_help";
-import { ArtifactSetIds } from "../../artifact-sets/enums";
-import { ArtifactSlotIds } from "../../artifact-slots/enums";
+import { ArtifactSetIds } from "@/enums/artifact-set";
+import { ArtifactSlotIds } from "@/enums/artifact-slot";
 import {
   CharacterArtifactRecommendationsClass,
   CharacterArtifactSetRecommendationWithIdClass,
@@ -29,7 +29,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Chevreuse)
       [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage)],
       [ArtifactSlotIds.Circlet]: [
         new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage),
-        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setDescription(`Если в руках ${weapons[WeaponIds.FavoniusLance].name}`),
+        new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setDescription(`Если в руках ${weapons[WeaponIds.FavoniusLance].title}`),
       ],
       additional: [
         new CharacterArtifactStatRecommendationClass(StatIds.HpPercentage),

@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
 
+import type { ArtifactSetId } from "@/types/artifact-set";
 import type { ArtifactSetRecommendationsProps } from "./types";
-import { cn, numberFormatPercent, publicImageSrc } from "@/lib/utils";
+import { cn, numberFormatPercent } from "@/lib/utils";
+import { selectArtifactSetById } from "@/features/artifact-sets/selectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import ArtifactSetBadge from "@/features/artifact-sets/artifact-set-badge";
+import Badge from "../badges/artifact-set-badge";
+import IsBetter from "../is-better";
+
+function ArtifactSetBadge({ artifactSetId }: { artifactSetId: ArtifactSetId }) {
+  const artifactSet = selectArtifactSetById(artifactSetId);
+
+  return (
+    <Badge artifactSetId={artifactSet.id} />
+  );
+}
 
 export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
   const [diffPercent, setDiffPercent] = useState(0);
@@ -54,7 +65,7 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
   return (
     <Table>
       <TableHeader>
-        <TableRow>
+        <TableRow className="hover:bg-inherit">
           {hasIsBetter && <TableHead />}
           <TableHead children="Наборы" className="text-center" />
           {hasPercent && <TableHead />}
@@ -69,17 +80,9 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
             key={"id" in recommendation ? recommendation.id : recommendation.ids.join("+")}
           >
             {hasIsBetter && (
-              <TableCell className="w-16">
-                {recommendation.is_better && (
-                  <img
-                    alt="Является лучшим выбором"
-                    className="size-12 rounded-full"
-                    src={publicImageSrc("better-logo-128x128.png")}
-                  />
-                )}
-              </TableCell>
+              <TableCell children={<IsBetter value={Boolean(recommendation.is_better)} />} />
             )}
-            <TableCell className="text-pretty whitespace-normal sm:w-48">
+            <TableCell className="text-pretty whitespace-normal">
               {"id" in recommendation && (
                 <ArtifactSetBadge artifactSetId={recommendation.id} />
               )}

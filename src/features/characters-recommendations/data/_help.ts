@@ -1,8 +1,8 @@
-import type { ArtifactSetId } from "../../artifact-sets/types";
+import type { ArtifactSetId } from "@/types/artifact-set";
 import type { WeaponId } from "../../weapons/types";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn, publicSrc } from "@/lib/utils";
-import artifactSets from "../../artifact-sets/data";
+import artifactSets from "../../../data/artifact-sets";
 import Paths from "@/constants/paths";
 import weapons from "../../weapons/data";
 
@@ -26,7 +26,7 @@ export function weaponById(id: WeaponId) {
   return `
     <span class="${cn(badgeVariants({ variant: "secondary" }), "pl-1 py-0 text-sm/none")}">
       <img alt="" class="size-4.5" src="${weapon.image_src}" />
-      <span>${weapon.name}</span>
+      <span>${weapon.title}</span>
     </span>
   `;
 }

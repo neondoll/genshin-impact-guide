@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "../../artifact-sets/enums";
-import { ArtifactSlotIds } from "../../artifact-slots/enums";
+import { ArtifactSetIds } from "@/enums/artifact-set";
+import { ArtifactSlotIds } from "@/enums/artifact-slot";
 import {
   CharacterArtifactRecommendationsClass,
   CharacterArtifactSetRecommendationWithIdClass,
@@ -13,7 +13,7 @@ import { StatIds } from "../../stats/enums";
 import { TalentIds } from "../../talents/enums";
 import { VideoSourceClass } from "../../video-sources/classes";
 import { WeaponIds } from "../../weapons/enums";
-import artifactSets from "../../artifact-sets/data";
+import artifactSets from "../../../data/artifact-sets";
 import characters from "../../characters/data";
 import weapons from "../../weapons/data";
 
@@ -48,7 +48,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Citlali)
       [ArtifactSlotIds.Circlet]: [
         new CharacterArtifactStatRecommendationClass(StatIds.ElementalMastery).setNotes(["всегда"]),
         new CharacterArtifactStatRecommendationClass(StatIds.CritRate).setNotes([
-          `можно рассмотреть, если в руках ${weapons[WeaponIds.FavoniusCodex].name}`,
+          `можно рассмотреть, если в руках ${weapons[WeaponIds.FavoniusCodex].title}`,
         ]),
       ],
       additional: [
@@ -67,7 +67,7 @@ export default new CharacterRecommendationsClass(CharacterIds.Citlali)
     ["МС", "342"],
     ["Крит. шанс", "59.2%"],
     ["Крит. урон", "122.8%"],
-    ["Оружие", weapons[WeaponIds.ThrillingTalesOfDragonSlayers].name],
+    ["Оружие", weapons[WeaponIds.ThrillingTalesOfDragonSlayers].title],
     ["Набор артефактов", artifactSets[ArtifactSetIds.ScrollOfTheHeroOfCinderCity].name],
   ])
   .setRequiredLevel(80)

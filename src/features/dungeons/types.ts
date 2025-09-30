@@ -1,4 +1,4 @@
-import type { ArtifactSetId } from "../artifact-sets/types";
+import type { ArtifactSetId } from "@/types/artifact-set";
 import { DungeonIds } from "./enums";
 
 export interface Dungeon {

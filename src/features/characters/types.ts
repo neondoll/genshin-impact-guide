@@ -9,19 +9,23 @@ type CharacterArkhe = "Усия" | "Пневма";
 
 export interface Character {
   id: CharacterId;
-  /* Имя */
-  name: string;
+  /* Изображение */
+  image_src: string;
+  /* Заголовок */
+  title: string;
   /* Редкость */
-  rarity: Rarity;
+  rarity?: Rarity;
   /* Оружие */
-  weapon_type_id: WeaponTypeId;
+  weapon_type_id?: WeaponTypeId;
   /* Элемент */
   element_id: ElementId;
+  /* Имя */
+  name: string;
   /* Архэ */
   arkhe?: CharacterArkhe | CharacterArkhe[];
   /* Роли */
   role_ids?: CharacterRoleId[];
-  image_src: string;
+  /* Сигнатурное оружие */
   signature_weapon_id?: WeaponId;
 }
 

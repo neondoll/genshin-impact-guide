@@ -5,7 +5,10 @@ import type { Character } from "./types";
 export const charactersAdapter = createEntityAdapter({
   selectId: (model: Character) => model.id,
   sortComparer: (a: Character, b: Character) => {
-    return a.rarity === b.rarity ? a.name.localeCompare(b.name) : b.rarity - a.rarity;
+    const aRarity = a.rarity ? a.rarity : 0;
+    const bRarity = b.rarity ? b.rarity : 0;
+
+    return aRarity === bRarity ? a.title.localeCompare(b.title) : bRarity - aRarity;
   },
 });
 

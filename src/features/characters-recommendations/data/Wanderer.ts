@@ -10,7 +10,7 @@ import { WeaponIds } from "../../weapons/enums";
 import weapons from "../../weapons/data";
 
 export default new CharacterRecommendationsClass(CharacterIds.Wanderer)
-  .setFirstConstellationOrSignatureWeapon(`С1 если ${weapons[WeaponIds.TheWidsith].name} R5 | Сигна если ${weapons[WeaponIds.TheWidsith].name} не R5`)
+  .setFirstConstellationOrSignatureWeapon(`С1 если ${weapons[WeaponIds.TheWidsith].title} R5 | Сигна если ${weapons[WeaponIds.TheWidsith].title} не R5`)
   .setTalentLeveling([
     CharacterTalentLevelingRecommendationClass.init([TalentIds.NormalAttack, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendationClass.init([TalentIds.ElementalSkill, "Во вторую очередь\n(10)"]),

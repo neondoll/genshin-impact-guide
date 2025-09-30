@@ -12,8 +12,8 @@ import { selectWeaponById } from "@/features/weapons/selectors";
 import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import Paths from "@/constants/paths";
-import RarityStars from "@/features/rarities/rarity-stars";
-import StatBadge from "@/features/stats/stat-badge";
+import RarityStarsImg from "../organisms/imgs/rarity-stars-img";
+import StatBadge from "../organisms/badges/stat-badge";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {
@@ -49,13 +49,13 @@ export default function Weapon() {
       </Breadcrumb>
       <div className="flex gap-x-3">
         <img
-          alt={weapon.name}
+          alt=""
           className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByRarity(weapon.rarity))}
           src={weapon.image_src}
         />
         <div className="space-y-1">
           <h1 children={Paths.Weapon.title(weapon)} className="text-3xl" />
-          <RarityStars length={weapon.rarity} />
+          <RarityStarsImg rarity={weapon.rarity} />
         </div>
       </div>
       <Card>
@@ -63,11 +63,21 @@ export default function Weapon() {
           <TableBody>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Имя:" className="p-2 text-right whitespace-normal" />
-              <TableCell children={weapon.name} className="p-2 whitespace-normal" />
+              <TableCell children={weapon.title} className="p-2 whitespace-normal" />
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Где найти:" className="p-2 text-right whitespace-normal" />
-              <TableCell children={weapon.source} className="p-2 whitespace-normal" />
+              <TableCell className="p-2 whitespace-normal">
+                {Array.isArray(weapon.source)
+                  ? (
+                      <ul className="ml-4 list-outside list-disc">
+                        {weapon.source.map((source, index) => (
+                          <li children={source} key={index} />
+                        ))}
+                      </ul>
+                    )
+                  : weapon.source}
+              </TableCell>
             </TableRow>
             <TableRow className="hover:bg-inherit">
               <TableHead children="Тип:" className="p-2 text-right whitespace-normal" />
@@ -80,26 +90,23 @@ export default function Weapon() {
                 className="p-2 whitespace-normal"
               />
             </TableRow>
-            {weapon.secondary_stats !== undefined && (
-              <>
-                <TableRow className="hover:bg-inherit">
-                  <TableHead
-                    children="Дополнительные характеристики:"
-                    className="p-2 text-right whitespace-normal"
-                    rowSpan={2}
-                  />
-                  <TableCell className="p-2 whitespace-normal">
-                    <StatBadge statId={weapon.secondary_stats.id} />
-                  </TableCell>
-                </TableRow>
-                <TableRow className="hover:bg-inherit">
-                  <TableCell
-                    children={`${weapon.secondary_stats.min_value} - ${weapon.secondary_stats.max_value}`}
-                    className="p-2 whitespace-normal"
-                  />
-                </TableRow>
-              </>
-            )}
+            <TableRow className="hover:bg-inherit">
+              <TableHead
+                children="Дополнительные характеристики:"
+                className="p-2 text-right whitespace-normal"
+                rowSpan={2}
+              />
+              <TableCell
+                children={<StatBadge statId={weapon.secondary_stats_id} />}
+                className="p-2 whitespace-normal"
+              />
+            </TableRow>
+            <TableRow className="hover:bg-inherit">
+              <TableCell
+                children={`${weapon.secondary_stats.min_value} - ${weapon.secondary_stats.max_value}`}
+                className="p-2 whitespace-normal"
+              />
+            </TableRow>
           </TableBody>
         </Table>
       </Card>

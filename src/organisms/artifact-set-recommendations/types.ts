@@ -1,4 +1,4 @@
-import type { ArtifactSetRecommendations } from "@/features/artifact-sets-recommendations/types";
+import type { ArtifactSetRecommendations } from "@/types/artifact-set-recommendations";
 
 export interface ArtifactSetRecommendationsProps {
   recommendations: ArtifactSetRecommendations;

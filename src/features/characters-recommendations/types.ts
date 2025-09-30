@@ -1,11 +1,11 @@
-import type { ArtifactSetId } from "../artifact-sets/types";
+import type { ArtifactSetId } from "@/types/artifact-set";
 import type { CharacterId } from "../characters/types";
 import type { ElementId } from "../elements/types";
 import type { StatId } from "../stats/types";
 import type { TalentId } from "../talents/types";
 import type { VideoSource } from "../video-sources/types";
 import type { WeaponId } from "../weapons/types";
-import { ArtifactSlotIds } from "../artifact-slots/enums";
+import { ArtifactSlotIds } from "@/enums/artifact-slot";
 
 type CharacterArtifactSetRecommendations = (CharacterArtifactSetRecommendationWithId | CharacterArtifactSetRecommendationWithIds)[];
 type CharacterArtifactStatRecommendations = Record<typeof ArtifactSlotIds["Sands" | "Goblet" | "Circlet"] | "additional", CharacterArtifactStatRecommendation[]>;

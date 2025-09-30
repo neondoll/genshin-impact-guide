@@ -6,8 +6,8 @@ export class CharacterRoleClass implements CharacterRole {
   readonly id: CharacterRole["id"];
   readonly name: CharacterRole["name"];
   readonly description: CharacterRole["description"];
-  readonly icon_src: CharacterRole["icon_src"];
   readonly sort_by: CharacterRole["sort_by"];
+  readonly img_src: CharacterRole["img_src"];
 
   static PATH = "character-roles";
 
@@ -20,8 +20,8 @@ export class CharacterRoleClass implements CharacterRole {
     this.id = id;
     this.name = name;
     this.description = description;
-    this.icon_src = publicImageSrc(`${CharacterRoleClass.PATH}/${id}-64x64.png`);
     this.sort_by = sortBy;
+    this.img_src = publicImageSrc(`${CharacterRoleClass.PATH}/${id}.webp`);
   }
 
   static init(params: ConstructorParameters<typeof CharacterRoleClass>) {
