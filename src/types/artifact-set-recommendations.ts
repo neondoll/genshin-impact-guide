@@ -1,7 +1,7 @@
 import type { ArtifactSetId } from "./artifact-set";
-import type { CharacterId } from "@/features/characters/types";
-import type { StatId } from "@/features/stats/types";
-import type { VideoSource } from "@/features/video-sources/types";
+import type { CharacterId } from "./character";
+import type { StatId } from "./stat";
+import type { VideoSource } from "./video-source";
 import { ArtifactSlotIds } from "@/enums/artifact-slot";
 
 export interface ArtifactSetCharacterRecommendation {

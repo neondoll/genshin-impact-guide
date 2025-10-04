@@ -1,4 +1,4 @@
-import type { ElementId } from "./types";
+import type { ElementId } from "@/types/element";
 import { Badge } from "@/components/ui/badge";
 import { selectElementById } from "./selectors";
 

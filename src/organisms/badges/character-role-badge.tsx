@@ -1,4 +1,4 @@
-import type { CharacterRoleId } from "@/features/character-roles/types";
+import type { CharacterRoleId } from "@/types/character-role";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { selectCharacterRoleById } from "@/features/character-roles/selectors";

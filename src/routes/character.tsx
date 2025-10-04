@@ -1,23 +1,23 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { CharacterId } from "../features/characters/types";
-import { backgroundClassByRarity } from "../lib/rarity";
-import { Badge } from "../components/ui/badge";
+import type { CharacterId } from "@/types/character";
+import { backgroundClassByRarity } from "@/lib/rarity";
+import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
-} from "../components/ui/breadcrumb";
-import { Card } from "../components/ui/card";
-import { cn } from "../lib/utils";
-import { Container } from "../components/container";
-import { selectCharacterById } from "../features/characters/selectors";
-import { selectCharacterRecommendationsById } from "../features/characters-recommendations/selectors";
-import { selectElementById } from "../features/elements/selectors";
-import { selectWeaponTypeById } from "../features/weapon-types/selectors";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "../components/ui/table";
-import CharacterRecommendations from "../organisms/character-recommendations";
-import CharacterRoleBadge from "../organisms/badges/character-role-badge";
-import Paths from "../constants/paths";
-import RarityStarsImg from "../organisms/imgs/rarity-stars-img";
+} from "@/components/ui/breadcrumb";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { Container } from "@/components/container";
+import { selectCharacterById } from "@/features/characters/selectors";
+import { selectCharacterRecommendationsById } from "@/features/characters-recommendations/selectors";
+import { selectElementById } from "@/features/elements/selectors";
+import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
+import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import CharacterRecommendations from "@/organisms/character-recommendations";
+import CharacterRoleBadge from "@/organisms/badges/character-role-badge";
+import Paths from "@/constants/paths";
+import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {

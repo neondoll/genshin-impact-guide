@@ -1,5 +1,6 @@
-import type { TalentId } from "./types";
-import { type RootState, store } from "@/app/store";
+import type { TalentId } from "@/types/talent";
+import type { RootState } from "@/app/store";
+import { store } from "@/app/store";
 import { talentsAdapter } from "./slice";
 
 const selectors = talentsAdapter.getSelectors<RootState>(state => state.talents);

@@ -1,6 +1,7 @@
-import type { StatId } from "./types";
-import { type RootState, store } from "@/app/store";
+import type { StatId } from "@/types/stat";
+import type { RootState } from "@/app/store";
 import { statsAdapter } from "./slice";
+import { store } from "@/app/store";
 
 const selectors = statsAdapter.getSelectors<RootState>(state => state.stats);
 

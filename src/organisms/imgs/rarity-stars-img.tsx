@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 
-import type { Rarity } from "@/features/rarities/types";
+import type { Rarity } from "@/types/rarity";
 import { cn, publicImageSrc } from "@/lib/utils";
 
 interface RarityStarsImgProps {

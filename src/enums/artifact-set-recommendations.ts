@@ -1,5 +1,7 @@
-import { VideoSourceClass } from "@/features/video-sources/classes";
+import { VideoSourceIds } from "./video-source";
+import videoSources from "@/data/video-sources";
 
 export const ArtifactSetRecommendationsVideoSources = {
-  AllAboutAll: new VideoSourceClass("Miron MinMax: ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin").setYoutubeUrl("https://youtu.be/kCu0ux0hUCg"),
+  /* Miron MinMax: ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin */
+  AllAboutAll: videoSources[VideoSourceIds.AllAboutAllArtifacts],
 } as const;

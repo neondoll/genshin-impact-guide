@@ -1,4 +1,4 @@
-import type { Weapon } from "@/features/weapons/types";
+import type { Weapon } from "@/types/weapon";
 import AbstractBadge from "./abstract-badge";
 import Paths from "@/constants/paths";
 

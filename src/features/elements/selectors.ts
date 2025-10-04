@@ -1,6 +1,7 @@
-import type { ElementId } from "./types";
-import { type RootState, store } from "@/app/store";
+import type { ElementId } from "@/types/element";
+import type { RootState } from "@/app/store";
 import { elementsAdapter } from "./slice";
+import { store } from "@/app/store";
 
 const selectors = elementsAdapter.getSelectors<RootState>(state => state.elements);
 

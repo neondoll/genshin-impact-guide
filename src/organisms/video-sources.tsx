@@ -1,4 +1,4 @@
-import type { VideoSource } from "@/features/video-sources/types";
+import type { VideoSource } from "@/types/video-source";
 import { Button } from "@/components/ui/button";
 import VK from "@/icons/VK";
 import Youtube from "@/icons/Youtube";

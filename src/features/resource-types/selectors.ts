@@ -1,6 +1,7 @@
-import type { ResourceTypeId } from "./types";
-import { type RootState, store } from "@/app/store";
+import type { ResourceTypeId } from "@/types/resource-type";
+import type { RootState } from "@/app/store";
 import { resourceTypesAdapter } from "./slice";
+import { store } from "@/app/store";
 
 const selectors = resourceTypesAdapter.getSelectors<RootState>(state => state.resourceTypes);
 

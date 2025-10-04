@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-import type { Stat } from "./types";
+import type { Stat } from "@/types/stat";
 
 export const statsAdapter = createEntityAdapter({
   selectId: (model: Stat) => model.id,
@@ -12,12 +12,12 @@ export const statsAdapter = createEntityAdapter({
   },
 });
 
-const initialState = statsAdapter.getInitialState({}, (await import("./data")).default);
+const initialState = statsAdapter.getInitialState({}, (await import("@/data/stats")).default);
 
-export const slice = createSlice({
+export const statsSlice = createSlice({
   name: "stats",
   initialState,
   reducers: {},
 });
 
-export default slice.reducer;
+export default statsSlice.reducer;

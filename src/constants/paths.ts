@@ -1,8 +1,8 @@
 import type { ArtifactSet } from "@/types/artifact-set";
-import type { Character } from "@/features/characters/types";
-import type { ElementalReaction } from "@/features/elemental-reactions/types";
-import type { Resource } from "@/features/resources/types";
-import type { Weapon } from "@/features/weapons/types";
+import type { Character } from "@/types/character";
+import type { ElementalReaction } from "@/types/elemental-reaction";
+import type { Resource } from "@/types/resource";
+import type { Weapon } from "@/types/weapon";
 
 export default {
   ArtifactSet: {

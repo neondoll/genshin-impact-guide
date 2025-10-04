@@ -1,6 +1,7 @@
-import type { Rarity } from "./types";
-import { type RootState, store } from "@/app/store";
+import type { Rarity } from "@/types/rarity";
+import type { RootState } from "@/app/store";
 import { raritiesAdapter } from "./slice";
+import { store } from "@/app/store";
 
 const selectors = raritiesAdapter.getSelectors<RootState>(state => state.rarities);
 

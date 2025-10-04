@@ -3,9 +3,9 @@ import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "
 import { ArtifactSetIds } from "@/enums/artifact-set";
 import { ArtifactSetRecommendationsVideoSources } from "@/enums/artifact-set-recommendations";
 import { ArtifactSlotIds } from "@/enums/artifact-slot";
-import { CharacterIds } from "@/features/characters/enums";
-import { StatIds } from "@/features/stats/enums";
-import { WeaponIds } from "@/features/weapons/enums";
+import { CharacterIds } from "@/enums/character";
+import { StatIds } from "@/enums/stat";
+import { WeaponIds } from "@/enums/weapon";
 
 export default ArtifactSetRecommendations.init([ArtifactSetIds.GoldenTroupe, [
   new ArtifactSetCharacterRecommendation(CharacterIds.Albedo).setNotes([

@@ -1,4 +1,4 @@
-import type { WeaponTypeId } from "@/features/weapon-types/types";
+import type { WeaponTypeId } from "@/types/weapon-type";
 import { Badge } from "@/components/ui/badge";
 import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
 

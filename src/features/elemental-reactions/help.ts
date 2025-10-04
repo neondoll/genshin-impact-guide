@@ -1,6 +1,6 @@
-import type { ElementalReactionId } from "./types";
+import type { ElementalReactionId } from "@/types/elemental-reaction";
 import { publicSrc } from "@/lib/utils";
-import elementalReactions from "./data";
+import elementalReactions from "@/data/elemental-reactions";
 import Paths from "@/constants/paths";
 
 export function elementalReactionById(id: ElementalReactionId) {

@@ -1,5 +1,5 @@
 import type { ArtifactSlotId } from "./artifact-slot";
-import type { Rarity } from "@/features/rarities/types";
+import type { Rarity } from "./rarity";
 import { ArtifactSetIds } from "@/enums/artifact-set";
 
 export interface ArtifactSet {

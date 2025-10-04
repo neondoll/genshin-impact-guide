@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { WeaponId } from "@/features/weapons/types";
+import type { WeaponId } from "@/types/weapon";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {

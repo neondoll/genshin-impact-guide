@@ -1,5 +1,5 @@
-import type { Character } from "@/features/characters/types";
-import type { CharacterRecommendations } from "@/features/characters-recommendations/types";
+import type { Character } from "@/types/character";
+import type { CharacterRecommendations } from "@/types/character-recommendations";
 
 export type ArtifactRecommendationsProps = {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["artifacts"]>;

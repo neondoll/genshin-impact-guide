@@ -1,4 +1,4 @@
-import type { Rarity } from "@/features/rarities/types";
+import type { Rarity } from "@/types/rarity";
 
 export function backgroundClassByRarity(...rarities: Rarity[]) {
   const rarity = Math.max(...rarities);

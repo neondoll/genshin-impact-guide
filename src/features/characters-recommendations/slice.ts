@@ -1,17 +1,17 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-import type { CharacterRecommendations } from "./types";
+import type { CharacterRecommendations } from "@/types/character-recommendations";
 
 export const charactersRecommendationsAdapter = createEntityAdapter({
   selectId: (model: CharacterRecommendations) => model.character_id,
 });
 
-const initialState = charactersRecommendationsAdapter.getInitialState({}, (await import("./data")).default);
+const initialState = charactersRecommendationsAdapter.getInitialState({}, (await import("@/data/characters-recommendations")).default);
 
-export const slice = createSlice({
+export const charactersRecommendationsSlice = createSlice({
   name: "charactersRecommendations",
   initialState,
   reducers: {},
 });
 
-export default slice.reducer;
+export default charactersRecommendationsSlice.reducer;

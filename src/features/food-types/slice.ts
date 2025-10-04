@@ -1,17 +1,17 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-import type { FoodType } from "./types";
+import type { FoodType } from "@/types/food-type";
 
 export const foodTypesAdapter = createEntityAdapter({
   selectId: (model: FoodType) => model.id,
 });
 
-const initialState = foodTypesAdapter.getInitialState({}, (await import("./data")).default);
+const initialState = foodTypesAdapter.getInitialState({}, (await import("@/data/food-types")).default);
 
-export const slice = createSlice({
+export const foodTypesSlice = createSlice({
   name: "foodTypes",
   initialState,
   reducers: {},
 });
 
-export default slice.reducer;
+export default foodTypesSlice.reducer;

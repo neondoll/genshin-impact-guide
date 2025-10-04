@@ -1,8 +1,8 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import type { Rarity } from "@/features/rarities/types";
-import type { WeaponTypeId } from "@/features/weapon-types/types";
+import type { Rarity } from "@/types/rarity";
+import type { WeaponTypeId } from "@/types/weapon-type";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -15,7 +15,7 @@ import { selectRaritiesByIds } from "@/features/rarities/selectors";
 import { selectWeaponsAll } from "@/features/weapons/selectors";
 import { selectWeaponTypesAll } from "@/features/weapon-types/selectors";
 import Paths from "@/constants/paths";
-import RarityStarsImg from "../organisms/imgs/rarity-stars-img";
+import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader() {

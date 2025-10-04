@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 
-import type { ElementId } from "@/features/elements/types";
+import type { ElementId } from "@/types/element";
 import { selectElementById } from "@/features/elements/selectors";
 
 interface ElementImgProps {

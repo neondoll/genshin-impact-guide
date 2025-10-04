@@ -5,35 +5,27 @@ import type {
   ResourceFood,
   ResourceRecipe,
   ResourceRecipeIngredient,
-} from "@/features/resources/types";
+} from "@/types/resource";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
+  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
 import { resourcesAdapter } from "@/features/resources/slice";
-import { ResourceTypeIds } from "@/features/resource-types/enums";
+import { ResourceTypeIds } from "@/enums/resource-type";
 import { selectCharacterById } from "@/features/characters/selectors";
 import { selectFoodTypeById } from "@/features/food-types/selectors";
 import {
-  selectResourceById,
-  selectResourceFoodsByIds,
-  selectResourceFoodsByRecipeId,
-  selectResourceRecipeById,
+  selectResourceById, selectResourceFoodsByIds, selectResourceFoodsByRecipeId, selectResourceRecipeById,
 } from "@/features/resources/selectors";
 import { selectResourceTypeById } from "@/features/resource-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import CharacterBadge from "@/organisms/badges/character-badge.tsx";
+import CharacterBadge from "@/organisms/badges/character-badge";
 import Paths from "@/constants/paths";
-import ResourceBadge from "@/organisms/badges/resource-badge.tsx";
+import ResourceBadge from "@/organisms/badges/resource-badge";
 
 function ResourceRecipeIngredientBadge({ resourceCount, resourceId, resourceImageSrc, resourceName, resourceRarity }: {
   resourceCount?: ResourceRecipeIngredient["count"];

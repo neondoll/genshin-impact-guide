@@ -1,16 +1,13 @@
-import type { ResourceFood, ResourceId, ResourceRecipe } from "./types";
-import { type RootState, store } from "@/app/store";
+import type { ResourceFood, ResourceId, ResourceRecipe } from "@/types/resource";
+import type { RootState } from "@/app/store";
 import { resourcesAdapter } from "./slice";
-import { ResourceTypeIds } from "@/features/resource-types/enums.ts";
+import { ResourceTypeIds } from "@/enums/resource-type";
+import { store } from "@/app/store";
 
 const selectors = resourcesAdapter.getSelectors<RootState>(state => state.resources);
 
 export function selectResourceById(id: ResourceId) {
   return selectors.selectById(store.getState(), id);
-}
-
-export function selectResourceFoodById(id: ResourceFood["id"]) {
-  return selectors.selectById(store.getState(), id) as ResourceFood;
 }
 
 export function selectResourceFoodsAll() {
@@ -31,10 +28,6 @@ export function selectResourceRecipeById(id: ResourceRecipe["id"]) {
 
 export function selectResourcesAll() {
   return selectors.selectAll(store.getState());
-}
-
-export function selectResourcesByIds(ids: ResourceId[]) {
-  return selectResourcesAll().filter(value => ids.includes(value.id));
 }
 
 export default selectors;

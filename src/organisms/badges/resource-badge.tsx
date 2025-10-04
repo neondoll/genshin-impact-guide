@@ -1,4 +1,4 @@
-import type { Resource } from "@/features/resources/types";
+import type { Resource } from "@/types/resource";
 import AbstractBadge from "./abstract-badge";
 import Paths from "@/constants/paths";
 

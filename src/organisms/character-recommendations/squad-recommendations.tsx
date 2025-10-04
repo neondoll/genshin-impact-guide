@@ -1,15 +1,15 @@
 import type {
-  CharacterSquadItemRecommendation,
-  CharacterSquadRecommendations,
-} from "@/features/characters-recommendations/types";
+  CharacterSquadItemRecommendation as TypeItem,
+  CharacterSquadRecommendations as Type,
+} from "@/types/character-recommendations";
 import type { SquadRecommendationsProps } from "./types";
-import { CharacterSquadRecommendationsClass } from "@/features/characters-recommendations/classes";
+import { CharacterSquadRecommendations as Class } from "@/classes/character-recommendations";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CharacterBadge from "../badges/character-badge";
 import ElementCharacterBadge from "@/features/elements/element-character-badge";
 
-function SquadRecommendationsItem({ item }: { item: CharacterSquadItemRecommendation }) {
+function SquadRecommendationsItem({ item }: { item: TypeItem }) {
   switch (item.type) {
     case "character": {
       return <CharacterBadge characterId={item.id} />;
@@ -20,7 +20,7 @@ function SquadRecommendationsItem({ item }: { item: CharacterSquadItemRecommenda
   }
 }
 
-function SquadRecommendationsTable({ recommendations }: { recommendations: CharacterSquadRecommendations }) {
+function SquadRecommendationsTable({ recommendations }: { recommendations: Type }) {
   return (
     <Table>
       <TableBody>
@@ -78,7 +78,7 @@ function SquadRecommendationsTable({ recommendations }: { recommendations: Chara
 }
 
 export default function SquadRecommendations({ recommendations }: SquadRecommendationsProps) {
-  if (recommendations instanceof CharacterSquadRecommendationsClass) {
+  if (recommendations instanceof Class) {
     return (
       <SquadRecommendationsTable recommendations={recommendations} />
     );
