@@ -14,6 +14,7 @@ import { selectArtifactSlotById } from "@/features/artifact-slots/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
 import Paths from "@/constants/paths";
+import { useEffect, useState } from "react";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {
@@ -29,6 +30,11 @@ export function loader({ params }: { params: Record<string, string | undefined> 
 
 export default function ArtifactSet() {
   const { artifactSet, artifactSetRecommendations } = useLoaderData<ReturnType<typeof loader>>();
+  const [backgroundClass, setBackgroundClass] = useState<string | undefined>();
+
+  useEffect(() => {
+    setBackgroundClass(backgroundClassByRarity(...artifactSet.rarities));
+  }, [artifactSet]);
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">
@@ -54,7 +60,7 @@ export default function ArtifactSet() {
       <div className="flex gap-x-3">
         <img
           alt={artifactSet.name}
-          className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClassByRarity(...artifactSet.rarities))}
+          className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClass)}
           src={artifactSet.image_src}
         />
         <div className="space-y-1">
@@ -113,7 +119,7 @@ export default function ArtifactSet() {
                       <TableCell className="p-2 w-16 text-pretty whitespace-normal">
                         <img
                           alt={artifactSetSlot.name}
-                          className="size-12 bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl"
+                          className={cn("size-12 bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl", backgroundClass)}
                           src={artifactSetSlot.image_src}
                         />
                       </TableCell>

@@ -426,15 +426,15 @@ export default {
     5,
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
-    undefined,
-  ]).setName("Кирилл Чудомирович Флинс"),
+    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+  ]).setName("Кирилл Чудомирович Флинс").setSignatureWeaponId(WeaponIds.BloodsoakedRuins),
   [CharacterIds.Lauma]: Class.init([
     CharacterIds.Lauma,
     "Лаума",
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Dendro,
-    undefined,
+    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support],
   ]).setSignatureWeaponId(WeaponIds.NightweaversLookingGlass),
   [CharacterIds.Layla]: Class.init([
     CharacterIds.Layla,

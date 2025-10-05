@@ -29,6 +29,11 @@ export default {
     "Обветшалый театр",
     [ArtifactSetIds.FragmentOfHarmonicWhimsy],
   ]),
+  [DungeonIds.FrostladenMachinery]: Class.init([
+    DungeonIds.FrostladenMachinery,
+    "Покрытая инеем машинерия",
+    [ArtifactSetIds.NightOfTheSkysUnveiling, ArtifactSetIds.SilkenMoonsSerenade],
+  ]),
   [DungeonIds.HiddenPalaceOfZhouFormula]: Class.init([
     DungeonIds.HiddenPalaceOfZhouFormula,
     "Скрытый дворец Уван",

@@ -21,6 +21,7 @@ export const WeaponIds = {
   /* Черногорская бритва                   */ BlackcliffSlasher: "blackcliff_slasher",
   /* Черногорский боевой лук               */ BlackcliffWarbow: "blackcliff_warbow",
   /* Фонарь чёрной сердцевины              */ BlackmarrowLantern: "blackmarrow_lantern",
+  /* Окровавленные руины                   */ BloodsoakedRuins: "bloodsoaked_ruins",
   /* Меч драконьей крови                   */ BloodtaintedGreatsword: "bloodtainted_greatsword",
   /* Бедствие Эшу                          */ CalamityOfEshu: "calamity_of_eshu",
   /* Усмиритель бед                        */ CalamityQueller: "calamity_queller",

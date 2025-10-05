@@ -7,6 +7,7 @@ import type {
   CharacterRecommendations as Type,
   CharacterSquadCharacterRecommendation as TypeSquadCharacter,
   CharacterSquadElementRecommendation as TypeSquadElement,
+  CharacterSquadOtherRecommendation as TypeSquadOther,
   CharacterSquadRecommendations as TypeSquads,
   CharacterTalentLevelingRecommendation as TypeTalentLeveling,
   CharacterWeaponRecommendation as TypeWeapon,
@@ -266,6 +267,15 @@ export class CharacterSquadElementRecommendation implements TypeSquadElement {
 
   constructor(id: TypeSquadElement["id"]) {
     this.id = id;
+  }
+}
+
+export class CharacterSquadOtherRecommendation implements TypeSquadOther {
+  readonly type: TypeSquadOther["type"] = "other";
+  readonly title: TypeSquadOther["title"];
+
+  constructor(title: TypeSquadOther["title"]) {
+    this.title = title;
   }
 }
 

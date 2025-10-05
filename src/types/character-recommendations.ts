@@ -47,8 +47,8 @@ export interface CharacterRecommendations {
   first_constellation_or_signature_weapon?: string;
   key_constellations?: (1 | 2 | 3 | 4 | 5 | 6)[];
   reference_point?: CharacterReferencePointRecommendations | Record<string, CharacterReferencePointRecommendations>;
-  required_level?: 80 | 90;
-  rotation?: string | Record<string, string>;
+  required_level?: string | number;
+  rotation?: string | Record<string, string | string[]>;
   squads?: CharacterSquadRecommendations | Record<string, CharacterSquadRecommendations>;
   talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
   video_source_ids?: VideoSourceId[];
@@ -63,6 +63,11 @@ export interface CharacterSquadCharacterRecommendation {
 export interface CharacterSquadElementRecommendation {
   type: "element";
   id: ElementId;
+}
+
+export interface CharacterSquadOtherRecommendation {
+  type: "other";
+  title: string;
 }
 
 export interface CharacterSquadRecommendations {
@@ -84,5 +89,4 @@ export interface CharacterWeaponRecommendation {
 }
 
 export type CharacterReferencePointRecommendations = [string, string][];
-export type CharacterSquadItemRecommendation
-  = CharacterSquadCharacterRecommendation | CharacterSquadElementRecommendation;
+export type CharacterSquadItemRecommendation = (CharacterSquadCharacterRecommendation | CharacterSquadElementRecommendation | CharacterSquadOtherRecommendation);

@@ -13,7 +13,7 @@ import VideoSources from "../video-sources";
 export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
   const showAccordion = recommendations.characters !== undefined || recommendations.preferred_stats !== undefined || recommendations.video_source_ids !== undefined;
 
-  return (
+  return showAccordion && (
     <Collapsible className="space-y-2 md:space-y-4" defaultOpen>
       <CollapsibleTrigger asChild>
         <Button className="flex justify-between w-full [&[data-state=open]>svg]:rotate-180">
