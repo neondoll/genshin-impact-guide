@@ -14,7 +14,7 @@ export default new CharacterRecommendations(CharacterIds.Dehya)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.BestWeaponsForEveryCharacter])
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.BeaconOfTheReedSea).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusGreatsword).setRefinement(5),

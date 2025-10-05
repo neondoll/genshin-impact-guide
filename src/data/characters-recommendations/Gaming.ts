@@ -4,7 +4,7 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Gaming)
-  .setVideoSourceIds([VideoSourceIds.BestWeaponsForEveryCharacter])
+  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.SerpentSpine).setIsBetter().setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.RedhornStonethresher).setRefinement(1),
