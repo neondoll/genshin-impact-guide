@@ -14,5 +14,5 @@ export default new CharacterRecommendations(CharacterIds.Lyney)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "По необходимости\n(10)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.BestWeaponsForEveryCharacter])
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([new CharacterWeaponRecommendation(WeaponIds.TheFirstGreatMagic).setIsBetter().setRefinement(1)]);

@@ -52,7 +52,7 @@ export default new CharacterRecommendations(CharacterIds.Nahida)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.BestWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
     VideoSourceIds.GuideToNahida,
   ])

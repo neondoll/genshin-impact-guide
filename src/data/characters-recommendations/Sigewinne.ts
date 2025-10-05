@@ -4,7 +4,7 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Sigewinne)
-  .setVideoSourceIds([VideoSourceIds.BestWeaponsForEveryCharacter])
+  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.SilvershowerHeartstrings).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setRefinement(5),

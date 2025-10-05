@@ -40,7 +40,7 @@ export default new CharacterRecommendations(CharacterIds.Xilonen)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.BestWeaponsForEveryCharacter])
+  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.PeakPatrolSong).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setRefinement(5),

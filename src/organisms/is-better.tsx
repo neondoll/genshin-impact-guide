@@ -1,18 +1,14 @@
-import { publicImageSrc } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import BestChoiceCommercialSymbolSvgrepoCom from "@/components/icons/best-choice-commercial-symbol-svgrepo-com";
 
-export default function IsBetter({ value }: { value: boolean }) {
+export default function IsBetter({ value }: { value: boolean | string }) {
   return value && (
     <Tooltip>
       <TooltipTrigger asChild>
-        <img
-          alt="👍"
-          className="object-contain object-center size-12 rounded-full"
-          src={publicImageSrc("better-logo-128x128.png")}
-        />
+        <BestChoiceCommercialSymbolSvgrepoCom className="size-12 rounded-full fill-current" />
       </TooltipTrigger>
       <TooltipContent>
-        <p>Является лучшим выбором</p>
+        <p>{typeof value === "string" ? value : "Является лучшим выбором"}</p>
       </TooltipContent>
     </Tooltip>
   );

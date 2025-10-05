@@ -56,7 +56,7 @@ export default new CharacterRecommendations(CharacterIds.Furina)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(10)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.BestWeaponsForEveryCharacter])
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons({
     "Без реакций - 120% ВЭ+": [
       new CharacterWeaponRecommendation(WeaponIds.SplendorOfTranquilWaters).setIsBetter().setPercent(1.3648),

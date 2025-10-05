@@ -14,7 +14,7 @@ export default new CharacterRecommendations(CharacterIds.YunJin)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Не качаем\n(1)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.BestWeaponsForEveryCharacter])
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.FootprintOfTheRainbow).setIsBetter().setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setRefinement(5),

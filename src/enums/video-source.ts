@@ -7,8 +7,6 @@ export const VideoSourceIds = {
   AllAboutAllTalents: "all_about_all_talents",
   /* Анимекул: Анализ ВСЕГО Крафтового Оружия | Тир-лист полезности [Genshin Impact] */
   AnalysisOfAllCraftedWeapons: "analysis_of_all_crafted_weapons",
-  /* Miron MinMax: Лучшее Оружие для Каждого Персонажа */
-  BestWeaponsForEveryCharacter: "best_weapons_for_every_character",
   /* Miron MinMax: С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей */
   FirstConstellationOrSignatureWeapon: "first_constellation_or_signature_weapon",
   /* Miron MinMax: Подробный и Актуальный | Гайд на Часку в 5.8 */
@@ -47,4 +45,14 @@ export const VideoSourceIds = {
   TheBestAndWorstPolearms: "the_best_and_worst_polearms",
   /* Miron MinMax: Лучшие и Худшие Одноручные Мечи | Тир-лист (2025) */
   TheBestAndWorstSwords: "the_best_and_worst_swords",
+  /* Miron MinMax: Лучшее Доступное Оружия для Каждого Персонажа */
+  TheBestAvailableWeaponsForEveryCharacter: "the_best_available_weapons_for_every_character",
+  /* Miron MinMax: Лучшее Оружие для Каждого Персонажа */
+  TheBestWeaponsForEveryCharacter: "the_best_weapons_for_every_character",
+  /* Miron MinMax: КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.1 feat.@AnimeCool_Genshin */
+  WhoNeedsLevelingPart1: "who_needs_leveling_part_1",
+  /* Miron MinMax: КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.2 feat.@AnimeCool_Genshin */
+  WhoNeedsLevelingPart2: "who_needs_leveling_part_2",
+  /* Miron MinMax: Приросты от 95 и 100 лвл | Кому качать 100 уровень? */
+  WhoShouldLevel100: "who_should_level_100",
 } as const;

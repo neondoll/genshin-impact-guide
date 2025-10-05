@@ -29,7 +29,7 @@ export default new CharacterRecommendations(CharacterIds.Ganyu)
   })
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.BestWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
   ])
   .setWeapons([

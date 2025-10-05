@@ -55,7 +55,7 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "По необходимости\n(6 | 8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6 | 8)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.BestWeaponsForEveryCharacter])
+  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons({
     "Гиперкери | Прожарка | отр. Шеврёз": [
       new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter().setPercent(1.316),

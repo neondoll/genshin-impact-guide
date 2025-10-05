@@ -17,7 +17,7 @@ export default new CharacterRecommendations(CharacterIds.KaedeharaKazuha)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.BestWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
   ])
   .setWeapons([

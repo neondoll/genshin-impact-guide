@@ -4,5 +4,5 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Mualani)
-  .setVideoSourceIds([VideoSourceIds.BestWeaponsForEveryCharacter, VideoSourceIds.GuideToMualani])
+  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter, VideoSourceIds.GuideToMualani])
   .setWeapons([new CharacterWeaponRecommendation(WeaponIds.SurfsUp).setIsBetter().setRefinement(1)]);

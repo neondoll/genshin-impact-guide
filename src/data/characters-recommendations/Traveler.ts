@@ -16,7 +16,7 @@ import { StatIds } from "@/enums/stat";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
-const TravelerRecommendationsVideoSourceIds = [VideoSourceIds.BestWeaponsForEveryCharacter];
+const TravelerRecommendationsVideoSourceIds = [VideoSourceIds.TheBestWeaponsForEveryCharacter];
 const TravelerRecommendationsWeapons = [
   new ClassWeapon(WeaponIds.FavoniusSword).setIsBetter().setRefinement(5),
   new ClassWeapon(WeaponIds.SacrificialSword).setIsBetter().setRefinement(5),

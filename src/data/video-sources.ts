@@ -18,11 +18,6 @@ export default {
     "Анимекул: Анализ ВСЕГО Крафтового Оружия | Тир-лист полезности [Genshin Impact]",
     new Date("2025-07-16"),
   ]).setYoutubeUrl("https://youtu.be/CU-BxsNF-qw"),
-  [VideoSourceIds.BestWeaponsForEveryCharacter]: Class.init([
-    VideoSourceIds.BestWeaponsForEveryCharacter,
-    "Miron MinMax: Лучшее Оружие для Каждого Персонажа",
-    new Date("2024-11-03"),
-  ]).setVkUrl("https://vk.com/video-227044935_456239166").setYoutubeUrl("https://youtu.be/cjatyGw0EO0"),
   [VideoSourceIds.FirstConstellationOrSignatureWeapon]: Class.init([
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
     "Miron MinMax: С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей",
@@ -118,4 +113,29 @@ export default {
     "Miron MinMax: Лучшие и Худшие Одноручные Мечи | Тир-лист (2025)",
     new Date("2025-02-23"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239200").setYoutubeUrl("https://youtu.be/SjMv8n07CrM"),
+  [VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter]: Class.init([
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    "Miron MinMax: Лучшее Доступное Оружия для Каждого Персонажа",
+    new Date("2024-11-10"),
+  ]).setVkUrl("https://vk.com/video-227044935_456239169").setYoutubeUrl("https://youtu.be/zVspDJZPa4Y"), /* TODO: Посмотреть */
+  [VideoSourceIds.TheBestWeaponsForEveryCharacter]: Class.init([
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+    "Miron MinMax: Лучшее Оружие для Каждого Персонажа",
+    new Date("2024-11-03"),
+  ]).setVkUrl("https://vk.com/video-227044935_456239166").setYoutubeUrl("https://youtu.be/cjatyGw0EO0"),
+  [VideoSourceIds.WhoNeedsLevelingPart1]: Class.init([
+    VideoSourceIds.WhoNeedsLevelingPart1,
+    "Miron MinMax: КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.1 feat.@AnimeCool_Genshin",
+    new Date("2023-09-23"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239108").setYoutubeUrl("https://youtu.be/lhEME9s3HO0?si=qq9FUJwH0JLSTC-H"), /* TODO: Посмотреть */
+  [VideoSourceIds.WhoNeedsLevelingPart2]: Class.init([
+    VideoSourceIds.WhoNeedsLevelingPart2,
+    "Miron MinMax: КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.2 feat.@AnimeCool_Genshin",
+    new Date("2023-09-25"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239106").setYoutubeUrl("https://youtu.be/Yz95Iw1q-es"), /* TODO: Посмотреть */
+  [VideoSourceIds.WhoShouldLevel100]: Class.init([
+    VideoSourceIds.WhoShouldLevel100,
+    "Miron MinMax: Приросты от 95 и 100 лвл | Кому качать 100 уровень?",
+    new Date("2025-09-18"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239256").setYoutubeUrl("https://youtu.be/W7KScTSvDiU"), /* TODO: Пересмотреть, не нашла ничего достойного добавления */
 } as Record<Type["id"], Type>;

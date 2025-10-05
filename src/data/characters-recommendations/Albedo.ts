@@ -16,7 +16,7 @@ export default new CharacterRecommendations(CharacterIds.Albedo)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.BestWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
   ])
   .setWeapons([

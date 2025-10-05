@@ -17,7 +17,7 @@ export default new CharacterRecommendations(CharacterIds.KamisatoAyaka)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.BestWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
   ])
   .setWeapons([
