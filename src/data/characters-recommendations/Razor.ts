@@ -4,8 +4,8 @@ import {
   CharacterTalentLevelingRecommendation,
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { TalentIds } from "@/enums/talent";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Razor)
@@ -14,10 +14,7 @@ export default new CharacterRecommendations(CharacterIds.Razor)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Не качаем\n(1)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Не качаем\n(1)"]),
   ])
-  .setVideoSources([
-    CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-    CharacterRecommendationsVideoSources.AllAboutAllTalents,
-  ])
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.BestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.BloodtaintedGreatsword).setIsBetter().setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.Rainslasher).setRefinement(5),

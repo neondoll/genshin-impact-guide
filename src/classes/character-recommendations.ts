@@ -134,17 +134,17 @@ export class CharacterArtifactStatRecommendation implements TypeArtifactStat {
 }
 
 export class CharacterRecommendations implements Type {
-  private _artifacts: Type["artifacts"];
+  protected _artifacts: Type["artifacts"];
   readonly character_id: Type["character_id"];
-  private _first_constellation_or_signature_weapon: Type["first_constellation_or_signature_weapon"];
-  private _key_constellations: Type["key_constellations"];
-  private _reference_point: Type["reference_point"];
-  private _required_level: Type["required_level"];
-  private _rotation: Type["rotation"];
-  private _squads: Type["squads"];
-  private _talent_leveling: Type["talent_leveling"];
-  private _video_sources: Type["video_sources"];
-  private _weapons: Type["weapons"];
+  protected _first_constellation_or_signature_weapon: Type["first_constellation_or_signature_weapon"];
+  protected _key_constellations: Type["key_constellations"];
+  protected _reference_point: Type["reference_point"];
+  protected _required_level: Type["required_level"];
+  protected _rotation: Type["rotation"];
+  protected _squads: Type["squads"];
+  protected _talent_leveling: Type["talent_leveling"];
+  protected _video_source_ids: Type["video_source_ids"];
+  protected _weapons: Type["weapons"];
 
   constructor(characterId: Type["character_id"]) {
     this.character_id = characterId;
@@ -182,8 +182,8 @@ export class CharacterRecommendations implements Type {
     return this._talent_leveling;
   }
 
-  get video_sources() {
-    return this._video_sources;
+  get video_source_ids() {
+    return this._video_source_ids;
   }
 
   get weapons() {
@@ -238,8 +238,8 @@ export class CharacterRecommendations implements Type {
     return this;
   }
 
-  setVideoSources(val: NonNullable<Type["video_sources"]>) {
-    this._video_sources = val;
+  setVideoSourceIds(val: NonNullable<Type["video_source_ids"]>) {
+    this._video_source_ids = val;
 
     return this;
   }

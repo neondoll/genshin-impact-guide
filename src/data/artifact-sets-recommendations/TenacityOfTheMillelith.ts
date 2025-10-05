@@ -1,22 +1,23 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
 import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSetRecommendationsVideoSources } from "@/enums/artifact-set-recommendations";
 import { ArtifactSlotIds } from "@/enums/artifact-slot";
 import { CharacterIds } from "@/enums/character";
 import { StatIds } from "@/enums/stat";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
+import { VideoSourceIds } from "@/enums/video-source";
 
-export default ArtifactSetRecommendations.init([ArtifactSetIds.TenacityOfTheMillelith, [
-  new ArtifactSetCharacterRecommendation(CharacterIds.Dehya),
-  new ArtifactSetCharacterRecommendation(CharacterIds.KukiShinobu),
-  new ArtifactSetCharacterRecommendation(CharacterIds.Mona).setIsBetter(),
-  new ArtifactSetCharacterRecommendation(CharacterIds.SangonomiyaKokomi).setIsBetter(),
-  new ArtifactSetCharacterRecommendation(CharacterIds.Zhongli).setIsBetter(),
-]])
+export default new ArtifactSetRecommendations(ArtifactSetIds.TenacityOfTheMillelith)
+  .setCharacters([
+    new ArtifactSetCharacterRecommendation(CharacterIds.Dehya),
+    new ArtifactSetCharacterRecommendation(CharacterIds.KukiShinobu),
+    new ArtifactSetCharacterRecommendation(CharacterIds.Mona).setIsBetter(),
+    new ArtifactSetCharacterRecommendation(CharacterIds.SangonomiyaKokomi).setIsBetter(),
+    new ArtifactSetCharacterRecommendation(CharacterIds.Zhongli).setIsBetter(),
+  ])
   .setPreferredStats({
     [ArtifactSlotIds.Sands]: [StatIds.EnergyRecharge, StatIds.HpPercentage],
     [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.HpPercentage],
     [ArtifactSlotIds.Circlet]: [...StatsCrit, StatIds.HpPercentage],
     additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.EnergyRecharge, StatIds.HpPercentage],
   })
-  .setVideoSources([ArtifactSetRecommendationsVideoSources.AllAboutAll]);
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

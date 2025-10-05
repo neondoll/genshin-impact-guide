@@ -2,6 +2,5 @@ import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "
 import { ArtifactSetIds } from "@/enums/artifact-set";
 import { CharacterIds } from "@/enums/character";
 
-export default ArtifactSetRecommendations.init([ArtifactSetIds.FinaleOfTheDeepGalleries, [
-  new ArtifactSetCharacterRecommendation(CharacterIds.Skirk),
-]]);
+export default new ArtifactSetRecommendations(ArtifactSetIds.FinaleOfTheDeepGalleries)
+  .setCharacters([new ArtifactSetCharacterRecommendation(CharacterIds.Skirk)]);

@@ -20,6 +20,10 @@ export function loader({ params }: { params: Record<string, string | undefined> 
   const weapon = selectWeaponById(params.weaponId as WeaponId);
   const weaponType = selectWeaponTypeById(weapon.type_id);
 
+  if (weapon.rarity) {
+    window.document.documentElement.classList.add(`rarity-${weapon.rarity}`);
+  }
+
   return { weapon, weaponType };
 }
 

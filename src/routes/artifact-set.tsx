@@ -20,6 +20,10 @@ export function loader({ params }: { params: Record<string, string | undefined> 
   const artifactSet = selectArtifactSetById(params.artifactSetId as ArtifactSetId);
   const artifactSetRecommendations = selectArtifactSetRecommendationsById(artifactSet.id);
 
+  if (artifactSet.rarities.length > 0) {
+    window.document.documentElement.classList.add(`rarity-${Math.max(...artifactSet.rarities)}`);
+  }
+
   return { artifactSet, artifactSetRecommendations };
 }
 

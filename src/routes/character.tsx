@@ -26,6 +26,10 @@ export function loader({ params }: { params: Record<string, string | undefined> 
   const characterRecommendations = selectCharacterRecommendationsById(character.id);
   const characterWeaponType = character.weapon_type_id ? selectWeaponTypeById(character.weapon_type_id) : undefined;
 
+  if (character.rarity) {
+    window.document.documentElement.classList.add(`rarity-${character.rarity}`);
+  }
+
   return { character, characterElement, characterRecommendations, characterWeaponType };
 }
 

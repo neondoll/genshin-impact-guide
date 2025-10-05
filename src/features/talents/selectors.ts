@@ -1,5 +1,5 @@
-import type { TalentId } from "@/types/talent";
 import type { RootState } from "@/app/store";
+import type { TalentId } from "@/types/talent";
 import { store } from "@/app/store";
 import { talentsAdapter } from "./slice";
 

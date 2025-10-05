@@ -9,12 +9,11 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-// import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { elementalReactionById } from "@/features/elemental-reactions/help";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";
 import { StatIds } from "@/enums/stat";
 import { TalentIds } from "@/enums/talent";
-// import { VideoSource } from "@/classes/video-source";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Nahida)
@@ -51,11 +50,11 @@ export default new CharacterRecommendations(CharacterIds.Nahida)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6-8)"]),
   ])
-  .setVideoSources([
-    // CharacterRecommendationsVideoSources.FirstConstellationOrSignatureWeapon,
-    // CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-    // new VideoSource("Miron MinMax: Актуальный и Подробный | Гайд на Нахиду в 5.1").setVkUrl("https://vkvideo.ru/video-227044935_456239163"),
-    // CharacterRecommendationsVideoSources.AllAboutAllTalents,
+  .setVideoSourceIds([
+    VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.BestWeaponsForEveryCharacter,
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.GuideToNahida,
   ])
   .setWeapons({
     [elementalReactionById(ElementalReactionIds.Hyperbloom)]: [

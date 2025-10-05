@@ -9,9 +9,9 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { StatIds } from "@/enums/stat";
 import { TalentIds } from "@/enums/talent";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Xiangling)
@@ -46,10 +46,7 @@ export default new CharacterRecommendations(CharacterIds.Xiangling)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
   ])
-  .setVideoSources([
-    CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-    CharacterRecommendationsVideoSources.AllAboutAllTalents,
-  ])
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.BestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setRefinement(1),

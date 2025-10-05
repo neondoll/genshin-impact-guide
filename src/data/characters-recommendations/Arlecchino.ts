@@ -9,11 +9,11 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { elementalReactionById } from "@/features/elemental-reactions/help";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";
 import { StatIds } from "@/enums/stat";
 import { TalentIds } from "@/enums/talent";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Arlecchino)
@@ -55,7 +55,7 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "По необходимости\n(6 | 8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6 | 8)"]),
   ])
-  .setVideoSources([CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter])
+  .setVideoSourceIds([VideoSourceIds.BestWeaponsForEveryCharacter])
   .setWeapons({
     "Гиперкери | Прожарка | отр. Шеврёз": [
       new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter().setPercent(1.316),

@@ -1,5 +1,5 @@
-import type { WeaponId } from "@/types/weapon";
 import type { RootState } from "@/app/store";
+import type { WeaponId } from "@/types/weapon";
 import { store } from "@/app/store";
 import { weaponsAdapter } from "./slice";
 

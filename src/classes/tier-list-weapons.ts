@@ -3,12 +3,12 @@ import type { TierListWeapons as Type, TierListWeaponsListItem as TypeListItem }
 export class TierListWeapons implements Type {
   readonly title: Type["title"];
   readonly list: Type["list"];
-  readonly video_source: Type["video_source"];
+  readonly video_source_id: Type["video_source_id"];
 
-  constructor(title: Type["title"], list: Type["list"], video_source: Type["video_source"]) {
+  constructor(title: Type["title"], list: Type["list"], videoSourceId: Type["video_source_id"]) {
     this.title = title;
     this.list = list;
-    this.video_source = video_source;
+    this.video_source_id = videoSourceId;
   }
 
   static init(params: ConstructorParameters<typeof TierListWeapons>) {

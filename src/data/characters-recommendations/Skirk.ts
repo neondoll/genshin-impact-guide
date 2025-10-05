@@ -15,7 +15,7 @@ import { CharacterIds } from "@/enums/character";
 import { ElementIds } from "@/enums/element";
 import { StatIds } from "@/enums/stat";
 import { TalentIds } from "@/enums/talent";
-// import { VideoSource } from "@/classes/video-source";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 import artifactSets from "../artifact-sets";
 import weapons from "../weapons";
@@ -123,10 +123,10 @@ export default new CharacterRecommendations(CharacterIds.Skirk)
       CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
     ],
   })
-  .setVideoSources([
-    // new VideoSource("Анимекул: Скирк – заложник Эскофье или имба? | Подробный гайд на Скирк").setYoutubeUrl("https://youtu.be/5ZoCR8bsSYM"),
-    // new VideoSource("Miron MinMax: Скирк - Сильнейший Крио (но есть нюанс)").setVkUrl("https://vkvideo.ru/video-227044935_456239232").setYoutubeUrl("https://youtu.be/jpAMI38M-LI"),
-    // new VideoSource("xPandaChannelx: Скирк Гайд | Ротации/Шмотки/Группы/F2P | Skirk Как Играть Геншин Импакт 5.7").setYoutubeUrl("https://youtu.be/Rr26SHvbmXE"),
+  .setVideoSourceIds([
+    VideoSourceIds.GuideToSkirk_AnimeCool,
+    VideoSourceIds.GuideToSkirk_MironMinMax,
+    VideoSourceIds.GuideToSkirk_xPandaChannelx,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.Azurelight).setPercent(1.4256),

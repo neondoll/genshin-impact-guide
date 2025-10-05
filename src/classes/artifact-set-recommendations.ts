@@ -35,21 +35,30 @@ export class ArtifactSetCharacterRecommendation implements TypeCharacter {
 
 export class ArtifactSetRecommendations implements Type {
   readonly artifact_set_id: Type["artifact_set_id"];
-  readonly characters: Type["characters"];
+  protected _characters: Type["characters"];
   protected _preferred_stats: Type["preferred_stats"];
-  protected _video_sources: Type["video_sources"];
+  protected _video_source_ids: Type["video_source_ids"];
 
-  constructor(artifactSetId: Type["artifact_set_id"], characters: Type["characters"]) {
+  constructor(artifactSetId: Type["artifact_set_id"]) {
     this.artifact_set_id = artifactSetId;
-    this.characters = characters;
+  }
+
+  get characters() {
+    return this._characters;
   }
 
   get preferred_stats() {
     return this._preferred_stats;
   }
 
-  get video_sources() {
-    return this._video_sources;
+  get video_source_ids() {
+    return this._video_source_ids;
+  }
+
+  setCharacters(val: NonNullable<Type["characters"]>) {
+    this._characters = val;
+
+    return this;
   }
 
   setPreferredStats(val: NonNullable<Type["preferred_stats"]>) {
@@ -58,8 +67,8 @@ export class ArtifactSetRecommendations implements Type {
     return this;
   }
 
-  setVideoSources(val: NonNullable<Type["video_sources"]>) {
-    this._video_sources = val;
+  setVideoSourceIds(val: NonNullable<Type["video_source_ids"]>) {
+    this._video_source_ids = val;
 
     return this;
   }

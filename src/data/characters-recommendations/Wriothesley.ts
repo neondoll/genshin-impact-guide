@@ -4,8 +4,8 @@ import {
   CharacterTalentLevelingRecommendation,
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { TalentIds } from "@/enums/talent";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Wriothesley)
@@ -14,8 +14,5 @@ export default new CharacterRecommendations(CharacterIds.Wriothesley)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "По необходимости\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
-  .setVideoSources([
-    CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-    CharacterRecommendationsVideoSources.AllAboutAllTalents,
-  ])
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.BestWeaponsForEveryCharacter])
   .setWeapons([new CharacterWeaponRecommendation(WeaponIds.CashflowSupervision).setIsBetter().setRefinement(1)]);

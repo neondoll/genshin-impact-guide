@@ -101,6 +101,14 @@ export default {
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
   ]).setArkhe("🟡"),
+  [CharacterIds.Chasca]: Class.init([
+    CharacterIds.Chasca,
+    "Часка",
+    5,
+    WeaponTypeIds.Bow,
+    ElementIds.Anemo,
+    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+  ]),
   [CharacterIds.Chevreuse]: Class.init([
     CharacterIds.Chevreuse,
     "Шеврёз",

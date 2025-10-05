@@ -12,6 +12,18 @@ export default function Root() {
   const [isRoot, setIsRoot] = useState(false);
 
   useEffect(() => {
+    const artifactSetRegExp = new RegExp("^" + Paths.ArtifactSet.to("\\w+") + "$");
+    const characterRegExp = new RegExp("^" + Paths.Character.to("\\w+") + "$");
+    const resourceRegExp = new RegExp("^" + Paths.Resource.to("\\w+") + "$");
+    const weaponRegExp = new RegExp("^" + Paths.Weapon.to("\\w+") + "$");
+
+    if (
+      !artifactSetRegExp.test(location.pathname) && !characterRegExp.test(location.pathname)
+      && !resourceRegExp.test(location.pathname) && !weaponRegExp.test(location.pathname)
+    ) {
+      window.document.documentElement.classList.remove("rarity-1", "rarity-2", "rarity-3", "rarity-4", "rarity-5");
+    }
+
     setIsRoot(location.pathname === Paths.Root.to);
   }, [location]);
 

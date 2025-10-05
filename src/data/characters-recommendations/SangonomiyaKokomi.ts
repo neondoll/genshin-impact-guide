@@ -4,8 +4,8 @@ import {
   CharacterTalentLevelingRecommendation,
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { TalentIds } from "@/enums/talent";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.SangonomiyaKokomi)
@@ -15,10 +15,10 @@ export default new CharacterRecommendations(CharacterIds.SangonomiyaKokomi)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
-  .setVideoSources([
-    CharacterRecommendationsVideoSources.FirstConstellationOrSignatureWeapon,
-    CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-    CharacterRecommendationsVideoSources.AllAboutAllTalents,
+  .setVideoSourceIds([
+    VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.BestWeaponsForEveryCharacter,
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter().setRefinement(5),

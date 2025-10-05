@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { selectVideoSourcesByIds } from "@/features/video-sources/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactRecommendations from "./artifact-recommendations";
 import ReferencePointRecommendations from "./reference-point-recommendations";
@@ -16,10 +17,10 @@ import VideoSources from "../video-sources";
 import WeaponRecommendations from "./weapon-recommendations";
 
 export default function CharacterRecommendations({ character, recommendations }: CharacterRecommendationsProps) {
-  const showAccordion = recommendations.artifacts !== undefined || recommendations.reference_point !== undefined || recommendations.rotation !== undefined || recommendations.squads !== undefined || recommendations.talent_leveling !== undefined || recommendations.video_sources !== undefined || recommendations.weapons !== undefined;
+  const showAccordion = recommendations.artifacts !== undefined || recommendations.reference_point !== undefined || recommendations.rotation !== undefined || recommendations.squads !== undefined || recommendations.talent_leveling !== undefined || recommendations.video_source_ids !== undefined || recommendations.weapons !== undefined;
   const showTable = recommendations.first_constellation_or_signature_weapon !== undefined || recommendations.key_constellations !== undefined || recommendations.required_level !== undefined;
 
-  return (showAccordion && showTable) && (
+  return (showAccordion || showTable) && (
     <Collapsible className="space-y-2 md:space-y-4" defaultOpen>
       <CollapsibleTrigger asChild>
         <Button className="flex justify-between w-full [&[data-state=open]>svg]:rotate-180">
@@ -118,13 +119,13 @@ export default function CharacterRecommendations({ character, recommendations }:
                   </AccordionContent>
                 </AccordionItem>
               )}
-              {recommendations.video_sources !== undefined && (
+              {recommendations.video_source_ids !== undefined && (
                 <AccordionItem value="video_sources">
                   <AccordionTrigger className="px-6">
                     Видео-источники
                   </AccordionTrigger>
                   <AccordionContent className="px-6">
-                    <VideoSources items={recommendations.video_sources} />
+                    <VideoSources items={selectVideoSourcesByIds(recommendations.video_source_ids)} />
                   </AccordionContent>
                 </AccordionItem>
               )}

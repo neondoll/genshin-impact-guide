@@ -138,6 +138,10 @@ export function loader({ params }: { params: Record<string, string | undefined> 
     }
   }
 
+  if (resource.rarity) {
+    window.document.documentElement.classList.add(`rarity-${resource.rarity}`);
+  }
+
   return {
     foodType,
     propertyBaseDishes,

@@ -1,11 +1,11 @@
-import type { VideoSource } from "./video-source";
+import type { VideoSourceId } from "./video-source";
 import type { WeaponId } from "./weapon";
 import { TierListWeaponsTitles } from "@/enums/tier-list-weapons";
 
 export interface TierListWeapons {
   title: TierListWeaponsTitle;
   list: TierListWeaponsListItem[];
-  video_source: VideoSource;
+  video_source_id: VideoSourceId;
 }
 
 export interface TierListWeaponsListItem {

@@ -16,7 +16,7 @@ import { elementalReactionById } from "@/features/elemental-reactions/help";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";
 import { StatIds } from "@/enums/stat";
 import { TalentIds } from "@/enums/talent";
-// import { VideoSource } from "@/classes/video-source";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 import characters from "../characters";
 
@@ -126,9 +126,7 @@ export default new CharacterRecommendations(CharacterIds.Mavuika)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
   ])
-  .setVideoSources([
-    // new VideoSource("Miron MinMax: Подробный и Актуальный | Гайд на Мавуику").setVkUrl("https://vkvideo.ru/video-227044935_456239238").setYoutubeUrl("https://youtu.be/bGkCi_aBNrI"),
-  ])
+  .setVideoSourceIds([VideoSourceIds.GuideToMavuika])
   .setWeapons({
     [`${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]: [
       new CharacterWeaponRecommendation(WeaponIds.AThousandBlazingSuns).setPercent(1.3504).setRefinement(1),

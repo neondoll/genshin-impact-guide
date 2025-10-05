@@ -9,9 +9,9 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { StatIds } from "@/enums/stat";
 import { TalentIds } from "@/enums/talent";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Neuvillette)
@@ -53,10 +53,7 @@ export default new CharacterRecommendations(CharacterIds.Neuvillette)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(6 | 8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "По необходимости\n(6 | 8)"]),
   ])
-  .setVideoSources([
-    CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-    CharacterRecommendationsVideoSources.AllAboutAllTalents,
-  ])
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.BestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.TomeOfTheEternalFlow).setIsBetter().setPercent(1.000),
     new CharacterWeaponRecommendation(WeaponIds.SacrificialJade).setPercent(0.998).setRefinement(5),

@@ -11,15 +11,12 @@ import {
   CharacterWeaponRecommendation as ClassWeapon,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { ElementIds } from "@/enums/element";
 import { StatIds } from "@/enums/stat";
-// import { VideoSource } from "@/classes/video-source";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
-const TravelerRecommendationsVideoSources = [
-  CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-];
+const TravelerRecommendationsVideoSourceIds = [VideoSourceIds.BestWeaponsForEveryCharacter];
 const TravelerRecommendationsWeapons = [
   new ClassWeapon(WeaponIds.FavoniusSword).setIsBetter().setRefinement(5),
   new ClassWeapon(WeaponIds.SacrificialSword).setIsBetter().setRefinement(5),
@@ -27,19 +24,19 @@ const TravelerRecommendationsWeapons = [
 
 export default {
   [ElementIds.Anemo]: new Class(CharacterIds.TravelerAnemo)
-    .setVideoSources(TravelerRecommendationsVideoSources)
+    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
     .setWeapons(TravelerRecommendationsWeapons),
   [ElementIds.Dendro]: new Class(CharacterIds.TravelerDendro)
-    .setVideoSources(TravelerRecommendationsVideoSources)
+    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
     .setWeapons(TravelerRecommendationsWeapons),
   [ElementIds.Electro]: new Class(CharacterIds.TravelerElectro)
-    .setVideoSources(TravelerRecommendationsVideoSources)
+    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
     .setWeapons(TravelerRecommendationsWeapons),
   [ElementIds.Geo]: new Class(CharacterIds.TravelerGeo)
-    .setVideoSources(TravelerRecommendationsVideoSources)
+    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
     .setWeapons(TravelerRecommendationsWeapons),
   [ElementIds.Hydro]: new Class(CharacterIds.TravelerHydro)
-    .setVideoSources(TravelerRecommendationsVideoSources)
+    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
     .setWeapons(TravelerRecommendationsWeapons),
   [ElementIds.Pyro]: new Class(CharacterIds.TravelerPyro)
     .setArtifacts(ClassArtifacts.init([
@@ -69,9 +66,7 @@ export default {
         ],
       },
     ]))
-    .setVideoSources([
-      // new VideoSource("Зачем нужен Пиро Путешественник? | Подробный гайд на Пиро ГГ {Анимекул}").setVkUrl("https://vkvideo.ru/video-229156089_456239059"),
-    ])
+    .setVideoSourceIds([VideoSourceIds.GuideToTravelerPyro])
     .setWeapons({
       "для игры из кармана": [
         new ClassWeapon(WeaponIds.FreedomSworn),

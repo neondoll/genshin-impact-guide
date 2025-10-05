@@ -3,31 +3,45 @@ import { TierListWeapons as Class, TierListWeaponsListItem as ClassListItem } fr
 import { TierListWeaponsTitles } from "@/enums/tier-list-weapons";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
-import videoSources from "./video-sources";
 
 export default {
-  [TierListWeaponsTitles.Crafted]: Class.init([
-    TierListWeaponsTitles.Crafted,
+  [TierListWeaponsTitles.Bow]: Class.init([
+    TierListWeaponsTitles.Bow,
     [
       ClassListItem.init([
-        "Могут быть полезны", undefined, [
-          WeaponIds.EarthShaker, WeaponIds.FinaleOfTheDeep, WeaponIds.FlowingPurity, WeaponIds.FluteOfEzpitzal,
-          WeaponIds.FootprintOfTheRainbow, WeaponIds.IronSting, WeaponIds.KitainCrossSpear, WeaponIds.MappaMare,
-          WeaponIds.PrototypeAmber, WeaponIds.RightfulReward, WeaponIds.RingOfYaxche, WeaponIds.SapwoodBlade,
-          WeaponIds.SongOfStillness, WeaponIds.TidalShadow, WeaponIds.Whiteblind,
+        "S", "Лучшие", [
+          WeaponIds.AquaSimulacra, WeaponIds.ElegyForTheEnd, WeaponIds.FavoniusWarbow, WeaponIds.SkywardHarp,
         ],
       ]),
       ClassListItem.init([
-        "Трата ресурсов", undefined, [
-          WeaponIds.AmenomaKageuchi, WeaponIds.ChainBreaker, WeaponIds.CompoundBow, WeaponIds.CrescentPike,
-          WeaponIds.DragonspineSpear, WeaponIds.ForestRegalia, WeaponIds.Frostbearer, WeaponIds.FruitOfFulfillment,
-          WeaponIds.HakushinRing, WeaponIds.Hamayumi, WeaponIds.KatsuragikiriNagamasa, WeaponIds.KingsSquire,
-          WeaponIds.Moonpiercer, WeaponIds.PrototypeArchaic, WeaponIds.PrototypeCrescent, WeaponIds.PrototypeRancour,
-          WeaponIds.PrototypeStarglitter, WeaponIds.SnowTombedStarsilver,
+        "A", "Отличные", [
+          WeaponIds.AstralVulturesCrimsonPlumage, WeaponIds.HuntersPath, WeaponIds.PolarStar,
+          WeaponIds.TheFirstGreatMagic, WeaponIds.ThunderingPulse,
+        ],
+      ]),
+      ClassListItem.init([
+        "B", "Хорошие", [
+          WeaponIds.AlleyHunter, WeaponIds.AmosBow, WeaponIds.BlackcliffWarbow, WeaponIds.ChainBreaker,
+          WeaponIds.FlowerWreathedFeathers, WeaponIds.RangeGauge, WeaponIds.SacrificialBow,
+          WeaponIds.ScionOfTheBlazingSun, WeaponIds.Slingshot, WeaponIds.SongOfStillness, WeaponIds.TheStringless,
+        ],
+      ]),
+      ClassListItem.init([
+        "C", "Ситуативные", [
+          WeaponIds.FadingTwilight, WeaponIds.Hamayumi, WeaponIds.IbisPiercer, WeaponIds.MouunsMoon,
+          WeaponIds.PrototypeCrescent, WeaponIds.RecurveBow, WeaponIds.Rust, WeaponIds.SilvershowerHeartstrings,
+          WeaponIds.TheViridescentHunt, WeaponIds.WindblumeOde,
+        ],
+      ]),
+      ClassListItem.init([
+        "D", "Плохие", [
+          WeaponIds.Cloudforged, WeaponIds.CompoundBow, WeaponIds.EndOfTheLine, WeaponIds.KingsSquire,
+          WeaponIds.Messenger, WeaponIds.MitternachtsWaltz, WeaponIds.Predator, WeaponIds.RavenBow, WeaponIds.RoyalBow,
+          WeaponIds.SharpshootersOath,
         ],
       ]),
     ],
-    videoSources[VideoSourceIds.AnalysisOfAllCraftedWeapons],
+    VideoSourceIds.TheBestAndWorstBows,
   ]),
   [TierListWeaponsTitles.Catalyst]: Class.init([
     TierListWeaponsTitles.Catalyst,
@@ -71,82 +85,7 @@ export default {
         ],
       ]),
     ],
-    videoSources[VideoSourceIds.TheBestAndWorstCatalysts],
-  ]),
-  [TierListWeaponsTitles.Bow]: Class.init([
-    TierListWeaponsTitles.Bow,
-    [
-      ClassListItem.init([
-        "S", "Лучшие", [
-          WeaponIds.AquaSimulacra, WeaponIds.ElegyForTheEnd, WeaponIds.FavoniusWarbow, WeaponIds.SkywardHarp,
-        ],
-      ]),
-      ClassListItem.init([
-        "A", "Отличные", [
-          WeaponIds.AstralVulturesCrimsonPlumage, WeaponIds.HuntersPath, WeaponIds.PolarStar,
-          WeaponIds.TheFirstGreatMagic, WeaponIds.ThunderingPulse,
-        ],
-      ]),
-      ClassListItem.init([
-        "B", "Хорошие", [
-          WeaponIds.AlleyHunter, WeaponIds.AmosBow, WeaponIds.BlackcliffWarbow, WeaponIds.ChainBreaker,
-          WeaponIds.FlowerWreathedFeathers, WeaponIds.RangeGauge, WeaponIds.SacrificialBow,
-          WeaponIds.ScionOfTheBlazingSun, WeaponIds.Slingshot, WeaponIds.SongOfStillness, WeaponIds.TheStringless,
-        ],
-      ]),
-      ClassListItem.init([
-        "C", "Ситуативные", [
-          WeaponIds.FadingTwilight, WeaponIds.Hamayumi, WeaponIds.IbisPiercer, WeaponIds.MouunsMoon,
-          WeaponIds.PrototypeCrescent, WeaponIds.RecurveBow, WeaponIds.Rust, WeaponIds.SilvershowerHeartstrings,
-          WeaponIds.TheViridescentHunt, WeaponIds.WindblumeOde,
-        ],
-      ]),
-      ClassListItem.init([
-        "D", "Плохие", [
-          WeaponIds.Cloudforged, WeaponIds.CompoundBow, WeaponIds.EndOfTheLine, WeaponIds.KingsSquire,
-          WeaponIds.Messenger, WeaponIds.MitternachtsWaltz, WeaponIds.Predator, WeaponIds.RavenBow, WeaponIds.RoyalBow,
-          WeaponIds.SharpshootersOath,
-        ],
-      ]),
-    ],
-    videoSources[VideoSourceIds.TheBestAndWorstBows],
-  ]),
-  [TierListWeaponsTitles.Polearm]: Class.init([
-    TierListWeaponsTitles.Polearm,
-    [
-      ClassListItem.init([
-        "S", "Лучшие", [
-          WeaponIds.FavoniusLance, WeaponIds.StaffOfHoma, WeaponIds.StaffOfTheScarletSands,
-        ],
-      ]),
-      ClassListItem.init([
-        "A", "Отличные", [
-          WeaponIds.CrimsonMoonsSemblance, WeaponIds.EngulfingLightning, WeaponIds.LumidouceElegy,
-          WeaponIds.PrimordialJadeWingedSpear,
-        ],
-      ]),
-      ClassListItem.init([
-        "B", "Хорошие", [
-          WeaponIds.BalladOfTheFjords, WeaponIds.BlackcliffPole, WeaponIds.CalamityQueller, WeaponIds.Deathmatch,
-          WeaponIds.DragonsBane, WeaponIds.SkywardSpine, WeaponIds.TamayurateiNoOhanashi, WeaponIds.TheCatch,
-          WeaponIds.VortexVanquisher, WeaponIds.WavebreakersFin,
-        ],
-      ]),
-      ClassListItem.init([
-        "C", "Ситуативные", [
-          WeaponIds.BlackTassel, WeaponIds.DialoguesOfTheDesertSages, WeaponIds.FootprintOfTheRainbow,
-          WeaponIds.LithicSpear, WeaponIds.KitainCrossSpear, WeaponIds.MissiveWindspear, WeaponIds.MountainBracingBolt,
-          WeaponIds.ProspectorsDrill, WeaponIds.RightfulReward, WeaponIds.RoyalSpear, WeaponIds.WhiteTassel,
-        ],
-      ]),
-      ClassListItem.init([
-        "D", "Плохие", [
-          WeaponIds.CrescentPike, WeaponIds.DragonspineSpear, WeaponIds.Halberd, WeaponIds.Moonpiercer,
-          WeaponIds.PrototypeStarglitter,
-        ],
-      ]),
-    ],
-    videoSources[VideoSourceIds.TheBestAndWorstPolearms],
+    VideoSourceIds.TheBestAndWorstCatalysts,
   ]),
   [TierListWeaponsTitles.Claymore]: Class.init([
     TierListWeaponsTitles.Claymore,
@@ -183,7 +122,67 @@ export default {
         ],
       ]),
     ],
-    videoSources[VideoSourceIds.TheBestAndWorstClaymores],
+    VideoSourceIds.TheBestAndWorstClaymores,
+  ]),
+  [TierListWeaponsTitles.Crafted]: Class.init([
+    TierListWeaponsTitles.Crafted,
+    [
+      ClassListItem.init([
+        "Могут быть полезны", undefined, [
+          WeaponIds.EarthShaker, WeaponIds.FinaleOfTheDeep, WeaponIds.FlowingPurity, WeaponIds.FluteOfEzpitzal,
+          WeaponIds.FootprintOfTheRainbow, WeaponIds.IronSting, WeaponIds.KitainCrossSpear, WeaponIds.MappaMare,
+          WeaponIds.PrototypeAmber, WeaponIds.RightfulReward, WeaponIds.RingOfYaxche, WeaponIds.SapwoodBlade,
+          WeaponIds.SongOfStillness, WeaponIds.TidalShadow, WeaponIds.Whiteblind,
+        ],
+      ]),
+      ClassListItem.init([
+        "Трата ресурсов", undefined, [
+          WeaponIds.AmenomaKageuchi, WeaponIds.ChainBreaker, WeaponIds.CompoundBow, WeaponIds.CrescentPike,
+          WeaponIds.DragonspineSpear, WeaponIds.ForestRegalia, WeaponIds.Frostbearer, WeaponIds.FruitOfFulfillment,
+          WeaponIds.HakushinRing, WeaponIds.Hamayumi, WeaponIds.KatsuragikiriNagamasa, WeaponIds.KingsSquire,
+          WeaponIds.Moonpiercer, WeaponIds.PrototypeArchaic, WeaponIds.PrototypeCrescent, WeaponIds.PrototypeRancour,
+          WeaponIds.PrototypeStarglitter, WeaponIds.SnowTombedStarsilver,
+        ],
+      ]),
+    ],
+    VideoSourceIds.AnalysisOfAllCraftedWeapons,
+  ]),
+  [TierListWeaponsTitles.Polearm]: Class.init([
+    TierListWeaponsTitles.Polearm,
+    [
+      ClassListItem.init([
+        "S", "Лучшие", [
+          WeaponIds.FavoniusLance, WeaponIds.StaffOfHoma, WeaponIds.StaffOfTheScarletSands,
+        ],
+      ]),
+      ClassListItem.init([
+        "A", "Отличные", [
+          WeaponIds.CrimsonMoonsSemblance, WeaponIds.EngulfingLightning, WeaponIds.LumidouceElegy,
+          WeaponIds.PrimordialJadeWingedSpear,
+        ],
+      ]),
+      ClassListItem.init([
+        "B", "Хорошие", [
+          WeaponIds.BalladOfTheFjords, WeaponIds.BlackcliffPole, WeaponIds.CalamityQueller, WeaponIds.Deathmatch,
+          WeaponIds.DragonsBane, WeaponIds.SkywardSpine, WeaponIds.TamayurateiNoOhanashi, WeaponIds.TheCatch,
+          WeaponIds.VortexVanquisher, WeaponIds.WavebreakersFin,
+        ],
+      ]),
+      ClassListItem.init([
+        "C", "Ситуативные", [
+          WeaponIds.BlackTassel, WeaponIds.DialoguesOfTheDesertSages, WeaponIds.FootprintOfTheRainbow,
+          WeaponIds.LithicSpear, WeaponIds.KitainCrossSpear, WeaponIds.MissiveWindspear, WeaponIds.MountainBracingBolt,
+          WeaponIds.ProspectorsDrill, WeaponIds.RightfulReward, WeaponIds.RoyalSpear, WeaponIds.WhiteTassel,
+        ],
+      ]),
+      ClassListItem.init([
+        "D", "Плохие", [
+          WeaponIds.CrescentPike, WeaponIds.DragonspineSpear, WeaponIds.Halberd, WeaponIds.Moonpiercer,
+          WeaponIds.PrototypeStarglitter,
+        ],
+      ]),
+    ],
+    VideoSourceIds.TheBestAndWorstPolearms,
   ]),
   [TierListWeaponsTitles.Sword]: Class.init([
     TierListWeaponsTitles.Sword,
@@ -226,6 +225,6 @@ export default {
         ],
       ]),
     ],
-    videoSources[VideoSourceIds.TheBestAndWorstSwords],
+    VideoSourceIds.TheBestAndWorstSwords,
   ]),
 } as Record<Type["title"], Type>;

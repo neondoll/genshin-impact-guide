@@ -3,7 +3,7 @@ import type { CharacterId } from "./character";
 import type { ElementId } from "./element";
 import type { StatId } from "./stat";
 import type { TalentId } from "./talent";
-import type { VideoSource } from "./video-source";
+import type { VideoSourceId } from "./video-source";
 import type { WeaponId } from "./weapon";
 import { ArtifactSlotIds } from "@/enums/artifact-slot";
 
@@ -51,7 +51,7 @@ export interface CharacterRecommendations {
   rotation?: string | Record<string, string>;
   squads?: CharacterSquadRecommendations | Record<string, CharacterSquadRecommendations>;
   talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
-  video_sources?: VideoSource[];
+  video_source_ids?: VideoSourceId[];
   weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
 }
 

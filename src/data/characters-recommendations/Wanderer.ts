@@ -4,8 +4,8 @@ import {
   CharacterTalentLevelingRecommendation,
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { TalentIds } from "@/enums/talent";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 import weapons from "../weapons";
 
@@ -16,10 +16,10 @@ export default new CharacterRecommendations(CharacterIds.Wanderer)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "По необходимости\n(8)"]),
   ])
-  .setVideoSources([
-    CharacterRecommendationsVideoSources.FirstConstellationOrSignatureWeapon,
-    CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-    CharacterRecommendationsVideoSources.AllAboutAllTalents,
+  .setVideoSourceIds([
+    VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.BestWeaponsForEveryCharacter,
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.TulaytullahsRemembrance).setIsBetter().setRefinement(1),

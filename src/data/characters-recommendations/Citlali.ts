@@ -15,7 +15,6 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 import artifactSets from "../artifact-sets";
 import characters from "../characters";
-import videoSources from "../video-sources";
 import weapons from "../weapons";
 
 export default new CharacterRecommendations(CharacterIds.Citlali)
@@ -77,7 +76,7 @@ export default new CharacterRecommendations(CharacterIds.Citlali)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(6-8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6-8)"]),
   ])
-  .setVideoSources([videoSources[VideoSourceIds.GuideToCitlali]])
+  .setVideoSourceIds([VideoSourceIds.GuideToCitlali])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.StarcallersWatch).setIsBetter(),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex),

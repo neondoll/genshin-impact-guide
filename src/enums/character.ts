@@ -13,6 +13,7 @@ export const CharacterIds = {
   /* Беннет                   */ Bennett: "Bennett",
   /* Кандакия                 */ Candace: "Candace",
   /* Шарлотта                 */ Charlotte: "Charlotte",
+  /* Часка                    */ Chasca: "Chasca",
   /* Шеврёз                   */ Chevreuse: "Chevreuse",
   /* Тиори                    */ Chiori: "Chiori",
   /* Чун Юнь                  */ Chongyun: "Chongyun",

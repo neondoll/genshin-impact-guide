@@ -4,6 +4,7 @@ export interface VideoSource {
   id: VideoSourceId;
   title: string;
   date: Date;
+  rutube_url?: string;
   vk_url?: string;
   youtube_url?: string;
 }

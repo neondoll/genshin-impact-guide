@@ -9,9 +9,9 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { StatIds } from "@/enums/stat";
 import { TalentIds } from "@/enums/talent";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Xilonen)
@@ -40,9 +40,7 @@ export default new CharacterRecommendations(CharacterIds.Xilonen)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
-  .setVideoSources([
-    CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-  ])
+  .setVideoSourceIds([VideoSourceIds.BestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.PeakPatrolSong).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setRefinement(5),

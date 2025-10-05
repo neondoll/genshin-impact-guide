@@ -1,4 +1,4 @@
-import { artifactSetById } from "./_help.ts";
+import { artifactSetById } from "./_help";
 import { ArtifactSetIds } from "@/enums/artifact-set";
 import { ArtifactSlotIds } from "@/enums/artifact-slot";
 import {
@@ -10,9 +10,9 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { CharacterRecommendationsVideoSources } from "@/enums/character-recommendations";
 import { StatIds } from "@/enums/stat";
 import { TalentIds } from "@/enums/talent";
+import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 import weapons from "../weapons";
 
@@ -43,10 +43,7 @@ export default new CharacterRecommendations(CharacterIds.Chevreuse)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
-  .setVideoSources([
-    CharacterRecommendationsVideoSources.BestWeaponsForEveryCharacter,
-    CharacterRecommendationsVideoSources.AllAboutAllTalents,
-  ])
+  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.BestWeaponsForEveryCharacter])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.DialoguesOfTheDesertSages).setRefinement(5),

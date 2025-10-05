@@ -22,7 +22,6 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 import elements from "../elements";
 import talents from "../talents";
-import videoSources from "../video-sources";
 
 export default new CharacterRecommendations(CharacterIds.Lauma)
   .setArtifacts(CharacterArtifactRecommendations.init([
@@ -113,7 +112,7 @@ export default new CharacterRecommendations(CharacterIds.Lauma)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(10)"]),
   ])
-  .setVideoSources([videoSources[VideoSourceIds.GuideToLauma]])
+  .setVideoSourceIds([VideoSourceIds.GuideToLauma])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.NightweaversLookingGlass).setIsBetter(),
     new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams),
