@@ -3,6 +3,8 @@ import * as Primitive from "@radix-ui/react-tooltip";
 
 import { cn } from "@/lib/utils";
 
+type TooltipContentProps = ComponentProps<typeof Primitive.Content>;
+
 export function Tooltip({ ...props }: ComponentProps<typeof Primitive.Root>) {
   return (
     <TooltipProvider>
@@ -10,8 +12,6 @@ export function Tooltip({ ...props }: ComponentProps<typeof Primitive.Root>) {
     </TooltipProvider>
   );
 }
-
-type TooltipContentProps = ComponentProps<typeof Primitive.Content>;
 
 export function TooltipContent({ children, className, sideOffset = 0, ...props }: TooltipContentProps) {
   return (
@@ -38,8 +38,10 @@ export function TooltipContent({ children, className, sideOffset = 0, ...props }
   );
 }
 
-export function TooltipProvider({ delayDuration = 0, ...props }: ComponentProps<typeof Primitive.Provider>) {
-  return <Primitive.Provider data-slot="tooltip-provider" delayDuration={delayDuration} {...props} />;
+export function TooltipProvider({ children, delayDuration = 0, ...props }: ComponentProps<typeof Primitive.Provider>) {
+  return (
+    <Primitive.Provider children={children} data-slot="tooltip-provider" delayDuration={delayDuration} {...props} />
+  );
 }
 
 export function TooltipTrigger({ ...props }: ComponentProps<typeof Primitive.Trigger>) {

@@ -15,8 +15,12 @@ export const VideoSourceIds = {
   GuideToChasca: `guide_to_${CharacterIds.Chasca}_in_5.8`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Ситлали в 5.8 */
   GuideToCitlali: `guide_to_${CharacterIds.Citlali}_in_5.8`,
+  /* Анимекул: Кирилл Флинс - ИМБА? | Подробный гайд на Флинса [Genshin Impact] */
+  GuideToKyryllChudomirovichFlins_AnimeCool: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_6.0_AnimeCool`,
   /* Miron MinMax: Кирилл Флинс Чудомирович | Гайд */
-  GuideToKyryllChudomirovichFlins: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_6.0`,
+  GuideToKyryllChudomirovichFlins_MironMinMax: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_6.0_MironMinMax`,
+  /* xPandaChannelx: Кирилл Чудомирович Флинс | Крутки/Гайд | Flins Гайд Геншин Импакт Луна I */
+  GuideToKyryllChudomirovichFlins_xPandaChannelx: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_6.0_xPandaChannelx`,
   /* Miron MinMax: Паверкрип Нахиды? Гайд на Лауму в 6.0 */
   GuideToLauma: `guide_to_${CharacterIds.Lauma}_in_6.0`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Мавуику */

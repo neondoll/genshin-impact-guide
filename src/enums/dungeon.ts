@@ -4,6 +4,7 @@ export const DungeonIds = {
   /* Конец греха                  */ DenouementOfSin: "denouement_of_sin",
   /* Владения Гуюнь               */ DomainOfGuyun: "domain_of_guyun",
   /* Обветшалый театр             */ FadedTheater: "faded_theater",
+  /* Покрытая инеем машинерия     */ FrostladenMachinery: "frostladen_machinery",
   /* Скрытый дворец Уван          */ HiddenPalaceOfZhouFormula: "hidden_palace_of_zhou_formula",
   /* Июльские сады                */ MidsummerCourtyard: "midsummer_courtyard",
   /* Расплавленная крепость       */ MoltenIronFortress: "molten_iron_fortress",

@@ -3,6 +3,7 @@ import type {
   CharacterSquadRecommendations as Type,
 } from "@/types/character-recommendations";
 import type { SquadRecommendationsProps } from "./types";
+import { Badge } from "@/components/ui/badge";
 import { CharacterSquadRecommendations as Class } from "@/classes/character-recommendations";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,6 +17,16 @@ function SquadRecommendationsItem({ item }: { item: TypeItem }) {
     }
     case "element": {
       return <ElementCharacterBadge elementId={item.id} />;
+    }
+    case "other": {
+      return (
+        <Badge
+          className="flex flex-col gap-2.5 justify-start p-2 w-full text-center text-pretty whitespace-normal sm:flex-row sm:text-left"
+          variant="secondary"
+        >
+          <span children={item.title} />
+        </Badge>
+      );
     }
   }
 }

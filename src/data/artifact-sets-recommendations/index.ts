@@ -1,6 +1,5 @@
-import type { ArtifactSetRecommendations as Type } from "@/types/artifact-set-recommendations";
+import type { ArtifactSetRecommendations } from "@/types/artifact-set-recommendations";
 import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSetRecommendations as Class } from "@/classes/artifact-set-recommendations";
 
 export default {
   [ArtifactSetIds.ArchaicPetra]: (await import("./ArchaicPetra")).default,
@@ -24,6 +23,7 @@ export default {
   [ArtifactSetIds.LongNightsOath]: (await import("./LongNightsOath")).default,
   [ArtifactSetIds.MaidenBeloved]: (await import("./MaidenBeloved")).default,
   [ArtifactSetIds.MarechausseeHunter]: (await import("./MarechausseeHunter")).default,
+  [ArtifactSetIds.NightOfTheSkysUnveiling]: (await import("./NightOfTheSkysUnveiling")).default,
   [ArtifactSetIds.NighttimeWhispersInTheEchoingWoods]: (await import("./NighttimeWhispersInTheEchoingWoods")).default,
   [ArtifactSetIds.NoblesseOblige]: (await import("./NoblesseOblige")).default,
   [ArtifactSetIds.NymphsDream]: (await import("./NymphsDream")).default,
@@ -33,7 +33,7 @@ export default {
   [ArtifactSetIds.RetracingBolide]: (await import("./RetracingBolide")).default,
   [ArtifactSetIds.ScrollOfTheHeroOfCinderCity]: (await import("./ScrollOfTheHeroOfCinderCity")).default,
   [ArtifactSetIds.ShimenawasReminiscence]: (await import("./ShimenawasReminiscence")).default,
-  [ArtifactSetIds.SilkenMoonsSerenade]: new Class(ArtifactSetIds.SilkenMoonsSerenade),
+  [ArtifactSetIds.SilkenMoonsSerenade]: (await import("./SilkenMoonsSerenade")).default,
   [ArtifactSetIds.SongOfDaysPast]: (await import("./SongOfDaysPast")).default,
   [ArtifactSetIds.TenacityOfTheMillelith]: (await import("./TenacityOfTheMillelith")).default,
   [ArtifactSetIds.ThunderingFury]: (await import("./ThunderingFury")).default,
@@ -42,4 +42,4 @@ export default {
   [ArtifactSetIds.ViridescentVenerer]: (await import("./ViridescentVenerer")).default,
   [ArtifactSetIds.VourukashasGlow]: (await import("./VourukashasGlow")).default,
   [ArtifactSetIds.WanderersTroupe]: (await import("./WanderersTroupe")).default,
-} as Record<Type["artifact_set_id"], Type>;
+} as Record<ArtifactSetRecommendations["artifact_set_id"], ArtifactSetRecommendations>;

@@ -38,11 +38,21 @@ export default {
     "Miron MinMax: Подробный и Актуальный | Гайд на Ситлали в 5.8",
     new Date("2025-08-03"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239245").setYoutubeUrl("https://youtu.be/GzR7Yx8UDSM?si=vX0FObdIigNnTZkg"),
-  [VideoSourceIds.GuideToKyryllChudomirovichFlins]: Class.init([
-    VideoSourceIds.GuideToKyryllChudomirovichFlins,
+  [VideoSourceIds.GuideToKyryllChudomirovichFlins_AnimeCool]: Class.init([
+    VideoSourceIds.GuideToKyryllChudomirovichFlins_AnimeCool,
+    "Анимекул: Кирилл Флинс - ИМБА? | Подробный гайд на Флинса [Genshin Impact]",
+    new Date("2025-09-30"),
+  ]).setYoutubeUrl("https://youtu.be/WstroDNl-Ps"),
+  [VideoSourceIds.GuideToKyryllChudomirovichFlins_MironMinMax]: Class.init([
+    VideoSourceIds.GuideToKyryllChudomirovichFlins_MironMinMax,
     "Miron MinMax: Кирилл Флинс Чудомирович | Гайд",
     new Date("2025-09-30"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239259").setYoutubeUrl("https://youtu.be/ip1jJz-a4Fc"),
+  [VideoSourceIds.GuideToKyryllChudomirovichFlins_xPandaChannelx]: Class.init([
+    VideoSourceIds.GuideToKyryllChudomirovichFlins_xPandaChannelx,
+    "xPandaChannelx: Кирилл Чудомирович Флинс | Крутки/Гайд | Flins Гайд Геншин Импакт Луна I",
+    new Date("2025-09-30"),
+  ]).setVkUrl("https://vkvideo.ru/video-226836627_456239504").setYoutubeUrl("https://www.youtube.com/watch?v=tLrzuZ-I4EM"),
   [VideoSourceIds.GuideToLauma]: Class.init([
     VideoSourceIds.GuideToLauma,
     "Miron MinMax: Паверкрип Нахиды? Гайд на Лауму в 6.0",

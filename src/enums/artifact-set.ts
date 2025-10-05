@@ -20,6 +20,7 @@ export const ArtifactSetIds = {
   /* Клятва долгой ночи                     */ LongNightsOath: "LongNightsOath",
   /* Возлюбленная юная дева                 */ MaidenBeloved: "MaidenBeloved",
   /* Охотник Сумеречного двора              */ MarechausseeHunter: "MarechausseeHunter",
+  /* Ночь открытия неба                     */ NightOfTheSkysUnveiling: "NightOfTheSkysUnveiling",
   /* Ночной шёпот в Лесу откликающегося эха */ NighttimeWhispersInTheEchoingWoods: "NighttimeWhispersInTheEchoingWoods",
   /* Церемония древней знати                */ NoblesseOblige: "NoblesseOblige",
   /* Сон нимфы                              */ NymphsDream: "NymphsDream",

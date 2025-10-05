@@ -235,6 +235,16 @@ export default {
     StatIds.ElementalMastery,
     { min_value: 48, max_value: 221 },
   ]),
+  [WeaponIds.BloodsoakedRuins]: Class.init([
+    WeaponIds.BloodsoakedRuins,
+    "Окровавленные руины",
+    5,
+    WeaponSource.EventWishExclusive,
+    WeaponTypeIds.Polearm,
+    { min_value: 48, max_value: 674 },
+    StatIds.CritRate,
+    { min_value: numberFormatPercent(0.048, 1), max_value: numberFormatPercent(0.221, 1) },
+  ]),
   [WeaponIds.BloodtaintedGreatsword]: Class.init([
     WeaponIds.BloodtaintedGreatsword,
     "Меч драконьей крови",
