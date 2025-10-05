@@ -1,4 +1,4 @@
-import type { StatId } from "@/features/stats/types";
+import type { StatId } from "@/types/stat";
 import { Badge } from "@/components/ui/badge";
 import { selectStatById } from "@/features/stats/selectors";
 

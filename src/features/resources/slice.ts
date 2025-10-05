@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-import type { Resource } from "./types";
+import type { Resource } from "@/types/resource";
 
 export const resourcesAdapter = createEntityAdapter({
   selectId: (model: Resource) => model.id,
@@ -12,12 +12,12 @@ export const resourcesAdapter = createEntityAdapter({
   },
 });
 
-const initialState = resourcesAdapter.getInitialState({}, (await import("./data")).default);
+const initialState = resourcesAdapter.getInitialState({}, (await import("@/data/resources")).default);
 
-export const slice = createSlice({
+export const resourcesSlice = createSlice({
   name: "resources",
   initialState,
   reducers: {},
 });
 
-export default slice.reducer;
+export default resourcesSlice.reducer;

@@ -1,22 +1,22 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import type { ElementId } from "../features/elements/types";
-import type { Rarity } from "../features/rarities/types";
-import type { WeaponTypeId } from "../features/weapon-types/types";
-import { backgroundClassByRarity } from "../lib/rarity";
+import type { ElementId } from "@/types/element";
+import type { Rarity } from "@/types/rarity";
+import type { WeaponTypeId } from "@/types/weapon-type";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
-} from "../components/ui/breadcrumb";
-import { cn } from "../lib/utils";
-import { Container } from "../components/container";
-import { Filter, FilterCheckbox, FilterGroup } from "../organisms/filter";
-import { selectCharactersAll } from "../features/characters/selectors";
-import { selectElementById, selectElementsAll } from "../features/elements/selectors";
-import { selectRaritiesByIds } from "../features/rarities/selectors";
-import { selectWeaponTypesAll } from "../features/weapon-types/selectors";
-import Paths from "../constants/paths";
-import RarityStarsImg from "../organisms/imgs/rarity-stars-img";
+} from "@/components/ui/breadcrumb";
+import { cn } from "@/lib/utils";
+import { Container } from "@/components/container";
+import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
+import { selectCharactersAll } from "@/features/characters/selectors";
+import { selectElementById, selectElementsAll } from "@/features/elements/selectors";
+import { selectRaritiesByIds } from "@/features/rarities/selectors";
+import { selectWeaponTypesAll } from "@/features/weapon-types/selectors";
+import Paths from "@/constants/paths";
+import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader() {

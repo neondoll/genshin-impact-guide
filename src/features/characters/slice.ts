@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-import type { Character } from "./types";
+import type { Character } from "@/types/character";
 
 export const charactersAdapter = createEntityAdapter({
   selectId: (model: Character) => model.id,
@@ -12,7 +12,7 @@ export const charactersAdapter = createEntityAdapter({
   },
 });
 
-const initialState = charactersAdapter.getInitialState({}, (await import("./data")).default);
+const initialState = charactersAdapter.getInitialState({}, (await import("@/data/characters")).default);
 
 export const charactersSlice = createSlice({ name: "characters", initialState, reducers: {} });
 

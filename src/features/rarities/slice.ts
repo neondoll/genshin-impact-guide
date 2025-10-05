@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-import type { Rarity } from "./types";
+import type { Rarity } from "@/types/rarity";
 
 export const raritiesAdapter = createEntityAdapter({
   selectId: (model: Rarity) => model,
@@ -9,10 +9,10 @@ export const raritiesAdapter = createEntityAdapter({
 
 const initialState = raritiesAdapter.getInitialState({}, [1, 2, 3, 4, 5]);
 
-export const slice = createSlice({
+export const raritiesSlice = createSlice({
   name: "rarities",
   initialState,
   reducers: {},
 });
 
-export default slice.reducer;
+export default raritiesSlice.reducer;

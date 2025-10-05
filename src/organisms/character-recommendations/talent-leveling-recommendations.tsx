@@ -1,4 +1,4 @@
-import type { CharacterTalentLevelingRecommendation } from "@/features/characters-recommendations/types";
+import type { CharacterTalentLevelingRecommendation } from "@/types/character-recommendations";
 import type { TalentLevelingRecommendationsProps } from "./types";
 import { selectTalentById } from "@/features/talents/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";

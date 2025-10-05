@@ -1,9 +1,10 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
 import { ArtifactSetIds } from "@/enums/artifact-set";
-import { CharacterIds } from "@/features/characters/enums";
+import { CharacterIds } from "@/enums/character";
 
-export default ArtifactSetRecommendations.init([ArtifactSetIds.ScrollOfTheHeroOfCinderCity, [
-  new ArtifactSetCharacterRecommendation(CharacterIds.Chevreuse),
-  new ArtifactSetCharacterRecommendation(CharacterIds.Iansan),
-  new ArtifactSetCharacterRecommendation(CharacterIds.Xilonen),
-]]);
+export default new ArtifactSetRecommendations(ArtifactSetIds.ScrollOfTheHeroOfCinderCity)
+  .setCharacters([
+    new ArtifactSetCharacterRecommendation(CharacterIds.Chevreuse),
+    new ArtifactSetCharacterRecommendation(CharacterIds.Iansan),
+    new ArtifactSetCharacterRecommendation(CharacterIds.Xilonen),
+  ]);

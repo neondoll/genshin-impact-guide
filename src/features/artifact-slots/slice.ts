@@ -9,10 +9,10 @@ export const artifactSlotsAdapter = createEntityAdapter({
 
 const initialState = artifactSlotsAdapter.getInitialState({}, (await import("@/data/artifact-slots")).default);
 
-export const slice = createSlice({
+export const artifactSlotsSlice = createSlice({
   name: "artifactSlots",
   initialState,
   reducers: {},
 });
 
-export default slice.reducer;
+export default artifactSlotsSlice.reducer;

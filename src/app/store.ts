@@ -17,6 +17,7 @@ import resourcesReducer from "@/features/resources/slice";
 import statsReducer from "@/features/stats/slice";
 import talentsReducer from "@/features/talents/slice";
 import tierListsWeaponsReducer from "@/features/tier-lists-weapons/slice";
+import videoSourcesReducer from "@/features/video-sources/slice";
 import weaponsReducer from "@/features/weapons/slice";
 import weaponTypesReducer from "@/features/weapon-types/slice";
 import worldsReducer from "@/features/worlds/slice";
@@ -40,6 +41,7 @@ export const store = configureStore({
     stats: statsReducer,
     talents: talentsReducer,
     tierListsWeapons: tierListsWeaponsReducer,
+    videoSources: videoSourcesReducer,
     weapons: weaponsReducer,
     weaponTypes: weaponTypesReducer,
     worlds: worldsReducer,

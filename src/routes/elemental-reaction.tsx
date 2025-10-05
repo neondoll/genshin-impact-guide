@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { ElementalReactionId } from "@/features/elemental-reactions/types";
+import type { ElementalReactionId } from "@/types/elemental-reaction";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";

@@ -1,8 +1,9 @@
 import type { ComponentProps } from "react";
-import type { ElementalReaction, ElementalReactionElementId } from "./types";
-import type { ElementId } from "../elements/types";
+
+import type { ElementalReaction, ElementalReactionElementId } from "@/types/elemental-reaction";
+import type { ElementId } from "@/types/element";
 import { cn } from "@/lib/utils";
-import { ElementalReactionIds } from "./enums";
+import { ElementalReactionIds } from "@/enums/elemental-reaction";
 import { selectElementalReactionById } from "./selectors";
 import { selectElementById } from "../elements/selectors";
 

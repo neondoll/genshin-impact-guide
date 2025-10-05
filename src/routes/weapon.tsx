@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { WeaponId } from "@/features/weapons/types";
+import type { WeaponId } from "@/types/weapon";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
   Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
@@ -12,13 +12,17 @@ import { selectWeaponById } from "@/features/weapons/selectors";
 import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import Paths from "@/constants/paths";
-import RarityStarsImg from "../organisms/imgs/rarity-stars-img";
-import StatBadge from "../organisms/badges/stat-badge";
+import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
+import StatBadge from "@/organisms/badges/stat-badge";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {
   const weapon = selectWeaponById(params.weaponId as WeaponId);
   const weaponType = selectWeaponTypeById(weapon.type_id);
+
+  if (weapon.rarity) {
+    window.document.documentElement.classList.add(`rarity-${weapon.rarity}`);
+  }
 
   return { weapon, weaponType };
 }

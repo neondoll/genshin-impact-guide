@@ -1,6 +1,7 @@
-import type { CharacterId } from "../characters/types";
-import { type RootState, store } from "@/app/store";
+import type { CharacterId } from "@/types/character";
+import type { RootState } from "@/app/store";
 import { charactersRecommendationsAdapter } from "./slice";
+import { store } from "@/app/store";
 
 const selectors = charactersRecommendationsAdapter.getSelectors<RootState>(state => state.charactersRecommendations);
 

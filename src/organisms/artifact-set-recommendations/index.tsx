@@ -5,12 +5,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { selectVideoSourcesByIds } from "@/features/video-sources/selectors";
 import CharacterRecommendations from "./character-recommendations";
 import PreferredStatsRecommendations from "./preferred-stats-recommendations";
 import VideoSources from "../video-sources";
 
 export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
-  const showAccordion = recommendations.characters !== undefined || recommendations.preferred_stats !== undefined || recommendations.video_sources !== undefined;
+  const showAccordion = recommendations.characters !== undefined || recommendations.preferred_stats !== undefined || recommendations.video_source_ids !== undefined;
 
   return (
     <Collapsible className="space-y-2 md:space-y-4" defaultOpen>
@@ -44,13 +45,13 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
                   </AccordionContent>
                 </AccordionItem>
               )}
-              {recommendations.video_sources !== undefined && (
+              {recommendations.video_source_ids !== undefined && (
                 <AccordionItem value="video_sources">
                   <AccordionTrigger className="px-6">
                     Видео-источники
                   </AccordionTrigger>
                   <AccordionContent className="px-6">
-                    <VideoSources items={recommendations.video_sources} />
+                    <VideoSources items={selectVideoSourcesByIds(recommendations.video_source_ids)} />
                   </AccordionContent>
                 </AccordionItem>
               )}

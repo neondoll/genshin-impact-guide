@@ -1,4 +1,5 @@
-import { type RootState, store } from "@/app/store";
+import type { RootState } from "@/app/store";
+import { store } from "@/app/store";
 import { tierListsWeaponsAdapter } from "./slice";
 
 const selectors = tierListsWeaponsAdapter.getSelectors<RootState>(state => state.tierListsWeapons);

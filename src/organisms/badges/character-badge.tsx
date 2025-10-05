@@ -1,4 +1,4 @@
-import type { CharacterId } from "@/features/characters/types";
+import type { CharacterId } from "@/types/character";
 import { selectCharacterById } from "@/features/characters/selectors";
 import AbstractBadge from "./abstract-badge";
 import Paths from "@/constants/paths";

@@ -1,12 +1,12 @@
 import type { ArtifactSet as ArtifactSetType } from "@/types/artifact-set";
-import type { DungeonId } from "@/features/dungeons/types";
+import type { DungeonId } from "@/types/dungeon";
 import { ArtifactSet as ArtifactSetClass } from "@/classes/artifact-set";
 import { ArtifactSetIds } from "@/enums/artifact-set";
 import { ArtifactSlotIds } from "@/enums/artifact-slot";
-import { DungeonIds } from "@/features/dungeons/enums";
+import { DungeonIds } from "@/enums/dungeon";
 import { elementalReactionById } from "@/features/elemental-reactions/help";
-import { ElementalReactionIds } from "@/features/elemental-reactions/enums";
-import dungeons from "@/features/dungeons/data";
+import { ElementalReactionIds } from "@/enums/elemental-reaction";
+import dungeons from "./dungeons";
 
 const Source = {
   Alchemy: "Мистическое подношение (Алхимия)",

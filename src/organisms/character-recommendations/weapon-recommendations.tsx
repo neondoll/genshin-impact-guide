@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import type { CharacterWeaponRecommendation } from "@/features/characters-recommendations/types";
+import type { CharacterWeaponRecommendation } from "@/types/character-recommendations";
 import type { WeaponRecommendationsProps } from "./types";
 import { cn, numberFormatPercent } from "@/lib/utils";
 import { selectWeaponById } from "@/features/weapons/selectors";

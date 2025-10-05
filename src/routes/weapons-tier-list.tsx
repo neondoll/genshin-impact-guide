@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { WeaponId } from "@/features/weapons/types";
+import type { WeaponId } from "@/types/weapon";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
 import { selectTierListsWeaponsAll } from "@/features/tier-lists-weapons/selectors";
+import { selectVideoSourceById } from "@/features/video-sources/selectors";
 import { selectWeaponsByIds } from "@/features/weapons/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -126,13 +127,13 @@ export default function WeaponsTierList() {
                 </Table>
               </Card>
             )}
-            {tierListWeapons.video_source !== undefined && (
+            {tierListWeapons.video_source_id !== undefined && (
               <Card>
                 <CardHeader>
                   <CardTitle children="Видео-источник" />
                 </CardHeader>
                 <CardContent>
-                  <VideoSources items={[tierListWeapons.video_source]} />
+                  <VideoSources items={[selectVideoSourceById(tierListWeapons.video_source_id)]} />
                 </CardContent>
               </Card>
             )}

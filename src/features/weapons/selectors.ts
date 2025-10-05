@@ -1,5 +1,6 @@
-import type { WeaponId } from "./types";
-import { type RootState, store } from "@/app/store";
+import type { RootState } from "@/app/store";
+import type { WeaponId } from "@/types/weapon";
+import { store } from "@/app/store";
 import { weaponsAdapter } from "./slice";
 
 const selectors = weaponsAdapter.getSelectors<RootState>(state => state.weapons);

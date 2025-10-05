@@ -1,4 +1,4 @@
-import type { CharacterReferencePointRecommendations } from "@/features/characters-recommendations/types";
+import type { CharacterReferencePointRecommendations } from "@/types/character-recommendations";
 import type { ReferencePointRecommendationsProps } from "./types";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";

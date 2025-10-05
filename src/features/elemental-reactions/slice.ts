@@ -1,17 +1,17 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-import type { ElementalReaction } from "./types";
+import type { ElementalReaction } from "@/types/elemental-reaction";
 
 export const elementalReactionsAdapter = createEntityAdapter({
   selectId: (model: ElementalReaction) => model.id,
 });
 
-const initialState = elementalReactionsAdapter.getInitialState({}, (await import("./data")).default);
+const initialState = elementalReactionsAdapter.getInitialState({}, (await import("@/data/elemental-reactions")).default);
 
-export const slice = createSlice({
+export const elementalReactionsSlice = createSlice({
   name: "elementalReactions",
   initialState,
   reducers: {},
 });
 
-export default slice.reducer;
+export default elementalReactionsSlice.reducer;

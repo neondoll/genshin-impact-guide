@@ -8,10 +8,10 @@ export const artifactSetsRecommendationsAdapter = createEntityAdapter({
 
 const initialState = artifactSetsRecommendationsAdapter.getInitialState({}, (await import("@/data/artifact-sets-recommendations")).default);
 
-export const slice = createSlice({
+export const artifactSetsRecommendationsSlice = createSlice({
   name: "artifactSetsRecommendations",
   initialState,
   reducers: {},
 });
 
-export default slice.reducer;
+export default artifactSetsRecommendationsSlice.reducer;

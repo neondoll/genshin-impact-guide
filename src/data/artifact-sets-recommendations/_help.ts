@@ -1,11 +1,11 @@
 import type { ArtifactSetId } from "@/types/artifact-set";
-import type { WeaponId } from "@/features/weapons/types";
+import type { WeaponId } from "@/types/weapon";
 import { badgeVariants } from "@/components/ui/badge";
 import { cn, publicSrc } from "@/lib/utils";
-import { StatIds } from "@/features/stats/enums";
-import artifactSets from "@/data/artifact-sets";
+import { StatIds } from "@/enums/stat";
+import artifactSets from "../artifact-sets";
 import Paths from "@/constants/paths";
-import weapons from "@/features/weapons/data";
+import weapons from "../weapons";
 
 export const StatsCrit = [StatIds.CritDMG, StatIds.CritRate];
 export const StatsElementDamageBonus = [
