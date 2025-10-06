@@ -10,6 +10,7 @@ import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.HuTao)
   .setFirstConstellationOrSignatureWeapon("С1")
+  .setRequiredLevel("90/90")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(10)"]),
@@ -19,6 +20,7 @@ export default new CharacterRecommendations(CharacterIds.HuTao)
     VideoSourceIds.AllAboutAllTalents,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter().setRefinement(1),

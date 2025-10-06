@@ -10,6 +10,7 @@ import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Zhongli)
   .setFirstConstellationOrSignatureWeapon("Лучше ничего")
+  .setRequiredLevel("80/90")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
@@ -19,5 +20,6 @@ export default new CharacterRecommendations(CharacterIds.Zhongli)
     VideoSourceIds.AllAboutAllTalents,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter().setRefinement(5)]);

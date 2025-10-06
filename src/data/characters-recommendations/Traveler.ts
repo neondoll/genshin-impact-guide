@@ -27,7 +27,8 @@ export default {
     .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
     .setWeapons(TravelerRecommendationsWeapons),
   [ElementIds.Dendro]: new Class(CharacterIds.TravelerDendro)
-    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
+    .setRequiredLevel("90/90")
+    .setVideoSourceIds([...TravelerRecommendationsVideoSourceIds, VideoSourceIds.WhoNeedsLevelingPart1])
     .setWeapons(TravelerRecommendationsWeapons),
   [ElementIds.Electro]: new Class(CharacterIds.TravelerElectro)
     .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)

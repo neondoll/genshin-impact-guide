@@ -22,7 +22,7 @@ export default {
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
     "Miron MinMax: С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей",
     new Date("2025-01-15"),
-  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239189").setYoutubeUrl("https://youtu.be/NfgsESKwsdk"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239189").setYoutubeUrl("https://youtu.be/NfgsESKwsdk"), /* TODO: Посмотреть */
   [VideoSourceIds.GuideToChasca]: Class.init([
     VideoSourceIds.GuideToChasca,
     "Miron MinMax: Подробный и Актуальный | Гайд на Часку в 5.8",
@@ -88,6 +88,11 @@ export default {
     "Анимекул: Зачем нужен Пиро Путешественник? | Подробный гайд на Пиро ГГ",
     new Date("2025-01-08"),
   ]).setVkUrl("https://vkvideo.ru/video-229156089_456239059").setYoutubeUrl("https://youtu.be/L3Eg506_w7M"),
+  [VideoSourceIds.GuideToXiangling]: Class.init([
+    VideoSourceIds.GuideToXiangling,
+    "Miron MinMax: Подробный и Актуальный | Гайд на Сян Лин в 6.0",
+    new Date("2025-10-06"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239260").setYoutubeUrl("https://youtu.be/FhKKE0H9K8o"), /* TODO: Посмотреть */
   [VideoSourceIds.TheBestAndWorstBows]: Class.init([
     VideoSourceIds.TheBestAndWorstBows,
     "Miron MinMax: Лучшие и Худшие Луки | Тир-лист (2025)",
@@ -127,12 +132,12 @@ export default {
     VideoSourceIds.WhoNeedsLevelingPart1,
     "Miron MinMax: КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.1 feat.@AnimeCool_Genshin",
     new Date("2023-09-23"),
-  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239108").setYoutubeUrl("https://youtu.be/lhEME9s3HO0?si=qq9FUJwH0JLSTC-H"), /* TODO: Посмотреть */
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239108").setYoutubeUrl("https://youtu.be/lhEME9s3HO0?si=qq9FUJwH0JLSTC-H"),
   [VideoSourceIds.WhoNeedsLevelingPart2]: Class.init([
     VideoSourceIds.WhoNeedsLevelingPart2,
     "Miron MinMax: КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.2 feat.@AnimeCool_Genshin",
     new Date("2023-09-25"),
-  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239106").setYoutubeUrl("https://youtu.be/Yz95Iw1q-es"), /* TODO: Посмотреть */
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239106").setYoutubeUrl("https://youtu.be/Yz95Iw1q-es"),
   [VideoSourceIds.WhoShouldLevel100]: Class.init([
     VideoSourceIds.WhoShouldLevel100,
     "Miron MinMax: Приросты от 95 и 100 лвл | Кому качать 100 уровень?",

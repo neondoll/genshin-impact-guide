@@ -10,6 +10,7 @@ import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.KamisatoAyato)
   .setFirstConstellationOrSignatureWeapon("Сигна")
+  .setRequiredLevel("90/90")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
@@ -19,6 +20,7 @@ export default new CharacterRecommendations(CharacterIds.KamisatoAyato)
     VideoSourceIds.AllAboutAllTalents,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.HaranGeppakuFutsu).setIsBetter().setRefinement(1),

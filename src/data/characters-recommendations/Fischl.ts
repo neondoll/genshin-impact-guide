@@ -40,13 +40,17 @@ export default new CharacterRecommendations(CharacterIds.Fischl)
       ],
     },
   ]))
-  .setRequiredLevel(90)
+  .setRequiredLevel("90/90")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
+  .setVideoSourceIds([
+    VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+    VideoSourceIds.WhoNeedsLevelingPart1,
+  ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.AquaSimulacra).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter().setRefinement(1),
