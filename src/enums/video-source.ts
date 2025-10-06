@@ -35,6 +35,8 @@ export const VideoSourceIds = {
   GuideToSkirk_xPandaChannelx: `guide_to_${CharacterIds.Skirk}_in_5.7_xPandaChannelx`,
   /* Анимекул: Зачем нужен Пиро Путешественник? | Подробный гайд на Пиро ГГ */
   GuideToTravelerPyro: `guide_to_${CharacterIds.TravelerPyro}`,
+  /* Miron MinMax: Подробный и Актуальный | Гайд на Сян Лин в 6.0 */
+  GuideToXiangling: `guide_to_${CharacterIds.Xiangling}_in_6.0`,
   /* Miron MinMax: Лучшие и Худшие Луки | Тир-лист (2025) */
   TheBestAndWorstBows: "the_best_and_worst_bows",
   /* Miron MinMax: Лучшие и Худшие Катализаторы | Тир-лист | 2025 */

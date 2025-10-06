@@ -14,7 +14,7 @@ import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
-export default new CharacterRecommendations(CharacterIds.KukiShinobu)
+export default new CharacterRecommendations(CharacterIds.Layla)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
       new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.TenacityOfTheMillelith).setIsBetter().setNotes([
@@ -57,11 +57,15 @@ export default new CharacterRecommendations(CharacterIds.KukiShinobu)
       ],
     },
   ]))
-  .setRequiredLevel(80)
+  .setRequiredLevel("80/80")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
+  .setVideoSourceIds([
+    VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+    VideoSourceIds.WhoNeedsLevelingPart2,
+  ])
   .setWeapons([new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter().setRefinement(5)]);

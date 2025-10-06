@@ -40,13 +40,18 @@ export default new CharacterRecommendations(CharacterIds.Xiangling)
       ],
     },
   ]))
-  .setRequiredLevel(90)
+  .setRequiredLevel("80/90")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
+  .setVideoSourceIds([
+    VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.GuideToXiangling,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+    VideoSourceIds.WhoNeedsLevelingPart1,
+  ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setRefinement(1),

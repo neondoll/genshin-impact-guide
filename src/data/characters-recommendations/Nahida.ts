@@ -45,6 +45,7 @@ export default new CharacterRecommendations(CharacterIds.Nahida)
   ]))
   .setFirstConstellationOrSignatureWeapon("С1 < Сигна < С2")
   .setKeyConstellations([2])
+  .setRequiredLevel("90/90")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "По необходимости\n(6-8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
@@ -55,6 +56,7 @@ export default new CharacterRecommendations(CharacterIds.Nahida)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
     VideoSourceIds.GuideToNahida,
+    VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons({
     [elementalReactionById(ElementalReactionIds.Hyperbloom)]: [

@@ -10,6 +10,7 @@ import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Ganyu)
   .setFirstConstellationOrSignatureWeapon("С1")
+  .setRequiredLevel("80/90")
   .setTalentLeveling({
     Мелт: [
       CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "В первую очередь\n(10)"]),
@@ -31,6 +32,7 @@ export default new CharacterRecommendations(CharacterIds.Ganyu)
     VideoSourceIds.AllAboutAllTalents,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.AstralVulturesCrimsonPlumage).setIsBetter().setRefinement(1),
