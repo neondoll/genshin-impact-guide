@@ -1,7 +1,7 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import BestChoiceCommercialSymbolSvgrepoCom from "@/components/icons/best-choice-commercial-symbol-svgrepo-com";
 
-export default function IsBetter({ value }: { value: boolean | string }) {
+export default function IsBetter({ value }: { value?: boolean | string }) {
   return value && (
     <Tooltip>
       <TooltipTrigger asChild>

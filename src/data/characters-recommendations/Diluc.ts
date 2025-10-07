@@ -17,11 +17,15 @@ export default new CharacterRecommendations(CharacterIds.Diluc)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.RedhornStonethresher).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.SerpentSpine).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.RedhornStonethresher).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.WolfsGravestone).setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.BlackcliffSlasher).setIsBetter("Лучшее доступное оружие (высокая зависимость от сигнатурного оружия)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.EarthShaker).setIsBetter("Лучшее доступное оружие (высокая зависимость от сигнатурного оружия)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.Rainslasher).setIsBetter("Лучшее доступное оружие (высокая зависимость от сигнатурного оружия)").setRefinement(5),
   ]);

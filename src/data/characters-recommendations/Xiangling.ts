@@ -49,6 +49,7 @@ export default new CharacterRecommendations(CharacterIds.Xiangling)
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
     VideoSourceIds.GuideToXiangling,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
@@ -56,4 +57,5 @@ export default new CharacterRecommendations(CharacterIds.Xiangling)
     new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.TheCatch).setIsBetter("Лучшее доступное оружие (средняя зависимость от легендарного оружия)").setRefinement(5),
   ]);

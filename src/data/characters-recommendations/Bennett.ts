@@ -62,6 +62,7 @@ export default new CharacterRecommendations(CharacterIds.Bennett)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
@@ -69,4 +70,5 @@ export default new CharacterRecommendations(CharacterIds.Bennett)
     new CharacterWeaponRecommendation(WeaponIds.AquilaFavonia).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.SkywardBlade).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.SapwoodBlade).setIsBetter("Лучшее доступное оружие (низкая зависимость от сигнатурного оружия)").setRefinement(5),
   ]);

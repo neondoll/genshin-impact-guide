@@ -17,11 +17,13 @@ export default new CharacterRecommendations(CharacterIds.Razor)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.BloodtaintedGreatsword).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.MakhairaAquamarine).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.Rainslasher).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.MakhairaAquamarine).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.MailedFlower).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

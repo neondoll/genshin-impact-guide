@@ -18,10 +18,11 @@ export default new CharacterRecommendations(CharacterIds.Dehya)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.BeaconOfTheReedSea).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusGreatsword).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusGreatsword).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);
