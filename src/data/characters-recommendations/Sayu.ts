@@ -17,7 +17,10 @@ export default new CharacterRecommendations(CharacterIds.Sayu)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.FavoniusGreatsword).setIsBetter().setRefinement(5)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusGreatsword).setIsBetter("Лучшее оружие").setRefinement(5),
+  ]);

@@ -17,10 +17,11 @@ export default new CharacterRecommendations(CharacterIds.Qiqi)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.AquilaFavonia).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter().setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.AquilaFavonia).setIsBetter("Лучшее оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter("Лучшее оружие").setRefinement(5),
   ]);

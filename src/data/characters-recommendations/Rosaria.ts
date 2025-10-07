@@ -17,7 +17,10 @@ export default new CharacterRecommendations(CharacterIds.Rosaria)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter().setRefinement(5)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter("Лучшее оружие").setRefinement(5),
+  ]);

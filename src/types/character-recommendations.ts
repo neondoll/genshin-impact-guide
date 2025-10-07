@@ -83,7 +83,7 @@ export interface CharacterTalentLevelingRecommendation {
 export interface CharacterWeaponRecommendation {
   id: WeaponId;
   refinement?: 1 | 5;
-  is_better?: boolean;
+  is_better?: boolean | string;
   postfix?: string;
   percent?: number;
 }

@@ -18,11 +18,12 @@ export default new CharacterRecommendations(CharacterIds.Nilou)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.KeyOfKhajNisut).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.IronSting).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.KeyOfKhajNisut).setIsBetter("Лучшее оружие (очень высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.IronSting).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

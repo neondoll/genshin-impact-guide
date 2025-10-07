@@ -334,8 +334,8 @@ export class CharacterWeaponRecommendation implements TypeWeapon {
     return this._refinement;
   }
 
-  setIsBetter() {
-    this._is_better = true;
+  setIsBetter(val: NonNullable<TypeWeapon["is_better"]> = true) {
+    this._is_better = val;
 
     return this;
   }

@@ -17,7 +17,11 @@ export default new CharacterRecommendations(CharacterIds.Tighnari)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.HuntersPath).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.HuntersPath).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.Slingshot).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+  ]);

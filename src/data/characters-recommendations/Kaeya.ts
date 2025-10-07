@@ -17,7 +17,13 @@ export default new CharacterRecommendations(CharacterIds.Kaeya)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FinaleOfTheDeep).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.BlackcliffLongsword).setIsBetter("Лучшее доступное оружие (когда работает на полную)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setRefinement(5),
+  ]);

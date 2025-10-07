@@ -17,10 +17,13 @@ export default new CharacterRecommendations(CharacterIds.Yanfei)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.LostPrayerToTheSacredWinds).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter().setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.LostPrayerToTheSacredWinds).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter("Лучшее оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

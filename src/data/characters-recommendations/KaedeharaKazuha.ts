@@ -18,12 +18,15 @@ export default new CharacterRecommendations(CharacterIds.KaedeharaKazuha)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.FreedomSworn).setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.XiphosMoonlight).setIsBetter().setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.XiphosMoonlight).setIsBetter("Лучшее оружие (низкая зависимость)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.ToukabouShigure).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.IronSting).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

@@ -18,11 +18,12 @@ export default new CharacterRecommendations(CharacterIds.YaeMiko)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.KagurasVerity).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.KagurasVerity).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие").setRefinement(1),
   ]);

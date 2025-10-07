@@ -17,7 +17,12 @@ export default new CharacterRecommendations(CharacterIds.Lyney)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.TheFirstGreatMagic).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.TheFirstGreatMagic).setIsBetter("Лучшее оружие (очень высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.SongOfStillness).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.PrototypeCrescent).setRefinement(5),
+  ]);

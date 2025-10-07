@@ -4,5 +4,11 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Sethos)
-  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.HuntersPath).setIsBetter().setRefinement(1)]);
+  .setVideoSourceIds([
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+  ])
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.HuntersPath).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.Slingshot).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+  ]);

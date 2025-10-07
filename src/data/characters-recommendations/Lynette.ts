@@ -17,10 +17,11 @@ export default new CharacterRecommendations(CharacterIds.Lynette)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter().setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.SacrificialSword).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter("Лучшее оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialSword).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

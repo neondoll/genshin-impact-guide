@@ -18,12 +18,12 @@ export default new CharacterRecommendations(CharacterIds.KamisatoAyaka)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FinaleOfTheDeep).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.AmenomaKageuchi).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FinaleOfTheDeep).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

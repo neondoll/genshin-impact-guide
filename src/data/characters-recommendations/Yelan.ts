@@ -18,11 +18,15 @@ export default new CharacterRecommendations(CharacterIds.Yelan)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.AquaSimulacra).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.AquaSimulacra).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusWarbow).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TheStringless).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.Slingshot).setRefinement(5),
   ]);

@@ -17,13 +17,14 @@ export default new CharacterRecommendations(CharacterIds.Albedo)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeCutter).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setPercent(1.241).setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.CinnabarSpindle).setPercent(1.229).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.HarbingerOfDawn).setPercent(1.000).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeCutter).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.CinnabarSpindle).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FesteringDesire).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FluteOfEzpitzal).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

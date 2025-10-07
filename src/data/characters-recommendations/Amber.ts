@@ -17,7 +17,11 @@ export default new CharacterRecommendations(CharacterIds.Amber)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusWarbow).setIsBetter("Лучшее доступное оружие").setRefinement(1),
+  ]);

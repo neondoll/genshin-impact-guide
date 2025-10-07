@@ -17,10 +17,11 @@ export default new CharacterRecommendations(CharacterIds.Collei)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter("Лучшее оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

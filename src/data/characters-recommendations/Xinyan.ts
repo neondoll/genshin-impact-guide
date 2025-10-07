@@ -17,7 +17,10 @@ export default new CharacterRecommendations(CharacterIds.Xinyan)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.FavoniusGreatsword).setIsBetter().setRefinement(5)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusGreatsword).setIsBetter("Лучшее оружие").setRefinement(5),
+  ]);

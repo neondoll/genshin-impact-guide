@@ -27,7 +27,7 @@ function WeaponRecommendationsTable({ character, recommendations }: {
     });
 
     setHasIsBetter(recommendations.some((recommendation) => {
-      return recommendation.is_better === true;
+      return Boolean(recommendation.is_better);
     }));
     setHasIsSignature(recommendations.some((recommendation) => {
       return recommendation.id === character.signature_weapon_id;
@@ -78,7 +78,7 @@ function WeaponRecommendationsTable({ character, recommendations }: {
               }
             >
               {hasIsBetter && (
-                <TableCell children={<IsBetter value={Boolean(recommendation.is_better)} />} className="w-16" />
+                <TableCell children={<IsBetter value={recommendation.is_better} />} className="w-16" />
               )}
               <TableCell className="text-pretty whitespace-normal">
                 <WeaponBadge

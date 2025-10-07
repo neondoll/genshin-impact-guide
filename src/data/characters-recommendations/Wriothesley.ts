@@ -14,5 +14,13 @@ export default new CharacterRecommendations(CharacterIds.Wriothesley)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "По необходимости\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.CashflowSupervision).setIsBetter().setRefinement(1)]);
+  .setVideoSourceIds([
+    VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+  ])
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.CashflowSupervision).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+  ]);

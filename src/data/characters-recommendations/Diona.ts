@@ -17,10 +17,11 @@ export default new CharacterRecommendations(CharacterIds.Diona)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setIsBetter().setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setIsBetter("Лучшее оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setRefinement(1),
   ]);

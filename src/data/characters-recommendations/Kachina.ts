@@ -4,5 +4,10 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Kachina)
-  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter().setRefinement(5)]);
+  .setVideoSourceIds([
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+  ])
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter("Лучшее оружие").setRefinement(5),
+  ]);

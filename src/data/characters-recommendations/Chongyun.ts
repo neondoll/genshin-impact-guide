@@ -17,7 +17,10 @@ export default new CharacterRecommendations(CharacterIds.Chongyun)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.SacrificialGreatsword).setIsBetter().setRefinement(5)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialGreatsword).setIsBetter("Лучшее оружие").setRefinement(5),
+  ]);

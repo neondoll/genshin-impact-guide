@@ -17,7 +17,11 @@ export default new CharacterRecommendations(CharacterIds.Alhaitham)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.LightOfFoliarIncision).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.LightOfFoliarIncision).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.IronSting).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+  ]);

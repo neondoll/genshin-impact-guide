@@ -18,11 +18,12 @@ export default new CharacterRecommendations(CharacterIds.Tartaglia)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.PolarStar).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.Rust).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.PolarStar).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.Rust).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

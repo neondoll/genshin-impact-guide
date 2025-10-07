@@ -18,12 +18,13 @@ export default new CharacterRecommendations(CharacterIds.RaidenShogun)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.DragonsBane).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.TheCatch).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.TheCatch).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.DragonsBane).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

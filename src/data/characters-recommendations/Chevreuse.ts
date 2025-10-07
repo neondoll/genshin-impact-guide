@@ -43,10 +43,14 @@ export default new CharacterRecommendations(CharacterIds.Chevreuse)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
+  .setVideoSourceIds([
+    VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+  ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.DialoguesOfTheDesertSages).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter("Лучшее оружие (низкая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.DialoguesOfTheDesertSages).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.RightfulReward).setIsBetter("Лучшее доступное оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.RightfulReward).setRefinement(5),
   ]);

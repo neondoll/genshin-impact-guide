@@ -18,13 +18,14 @@ export default new CharacterRecommendations(CharacterIds.SangonomiyaKokomi)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter().setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter("Лучшее оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.EverlastingMoonglow).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.PrototypeAmber).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialFragments).setRefinement(5),
   ]);

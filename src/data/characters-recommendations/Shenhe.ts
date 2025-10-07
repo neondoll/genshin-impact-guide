@@ -18,11 +18,12 @@ export default new CharacterRecommendations(CharacterIds.Shenhe)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.CalamityQueller).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.CalamityQueller).setIsBetter("Лучшее оружие (низкая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);
