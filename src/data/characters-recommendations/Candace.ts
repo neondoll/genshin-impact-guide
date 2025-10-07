@@ -22,5 +22,5 @@ export default new CharacterRecommendations(CharacterIds.Candace)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter("Лучшее оружие").setRefinement(5),
   ]);

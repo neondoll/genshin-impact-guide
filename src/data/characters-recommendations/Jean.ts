@@ -22,5 +22,5 @@ export default new CharacterRecommendations(CharacterIds.Jean)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter("Лучшее оружие").setRefinement(5),
   ]);

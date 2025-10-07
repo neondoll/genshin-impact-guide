@@ -18,11 +18,13 @@ export default {
     "Анимекул: Анализ ВСЕГО Крафтового Оружия | Тир-лист полезности [Genshin Impact]",
     new Date("2025-07-16"),
   ]).setYoutubeUrl("https://youtu.be/CU-BxsNF-qw"),
+  /* TODO: Посмотреть */
   [VideoSourceIds.FirstConstellationOrSignatureWeapon]: Class.init([
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
     "Miron MinMax: С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей",
     new Date("2025-01-15"),
-  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239189").setYoutubeUrl("https://youtu.be/NfgsESKwsdk"), /* TODO: Посмотреть */
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239189").setYoutubeUrl("https://youtu.be/NfgsESKwsdk"),
+  /* TODO: Как-нибудь посмотреть */
   [VideoSourceIds.GuideToChasca]: Class.init([
     VideoSourceIds.GuideToChasca,
     "Miron MinMax: Подробный и Актуальный | Гайд на Часку в 5.8",
@@ -33,6 +35,7 @@ export default {
     "Miron MinMax: Подробный и Актуальный | Гайд на Ситлали в 5.8",
     new Date("2025-08-03"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239245").setYoutubeUrl("https://youtu.be/GzR7Yx8UDSM?si=vX0FObdIigNnTZkg"),
+  /* TODO: Посмотреть */
   [VideoSourceIds.GuideToKyryllChudomirovichFlins_AnimeCool]: Class.init([
     VideoSourceIds.GuideToKyryllChudomirovichFlins_AnimeCool,
     "Анимекул: Кирилл Флинс - ИМБА? | Подробный гайд на Флинса [Genshin Impact]",
@@ -58,11 +61,13 @@ export default {
     "Miron MinMax: Подробный и Актуальный | Гайд на Мавуику",
     new Date("2025-06-08"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239238").setYoutubeUrl("https://youtu.be/bGkCi_aBNrI"),
+  /* TODO: Как-нибудь посмотреть */
   [VideoSourceIds.GuideToMualani]: Class.init([
     VideoSourceIds.GuideToMualani,
     "Miron MinMax: Подробный и Актуальный | Гайд на Муалани в 5.8",
     new Date("2025-08-18"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239248").setYoutubeUrl("https://youtu.be/xEglYZO38Rs"),
+  /* TODO: Посмотреть новую версию */
   [VideoSourceIds.GuideToNahida]: Class.init([
     VideoSourceIds.GuideToNahida,
     "Miron MinMax: Актуальный и Подробный | Гайд на Нахиду в 5.1",
@@ -88,11 +93,12 @@ export default {
     "Анимекул: Зачем нужен Пиро Путешественник? | Подробный гайд на Пиро ГГ",
     new Date("2025-01-08"),
   ]).setVkUrl("https://vkvideo.ru/video-229156089_456239059").setYoutubeUrl("https://youtu.be/L3Eg506_w7M"),
+  /* TODO: Посмотреть */
   [VideoSourceIds.GuideToXiangling]: Class.init([
     VideoSourceIds.GuideToXiangling,
     "Miron MinMax: Подробный и Актуальный | Гайд на Сян Лин в 6.0",
     new Date("2025-10-06"),
-  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239260").setYoutubeUrl("https://youtu.be/FhKKE0H9K8o"), /* TODO: Посмотреть */
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239260").setYoutubeUrl("https://youtu.be/FhKKE0H9K8o"),
   [VideoSourceIds.TheBestAndWorstBows]: Class.init([
     VideoSourceIds.TheBestAndWorstBows,
     "Miron MinMax: Лучшие и Худшие Луки | Тир-лист (2025)",
@@ -122,7 +128,7 @@ export default {
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     "Miron MinMax: Лучшее Доступное Оружия для Каждого Персонажа",
     new Date("2024-11-10"),
-  ]).setVkUrl("https://vk.com/video-227044935_456239169").setYoutubeUrl("https://youtu.be/zVspDJZPa4Y"), /* TODO: Посмотреть */
+  ]).setVkUrl("https://vk.com/video-227044935_456239169").setYoutubeUrl("https://youtu.be/zVspDJZPa4Y"),
   [VideoSourceIds.TheBestWeaponsForEveryCharacter]: Class.init([
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     "Miron MinMax: Лучшее Оружие для Каждого Персонажа",
@@ -138,9 +144,10 @@ export default {
     "Miron MinMax: КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.2 feat.@AnimeCool_Genshin",
     new Date("2023-09-25"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239106").setYoutubeUrl("https://youtu.be/Yz95Iw1q-es"),
+  /* TODO: Пересмотреть, не нашла ничего достойного добавления */
   [VideoSourceIds.WhoShouldLevel100]: Class.init([
     VideoSourceIds.WhoShouldLevel100,
     "Miron MinMax: Приросты от 95 и 100 лвл | Кому качать 100 уровень?",
     new Date("2025-09-18"),
-  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239256").setYoutubeUrl("https://youtu.be/W7KScTSvDiU"), /* TODO: Пересмотреть, не нашла ничего достойного добавления */
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239256").setYoutubeUrl("https://youtu.be/W7KScTSvDiU"),
 } as Record<Type["id"], Type>;

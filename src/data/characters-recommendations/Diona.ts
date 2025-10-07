@@ -22,6 +22,6 @@ export default new CharacterRecommendations(CharacterIds.Diona)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setIsBetter("Лучшее оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setRefinement(1),
   ]);

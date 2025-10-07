@@ -21,8 +21,8 @@ const TravelerADEGHRecommendationsVideoSourceIds = [
   VideoSourceIds.TheBestWeaponsForEveryCharacter,
 ];
 const TravelerADEGHRecommendationsWeapons = [
-  new ClassWeapon(WeaponIds.FavoniusSword).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
-  new ClassWeapon(WeaponIds.SacrificialSword).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
+  new ClassWeapon(WeaponIds.FavoniusSword).setIsBetter("Лучшее оружие").setRefinement(5),
+  new ClassWeapon(WeaponIds.SacrificialSword).setIsBetter("Лучшее оружие").setRefinement(5),
 ];
 
 export default {

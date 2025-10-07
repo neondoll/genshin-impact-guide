@@ -66,9 +66,12 @@ export default new CharacterRecommendations(CharacterIds.KukiShinobu)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FreedomSworn).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FreedomSworn).setIsBetter("Лучшее оружие (низкая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.ToukabouShigure).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.IronSting).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

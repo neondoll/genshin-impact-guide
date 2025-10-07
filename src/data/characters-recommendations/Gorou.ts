@@ -22,5 +22,5 @@ export default new CharacterRecommendations(CharacterIds.Gorou)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusWarbow).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusWarbow).setIsBetter("Лучшее оружие").setRefinement(5),
   ]);

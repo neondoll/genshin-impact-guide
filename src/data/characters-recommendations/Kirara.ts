@@ -22,5 +22,5 @@ export default new CharacterRecommendations(CharacterIds.Kirara)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.SacrificialSword).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialSword).setIsBetter("Лучшее оружие").setRefinement(5),
   ]);

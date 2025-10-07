@@ -4,7 +4,12 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Mualani)
-  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter, VideoSourceIds.GuideToMualani])
+  .setVideoSourceIds([
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+    VideoSourceIds.GuideToMualani,
+  ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.SurfsUp).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.SurfsUp).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.RingOfYaxche).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

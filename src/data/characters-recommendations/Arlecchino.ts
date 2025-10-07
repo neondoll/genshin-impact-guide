@@ -55,10 +55,13 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "По необходимости\n(6 | 8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6 | 8)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
+  .setVideoSourceIds([
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+  ])
   .setWeapons({
     "Гиперкери | Прожарка | отр. Шеврёз": [
-      new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.316),
+      new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter("Лучшее оружие (средняя зависимость)").setPercent(1.316),
       new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeWingedSpear).setPercent(1.124),
       new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setPercent(1.112),
       new CharacterWeaponRecommendation(WeaponIds.LumidouceElegy).setPercent(1.103),
@@ -66,14 +69,14 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
       new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setPercent(1.085),
       new CharacterWeaponRecommendation(WeaponIds.CalamityQueller).setPercent(1.063),
       new CharacterWeaponRecommendation(WeaponIds.Deathmatch).setPercent(1.032).setRefinement(1),
-      new CharacterWeaponRecommendation(WeaponIds.WhiteTassel).setPercent(1.000),
+      new CharacterWeaponRecommendation(WeaponIds.WhiteTassel).setIsBetter("Лучшее доступное оружие").setPercent(1.000),
       new CharacterWeaponRecommendation(WeaponIds.BalladOfTheFjords).setPercent(0.968),
       new CharacterWeaponRecommendation(WeaponIds.SkywardSpine).setPercent(0.948),
       new CharacterWeaponRecommendation(WeaponIds.BlackcliffPole).setPercent(0.899),
       new CharacterWeaponRecommendation(WeaponIds.MissiveWindspear).setPercent(0.875),
     ],
     [`${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]: [
-      new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.309),
+      new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter("Лучшее оружие (средняя зависимость)").setPercent(1.309),
       new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setPercent(1.156),
       new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeWingedSpear).setPercent(1.114),
       new CharacterWeaponRecommendation(WeaponIds.Deathmatch).setPercent(1.105).setRefinement(5),
@@ -85,7 +88,7 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
       new CharacterWeaponRecommendation(WeaponIds.LithicSpear).setPercent(1.043).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.Deathmatch).setPercent(1.043).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.BalladOfTheFjords).setPercent(1.023).setRefinement(1),
-      new CharacterWeaponRecommendation(WeaponIds.WhiteTassel).setPercent(1.000),
+      new CharacterWeaponRecommendation(WeaponIds.WhiteTassel).setIsBetter("Лучшее доступное оружие").setPercent(1.000),
       new CharacterWeaponRecommendation(WeaponIds.MissiveWindspear).setPercent(0.990),
       new CharacterWeaponRecommendation(WeaponIds.DragonsBane).setPercent(0.965),
       new CharacterWeaponRecommendation(WeaponIds.LithicSpear).setPercent(0.965).setRefinement(1),

@@ -22,7 +22,7 @@ export default new CharacterRecommendations(CharacterIds.Noelle)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.RedhornStonethresher).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusGreatsword).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.Whiteblind).setIsBetter("Лучшее доступное оружие (высокая зависимость от сигнатурного оружия)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.RedhornStonethresher).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusGreatsword).setIsBetter("Лучшее оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.Whiteblind).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

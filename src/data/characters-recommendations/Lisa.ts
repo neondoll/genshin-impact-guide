@@ -22,7 +22,7 @@ export default new CharacterRecommendations(CharacterIds.Lisa)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие (не самая высокая зависимость от сигнатурного оружия)").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.SacrificialFragments).setIsBetter("Лучшее доступное оружие (не самая высокая зависимость от сигнатурного оружия)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее оружие (не самая высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие (для ДД)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialFragments).setIsBetter("Лучшее доступное оружие (для максимизации МС)").setRefinement(5),
   ]);

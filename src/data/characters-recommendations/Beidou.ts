@@ -22,7 +22,7 @@ export default new CharacterRecommendations(CharacterIds.Beidou)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.SkywardPride).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.UltimateOverlordsMegaMagicSword).setIsBetter("Лучшее эвентовое оружие (высокая зависимость от сигнатурного оружия)").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.TidalShadow).setIsBetter("Лучшее доступное оружие (высокая зависимость от сигнатурного оружия)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SkywardPride).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.UltimateOverlordsMegaMagicSword).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TidalShadow).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

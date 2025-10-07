@@ -53,9 +53,13 @@ export default new CharacterRecommendations(CharacterIds.Neuvillette)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(6 | 8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "По необходимости\n(6 | 8)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
+  .setVideoSourceIds([
+    VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+  ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.TomeOfTheEternalFlow).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.000),
+    new CharacterWeaponRecommendation(WeaponIds.TomeOfTheEternalFlow).setIsBetter("Лучшее оружие (средняя зависимость)").setPercent(1.000),
     new CharacterWeaponRecommendation(WeaponIds.SacrificialJade).setPercent(0.998).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.SurfsUp).setPercent(0.917),
     new CharacterWeaponRecommendation(WeaponIds.SacrificialJade).setPercent(0.914).setRefinement(1),
@@ -64,7 +68,7 @@ export default new CharacterRecommendations(CharacterIds.Neuvillette)
     new CharacterWeaponRecommendation(WeaponIds.CashflowSupervision).setPercent(0.831),
     new CharacterWeaponRecommendation(WeaponIds.AshGravenDrinkingHorn).setPercent(0.808).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.KagurasVerity).setPercent(0.807),
-    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setPercent(0.805).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие").setPercent(0.805).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.JadefallsSplendor).setPercent(0.796),
     new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setPercent(0.791).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.EverlastingMoonglow).setPercent(0.765),

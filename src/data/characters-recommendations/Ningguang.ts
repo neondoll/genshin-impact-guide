@@ -22,8 +22,8 @@ export default new CharacterRecommendations(CharacterIds.Ningguang)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.LostPrayerToTheSacredWinds).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие (средняя зависимость от сигнатурного оружия)").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setIsBetter("Лучшее доступное оружие (получше) (средняя зависимость от сигнатурного оружия)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.LostPrayerToTheSacredWinds).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter("Лучшее оружие (для сапорта)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setIsBetter("Лучшее доступное оружие (получше)").setRefinement(5),
   ]);

@@ -30,11 +30,14 @@ export default new CharacterRecommendations(CharacterIds.Ganyu)
   })
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.AmosBow).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.AmosBow).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.SongOfStillness).setIsBetter("Лучшее доступное оружие (когда условия выполняются)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.Hamayumi).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

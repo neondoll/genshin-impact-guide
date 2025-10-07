@@ -53,16 +53,17 @@ export default new CharacterRecommendations(CharacterIds.Nahida)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
-    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.GuideToNahida,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons({
     [elementalReactionById(ElementalReactionIds.Hyperbloom)]: [
-      new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.0000).setRefinement(1),
+      new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее оружие (низкая зависимость)").setPercent(1.0000).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar).setPercent(0.9841).setRefinement(5),
-      new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setPercent(0.9705).setRefinement(5),
+      new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие").setPercent(0.9705).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar).setPercent(0.9702).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.SurfsUp).setPercent(0.9679).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.KagurasVerity).setPercent(0.9668).setRefinement(1),
@@ -72,10 +73,10 @@ export default new CharacterRecommendations(CharacterIds.Nahida)
       new CharacterWeaponRecommendation(WeaponIds.SolarPearl).setPercent(0.9628).setRefinement(1),
     ],
     [elementalReactionById(ElementalReactionIds.Quicken)]: [
-      new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.0000).setRefinement(1),
+      new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее оружие (низкая зависимость)").setPercent(1.0000).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar).setPercent(0.9789).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar).setPercent(0.9718).setRefinement(1),
-      new CharacterWeaponRecommendation(WeaponIds.MagicGuide).setPercent(0.9552).setRefinement(5),
+      new CharacterWeaponRecommendation(WeaponIds.MagicGuide).setIsBetter("Лучшее доступное оружие").setPercent(0.9552).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setPercent(0.9522).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.SacrificialJade).setPercent(0.9518).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.KagurasVerity).setPercent(0.9502).setRefinement(1),

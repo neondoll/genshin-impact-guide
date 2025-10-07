@@ -22,9 +22,9 @@ export default new CharacterRecommendations(CharacterIds.Baizhu)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.HakushinRing).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex).setIsBetter("Лучшее оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.JadefallsSplendor).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter("Лучшее доступное оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.HakushinRing).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.PrototypeAmber).setRefinement(5),
   ]);

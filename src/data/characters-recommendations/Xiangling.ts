@@ -54,8 +54,8 @@ export default new CharacterRecommendations(CharacterIds.Xiangling)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.TheCatch).setIsBetter("Лучшее доступное оружие (средняя зависимость от легендарного оружия)").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TheCatch).setIsBetter("Лучшее доступное оружие").setRefinement(5),
   ]);

@@ -4,8 +4,12 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Sigewinne)
-  .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
+  .setVideoSourceIds([
+    VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
+    VideoSourceIds.TheBestWeaponsForEveryCharacter,
+  ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.SilvershowerHeartstrings).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.SilvershowerHeartstrings).setIsBetter("Лучшее оружие (низкая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.RecurveBow).setRefinement(5),
   ]);

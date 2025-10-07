@@ -9,5 +9,5 @@ export default new CharacterRecommendations(CharacterIds.Kachina)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter("Лучшее сигнатурное/доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter("Лучшее оружие").setRefinement(5),
   ]);
