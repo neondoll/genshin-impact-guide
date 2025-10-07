@@ -21,6 +21,6 @@ export default new CharacterRecommendations(CharacterIds.Qiqi)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.AquilaFavonia).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter().setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.AquilaFavonia).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
   ]);

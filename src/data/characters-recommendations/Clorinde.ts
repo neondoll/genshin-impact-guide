@@ -5,4 +5,6 @@ import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Clorinde)
   .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.Absolution).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.Absolution).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

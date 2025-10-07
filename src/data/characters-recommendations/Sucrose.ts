@@ -21,7 +21,7 @@ export default new CharacterRecommendations(CharacterIds.Sucrose)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter().setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.HakushinRing).setIsBetter().setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.HakushinRing).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
   ]);

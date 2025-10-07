@@ -42,6 +42,6 @@ export default new CharacterRecommendations(CharacterIds.Xilonen)
   ])
   .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.PeakPatrolSong).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.PeakPatrolSong).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

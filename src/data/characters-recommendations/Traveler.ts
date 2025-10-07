@@ -16,29 +16,31 @@ import { StatIds } from "@/enums/stat";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
-const TravelerRecommendationsVideoSourceIds = [VideoSourceIds.TheBestWeaponsForEveryCharacter];
-const TravelerRecommendationsWeapons = [
-  new ClassWeapon(WeaponIds.FavoniusSword).setIsBetter().setRefinement(5),
-  new ClassWeapon(WeaponIds.SacrificialSword).setIsBetter().setRefinement(5),
+const TravelerADEGHRecommendationsVideoSourceIds = [
+  VideoSourceIds.TheBestWeaponsForEveryCharacter,
+];
+const TravelerADEGHRecommendationsWeapons = [
+  new ClassWeapon(WeaponIds.FavoniusSword).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+  new ClassWeapon(WeaponIds.SacrificialSword).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
 ];
 
 export default {
   [ElementIds.Anemo]: new Class(CharacterIds.TravelerAnemo)
-    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
-    .setWeapons(TravelerRecommendationsWeapons),
+    .setVideoSourceIds(TravelerADEGHRecommendationsVideoSourceIds)
+    .setWeapons(TravelerADEGHRecommendationsWeapons),
   [ElementIds.Dendro]: new Class(CharacterIds.TravelerDendro)
     .setRequiredLevel("90/90")
-    .setVideoSourceIds([...TravelerRecommendationsVideoSourceIds, VideoSourceIds.WhoNeedsLevelingPart1])
-    .setWeapons(TravelerRecommendationsWeapons),
+    .setVideoSourceIds([...TravelerADEGHRecommendationsVideoSourceIds, VideoSourceIds.WhoNeedsLevelingPart1])
+    .setWeapons(TravelerADEGHRecommendationsWeapons),
   [ElementIds.Electro]: new Class(CharacterIds.TravelerElectro)
-    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
-    .setWeapons(TravelerRecommendationsWeapons),
+    .setVideoSourceIds(TravelerADEGHRecommendationsVideoSourceIds)
+    .setWeapons(TravelerADEGHRecommendationsWeapons),
   [ElementIds.Geo]: new Class(CharacterIds.TravelerGeo)
-    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
-    .setWeapons(TravelerRecommendationsWeapons),
+    .setVideoSourceIds(TravelerADEGHRecommendationsVideoSourceIds)
+    .setWeapons(TravelerADEGHRecommendationsWeapons),
   [ElementIds.Hydro]: new Class(CharacterIds.TravelerHydro)
-    .setVideoSourceIds(TravelerRecommendationsVideoSourceIds)
-    .setWeapons(TravelerRecommendationsWeapons),
+    .setVideoSourceIds(TravelerADEGHRecommendationsVideoSourceIds)
+    .setWeapons(TravelerADEGHRecommendationsWeapons),
   [ElementIds.Pyro]: new Class(CharacterIds.TravelerPyro)
     .setArtifacts(ClassArtifacts.init([
       [

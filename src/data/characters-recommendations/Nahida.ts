@@ -60,7 +60,7 @@ export default new CharacterRecommendations(CharacterIds.Nahida)
   ])
   .setWeapons({
     [elementalReactionById(ElementalReactionIds.Hyperbloom)]: [
-      new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter().setPercent(1.0000).setRefinement(1),
+      new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.0000).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar).setPercent(0.9841).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setPercent(0.9705).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar).setPercent(0.9702).setRefinement(1),
@@ -72,7 +72,7 @@ export default new CharacterRecommendations(CharacterIds.Nahida)
       new CharacterWeaponRecommendation(WeaponIds.SolarPearl).setPercent(0.9628).setRefinement(1),
     ],
     [elementalReactionById(ElementalReactionIds.Quicken)]: [
-      new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter().setPercent(1.0000).setRefinement(1),
+      new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.0000).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar).setPercent(0.9789).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar).setPercent(0.9718).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.MagicGuide).setPercent(0.9552).setRefinement(5),

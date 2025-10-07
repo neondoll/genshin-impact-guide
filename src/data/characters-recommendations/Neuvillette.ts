@@ -55,7 +55,7 @@ export default new CharacterRecommendations(CharacterIds.Neuvillette)
   ])
   .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.TomeOfTheEternalFlow).setIsBetter().setPercent(1.000),
+    new CharacterWeaponRecommendation(WeaponIds.TomeOfTheEternalFlow).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.000),
     new CharacterWeaponRecommendation(WeaponIds.SacrificialJade).setPercent(0.998).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.SurfsUp).setPercent(0.917),
     new CharacterWeaponRecommendation(WeaponIds.SacrificialJade).setPercent(0.914).setRefinement(1),

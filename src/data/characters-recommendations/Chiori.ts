@@ -5,4 +5,6 @@ import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Chiori)
   .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

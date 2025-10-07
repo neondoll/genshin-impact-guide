@@ -16,6 +16,6 @@ export default new CharacterRecommendations(CharacterIds.Charlotte)
   ])
   .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex).setIsBetter().setRefinement(5),
   ]);

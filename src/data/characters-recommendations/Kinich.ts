@@ -5,4 +5,6 @@ import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Kinich)
   .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.FangOfTheMountainKing).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.FangOfTheMountainKing).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

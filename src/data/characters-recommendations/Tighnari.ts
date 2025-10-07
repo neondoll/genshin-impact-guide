@@ -20,4 +20,6 @@ export default new CharacterRecommendations(CharacterIds.Tighnari)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.HuntersPath).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.HuntersPath).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

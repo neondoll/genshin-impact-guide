@@ -20,4 +20,6 @@ export default new CharacterRecommendations(CharacterIds.Thoma)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.KitainCrossSpear).setIsBetter().setRefinement(5)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.KitainCrossSpear).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+  ]);

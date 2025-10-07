@@ -45,8 +45,8 @@ export default new CharacterRecommendations(CharacterIds.Chevreuse)
   ])
   .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.DialoguesOfTheDesertSages).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.RightfulReward).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

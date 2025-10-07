@@ -60,4 +60,6 @@ export default new CharacterRecommendations(CharacterIds.Xingqiu)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.SacrificialSword).setIsBetter().setRefinement(5)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialSword).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+  ]);

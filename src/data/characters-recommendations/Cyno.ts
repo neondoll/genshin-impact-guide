@@ -23,6 +23,5 @@ export default new CharacterRecommendations(CharacterIds.Cyno)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.WhiteTassel).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

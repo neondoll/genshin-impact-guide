@@ -20,4 +20,6 @@ export default new CharacterRecommendations(CharacterIds.Lisa)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

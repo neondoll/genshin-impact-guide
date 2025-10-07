@@ -23,6 +23,5 @@ export default new CharacterRecommendations(CharacterIds.Nilou)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.KeyOfKhajNisut).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.IronSting).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.KeyOfKhajNisut).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

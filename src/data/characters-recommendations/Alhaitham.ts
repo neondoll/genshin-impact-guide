@@ -20,4 +20,6 @@ export default new CharacterRecommendations(CharacterIds.Alhaitham)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.LightOfFoliarIncision).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.LightOfFoliarIncision).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

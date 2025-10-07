@@ -23,6 +23,5 @@ export default new CharacterRecommendations(CharacterIds.AratakiItto)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.RedhornStonethresher).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.Whiteblind).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.RedhornStonethresher).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

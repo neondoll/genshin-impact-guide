@@ -59,7 +59,7 @@ export default new CharacterRecommendations(CharacterIds.Furina)
   .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons({
     "Без реакций - 120% ВЭ+": [
-      new CharacterWeaponRecommendation(WeaponIds.SplendorOfTranquilWaters).setIsBetter().setPercent(1.3648),
+      new CharacterWeaponRecommendation(WeaponIds.SplendorOfTranquilWaters).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.3648),
       new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setPercent(1.3306).setPostfix("(с гео)"),
       new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setPercent(1.2265).setPostfix("(без гео)"),
       new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeCutter).setPercent(1.2139),
@@ -75,7 +75,7 @@ export default new CharacterRecommendations(CharacterIds.Furina)
       new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setPercent(0.8936).setRefinement(5),
     ],
     "Без реакций - 170% ВЭ+": [
-      new CharacterWeaponRecommendation(WeaponIds.SplendorOfTranquilWaters).setIsBetter().setPercent(1.1296),
+      new CharacterWeaponRecommendation(WeaponIds.SplendorOfTranquilWaters).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.1296),
       new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setPercent(1.0842).setPostfix("(с гео)"),
       new CharacterWeaponRecommendation(WeaponIds.FleuveCendreFerryman).setPercent(1.0000).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setPercent(0.9999).setPostfix("(без гео)"),
@@ -91,7 +91,7 @@ export default new CharacterRecommendations(CharacterIds.Furina)
       new CharacterWeaponRecommendation(WeaponIds.HarbingerOfDawn).setPercent(0.7894).setPostfix("(не работает)").setRefinement(5),
     ],
     "Без реакций - 220% ВЭ+": [
-      new CharacterWeaponRecommendation(WeaponIds.SplendorOfTranquilWaters).setIsBetter().setPercent(1.0893),
+      new CharacterWeaponRecommendation(WeaponIds.SplendorOfTranquilWaters).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.0893),
       new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setPercent(1.0421).setPostfix("(с гео)"),
       new CharacterWeaponRecommendation(WeaponIds.FleuveCendreFerryman).setPercent(1.0000).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setPercent(0.9604).setPostfix("(без гео)"),
@@ -107,7 +107,7 @@ export default new CharacterRecommendations(CharacterIds.Furina)
       new CharacterWeaponRecommendation(WeaponIds.HarbingerOfDawn).setPercent(0.7608).setPostfix("(не работает)").setRefinement(5),
     ],
     "Фурина вейпит - 180% ВЭ+": [
-      new CharacterWeaponRecommendation(WeaponIds.SplendorOfTranquilWaters).setIsBetter().setPercent(1.2547),
+      new CharacterWeaponRecommendation(WeaponIds.SplendorOfTranquilWaters).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.2547),
       new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setPercent(1.1969).setPostfix("(с гео)"),
       new CharacterWeaponRecommendation(WeaponIds.KeyOfKhajNisut).setPercent(1.1464),
       new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeCutter).setPercent(1.1087),

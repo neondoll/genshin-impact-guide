@@ -5,4 +5,6 @@ import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Mualani)
   .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter, VideoSourceIds.GuideToMualani])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.SurfsUp).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.SurfsUp).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

@@ -23,6 +23,5 @@ export default new CharacterRecommendations(CharacterIds.YaeMiko)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.KagurasVerity).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.KagurasVerity).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

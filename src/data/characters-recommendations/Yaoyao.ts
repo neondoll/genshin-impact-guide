@@ -20,4 +20,6 @@ export default new CharacterRecommendations(CharacterIds.Yaoyao)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter().setRefinement(5)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+  ]);

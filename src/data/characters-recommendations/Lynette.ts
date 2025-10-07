@@ -21,6 +21,6 @@ export default new CharacterRecommendations(CharacterIds.Lynette)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter().setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.SacrificialSword).setRefinement(5),
   ]);

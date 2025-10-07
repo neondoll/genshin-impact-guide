@@ -24,7 +24,5 @@ export default new CharacterRecommendations(CharacterIds.Wanderer)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.TulaytullahsRemembrance).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TulaytullahsRemembrance).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

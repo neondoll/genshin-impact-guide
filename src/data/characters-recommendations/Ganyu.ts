@@ -35,8 +35,6 @@ export default new CharacterRecommendations(CharacterIds.Ganyu)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.AstralVulturesCrimsonPlumage).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.AmosBow).setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.AmosBow).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.SongOfStillness).setRefinement(5),
   ]);

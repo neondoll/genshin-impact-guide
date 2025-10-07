@@ -15,4 +15,6 @@ export default new CharacterRecommendations(CharacterIds.Navia)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6)"]),
   ])
   .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.Verdict).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.Verdict).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

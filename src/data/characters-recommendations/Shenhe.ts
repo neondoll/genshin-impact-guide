@@ -23,6 +23,6 @@ export default new CharacterRecommendations(CharacterIds.Shenhe)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.CalamityQueller).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.CalamityQueller).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setRefinement(5),
   ]);

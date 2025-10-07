@@ -23,6 +23,6 @@ export default new CharacterRecommendations(CharacterIds.Venti)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusWarbow).setRefinement(5),
   ]);

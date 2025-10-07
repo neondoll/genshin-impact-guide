@@ -21,6 +21,6 @@ export default new CharacterRecommendations(CharacterIds.YunJin)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FootprintOfTheRainbow).setIsBetter().setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FootprintOfTheRainbow).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
   ]);

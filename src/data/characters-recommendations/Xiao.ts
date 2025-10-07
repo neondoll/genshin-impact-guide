@@ -24,6 +24,5 @@ export default new CharacterRecommendations(CharacterIds.Xiao)
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeWingedSpear).setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.WhiteTassel).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

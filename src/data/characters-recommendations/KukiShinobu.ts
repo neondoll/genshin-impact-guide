@@ -70,6 +70,5 @@ export default new CharacterRecommendations(CharacterIds.KukiShinobu)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FreedomSworn).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.XiphosMoonlight),
+    new CharacterWeaponRecommendation(WeaponIds.FreedomSworn).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

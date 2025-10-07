@@ -21,6 +21,6 @@ export default new CharacterRecommendations(CharacterIds.Collei)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.SacrificialBow).setRefinement(5),
   ]);

@@ -53,7 +53,7 @@ export default new CharacterRecommendations(CharacterIds.Xiangling)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setRefinement(1),
   ]);

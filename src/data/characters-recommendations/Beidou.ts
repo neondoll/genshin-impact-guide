@@ -20,4 +20,6 @@ export default new CharacterRecommendations(CharacterIds.Beidou)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.SkywardPride).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.SkywardPride).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

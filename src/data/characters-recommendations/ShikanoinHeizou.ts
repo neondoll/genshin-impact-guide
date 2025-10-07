@@ -21,8 +21,8 @@ export default new CharacterRecommendations(CharacterIds.ShikanoinHeizou)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter().setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.HakushinRing).setIsBetter().setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex).setIsBetter().setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.PrototypeAmber).setIsBetter().setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.HakushinRing).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.PrototypeAmber).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
   ]);

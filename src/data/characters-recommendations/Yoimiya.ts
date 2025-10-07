@@ -23,6 +23,5 @@ export default new CharacterRecommendations(CharacterIds.Yoimiya)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.ThunderingPulse).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.Rust).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.ThunderingPulse).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

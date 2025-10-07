@@ -20,4 +20,6 @@ export default new CharacterRecommendations(CharacterIds.Freminet)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.SongOfBrokenPines).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.SongOfBrokenPines).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

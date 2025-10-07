@@ -52,7 +52,6 @@ export default new CharacterRecommendations(CharacterIds.Fischl)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.AquaSimulacra).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.TheStringless),
+    new CharacterWeaponRecommendation(WeaponIds.AquaSimulacra).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.ElegyForTheEnd).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

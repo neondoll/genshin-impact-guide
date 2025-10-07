@@ -20,4 +20,6 @@ export default new CharacterRecommendations(CharacterIds.Lyney)
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.TheFirstGreatMagic).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.TheFirstGreatMagic).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

@@ -23,7 +23,5 @@ export default new CharacterRecommendations(CharacterIds.KamisatoAyato)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.HaranGeppakuFutsu).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FinaleOfTheDeep).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.AmenomaKageuchi).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.HaranGeppakuFutsu).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

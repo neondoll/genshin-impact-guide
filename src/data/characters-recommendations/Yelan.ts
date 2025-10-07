@@ -23,6 +23,5 @@ export default new CharacterRecommendations(CharacterIds.Yelan)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.AquaSimulacra).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.Slingshot).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.AquaSimulacra).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

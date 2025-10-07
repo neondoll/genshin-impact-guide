@@ -23,7 +23,7 @@ export default new CharacterRecommendations(CharacterIds.KaedeharaKazuha)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.FreedomSworn).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.XiphosMoonlight).setIsBetter().setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FreedomSworn).setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.XiphosMoonlight).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
   ]);

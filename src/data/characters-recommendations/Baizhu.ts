@@ -21,7 +21,7 @@ export default new CharacterRecommendations(CharacterIds.Baizhu)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.HakushinRing).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex).setIsBetter().setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.JadefallsSplendor).setRefinement(1),
   ]);

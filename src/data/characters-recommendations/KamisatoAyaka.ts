@@ -23,7 +23,5 @@ export default new CharacterRecommendations(CharacterIds.KamisatoAyaka)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FinaleOfTheDeep).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.AmenomaKageuchi).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

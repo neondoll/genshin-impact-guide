@@ -23,7 +23,6 @@ export default new CharacterRecommendations(CharacterIds.HuTao)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter().setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.DragonsBane).setRefinement(5),
   ]);

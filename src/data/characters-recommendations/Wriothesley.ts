@@ -15,4 +15,6 @@ export default new CharacterRecommendations(CharacterIds.Wriothesley)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
   .setVideoSourceIds([VideoSourceIds.AllAboutAllTalents, VideoSourceIds.TheBestWeaponsForEveryCharacter])
-  .setWeapons([new CharacterWeaponRecommendation(WeaponIds.CashflowSupervision).setIsBetter().setRefinement(1)]);
+  .setWeapons([
+    new CharacterWeaponRecommendation(WeaponIds.CashflowSupervision).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
+  ]);

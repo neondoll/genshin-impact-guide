@@ -21,7 +21,7 @@ export default new CharacterRecommendations(CharacterIds.Razor)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.BloodtaintedGreatsword).setIsBetter().setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.Rainslasher).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.MakhairaAquamarine).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.BloodtaintedGreatsword).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.MakhairaAquamarine).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.Rainslasher).setIsBetter("Лучшее сигнатурное оружие").setRefinement(5),
   ]);

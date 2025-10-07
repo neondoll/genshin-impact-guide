@@ -23,7 +23,6 @@ export default new CharacterRecommendations(CharacterIds.RaidenShogun)
     VideoSourceIds.WhoNeedsLevelingPart2,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.DragonsBane).setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.TheCatch).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.EngulfingLightning).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

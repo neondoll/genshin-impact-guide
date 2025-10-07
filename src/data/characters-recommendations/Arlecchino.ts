@@ -58,7 +58,7 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
   .setVideoSourceIds([VideoSourceIds.TheBestWeaponsForEveryCharacter])
   .setWeapons({
     "Гиперкери | Прожарка | отр. Шеврёз": [
-      new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter().setPercent(1.316),
+      new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.316),
       new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeWingedSpear).setPercent(1.124),
       new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setPercent(1.112),
       new CharacterWeaponRecommendation(WeaponIds.LumidouceElegy).setPercent(1.103),
@@ -73,7 +73,7 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
       new CharacterWeaponRecommendation(WeaponIds.MissiveWindspear).setPercent(0.875),
     ],
     [`${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]: [
-      new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter().setPercent(1.309),
+      new CharacterWeaponRecommendation(WeaponIds.CrimsonMoonsSemblance).setIsBetter("Лучшее сигнатурное оружие").setPercent(1.309),
       new CharacterWeaponRecommendation(WeaponIds.StaffOfTheScarletSands).setPercent(1.156),
       new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeWingedSpear).setPercent(1.114),
       new CharacterWeaponRecommendation(WeaponIds.Deathmatch).setPercent(1.105).setRefinement(5),

@@ -21,6 +21,6 @@ export default new CharacterRecommendations(CharacterIds.Keqing)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter().setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.LightOfFoliarIncision).setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);

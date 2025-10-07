@@ -23,6 +23,5 @@ export default new CharacterRecommendations(CharacterIds.Eula)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.SongOfBrokenPines).setIsBetter().setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.PrototypeArchaic).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SongOfBrokenPines).setIsBetter("Лучшее сигнатурное оружие").setRefinement(1),
   ]);
