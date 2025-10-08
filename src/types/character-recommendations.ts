@@ -7,14 +7,13 @@ import type { VideoSourceId } from "./video-source";
 import type { WeaponId } from "./weapon";
 import { ArtifactSlotIds } from "@/enums/artifact-slot";
 
-type CharacterArtifactSetRecommendations = (CharacterArtifactSetRecommendationWithId | CharacterArtifactSetRecommendationWithIds)[];
 type CharacterArtifactStatRecommendations = Record<typeof ArtifactSlotIds["Sands" | "Goblet" | "Circlet"] | "additional", CharacterArtifactStatRecommendation[]>;
 type CharacterRecommendationSquadBestTeammates = CharacterSquadItemRecommendation[];
 type CharacterTalentLevelingRecommendations = CharacterTalentLevelingRecommendation[];
 type CharacterWeaponRecommendations = CharacterWeaponRecommendation[];
 
 export interface CharacterArtifactRecommendations {
-  sets: CharacterArtifactSetRecommendations;
+  sets: CharacterArtifactSetRecommendations | Record<string, CharacterArtifactSetRecommendations>;
   stats: CharacterArtifactStatRecommendations;
 }
 
@@ -88,5 +87,6 @@ export interface CharacterWeaponRecommendation {
   percent?: number;
 }
 
+export type CharacterArtifactSetRecommendations = (CharacterArtifactSetRecommendationWithId | CharacterArtifactSetRecommendationWithIds)[];
 export type CharacterReferencePointRecommendations = [string, string][];
 export type CharacterSquadItemRecommendation = (CharacterSquadCharacterRecommendation | CharacterSquadElementRecommendation | CharacterSquadOtherRecommendation);

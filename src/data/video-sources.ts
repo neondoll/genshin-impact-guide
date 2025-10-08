@@ -23,7 +23,7 @@ export default {
     "Miron MinMax: С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей",
     new Date("2025-01-15"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239189").setYoutubeUrl("https://youtu.be/NfgsESKwsdk"),
-  /* TODO: Пересмотреть, есть вопросы */
+  /* TODO: Пересмотреть, нужно добавить отряды */
   [VideoSourceIds.GuideToArlecchino]: Class.init([
     VideoSourceIds.GuideToArlecchino,
     "Miron MinMax: Подробный и Актуальный | Гайд на Арлекино в 5.3",
@@ -35,7 +35,7 @@ export default {
     "Miron MinMax: Подробный и Актуальный | Гайд на Часку в 5.8",
     new Date("2025-08-22"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239250").setYoutubeUrl("https://youtu.be/OmSwenN-e8s"),
-  /* TODO: Пересмотреть, есть вопросы по оружию */
+  /* TODO: Пересмотреть, нужно добавить отряды */
   [VideoSourceIds.GuideToCitlali]: Class.init([
     VideoSourceIds.GuideToCitlali,
     "Miron MinMax: Подробный и Актуальный | Гайд на Ситлали в 5.8",

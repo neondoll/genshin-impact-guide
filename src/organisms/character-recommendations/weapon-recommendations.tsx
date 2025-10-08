@@ -9,6 +9,31 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import IsBetter from "../is-better";
 import WeaponBadge from "../badges/weapon-badge";
 
+export default function WeaponRecommendations({ character, recommendations }: WeaponRecommendationsProps) {
+  if (Array.isArray(recommendations)) {
+    return (
+      <WeaponRecommendationsTable character={character} recommendations={recommendations} />
+    );
+  }
+
+  const recommendationsEntries = Object.entries(recommendations);
+
+  return (
+    <Tabs defaultValue={recommendationsEntries[0][0]}>
+      <TabsList className="flex flex-wrap w-full h-auto min-h-9">
+        {recommendationsEntries.map(([key]) => (
+          <TabsTrigger dangerouslySetInnerHTML={{ __html: key }} key={key} value={key} />
+        ))}
+      </TabsList>
+      {recommendationsEntries.map(([key, recommendations]) => (
+        <TabsContent key={key} value={key}>
+          <WeaponRecommendationsTable character={character} recommendations={recommendations} />
+        </TabsContent>
+      ))}
+    </Tabs>
+  );
+}
+
 function WeaponRecommendationsTable({ character, recommendations }: {
   character: WeaponRecommendationsProps["character"];
   recommendations: CharacterWeaponRecommendation[];
@@ -23,7 +48,7 @@ function WeaponRecommendationsTable({ character, recommendations }: {
 
   useEffect(() => {
     const hasPercent = recommendations.some((recommendation) => {
-      return recommendation.percent !== undefined;
+      return Boolean(recommendation.percent);
     });
 
     setHasIsBetter(recommendations.some((recommendation) => {
@@ -34,10 +59,10 @@ function WeaponRecommendationsTable({ character, recommendations }: {
     }));
     setHasPercent(hasPercent);
     setHasPostfix(recommendations.some((recommendation) => {
-      return recommendation.postfix !== undefined;
+      return Boolean(recommendation.postfix);
     }));
     setHasRefinement(recommendations.some((recommendation) => {
-      return recommendation.refinement !== undefined;
+      return Boolean(recommendation.refinement);
     }));
 
     if (hasPercent) {
@@ -112,30 +137,5 @@ function WeaponRecommendationsTable({ character, recommendations }: {
         })}
       </TableBody>
     </Table>
-  );
-}
-
-export default function WeaponRecommendations({ character, recommendations }: WeaponRecommendationsProps) {
-  if (Array.isArray(recommendations)) {
-    return (
-      <WeaponRecommendationsTable character={character} recommendations={recommendations} />
-    );
-  }
-
-  const recommendationsEntries = Object.entries(recommendations);
-
-  return (
-    <Tabs defaultValue={recommendationsEntries[0][0]}>
-      <TabsList className="flex flex-wrap w-full h-auto min-h-9">
-        {recommendationsEntries.map(([key]) => (
-          <TabsTrigger dangerouslySetInnerHTML={{ __html: key }} key={key} value={key} />
-        ))}
-      </TabsList>
-      {recommendationsEntries.map(([key, recommendations]) => (
-        <TabsContent key={key} value={key}>
-          <WeaponRecommendationsTable character={character} recommendations={recommendations} />
-        </TabsContent>
-      ))}
-    </Tabs>
   );
 }
