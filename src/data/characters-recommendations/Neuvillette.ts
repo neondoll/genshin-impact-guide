@@ -56,6 +56,7 @@ export default new CharacterRecommendations(CharacterIds.Neuvillette)
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.GuideToNeuvillette,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
   ])

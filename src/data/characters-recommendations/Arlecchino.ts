@@ -57,6 +57,7 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
   ])
   .setVideoSourceIds([
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.GuideToArlecchino,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
   ])

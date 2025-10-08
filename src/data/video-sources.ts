@@ -18,12 +18,17 @@ export default {
     "Анимекул: Анализ ВСЕГО Крафтового Оружия | Тир-лист полезности [Genshin Impact]",
     new Date("2025-07-16"),
   ]).setYoutubeUrl("https://youtu.be/CU-BxsNF-qw"),
-  /* TODO: Посмотреть */
   [VideoSourceIds.FirstConstellationOrSignatureWeapon]: Class.init([
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
     "Miron MinMax: С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей",
     new Date("2025-01-15"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239189").setYoutubeUrl("https://youtu.be/NfgsESKwsdk"),
+  /* TODO: Пересмотреть, есть вопросы */
+  [VideoSourceIds.GuideToArlecchino]: Class.init([
+    VideoSourceIds.GuideToArlecchino,
+    "Miron MinMax: Подробный и Актуальный | Гайд на Арлекино в 5.3",
+    new Date("2025-01-22"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239191").setYoutubeUrl("https://youtu.be/VY0Kt2AaMGY"),
   /* TODO: Как-нибудь посмотреть */
   [VideoSourceIds.GuideToChasca]: Class.init([
     VideoSourceIds.GuideToChasca,
@@ -36,6 +41,12 @@ export default {
     "Miron MinMax: Подробный и Актуальный | Гайд на Ситлали в 5.8",
     new Date("2025-08-03"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239245").setYoutubeUrl("https://youtu.be/GzR7Yx8UDSM?si=vX0FObdIigNnTZkg"),
+  /* TODO: Пересмотреть, есть вопросы */
+  [VideoSourceIds.GuideToFurina]: Class.init([
+    VideoSourceIds.GuideToFurina,
+    "Miron MinMax: Подробный и Актуальный | Гайд на Фурину в 5.4",
+    new Date("2025-03-02"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239203").setYoutubeUrl("https://youtu.be/rxTakZUxk0U"),
   /* TODO: Посмотреть */
   [VideoSourceIds.GuideToKyryllChudomirovichFlins_AnimeCool]: Class.init([
     VideoSourceIds.GuideToKyryllChudomirovichFlins_AnimeCool,
@@ -57,6 +68,7 @@ export default {
     "Miron MinMax: Паверкрип Нахиды? Гайд на Лауму в 6.0",
     new Date("2025-09-10"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239254").setYoutubeUrl("https://youtu.be/BMpFDebyZck"),
+  /* TODO: Пересмотреть, есть вопросы */
   [VideoSourceIds.GuideToMavuika]: Class.init([
     VideoSourceIds.GuideToMavuika,
     "Miron MinMax: Подробный и Актуальный | Гайд на Мавуику",
@@ -74,6 +86,18 @@ export default {
     "Miron MinMax: Актуальный и Подробный | Гайд на Нахиду в 5.1",
     new Date("2024-10-23"),
   ]).setVkUrl("https://vk.com/video-227044935_456239163").setYoutubeUrl("https://youtu.be/QZObIiFe8R8"),
+  /* TODO: Пересмотреть, есть вопросы */
+  [VideoSourceIds.GuideToNeuvillette]: Class.init([
+    VideoSourceIds.GuideToNeuvillette,
+    "Miron MinMax: Актуальный и Подробный | Гайд на Нёвилетта в 5.2",
+    new Date("2024-12-11"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239180").setYoutubeUrl("https://youtu.be/IoGwHEPCnYs"),
+  /* TODO: Посмотреть */
+  [VideoSourceIds.GuideToRaidenShogun]: Class.init([
+    VideoSourceIds.GuideToRaidenShogun,
+    "Miron MinMax: Подробный и Актуальный | Гайд на Райдэн в 5.0",
+    new Date("2024-10-02"),
+  ]).setVkUrl("https://vk.com/video-227044935_456239156").setYoutubeUrl("https://youtu.be/sDmNHMtfrhc"),
   [VideoSourceIds.GuideToSkirk_AnimeCool]: Class.init([
     VideoSourceIds.GuideToSkirk_AnimeCool,
     "Анимекул: Скирк – заложник Эскофье или имба? | Подробный гайд на Скирк",
@@ -100,6 +124,12 @@ export default {
     "Miron MinMax: Подробный и Актуальный | Гайд на Сян Лин в 6.0",
     new Date("2025-10-06"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239260").setYoutubeUrl("https://youtu.be/FhKKE0H9K8o"),
+  /* TODO: Посмотреть */
+  [VideoSourceIds.HowGoodIsRaidenShogunConstellations]: Class.init([
+    VideoSourceIds.HowGoodIsRaidenShogunConstellations,
+    "Miron MinMax: Насколько Хороши Созвездия Райдэн | И хороши ли?",
+    new Date("2025-05-30"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239227").setYoutubeUrl("https://youtu.be/dzI9MhNl5Ic"),
   [VideoSourceIds.TheBestAndWorstBows]: Class.init([
     VideoSourceIds.TheBestAndWorstBows,
     "Miron MinMax: Лучшие и Худшие Луки | Тир-лист (2025)",

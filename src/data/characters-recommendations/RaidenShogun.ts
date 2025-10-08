@@ -19,6 +19,8 @@ export default new CharacterRecommendations(CharacterIds.RaidenShogun)
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
     VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.GuideToRaidenShogun,
+    VideoSourceIds.HowGoodIsRaidenShogunConstellations,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
