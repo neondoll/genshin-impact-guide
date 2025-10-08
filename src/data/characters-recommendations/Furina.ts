@@ -45,6 +45,7 @@ export default new CharacterRecommendations(CharacterIds.Furina)
       ],
     },
   ]))
+  .setFirstConstellationOrSignatureWeapon("C1")
   .setReferencePoint([
     ["Макс. HP", "33 000"],
     ["Восст. энергии", "170%"],
@@ -58,6 +59,7 @@ export default new CharacterRecommendations(CharacterIds.Furina)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
   ])

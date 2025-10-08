@@ -23,8 +23,10 @@ export default new CharacterRecommendations(CharacterIds.Albedo)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeCutter).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.CinnabarSpindle).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setIsBetter("Лучшее оружие (средняя зависимость)").setPercent(1.241).setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeCutter).setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.CinnabarSpindle).setIsBetter("Лучшее эвентовое оружие").setPercent(1.229).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.FesteringDesire).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.FluteOfEzpitzal).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.HarbingerOfDawn).setIsBetter("Лучшее доступное оружие").setPercent(1.000).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FluteOfEzpitzal).setRefinement(5),
   ]);

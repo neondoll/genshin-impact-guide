@@ -4,7 +4,9 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Kinich)
+  .setFirstConstellationOrSignatureWeapon("Сигна")
   .setVideoSourceIds([
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
   ])

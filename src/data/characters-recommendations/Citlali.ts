@@ -76,12 +76,12 @@ export default new CharacterRecommendations(CharacterIds.Citlali)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(6-8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6-8)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.GuideToCitlali])
+  .setVideoSourceIds([VideoSourceIds.FirstConstellationOrSignatureWeapon, VideoSourceIds.GuideToCitlali])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.StarcallersWatch).setIsBetter(),
-    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex),
-    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers),
-    new CharacterWeaponRecommendation(WeaponIds.SacrificialFragments),
-    new CharacterWeaponRecommendation(WeaponIds.PrototypeAmber),
-    new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar),
+    new CharacterWeaponRecommendation(WeaponIds.StarcallersWatch).setIsBetter("Лучшее оружие").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FavoniusCodex).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.SacrificialFragments).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.PrototypeAmber).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.WanderingEvenstar).setRefinement(5),
   ]);

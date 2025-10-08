@@ -9,6 +9,7 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Alhaitham)
+  .setFirstConstellationOrSignatureWeapon("Сигна")
   .setRequiredLevel("90/90")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "Во вторую очередь\n(6)"]),
@@ -17,6 +18,7 @@ export default new CharacterRecommendations(CharacterIds.Alhaitham)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
     VideoSourceIds.WhoNeedsLevelingPart2,
@@ -24,4 +26,5 @@ export default new CharacterRecommendations(CharacterIds.Alhaitham)
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.LightOfFoliarIncision).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.IronSting).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.HarbingerOfDawn).setRefinement(5),
   ]);

@@ -30,6 +30,7 @@ export default {
     "Miron MinMax: Подробный и Актуальный | Гайд на Часку в 5.8",
     new Date("2025-08-22"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239250").setYoutubeUrl("https://youtu.be/OmSwenN-e8s"),
+  /* TODO: Пересмотреть, есть вопросы по оружию */
   [VideoSourceIds.GuideToCitlali]: Class.init([
     VideoSourceIds.GuideToCitlali,
     "Miron MinMax: Подробный и Актуальный | Гайд на Ситлали в 5.8",

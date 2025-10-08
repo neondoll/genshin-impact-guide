@@ -49,13 +49,14 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
       ],
     },
   ]))
-  .setFirstConstellationOrSignatureWeapon("С1 и Сигна")
+  .setFirstConstellationOrSignatureWeapon("Сигна ~ C1. Лучше С1 и Сигна")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "По необходимости\n(6 | 8)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(6 | 8)"]),
   ])
   .setVideoSourceIds([
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
   ])
