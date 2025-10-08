@@ -52,7 +52,7 @@ export default new CharacterRecommendations(CharacterIds.Citlali)
         ]),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["приоритетно", "от 170%"]),
+        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["Приоритетно", "от 170%"]),
         new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["от 800"]),
       ],
     },
@@ -70,7 +70,8 @@ export default new CharacterRecommendations(CharacterIds.Citlali)
     ["Оружие", weapons[WeaponIds.ThrillingTalesOfDragonSlayers].title],
     ["Набор артефактов", artifactSets[ArtifactSetIds.ScrollOfTheHeroOfCinderCity].name],
   ])
-  .setRequiredLevel(80)
+  .setRequiredLevel("80/80")
+  .setRotation("E > Q > можно сделать 1 удар, чтобы точно наложить Крио статус")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(6-8)"]),

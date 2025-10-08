@@ -1,22 +1,41 @@
 import { useEffect, useState } from "react";
 
-import type { ArtifactSetId } from "@/types/artifact-set";
 import type { ArtifactSetRecommendationsProps } from "./types";
+import type { CharacterArtifactSetRecommendations } from "@/types/character-recommendations";
 import { cn, numberFormatPercent } from "@/lib/utils";
-import { selectArtifactSetById } from "@/features/artifact-sets/selectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import Badge from "../badges/artifact-set-badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ArtifactSetBadge from "../badges/artifact-set-badge";
 import IsBetter from "../is-better";
 
-function ArtifactSetBadge({ artifactSetId }: { artifactSetId: ArtifactSetId }) {
-  const artifactSet = selectArtifactSetById(artifactSetId);
+export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
+  if (Array.isArray(recommendations)) {
+    return (
+      <ArtifactSetRecommendationsTable recommendations={recommendations} />
+    );
+  }
+
+  const recommendationsEntries = Object.entries(recommendations);
 
   return (
-    <Badge artifactSetId={artifactSet.id} />
+    <Tabs defaultValue={recommendationsEntries[0][0]}>
+      <TabsList className="flex flex-wrap w-full h-auto min-h-9">
+        {recommendationsEntries.map(([key]) => (
+          <TabsTrigger dangerouslySetInnerHTML={{ __html: key }} key={key} value={key} />
+        ))}
+      </TabsList>
+      {recommendationsEntries.map(([key, recommendations]) => (
+        <TabsContent key={key} value={key}>
+          <ArtifactSetRecommendationsTable recommendations={recommendations} />
+        </TabsContent>
+      ))}
+    </Tabs>
   );
 }
 
-export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
+function ArtifactSetRecommendationsTable({ recommendations }: {
+  recommendations: CharacterArtifactSetRecommendations;
+}) {
   const [diffPercent, setDiffPercent] = useState(0);
   const [hasDescription, setHasDescription] = useState(false);
   const [hasIsBetter, setHasIsBetter] = useState(false);
@@ -26,17 +45,17 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
 
   useEffect(() => {
     const hasPercent = recommendations.some((recommendation) => {
-      return recommendation.percent !== undefined;
+      return Boolean(recommendation.percent);
     });
 
     setHasDescription(recommendations.some((recommendation) => {
-      return recommendation.description !== undefined;
+      return Boolean(recommendation.description);
     }));
     setHasIsBetter(recommendations.some((recommendation) => {
-      return recommendation.is_better === true;
+      return Boolean(recommendation.is_better);
     }));
     setHasNotes(recommendations.some((recommendation) => {
-      return recommendation.notes !== undefined;
+      return Boolean(recommendation.notes);
     }));
     setHasPercent(hasPercent);
 
@@ -87,8 +106,8 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
                 <ArtifactSetBadge artifactSetId={recommendation.id} />
               )}
               {"ids" in recommendation && (
-                <div className="flex flex-col gap-2">
-                  {recommendation.ids.map(id => <ArtifactSetBadge artifactSetId={id} />)}
+                <div className="flex flex-row gap-2">
+                  {recommendation.ids.map(id => <ArtifactSetBadge artifactSetId={id} key={id} />)}
                 </div>
               )}
             </TableCell>
