@@ -26,6 +26,6 @@ export default new CharacterRecommendations(CharacterIds.Eula)
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.SongOfBrokenPines).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.UltimateOverlordsMegaMagicSword).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.TidalShadow).setIsBetter("Лучшее доступное оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.PrototypeArchaic).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TidalShadow).setRefinement(5),
   ]);

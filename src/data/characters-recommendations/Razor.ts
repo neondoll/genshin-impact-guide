@@ -25,5 +25,5 @@ export default new CharacterRecommendations(CharacterIds.Razor)
     new CharacterWeaponRecommendation(WeaponIds.BloodtaintedGreatsword).setIsBetter("Лучшее оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.Rainslasher).setIsBetter("Лучшее оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.MakhairaAquamarine).setIsBetter("Лучшее оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.MailedFlower).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.MailedFlower).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
   ]);

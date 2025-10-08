@@ -26,5 +26,6 @@ export default new CharacterRecommendations(CharacterIds.KamisatoAyato)
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.HaranGeppakuFutsu).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.FinaleOfTheDeep).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.AmenomaKageuchi).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.BlackcliffLongsword).setIsBetter("Лучшее доступное оружие (когда работает на 3-х стаках)").setRefinement(5),
   ]);

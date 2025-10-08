@@ -4,7 +4,9 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Sigewinne)
+  .setFirstConstellationOrSignatureWeapon("С1")
   .setVideoSourceIds([
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
   ])

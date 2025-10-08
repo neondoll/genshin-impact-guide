@@ -26,4 +26,5 @@ export default new CharacterRecommendations(CharacterIds.KamisatoAyaka)
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.MistsplitterReforged).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.FinaleOfTheDeep).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.AmenomaKageuchi).setRefinement(5),
   ]);

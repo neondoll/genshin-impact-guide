@@ -28,5 +28,5 @@ export default new CharacterRecommendations(CharacterIds.Klee)
     new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter("Лучшее оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.DodocoTales).setIsBetter("Лучшее эвентовое оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setRefinement(5),
   ]);

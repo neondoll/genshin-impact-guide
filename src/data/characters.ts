@@ -108,7 +108,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Anemo,
     [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
-  ]),
+  ]).setSignatureWeaponId(WeaponIds.AstralVulturesCrimsonPlumage),
   [CharacterIds.Chevreuse]: Class.init([
     CharacterIds.Chevreuse,
     "Шеврёз",

@@ -25,5 +25,5 @@ export default new CharacterRecommendations(CharacterIds.Zhongli)
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setIsBetter("Лучшее оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.BlackTassel).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.BlackTassel).setIsBetter().setRefinement(5),
   ]);

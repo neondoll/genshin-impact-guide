@@ -26,6 +26,7 @@ export default new CharacterRecommendations(CharacterIds.SangonomiyaKokomi)
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.ThrillingTalesOfDragonSlayers).setIsBetter("Лучшее оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.EverlastingMoonglow).setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.PrototypeAmber).setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.SacrificialFragments).setRefinement(5),
   ]);

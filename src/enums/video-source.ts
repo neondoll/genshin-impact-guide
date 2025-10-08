@@ -9,10 +9,14 @@ export const VideoSourceIds = {
   AnalysisOfAllCraftedWeapons: "analysis_of_all_crafted_weapons",
   /* Miron MinMax: С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей */
   FirstConstellationOrSignatureWeapon: "first_constellation_or_signature_weapon",
+  /* Miron MinMax: Подробный и Актуальный | Гайд на Арлекино в 5.3 */
+  GuideToArlecchino: `guide_to_${CharacterIds.Arlecchino}_in_5.3`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Часку в 5.8 */
   GuideToChasca: `guide_to_${CharacterIds.Chasca}_in_5.8`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Ситлали в 5.8 */
   GuideToCitlali: `guide_to_${CharacterIds.Citlali}_in_5.8`,
+  /* Miron MinMax: Подробный и Актуальный | Гайд на Фурину в 5.4 */
+  GuideToFurina: `guide_to_${CharacterIds.Furina}_in_5.4`,
   /* Анимекул: Кирилл Флинс - ИМБА? | Подробный гайд на Флинса [Genshin Impact] */
   GuideToKyryllChudomirovichFlins_AnimeCool: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_6.0_AnimeCool`,
   /* Miron MinMax: Кирилл Флинс Чудомирович | Гайд */
@@ -25,8 +29,12 @@ export const VideoSourceIds = {
   GuideToMavuika: `guide_to_${CharacterIds.Mavuika}`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Муалани в 5.8 */
   GuideToMualani: `guide_to_${CharacterIds.Mualani}_in_5.8`,
-  /* "Miron MinMax: Актуальный и Подробный | Гайд на Нахиду в 5.1 */
+  /* Miron MinMax: Актуальный и Подробный | Гайд на Нахиду в 5.1 */
   GuideToNahida: `guide_to_${CharacterIds.Nahida}_in_5.1`,
+  /* Miron MinMax: Актуальный и Подробный | Гайд на Нёвилетта в 5.2 */
+  GuideToNeuvillette: `guide_to_${CharacterIds.Neuvillette}_in_5.2`,
+  /* Miron MinMax: Подробный и Актуальный | Гайд на Райдэн в 5.0 */
+  GuideToRaidenShogun: `guide_to_${CharacterIds.RaidenShogun}_in_5.0`,
   /* Анимекул: Скирк – заложник Эскофье или имба? | Подробный гайд на Скирк */
   GuideToSkirk_AnimeCool: `guide_to_${CharacterIds.Skirk}_in_5.7_AnimeCool`,
   /* Miron MinMax: Скирк - Сильнейший Крио (но есть нюанс) */
@@ -37,6 +45,8 @@ export const VideoSourceIds = {
   GuideToTravelerPyro: `guide_to_${CharacterIds.TravelerPyro}`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Сян Лин в 6.0 */
   GuideToXiangling: `guide_to_${CharacterIds.Xiangling}_in_6.0`,
+  /* Miron MinMax: Насколько Хороши Созвездия Райдэн | И хороши ли? */
+  HowGoodIsRaidenShogunConstellations: `how_good_is_${CharacterIds.RaidenShogun}_constellations`,
   /* Miron MinMax: Лучшие и Худшие Луки | Тир-лист (2025) */
   TheBestAndWorstBows: "the_best_and_worst_bows",
   /* Miron MinMax: Лучшие и Худшие Катализаторы | Тир-лист | 2025 */

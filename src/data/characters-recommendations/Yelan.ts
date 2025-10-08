@@ -9,7 +9,7 @@ import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Yelan)
-  .setFirstConstellationOrSignatureWeapon("Сигна. Лучше С1 и Сигна")
+  .setFirstConstellationOrSignatureWeapon("Сигна, но лучше С1 и Сигна")
   .setRequiredLevel("90/90")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),

@@ -47,7 +47,7 @@ export default new CharacterRecommendations(CharacterIds.Neuvillette)
       ],
     },
   ]))
-  .setFirstConstellationOrSignatureWeapon("Сигна > C1, Сигна > C2. Лучше Сигна и С1")
+  .setFirstConstellationOrSignatureWeapon("Сигна < C1. Лучше Сигна и С1")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(6 | 8)"]),
@@ -55,6 +55,8 @@ export default new CharacterRecommendations(CharacterIds.Neuvillette)
   ])
   .setVideoSourceIds([
     VideoSourceIds.AllAboutAllTalents,
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
+    VideoSourceIds.GuideToNeuvillette,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
   ])

@@ -34,18 +34,19 @@ export default new CharacterRecommendations(CharacterIds.Xilonen)
       ],
     },
   ]))
-  .setFirstConstellationOrSignatureWeapon("Сигна > С1, но С2 > Сигна")
+  .setFirstConstellationOrSignatureWeapon("С1 < Сигна < С2")
   .setTalentLeveling([
     CharacterTalentLevelingRecommendation.init([TalentIds.NormalAttack, "Не качаем\n(1)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(8)"]),
   ])
   .setVideoSourceIds([
+    VideoSourceIds.FirstConstellationOrSignatureWeapon,
     VideoSourceIds.TheBestAvailableWeaponsForEveryCharacter,
     VideoSourceIds.TheBestWeaponsForEveryCharacter,
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.PeakPatrolSong).setIsBetter("Лучшее оружие (средняя зависимость)").setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FluteOfEzpitzal).setIsBetter("Лучшее доступное оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusSword).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FluteOfEzpitzal).setIsBetter().setRefinement(5),
   ]);

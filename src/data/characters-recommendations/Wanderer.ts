@@ -26,6 +26,6 @@ export default new CharacterRecommendations(CharacterIds.Wanderer)
   ])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.TulaytullahsRemembrance).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
-    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setIsBetter("Лучшее доступное оружие").setRefinement(5),
-    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.TheWidsith).setIsBetter("Лучшее доступное оружие").setRefinement(5),
+    new CharacterWeaponRecommendation(WeaponIds.FlowingPurity).setRefinement(5),
   ]);

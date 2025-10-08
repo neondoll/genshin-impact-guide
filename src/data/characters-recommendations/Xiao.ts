@@ -24,8 +24,8 @@ export default new CharacterRecommendations(CharacterIds.Xiao)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeWingedSpear).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setIsBetter("Лучшее оружие (высокая зависимость)").setRefinement(1),
+    new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeWingedSpear).setRefinement(1),
     new CharacterWeaponRecommendation(WeaponIds.BlackcliffPole).setIsBetter("Лучшее доступное оружие (когда работает)").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.WhiteTassel).setIsBetter("Лучшее доступное оружие").setRefinement(5),
     new CharacterWeaponRecommendation(WeaponIds.FavoniusLance).setRefinement(5),

@@ -126,10 +126,10 @@ export default new CharacterRecommendations(CharacterIds.Mavuika)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "Во вторую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "В первую очередь\n(10)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.GuideToMavuika])
+  .setVideoSourceIds([VideoSourceIds.FirstConstellationOrSignatureWeapon, VideoSourceIds.GuideToMavuika])
   .setWeapons({
     [`${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]: [
-      new CharacterWeaponRecommendation(WeaponIds.AThousandBlazingSuns).setPercent(1.3504).setRefinement(1),
+      new CharacterWeaponRecommendation(WeaponIds.AThousandBlazingSuns).setIsBetter("Лучшее оружие").setPercent(1.3504).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.SerpentSpine).setPercent(1.1990).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.BeaconOfTheReedSea).setPercent(1.1761).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.RedhornStonethresher).setPercent(1.1582).setRefinement(1),
@@ -140,18 +140,18 @@ export default new CharacterRecommendations(CharacterIds.Mavuika)
       new CharacterWeaponRecommendation(WeaponIds.FangOfTheMountainKing).setPercent(1.0487).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.SongOfBrokenPines).setPercent(1.0404).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.MakhairaAquamarine).setPercent(1.0012).setRefinement(5),
-      new CharacterWeaponRecommendation(WeaponIds.MailedFlower).setPercent(1.0000).setRefinement(5),
+      new CharacterWeaponRecommendation(WeaponIds.MailedFlower).setIsBetter("Лучшее эвентовое оружие").setPercent(1.0000).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.Akuoumaru).setPercent(0.9980).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.UltimateOverlordsMegaMagicSword).setPercent(0.9970).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.TalkingStick).setPercent(0.9928).setRefinement(5),
-      new CharacterWeaponRecommendation(WeaponIds.BlackcliffSlasher).setPercent(0.9881).setRefinement(5),
+      new CharacterWeaponRecommendation(WeaponIds.BlackcliffSlasher).setIsBetter("Лучшее доступное оружие").setPercent(0.9881).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.SkywardPride).setPercent(0.9833).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.LuxuriousSeaLord).setPercent(0.9780).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.PrototypeArchaic).setPercent(0.9621).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.TidalShadow).setPercent(0.9413).setRefinement(5),
     ],
     [`Гиперкерри | ${elementalReactionById(ElementalReactionIds.Overloaded)}`]: [
-      new CharacterWeaponRecommendation(WeaponIds.AThousandBlazingSuns).setPercent(1.3218).setRefinement(1),
+      new CharacterWeaponRecommendation(WeaponIds.AThousandBlazingSuns).setIsBetter("Лучшее оружие").setPercent(1.3218).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.SerpentSpine).setPercent(1.1805).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.BeaconOfTheReedSea).setPercent(1.1546).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.RedhornStonethresher).setPercent(1.1541).setRefinement(1),
@@ -161,7 +161,7 @@ export default new CharacterRecommendations(CharacterIds.Mavuika)
       new CharacterWeaponRecommendation(WeaponIds.SongOfBrokenPines).setPercent(1.0426).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.WolfsGravestone).setPercent(1.0418).setRefinement(1),
       new CharacterWeaponRecommendation(WeaponIds.SkywardPride).setPercent(1.0088).setRefinement(1),
-      new CharacterWeaponRecommendation(WeaponIds.TidalShadow).setPercent(1.0000).setRefinement(5),
+      new CharacterWeaponRecommendation(WeaponIds.TidalShadow).setIsBetter("Лучшее доступное оружие").setPercent(1.0000).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.BlackcliffSlasher).setPercent(0.9997).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.TalkingStick).setPercent(0.9879).setRefinement(5),
       new CharacterWeaponRecommendation(WeaponIds.UltimateOverlordsMegaMagicSword).setPercent(0.9642).setRefinement(5),
