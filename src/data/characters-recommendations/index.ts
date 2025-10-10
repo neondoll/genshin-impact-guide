@@ -1,10 +1,9 @@
-import type { CharacterRecommendations as Type } from "@/types/character-recommendations";
+import type { CharacterRecommendations } from "@/types/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { CharacterRecommendations as Class } from "@/classes/character-recommendations";
 import { ElementIds } from "@/enums/element";
 
 export default {
-  [CharacterIds.Aino]: new Class(CharacterIds.Aino),
+  [CharacterIds.Aino]: (await import("./Aino")).default,
   [CharacterIds.Albedo]: (await import("./Albedo")).default,
   [CharacterIds.Alhaitham]: (await import("./Alhaitham")).default,
   [CharacterIds.Amber]: (await import("./Amber")).default,
@@ -24,7 +23,7 @@ export default {
   [CharacterIds.Clorinde]: (await import("./Clorinde")).default,
   [CharacterIds.Collei]: (await import("./Collei")).default,
   [CharacterIds.Cyno]: (await import("./Cyno")).default,
-  [CharacterIds.Dahlia]: new Class(CharacterIds.Dahlia),
+  [CharacterIds.Dahlia]: (await import("./Dahlia")).default,
   [CharacterIds.Dehya]: (await import("./Dehya")).default,
   [CharacterIds.Diluc]: (await import("./Diluc")).default,
   [CharacterIds.Diona]: (await import("./Diona")).default,
@@ -41,8 +40,8 @@ export default {
   [CharacterIds.Gorou]: (await import("./Gorou")).default,
   [CharacterIds.HuTao]: (await import("./HuTao")).default,
   [CharacterIds.Iansan]: (await import("./Iansan")).default,
-  [CharacterIds.Ifa]: new Class(CharacterIds.Ifa),
-  [CharacterIds.Ineffa]: new Class(CharacterIds.Ineffa),
+  [CharacterIds.Ifa]: (await import("./Ifa")).default,
+  [CharacterIds.Ineffa]: (await import("./Ineffa")).default,
   [CharacterIds.Jean]: (await import("./Jean")).default,
   [CharacterIds.Kachina]: (await import("./Kachina")).default,
   [CharacterIds.KaedeharaKazuha]: (await import("./KaedeharaKazuha")).default,
@@ -68,12 +67,12 @@ export default {
   [CharacterIds.Mualani]: (await import("./Mualani")).default,
   [CharacterIds.Nahida]: (await import("./Nahida")).default,
   [CharacterIds.Navia]: (await import("./Navia")).default,
-  [CharacterIds.Nefer]: new Class(CharacterIds.Nefer),
+  [CharacterIds.Nefer]: (await import("./Nefer")).default,
   [CharacterIds.Neuvillette]: (await import("./Neuvillette")).default,
   [CharacterIds.Nilou]: (await import("./Nilou")).default,
   [CharacterIds.Ningguang]: (await import("./Ningguang")).default,
   [CharacterIds.Noelle]: (await import("./Noelle")).default,
-  [CharacterIds.Ororon]: new Class(CharacterIds.Ororon),
+  [CharacterIds.Ororon]: (await import("./Ororon")).default,
   [CharacterIds.Qiqi]: (await import("./Qiqi")).default,
   [CharacterIds.RaidenShogun]: (await import("./RaidenShogun")).default,
   [CharacterIds.Razor]: (await import("./Razor")).default,
@@ -110,7 +109,7 @@ export default {
   [CharacterIds.Yaoyao]: (await import("./Yaoyao")).default,
   [CharacterIds.Yelan]: (await import("./Yelan")).default,
   [CharacterIds.Yoimiya]: (await import("./Yoimiya")).default,
-  [CharacterIds.YumemizukiMizuki]: new Class(CharacterIds.YumemizukiMizuki),
+  [CharacterIds.YumemizukiMizuki]: (await import("./YumemizukiMizuki")).default,
   [CharacterIds.YunJin]: (await import("./YunJin")).default,
   [CharacterIds.Zhongli]: (await import("./Zhongli")).default,
-} as Record<Type["character_id"], Type>;
+} as Record<CharacterRecommendations["character_id"], CharacterRecommendations>;
