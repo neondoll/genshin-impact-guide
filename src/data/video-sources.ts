@@ -23,6 +23,12 @@ export default {
     "Miron MinMax: С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей",
     new Date("2025-01-15"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239189").setYoutubeUrl("https://youtu.be/NfgsESKwsdk"),
+  /* TODO: Посмотреть */
+  [VideoSourceIds.GuideToAino]: Class.init([
+    VideoSourceIds.GuideToAino,
+    "Анимекул: Зачем нужна Айно? | Подробный гайд на Айно [Genshin Impact 6.0]",
+    new Date("2025-09-11"),
+  ]).setVkUrl("https://vkvideo.ru/video-231668223_456239064").setYoutubeUrl("https://youtu.be/u-bzTR12UuA"),
   /* TODO: Пересмотреть, нужно добавить отряды */
   [VideoSourceIds.GuideToArlecchino]: Class.init([
     VideoSourceIds.GuideToArlecchino,
@@ -63,8 +69,13 @@ export default {
     "xPandaChannelx: Кирилл Чудомирович Флинс | Крутки/Гайд | Flins Гайд Геншин Импакт Луна I",
     new Date("2025-09-30"),
   ]).setVkUrl("https://vkvideo.ru/video-226836627_456239504").setYoutubeUrl("https://www.youtube.com/watch?v=tLrzuZ-I4EM"),
-  [VideoSourceIds.GuideToLauma]: Class.init([
-    VideoSourceIds.GuideToLauma,
+  [VideoSourceIds.GuideToLauma_AnimeCool]: Class.init([
+    VideoSourceIds.GuideToLauma_AnimeCool,
+    "Анимекул: Зачем нужна Лаума? | Подробный гайд на Лауму [Genshin Impact 6.0]",
+    new Date("2025-09-09"),
+  ]).setYoutubeUrl("https://youtu.be/Y2XmxQHkY6g"),
+  [VideoSourceIds.GuideToLauma_MironMinMax]: Class.init([
+    VideoSourceIds.GuideToLauma_MironMinMax,
     "Miron MinMax: Паверкрип Нахиды? Гайд на Лауму в 6.0",
     new Date("2025-09-10"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239254").setYoutubeUrl("https://youtu.be/BMpFDebyZck"),
@@ -118,7 +129,7 @@ export default {
     "Анимекул: Зачем нужен Пиро Путешественник? | Подробный гайд на Пиро ГГ",
     new Date("2025-01-08"),
   ]).setVkUrl("https://vkvideo.ru/video-229156089_456239059").setYoutubeUrl("https://youtu.be/L3Eg506_w7M"),
-  /* TODO: Посмотреть */
+  /* TODO: Пересмотреть, нужно добавить отряды, а разобраться не удалось */
   [VideoSourceIds.GuideToXiangling]: Class.init([
     VideoSourceIds.GuideToXiangling,
     "Miron MinMax: Подробный и Актуальный | Гайд на Сян Лин в 6.0",
@@ -181,4 +192,9 @@ export default {
     "Miron MinMax: Приросты от 95 и 100 лвл | Кому качать 100 уровень?",
     new Date("2025-09-18"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239256").setYoutubeUrl("https://youtu.be/W7KScTSvDiU"),
+  [VideoSourceIds.XianglingElementalBurstGuide]: Class.init([
+    VideoSourceIds.XianglingElementalBurstGuide,
+    "spartanchick: Как УМНОЖИТЬ свой УРОН? Гайд на ульту Сян Лин от киберспортсмена",
+    new Date("2024-08-25"),
+  ]).setYoutubeUrl("https://youtu.be/ys7fhxFf6Tc"),
 } as Record<Type["id"], Type>;

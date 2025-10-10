@@ -1,4 +1,5 @@
 import { CharacterIds } from "./character";
+import { TalentIds } from "@/enums/talent.ts";
 
 export const VideoSourceIds = {
   /* Miron MinMax: ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin */
@@ -9,6 +10,8 @@ export const VideoSourceIds = {
   AnalysisOfAllCraftedWeapons: "analysis_of_all_crafted_weapons",
   /* Miron MinMax: С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей */
   FirstConstellationOrSignatureWeapon: "first_constellation_or_signature_weapon",
+  /* Анимекул: Зачем нужна Айно? | Подробный гайд на Айно [Genshin Impact 6.0] */
+  GuideToAino: `guide_to_${CharacterIds.Aino}_in_6.0`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Арлекино в 5.3 */
   GuideToArlecchino: `guide_to_${CharacterIds.Arlecchino}_in_5.3`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Часку в 5.8 */
@@ -18,13 +21,15 @@ export const VideoSourceIds = {
   /* Miron MinMax: Подробный и Актуальный | Гайд на Фурину в 5.4 */
   GuideToFurina: `guide_to_${CharacterIds.Furina}_in_5.4`,
   /* Анимекул: Кирилл Флинс - ИМБА? | Подробный гайд на Флинса [Genshin Impact] */
-  GuideToKyryllChudomirovichFlins_AnimeCool: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_6.0_AnimeCool`,
+  GuideToKyryllChudomirovichFlins_AnimeCool: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_in_6.0_AnimeCool`,
   /* Miron MinMax: Кирилл Флинс Чудомирович | Гайд */
-  GuideToKyryllChudomirovichFlins_MironMinMax: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_6.0_MironMinMax`,
+  GuideToKyryllChudomirovichFlins_MironMinMax: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_in_6.0_MironMinMax`,
   /* xPandaChannelx: Кирилл Чудомирович Флинс | Крутки/Гайд | Flins Гайд Геншин Импакт Луна I */
-  GuideToKyryllChudomirovichFlins_xPandaChannelx: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_6.0_xPandaChannelx`,
+  GuideToKyryllChudomirovichFlins_xPandaChannelx: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_in_6.0_xPandaChannelx`,
+  /* Анимекул: Зачем нужна Лаума? | Подробный гайд на Лауму [Genshin Impact 6.0] */
+  GuideToLauma_AnimeCool: `guide_to_${CharacterIds.Lauma}_in_6.0_AnimeCool`,
   /* Miron MinMax: Паверкрип Нахиды? Гайд на Лауму в 6.0 */
-  GuideToLauma: `guide_to_${CharacterIds.Lauma}_in_6.0`,
+  GuideToLauma_MironMinMax: `guide_to_${CharacterIds.Lauma}_in_6.0_MironMinMax`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Мавуику */
   GuideToMavuika: `guide_to_${CharacterIds.Mavuika}`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Муалани в 5.8 */
@@ -67,4 +72,6 @@ export const VideoSourceIds = {
   WhoNeedsLevelingPart2: "who_needs_leveling_part_2",
   /* Miron MinMax: Приросты от 95 и 100 лвл | Кому качать 100 уровень? */
   WhoShouldLevel100: "who_should_level_100",
+  /* spartanchick: Как УМНОЖИТЬ свой УРОН? Гайд на ульту Сян Лин от киберспортсмена */
+  XianglingElementalBurstGuide: `${CharacterIds.Xiangling}_${TalentIds.ElementalBurst}_guide`,
 } as const;

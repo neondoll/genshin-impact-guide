@@ -112,7 +112,7 @@ export default new CharacterRecommendations(CharacterIds.Lauma)
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalSkill, "В первую очередь\n(10)"]),
     CharacterTalentLevelingRecommendation.init([TalentIds.ElementalBurst, "Во вторую очередь\n(10)"]),
   ])
-  .setVideoSourceIds([VideoSourceIds.GuideToLauma])
+  .setVideoSourceIds([VideoSourceIds.GuideToLauma_AnimeCool, VideoSourceIds.GuideToLauma_MironMinMax])
   .setWeapons([
     new CharacterWeaponRecommendation(WeaponIds.NightweaversLookingGlass).setIsBetter(),
     new CharacterWeaponRecommendation(WeaponIds.AThousandFloatingDreams),
