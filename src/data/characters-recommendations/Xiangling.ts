@@ -2,7 +2,8 @@ import { ArtifactSetIds } from "@/enums/artifact-set";
 import { ArtifactSlotIds } from "@/enums/artifact-slot";
 import {
   CharacterArtifactRecommendations,
-  CharacterArtifactSetRecommendationWithId, CharacterArtifactSetRecommendationWithIds,
+  CharacterArtifactSetRecommendationWithId,
+  CharacterArtifactSetRecommendationWithIds,
   CharacterArtifactStatRecommendation,
   CharacterRecommendations,
   CharacterTalentLevelingRecommendation,
