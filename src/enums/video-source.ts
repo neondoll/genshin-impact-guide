@@ -20,6 +20,8 @@ export const VideoSourceIds = {
   GuideToCitlali: `guide_to_${CharacterIds.Citlali}_in_5.8`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Фурину в 5.4 */
   GuideToFurina: `guide_to_${CharacterIds.Furina}_in_5.4`,
+  /* Miron MinMax: Начало Нод-Края | Гайд на Инеффу | Genshin Impact 5.8 */
+  GuideToIneffa: `guide_to_${CharacterIds.Ineffa}_in_5.8`,
   /* Анимекул: Кирилл Флинс - ИМБА? | Подробный гайд на Флинса [Genshin Impact] */
   GuideToKyryllChudomirovichFlins_AnimeCool: `guide_to_${CharacterIds.KyryllChudomirovichFlins}_in_6.0_AnimeCool`,
   /* Miron MinMax: Кирилл Флинс Чудомирович | Гайд */

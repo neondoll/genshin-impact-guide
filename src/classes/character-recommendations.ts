@@ -313,6 +313,7 @@ export class CharacterWeaponRecommendation implements TypeWeapon {
   private _is_better: TypeWeapon["is_better"] = false;
   private _postfix: TypeWeapon["postfix"];
   private _percent: TypeWeapon["percent"];
+  private _notes: TypeWeapon["notes"];
 
   constructor(id: TypeWeapon["id"]) {
     this.id = id;
@@ -320,6 +321,10 @@ export class CharacterWeaponRecommendation implements TypeWeapon {
 
   get is_better() {
     return this._is_better;
+  }
+
+  get notes() {
+    return this._notes;
   }
 
   get percent() {
@@ -340,6 +345,12 @@ export class CharacterWeaponRecommendation implements TypeWeapon {
     return this;
   }
 
+  setNotes(val: NonNullable<TypeWeapon["notes"]>) {
+    this._notes = val;
+
+    return this;
+  }
+
   setPercent(val: NonNullable<TypeWeapon["percent"]>) {
     this._percent = val;
 
@@ -356,5 +367,31 @@ export class CharacterWeaponRecommendation implements TypeWeapon {
     this._refinement = val;
 
     return this;
+  }
+
+  static copy(weapon: TypeWeapon) {
+    const model = new CharacterWeaponRecommendation(weapon.id);
+
+    if (weapon.is_better) {
+      model.setIsBetter(weapon.is_better);
+    }
+
+    if (weapon.notes) {
+      model.setNotes(weapon.notes);
+    }
+
+    if (weapon.percent) {
+      model.setPercent(weapon.percent);
+    }
+
+    if (weapon.postfix) {
+      model.setPostfix(weapon.postfix);
+    }
+
+    if (weapon.refinement) {
+      model.setRefinement(weapon.refinement);
+    }
+
+    return model;
   }
 }

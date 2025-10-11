@@ -4,10 +4,11 @@ import type { CharacterWeaponRecommendation } from "@/types/character-recommenda
 import type { WeaponRecommendationsProps } from "./types";
 import { cn, numberFormatPercent } from "@/lib/utils";
 import { selectWeaponById } from "@/features/weapons/selectors";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import IsBetter from "../is-better";
 import WeaponBadge from "../badges/weapon-badge";
+import { selectStatById } from "@/features/stats/selectors.ts";
 
 export default function WeaponRecommendations({ character, recommendations }: WeaponRecommendationsProps) {
   if (Array.isArray(recommendations)) {
@@ -89,6 +90,17 @@ function WeaponRecommendationsTable({ character, recommendations }: {
 
   return (
     <Table>
+      <TableHeader>
+        <TableRow className="hover:bg-inherit">
+          {hasIsBetter && <TableHead />}
+          <TableHead children="Оружие" className="text-center" />
+          {hasIsSignature && <TableHead />}
+          {hasRefinement && <TableHead />}
+          {hasPostfix && <TableHead />}
+          {hasPercent && <TableHead />}
+          <TableHead children="Заметки" className="text-center" />
+        </TableRow>
+      </TableHeader>
       <TableBody>
         {recommendations.map((recommendation) => {
           const weapon = selectWeaponById(recommendation.id);
@@ -132,6 +144,17 @@ function WeaponRecommendationsTable({ character, recommendations }: {
                   })}
                 />
               )}
+              <TableCell className="text-pretty whitespace-normal">
+                <ul className="ml-4 list-outside list-disc">
+                  <li dangerouslySetInnerHTML={{ __html: `Дополнительная характеристика: <span class="text-primary">${selectStatById(weapon.secondary_stats_id).name}</span>` }} />
+                  {weapon.passive_ability && (
+                    <li dangerouslySetInnerHTML={{ __html: `Пассивная способность (${weapon.passive_ability.name}): ${weapon.passive_ability.description}` }} />
+                  )}
+                  {recommendation.notes?.map((note, index) => (
+                    <li dangerouslySetInnerHTML={{ __html: note }} key={index} />
+                  ))}
+                </ul>
+              </TableCell>
             </TableRow>
           );
         })}

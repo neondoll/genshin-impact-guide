@@ -56,6 +56,7 @@ export default {
   [CharacterIds.KujouSara]: (await import("./KujouSara")).default,
   [CharacterIds.KukiShinobu]: (await import("./KukiShinobu")).default,
   [CharacterIds.KyryllChudomirovichFlins]: (await import("./KyryllChudomirovichFlins")).default,
+  [CharacterIds.LanYan]: (await import("./LanYan")).default,
   [CharacterIds.Lauma]: (await import("./Lauma")).default,
   [CharacterIds.Layla]: (await import("./Layla")).default,
   [CharacterIds.Lisa]: (await import("./Lisa")).default,
