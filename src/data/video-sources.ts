@@ -53,6 +53,11 @@ export default {
     "Miron MinMax: Подробный и Актуальный | Гайд на Фурину в 5.4",
     new Date("2025-03-02"),
   ]).setVkUrl("https://vkvideo.ru/video-227044935_456239203").setYoutubeUrl("https://youtu.be/rxTakZUxk0U"),
+  [VideoSourceIds.GuideToIneffa]: Class.init([
+    VideoSourceIds.GuideToIneffa,
+    "Miron MinMax: Начало Нод-Края | Гайд на Инеффу | Genshin Impact 5.8",
+    new Date("2025-07-30"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239244").setYoutubeUrl("https://youtu.be/b5lSX3PQOuw"),
   /* TODO: Посмотреть */
   [VideoSourceIds.GuideToKyryllChudomirovichFlins_AnimeCool]: Class.init([
     VideoSourceIds.GuideToKyryllChudomirovichFlins_AnimeCool,

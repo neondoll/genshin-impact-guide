@@ -21,6 +21,13 @@ export interface Weapon {
   secondary_stats_id: StatId;
   /* Дополнительные характеристики */
   secondary_stats: WeaponStatValue;
+  /* Пассивная способность */
+  passive_ability?: WeaponPassiveAbility;
+}
+
+export interface WeaponPassiveAbility {
+  name: string;
+  description: string;
 }
 
 export interface WeaponStatValue {

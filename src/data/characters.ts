@@ -13,7 +13,7 @@ export default {
     4,
     WeaponTypeIds.Claymore,
     ElementIds.Hydro,
-    undefined,
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Albedo]: Class.init([
     CharacterIds.Albedo,
@@ -21,7 +21,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Geo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Alhaitham]: Class.init([
     CharacterIds.Alhaitham,
@@ -29,7 +29,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Dendro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.LightOfFoliarIncision),
   [CharacterIds.Amber]: Class.init([
     CharacterIds.Amber,
@@ -37,7 +37,7 @@ export default {
     4,
     WeaponTypeIds.Bow,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.AratakiItto]: Class.init([
     CharacterIds.AratakiItto,
@@ -45,14 +45,14 @@ export default {
     5,
     WeaponTypeIds.Claymore,
     ElementIds.Geo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setName("Аратаки Итто").setSignatureWeaponId(WeaponIds.RedhornStonethresher),
   [CharacterIds.Arlecchino]: Class.init([
     CharacterIds.Arlecchino,
     "Арлекино", 5,
     WeaponTypeIds.Polearm,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.CrimsonMoonsSemblance),
   [CharacterIds.Baizhu]: Class.init([
     CharacterIds.Baizhu,
@@ -75,7 +75,7 @@ export default {
     4,
     WeaponTypeIds.Claymore,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Survivability],
   ]),
   [CharacterIds.Bennett]: Class.init([
     CharacterIds.Bennett,
@@ -107,7 +107,7 @@ export default {
     5,
     WeaponTypeIds.Bow,
     ElementIds.Anemo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.AstralVulturesCrimsonPlumage),
   [CharacterIds.Chevreuse]: Class.init([
     CharacterIds.Chevreuse,
@@ -123,7 +123,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Geo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.UrakuMisugiri),
   [CharacterIds.Chongyun]: Class.init([
     CharacterIds.Chongyun,
@@ -131,7 +131,7 @@ export default {
     4,
     WeaponTypeIds.Claymore,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
   ]),
   [CharacterIds.Citlali]: Class.init([
     CharacterIds.Citlali,
@@ -147,7 +147,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setArkhe("🟣").setSignatureWeaponId(WeaponIds.Absolution),
   [CharacterIds.Collei]: Class.init([
     CharacterIds.Collei,
@@ -155,14 +155,14 @@ export default {
     4,
     WeaponTypeIds.Bow,
     ElementIds.Dendro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Cyno]: Class.init([
     CharacterIds.Cyno,
     "Сайно", 5,
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.StaffOfTheScarletSands),
   [CharacterIds.Dahlia]: Class.init([
     CharacterIds.Dahlia,
@@ -178,7 +178,7 @@ export default {
     5,
     WeaponTypeIds.Claymore,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Survivability],
   ]).setSignatureWeaponId(WeaponIds.BeaconOfTheReedSea),
   [CharacterIds.Diluc]: Class.init([
     CharacterIds.Diluc,
@@ -186,7 +186,7 @@ export default {
     5,
     WeaponTypeIds.Claymore,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Diona]: Class.init([
     CharacterIds.Diona,
@@ -210,7 +210,7 @@ export default {
     5,
     WeaponTypeIds.Polearm,
     ElementIds.Dendro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]).setArkhe("🟡").setSignatureWeaponId(WeaponIds.LumidouceElegy),
   [CharacterIds.Escoffier]: Class.init([
     CharacterIds.Escoffier,
@@ -218,7 +218,7 @@ export default {
     5,
     WeaponTypeIds.Polearm,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
   ]).setArkhe("🟣").setSignatureWeaponId(WeaponIds.SymphonistOfScents),
   [CharacterIds.Eula]: Class.init([
     CharacterIds.Eula,
@@ -226,7 +226,7 @@ export default {
     5,
     WeaponTypeIds.Claymore,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.SongOfBrokenPines),
   [CharacterIds.Faruzan]: Class.init([
     CharacterIds.Faruzan,
@@ -242,7 +242,7 @@ export default {
     4,
     WeaponTypeIds.Bow,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Freminet]: Class.init([
     CharacterIds.Freminet,
@@ -250,7 +250,7 @@ export default {
     4,
     WeaponTypeIds.Claymore,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setArkhe("🟡"),
   [CharacterIds.Furina]: Class.init([
     CharacterIds.Furina,
@@ -258,7 +258,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
   ]).setArkhe("🟣🟡").setSignatureWeaponId(WeaponIds.SplendorOfTranquilWaters),
   [CharacterIds.Gaming]: Class.init([
     CharacterIds.Gaming,
@@ -266,7 +266,7 @@ export default {
     4,
     WeaponTypeIds.Claymore,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Ganyu]: Class.init([
     CharacterIds.Ganyu,
@@ -274,7 +274,7 @@ export default {
     5,
     WeaponTypeIds.Bow,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.AmosBow),
   [CharacterIds.Gorou]: Class.init([
     CharacterIds.Gorou,
@@ -290,7 +290,7 @@ export default {
     5,
     WeaponTypeIds.Polearm,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.StaffOfHoma),
   [CharacterIds.Iansan]: Class.init([
     CharacterIds.Iansan,
@@ -314,7 +314,7 @@ export default {
     5,
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
   ]).setSignatureWeaponId(WeaponIds.FracturedHalo),
   [CharacterIds.Jean]: Class.init([
     CharacterIds.Jean,
@@ -330,7 +330,7 @@ export default {
     4,
     WeaponTypeIds.Polearm,
     ElementIds.Geo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.KaedeharaKazuha]: Class.init([
     CharacterIds.KaedeharaKazuha,
@@ -346,7 +346,7 @@ export default {
     4,
     WeaponTypeIds.Sword,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.KamisatoAyaka]: Class.init([
     CharacterIds.KamisatoAyaka,
@@ -354,7 +354,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setName("Камисато Аяка").setSignatureWeaponId(WeaponIds.MistsplitterReforged),
   [CharacterIds.KamisatoAyato]: Class.init([
     CharacterIds.KamisatoAyato,
@@ -362,7 +362,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setName("Камисато Аято").setSignatureWeaponId(WeaponIds.HaranGeppakuFutsu),
   [CharacterIds.Kaveh]: Class.init([
     CharacterIds.Kaveh,
@@ -370,7 +370,7 @@ export default {
     4,
     WeaponTypeIds.Claymore,
     ElementIds.Dendro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Keqing]: Class.init([
     CharacterIds.Keqing,
@@ -378,7 +378,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Kinich]: Class.init([
     CharacterIds.Kinich,
@@ -386,7 +386,7 @@ export default {
     5,
     WeaponTypeIds.Claymore,
     ElementIds.Dendro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.FangOfTheMountainKing),
   [CharacterIds.Kirara]: Class.init([
     CharacterIds.Kirara,
@@ -402,7 +402,7 @@ export default {
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.LostPrayerToTheSacredWinds),
   [CharacterIds.KujouSara]: Class.init([
     CharacterIds.KujouSara,
@@ -426,15 +426,23 @@ export default {
     5,
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setName("Кирилл Чудомирович Флинс").setSignatureWeaponId(WeaponIds.BloodsoakedRuins),
+  [CharacterIds.LanYan]: Class.init([
+    CharacterIds.LanYan,
+    "Лань Янь",
+    4,
+    WeaponTypeIds.Catalyst,
+    ElementIds.Anemo,
+    undefined,
+  ]),
   [CharacterIds.Lauma]: Class.init([
     CharacterIds.Lauma,
     "Лаума",
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Dendro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
   ]).setSignatureWeaponId(WeaponIds.NightweaversLookingGlass),
   [CharacterIds.Layla]: Class.init([
     CharacterIds.Layla,
@@ -450,7 +458,7 @@ export default {
     4,
     WeaponTypeIds.Catalyst,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Lynette]: Class.init([
     CharacterIds.Lynette,
@@ -458,7 +466,7 @@ export default {
     4,
     WeaponTypeIds.Sword,
     ElementIds.Anemo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]).setArkhe("🟣"),
   [CharacterIds.Lyney]: Class.init([
     CharacterIds.Lyney,
@@ -466,7 +474,7 @@ export default {
     5,
     WeaponTypeIds.Bow,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setArkhe("🟡").setSignatureWeaponId(WeaponIds.TheFirstGreatMagic),
   [CharacterIds.Mavuika]: Class.init([
     CharacterIds.Mavuika,
@@ -474,7 +482,7 @@ export default {
     5,
     WeaponTypeIds.Claymore,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.OnField, CharacterRoleIds.Support],
+    [CharacterRoleIds.OnField, CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
   ]).setSignatureWeaponId(WeaponIds.AThousandBlazingSuns),
   [CharacterIds.Mika]: Class.init([
     CharacterIds.Mika,
@@ -498,7 +506,7 @@ export default {
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Hydro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.SurfsUp),
   [CharacterIds.Nahida]: Class.init([
     CharacterIds.Nahida,
@@ -506,7 +514,7 @@ export default {
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Dendro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
   ]).setSignatureWeaponId(WeaponIds.AThousandFloatingDreams),
   [CharacterIds.Navia]: Class.init([
     CharacterIds.Navia,
@@ -514,7 +522,7 @@ export default {
     5,
     WeaponTypeIds.Claymore,
     ElementIds.Geo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.Verdict),
   [CharacterIds.Nefer]: Class.init([
     CharacterIds.Nefer,
@@ -530,7 +538,7 @@ export default {
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Hydro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setArkhe("🟡").setSignatureWeaponId(WeaponIds.TomeOfTheEternalFlow),
   [CharacterIds.Nilou]: Class.init([
     CharacterIds.Nilou,
@@ -538,7 +546,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
   ]).setSignatureWeaponId(WeaponIds.KeyOfKhajNisut),
   [CharacterIds.Ningguang]: Class.init([
     CharacterIds.Ningguang,
@@ -546,7 +554,7 @@ export default {
     4,
     WeaponTypeIds.Catalyst,
     ElementIds.Geo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Noelle]: Class.init([
     CharacterIds.Noelle,
@@ -554,7 +562,7 @@ export default {
     4,
     WeaponTypeIds.Claymore,
     ElementIds.Geo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField, CharacterRoleIds.Survivability],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps, CharacterRoleIds.Survivability],
   ]),
   [CharacterIds.Ororon]: Class.init([
     CharacterIds.Ororon,
@@ -562,7 +570,7 @@ export default {
     4,
     WeaponTypeIds.Bow,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Qiqi]: Class.init([
     CharacterIds.Qiqi,
@@ -578,7 +586,7 @@ export default {
     5,
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField, CharacterRoleIds.Support],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
   ]).setName("Сёгун Райдэн").setSignatureWeaponId(WeaponIds.EngulfingLightning),
   [CharacterIds.Razor]: Class.init([
     CharacterIds.Razor,
@@ -586,7 +594,7 @@ export default {
     4,
     WeaponTypeIds.Claymore,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Rosaria]: Class.init([
     CharacterIds.Rosaria,
@@ -594,7 +602,7 @@ export default {
     4,
     WeaponTypeIds.Polearm,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.SangonomiyaKokomi]: Class.init([
     CharacterIds.SangonomiyaKokomi,
@@ -618,7 +626,7 @@ export default {
     4,
     WeaponTypeIds.Bow,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Shenhe]: Class.init([
     CharacterIds.Shenhe,
@@ -634,7 +642,7 @@ export default {
     4,
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setName("Сиканоин Хэйдзо"),
   [CharacterIds.Sigewinne]: Class.init([
     CharacterIds.Sigewinne,
@@ -650,7 +658,7 @@ export default {
     5,
     WeaponTypeIds.Sword,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.Azurelight),
   [CharacterIds.Sucrose]: Class.init([
     CharacterIds.Sucrose,
@@ -666,7 +674,7 @@ export default {
     5,
     WeaponTypeIds.Bow,
     ElementIds.Hydro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.PolarStar),
   [CharacterIds.Thoma]: Class.init([
     CharacterIds.Thoma,
@@ -682,7 +690,7 @@ export default {
     5,
     WeaponTypeIds.Bow,
     ElementIds.Dendro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.HuntersPath),
   [CharacterIds.TravelerAnemo]: Class.init([
     CharacterIds.TravelerAnemo,
@@ -738,7 +746,7 @@ export default {
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.VividNotions),
   [CharacterIds.Venti]: Class.init([
     CharacterIds.Venti,
@@ -746,7 +754,7 @@ export default {
     5,
     WeaponTypeIds.Bow,
     ElementIds.Anemo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
   ]).setSignatureWeaponId(WeaponIds.ElegyForTheEnd),
   [CharacterIds.Wanderer]: Class.init([
     CharacterIds.Wanderer,
@@ -754,7 +762,7 @@ export default {
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.TulaytullahsRemembrance),
   [CharacterIds.Wriothesley]: Class.init([
     CharacterIds.Wriothesley,
@@ -762,7 +770,7 @@ export default {
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Cryo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setArkhe("🟣").setSignatureWeaponId(WeaponIds.CashflowSupervision),
   [CharacterIds.Xiangling]: Class.init([
     CharacterIds.Xiangling,
@@ -770,7 +778,7 @@ export default {
     4,
     WeaponTypeIds.Polearm,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Xianyun]: Class.init([
     CharacterIds.Xianyun,
@@ -786,7 +794,7 @@ export default {
     5,
     WeaponTypeIds.Polearm,
     ElementIds.Anemo,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.PrimordialJadeWingedSpear),
   [CharacterIds.Xilonen]: Class.init([
     CharacterIds.Xilonen,
@@ -802,7 +810,7 @@ export default {
     4,
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Survivability],
   ]),
   [CharacterIds.Xinyan]: Class.init([
     CharacterIds.Xinyan,
@@ -818,7 +826,7 @@ export default {
     5,
     WeaponTypeIds.Catalyst,
     ElementIds.Electro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.KagurasVerity),
   [CharacterIds.Yanfei]: Class.init([
     CharacterIds.Yanfei,
@@ -826,7 +834,7 @@ export default {
     4,
     WeaponTypeIds.Catalyst,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]),
   [CharacterIds.Yaoyao]: Class.init([
     CharacterIds.Yaoyao,
@@ -842,7 +850,7 @@ export default {
     5,
     WeaponTypeIds.Bow,
     ElementIds.Hydro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OffField],
+    [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.AquaSimulacra),
   [CharacterIds.Yoimiya]: Class.init([
     CharacterIds.Yoimiya,
@@ -850,7 +858,7 @@ export default {
     5,
     WeaponTypeIds.Bow,
     ElementIds.Pyro,
-    [CharacterRoleIds.Dps, CharacterRoleIds.OnField],
+    [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
   ]).setSignatureWeaponId(WeaponIds.ThunderingPulse),
   [CharacterIds.YumemizukiMizuki]: Class.init([
     CharacterIds.YumemizukiMizuki,

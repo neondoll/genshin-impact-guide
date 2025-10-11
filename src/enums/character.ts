@@ -54,6 +54,7 @@ export const CharacterIds = {
   /* Сара                     */ KujouSara: "KujouSara",
   /* Синобу                   */ KukiShinobu: "KukiShinobu",
   /* Флинс                    */ KyryllChudomirovichFlins: "KyryllChudomirovichFlins",
+  /* Лань Янь                 */ LanYan: "LanYan",
   /* Лаума                    */ Lauma: "Lauma",
   /* Лайла                    */ Layla: "Layla",
   /* Лиза                     */ Lisa: "Lisa",

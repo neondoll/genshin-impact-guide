@@ -85,6 +85,7 @@ export interface CharacterWeaponRecommendation {
   is_better?: boolean | string;
   postfix?: string;
   percent?: number;
+  notes?: string[];
 }
 
 export type CharacterArtifactSetRecommendations = (CharacterArtifactSetRecommendationWithId | CharacterArtifactSetRecommendationWithIds)[];
