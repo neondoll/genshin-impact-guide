@@ -598,6 +598,16 @@ export default {
     { min_value: 41, max_value: 454 },
     StatIds.EnergyRecharge,
     { min_value: numberFormatPercent(0.133, 1), max_value: numberFormatPercent(0.613, 1) },
+    ClassPassiveAbility.init([
+      "Дружественный бриз",
+      "Критические атаки имеют <span class='text-[rgb(128,192,255)]'>60%</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>70%</span>/<span class='text-[rgb(128,192,255)]'>80%</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>90%</span>/<span class='text-[rgb(128,192,255)]'>100%</span> шанс "
+      + "создать <span class='text-[rgb(255,215,128)]'>элементальные частицы</span>, которые восстанавливают 6 ед. "
+      + "энергии. Возникает раз в <span class='text-[rgb(128,192,255)]'>12</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>10,5</span>/<span class='text-[rgb(128,192,255)]'>9</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>7,5</span>/<span class='text-[rgb(128,192,255)]'>6</span> сек.",
+    ]),
   ]),
   [WeaponIds.FavoniusLance]: Class.init([
     WeaponIds.FavoniusLance,
@@ -687,6 +697,21 @@ export default {
     { min_value: 42, max_value: 510 },
     StatIds.ElementalMastery,
     { min_value: 36, max_value: 165 },
+    ClassPassiveAbility.init([
+      "Разум в расцвете",
+      "Активация реакций <span class='text-[rgb(255,172,255)]'>Заряжен</span>, "
+      + "<span class='text-[rgb(255,172,255)]'>Лунный заряд</span>, "
+      + "<span class='text-[rgb(153,255,136)]'>Бутонизация</span> или "
+      + "<span class='text-[rgb(153,255,136)]'>Лунная бутонизация</span> восстанавливает "
+      + "<span class='text-[rgb(128,192,255)]'>12</span>/<span class='text-[rgb(128,192,255)]'>15</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>18</span>/<span class='text-[rgb(128,192,255)]'>21</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>24</span> ед. <span class='text-[rgb(255,215,128)]'>энергии</span> и на "
+      + "15 сек. повышает <span class='text-[rgb(255,215,128)]'>мастерство стихий</span> на "
+      + "<span class='text-[rgb(128,192,255)]'>60</span>/<span class='text-[rgb(128,192,255)]'>75</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>90</span>/<span class='text-[rgb(128,192,255)]'>105</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>120</span> ед. Эффект может возникнуть один раз в 15 сек. и "
+      + "срабатывает, даже когда экипированный персонаж не на поле боя.",
+    ]),
   ]),
   [WeaponIds.FleuveCendreFerryman]: Class.init([
     WeaponIds.FleuveCendreFerryman,
@@ -1087,6 +1112,16 @@ export default {
     { min_value: 42, max_value: 510 },
     StatIds.ElementalMastery,
     { min_value: 36, max_value: 165 },
+    ClassPassiveAbility.init([
+      "Чертоги в пустыне",
+      "Каждые 10 сек. срабатывает следующий эффект: <span class='text-[rgb(255,215,128)]'>сила атаки</span> "
+      + "экипированного этим оружием персонажа увеличивается на <span class='text-[rgb(128,192,255)]'>24%</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>30%</span>/<span class='text-[rgb(128,192,255)]'>36%</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>42%</span>/<span class='text-[rgb(128,192,255)]'>48%</span> от "
+      + "<span class='text-[rgb(255,215,128)]'>мастерства стихий</span> на 12 сек. Члены отряда поблизости получают "
+      + "30% этого эффекта. Если этим оружием обладают и другие члены отряда, эффект суммируется. Этот эффект "
+      + "срабатывает, даже если экипированный персонаж не на поле боя.",
+    ]),
   ]),
   [WeaponIds.MappaMare]: Class.init([
     WeaponIds.MappaMare,
@@ -1107,6 +1142,18 @@ export default {
     { min_value: 41, max_value: 454 },
     StatIds.EnergyRecharge,
     { min_value: numberFormatPercent(0.133, 1), max_value: numberFormatPercent(0.613, 1) },
+    ClassPassiveAbility.init([
+      "Мгновенное решение",
+      "На 12 сек. после активации элементальной реакции <span class='text-[rgb(255,215,128)]'>мастерство стихий</span> "
+      + "повышается на <span class='text-[rgb(128,192,255)]'>60</span>/<span class='text-[rgb(128,192,255)]'>75</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>90</span>/<span class='text-[rgb(128,192,255)]'>105</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>120</span> ед. Лунное знамение - Высшее сияние: "
+      + "<span class='text-[rgb(255,215,128)]'>мастерство стихий</span> от данного эффекта дополнительно повышается на "
+      + "<span class='text-[rgb(128,192,255)]'>60</span>/<span class='text-[rgb(128,192,255)]'>75</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>90</span>/<span class='text-[rgb(128,192,255)]'>105</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>120</span> ед. Этот эффект срабатывает, даже когда экипированный "
+      + "персонаж не на поле боя.",
+    ]),
   ]),
   [WeaponIds.MemoryOfDust]: Class.init([
     WeaponIds.MemoryOfDust,
@@ -1537,6 +1584,16 @@ export default {
     { min_value: 44, max_value: 565 },
     StatIds.EnergyRecharge,
     { min_value: numberFormatPercent(0.067, 1), max_value: numberFormatPercent(0.306, 1) },
+    ClassPassiveAbility.init([
+      "Безмятежный",
+      "Когда <span class='text-[rgb(255,215,128)]'>элементальный навык</span> наносит урон, есть "
+      + "<span class='text-[rgb(128,192,255)]'>40%</span>/<span class='text-[rgb(128,192,255)]'>50%</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>60%</span>/<span class='text-[rgb(128,192,255)]'>70%</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>80%</span> вероятность, что его откат моментально восстановится. Может "
+      + "возникнуть раз в <span class='text-[rgb(128,192,255)]'>30</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>26</span>/<span class='text-[rgb(128,192,255)]'>22</span>/"
+      + "<span class='text-[rgb(128,192,255)]'>19</span>/<span class='text-[rgb(128,192,255)]'>16</span> сек.",
+    ]),
   ]),
   [WeaponIds.SacrificialJade]: Class.init([
     WeaponIds.SacrificialJade,

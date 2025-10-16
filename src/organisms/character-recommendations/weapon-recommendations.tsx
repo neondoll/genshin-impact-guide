@@ -146,7 +146,7 @@ function WeaponRecommendationsTable({ character, recommendations }: {
               )}
               <TableCell className="text-pretty whitespace-normal">
                 <ul className="ml-4 list-outside list-disc">
-                  <li dangerouslySetInnerHTML={{ __html: `Дополнительная характеристика: <span class="text-primary">${selectStatById(weapon.secondary_stats_id).name}</span>` }} />
+                  <li dangerouslySetInnerHTML={{ __html: `Дополнительная характеристика: <span class="text-[rgb(255,215,128)]">${selectStatById(weapon.secondary_stats_id).name}</span>` }} />
                   {weapon.passive_ability && (
                     <li dangerouslySetInnerHTML={{ __html: `Пассивная способность (${weapon.passive_ability.name}): ${weapon.passive_ability.description}` }} />
                   )}
