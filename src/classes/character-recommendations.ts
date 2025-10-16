@@ -296,10 +296,12 @@ export class CharacterSquadRecommendations implements TypeSquads {
 export class CharacterTalentLevelingRecommendation implements TypeTalentLeveling {
   readonly id: TypeTalentLeveling["id"];
   readonly priority: TypeTalentLeveling["priority"];
+  readonly reference_level: TypeTalentLeveling["reference_level"];
 
-  constructor(id: TypeTalentLeveling["id"], priority: TypeTalentLeveling["priority"]) {
+  constructor(id: TypeTalentLeveling["id"], priority: TypeTalentLeveling["priority"], referenceLevel: TypeTalentLeveling["reference_level"] = undefined) {
     this.id = id;
     this.priority = priority;
+    this.reference_level = referenceLevel;
   }
 
   static init(params: ConstructorParameters<typeof CharacterTalentLevelingRecommendation>) {

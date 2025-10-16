@@ -77,6 +77,7 @@ export interface CharacterSquadRecommendations {
 export interface CharacterTalentLevelingRecommendation {
   id: TalentId;
   priority: string;
+  reference_level?: string | number;
 }
 
 export interface CharacterWeaponRecommendation {
