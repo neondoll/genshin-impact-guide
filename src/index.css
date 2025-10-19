@@ -47,8 +47,12 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-dendro: var(--dendro);
+  --color-electro-charged: var(--electro-charged);
   --color-geo: var(--geo);
   --color-info: var(--info);
+  --color-lunar-charged: var(--lunar-charged);
+  --color-melt: var(--melt);
+  --color-vaporize: var(--vaporize);
   --color-version: var(--version);
   --font-genshin: "HYWenHei";
   --font-genshin-drip: "GenshinImpactDRIPFONT";
@@ -93,8 +97,12 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --dendro: var(--color-lime-700);
+  --electro-charged: var(--color-fuchsia-700);
   --geo: var(--color-amber-700);
   --info: var(--color-amber-700);
+  --lunar-charged: var(--color-fuchsia-700);
+  --melt: var(--color-red-700);
+  --vaporize: var(--color-red-700);
   --version: var(--color-blue-700);
 }
 
@@ -131,8 +139,12 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
   --dendro: var(--color-lime-300);
+  --electro-charged: var(--color-fuchsia-300);
   --geo: var(--color-amber-300);
   --info: var(--color-amber-300);
+  --lunar-charged: var(--color-fuchsia-300);
+  --melt: var(--color-red-300);
+  --vaporize: var(--color-red-300);
   --version: var(--color-blue-300);
 }
 

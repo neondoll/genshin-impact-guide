@@ -24,7 +24,7 @@ export default new CharacterRecommendations(CharacterIds.Albedo)
     VideoSourceIds.WhoNeedsLevelingPart1,
   ])
   .setWeapons([
-    new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setIsBetter("Лучшее оружие (средняя зависимость)").setNotes([
+    new CharacterWeaponRecommendation(WeaponIds.UrakuMisugiri).setIsBetter("Лучшее оружие").setNotes([
       "Даёт очень большой бонус <span class='text-info'>крит. урона</span>, позволяя сконцентрироваться на <span class='text-info'>шансе крит. попадания</span>, <span class='text-info'>защите</span> и <span class='text-info'>силе атаки</span> в артефактах.",
       "Пассивная способность увеличивает <span class='text-info'>урон элементального навыка</span> и <span class='text-info'>защиту</span>.",
       "Так как Альбедо сам наносит <span class='text-geo'>Гео урон</span>, он может полностью реализовать пассивную способность, но необходимо нанести <span class='text-geo'>Гео урон</span>, находясь на поле.",
