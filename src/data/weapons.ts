@@ -1,4 +1,6 @@
 import type { Weapon as Type } from "@/types/weapon";
+import { ElementalReactionIds } from "@/enums/elemental-reaction";
+import { elementalReactionLink } from "@/features/elemental-reactions/help";
 import { numberFormatPercent } from "@/lib/utils";
 import { StatIds } from "@/enums/stat";
 import { Weapon as Class, WeaponPassiveAbility as ClassPassiveAbility } from "@/classes/weapon";
@@ -24,6 +26,20 @@ export default {
     { min_value: 49, max_value: 741 },
     StatIds.CritRate,
     { min_value: numberFormatPercent(0.024, 1), max_value: numberFormatPercent(0.110, 1) },
+    ClassPassiveAbility.init([
+      "Закат распаляет рассвет",
+      "При использовании элементального навыка или взрыва стихии наделяет Палящим сиянием: повышает крит. урон на "
+      + "<span class='text-version'>20%</span>/<span class='text-version'>25%</span>/"
+      + "<span class='text-version'>30%</span>/<span class='text-version'>35%</span>/"
+      + "<span class='text-version'>40%</span> и силу атаки на <span class='text-version'>28%</span>/"
+      + "<span class='text-version'>35%</span>/<span class='text-version'>42%</span>/"
+      + "<span class='text-version'>49%</span>/<span class='text-version'>56%</span> на 6 сек. Эффект может возникнуть "
+      + "1 раз в 10 сек.<br>Нанесение элементального урона обычной или заряженной атакой во время действия Палящего "
+      + "сияния продлевает длительность данного эффекта на 2 сек. Продление его действия может сработать 1 раз в 1 "
+      + "сек., а максимум продления составляет 6 сек.<br>Кроме того, эффекты Палящего сияния усиливаются на 75%, если "
+      + "экипированный персонаж находится в состоянии Благословения Ночного духа, а его длительность не отсчитывается, "
+      + "когда экипированный персонаж вне поля боя.",
+    ]),
   ]),
   [WeaponIds.AThousandFloatingDreams]: Class.init([
     WeaponIds.AThousandFloatingDreams,
@@ -34,6 +50,22 @@ export default {
     { min_value: 44, max_value: 542 },
     StatIds.ElementalMastery,
     { min_value: 58, max_value: 265 },
+    ClassPassiveAbility.init([
+      "Песнь тысячи рассветов",
+      "Другие члены отряда предоставляют экипированному этим оружием персонажу усиления в зависимости от того, "
+      + "совпадают их элементы, или нет. Если элементы совпадают, мастерство стихий повышается на "
+      + "<span class='text-version'>32</span>/<span class='text-version'>40</span>/"
+      + "<span class='text-version'>48</span>/<span class='text-version'>56</span>/"
+      + "<span class='text-version'>64</span> ед. Если не совпадают, экипированный этим оружием персонаж получает "
+      + "<span class='text-version'>10%</span>/<span class='text-version'>14%</span>/"
+      + "<span class='text-version'>18%</span>/<span class='text-version'>22%</span>/"
+      + "<span class='text-version'>26%</span> бонус урона своего элемента. Данные эффекты складываются до 3 раз. "
+      + "Вдобавок мастерство стихий всех персонажей отряда поблизости (кроме экипированного этим оружием персонажа) "
+      + "увеличивается на <span class='text-version'>40</span>/<span class='text-version'>42</span>/"
+      + "<span class='text-version'>44</span>/<span class='text-version'>46</span>/"
+      + "<span class='text-version'>48</span> единиц. Если этим оружием обладают и другие члены отряда, эффект "
+      + "суммируется.",
+    ]),
   ]),
   [WeaponIds.Absolution]: Class.init([
     WeaponIds.Absolution,
@@ -44,6 +76,15 @@ export default {
     { min_value: 48, max_value: 674 },
     StatIds.CritDMG,
     { min_value: numberFormatPercent(0.096, 1), max_value: numberFormatPercent(0.441, 1) },
+    ClassPassiveAbility.init([
+      "Пакт смерти",
+      "Крит. урон увеличивается на <span class='text-version'>20%</span>/<span class='text-version'>25%</span>/"
+      + "<span class='text-version'>30%</span>/<span class='text-version'>35%</span>/"
+      + "<span class='text-version'>40%</span>. Когда Долг жизни возрастает, наносимый экипированным персонажем урон "
+      + "увеличивается на <span class='text-version'>16%</span>/<span class='text-version'>20%</span>/"
+      + "<span class='text-version'>24%</span>/<span class='text-version'>28%</span>/"
+      + "<span class='text-version'>32%</span> на 6 сек. Этот эффект может складываться до 3 раз.",
+    ]),
   ]),
   [WeaponIds.Akuoumaru]: Class.init([
     WeaponIds.Akuoumaru,
@@ -156,10 +197,10 @@ export default {
     { min_value: numberFormatPercent(0.060, 1), max_value: numberFormatPercent(0.276, 1) },
     ClassPassiveAbility.init([
       "История тундры",
-      "Если в отряде не менее 3 персонажей разных элементов, <span class='text-primary'>мастерство стихий</span> "
-      + "увеличивается на <span class='text-primary'>120</span>/<span class='text-primary'>150</span>/"
-      + "<span class='text-primary'>180</span>/<span class='text-primary'>210</span>/"
-      + "<span class='text-primary'>240</span> ед.",
+      "Если в отряде не менее 3 персонажей разных элементов, <span class='text-info'>мастерство стихий</span> "
+      + "увеличивается на <span class='text-version'>120</span>/<span class='text-version'>150</span>/"
+      + "<span class='text-version'>180</span>/<span class='text-version'>210</span>/"
+      + "<span class='text-version'>240</span> ед.",
     ]),
   ]),
   [WeaponIds.BeaconOfTheReedSea]: Class.init([
@@ -259,6 +300,20 @@ export default {
     { min_value: 48, max_value: 674 },
     StatIds.CritRate,
     { min_value: numberFormatPercent(0.048, 1), max_value: numberFormatPercent(0.221, 1) },
+    ClassPassiveAbility.init([
+      "Дань скорби",
+      "После применения взрыва стихии повышает урон реакции Лунный заряд экипированного персонажа, наносимый врагу, на "
+      + "<span class='text-version'>36%</span>/<span class='text-version'>48%</span>/"
+      + "<span class='text-version'>60%</span>/<span class='text-version'>72%</span>/"
+      + "<span class='text-version'>84%</span> на 3,5 сек. Кроме того, после активации реакции Лунный заряд "
+      + "экипированным персонажем активируется эффект Реквием руин: крит. урон повышается на "
+      + "<span class='text-version'>28%</span>/<span class='text-version'>35%</span>/"
+      + "<span class='text-version'>42%</span>/<span class='text-version'>49%</span>/"
+      + "<span class='text-version'>56%</span> на 6 сек., а также экипированный персонаж восстанавливает "
+      + "<span class='text-version'>12</span>/<span class='text-version'>13</span>/"
+      + "<span class='text-version'>14</span>/<span class='text-version'>15</span>/"
+      + "<span class='text-version'>16</span> ед. энергии. Восстанавливать энергию таким способом можно раз в 14 сек.",
+    ]),
   ]),
   [WeaponIds.BloodtaintedGreatsword]: Class.init([
     WeaponIds.BloodtaintedGreatsword,
@@ -291,15 +346,15 @@ export default {
     { min_value: numberFormatPercent(0.036, 1), max_value: numberFormatPercent(0.165, 1) },
     ClassPassiveAbility.init([
       "Завет погибели",
-      "Даёт <span class='text-primary'>12%</span>/<span class='text-primary'>15%</span>/"
-      + "<span class='text-primary'>18%</span>/<span class='text-primary'>21%</span>/"
-      + "<span class='text-primary'>24%</span> <span class='text-primary'>бонус урона всеми элементами</span>. Запуск "
-      + "<span class='text-primary'>элементального навыка</span> накладывает Совершенствование на 20 сек., в "
-      + "результате чего <span class='text-primary'>сила атаки</span> увеличивается на "
-      + "<span class='text-primary'>3,2%</span>/<span class='text-primary'>4%</span>/"
-      + "<span class='text-primary'>4,8%</span>/<span class='text-primary'>5,6%</span>/"
-      + "<span class='text-primary'>6,4%</span> в секунду. Может складываться до 6 раз. Когда персонаж, экипированный "
-      + "этим оружием, не на поле боя, <span class='text-primary'>бонус атаки</span> от Совершенствования удваивается.",
+      "Даёт <span class='text-version'>12%</span>/<span class='text-version'>15%</span>/"
+      + "<span class='text-version'>18%</span>/<span class='text-version'>21%</span>/"
+      + "<span class='text-version'>24%</span> <span class='text-info'>бонус урона всеми элементами</span>. Запуск "
+      + "<span class='text-info'>элементального навыка</span> накладывает Совершенствование на 20 сек., в результате "
+      + "чего <span class='text-info'>сила атаки</span> увеличивается на <span class='text-version'>3,2%</span>/"
+      + "<span class='text-version'>4%</span>/<span class='text-version'>4,8%</span>/"
+      + "<span class='text-version'>5,6%</span>/<span class='text-version'>6,4%</span> в секунду. Может складываться "
+      + "до 6 раз. Когда персонаж, экипированный этим оружием, не на поле боя, "
+      + "<span class='text-info'>бонус атаки</span> от Совершенствования удваивается.",
     ]),
   ]),
   [WeaponIds.CashflowSupervision]: Class.init([
@@ -331,6 +386,14 @@ export default {
     { min_value: 41, max_value: 454 },
     StatIds.DefPercentage,
     { min_value: numberFormatPercent(0.150, 1), max_value: numberFormatPercent(0.690, 1) },
+    ClassPassiveAbility.init([
+      "Добродетель",
+      "Урон <span class='text-info'>элементального навыка</span> повышается на <span class='text-version'>40%</span>/"
+      + "<span class='text-version'>50%</span>/<span class='text-version'>60%</span>/"
+      + "<span class='text-version'>70%</span>/<span class='text-version'>80%</span> от "
+      + "<span class='text-info'>защиты</span>. Эффект возникает раз в 1,5 сек. и исчезает через 0,1 сек. после "
+      + "нанесения урона врагу <span class='text-info'>элементальным навыком</span>.",
+    ]),
   ]),
   [WeaponIds.Cloudforged]: Class.init([
     WeaponIds.Cloudforged,
@@ -391,6 +454,20 @@ export default {
     { min_value: 48, max_value: 674 },
     StatIds.CritRate,
     { min_value: numberFormatPercent(0.048, 1), max_value: numberFormatPercent(0.221, 1) },
+    ClassPassiveAbility.init([
+      "Тень пепельного солнца",
+      "Попадание <span class='text-info'>заряженной атакой</span> по врагу наделяет "
+      + "<span class='text-info'>Долгом жизни</span>, равным 25% от макс. <span class='text-info'>HP</span>. Этот "
+      + "эффект может возникнуть раз в 14 сек. Кроме того, пока экипированный персонаж наделён "
+      + "<span class='text-info'>Долгом жизни</span>, наносимый им урон повышается на "
+      + "<span class='text-version'>12%</span>/<span class='text-version'>16%</span>/"
+      + "<span class='text-version'>20%</span>/<span class='text-version'>24%</span>/"
+      + "<span class='text-version'>28%</span>. Если значение <span class='text-info'>Долга жизни</span> равно или "
+      + "превышает 30% от макс. <span class='text-info'>HP</span>, наносимый урон дополнительно повышается на "
+      + "<span class='text-version'>24%</span>/<span class='text-version'>32%</span>/"
+      + "<span class='text-version'>40%</span>/<span class='text-version'>48%</span>/"
+      + "<span class='text-version'>56%</span>.",
+    ]),
   ]),
   [WeaponIds.DarkIronSword]: Class.init([
     WeaponIds.DarkIronSword,
@@ -401,6 +478,26 @@ export default {
     { min_value: 39, max_value: 401 },
     StatIds.ElementalMastery,
     { min_value: 31, max_value: 141 },
+  ]),
+  [WeaponIds.DawningFrost]: Class.init([
+    WeaponIds.DawningFrost,
+    "Рассветный иней",
+    4,
+    WeaponSource.EventWishExclusive,
+    WeaponTypeIds.Catalyst,
+    { min_value: 42, max_value: 510 },
+    StatIds.CritDMG,
+    { min_value: numberFormatPercent(0.120, 1), max_value: numberFormatPercent(0.551, 1) },
+    ClassPassiveAbility.init([
+      "Сны глубокой ночи",
+      "На 10 сек. после попадания заряженной атаки по противнику мастерство стихий повышается на "
+      + "<span class='text-version'>72</span>/<span class='text-version'>90</span>/"
+      + "<span class='text-version'>108</span>/<span class='text-version'>126</span>/"
+      + "<span class='text-version'>144</span> ед. На 10 сек. после попадания элементального навыка по противнику "
+      + "мастерство стихий повышается на <span class='text-version'>48</span>/<span class='text-version'>60</span>/"
+      + "<span class='text-version'>72</span>/<span class='text-version'>84</span>/"
+      + "<span class='text-version'>96</span> ед.",
+    ]),
   ]),
   [WeaponIds.Deathmatch]: Class.init([
     WeaponIds.Deathmatch,
@@ -413,13 +510,13 @@ export default {
     { min_value: numberFormatPercent(0.080, 1), max_value: numberFormatPercent(0.368, 1) },
     ClassPassiveAbility.init([
       "Гладиатор",
-      "Если рядом 2 врага и более, <span class='text-primary'>сила атаки</span> и "
-      + "<span class='text-primary'>защита</span> увеличиваются на <span class='text-primary'>16%</span>/"
-      + "<span class='text-primary'>20%</span>/<span class='text-primary'>24%</span>/"
-      + "<span class='text-primary'>28%</span>/<span class='text-primary'>32%</span>; если рядом менее 2 врагов, "
-      + "<span class='text-primary'>сила атаки</span> увеличивается на <span class='text-primary'>24%</span>/"
-      + "<span class='text-primary'>30%</span>/<span class='text-primary'>36%</span>/"
-      + "<span class='text-primary'>42%</span>/<span class='text-primary'>48%</span>.",
+      "Если рядом 2 врага и более, <span class='text-info'>сила атаки</span> и <span class='text-info'>защита</span> "
+      + "увеличиваются на <span class='text-version'>16%</span>/<span class='text-version'>20%</span>/"
+      + "<span class='text-version'>24%</span>/<span class='text-version'>28%</span>/"
+      + "<span class='text-version'>32%</span>; если рядом менее 2 врагов, <span class='text-info'>сила атаки</span> "
+      + "увеличивается на <span class='text-version'>24%</span>/<span class='text-version'>30%</span>/"
+      + "<span class='text-version'>36%</span>/<span class='text-version'>42%</span>/"
+      + "<span class='text-version'>48%</span>.",
     ]),
   ]),
   [WeaponIds.DebateClub]: Class.init([
@@ -498,6 +595,25 @@ export default {
     { min_value: 46, max_value: 608 },
     StatIds.EnergyRecharge,
     { min_value: numberFormatPercent(0.120, 1), max_value: numberFormatPercent(0.551, 1) },
+    ClassPassiveAbility.init([
+      "Песнь разлуки",
+      "Часть Тысячелетней симфонии, что блуждает среди ветров. Увеличивает "
+      + "<span class='text-info'>мастерство стихий</span> на <span class='text-version'>60</span>/"
+      + "<span class='text-version'>75</span>/<span class='text-version'>90</span>/"
+      + "<span class='text-version'>105</span>/<span class='text-version'>120</span> ед. При попадании "
+      + "<span class='text-info'>элементальным навыком</span> или <span class='text-info'>взрывом стихии</span> по "
+      + "противнику персонаж получает один Талисман воспоминаний. Он может возникнуть раз в 0,2 сек., даже когда "
+      + "персонаж в отряде, но не активен. Четыре собранных Талисмана воспоминаний пропадают, на 12 сек. наделяя "
+      + "ближайших членов отряда эффектом «Тысячелетняя симфония: Прощальный гимн». Их "
+      + "<span class='text-info'>мастерство стихии</span> повышается на <span class='text-version'>100</span>/"
+      + "<span class='text-version'>125</span>/<span class='text-version'>150</span>/"
+      + "<span class='text-version'>175</span>/<span class='text-version'>200</span> ед., а "
+      + "<span class='text-info'>сила атаки</span> - на <span class='text-version'>20%</span>/"
+      + "<span class='text-version'>25%</span>/<span class='text-version'>30%</span>/"
+      + "<span class='text-version'>35%</span>/<span class='text-version'>40%</span>. В течение 20 сек. после "
+      + "активации эффекта Талисманы воспоминаний появляться не будут. Тысячелетняя симфония с эффектами, влияющими на "
+      + "те же навыки, не складывается.",
+    ]),
   ]),
   [WeaponIds.EmeraldOrb]: Class.init([
     WeaponIds.EmeraldOrb,
@@ -538,6 +654,13 @@ export default {
     { min_value: 42, max_value: 510 },
     StatIds.EnergyRecharge,
     { min_value: numberFormatPercent(0.100, 1), max_value: numberFormatPercent(0.459, 1) },
+    ClassPassiveAbility.init([
+      "Последний певец",
+      "После использования элементального навыка мастерство стихий экипированного персонажа повышается на "
+      + "<span class='text-version'>100</span>/<span class='text-version'>125</span>/"
+      + "<span class='text-version'>150</span>/<span class='text-version'>175</span>/"
+      + "<span class='text-version'>200</span> ед. на 20 сек.",
+    ]),
   ]),
   [WeaponIds.EverlastingMoonglow]: Class.init([
     WeaponIds.EverlastingMoonglow,
@@ -598,6 +721,15 @@ export default {
     { min_value: 41, max_value: 454 },
     StatIds.EnergyRecharge,
     { min_value: numberFormatPercent(0.133, 1), max_value: numberFormatPercent(0.613, 1) },
+    ClassPassiveAbility.init([
+      "Дружественный бриз",
+      "Критические атаки имеют <span class='text-version'>60%</span>/<span class='text-version'>70%</span>/"
+      + "<span class='text-version'>80%</span>/<span class='text-version'>90%</span>/"
+      + "<span class='text-version'>100%</span> шанс создать <span class='text-info'>элементальные частицы</span>, "
+      + "которые восстанавливают 6 ед. энергии. Возникает раз в <span class='text-version'>12</span>/"
+      + "<span class='text-version'>10,5</span>/<span class='text-version'>9</span>/"
+      + "<span class='text-version'>7,5</span>/<span class='text-version'>6</span> сек.",
+    ]),
   ]),
   [WeaponIds.FavoniusLance]: Class.init([
     WeaponIds.FavoniusLance,
@@ -637,6 +769,15 @@ export default {
     { min_value: 41, max_value: 454 },
     StatIds.EnergyRecharge,
     { min_value: numberFormatPercent(0.133, 1), max_value: numberFormatPercent(0.613, 1) },
+    ClassPassiveAbility.init([
+      "Дружественный бриз",
+      "Критические атаки имеют <span class='text-version'>60%</span>/<span class='text-version'>70%</span>/"
+      + "<span class='text-version'>80%</span>/<span class='text-version'>90%</span>/"
+      + "<span class='text-version'>100%</span> шанс создать <span class='text-info'>элементальные частицы</span>, "
+      + "которые восстанавливают 6 ед. энергии. Возникает раз в <span class='text-version'>12</span>/"
+      + "<span class='text-version'>10,5</span>/<span class='text-version'>9</span>/"
+      + "<span class='text-version'>7,5</span>/<span class='text-version'>6</span> сек.",
+    ]),
   ]),
   [WeaponIds.FerrousShadow]: Class.init([
     WeaponIds.FerrousShadow,
@@ -687,6 +828,20 @@ export default {
     { min_value: 42, max_value: 510 },
     StatIds.ElementalMastery,
     { min_value: 36, max_value: 165 },
+    ClassPassiveAbility.init([
+      "Разум в расцвете",
+      "Активация реакций " + elementalReactionLink(ElementalReactionIds.ElectroCharged, "Заряжен") + ", "
+      + elementalReactionLink(ElementalReactionIds.LunarCharged, "Лунный заряд") + ", "
+      + elementalReactionLink(ElementalReactionIds.Bloom, "Бутонизация") + " или "
+      + elementalReactionLink(ElementalReactionIds.LunarBloom, "Лунная бутонизация") + " восстанавливает "
+      + "<span class='text-version'>12</span>/<span class='text-version'>15</span>/"
+      + "<span class='text-version'>18</span>/<span class='text-version'>21</span>/"
+      + "<span class='text-version'>24</span> ед. <span class='text-info'>энергии</span> и на 15 сек. повышает "
+      + "<span class='text-info'>мастерство стихий</span> на <span class='text-version'>60</span>/"
+      + "<span class='text-version'>75</span>/<span class='text-version'>90</span>/"
+      + "<span class='text-version'>105</span>/<span class='text-version'>120</span> ед. Эффект может возникнуть один "
+      + "раз в 15 сек. и срабатывает, даже когда экипированный персонаж не на поле боя.",
+    ]),
   ]),
   [WeaponIds.FleuveCendreFerryman]: Class.init([
     WeaponIds.FleuveCendreFerryman,
@@ -860,6 +1015,13 @@ export default {
     { min_value: 39, max_value: 401 },
     StatIds.CritDMG,
     { min_value: numberFormatPercent(0.102, 1), max_value: numberFormatPercent(0.469, 1) },
+    ClassPassiveAbility.init([
+      "Энергичный",
+      "Увеличивает <span class='text-info'>шанс крит. попадания</span> на <span class='text-version'>14%</span>/"
+      + "<span class='text-version'>17,5%</span>/<span class='text-version'>21%</span>/"
+      + "<span class='text-version'>24,5%</span>/<span class='text-version'>28%</span> при "
+      + "<span class='text-info'>HP</span> выше 90%.",
+    ]),
   ]),
   [WeaponIds.HuntersPath]: Class.init([
     WeaponIds.HuntersPath,
@@ -890,6 +1052,14 @@ export default {
     { min_value: 42, max_value: 510 },
     StatIds.ElementalMastery,
     { min_value: 36, max_value: 165 },
+    ClassPassiveAbility.init([
+      "Заряженное жало",
+      "Нанесённый <span class='text-info'>элементальный урон</span> увеличивает весь наносимый "
+      + "<span class='text-info'>урон</span> на <span class='text-version'>6%</span>/"
+      + "<span class='text-version'>7,5%</span>/<span class='text-version'>9%</span>/"
+      + "<span class='text-version'>10,5%</span>/<span class='text-version'>12%</span> на 6 сек. Может складываться до "
+      + "2 раз. Может возникнуть раз в 1 сек.",
+    ]),
   ]),
   [WeaponIds.JadefallsSplendor]: Class.init([
     WeaponIds.JadefallsSplendor,
@@ -982,6 +1152,19 @@ export default {
     { min_value: 44, max_value: 542 },
     StatIds.CritDMG,
     { min_value: numberFormatPercent(0.192, 1), max_value: numberFormatPercent(0.882, 1) },
+    ClassPassiveAbility.init([
+      "Остриё белой луны",
+      "<span class='text-info'>Шанс крит. попадания</span> увеличивается на <span class='text-version'>4%</span>/"
+      + "<span class='text-version'>5%</span>/<span class='text-version'>6%</span>/"
+      + "<span class='text-version'>7%</span>/<span class='text-version'>8%</span>. Когда "
+      + "<span class='text-info'>обычная атака</span> наносит <span class='text-info'>элементальный урон</span>, она "
+      + "даёт эффект Лиственного выреза: <span class='text-info'>урон обычных атак</span> и "
+      + "<span class='text-info'>элементальных навыков</span> повышается на <span class='text-version'>120%</span>/"
+      + "<span class='text-version'>150%</span>/<span class='text-version'>180%</span>/"
+      + "<span class='text-version'>210%</span>/<span class='text-version'>240%</span> от "
+      + "<span class='text-info'>мастерства стихий</span>. После 28 активаций или через 12 сек. эффект исчезнет. "
+      + "Лиственный вырез можно получить не чаще одного раза в 12 сек.",
+    ]),
   ]),
   [WeaponIds.LionsRoar]: Class.init([
     WeaponIds.LionsRoar,
@@ -1087,6 +1270,16 @@ export default {
     { min_value: 42, max_value: 510 },
     StatIds.ElementalMastery,
     { min_value: 36, max_value: 165 },
+    ClassPassiveAbility.init([
+      "Чертоги в пустыне",
+      "Каждые 10 сек. срабатывает следующий эффект: <span class='text-info'>сила атаки</span> экипированного этим "
+      + "оружием персонажа увеличивается на <span class='text-version'>24%</span>/"
+      + "<span class='text-version'>30%</span>/<span class='text-version'>36%</span>/"
+      + "<span class='text-version'>42%</span>/<span class='text-version'>48%</span> от "
+      + "<span class='text-info'>мастерства стихий</span> на 12 сек. Члены отряда поблизости получают 30% этого "
+      + "эффекта. Если этим оружием обладают и другие члены отряда, эффект суммируется. Этот эффект срабатывает, даже "
+      + "если экипированный персонаж не на поле боя.",
+    ]),
   ]),
   [WeaponIds.MappaMare]: Class.init([
     WeaponIds.MappaMare,
@@ -1107,6 +1300,18 @@ export default {
     { min_value: 41, max_value: 454 },
     StatIds.EnergyRecharge,
     { min_value: numberFormatPercent(0.133, 1), max_value: numberFormatPercent(0.613, 1) },
+    ClassPassiveAbility.init([
+      "Мгновенное решение",
+      "На 12 сек. после активации элементальной реакции <span class='text-info'>мастерство стихий</span> повышается на "
+      + "<span class='text-version'>60</span>/<span class='text-version'>75</span>/"
+      + "<span class='text-version'>90</span>/<span class='text-version'>105</span>/"
+      + "<span class='text-version'>120</span> ед. Лунное знамение - Высшее сияние: "
+      + "<span class='text-info'>мастерство стихий</span> от данного эффекта дополнительно повышается на "
+      + "<span class='text-version'>60</span>/<span class='text-version'>75</span>/"
+      + "<span class='text-version'>90</span>/<span class='text-version'>105</span>/"
+      + "<span class='text-version'>120</span> ед. Этот эффект срабатывает, даже когда экипированный персонаж не на "
+      + "поле боя.",
+    ]),
   ]),
   [WeaponIds.MemoryOfDust]: Class.init([
     WeaponIds.MemoryOfDust,
@@ -1287,6 +1492,16 @@ export default {
     { min_value: 44, max_value: 542 },
     StatIds.CritRate,
     { min_value: numberFormatPercent(0.096, 1), max_value: numberFormatPercent(0.441, 1) },
+    ClassPassiveAbility.init([
+      "Добродетель защитника",
+      "Увеличивает <span class='text-info'>HP</span> на <span class='text-version'>20%</span>/"
+      + "<span class='text-version'>25%</span>/<span class='text-version'>30%</span>/"
+      + "<span class='text-version'>35%</span>/<span class='text-version'>40%</span>. Также даёт "
+      + "<span class='text-info'>бонус атаки</span>, равный <span class='text-version'>1,2%</span>/"
+      + "<span class='text-version'>1,5%</span>/<span class='text-version'>1,8%</span>/"
+      + "<span class='text-version'>2,1%</span>/<span class='text-version'>2,4%</span> от макс. "
+      + "<span class='text-info'>HP</span> экипированного этим оружием персонажа.",
+    ]),
   ]),
   [WeaponIds.PrimordialJadeWingedSpear]: Class.init([
     WeaponIds.PrimordialJadeWingedSpear,
@@ -1299,13 +1514,13 @@ export default {
     { min_value: numberFormatPercent(0.048, 1), max_value: numberFormatPercent(0.221, 1) },
     ClassPassiveAbility.init([
       "Птица справедливости",
-      "При попадании увеличивает <span class='text-primary'>силу атаки</span> на "
-      + "<span class='text-primary'>3,2%</span>/<span class='text-primary'>3,9%</span>/"
-      + "<span class='text-primary'>4,6%</span>/<span class='text-primary'>5,3%</span>/"
-      + "<span class='text-primary'>6%</span> в течение 6 сек. Эффект может складываться до 7 раз и возникает не чаще "
-      + "чем раз в 0,3 сек. На 7 уровне складывания увеличивает урон на <span class='text-primary'>12%</span>/"
-      + "<span class='text-primary'>15%</span>/<span class='text-primary'>18%</span>/"
-      + "<span class='text-primary'>21%</span>/<span class='text-primary'>24%</span>.",
+      "При попадании увеличивает <span class='text-info'>силу атаки</span> на <span class='text-version'>3,2%</span>/"
+      + "<span class='text-version'>3,9%</span>/<span class='text-version'>4,6%</span>/"
+      + "<span class='text-version'>5,3%</span>/<span class='text-version'>6%</span> в течение 6 сек. Эффект может "
+      + "складываться до 7 раз и возникает не чаще чем раз в 0,3 сек. На 7 уровне складывания увеличивает урон на "
+      + "<span class='text-version'>12%</span>/<span class='text-version'>15%</span>/"
+      + "<span class='text-version'>18%</span>/<span class='text-version'>21%</span>/"
+      + "<span class='text-version'>24%</span>.",
     ]),
   ]),
   [WeaponIds.ProspectorsDrill]: Class.init([
@@ -1427,6 +1642,40 @@ export default {
     { min_value: 44, max_value: 542 },
     StatIds.CritDMG,
     { min_value: numberFormatPercent(0.192, 1), max_value: numberFormatPercent(0.882, 1) },
+    ClassPassiveAbility.init([
+      "Гокадайо Отогибанаси",
+      "<span class='text-info'>Защита</span> повышается на <span class='text-version'>28%</span>/"
+      + "<span class='text-version'>35%</span>/<span class='text-version'>42%</span>/"
+      + "<span class='text-version'>49%</span>/<span class='text-version'>56%</span>, "
+      + "<span class='text-info'>урон обычных</span> и <span class='text-info'>заряженных атак</span> повышается на "
+      + "<span class='text-version'>40%</span>/<span class='text-version'>50%</span>/"
+      + "<span class='text-version'>60%</span>/<span class='text-version'>70%</span>/"
+      + "<span class='text-version'>80%</span> <span class='text-info'>защиты</span>.",
+    ]),
+  ]),
+  [WeaponIds.ReliquaryOfTruth]: Class.init([
+    WeaponIds.ReliquaryOfTruth,
+    "Шкатулка истин",
+    5,
+    WeaponSource.EventWishExclusive,
+    WeaponTypeIds.Catalyst,
+    { min_value: 44, max_value: 542 },
+    StatIds.CritDMG,
+    { min_value: numberFormatPercent(0.192, 1), max_value: numberFormatPercent(0.882, 1) },
+    ClassPassiveAbility.init([
+      "Подлинный смысл лжи",
+      "Шанс крит. попадания повышается на <span class='text-version'>8%</span>/<span class='text-version'>10%</span>/"
+      + "<span class='text-version'>12%</span>/<span class='text-version'>14%</span>/"
+      + "<span class='text-version'>16%</span>. При активации элементального навыка экипированный персонаж получает "
+      + "эффект Секрет лжи: мастерство стихий повышается на <span class='text-version'>80</span>/"
+      + "<span class='text-version'>100</span>/<span class='text-version'>120</span>/"
+      + "<span class='text-version'>140</span>/<span class='text-version'>160</span> ед. на 12 сек. Когда "
+      + "экипированный персонаж наносит врагу урон Лунной бутонизации, он получает эффект Луна истины: крит. урон "
+      + "повышается на <span class='text-version'>24%</span>/<span class='text-version'>30%</span>/"
+      + "<span class='text-version'>36%</span>/<span class='text-version'>42%</span>/"
+      + "<span class='text-version'>48%</span> на 4 сек. Когда Секрет лжи и Луна истины действуют одновременно, "
+      + "результат обоих эффектов повышается на 50%.",
+    ]),
   ]),
   [WeaponIds.RightfulReward]: Class.init([
     WeaponIds.RightfulReward,
@@ -1508,6 +1757,26 @@ export default {
     StatIds.AtkPercentage,
     { min_value: numberFormatPercent(0.090, 1), max_value: numberFormatPercent(0.413, 1) },
   ]),
+  [WeaponIds.SacrificersStaff]: Class.init([
+    WeaponIds.SacrificersStaff,
+    "Посох жертвующей",
+    4,
+    WeaponSource.EventWishExclusive,
+    WeaponTypeIds.Polearm,
+    { min_value: 45, max_value: 620 },
+    StatIds.CritRate,
+    { min_value: numberFormatPercent(0.020, 1), max_value: numberFormatPercent(0.092, 1) },
+    ClassPassiveAbility.init([
+      "Незапятнанное желание",
+      "На 6 сек. после попадания элементального навыка по противнику сила атаки повышается на "
+      + "<span class='text-version'>8%</span>/<span class='text-version'>10%</span>/"
+      + "<span class='text-version'>12%</span>/<span class='text-version'>14%</span>/"
+      + "<span class='text-version'>16%</span>, а восстановление энергии - на <span class='text-version'>6%</span>/"
+      + "<span class='text-version'>7,5%</span>/<span class='text-version'>9%</span>/"
+      + "<span class='text-version'>10,5%</span>/<span class='text-version'>12%</span>. Этот эффект складывается до 3 "
+      + "раз и срабатывает, даже когда экипированный персонаж не на поле боя.",
+    ]),
+  ]),
   [WeaponIds.SacrificialBow]: Class.init([
     WeaponIds.SacrificialBow,
     "Церемониальный лук",
@@ -1537,6 +1806,16 @@ export default {
     { min_value: 44, max_value: 565 },
     StatIds.EnergyRecharge,
     { min_value: numberFormatPercent(0.067, 1), max_value: numberFormatPercent(0.306, 1) },
+    ClassPassiveAbility.init([
+      "Безмятежный",
+      "Когда <span class='text-info'>элементальный навык</span> наносит урон, есть "
+      + "<span class='text-version'>40%</span>/<span class='text-version'>50%</span>/"
+      + "<span class='text-version'>60%</span>/<span class='text-version'>70%</span>/"
+      + "<span class='text-version'>80%</span> вероятность, что его откат моментально восстановится. Может возникнуть "
+      + "раз в <span class='text-version'>30</span>/<span class='text-version'>26</span>/"
+      + "<span class='text-version'>22</span>/<span class='text-version'>19</span>/"
+      + "<span class='text-version'>16</span> сек.",
+    ]),
   ]),
   [WeaponIds.SacrificialJade]: Class.init([
     WeaponIds.SacrificialJade,
@@ -1779,18 +2058,18 @@ export default {
     { min_value: numberFormatPercent(0.144, 1), max_value: numberFormatPercent(0.662, 1) },
     ClassPassiveAbility.init([
       "Безрассудная бабочка",
-      "Увеличивает <span class='text-primary'>HP</span> на <span class='text-primary'>20%</span>/"
-      + "<span class='text-primary'>25%</span>/<span class='text-primary'>30%</span>/"
-      + "<span class='text-primary'>35%</span>/<span class='text-primary'>40%</span>. Также даёт "
-      + "<span class='text-primary'>бонус атаки</span>, равный <span class='text-primary'>0,8%</span>/"
-      + "<span class='text-primary'>1%</span>/<span class='text-primary'>1,2%</span>/"
-      + "<span class='text-primary'>1,4%</span>/<span class='text-primary'>1,6%</span> от макс. "
-      + "<span class='text-primary'>HP</span> экипированного этим оружием персонажа. Когда "
-      + "<span class='text-primary'>HP</span> экипированного этим оружием персонажа опускается ниже 50%, его "
-      + "<span class='text-primary'>сила атаки</span> дополнительно увеличивается на "
-      + "<span class='text-primary'>1%</span>/<span class='text-primary'>1,2%</span>/"
-      + "<span class='text-primary'>1,4%</span>/<span class='text-primary'>1,6%</span>/"
-      + "<span class='text-primary'>1,8%</span> от его макс. <span class='text-primary'>HP</span>.",
+      "Увеличивает <span class='text-info'>HP</span> на <span class='text-version'>20%</span>/"
+      + "<span class='text-version'>25%</span>/<span class='text-version'>30%</span>/"
+      + "<span class='text-version'>35%</span>/<span class='text-version'>40%</span>. Также даёт "
+      + "<span class='text-info'>бонус атаки</span>, равный <span class='text-version'>0,8%</span>/"
+      + "<span class='text-version'>1%</span>/<span class='text-version'>1,2%</span>/"
+      + "<span class='text-version'>1,4%</span>/<span class='text-version'>1,6%</span> от макс. "
+      + "<span class='text-info'>HP</span> экипированного этим оружием персонажа. Когда "
+      + "<span class='text-info'>HP</span> экипированного этим оружием персонажа опускается ниже 50%, его "
+      + "<span class='text-info'>сила атаки</span> дополнительно увеличивается на <span class='text-version'>1%</span>/"
+      + "<span class='text-version'>1,2%</span>/<span class='text-version'>1,4%</span>/"
+      + "<span class='text-version'>1,6%</span>/<span class='text-version'>1,8%</span> от его макс. "
+      + "<span class='text-info'>HP</span>.",
     ]),
   ]),
   [WeaponIds.StaffOfTheScarletSands]: Class.init([
@@ -1804,15 +2083,15 @@ export default {
     { min_value: numberFormatPercent(0.096, 1), max_value: numberFormatPercent(0.441, 1) },
     ClassPassiveAbility.init([
       "Марево на горизонте",
-      "Увеличивает <span class='text-primary'>бонус атаки</span> экипированного этим оружием персонажа на "
-      + "<span class='text-primary'>52%</span>/<span class='text-primary'>65%</span>/"
-      + "<span class='text-primary'>78%</span>/<span class='text-primary'>91%</span>/"
-      + "<span class='text-primary'>104%</span> от его <span class='text-primary'>мастерства стихий</span>. Попадание "
-      + "по врагу <span class='text-primary'>элементальным навыком</span> на 10 сек. наделяет Сном алых песков: "
-      + "<span class='text-primary'>бонус атаки</span> экипированного этим оружием персонажа увеличивается на "
-      + "<span class='text-primary'>28%</span>/<span class='text-primary'>35%</span>/"
-      + "<span class='text-primary'>42%</span>/<span class='text-primary'>49%</span>/"
-      + "<span class='text-primary'>56%</span> от <span class='text-primary'>мастерства стихий</span>. Эффект "
+      "Увеличивает <span class='text-info'>бонус атаки</span> экипированного этим оружием персонажа на "
+      + "<span class='text-version'>52%</span>/<span class='text-version'>65%</span>/"
+      + "<span class='text-version'>78%</span>/<span class='text-version'>91%</span>/"
+      + "<span class='text-version'>104%</span> от его <span class='text-info'>мастерства стихий</span>. Попадание по "
+      + "врагу <span class='text-info'>элементальным навыком</span> на 10 сек. наделяет Сном алых песков: "
+      + "<span class='text-info'>бонус атаки</span> экипированного этим оружием персонажа увеличивается на "
+      + "<span class='text-version'>28%</span>/<span class='text-version'>35%</span>/"
+      + "<span class='text-version'>42%</span>/<span class='text-version'>49%</span>/"
+      + "<span class='text-version'>56%</span> от <span class='text-info'>мастерства стихий</span>. Эффект "
       + "складывается до 3 раз.",
     ]),
   ]),
@@ -2148,6 +2427,20 @@ export default {
     { min_value: 44, max_value: 542 },
     StatIds.CritDMG,
     { min_value: numberFormatPercent(0.192, 1), max_value: numberFormatPercent(0.882, 1) },
+    ClassPassiveAbility.init([
+      "Парчовый цветок и меч святилища",
+      "Урон <span class='text-info'>обычной атаки</span> увеличивается на <span class='text-version'>16%</span>/"
+      + "<span class='text-version'>20%</span>/<span class='text-version'>24%</span>/"
+      + "<span class='text-version'>28%</span>/<span class='text-version'>32%</span>, "
+      + "<span class='text-info'>элементального навыка</span> - на <span class='text-version'>24%</span>/"
+      + "<span class='text-version'>30%</span>/<span class='text-version'>36%</span>/"
+      + "<span class='text-version'>42%</span>/<span class='text-version'>48%</span>. После того как активный персонаж "
+      + "поблизости наносит <span class='text-geo'>Гео урон</span>, эти эффекты дополнительно увеличиваются на 100% на "
+      + "15 сек. Кроме того, <span class='text-info'>защита</span> экипированного персонажа повышается на "
+      + "<span class='text-version'>20%</span>/<span class='text-version'>25%</span>/"
+      + "<span class='text-version'>30%</span>/<span class='text-version'>35%</span>/"
+      + "<span class='text-version'>40%</span>.",
+    ]),
   ]),
   [WeaponIds.Verdict]: Class.init([
     WeaponIds.Verdict,
@@ -2238,6 +2531,12 @@ export default {
     { min_value: 39, max_value: 401 },
     StatIds.CritRate,
     { min_value: numberFormatPercent(0.051, 1), max_value: numberFormatPercent(0.234, 1) },
+    ClassPassiveAbility.init([
+      "Зоркий",
+      "Увеличивает урон <span class='text-info'>обычной атаки</span> на <span class='text-version'>24%</span>/"
+      + "<span class='text-version'>30%</span>/<span class='text-version'>36%</span>/"
+      + "<span class='text-version'>42%</span>/<span class='text-version'>48%</span>.",
+    ]),
   ]),
   [WeaponIds.Whiteblind]: Class.init([
     WeaponIds.Whiteblind,
@@ -2248,6 +2547,15 @@ export default {
     { min_value: 42, max_value: 510 },
     StatIds.DefPercentage,
     { min_value: numberFormatPercent(0.113, 1), max_value: numberFormatPercent(0.517, 1) },
+    ClassPassiveAbility.init([
+      "Заряженное лезвие",
+      "При попадании <span class='text-info'>обычной</span> или <span class='text-info'>заряженной атакой</span> "
+      + "<span class='text-info'>сила атаки</span> и <span class='text-info'>защита</span> увеличиваются на "
+      + "<span class='text-version'>6%</span>/<span class='text-version'>7,5%</span>/"
+      + "<span class='text-version'>9%</span>/<span class='text-version'>10,5%</span>/"
+      + "<span class='text-version'>12%</span> в течение 6 сек. Эффект может складываться до 4 раз. Может возникнуть "
+      + "не чаще 1 раза за 0,5 сек.",
+    ]),
   ]),
   [WeaponIds.WindblumeOde]: Class.init([
     WeaponIds.WindblumeOde,

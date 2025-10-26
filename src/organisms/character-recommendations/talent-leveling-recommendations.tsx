@@ -16,10 +16,8 @@ function TalentLevelingRecommendationsTable({ recommendations }: {
           return (
             <TableRow className="hover:bg-inherit" key={talent.id}>
               <TableHead children={talent.name} className="p-2 whitespace-normal" />
-              <TableCell
-                children={recommendation.priority}
-                className="p-2 text-center whitespace-pre-line md:whitespace-normal"
-              />
+              <TableCell children={recommendation.priority} className="p-2 text-center whitespace-normal" />
+              <TableCell children={recommendation.reference_level} className="p-2 text-center whitespace-normal" />
             </TableRow>
           );
         })}

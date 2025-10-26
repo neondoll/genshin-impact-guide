@@ -102,6 +102,16 @@ export default {
     "Miron MinMax: Актуальный и Подробный | Гайд на Нахиду в 5.1",
     new Date("2024-10-23"),
   ]).setVkUrl("https://vk.com/video-227044935_456239163").setYoutubeUrl("https://youtu.be/QZObIiFe8R8"),
+  [VideoSourceIds.GuideToNefer_AnimeCool]: Class.init([
+    VideoSourceIds.GuideToNefer_AnimeCool,
+    "Анимекул: Нефер - Новая Дендро ИМБА? | Полный гайд на Нефер [Genshin Impact 6.1]",
+    new Date("2025-10-23"),
+  ]).setVkUrl("https://vkvideo.ru/video-231668223_456239074").setYoutubeUrl("https://youtu.be/o5ulYPCoEF4"),
+  [VideoSourceIds.GuideToNefer_MironMinMax]: Class.init([
+    VideoSourceIds.GuideToNefer_MironMinMax,
+    "Miron MinMax: Нефер - Новая Дендро Имба? Гайд на Нефер в 6.1 [Genshin Impact]",
+    new Date("2025-10-22"),
+  ]).setVkUrl("https://vkvideo.ru/video-227044935_456239266").setYoutubeUrl("https://youtu.be/DcbkdNYCaqM"),
   /* TODO: Пересмотреть, есть вопросы */
   [VideoSourceIds.GuideToNeuvillette]: Class.init([
     VideoSourceIds.GuideToNeuvillette,

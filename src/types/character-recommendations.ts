@@ -47,7 +47,7 @@ export interface CharacterRecommendations {
   key_constellations?: (1 | 2 | 3 | 4 | 5 | 6)[];
   reference_point?: CharacterReferencePointRecommendations | Record<string, CharacterReferencePointRecommendations>;
   required_level?: string | number;
-  rotation?: string | Record<string, string | string[]>;
+  rotation?: string | string[] | Record<string, string | string[]>;
   squads?: CharacterSquadRecommendations | Record<string, CharacterSquadRecommendations>;
   talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
   video_source_ids?: VideoSourceId[];
@@ -77,6 +77,7 @@ export interface CharacterSquadRecommendations {
 export interface CharacterTalentLevelingRecommendation {
   id: TalentId;
   priority: string;
+  reference_level?: string | number;
 }
 
 export interface CharacterWeaponRecommendation {

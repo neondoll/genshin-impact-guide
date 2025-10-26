@@ -41,6 +41,10 @@ export default function ElementalReactionImg({ className, item }: {
   className?: ComponentProps<"div">["className"];
   item: ElementalReaction;
 }) {
+  if (item.image_src) {
+    return <img alt={item.id} className={cn("aspect-square shrink-0 w-auto h-full", className)} src={item.image_src} />;
+  }
+
   return (
     <div className={cn("flex gap-2 items-center", className)}>
       <Image className="shrink-0 w-auto h-full" elementId={item.first_element_id} />

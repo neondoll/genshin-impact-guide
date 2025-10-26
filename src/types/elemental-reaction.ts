@@ -6,6 +6,7 @@ export interface ElementalReaction {
   name: string;
   first_element_id: ElementalReactionElementId;
   second_element_id: ElementalReactionElementId;
+  image_src?: string;
 }
 
 export type ElementalReactionElementId = ElementalReactionId | ElementId | ElementId[];

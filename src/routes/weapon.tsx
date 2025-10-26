@@ -111,6 +111,15 @@ export default function Weapon() {
                 className="p-2 whitespace-normal"
               />
             </TableRow>
+            {weapon.passive_ability && (
+              <TableRow className="hover:bg-inherit">
+                <TableHead children={`${weapon.passive_ability.name}:`} className="p-2 text-right whitespace-normal" />
+                <TableCell
+                  className="p-2 whitespace-normal"
+                  dangerouslySetInnerHTML={{ __html: weapon.passive_ability.description }}
+                />
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </Card>

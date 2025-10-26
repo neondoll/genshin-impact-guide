@@ -52,12 +52,8 @@ export default {
     ElementalReactionIds.Bloom,
     ElementIds.Electro,
   ]),
-  [ElementalReactionIds.LunarCharged]: Class.init([
-    ElementalReactionIds.LunarCharged,
-    "Лунный заряд",
-    ElementIds.Electro,
-    ElementIds.Hydro,
-  ]),
+  [ElementalReactionIds.LunarBloom]: Class.init([ElementalReactionIds.LunarBloom, "Лунная бутонизация", ElementIds.Hydro, ElementIds.Dendro, true]),
+  [ElementalReactionIds.LunarCharged]: Class.init([ElementalReactionIds.LunarCharged, "Лунный заряд", ElementIds.Electro, ElementIds.Hydro, true]),
   [ElementalReactionIds.Melt]: Class.init([ElementalReactionIds.Melt, "Таяние", ElementIds.Cryo, ElementIds.Pyro]),
   [ElementalReactionIds.Overloaded]: Class.init([
     ElementalReactionIds.Overloaded,

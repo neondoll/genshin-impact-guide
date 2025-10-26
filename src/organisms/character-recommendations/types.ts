@@ -1,4 +1,3 @@
-import type { Character } from "@/types/character";
 import type { CharacterRecommendations } from "@/types/character-recommendations";
 
 export type ArtifactRecommendationsProps = {
@@ -10,10 +9,7 @@ export type ArtifactSetRecommendationsProps = {
 export type ArtifactStatRecommendationsProps = {
   recommendations: ArtifactRecommendationsProps["recommendations"]["stats"];
 };
-export type CharacterRecommendationsProps = {
-  character: Character;
-  recommendations: CharacterRecommendations;
-};
+export type CharacterRecommendationsProps = { recommendations: CharacterRecommendations };
 export type ReferencePointRecommendationsProps = {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["reference_point"]>;
 };
@@ -27,6 +23,5 @@ export type TalentLevelingRecommendationsProps = {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["talent_leveling"]>;
 };
 export type WeaponRecommendationsProps = {
-  character: CharacterRecommendationsProps["character"];
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["weapons"]>;
 };
