@@ -527,11 +527,11 @@ export default {
   [CharacterIds.Nefer]: Class.init([
     CharacterIds.Nefer,
     "Нефер",
-    undefined,
-    undefined,
+    5,
+    WeaponTypeIds.Catalyst,
     ElementIds.Dendro,
     undefined,
-  ]),
+  ]).setSignatureWeaponId(WeaponIds.ReliquaryOfTruth),
   [CharacterIds.Neuvillette]: Class.init([
     CharacterIds.Neuvillette,
     "Нёвиллет",

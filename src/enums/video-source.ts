@@ -38,6 +38,10 @@ export const VideoSourceIds = {
   GuideToMualani: `guide_to_${CharacterIds.Mualani}_in_5.8`,
   /* Miron MinMax: Актуальный и Подробный | Гайд на Нахиду в 5.1 */
   GuideToNahida: `guide_to_${CharacterIds.Nahida}_in_5.1`,
+  /* Анимекул: Нефер - Новая Дендро ИМБА? | Полный гайд на Нефер [Genshin Impact 6.1] */
+  GuideToNefer_AnimeCool: `guide_to_${CharacterIds.Nefer}_in_6.1_AnimeCool`,
+  /* Miron MinMax: Нефер - Новая Дендро Имба? Гайд на Нефер в 6.1 [Genshin Impact] */
+  GuideToNefer_MironMinMax: `guide_to_${CharacterIds.Nefer}_in_6.1_MironMinMax`,
   /* Miron MinMax: Актуальный и Подробный | Гайд на Нёвилетта в 5.2 */
   GuideToNeuvillette: `guide_to_${CharacterIds.Neuvillette}_in_5.2`,
   /* Miron MinMax: Подробный и Актуальный | Гайд на Райдэн в 5.0 */

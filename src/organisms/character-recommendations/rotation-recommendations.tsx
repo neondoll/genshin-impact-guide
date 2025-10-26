@@ -3,7 +3,19 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/u
 
 export default function RotationRecommendations({ recommendations }: RotationRecommendationsProps) {
   if (typeof recommendations === "string") {
-    return <p children={recommendations} />;
+    return <p dangerouslySetInnerHTML={{ __html: recommendations }} />;
+  }
+  if (Array.isArray(recommendations)) {
+    return (
+      <div className="flex gap-2 justify-evenly">
+        {recommendations.map((recommendation, index) => (
+          <>
+            {index !== 0 && " > "}
+            <p className="flex-1 leading-[1.25] text-center text-balance" dangerouslySetInnerHTML={{ __html: recommendation }} key={index} />
+          </>
+        ))}
+      </div>
+    );
   }
 
   return (

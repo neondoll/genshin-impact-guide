@@ -479,6 +479,26 @@ export default {
     StatIds.ElementalMastery,
     { min_value: 31, max_value: 141 },
   ]),
+  [WeaponIds.DawningFrost]: Class.init([
+    WeaponIds.DawningFrost,
+    "Рассветный иней",
+    4,
+    WeaponSource.EventWishExclusive,
+    WeaponTypeIds.Catalyst,
+    { min_value: 42, max_value: 510 },
+    StatIds.CritDMG,
+    { min_value: numberFormatPercent(0.120, 1), max_value: numberFormatPercent(0.551, 1) },
+    ClassPassiveAbility.init([
+      "Сны глубокой ночи",
+      "На 10 сек. после попадания заряженной атаки по противнику мастерство стихий повышается на "
+      + "<span class='text-version'>72</span>/<span class='text-version'>90</span>/"
+      + "<span class='text-version'>108</span>/<span class='text-version'>126</span>/"
+      + "<span class='text-version'>144</span> ед. На 10 сек. после попадания элементального навыка по противнику "
+      + "мастерство стихий повышается на <span class='text-version'>48</span>/<span class='text-version'>60</span>/"
+      + "<span class='text-version'>72</span>/<span class='text-version'>84</span>/"
+      + "<span class='text-version'>96</span> ед.",
+    ]),
+  ]),
   [WeaponIds.Deathmatch]: Class.init([
     WeaponIds.Deathmatch,
     "Смертельный бой",
@@ -1633,6 +1653,30 @@ export default {
       + "<span class='text-version'>80%</span> <span class='text-info'>защиты</span>.",
     ]),
   ]),
+  [WeaponIds.ReliquaryOfTruth]: Class.init([
+    WeaponIds.ReliquaryOfTruth,
+    "Шкатулка истин",
+    5,
+    WeaponSource.EventWishExclusive,
+    WeaponTypeIds.Catalyst,
+    { min_value: 44, max_value: 542 },
+    StatIds.CritDMG,
+    { min_value: numberFormatPercent(0.192, 1), max_value: numberFormatPercent(0.882, 1) },
+    ClassPassiveAbility.init([
+      "Подлинный смысл лжи",
+      "Шанс крит. попадания повышается на <span class='text-version'>8%</span>/<span class='text-version'>10%</span>/"
+      + "<span class='text-version'>12%</span>/<span class='text-version'>14%</span>/"
+      + "<span class='text-version'>16%</span>. При активации элементального навыка экипированный персонаж получает "
+      + "эффект Секрет лжи: мастерство стихий повышается на <span class='text-version'>80</span>/"
+      + "<span class='text-version'>100</span>/<span class='text-version'>120</span>/"
+      + "<span class='text-version'>140</span>/<span class='text-version'>160</span> ед. на 12 сек. Когда "
+      + "экипированный персонаж наносит врагу урон Лунной бутонизации, он получает эффект Луна истины: крит. урон "
+      + "повышается на <span class='text-version'>24%</span>/<span class='text-version'>30%</span>/"
+      + "<span class='text-version'>36%</span>/<span class='text-version'>42%</span>/"
+      + "<span class='text-version'>48%</span> на 4 сек. Когда Секрет лжи и Луна истины действуют одновременно, "
+      + "результат обоих эффектов повышается на 50%.",
+    ]),
+  ]),
   [WeaponIds.RightfulReward]: Class.init([
     WeaponIds.RightfulReward,
     "Справедливая награда",
@@ -1712,6 +1756,26 @@ export default {
     { min_value: 42, max_value: 510 },
     StatIds.AtkPercentage,
     { min_value: numberFormatPercent(0.090, 1), max_value: numberFormatPercent(0.413, 1) },
+  ]),
+  [WeaponIds.SacrificersStaff]: Class.init([
+    WeaponIds.SacrificersStaff,
+    "Посох жертвующей",
+    4,
+    WeaponSource.EventWishExclusive,
+    WeaponTypeIds.Polearm,
+    { min_value: 45, max_value: 620 },
+    StatIds.CritRate,
+    { min_value: numberFormatPercent(0.020, 1), max_value: numberFormatPercent(0.092, 1) },
+    ClassPassiveAbility.init([
+      "Незапятнанное желание",
+      "На 6 сек. после попадания элементального навыка по противнику сила атаки повышается на "
+      + "<span class='text-version'>8%</span>/<span class='text-version'>10%</span>/"
+      + "<span class='text-version'>12%</span>/<span class='text-version'>14%</span>/"
+      + "<span class='text-version'>16%</span>, а восстановление энергии - на <span class='text-version'>6%</span>/"
+      + "<span class='text-version'>7,5%</span>/<span class='text-version'>9%</span>/"
+      + "<span class='text-version'>10,5%</span>/<span class='text-version'>12%</span>. Этот эффект складывается до 3 "
+      + "раз и срабатывает, даже когда экипированный персонаж не на поле боя.",
+    ]),
   ]),
   [WeaponIds.SacrificialBow]: Class.init([
     WeaponIds.SacrificialBow,

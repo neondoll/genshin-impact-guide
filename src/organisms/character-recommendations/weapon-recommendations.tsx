@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import type { CharacterWeaponRecommendation } from "@/types/character-recommendations";
 import type { WeaponRecommendationsProps } from "./types";
 import { cn, numberFormatPercent } from "@/lib/utils";
+import { selectStatById } from "@/features/stats/selectors";
 import { selectWeaponById } from "@/features/weapons/selectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import IsBetter from "../is-better";
 import WeaponBadge from "../badges/weapon-badge";
-import { selectStatById } from "@/features/stats/selectors.ts";
 
-export default function WeaponRecommendations({ character, recommendations }: WeaponRecommendationsProps) {
+export default function WeaponRecommendations({ recommendations }: WeaponRecommendationsProps) {
   if (Array.isArray(recommendations)) {
     return (
-      <WeaponRecommendationsTable character={character} recommendations={recommendations} />
+      <WeaponRecommendationsTable recommendations={recommendations} />
     );
   }
 
@@ -28,20 +28,16 @@ export default function WeaponRecommendations({ character, recommendations }: We
       </TabsList>
       {recommendationsEntries.map(([key, recommendations]) => (
         <TabsContent key={key} value={key}>
-          <WeaponRecommendationsTable character={character} recommendations={recommendations} />
+          <WeaponRecommendationsTable recommendations={recommendations} />
         </TabsContent>
       ))}
     </Tabs>
   );
 }
 
-function WeaponRecommendationsTable({ character, recommendations }: {
-  character: WeaponRecommendationsProps["character"];
-  recommendations: CharacterWeaponRecommendation[];
-}) {
+function WeaponRecommendationsTable({ recommendations }: { recommendations: CharacterWeaponRecommendation[] }) {
   const [diffPercent, setDiffPercent] = useState(0);
   const [hasIsBetter, setHasIsBetter] = useState(false);
-  const [hasIsSignature, setHasIsSignature] = useState(false);
   const [hasPercent, setHasPercent] = useState(false);
   const [hasPostfix, setHasPostfix] = useState(false);
   const [hasRefinement, setHasRefinement] = useState(false);
@@ -54,9 +50,6 @@ function WeaponRecommendationsTable({ character, recommendations }: {
 
     setHasIsBetter(recommendations.some((recommendation) => {
       return Boolean(recommendation.is_better);
-    }));
-    setHasIsSignature(recommendations.some((recommendation) => {
-      return recommendation.id === character.signature_weapon_id;
     }));
     setHasPercent(hasPercent);
     setHasPostfix(recommendations.some((recommendation) => {
@@ -86,7 +79,7 @@ function WeaponRecommendationsTable({ character, recommendations }: {
         setMinPercent(minPercent);
       }
     }
-  }, [character.signature_weapon_id, recommendations]);
+  }, [recommendations]);
 
   return (
     <Table>
@@ -94,7 +87,6 @@ function WeaponRecommendationsTable({ character, recommendations }: {
         <TableRow className="hover:bg-inherit">
           {hasIsBetter && <TableHead />}
           <TableHead children="Оружие" className="text-center" />
-          {hasIsSignature && <TableHead />}
           {hasRefinement && <TableHead />}
           {hasPostfix && <TableHead />}
           {hasPercent && <TableHead />}
@@ -125,9 +117,6 @@ function WeaponRecommendationsTable({ character, recommendations }: {
                   weaponTitle={weapon.title}
                 />
               </TableCell>
-              {hasIsSignature && (
-                <TableCell children={weapon.id === character.signature_weapon_id ? "сигнатурное" : ""} />
-              )}
               {hasRefinement && (
                 <TableCell children={recommendation.refinement !== undefined ? `R${recommendation.refinement}` : ""} />
               )}

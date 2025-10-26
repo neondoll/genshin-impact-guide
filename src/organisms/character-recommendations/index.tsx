@@ -16,7 +16,7 @@ import TalentLevelingRecommendations from "./talent-leveling-recommendations";
 import VideoSources from "../video-sources";
 import WeaponRecommendations from "./weapon-recommendations";
 
-export default function CharacterRecommendations({ character, recommendations }: CharacterRecommendationsProps) {
+export default function CharacterRecommendations({ recommendations }: CharacterRecommendationsProps) {
   const showAccordion = recommendations.artifacts !== undefined || recommendations.reference_point !== undefined || recommendations.rotation !== undefined || recommendations.squads !== undefined || recommendations.talent_leveling !== undefined || recommendations.video_source_ids !== undefined || recommendations.weapons !== undefined;
   const showTable = recommendations.first_constellation_or_signature_weapon !== undefined || recommendations.key_constellations !== undefined || recommendations.required_level !== undefined;
 
@@ -85,7 +85,7 @@ export default function CharacterRecommendations({ character, recommendations }:
                 <AccordionItem value="weapons">
                   <AccordionTrigger children="Рекомендации по оружию" className="px-6" />
                   <AccordionContent className="px-6">
-                    <WeaponRecommendations character={character} recommendations={recommendations.weapons} />
+                    <WeaponRecommendations recommendations={recommendations.weapons} />
                   </AccordionContent>
                 </AccordionItem>
               )}

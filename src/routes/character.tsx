@@ -18,19 +18,22 @@ import CharacterRecommendations from "@/organisms/character-recommendations";
 import CharacterRoleBadge from "@/organisms/badges/character-role-badge";
 import Paths from "@/constants/paths";
 import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
+import { selectWeaponById } from "@/features/weapons/selectors.ts";
+import WeaponBadge from "@/organisms/badges/weapon-badge.tsx";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader({ params }: { params: Record<string, string | undefined> }) {
   const character = selectCharacterById(params.characterId as CharacterId);
   const characterElement = selectElementById(character.element_id);
   const characterRecommendations = selectCharacterRecommendationsById(character.id);
+  const characterSignatureWeapon = character.signature_weapon_id ? selectWeaponById(character.signature_weapon_id) : undefined;
   const characterWeaponType = character.weapon_type_id ? selectWeaponTypeById(character.weapon_type_id) : undefined;
 
   if (character.rarity) {
     window.document.documentElement.classList.add(`rarity-${character.rarity}`);
   }
 
-  return { character, characterElement, characterRecommendations, characterWeaponType };
+  return { character, characterElement, characterRecommendations, characterSignatureWeapon, characterWeaponType };
 }
 
 export default function Character() {
@@ -38,6 +41,7 @@ export default function Character() {
     character,
     characterElement,
     characterRecommendations,
+    characterSignatureWeapon,
     characterWeaponType,
   } = useLoaderData<ReturnType<typeof loader>>();
 
@@ -95,16 +99,29 @@ export default function Character() {
               <TableHead children="Имя:" className="p-2 text-right" />
               <TableCell children={character.name} className="p-2" />
             </TableRow>
+            <TableRow className="hover:bg-inherit">
+              <TableHead children="Элемент:" className="p-2 text-right" />
+              <TableCell children={characterElement.name} className="p-2" />
+            </TableRow>
             {characterWeaponType !== undefined && (
               <TableRow className="hover:bg-inherit">
                 <TableHead children="Оружие:" className="p-2 text-right" />
                 <TableCell children={characterWeaponType.abbr} className="p-2" />
               </TableRow>
             )}
-            <TableRow className="hover:bg-inherit">
-              <TableHead children="Элемент:" className="p-2 text-right" />
-              <TableCell children={characterElement.name} className="p-2" />
-            </TableRow>
+            {characterSignatureWeapon !== undefined && (
+              <TableRow className="hover:bg-inherit">
+                <TableHead children="Сигнатурное оружие:" className="p-2 text-right" />
+                <TableCell className="p-2">
+                  <WeaponBadge
+                    weaponId={characterSignatureWeapon.id}
+                    weaponImgSrc={characterSignatureWeapon.image_src}
+                    weaponRarity={characterSignatureWeapon.rarity}
+                    weaponTitle={characterSignatureWeapon.title}
+                  />
+                </TableCell>
+              </TableRow>
+            )}
             {character.role_ids !== undefined && (
               <TableRow className="hover:bg-inherit">
                 <TableHead children="Роли:" className="p-2 text-right" />
@@ -121,7 +138,7 @@ export default function Character() {
         </Table>
       </Card>
       {characterRecommendations !== undefined && (
-        <CharacterRecommendations character={character} recommendations={characterRecommendations} />
+        <CharacterRecommendations recommendations={characterRecommendations} />
       )}
     </Container>
   );
