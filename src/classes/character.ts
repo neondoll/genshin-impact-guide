@@ -1,5 +1,4 @@
 import type { Character as Type } from "@/types/character";
-import { publicImageSrc } from "@/lib/utils";
 
 export class Character implements Type {
   readonly id: Type["id"];
@@ -22,17 +21,16 @@ export class Character implements Type {
     weaponTypeId: Type["weapon_type_id"],
     elementId: Type["element_id"],
     roleIds: Type["role_ids"],
+    imageSrc: Type["image_src"],
   ) {
-    const imageName = id.includes("Traveler_") ? "Traveler.gif" : `${id}.webp`;
-
     this.id = id;
-    this.image_src = publicImageSrc(`${Character.PATH}/${imageName}`);
     this.title = title;
     this.rarity = rarity;
     this.weapon_type_id = weaponTypeId;
     this.element_id = elementId;
     this._name = title;
     this.role_ids = roleIds;
+    this.image_src = imageSrc;
   }
 
   get arkhe() {
