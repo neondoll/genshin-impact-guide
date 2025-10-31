@@ -9,8 +9,6 @@ type CharacterArkhe = "Усия" | "Пневма";
 
 export interface Character {
   id: CharacterId;
-  /* Изображение */
-  image_src: string;
   /* Заголовок */
   title: string;
   /* Редкость */
@@ -27,6 +25,8 @@ export interface Character {
   role_ids?: CharacterRoleId[];
   /* Сигнатурное оружие */
   signature_weapon_id?: WeaponId;
+  /* Изображение */
+  image_src: string;
 }
 
 export type CharacterId = typeof CharacterIds[keyof typeof CharacterIds];

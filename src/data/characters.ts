@@ -14,6 +14,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/09/70239714/8de27885f9ecab5db5e6a2bc69fda15d_6967953783443502732.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Albedo]: Class.init([
     CharacterIds.Albedo,
@@ -22,6 +23,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Geo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Albedo_icon.png",
   ]),
   [CharacterIds.Alhaitham]: Class.init([
     CharacterIds.Alhaitham,
@@ -30,7 +32,17 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Dendro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/16/70239714/25249dd20b86c775fb35bdbbd805d9ec_5630956628455162356.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.LightOfFoliarIncision),
+  [CharacterIds.Aloy]: Class.init([
+    CharacterIds.Aloy,
+    "Элой",
+    5,
+    WeaponTypeIds.Bow,
+    ElementIds.Cryo,
+    undefined,
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/11/19/70239714/1fb2086af3c7933af37eda1ff9084317_3480344329760444937.png?x-oss-process=image%2Fformat%2Cwebp",
+  ]).setSignatureWeaponId(WeaponIds.Predator),
   [CharacterIds.Amber]: Class.init([
     CharacterIds.Amber,
     "Эмбер",
@@ -38,6 +50,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Pyro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Amber_icon.png",
   ]),
   [CharacterIds.AratakiItto]: Class.init([
     CharacterIds.AratakiItto,
@@ -46,6 +59,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Geo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Arataki%2520Itto_icon.png",
   ]).setName("Аратаки Итто").setSignatureWeaponId(WeaponIds.RedhornStonethresher),
   [CharacterIds.Arlecchino]: Class.init([
     CharacterIds.Arlecchino,
@@ -53,6 +67,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Pyro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/21/70239714/672e65470bfd14b664596c2a7f7eaaf8_6373678808378922111.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.CrimsonMoonsSemblance),
   [CharacterIds.Baizhu]: Class.init([
     CharacterIds.Baizhu,
@@ -61,6 +76,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Dendro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/04/29/70239714/05599650d7f42e1c4adde373de6b297d_8680928179289073723.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.JadefallsSplendor),
   [CharacterIds.Barbara]: Class.init([
     CharacterIds.Barbara,
@@ -68,6 +84,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Barbara_icon.png",
   ]),
   [CharacterIds.Beidou]: Class.init([
     CharacterIds.Beidou,
@@ -76,6 +93,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Beidou_icon.png",
   ]),
   [CharacterIds.Bennett]: Class.init([
     CharacterIds.Bennett,
@@ -84,6 +102,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Pyro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/03/237301566/11d1b67215ab74fe18e903be5c0b9dab_5275252093199819768.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Candace]: Class.init([
     CharacterIds.Candace,
@@ -92,6 +111,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/24/70239714/2f43da4ece9eabfbde6ec2fcc81b3bff_1393031997052633872.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Charlotte]: Class.init([
     CharacterIds.Charlotte,
@@ -100,6 +120,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/07/70239714/7bbbff3f35661a93b5091b1f17fae6c0_7720768113983454547.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟡"),
   [CharacterIds.Chasca]: Class.init([
     CharacterIds.Chasca,
@@ -108,6 +129,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Anemo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/11/19/70239714/9c6c89386dbe9f1954a8b57c8c3c9da4_6383593193032564533.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.AstralVulturesCrimsonPlumage),
   [CharacterIds.Chevreuse]: Class.init([
     CharacterIds.Chevreuse,
@@ -116,6 +138,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Pyro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/07/70239714/a846729f31f16a987a8696466ebabcc0_4201736875484063474.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟣"),
   [CharacterIds.Chiori]: Class.init([
     CharacterIds.Chiori,
@@ -124,6 +147,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Geo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/09/70239714/5470f90694af13476e49be7b8346e2b1_1771342475210963821.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.UrakuMisugiri),
   [CharacterIds.Chongyun]: Class.init([
     CharacterIds.Chongyun,
@@ -132,6 +156,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Chongyun_icon.png",
   ]),
   [CharacterIds.Citlali]: Class.init([
     CharacterIds.Citlali,
@@ -140,6 +165,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/12/29/70239714/f7f4a177140cc87a55b9c6989213a374_7763192869484379377.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.StarcallersWatch),
   [CharacterIds.Clorinde]: Class.init([
     CharacterIds.Clorinde,
@@ -148,6 +174,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Electro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/04/70239714/770a66030815971c697ab81bc5436329_6190990120931438334.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟣").setSignatureWeaponId(WeaponIds.Absolution),
   [CharacterIds.Collei]: Class.init([
     CharacterIds.Collei,
@@ -156,6 +183,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Dendro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/22/70239714/37a18b6b6865c59063003a9380f08225_1506165806794491631.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Cyno]: Class.init([
     CharacterIds.Cyno,
@@ -163,6 +191,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/24/70239714/e09e2bda5e022611fad0dea1bb6518bb_3921227929686782989.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.StaffOfTheScarletSands),
   [CharacterIds.Dahlia]: Class.init([
     CharacterIds.Dahlia,
@@ -171,6 +200,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/06/17/70239714/6e6c5161386ae8dbff7e6d098c9e6ca3_8649965576470821435.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Dehya]: Class.init([
     CharacterIds.Dehya,
@@ -179,6 +209,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Pyro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Survivability],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/02/24/70239714/65b22311e1e38ffa45a4928d4005ecee_591137848457706557.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.BeaconOfTheReedSea),
   [CharacterIds.Diluc]: Class.init([
     CharacterIds.Diluc,
@@ -187,6 +218,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Pyro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Diluc_icon.png",
   ]),
   [CharacterIds.Diona]: Class.init([
     CharacterIds.Diona,
@@ -195,6 +227,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Diona_icon.png",
   ]),
   [CharacterIds.Dori]: Class.init([
     CharacterIds.Dori,
@@ -203,6 +236,16 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/08/70239714/6539bea71efd0f839db897cfc4094362_3785464122785425096.png?x-oss-process=image%2Fformat%2Cwebp",
+  ]),
+  [CharacterIds.Durin]: Class.init([
+    CharacterIds.Durin,
+    "Дурин",
+    undefined,
+    undefined,
+    ElementIds.Pyro,
+    undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/10/25/70239714/19e0b21ed2c615e0f8d45530c914e24c_8013219025528487781.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Emilie]: Class.init([
     CharacterIds.Emilie,
@@ -211,6 +254,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Dendro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/04/70239714/26a173f3a424de6892768b92b55919f0_1936358140667906470.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟡").setSignatureWeaponId(WeaponIds.LumidouceElegy),
   [CharacterIds.Escoffier]: Class.init([
     CharacterIds.Escoffier,
@@ -219,6 +263,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/05/04/70239714/2c913f2562c1ce59c1530fbf2e31dbd4_7669132097080207370.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟣").setSignatureWeaponId(WeaponIds.SymphonistOfScents),
   [CharacterIds.Eula]: Class.init([
     CharacterIds.Eula,
@@ -227,6 +272,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Cryo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Eula_icon.png",
   ]).setSignatureWeaponId(WeaponIds.SongOfBrokenPines),
   [CharacterIds.Faruzan]: Class.init([
     CharacterIds.Faruzan,
@@ -235,6 +281,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Anemo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/06/70239714/38c12ab46678a4008f83a0e46c900ef5_7217510851102444720.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Fischl]: Class.init([
     CharacterIds.Fischl,
@@ -243,6 +290,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Fischl_icon.png",
   ]),
   [CharacterIds.Freminet]: Class.init([
     CharacterIds.Freminet,
@@ -251,6 +299,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Cryo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/03/70239714/8e44111a378f4e5379b8e7444e8c2daa_387364127237666557.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟡"),
   [CharacterIds.Furina]: Class.init([
     CharacterIds.Furina,
@@ -259,6 +308,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/07/70239714/263e5ea0784d182b393f67a7e24146a5_6841129024701614855.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟣🟡").setSignatureWeaponId(WeaponIds.SplendorOfTranquilWaters),
   [CharacterIds.Gaming]: Class.init([
     CharacterIds.Gaming,
@@ -267,6 +317,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Pyro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/29/70239714/b041ad23a9d6245efac952a9379c5114_276821710480263658.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Ganyu]: Class.init([
     CharacterIds.Ganyu,
@@ -275,6 +326,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Cryo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Ganyu_icon.png",
   ]).setSignatureWeaponId(WeaponIds.AmosBow),
   [CharacterIds.Gorou]: Class.init([
     CharacterIds.Gorou,
@@ -283,6 +335,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Geo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Gorou_icon.png",
   ]),
   [CharacterIds.HuTao]: Class.init([
     CharacterIds.HuTao,
@@ -291,6 +344,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Pyro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Hu%2520Tao_icon.png",
   ]).setSignatureWeaponId(WeaponIds.StaffOfHoma),
   [CharacterIds.Iansan]: Class.init([
     CharacterIds.Iansan,
@@ -299,6 +353,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/26/70239714/ddafd4c71a8e0d0cefd5ee7e9deff6d6_4477498942125188633.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Ifa]: Class.init([
     CharacterIds.Ifa,
@@ -307,6 +362,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/05/04/70239714/118809bff067dcfffca5b52dbcfafa85_4788136769261586703.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Ineffa]: Class.init([
     CharacterIds.Ineffa,
@@ -315,7 +371,17 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/29/70239714/bffbb9b2d064472393f75084b4428a5e_689708039142215456.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.FracturedHalo),
+  [CharacterIds.Jahoda]: Class.init([
+    CharacterIds.Jahoda,
+    "Ягода",
+    undefined,
+    undefined,
+    ElementIds.Anemo,
+    undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/10/25/70239714/290a8010e15d6a75729c3f5bfcbda3ca_605604417839713010.png?x-oss-process=image%2Fformat%2Cwebp",
+  ]),
   [CharacterIds.Jean]: Class.init([
     CharacterIds.Jean,
     "Джинн",
@@ -323,6 +389,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Anemo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Jean_icon.png",
   ]),
   [CharacterIds.Kachina]: Class.init([
     CharacterIds.Kachina,
@@ -331,6 +398,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Geo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/28/70239714/26925adb1092d29c8afdf46d92fad8bd_1057222640632167323.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.KaedeharaKazuha]: Class.init([
     CharacterIds.KaedeharaKazuha,
@@ -339,6 +407,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Anemo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kaedehara%2520Kazuha_icon.png",
   ]).setName("Каэдэхара Кадзуха").setSignatureWeaponId(WeaponIds.FreedomSworn),
   [CharacterIds.Kaeya]: Class.init([
     CharacterIds.Kaeya,
@@ -347,6 +416,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/07/237301566/a59b105ea80a314fc010e1886667facb_435122796050807398.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.KamisatoAyaka]: Class.init([
     CharacterIds.KamisatoAyaka,
@@ -355,6 +425,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Cryo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kamisato%2520Ayaka_icon.png",
   ]).setName("Камисато Аяка").setSignatureWeaponId(WeaponIds.MistsplitterReforged),
   [CharacterIds.KamisatoAyato]: Class.init([
     CharacterIds.KamisatoAyato,
@@ -363,6 +434,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kamisato%2520Ayato_icon.png",
   ]).setName("Камисато Аято").setSignatureWeaponId(WeaponIds.HaranGeppakuFutsu),
   [CharacterIds.Kaveh]: Class.init([
     CharacterIds.Kaveh,
@@ -371,6 +443,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Dendro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/04/29/70239714/2270aba02b92034d7d76b4426be8f53b_7723091064904344247.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Keqing]: Class.init([
     CharacterIds.Keqing,
@@ -379,6 +452,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Electro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Keqing_icon.png",
   ]),
   [CharacterIds.Kinich]: Class.init([
     CharacterIds.Kinich,
@@ -387,6 +461,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Dendro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/09/15/70239714/9b80ee75a81f8c4c9148a8fea589ccbc_5880057952609706718.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.FangOfTheMountainKing),
   [CharacterIds.Kirara]: Class.init([
     CharacterIds.Kirara,
@@ -395,6 +470,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Dendro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/24/237301566/d1699810632f8c3bc8c1e8c8beb8250f_6129930541608621707.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Klee]: Class.init([
     CharacterIds.Klee,
@@ -403,6 +479,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Pyro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/07/237301566/ca5fba7e25bd27e309de326cfaf925bd_8880784398069733248.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.LostPrayerToTheSacredWinds),
   [CharacterIds.KujouSara]: Class.init([
     CharacterIds.KujouSara,
@@ -411,6 +488,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kujou%2520Sara_icon.png",
   ]).setName("Кудзё Сара"),
   [CharacterIds.KukiShinobu]: Class.init([
     CharacterIds.KukiShinobu,
@@ -419,6 +497,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kuki%2520Shinobu_icon.png",
   ]).setName("Куки Синобу"),
   [CharacterIds.KyryllChudomirovichFlins]: Class.init([
     CharacterIds.KyryllChudomirovichFlins,
@@ -427,6 +506,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/26/70239714/fa3db19f5495efa3ace1f679bfa36aeb_6961163515792498419.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setName("Кирилл Чудомирович Флинс").setSignatureWeaponId(WeaponIds.BloodsoakedRuins),
   [CharacterIds.LanYan]: Class.init([
     CharacterIds.LanYan,
@@ -435,6 +515,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
     undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/01/19/70239714/02d72d23ba135e380b5908df4ac67888_168332365604972876.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Lauma]: Class.init([
     CharacterIds.Lauma,
@@ -443,6 +524,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Dendro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/09/70239714/3a81221c8669ea5409b2ccd434132fb5_4838901057661983165.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.NightweaversLookingGlass),
   [CharacterIds.Layla]: Class.init([
     CharacterIds.Layla,
@@ -451,6 +533,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/11/11/70239714/48a495acadaf37f12d0a7f653d85bd83_6907628283096428128.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Lisa]: Class.init([
     CharacterIds.Lisa,
@@ -459,6 +542,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Lisa_icon.png",
   ]),
   [CharacterIds.Lynette]: Class.init([
     CharacterIds.Lynette,
@@ -467,6 +551,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Anemo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/13/70239714/436e6f2b9b9006bfe511a98093259daf_2952808701689203703.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟣"),
   [CharacterIds.Lyney]: Class.init([
     CharacterIds.Lyney,
@@ -475,6 +560,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Pyro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/70239714/e343d4442cc3b8e243f0d528bb715f75_4693008620861939901.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟡").setSignatureWeaponId(WeaponIds.TheFirstGreatMagic),
   [CharacterIds.Mavuika]: Class.init([
     CharacterIds.Mavuika,
@@ -483,6 +569,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Pyro,
     [CharacterRoleIds.OnField, CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/12/30/70239714/b0df5861c7d3c1f7f85f6555ad4f4b4c_9130578994710546357.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.AThousandBlazingSuns),
   [CharacterIds.Mika]: Class.init([
     CharacterIds.Mika,
@@ -491,6 +578,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/03/20/70239714/da13e3b1a2c6c0e5892b201cec735f9b_6654588140874100168.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Mona]: Class.init([
     CharacterIds.Mona,
@@ -499,6 +587,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Mona_icon.png",
   ]),
   [CharacterIds.Mualani]: Class.init([
     CharacterIds.Mualani,
@@ -507,6 +596,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Hydro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/28/70239714/f4c75caad42923eb91ee760aa2eb473a_5039171817645939387.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.SurfsUp),
   [CharacterIds.Nahida]: Class.init([
     CharacterIds.Nahida,
@@ -515,6 +605,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Dendro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/10/28/70239714/f29490bddc56b4a6773b6c5003bbb853_5866014545552401401.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.AThousandFloatingDreams),
   [CharacterIds.Navia]: Class.init([
     CharacterIds.Navia,
@@ -523,6 +614,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Geo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/17/70239714/3fc7580c01a9e622692402889706c4db_1613407406345195234.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.Verdict),
   [CharacterIds.Nefer]: Class.init([
     CharacterIds.Nefer,
@@ -531,6 +623,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Dendro,
     undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/10/21/70239714/00db5e9a66ec4b9abd91986423b968ea_8340683326273087309.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.ReliquaryOfTruth),
   [CharacterIds.Neuvillette]: Class.init([
     CharacterIds.Neuvillette,
@@ -539,6 +632,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Hydro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/24/70239714/0513aa7f482dbb4778545d02f94956fe_5004007435087179259.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟡").setSignatureWeaponId(WeaponIds.TomeOfTheEternalFlow),
   [CharacterIds.Nilou]: Class.init([
     CharacterIds.Nilou,
@@ -547,6 +641,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/24/237301566/586d726f9ebda3506c78beaaa41f13b6_2370206591499918355.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.KeyOfKhajNisut),
   [CharacterIds.Ningguang]: Class.init([
     CharacterIds.Ningguang,
@@ -555,6 +650,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Geo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Ningguang_icon.png",
   ]),
   [CharacterIds.Noelle]: Class.init([
     CharacterIds.Noelle,
@@ -563,6 +659,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Geo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Noelle_icon.png",
   ]),
   [CharacterIds.Ororon]: Class.init([
     CharacterIds.Ororon,
@@ -571,6 +668,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/11/19/70239714/d28eded09506620ab178fc3bb1cb7dea_3891656968977458900.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Qiqi]: Class.init([
     CharacterIds.Qiqi,
@@ -579,6 +677,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Qiqi_icon.png",
   ]),
   [CharacterIds.RaidenShogun]: Class.init([
     CharacterIds.RaidenShogun,
@@ -587,6 +686,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Electro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/22/237301566/2669f7bf2fdea7ccf0a4aa7ac9f250b2_4767168744052349748.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setName("Сёгун Райдэн").setSignatureWeaponId(WeaponIds.EngulfingLightning),
   [CharacterIds.Razor]: Class.init([
     CharacterIds.Razor,
@@ -595,6 +695,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Electro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Razor_icon.png",
   ]),
   [CharacterIds.Rosaria]: Class.init([
     CharacterIds.Rosaria,
@@ -603,6 +704,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Rosaria_icon.png",
   ]),
   [CharacterIds.SangonomiyaKokomi]: Class.init([
     CharacterIds.SangonomiyaKokomi,
@@ -611,6 +713,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Sangonomiya%2520Kokomi_icon.png",
   ]).setName("Сангономия Кокоми").setSignatureWeaponId(WeaponIds.EverlastingMoonglow),
   [CharacterIds.Sayu]: Class.init([
     CharacterIds.Sayu,
@@ -619,6 +722,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Anemo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Sayu_icon.png",
   ]),
   [CharacterIds.Sethos]: Class.init([
     CharacterIds.Sethos,
@@ -627,6 +731,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Electro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/04/70239714/cdb7abfcb86138e5b618946a5466d442_3900275072935799480.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Shenhe]: Class.init([
     CharacterIds.Shenhe,
@@ -635,6 +740,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Cryo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Shenhe_icon.png",
   ]).setSignatureWeaponId(WeaponIds.CalamityQueller),
   [CharacterIds.ShikanoinHeizou]: Class.init([
     CharacterIds.ShikanoinHeizou,
@@ -643,6 +749,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Shikanoin%2520Heizou_icon.png",
   ]).setName("Сиканоин Хэйдзо"),
   [CharacterIds.Sigewinne]: Class.init([
     CharacterIds.Sigewinne,
@@ -651,6 +758,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/25/70239714/2d607aa4d729030ea04f79919257e311_6438381243111168759.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟣").setSignatureWeaponId(WeaponIds.SilvershowerHeartstrings),
   [CharacterIds.Skirk]: Class.init([
     CharacterIds.Skirk,
@@ -659,6 +767,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Cryo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/06/17/70239714/4eaa3f0af91fa75f0e12f71502caf340_1950459078191348896.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.Azurelight),
   [CharacterIds.Sucrose]: Class.init([
     CharacterIds.Sucrose,
@@ -667,6 +776,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Sucrose_icon.png",
   ]),
   [CharacterIds.Tartaglia]: Class.init([
     CharacterIds.Tartaglia,
@@ -675,6 +785,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Hydro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Tartaglia_icon.png",
   ]).setSignatureWeaponId(WeaponIds.PolarStar),
   [CharacterIds.Thoma]: Class.init([
     CharacterIds.Thoma,
@@ -683,6 +794,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Pyro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Thoma_icon.png",
   ]),
   [CharacterIds.Tighnari]: Class.init([
     CharacterIds.Tighnari,
@@ -691,6 +803,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Dendro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/23/70239714/d039c6da9285163f46b85f0241f29c17_7884881497095009464.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.HuntersPath),
   [CharacterIds.TravelerAnemo]: Class.init([
     CharacterIds.TravelerAnemo,
@@ -699,6 +812,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Anemo,
     undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/12/30/70239714/f00d18b57acb4aa37bf2fc39bf67ddd0_3736743400370058041.gif",
   ]).setName("Путешественник"),
   [CharacterIds.TravelerDendro]: Class.init([
     CharacterIds.TravelerDendro,
@@ -707,6 +821,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Dendro,
     undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/12/30/70239714/f00d18b57acb4aa37bf2fc39bf67ddd0_3736743400370058041.gif",
   ]).setName("Путешественник"),
   [CharacterIds.TravelerElectro]: Class.init([
     CharacterIds.TravelerElectro,
@@ -715,6 +830,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Electro,
     undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/12/30/70239714/f00d18b57acb4aa37bf2fc39bf67ddd0_3736743400370058041.gif",
   ]).setName("Путешественник"),
   [CharacterIds.TravelerGeo]: Class.init([
     CharacterIds.TravelerGeo,
@@ -723,6 +839,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Geo,
     undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/12/30/70239714/f00d18b57acb4aa37bf2fc39bf67ddd0_3736743400370058041.gif",
   ]).setName("Путешественник"),
   [CharacterIds.TravelerHydro]: Class.init([
     CharacterIds.TravelerHydro,
@@ -731,6 +848,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
     undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/12/30/70239714/f00d18b57acb4aa37bf2fc39bf67ddd0_3736743400370058041.gif",
   ]).setArkhe("🟡").setName("Путешественник"),
   [CharacterIds.TravelerPyro]: Class.init([
     CharacterIds.TravelerPyro,
@@ -739,6 +857,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Pyro,
     undefined,
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/12/30/70239714/f00d18b57acb4aa37bf2fc39bf67ddd0_3736743400370058041.gif",
   ]).setName("Путешественник"),
   [CharacterIds.Varesa]: Class.init([
     CharacterIds.Varesa,
@@ -747,6 +866,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Electro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/26/70239714/8e069d8d2ebf92fa2e78a0507f0c749a_6935232209907120535.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.VividNotions),
   [CharacterIds.Venti]: Class.init([
     CharacterIds.Venti,
@@ -755,6 +875,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Anemo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Support],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Venti_icon.png",
   ]).setSignatureWeaponId(WeaponIds.ElegyForTheEnd),
   [CharacterIds.Wanderer]: Class.init([
     CharacterIds.Wanderer,
@@ -763,6 +884,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/05/70239714/24d97a22be742fb732ea96f625d1faac_279357737036794010.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.TulaytullahsRemembrance),
   [CharacterIds.Wriothesley]: Class.init([
     CharacterIds.Wriothesley,
@@ -771,6 +893,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Cryo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/14/70239714/31a0eb2dec5d69ca8dd7616572136b8b_8557241678097856239.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setArkhe("🟣").setSignatureWeaponId(WeaponIds.CashflowSupervision),
   [CharacterIds.Xiangling]: Class.init([
     CharacterIds.Xiangling,
@@ -779,6 +902,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Pyro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Xiangling_icon.png",
   ]),
   [CharacterIds.Xianyun]: Class.init([
     CharacterIds.Xianyun,
@@ -787,6 +911,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/29/70239714/2c2be27f8876e9435ab8c8b933b8408c_1039880044178545202.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.CranesEchoingCall),
   [CharacterIds.Xiao]: Class.init([
     CharacterIds.Xiao,
@@ -795,6 +920,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Anemo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Xiao_icon.png",
   ]).setSignatureWeaponId(WeaponIds.PrimordialJadeWingedSpear),
   [CharacterIds.Xilonen]: Class.init([
     CharacterIds.Xilonen,
@@ -803,6 +929,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Geo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/10/07/70239714/b663e62a652cfea13b60cbb756f88f84_7030055574710067357.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.PeakPatrolSong),
   [CharacterIds.Xingqiu]: Class.init([
     CharacterIds.Xingqiu,
@@ -811,6 +938,7 @@ export default {
     WeaponTypeIds.Sword,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Xingqiu_icon.png",
   ]),
   [CharacterIds.Xinyan]: Class.init([
     CharacterIds.Xinyan,
@@ -819,6 +947,7 @@ export default {
     WeaponTypeIds.Claymore,
     ElementIds.Pyro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Xinyan_icon.png",
   ]),
   [CharacterIds.YaeMiko]: Class.init([
     CharacterIds.YaeMiko,
@@ -827,6 +956,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Electro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Yae%2520Miko_icon.png",
   ]).setSignatureWeaponId(WeaponIds.KagurasVerity),
   [CharacterIds.Yanfei]: Class.init([
     CharacterIds.Yanfei,
@@ -835,6 +965,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Pyro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Yanfei_icon.png",
   ]),
   [CharacterIds.Yaoyao]: Class.init([
     CharacterIds.Yaoyao,
@@ -843,6 +974,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Dendro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Survivability],
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/16/70239714/5bc9df1fb67391e4c8080da3d855de53_4458460252163933236.png?x-oss-process=image%2Fformat%2Cwebp",
   ]),
   [CharacterIds.Yelan]: Class.init([
     CharacterIds.Yelan,
@@ -851,6 +983,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Hydro,
     [CharacterRoleIds.OffField, CharacterRoleIds.Dps],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/12/237301566/c98f2e27c406b1418549ceeafe60ee85_5771442382877296847.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setSignatureWeaponId(WeaponIds.AquaSimulacra),
   [CharacterIds.Yoimiya]: Class.init([
     CharacterIds.Yoimiya,
@@ -859,6 +992,7 @@ export default {
     WeaponTypeIds.Bow,
     ElementIds.Pyro,
     [CharacterRoleIds.OnField, CharacterRoleIds.Dps],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Yoimiya_icon.png",
   ]).setSignatureWeaponId(WeaponIds.ThunderingPulse),
   [CharacterIds.YumemizukiMizuki]: Class.init([
     CharacterIds.YumemizukiMizuki,
@@ -867,6 +1001,7 @@ export default {
     WeaponTypeIds.Catalyst,
     ElementIds.Anemo,
     [CharacterRoleIds.OnField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/10/70239714/5533a38558ecfda3eff0f7cbf066e63c_2165909000156774632.png?x-oss-process=image%2Fformat%2Cwebp",
   ]).setName("Юмэмидзуки Мидзуки").setSignatureWeaponId(WeaponIds.SunnyMorningSleepIn),
   [CharacterIds.YunJin]: Class.init([
     CharacterIds.YunJin,
@@ -875,6 +1010,7 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Geo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Yun%2520Jin_icon.png",
   ]),
   [CharacterIds.Zhongli]: Class.init([
     CharacterIds.Zhongli,
@@ -883,5 +1019,6 @@ export default {
     WeaponTypeIds.Polearm,
     ElementIds.Geo,
     [CharacterRoleIds.OffField, CharacterRoleIds.Support, CharacterRoleIds.Survivability],
+    "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Zhongli_icon.png",
   ]).setSignatureWeaponId(WeaponIds.VortexVanquisher),
 } as Record<Type["id"], Type>;
