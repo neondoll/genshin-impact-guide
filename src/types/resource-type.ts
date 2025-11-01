@@ -1,4 +1,4 @@
-import { ResourceTypeIds } from "@/enums/resource-type";
+import { type ResourceTypeIds } from "@/enums/resource-type";
 
 export interface ResourceType {
   id: ResourceTypeId;

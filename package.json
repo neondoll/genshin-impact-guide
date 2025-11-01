@@ -4,12 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "clean": "tsc --build --clean",
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "build:analyze": "npm run build --mode analyze",
+    "build:prod": "NODE_ENV=production npm run build",
+    "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
+    "prepare": "husky",
     "preview": "vite preview",
-    "prepare": "husky"
+    "type-check": "tsc --noEmit",
+    "type-check:app": "tsc --project tsconfig.app.json --noEmit",
+    "type-check:node": "tsc --project tsconfig.node.json --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",
@@ -38,15 +45,18 @@
     "@types/node": "^24.0.3",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
+    "@types/webpack-bundle-analyzer": "^4.7.0",
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
+    "rollup-plugin-visualizer": "^6.0.5",
     "tw-animate-css": "^1.3.4",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
+    "vite": "^7.1.11",
+    "vite-plugin-checker": "^0.8.0"
   }
 }

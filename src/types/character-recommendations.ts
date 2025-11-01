@@ -5,15 +5,27 @@ import type { StatId } from "./stat";
 import type { TalentId } from "./talent";
 import type { VideoSourceId } from "./video-source";
 import type { WeaponId } from "./weapon";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { type ArtifactSlotIds } from "@/enums/artifact-slot";
 
-type CharacterArtifactStatRecommendations = Record<typeof ArtifactSlotIds["Sands" | "Goblet" | "Circlet"] | "additional", CharacterArtifactStatRecommendation[]>;
-type CharacterRecommendationSquadBestTeammates = CharacterSquadItemRecommendation[];
-type CharacterTalentLevelingRecommendations = CharacterTalentLevelingRecommendation[];
-type CharacterWeaponRecommendations = CharacterWeaponRecommendation[];
+type CharacterArtifactStatRecommendations = Record<
+  | typeof ArtifactSlotIds["Sands" | "Goblet" | "Circlet"]
+  | "additional",
+  CharacterArtifactStatRecommendation[]
+>;
+
+type CharacterRecommendationSquadBestTeammates
+  = CharacterSquadItemRecommendation[];
+
+type CharacterTalentLevelingRecommendations
+  = CharacterTalentLevelingRecommendation[];
+
+type CharacterWeaponRecommendations
+  = CharacterWeaponRecommendation[];
 
 export interface CharacterArtifactRecommendations {
-  sets: CharacterArtifactSetRecommendations | Record<string, CharacterArtifactSetRecommendations>;
+  sets:
+    | CharacterArtifactSetRecommendations
+    | Record<string, CharacterArtifactSetRecommendations>;
   stats: CharacterArtifactStatRecommendations;
 }
 
@@ -24,11 +36,13 @@ export interface CharacterArtifactSetRecommendation {
   notes?: string[];
 }
 
-export interface CharacterArtifactSetRecommendationWithId extends CharacterArtifactSetRecommendation {
+export interface CharacterArtifactSetRecommendationWithId
+  extends CharacterArtifactSetRecommendation {
   id: ArtifactSetId;
 }
 
-export interface CharacterArtifactSetRecommendationWithIds extends CharacterArtifactSetRecommendation {
+export interface CharacterArtifactSetRecommendationWithIds
+  extends CharacterArtifactSetRecommendation {
   ids: [ArtifactSetId, ArtifactSetId];
 }
 
@@ -45,13 +59,24 @@ export interface CharacterRecommendations {
   character_id: CharacterId;
   first_constellation_or_signature_weapon?: string;
   key_constellations?: (1 | 2 | 3 | 4 | 5 | 6)[];
-  reference_point?: CharacterReferencePointRecommendations | Record<string, CharacterReferencePointRecommendations>;
+  reference_point?:
+    | CharacterReferencePointRecommendations
+    | Record<string, CharacterReferencePointRecommendations>;
   required_level?: string | number;
-  rotation?: string | string[] | Record<string, string | string[]>;
-  squads?: CharacterSquadRecommendations | Record<string, CharacterSquadRecommendations>;
-  talent_leveling?: CharacterTalentLevelingRecommendations | Record<string, CharacterTalentLevelingRecommendations>;
+  rotation?:
+    | string
+    | string[]
+    | Record<string, string | string[]>;
+  squads?:
+    | CharacterSquadRecommendations
+    | Record<string, CharacterSquadRecommendations>;
+  talent_leveling?:
+    | CharacterTalentLevelingRecommendations
+    | Record<string, CharacterTalentLevelingRecommendations>;
   video_source_ids?: VideoSourceId[];
-  weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
+  weapons?:
+    | CharacterWeaponRecommendations
+    | Record<string, CharacterWeaponRecommendations>;
 }
 
 export interface CharacterSquadCharacterRecommendation {
@@ -70,8 +95,13 @@ export interface CharacterSquadOtherRecommendation {
 }
 
 export interface CharacterSquadRecommendations {
-  general_template: (CharacterSquadItemRecommendation | CharacterSquadItemRecommendation[])[];
-  best_teammates: CharacterRecommendationSquadBestTeammates | Record<string, CharacterRecommendationSquadBestTeammates>;
+  general_template: (
+    | CharacterSquadItemRecommendation
+    | CharacterSquadItemRecommendation[]
+  )[];
+  best_teammates:
+    | CharacterRecommendationSquadBestTeammates
+    | Record<string, CharacterRecommendationSquadBestTeammates>;
 }
 
 export interface CharacterTalentLevelingRecommendation {
@@ -89,6 +119,14 @@ export interface CharacterWeaponRecommendation {
   notes?: string[];
 }
 
-export type CharacterArtifactSetRecommendations = (CharacterArtifactSetRecommendationWithId | CharacterArtifactSetRecommendationWithIds)[];
+export type CharacterArtifactSetRecommendations = (
+  | CharacterArtifactSetRecommendationWithId
+  | CharacterArtifactSetRecommendationWithIds
+)[];
+
 export type CharacterReferencePointRecommendations = [string, string][];
-export type CharacterSquadItemRecommendation = (CharacterSquadCharacterRecommendation | CharacterSquadElementRecommendation | CharacterSquadOtherRecommendation);
+
+export type CharacterSquadItemRecommendation
+  = | CharacterSquadCharacterRecommendation
+    | CharacterSquadElementRecommendation
+    | CharacterSquadOtherRecommendation;

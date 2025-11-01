@@ -3,7 +3,7 @@ import type { RootState } from "@/app/store";
 import { resourceTypesAdapter } from "./slice";
 import { store } from "@/app/store";
 
-const selectors = resourceTypesAdapter.getSelectors<RootState>(state => state.resourceTypes);
+const selectors = resourceTypesAdapter.getSelectors<RootState>((state) => state.resourceTypes);
 
 export function selectResourceTypeById(id: ResourceTypeId) {
   return selectors.selectById(store.getState(), id);

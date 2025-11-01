@@ -3,7 +3,7 @@ import type { ElementId } from "./element";
 import type { Rarity } from "./rarity";
 import type { WeaponId } from "./weapon";
 import type { WeaponTypeId } from "./weapon-type";
-import { CharacterIds } from "@/enums/character";
+import { type CharacterIds } from "@/enums/character";
 
 type CharacterArkhe = "Усия" | "Пневма";
 

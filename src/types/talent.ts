@@ -1,4 +1,4 @@
-import { TalentIds, TalentTypeIds } from "@/enums/talent";
+import { type TalentIds, type TalentTypeIds } from "@/enums/talent";
 
 type TalentTypeId = typeof TalentTypeIds[keyof typeof TalentTypeIds];
 

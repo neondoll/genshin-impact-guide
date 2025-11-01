@@ -1,4 +1,4 @@
-import { ElementIds } from "@/enums/element";
+import { type ElementIds } from "@/enums/element";
 
 export interface Element {
   id: ElementId;

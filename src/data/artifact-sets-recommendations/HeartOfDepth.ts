@@ -16,6 +16,8 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.HeartOfDepth)
     [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.HpPercentage],
     [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage, StatIds.HpPercentage],
     [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage],
+    additional: [
+      ...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage
+    ],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

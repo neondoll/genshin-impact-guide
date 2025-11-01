@@ -85,7 +85,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
       }
 
       if (food.recipe_id) {
-        const foodRelatedDishes = selectResourceFoodsByRecipeId(food.recipe_id).filter(dish => dish.id !== food.id);
+        const foodRelatedDishes = selectResourceFoodsByRecipeId(food.recipe_id).filter((dish) => dish.id !== food.id);
 
         propertyRecipe = selectResourceRecipeById(food.recipe_id);
         propertyIngredients = propertyRecipe.ingredients
@@ -102,7 +102,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
         else {
           propertyRelatedDishes = foodRelatedDishes;
 
-          const propertySpecialDishIndex = propertyRelatedDishes.findIndex(dish => Boolean(dish.character_id));
+          const propertySpecialDishIndex = propertyRelatedDishes.findIndex((dish) => Boolean(dish.character_id));
 
           if (propertySpecialDishIndex >= 0) {
             propertySpecialDish = propertyRelatedDishes.splice(propertySpecialDishIndex, 1)[0];
@@ -128,7 +128,7 @@ export function loader({ params }: { params: Record<string, string | undefined> 
           return resourcesAdapter.sortComparer ? resourcesAdapter.sortComparer(a.item, b.item) : 0;
         });
 
-      const propertySpecialDishIndex = propertyDishes.findIndex(dish => Boolean(dish.character_id));
+      const propertySpecialDishIndex = propertyDishes.findIndex((dish) => Boolean(dish.character_id));
 
       if (propertySpecialDishIndex >= 0) {
         propertySpecialDish = propertyDishes.splice(propertySpecialDishIndex, 1)[0];
@@ -326,7 +326,7 @@ export default function Resource() {
                     <TableHead children="Блюда:" className="p-2 text-right" />
                     <TableCell className="p-2 text-pretty whitespace-normal">
                       <ul className="flex flex-wrap gap-2">
-                        {propertyDishes.map(propertyDish => (
+                        {propertyDishes.map((propertyDish) => (
                           <li key={propertyDish.id}>
                             <ResourceBadge
                               resourceId={propertyDish.id}
@@ -345,7 +345,7 @@ export default function Resource() {
                     <TableHead children="Основные блюда:" className="p-2 text-right" />
                     <TableCell className="p-2 text-pretty whitespace-normal">
                       <ul className="flex flex-wrap gap-2">
-                        {propertyBaseDishes.map(propertyBaseDish => (
+                        {propertyBaseDishes.map((propertyBaseDish) => (
                           <li key={propertyBaseDish.id}>
                             <ResourceBadge
                               resourceId={propertyBaseDish.id}
@@ -364,7 +364,7 @@ export default function Resource() {
                     <TableHead children="Связанные блюда:" className="p-2 text-right" />
                     <TableCell className="p-2 text-pretty whitespace-normal">
                       <ul className="flex flex-wrap gap-2">
-                        {propertyRelatedDishes.map(propertyRelatedDish => (
+                        {propertyRelatedDishes.map((propertyRelatedDish) => (
                           <li key={propertyRelatedDish.id}>
                             <ResourceBadge
                               resourceId={propertyRelatedDish.id}
@@ -404,7 +404,7 @@ export default function Resource() {
                     <TableHead children="Связанные предметы:" className="p-2 text-right" />
                     <TableCell className="p-2 text-pretty whitespace-normal">
                       <ul className="flex flex-wrap gap-2">
-                        {propertyRelatedItems.map(propertyRelatedItem => (
+                        {propertyRelatedItems.map((propertyRelatedItem) => (
                           <li key={propertyRelatedItem.id}>
                             <ResourceBadge
                               resourceId={propertyRelatedItem.id}

@@ -1,4 +1,4 @@
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { type ArtifactSlotIds } from "@/enums/artifact-slot";
 
 export interface ArtifactSlot {
   id: ArtifactSlotId;

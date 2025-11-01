@@ -21,6 +21,8 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.GildedDreams)
     [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.ElementalMastery],
     [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.ElementalMastery],
     [ArtifactSlotIds.Circlet]: [...StatsCrit, StatIds.ElementalMastery],
-    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage],
+    additional: [
+      ...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage
+    ],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

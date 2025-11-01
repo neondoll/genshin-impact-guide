@@ -1,4 +1,4 @@
-import { FoodTypeIds } from "@/enums/food-type";
+import { type FoodTypeIds } from "@/enums/food-type";
 
 export interface FoodType {
   id: FoodTypeId;

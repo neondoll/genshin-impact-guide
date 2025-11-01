@@ -1,5 +1,5 @@
 import type { ArtifactSetId } from "./artifact-set";
-import { DungeonIds } from "@/enums/dungeon";
+import { type DungeonIds } from "@/enums/dungeon";
 
 export interface Dungeon {
   id: DungeonId;

@@ -1,4 +1,4 @@
-import { WeaponTypeIds } from "@/enums/weapon-type";
+import { type WeaponTypeIds } from "@/enums/weapon-type";
 
 export interface WeaponType {
   id: WeaponTypeId;

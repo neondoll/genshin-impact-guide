@@ -1,4 +1,4 @@
-import { WorldIds } from "@/enums/world";
+import { type WorldIds } from "@/enums/world";
 
 export interface World {
   id: WorldId;

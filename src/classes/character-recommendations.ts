@@ -69,12 +69,16 @@ export class CharacterArtifactRecommendations implements TypeArtifacts {
     this.stats = stats;
   }
 
-  static init(params: ConstructorParameters<typeof CharacterArtifactRecommendations>) {
+  static init(
+    params: ConstructorParameters<typeof CharacterArtifactRecommendations>
+  ) {
     return new CharacterArtifactRecommendations(...params);
   }
 }
 
-export class CharacterArtifactSetRecommendationWithId extends CharacterArtifactSetRecommendation implements TypeArtifactSetWithId {
+export class CharacterArtifactSetRecommendationWithId
+  extends CharacterArtifactSetRecommendation
+  implements TypeArtifactSetWithId {
   readonly id: TypeArtifactSetWithId["id"];
 
   constructor(id: TypeArtifactSetWithId["id"]) {
@@ -83,7 +87,9 @@ export class CharacterArtifactSetRecommendationWithId extends CharacterArtifactS
   }
 }
 
-export class CharacterArtifactSetRecommendationWithIds extends CharacterArtifactSetRecommendation implements TypeArtifactSetWithIds {
+export class CharacterArtifactSetRecommendationWithIds
+  extends CharacterArtifactSetRecommendation
+  implements TypeArtifactSetWithIds {
   readonly ids: TypeArtifactSetWithIds["ids"];
 
   constructor(ids: TypeArtifactSetWithIds["ids"]) {
@@ -197,7 +203,9 @@ export class CharacterRecommendations implements Type {
     return this;
   }
 
-  setFirstConstellationOrSignatureWeapon(val: NonNullable<Type["first_constellation_or_signature_weapon"]>) {
+  setFirstConstellationOrSignatureWeapon(
+    val: NonNullable<Type["first_constellation_or_signature_weapon"]>
+  ) {
     this._first_constellation_or_signature_weapon = val;
 
     return this;
@@ -252,7 +260,8 @@ export class CharacterRecommendations implements Type {
   }
 }
 
-export class CharacterSquadCharacterRecommendation implements TypeSquadCharacter {
+export class CharacterSquadCharacterRecommendation
+implements TypeSquadCharacter {
   readonly type: TypeSquadCharacter["type"] = "character";
   readonly id: TypeSquadCharacter["id"];
 
@@ -261,7 +270,8 @@ export class CharacterSquadCharacterRecommendation implements TypeSquadCharacter
   }
 }
 
-export class CharacterSquadElementRecommendation implements TypeSquadElement {
+export class CharacterSquadElementRecommendation
+implements TypeSquadElement {
   readonly type: TypeSquadElement["type"] = "element";
   readonly id: TypeSquadElement["id"];
 
@@ -270,7 +280,8 @@ export class CharacterSquadElementRecommendation implements TypeSquadElement {
   }
 }
 
-export class CharacterSquadOtherRecommendation implements TypeSquadOther {
+export class CharacterSquadOtherRecommendation
+implements TypeSquadOther {
   readonly type: TypeSquadOther["type"] = "other";
   readonly title: TypeSquadOther["title"];
 
@@ -283,28 +294,40 @@ export class CharacterSquadRecommendations implements TypeSquads {
   readonly general_template: TypeSquads["general_template"];
   readonly best_teammates: TypeSquads["best_teammates"];
 
-  constructor(generalTemplate: TypeSquads["general_template"], bestTeammates: TypeSquads["best_teammates"]) {
+  constructor(
+    generalTemplate: TypeSquads["general_template"],
+    bestTeammates: TypeSquads["best_teammates"]
+  ) {
     this.general_template = generalTemplate;
     this.best_teammates = bestTeammates;
   }
 
-  static init(params: ConstructorParameters<typeof CharacterSquadRecommendations>) {
+  static init(
+    params: ConstructorParameters<typeof CharacterSquadRecommendations>
+  ) {
     return new CharacterSquadRecommendations(...params);
   }
 }
 
-export class CharacterTalentLevelingRecommendation implements TypeTalentLeveling {
+export class CharacterTalentLevelingRecommendation
+implements TypeTalentLeveling {
   readonly id: TypeTalentLeveling["id"];
   readonly priority: TypeTalentLeveling["priority"];
   readonly reference_level: TypeTalentLeveling["reference_level"];
 
-  constructor(id: TypeTalentLeveling["id"], priority: TypeTalentLeveling["priority"], referenceLevel: TypeTalentLeveling["reference_level"] = undefined) {
+  constructor(
+    id: TypeTalentLeveling["id"],
+    priority: TypeTalentLeveling["priority"],
+    referenceLevel: TypeTalentLeveling["reference_level"] = undefined
+  ) {
     this.id = id;
     this.priority = priority;
     this.reference_level = referenceLevel;
   }
 
-  static init(params: ConstructorParameters<typeof CharacterTalentLevelingRecommendation>) {
+  static init(
+    params: ConstructorParameters<typeof CharacterTalentLevelingRecommendation>
+  ) {
     return new CharacterTalentLevelingRecommendation(...params);
   }
 }

@@ -36,7 +36,7 @@ export default function Resources() {
       </Breadcrumb>
       <h1 children={Paths.Resources.title} className="text-2xl" />
       <ul className="grid grid-cols-[repeat(auto-fill,calc(var(--spacing)*95))] gap-2 justify-center items-stretch md:gap-4">
-        {resources.map(resource => (
+        {resources.map((resource) => (
           <li
             className={cn(
               "flex relative gap-4 p-4 w-full text-card-foreground bg-card rounded-xl border shadow-sm",

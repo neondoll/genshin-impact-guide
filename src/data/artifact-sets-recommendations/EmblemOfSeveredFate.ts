@@ -18,7 +18,9 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.EmblemOfSeveredFate
     new ArtifactSetCharacterRecommendation(CharacterIds.Yelan).setIsBetter(),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ArtifactSlotIds.Sands]: [
+      StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage
+    ],
     [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage, StatIds.HpPercentage],
     [ArtifactSlotIds.Circlet]: [...StatsCrit, StatIds.HpPercentage],
     additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge],

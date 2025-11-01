@@ -26,7 +26,9 @@ export function loader({ params }: { params: Record<string, string | undefined> 
   const character = selectCharacterById(params.characterId as CharacterId);
   const characterElement = selectElementById(character.element_id);
   const characterRecommendations = selectCharacterRecommendationsById(character.id);
-  const characterSignatureWeapon = character.signature_weapon_id ? selectWeaponById(character.signature_weapon_id) : undefined;
+  const characterSignatureWeapon = character.signature_weapon_id
+    ? selectWeaponById(character.signature_weapon_id)
+    : undefined;
   const characterWeaponType = character.weapon_type_id ? selectWeaponTypeById(character.weapon_type_id) : undefined;
 
   if (character.rarity) {
@@ -127,7 +129,7 @@ export default function Character() {
                 <TableHead children="Роли:" className="p-2 text-right" />
                 <TableCell className="p-2">
                   <div className="flex flex-wrap gap-2">
-                    {character.role_ids.map(characterRoleId => (
+                    {character.role_ids.map((characterRoleId) => (
                       <CharacterRoleBadge characterRoleId={characterRoleId} key={characterRoleId} />
                     ))}
                   </div>

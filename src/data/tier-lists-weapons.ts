@@ -62,7 +62,8 @@ export default {
       ClassListItem.init([
         "B", "Опциональные", [
           WeaponIds.FavoniusCodex, WeaponIds.FlowingPurity, WeaponIds.PrototypeAmber, WeaponIds.RingOfYaxche,
-          WeaponIds.SacrificialFragments, WeaponIds.SacrificialJade, WeaponIds.SkywardAtlas, WeaponIds.WanderingEvenstar,
+          WeaponIds.SacrificialFragments, WeaponIds.SacrificialJade, WeaponIds.SkywardAtlas,
+          WeaponIds.WanderingEvenstar,
         ],
       ]),
       ClassListItem.init([

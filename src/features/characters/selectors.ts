@@ -3,7 +3,7 @@ import type { RootState } from "@/app/store";
 import { charactersAdapter } from "./slice";
 import { store } from "@/app/store";
 
-const selectors = charactersAdapter.getSelectors<RootState>(state => state.characters);
+const selectors = charactersAdapter.getSelectors<RootState>((state) => state.characters);
 
 export function selectCharacterById(id: CharacterId) {
   return selectors.selectById(store.getState(), id);

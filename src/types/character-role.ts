@@ -1,4 +1,4 @@
-import { CharacterRoleIds } from "@/enums/character-role";
+import { type CharacterRoleIds } from "@/enums/character-role";
 
 export interface CharacterRole {
   id: CharacterRoleId;

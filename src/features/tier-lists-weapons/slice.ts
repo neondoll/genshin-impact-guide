@@ -9,7 +9,9 @@ export const tierListsWeaponsAdapter = createEntityAdapter({
     const aVideoSourceDateTime = videoSources[a.video_source_id].date.getTime();
     const bVideoSourceDateTime = videoSources[b.video_source_id].date.getTime();
 
-    return aVideoSourceDateTime === bVideoSourceDateTime ? a.title.localeCompare(b.title) : bVideoSourceDateTime - aVideoSourceDateTime;
+    return aVideoSourceDateTime === bVideoSourceDateTime
+      ? a.title.localeCompare(b.title)
+      : bVideoSourceDateTime - aVideoSourceDateTime;
   },
 });
 

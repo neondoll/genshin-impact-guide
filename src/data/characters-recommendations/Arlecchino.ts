@@ -37,10 +37,11 @@ const weaponDeathmatch = new CharacterWeaponRecommendation(WeaponIds.Deathmatch)
   "В таком случае стоит сосредоточиться на <span class='text-info'>силе атаки</span>, <span class='text-info'>мастерстве стихий</span> и <span class='text-info'>крит. уроне</span> в артефактах.",
 ]);
 const weaponLumidouceElegy = new CharacterWeaponRecommendation(WeaponIds.LumidouceElegy);
-const weaponPrimordialJadeWingedSpear = new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeWingedSpear).setNotes([
-  "Увеличит важный <span class='text-info'>шанс крит. попадания</span> и <span class='text-info'>силу атаки</span>.",
-  "В артефактах стоит сосредоточиться на <span class='text-info'>крит. уроне</span>, <span class='text-info'>силе атаки</span> и <span class='text-info'>мастерстве стихий</span>.",
-]);
+const weaponPrimordialJadeWingedSpear = new CharacterWeaponRecommendation(WeaponIds.PrimordialJadeWingedSpear)
+  .setNotes([
+    "Увеличит важный <span class='text-info'>шанс крит. попадания</span> и <span class='text-info'>силу атаки</span>.",
+    "В артефактах стоит сосредоточиться на <span class='text-info'>крит. уроне</span>, <span class='text-info'>силе атаки</span> и <span class='text-info'>мастерстве стихий</span>.",
+  ]);
 const weaponStaffOfHoma = new CharacterWeaponRecommendation(WeaponIds.StaffOfHoma).setNotes([
   "Дополнительная характеристика повысит важный <span class='text-info'>крит. урон</span>.",
   "Пассивная способность незначительно увеличит <span class='text-info'>силу атаки</span>, но стоит учитывать, что вторая часть способности редко выполняется.",
@@ -73,14 +74,23 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
           "Увеличивает силу атаки и урон обычной атаки, которые использует Арлекино.",
           "Для лучшей реализации бонуса 4 предметов стоит иметь достаточно хорошее соединение с сервером игры.",
         ]).setPercent(0.971),
-        new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.CrimsonWitchOfFlames, ArtifactSetIds.MarechausseeHunter]).setNotes([
+        new CharacterArtifactSetRecommendationWithIds([
+          ArtifactSetIds.CrimsonWitchOfFlames,
+          ArtifactSetIds.MarechausseeHunter
+        ]).setNotes([
           "Увеличивает как Пиро урон, так и урон обычных и заряженных атак, которые использует Арлекино.",
         ]).setPercent(0.952),
-        new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.CrimsonWitchOfFlames, ArtifactSetIds.GladiatorsFinale]).setNotes([
+        new CharacterArtifactSetRecommendationWithIds([
+          ArtifactSetIds.CrimsonWitchOfFlames,
+          ArtifactSetIds.GladiatorsFinale
+        ]).setNotes([
           "Увеличивает как Пиро урон, так и силу атаки, позволяя сконцентрироваться на других характеристиках в артефактах.",
           `Набор ${artifactSetById(ArtifactSetIds.GladiatorsFinale)} может быть заменён ${artifactSetById(ArtifactSetIds.ShimenawasReminiscence)} или другими с аналогичными бонусами.`,
         ]).setPercent(0.946),
-        new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.ShimenawasReminiscence, ArtifactSetIds.GladiatorsFinale]).setPercent(0.933),
+        new CharacterArtifactSetRecommendationWithIds([
+          ArtifactSetIds.ShimenawasReminiscence,
+          ArtifactSetIds.GladiatorsFinale
+        ]).setPercent(0.933),
       ],
       [`${elementalReactionLink(ElementalReactionIds.Vaporize, "Пар")} | ${elementalReactionLink(ElementalReactionIds.Melt, "Таяние")}`]: [
         new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.FragmentOfHarmonicWhimsy).setIsBetter().setNotes([
@@ -96,10 +106,22 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
           "Увеличивает силу атаки и урон обычной атаки, которые использует Арлекино.",
           "Для лучшей реализации бонуса 4 предметов стоит иметь достаточно хорошее соединение с сервером игры.",
         ]).setPercent(0.956),
-        new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.WanderersTroupe, ArtifactSetIds.GildedDreams]).setPercent(0.953),
-        new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.CrimsonWitchOfFlames, ArtifactSetIds.GildedDreams]).setPercent(0.952),
-        new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.GladiatorsFinale, ArtifactSetIds.GildedDreams]).setPercent(0.949),
-        new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.CrimsonWitchOfFlames, ArtifactSetIds.MarechausseeHunter]).setNotes([
+        new CharacterArtifactSetRecommendationWithIds([
+          ArtifactSetIds.WanderersTroupe,
+          ArtifactSetIds.GildedDreams
+        ]).setPercent(0.953),
+        new CharacterArtifactSetRecommendationWithIds([
+          ArtifactSetIds.CrimsonWitchOfFlames,
+          ArtifactSetIds.GildedDreams
+        ]).setPercent(0.952),
+        new CharacterArtifactSetRecommendationWithIds([
+          ArtifactSetIds.GladiatorsFinale,
+          ArtifactSetIds.GildedDreams
+        ]).setPercent(0.949),
+        new CharacterArtifactSetRecommendationWithIds([
+          ArtifactSetIds.CrimsonWitchOfFlames,
+          ArtifactSetIds.MarechausseeHunter
+        ]).setNotes([
           "Увеличивает как Пиро урон, так и урон обычных и заряженных атак, которые использует Арлекино.",
         ]).setPercent(0.945),
       ],

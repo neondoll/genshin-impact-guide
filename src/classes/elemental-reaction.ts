@@ -15,7 +15,7 @@ export class ElementalReaction implements Type {
     name: Type["name"],
     firstElementId: Type["first_element_id"],
     secondElementId: Type["second_element_id"],
-    hasImage: boolean = false,
+    hasImage = false,
   ) {
     this.id = id;
     this.name = name;

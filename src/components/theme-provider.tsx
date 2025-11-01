@@ -1,8 +1,8 @@
 import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
 
 type Theme = "dark" | "light" | "system";
-type ThemeProviderProps = { children: ReactNode; defaultTheme?: Theme; storageKey?: string };
-type ThemeProviderState = { theme: Theme; setTheme: (theme: Theme) => void };
+interface ThemeProviderProps { children: ReactNode; defaultTheme?: Theme; storageKey?: string }
+interface ThemeProviderState { theme: Theme; setTheme: (theme: Theme) => void }
 
 const initialState: ThemeProviderState = { theme: "system", setTheme: () => null };
 
@@ -20,6 +20,7 @@ export function ThemeProvider({ children, defaultTheme = "system", storageKey = 
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
       root.classList.add(systemTheme);
+
       return;
     }
 

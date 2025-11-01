@@ -23,7 +23,7 @@ function Image({ className, elementId }: {
   if (Array.isArray(elementId)) {
     return (
       <div className={cn("aspect-square grid grid-cols-2", className)}>
-        {elementId.map(id => (
+        {elementId.map((id) => (
           <Image elementId={id} />
         ))}
       </div>

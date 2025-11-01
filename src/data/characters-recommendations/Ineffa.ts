@@ -40,9 +40,15 @@ export default new CharacterRecommendations(CharacterIds.Ineffa)
       new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GildedDreams).setIsBetter().setNotes([
         "Урон навыков Инеффы и реакции Лунный заряд зависит и от силы атаки, и от мастерства стихий, поэтому данный комплект будет одним из лучших вариантов.",
       ]).setPercent(1.000),
-      new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.WanderersTroupe, ArtifactSetIds.GladiatorsFinale]).setPercent(0.9573),
+      new CharacterArtifactSetRecommendationWithIds([
+        ArtifactSetIds.WanderersTroupe,
+        ArtifactSetIds.GladiatorsFinale
+      ]).setPercent(0.9573),
       new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.WanderersTroupe).setPercent(0.9567),
-      new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.ShimenawasReminiscence, ArtifactSetIds.GladiatorsFinale]).setPercent(0.9516),
+      new CharacterArtifactSetRecommendationWithIds([
+        ArtifactSetIds.ShimenawasReminiscence,
+        ArtifactSetIds.GladiatorsFinale
+      ]).setPercent(0.9516),
       new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ThunderingFury).setNotes([
         "Уменьшение времени отката элементального навыка позволяет использовать его чаще и наносить больше урона.",
         "Так как Инеффа играет через реакцию Лунный заряд, ей подойдёт бонус от 4 предметов.",

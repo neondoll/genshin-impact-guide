@@ -3,7 +3,7 @@ import type { WeaponId } from "@/types/weapon";
 import { store } from "@/app/store";
 import { weaponsAdapter } from "./slice";
 
-const selectors = weaponsAdapter.getSelectors<RootState>(state => state.weapons);
+const selectors = weaponsAdapter.getSelectors<RootState>((state) => state.weapons);
 
 export function selectWeaponById(id: WeaponId) {
   return selectors.selectById(store.getState(), id);
@@ -14,7 +14,7 @@ export function selectWeaponsAll() {
 }
 
 export function selectWeaponsByIds(ids: WeaponId[]) {
-  return selectWeaponsAll().filter(value => ids.includes(value.id));
+  return selectWeaponsAll().filter((value) => ids.includes(value.id));
 }
 
 export default selectors;

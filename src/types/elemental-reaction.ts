@@ -1,5 +1,5 @@
 import type { ElementId } from "./element";
-import { ElementalReactionIds } from "@/enums/elemental-reaction";
+import { type ElementalReactionIds } from "@/enums/elemental-reaction";
 
 export interface ElementalReaction {
   id: ElementalReactionId;

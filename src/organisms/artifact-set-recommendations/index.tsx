@@ -11,7 +11,10 @@ import PreferredStatsRecommendations from "./preferred-stats-recommendations";
 import VideoSources from "../video-sources";
 
 export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
-  const showAccordion = recommendations.characters !== undefined || recommendations.preferred_stats !== undefined || recommendations.video_source_ids !== undefined;
+  const showAccordion
+    = recommendations.characters !== undefined
+      || recommendations.preferred_stats !== undefined
+      || recommendations.video_source_ids !== undefined;
 
   return showAccordion && (
     <Collapsible className="space-y-2 md:space-y-4" defaultOpen>

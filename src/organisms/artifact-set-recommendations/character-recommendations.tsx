@@ -27,7 +27,7 @@ export default function CharacterRecommendations(props: CharacterRecommendations
         .sort((a, b) => {
           return charactersAdapter.sortComparer ? charactersAdapter.sortComparer(a.character, b.character) : 0;
         })
-        .map(model => model.recommendation),
+        .map((model) => model.recommendation),
     );
   }, [props.recommendations]);
 
@@ -41,7 +41,7 @@ export default function CharacterRecommendations(props: CharacterRecommendations
         </TableRow>
       </TableHeader>
       <TableBody>
-        {recommendations.map(recommendation => (
+        {recommendations.map((recommendation) => (
           <TableRow className="hover:bg-inherit" key={recommendation.id}>
             {hasIsBetter && (
               <TableCell className="w-16">

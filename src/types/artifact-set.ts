@@ -1,6 +1,6 @@
 import type { ArtifactSlotId } from "./artifact-slot";
 import type { Rarity } from "./rarity";
-import { ArtifactSetIds } from "@/enums/artifact-set";
+import { type ArtifactSetIds } from "@/enums/artifact-set";
 
 export interface ArtifactSet {
   id: ArtifactSetId;

@@ -3,7 +3,7 @@ import type { RootState } from "@/app/store";
 import { artifactSetsAdapter } from "./slice";
 import { store } from "@/app/store";
 
-const selectors = artifactSetsAdapter.getSelectors<RootState>(state => state.artifactSets);
+const selectors = artifactSetsAdapter.getSelectors<RootState>((state) => state.artifactSets);
 
 export function selectArtifactSetById(id: ArtifactSetId) {
   return selectors.selectById(store.getState(), id);

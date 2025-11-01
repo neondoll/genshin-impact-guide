@@ -16,6 +16,8 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.VourukashasGlow)
     [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.HpPercentage],
     [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage],
     [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage],
+    additional: [
+      ...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage,
+    ],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

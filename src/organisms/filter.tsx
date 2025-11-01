@@ -20,7 +20,15 @@ type FilterCheckboxProps = Pick<ComponentProps<"span">, "children" | "className"
   & Pick<ComponentProps<"input">, "checked" | "name" | "onChange" | "value">
   & { asChild?: boolean };
 
-export function FilterCheckbox({ asChild = false, checked, children, className, name, onChange, value }: FilterCheckboxProps) {
+export function FilterCheckbox({
+  asChild = false,
+  checked,
+  children,
+  className,
+  name,
+  onChange,
+  value,
+}: FilterCheckboxProps) {
   const Comp = asChild ? Slot : "span";
 
   return (

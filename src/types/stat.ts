@@ -1,4 +1,4 @@
-import { StatIds } from "@/enums/stat";
+import { type StatIds } from "@/enums/stat";
 
 export interface Stat {
   id: StatId;

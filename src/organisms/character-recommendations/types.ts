@@ -1,27 +1,27 @@
 import type { CharacterRecommendations } from "@/types/character-recommendations";
 
-export type ArtifactRecommendationsProps = {
+export interface ArtifactRecommendationsProps {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["artifacts"]>;
-};
-export type ArtifactSetRecommendationsProps = {
+}
+export interface ArtifactSetRecommendationsProps {
   recommendations: ArtifactRecommendationsProps["recommendations"]["sets"];
-};
-export type ArtifactStatRecommendationsProps = {
+}
+export interface ArtifactStatRecommendationsProps {
   recommendations: ArtifactRecommendationsProps["recommendations"]["stats"];
-};
-export type CharacterRecommendationsProps = { recommendations: CharacterRecommendations };
-export type ReferencePointRecommendationsProps = {
+}
+export interface CharacterRecommendationsProps { recommendations: CharacterRecommendations }
+export interface ReferencePointRecommendationsProps {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["reference_point"]>;
-};
-export type RotationRecommendationsProps = {
+}
+export interface RotationRecommendationsProps {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["rotation"]>;
-};
-export type SquadRecommendationsProps = {
+}
+export interface SquadRecommendationsProps {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["squads"]>;
-};
-export type TalentLevelingRecommendationsProps = {
+}
+export interface TalentLevelingRecommendationsProps {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["talent_leveling"]>;
-};
-export type WeaponRecommendationsProps = {
+}
+export interface WeaponRecommendationsProps {
   recommendations: NonNullable<CharacterRecommendationsProps["recommendations"]["weapons"]>;
-};
+}

@@ -1,4 +1,4 @@
-import { RegionIds } from "@/enums/region";
+import { type RegionIds } from "@/enums/region";
 
 export interface Region {
   id: RegionId;

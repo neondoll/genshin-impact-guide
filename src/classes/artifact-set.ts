@@ -33,7 +33,12 @@ export class ArtifactSet implements Type {
       [ArtifactSlotIds.Circlet]: undefined,
     };
 
-    (Object.entries(slots) as [keyof typeof slots, typeof slots[keyof typeof slots]][]).forEach(([slotId, slotName]) => {
+    (
+      Object.entries(slots) as [
+        keyof typeof slots,
+        (typeof slots)[keyof typeof slots]
+      ][]
+    ).forEach(([slotId, slotName]) => {
       if (slotName) {
         this.slots[slotId] = ArtifactSetSlot.init([
           slotId,
@@ -45,9 +50,13 @@ export class ArtifactSet implements Type {
   }
 
   get image_src() {
-    return this.slots[ArtifactSlotIds.Flower]?.image_src || this.slots[ArtifactSlotIds.Plume]?.image_src
-      || this.slots[ArtifactSlotIds.Sands]?.image_src || this.slots[ArtifactSlotIds.Goblet]?.image_src
-      || this.slots[ArtifactSlotIds.Circlet]?.image_src;
+    return (
+      this.slots[ArtifactSlotIds.Flower]?.image_src
+      || this.slots[ArtifactSlotIds.Plume]?.image_src
+      || this.slots[ArtifactSlotIds.Sands]?.image_src
+      || this.slots[ArtifactSlotIds.Goblet]?.image_src
+      || this.slots[ArtifactSlotIds.Circlet]?.image_src
+    );
   }
 
   static init(params: ConstructorParameters<typeof ArtifactSet>) {
@@ -60,7 +69,11 @@ export class ArtifactSetSlot implements TypeSlot {
   readonly name: TypeSlot["name"];
   readonly image_src: TypeSlot["image_src"];
 
-  constructor(id: TypeSlot["id"], name: TypeSlot["name"], imageSrc: TypeSlot["image_src"]) {
+  constructor(
+    id: TypeSlot["id"],
+    name: TypeSlot["name"],
+    imageSrc: TypeSlot["image_src"]
+  ) {
     this.id = id;
     this.name = name;
     this.image_src = imageSrc;

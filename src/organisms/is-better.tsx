@@ -5,7 +5,7 @@ export default function IsBetter({ value }: { value?: boolean | string }) {
   return value && (
     <Tooltip>
       <TooltipTrigger asChild>
-        <BestChoiceCommercialSymbolSvgrepoCom className="size-12 rounded-full fill-current" />
+        <BestChoiceCommercialSymbolSvgrepoCom className="size-12 rounded-full" />
       </TooltipTrigger>
       <TooltipContent>
         <p>{typeof value === "string" ? value : "Является лучшим выбором"}</p>

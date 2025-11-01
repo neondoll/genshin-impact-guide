@@ -36,7 +36,7 @@ function WeaponsList({ weaponIds }: { weaponIds: WeaponId[] }) {
 
   return (
     <ul className="flex flex-wrap gap-2">
-      {weapons.map(weapon => (
+      {weapons.map((weapon) => (
         <li
           className={cn(
             "shrink-0 size-12 rounded-md", backgroundClassByRarity(weapon.rarity),
@@ -84,17 +84,17 @@ export default function WeaponsTierList() {
       <h1 children={Paths.WeaponsTierList.title} className="text-2xl" />
       <Tabs defaultValue={tierListsWeapons[0].title}>
         <TabsList className="flex flex-wrap w-full h-auto min-h-9">
-          {tierListsWeapons.map(tierListWeapons => (
+          {tierListsWeapons.map((tierListWeapons) => (
             <TabsTrigger children={tierListWeapons.title} key={tierListWeapons.title} value={tierListWeapons.title} />
           ))}
         </TabsList>
-        {tierListsWeapons.map(tierListWeapons => (
+        {tierListsWeapons.map((tierListWeapons) => (
           <TabsContent className="flex flex-col gap-2" key={tierListWeapons.title} value={tierListWeapons.title}>
             {tierListWeapons.list !== undefined && (
               <Card className="py-0">
                 <Table>
                   <TableBody>
-                    {tierListWeapons.list.map(item => (
+                    {tierListWeapons.list.map((item) => (
                       <TableRow
                         className={cn(
                           "hover:bg-inherit first:*:pt-6 first:*:first:rounded-tl-xl first:*:last:rounded-tr-xl",

@@ -25,7 +25,7 @@ export function AppSidebar() {
           <SidebarGroupLabel>Содержание</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="grid grid-cols-[auto_1fr]">
-              {MenuItems.map(item => (
+              {MenuItems.map((item) => (
                 <SidebarMenuItem className="grid grid-cols-subgrid col-span-full" key={item.title}>
                   <SidebarMenuButton asChild className="grid grid-cols-subgrid col-span-full h-9">
                     <NavLink

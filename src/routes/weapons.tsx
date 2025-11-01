@@ -20,7 +20,7 @@ import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 /* eslint-disable-next-line react-refresh/only-export-components */
 export function loader() {
   const weapons = selectWeaponsAll();
-  const rarities = selectRaritiesByIds(weapons.map(weapon => weapon.rarity));
+  const rarities = selectRaritiesByIds(weapons.map((weapon) => weapon.rarity));
   const weaponTypes = selectWeaponTypesAll();
 
   return { rarities, weapons, weaponTypes };
@@ -36,11 +36,11 @@ export default function Weapons() {
     let filteredWeapons = weapons;
 
     if (filterRarities.length) {
-      filteredWeapons = filteredWeapons.filter(weapon => filterRarities.includes(weapon.rarity));
+      filteredWeapons = filteredWeapons.filter((weapon) => filterRarities.includes(weapon.rarity));
     }
 
     if (filterWeaponTypeIds.length) {
-      filteredWeapons = filteredWeapons.filter(weapon => filterWeaponTypeIds.includes(weapon.type_id));
+      filteredWeapons = filteredWeapons.filter((weapon) => filterWeaponTypeIds.includes(weapon.type_id));
     }
 
     setFilteredWeapons(filteredWeapons);
@@ -70,7 +70,7 @@ export default function Weapons() {
       <Filter>
         <FilterGroup label="Тип">
           <div className="flex flex-wrap gap-3">
-            {weaponTypes.map(weaponType => (
+            {weaponTypes.map((weaponType) => (
               <FilterCheckbox
                 asChild
                 checked={filterWeaponTypeIds.includes(weaponType.id)}
@@ -80,14 +80,14 @@ export default function Weapons() {
                 onChange={(event) => {
                   if (event.target.checked) {
                     if (!filterWeaponTypeIds.includes(weaponType.id)) {
-                      setFilterWeaponTypeIds(prev => prev.concat([weaponType.id]));
+                      setFilterWeaponTypeIds((prev) => prev.concat([weaponType.id]));
                     }
                   }
                   else {
                     const index = filterWeaponTypeIds.indexOf(weaponType.id);
 
                     if (index !== -1) {
-                      setFilterWeaponTypeIds(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterWeaponTypeIds((prev) => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
@@ -100,7 +100,7 @@ export default function Weapons() {
         </FilterGroup>
         <FilterGroup label="Качество">
           <div className="flex flex-wrap gap-3">
-            {rarities.map(rarity => (
+            {rarities.map((rarity) => (
               <FilterCheckbox
                 asChild
                 checked={filterRarities.includes(rarity)}
@@ -110,14 +110,14 @@ export default function Weapons() {
                 onChange={(event) => {
                   if (event.target.checked) {
                     if (!filterRarities.includes(rarity)) {
-                      setFilterRarities(prev => prev.concat([rarity]));
+                      setFilterRarities((prev) => prev.concat([rarity]));
                     }
                   }
                   else {
                     const index = filterRarities.indexOf(rarity);
 
                     if (index !== -1) {
-                      setFilterRarities(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                      setFilterRarities((prev) => prev.slice(0, index).concat(prev.slice(index + 1)));
                     }
                   }
                 }}
@@ -130,7 +130,7 @@ export default function Weapons() {
         </FilterGroup>
       </Filter>
       <ul className="flex flex-wrap gap-2 justify-center items-stretch md:gap-4">
-        {filteredWeapons.map(weapon => (
+        {filteredWeapons.map((weapon) => (
           <li
             className={cn(
               "flex relative flex-col gap-4 px-5.5 py-4 w-36 min-h-45 text-card-foreground bg-card rounded-xl",

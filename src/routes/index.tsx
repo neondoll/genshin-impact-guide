@@ -11,7 +11,7 @@ export default function Index() {
       <Card>
         <Table>
           <TableBody>
-            {MenuItems.map(item => (
+            {MenuItems.map((item) => (
               <TableRow className="relative" key={item.title}>
                 <TableCell className="size-20">
                   <img alt={item.title} className="object-cover object-center size-full" src={item.image_src} />

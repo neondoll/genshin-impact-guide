@@ -1,4 +1,4 @@
-import { VideoSourceIds } from "@/enums/video-source";
+import { type VideoSourceIds } from "@/enums/video-source";
 
 export interface VideoSource {
   id: VideoSourceId;

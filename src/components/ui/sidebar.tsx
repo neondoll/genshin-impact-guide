@@ -2,7 +2,14 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { PanelLeftIcon } from "lucide-react";
 import { Slot } from "@radix-ui/react-slot";
 import {
-  type ComponentProps, createContext, type CSSProperties, useCallback, useContext, useEffect, useMemo, useState,
+  type ComponentProps,
+  createContext,
+  type CSSProperties,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
 } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -21,7 +28,7 @@ const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 
-type SidebarContextProps = {
+interface SidebarContextProps {
   state: "expanded" | "collapsed";
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -29,7 +36,7 @@ type SidebarContextProps = {
   setOpenMobile: (open: boolean) => void;
   isMobile: boolean;
   toggleSidebar: () => void;
-};
+}
 
 const SidebarContext = createContext<SidebarContextProps | null>(null);
 const sidebarMenuButtonVariants = cva(
@@ -298,7 +305,12 @@ export function SidebarMenu({ className, ...props }: ComponentProps<"ul">) {
 
 type SidebarMenuActionProps = ComponentProps<"button"> & { asChild?: boolean; showOnHover?: boolean };
 
-export function SidebarMenuAction({ asChild = false, className, showOnHover = false, ...props }: SidebarMenuActionProps) {
+export function SidebarMenuAction({
+  asChild = false,
+  className,
+  showOnHover = false,
+  ...props
+}: SidebarMenuActionProps) {
   const Comp = asChild ? Slot : "button";
 
   return (
@@ -476,7 +488,15 @@ type SidebarProviderProps = ComponentProps<"div"> & {
   open?: boolean;
 };
 
-export function SidebarProvider({ children, className, defaultOpen = true, onOpenChange: setOpenProp, open: openProp, style, ...props }: SidebarProviderProps) {
+export function SidebarProvider({
+  children,
+  className,
+  defaultOpen = true,
+  onOpenChange: setOpenProp,
+  open: openProp,
+  style,
+  ...props
+}: SidebarProviderProps) {
   const isMobile = useIsMobile();
   const [openMobile, setOpenMobile] = useState(false);
 
@@ -503,7 +523,7 @@ export function SidebarProvider({ children, className, defaultOpen = true, onOpe
 
   // Helper to toggle the sidebar.
   const toggleSidebar = useCallback(() => {
-    return isMobile ? setOpenMobile(open => !open) : setOpen(open => !open);
+    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open);
   }, [isMobile, setOpen, setOpenMobile]);
 
   // Adds a keyboard shortcut to toggle the sidebar.

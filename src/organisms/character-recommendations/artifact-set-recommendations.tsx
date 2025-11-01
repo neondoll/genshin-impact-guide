@@ -93,7 +93,7 @@ function ArtifactSetRecommendationsTable({ recommendations }: {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {recommendations.map(recommendation => (
+        {recommendations.map((recommendation) => (
           <TableRow
             className="hover:bg-inherit"
             key={"id" in recommendation ? recommendation.id : recommendation.ids.join("+")}
@@ -107,7 +107,7 @@ function ArtifactSetRecommendationsTable({ recommendations }: {
               )}
               {"ids" in recommendation && (
                 <div className="flex flex-row gap-2">
-                  {recommendation.ids.map(id => <ArtifactSetBadge artifactSetId={id} key={id} />)}
+                  {recommendation.ids.map((id) => <ArtifactSetBadge artifactSetId={id} key={id} />)}
                 </div>
               )}
             </TableCell>
