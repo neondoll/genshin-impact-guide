@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
-import { ChevronDownIcon } from "lucide-react";
 import * as Primitive from "@radix-ui/react-accordion";
 
+import { ChevronDownIcon } from "../icons";
 import { cn } from "@/lib/utils";
 
 // Re-export типы для удобства

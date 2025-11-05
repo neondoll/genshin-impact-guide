@@ -1,9 +1,8 @@
-import { ChevronDownIcon } from "lucide-react";
-
 import type { ArtifactSetRecommendationsProps } from "./types";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { ChevronDownIcon } from "@/components/icons";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { selectVideoSourcesByIds } from "@/features/video-sources/selectors";
 import CharacterRecommendations from "./character-recommendations";

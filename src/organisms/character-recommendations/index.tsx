@@ -1,28 +1,12 @@
-import { ChevronDownIcon } from "lucide-react";
-
 import type { CharacterRecommendationsProps } from "./types";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import { ChevronDownIcon } from "@/components/icons";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { selectVideoSourcesByIds } from "@/features/video-sources/selectors";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactRecommendations from "./artifact-recommendations";
 import ReferencePointRecommendations from "./reference-point-recommendations";
 import RotationRecommendations from "./rotation-recommendations";

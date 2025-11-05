@@ -1,8 +1,8 @@
 import type { ComponentProps } from "react";
-import { XIcon } from "lucide-react";
 import * as Primitive from "@radix-ui/react-dialog";
 
 import { cn } from "@/lib/utils";
+import { XIcon } from "../icons";
 
 function SheetOverlay({ className, ...props }: ComponentProps<typeof Primitive.Overlay>) {
   return (
