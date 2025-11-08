@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 import type { WeaponId } from "@/types/weapon";
 import type { WeaponsTierListLoaderReturn } from "./loader";
-import { backgroundClassByRarity } from "@/lib/rarity";
+import { backgroundClassByRarity } from "@/features/rarities";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,

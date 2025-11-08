@@ -1,7 +1,7 @@
-import type { Rarity } from "./rarity";
+import type { Rarity } from "@/features/rarities";
 import type { StatId } from "./stat";
+import type { WeaponIds } from "@/enums/weapon";
 import type { WeaponTypeId } from "./weapon-type";
-import { type WeaponIds } from "@/enums/weapon";
 
 export interface Weapon {
   id: WeaponId;

@@ -1,5 +1,5 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SETS } from "@/features/artifact-sets";
 import { CharacterIds } from "@/enums/character";
 
 export default new ArtifactSetRecommendations(ARTIFACT_SETS.FRAGMENT_OF_HARMONIC_WHIMSY)

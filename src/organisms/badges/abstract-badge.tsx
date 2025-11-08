@@ -1,8 +1,7 @@
 import type { ComponentProps } from "react";
 import { Link } from "react-router-dom";
 
-import type { Rarity } from "@/types/rarity";
-import { backgroundClassByRarity } from "@/lib/rarity";
+import { backgroundClassByRarity, type Rarity } from "@/features/rarities";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 

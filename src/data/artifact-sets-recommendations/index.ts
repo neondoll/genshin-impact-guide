@@ -1,5 +1,5 @@
 import type { ArtifactSetRecommendations } from "@/types/artifact-set-recommendations";
-import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SETS } from "@/features/artifact-sets";
 
 export default {
   [ARTIFACT_SETS.ARCHAIC_PETRA]: (await import("./ArchaicPetra")).default,

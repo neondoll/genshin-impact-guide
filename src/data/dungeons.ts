@@ -1,5 +1,5 @@
 import type { Dungeon as Type } from "@/types/dungeon";
-import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SETS } from "@/features/artifact-sets";
 import { Dungeon as Class } from "@/classes/dungeon";
 import { DungeonIds } from "@/enums/dungeon";
 

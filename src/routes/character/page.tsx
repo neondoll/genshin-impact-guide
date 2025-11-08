@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 import type { CharacterLoaderReturn } from "./loader";
-import { backgroundClassByRarity } from "@/lib/rarity";
+import { backgroundClassByRarity, RarityStarsImg } from "@/features/rarities";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
@@ -14,13 +14,12 @@ import {
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
+import { selectCharacterRoleById } from "@/features/character-roles/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import CharacterRecommendations from "@/organisms/character-recommendations";
 import CharacterRoleBadge from "@/organisms/badges/character-role-badge";
 import Paths from "@/constants/paths";
-import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 import WeaponBadge from "@/organisms/badges/weapon-badge";
-import { selectCharacterRoleById } from "@/features/character-roles/selectors.ts";
 
 export default function CharacterPage() {
   const {

@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 import type { WeaponLoaderReturn } from "./loader";
-import { backgroundClassByRarity } from "@/lib/rarity";
+import { backgroundClassByRarity, RarityStarsImg } from "@/features/rarities";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,7 +15,6 @@ import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import Paths from "@/constants/paths";
-import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 import StatBadge from "@/organisms/badges/stat-badge";
 
 export default function WeaponPage() {

@@ -1,9 +1,9 @@
+import type { CharacterIds } from "@/enums/character";
 import type { CharacterRoleId } from "./character-role";
 import type { ElementId } from "./element";
-import type { Rarity } from "./rarity";
+import type { Rarity } from "@/features/rarities";
 import type { WeaponId } from "./weapon";
 import type { WeaponTypeId } from "./weapon-type";
-import { type CharacterIds } from "@/enums/character";
 
 type CharacterArkhe = "Усия" | "Пневма";
 

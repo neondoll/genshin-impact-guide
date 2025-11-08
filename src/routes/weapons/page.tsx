@@ -1,10 +1,9 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import type { Rarity } from "@/types/rarity";
 import type { WeaponTypeId } from "@/types/weapon-type";
 import type { WeaponsLoaderReturn } from "./loader";
-import { backgroundClassByRarity } from "@/lib/rarity";
+import { backgroundClassByRarity, type Rarity, RarityStarsImg } from "@/features/rarities";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -18,7 +17,6 @@ import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
 import Paths from "@/constants/paths";
-import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 
 export default function WeaponsPage() {
   const { rarities, weapons, weaponTypes } = useLoaderData<WeaponsLoaderReturn>();

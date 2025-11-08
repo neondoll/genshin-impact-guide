@@ -1,20 +1,20 @@
 import type { CharacterId } from "./character";
 import type { FoodTypeId } from "./food-type";
-import type { Rarity } from "./rarity";
-import type { ResourceTypeId } from "./resource-type";
-import {
-  type ResourceCookingIngredientIds,
-  type ResourceFoodIds,
-  type ResourceIds,
-  type ResourceLocalSpecialtyFontaineIds,
-  type ResourceLocalSpecialtyInazumaIds,
-  type ResourceLocalSpecialtyLiyueIds,
-  type ResourceLocalSpecialtyMondstadtIds,
-  type ResourceLocalSpecialtyNatlanIds,
-  type ResourceMaterialIds,
-  type ResourceRecipeIds,
+import type { Rarity } from "@/features/rarities";
+import type {
+  ResourceCookingIngredientIds,
+  ResourceFoodIds,
+  ResourceIds,
+  ResourceLocalSpecialtyFontaineIds,
+  ResourceLocalSpecialtyInazumaIds,
+  ResourceLocalSpecialtyLiyueIds,
+  ResourceLocalSpecialtyMondstadtIds,
+  ResourceLocalSpecialtyNatlanIds,
+  ResourceMaterialIds,
+  ResourceRecipeIds,
 } from "@/enums/resource";
-import { type ResourceTypeIds } from "@/enums/resource-type";
+import type { ResourceTypeId } from "./resource-type";
+import type { ResourceTypeIds } from "@/enums/resource-type";
 
 export interface ResourceAbstract {
   id: ResourceId;

@@ -1,5 +1,5 @@
-import { ARTIFACT_SETS } from "@/constants/artifact-sets";
-import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
+import { ARTIFACT_SETS } from "@/features/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/features/artifact-slots";
 import { CHARACTER_ROLES } from "@/constants/character-roles";
 import {
   CharacterArtifactRecommendations,

@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 
 import type { CharactersLoaderReturn } from "./loader";
 import type { ElementId } from "@/types/element";
-import type { Rarity } from "@/types/rarity";
 import type { WeaponTypeId } from "@/types/weapon-type";
-import { backgroundClassByRarity } from "@/lib/rarity";
+import { backgroundClassByRarity, type Rarity, RarityStarsImg } from "@/features/rarities";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -19,7 +18,6 @@ import { Container } from "@/components/container";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
 import { selectElementById } from "@/features/elements/selectors";
 import Paths from "@/constants/paths";
-import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 
 export default function CharactersPage() {
   const { characters, elements, rarities, weaponTypes } = useLoaderData<CharactersLoaderReturn>();

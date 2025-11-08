@@ -1,8 +1,8 @@
 import type { ArtifactSet as ArtifactSetType } from "@/types/artifact-set";
 import type { DungeonId } from "@/types/dungeon";
 import { ArtifactSet as ArtifactSetClass } from "@/classes/artifact-set";
-import { ARTIFACT_SETS } from "@/constants/artifact-sets";
-import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
+import { ARTIFACT_SETS } from "@/features/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/features/artifact-slots";
 import { DungeonIds } from "@/enums/dungeon";
 import { elementalReactionById } from "@/features/elemental-reactions/help";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";

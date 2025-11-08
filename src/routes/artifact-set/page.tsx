@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useMemo } from "react";
 
 import type { ArtifactSetLoaderReturn } from "./loader";
-import { backgroundClassByRarity } from "@/lib/rarity";
+import { backgroundClassByRarity } from "@/features/rarities";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,13 +14,12 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectArtifactSlotById } from "@/features/artifact-slots/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
 import Paths from "@/constants/paths";
 
 export default function ArtifactSetPage() {
-  const { artifactSet, artifactSetRecommendations } = useLoaderData<ArtifactSetLoaderReturn>();
+  const { artifactSet, artifactSetRecommendations, artifactSetSlots } = useLoaderData<ArtifactSetLoaderReturn>();
 
   const backgroundClass = useMemo(() => {
     if (!artifactSet) {
@@ -97,17 +96,15 @@ export default function ArtifactSetPage() {
           </Table>
         </CardContent>
       </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Комплект</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableBody>
-              {Object.values(artifactSet.slots).map((artifactSetSlot) => {
-                if (artifactSetSlot !== undefined) {
-                  const artifactSlot = selectArtifactSlotById(artifactSetSlot.id);
-
+      {artifactSetSlots && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Комплект</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableBody>
+                {artifactSetSlots.map((artifactSetSlot) => {
                   return (
                     <TableRow className="hover:bg-inherit" key={artifactSetSlot.id}>
                       <TableCell className="p-2 w-16 text-pretty whitespace-normal">
@@ -119,18 +116,16 @@ export default function ArtifactSetPage() {
                       </TableCell>
                       <TableCell className="p-2 text-pretty whitespace-normal">
                         <p children={artifactSetSlot.name} className="text-sm" />
-                        <p children={artifactSlot?.name || "NONE"} className="text-xs opacity-50" />
+                        <p children={artifactSetSlot.slotLabel} className="text-xs opacity-50" />
                       </TableCell>
                     </TableRow>
                   );
-                }
-
-                return undefined;
-              })}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+                })}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      )}
       {artifactSetRecommendations && <ArtifactSetRecommendations recommendations={artifactSetRecommendations} />}
     </Container>
   );

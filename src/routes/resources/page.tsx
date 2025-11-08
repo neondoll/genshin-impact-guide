@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 import type { ResourcesLoaderReturn } from "./loader";
-import { backgroundClassByRarity } from "@/lib/rarity";
+import { backgroundClassByRarity } from "@/features/rarities";
 import {
   Breadcrumb,
   BreadcrumbItem,

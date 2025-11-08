@@ -1,4 +1,4 @@
-import type { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
+import type { ARTIFACT_SLOTS } from "@/features/artifact-slots";
 import type { ArtifactSetId } from "./artifact-set";
 import type { CharacterId } from "./character";
 import type { ElementId } from "./element";

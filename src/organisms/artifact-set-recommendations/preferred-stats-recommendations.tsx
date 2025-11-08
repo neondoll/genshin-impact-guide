@@ -1,8 +1,8 @@
 import type { PreferredStatsRecommendationsProps } from "./types";
-import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
+import { ARTIFACT_SLOTS } from "@/features/artifact-slots";
+import { selectStatById } from "@/features/stats/selectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatBadge from "../badges/stat-badge";
-import { selectStatById } from "@/features/stats/selectors.ts";
 
 export default function PreferredStatsRecommendations({
   recommendations,

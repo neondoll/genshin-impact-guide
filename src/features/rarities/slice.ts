@@ -1,18 +1,16 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-import type { Rarity } from "@/types/rarity";
+import type { Rarity } from "./types";
+import { compareRarities } from "./lib";
+import { raritiesData } from "./data";
 
-export const raritiesAdapter = createEntityAdapter({
-  selectId: (model: Rarity) => model,
-  sortComparer: (a: Rarity, b: Rarity) => b - a,
-});
+interface RaritiesState {
+  list: Rarity[];
+}
 
-const initialState = raritiesAdapter.getInitialState({}, [1, 2, 3, 4, 5]);
+const initialState: RaritiesState = { list: raritiesData.sort(compareRarities) };
 
-export const raritiesSlice = createSlice({
-  name: "rarities",
-  initialState,
-  reducers: {},
-});
+export const raritiesSlice = createSlice({ name: "rarities", initialState, reducers: {} });
 
+export const raritiesActions = raritiesSlice.actions;
 export default raritiesSlice.reducer;

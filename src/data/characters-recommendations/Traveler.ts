@@ -1,7 +1,7 @@
 import type { CharacterRecommendations as Type } from "@/types/character-recommendations";
 import type { ElementId } from "@/types/element";
-import { ARTIFACT_SETS } from "@/constants/artifact-sets";
-import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
+import { ARTIFACT_SETS } from "@/features/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/features/artifact-slots";
 import {
   CharacterArtifactRecommendations as ClassArtifacts,
   CharacterArtifactSetRecommendationWithId as ClassArtifactSetWithId,

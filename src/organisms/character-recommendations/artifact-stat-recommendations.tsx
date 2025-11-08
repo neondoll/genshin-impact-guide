@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 import type { ArtifactStatRecommendationsProps } from "./types";
-import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
+import { ARTIFACT_SLOTS } from "@/features/artifact-slots";
 import { cn, formatPercent } from "@/lib/utils";
+import { selectStatById } from "@/features/stats/selectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatBadge from "../badges/stat-badge";
-import { selectStatById } from "@/features/stats/selectors.ts";
 
 export default function ArtifactStatRecommendations({ recommendations }: ArtifactStatRecommendationsProps) {
   const [hasDescription, setHasDescription] = useState(false);

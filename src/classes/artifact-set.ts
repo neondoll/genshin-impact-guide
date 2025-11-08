@@ -1,6 +1,5 @@
 import type { ArtifactSet as ArtifactSetType, ArtifactSetSlot as ArtifactSetSlotType } from "@/types/artifact-set";
-import type { ArtifactSlotId } from "@/types/artifact";
-import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
+import { ARTIFACT_SLOTS, type ArtifactSlotId } from "@/features/artifact-slots";
 import { publicImageSrc } from "@/lib/utils";
 
 export class ArtifactSet implements ArtifactSetType {
