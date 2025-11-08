@@ -1,3 +1,4 @@
+import type { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import type { ArtifactSetId } from "./artifact-set";
 import type { CharacterId } from "./character";
 import type { ElementId } from "./element";
@@ -5,13 +6,8 @@ import type { StatId } from "./stat";
 import type { TalentId } from "./talent";
 import type { VideoSourceId } from "./video-source";
 import type { WeaponId } from "./weapon";
-import { type ArtifactSlotIds } from "@/enums/artifact-slot";
 
-type CharacterArtifactStatRecommendations = Record<
-  | typeof ArtifactSlotIds["Sands" | "Goblet" | "Circlet"]
-  | "additional",
-  CharacterArtifactStatRecommendation[]
->;
+type CharacterArtifactStatRecommendations = Record<typeof ARTIFACT_SLOTS["SANDS" | "GOBLET" | "CIRCLET"] | "additional", CharacterArtifactStatRecommendation[]>;
 
 type CharacterRecommendationSquadBestTeammates
   = CharacterSquadItemRecommendation[];

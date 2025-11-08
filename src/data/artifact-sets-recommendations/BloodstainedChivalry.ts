@@ -1,21 +1,21 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
 import { VideoSourceIds } from "@/enums/video-source";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.BloodstainedChivalry)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.BLOODSTAINED_CHIVALRY)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.Eula).setIsBetter(),
     new ArtifactSetCharacterRecommendation(CharacterIds.Freminet),
     new ArtifactSetCharacterRecommendation(CharacterIds.Razor),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage],
-    [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.EnergyRecharge],
+    [ARTIFACT_SLOTS.SANDS]: [STATS.ATK_PERCENTAGE],
+    [ARTIFACT_SLOTS.GOBLET]: [...StatsElementDamageBonus, STATS.ATK_PERCENTAGE],
+    [ARTIFACT_SLOTS.CIRCLET]: StatsCrit,
+    additional: [...StatsCrit, STATS.ATK_PERCENTAGE, STATS.ENERGY_RECHARGE],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

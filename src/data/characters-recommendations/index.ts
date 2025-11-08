@@ -1,6 +1,6 @@
 import type { CharacterRecommendations } from "@/types/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { ElementIds } from "@/enums/element";
+import { ELEMENTS } from "@/constants/elements";
 
 export default {
   [CharacterIds.Aino]: (await import("./Aino")).default,
@@ -92,12 +92,12 @@ export default {
   [CharacterIds.Tartaglia]: (await import("./Tartaglia")).default,
   [CharacterIds.Thoma]: (await import("./Thoma")).default,
   [CharacterIds.Tighnari]: (await import("./Tighnari")).default,
-  [CharacterIds.TravelerAnemo]: (await import("./Traveler")).default[ElementIds.Anemo],
-  [CharacterIds.TravelerDendro]: (await import("./Traveler")).default[ElementIds.Dendro],
-  [CharacterIds.TravelerElectro]: (await import("./Traveler")).default[ElementIds.Electro],
-  [CharacterIds.TravelerGeo]: (await import("./Traveler")).default[ElementIds.Geo],
-  [CharacterIds.TravelerHydro]: (await import("./Traveler")).default[ElementIds.Hydro],
-  [CharacterIds.TravelerPyro]: (await import("./Traveler")).default[ElementIds.Pyro],
+  [CharacterIds.TravelerAnemo]: (await import("./Traveler")).default[ELEMENTS.ANEMO],
+  [CharacterIds.TravelerDendro]: (await import("./Traveler")).default[ELEMENTS.DENDRO],
+  [CharacterIds.TravelerElectro]: (await import("./Traveler")).default[ELEMENTS.ELECTRO],
+  [CharacterIds.TravelerGeo]: (await import("./Traveler")).default[ELEMENTS.GEO],
+  [CharacterIds.TravelerHydro]: (await import("./Traveler")).default[ELEMENTS.HYDRO],
+  [CharacterIds.TravelerPyro]: (await import("./Traveler")).default[ELEMENTS.PYRO],
   [CharacterIds.Varesa]: (await import("./Varesa")).default,
   [CharacterIds.Venti]: (await import("./Venti")).default,
   [CharacterIds.Wanderer]: (await import("./Wanderer")).default,

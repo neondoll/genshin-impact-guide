@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -9,7 +9,7 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -17,37 +17,37 @@ import { WeaponIds } from "@/enums/weapon";
 export default new CharacterRecommendations(CharacterIds.Bennett)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.NoblesseOblige).setIsBetter().setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.NOBLESSE_OBLIGE).setIsBetter().setNotes([
         "Лучший комплект для Беннета в роли поддержки. Увеличивает собственный урон от взрыва стихий и даёт дополнительный бонус к атаке. Используется, когда никто другой не носит данный комплект артефактов.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.EmblemOfSeveredFate).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.EMBLEM_OF_SEVERED_FATE).setNotes([
         "Комплект не даёт никаких бонусов другим членам отряда, но увеличивает восстановление энергии Беннета и урон от его взрыва стихий. Комплект используется, если хочется, чтобы Беннет наносил дополнительный урон.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setUsePercent(0.703),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.187),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setUsePercent(0.089),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setUsePercent(0.703),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.187),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setUsePercent(0.089),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.749),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setUsePercent(0.109),
-        new CharacterArtifactStatRecommendation(StatIds.PyroDmgBonus).setUsePercent(0.105),
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.749),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setUsePercent(0.109),
+        new CharacterArtifactStatRecommendation(STATS.PYRO_DMG_BONUS).setUsePercent(0.105),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.Heal).setUsePercent(0.543),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.224),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setUsePercent(0.111),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.HEALING_BONUS).setUsePercent(0.543),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.224),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setUsePercent(0.111),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setNotes(["Приоритетно", "от 25000"]),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["Приоритетно", "от 220%"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setNotes(["Приоритетно", "от 25000"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes(["Приоритетно", "от 220%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes([
           "от 50% (при использовании меча Фавония или если Беннет будет наносить дополнительный урон)",
         ]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes([
           "от 120% (если Беннет будет наносить дополнительный урон)",
         ]),
       ],

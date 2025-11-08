@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 
 import type { ArtifactSetRecommendationsProps } from "./types";
 import type { CharacterArtifactSetRecommendations } from "@/types/character-recommendations";
-import { cn, numberFormatPercent } from "@/lib/utils";
+import { cn, formatPercent } from "@/lib/utils";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ArtifactSetBadge from "../badges/artifact-set-badge";
 import IsBetter from "../is-better";
+import { selectArtifactSetById, selectArtifactSetsByIds } from "@/features/artifact-sets/selectors.ts";
 
 export default function ArtifactSetRecommendations({ recommendations }: ArtifactSetRecommendationsProps) {
   if (Array.isArray(recommendations)) {
@@ -18,7 +19,7 @@ export default function ArtifactSetRecommendations({ recommendations }: Artifact
   const recommendationsEntries = Object.entries(recommendations);
 
   return (
-    <Tabs defaultValue={recommendationsEntries[0][0]}>
+    <Tabs defaultValue={recommendationsEntries[0]?.[0]}>
       <TabsList className="flex flex-wrap w-full h-auto min-h-9">
         {recommendationsEntries.map(([key]) => (
           <TabsTrigger dangerouslySetInnerHTML={{ __html: key }} key={key} value={key} />
@@ -93,50 +94,68 @@ function ArtifactSetRecommendationsTable({ recommendations }: {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {recommendations.map((recommendation) => (
-          <TableRow
-            className="hover:bg-inherit"
-            key={"id" in recommendation ? recommendation.id : recommendation.ids.join("+")}
-          >
-            {hasIsBetter && (
-              <TableCell children={<IsBetter value={Boolean(recommendation.is_better)} />} />
-            )}
-            <TableCell className="text-pretty whitespace-normal">
-              {"id" in recommendation && (
-                <ArtifactSetBadge artifactSetId={recommendation.id} />
+        {recommendations.map((recommendation) => {
+          const artifactSet = "id" in recommendation ? selectArtifactSetById(recommendation.id) : undefined;
+          const artifactSets = "ids" in recommendation ? selectArtifactSetsByIds(recommendation.ids) : undefined;
+
+          return (
+            <TableRow
+              className="hover:bg-inherit"
+              key={"id" in recommendation ? recommendation.id : recommendation.ids.join("+")}
+            >
+              {hasIsBetter && (
+                <TableCell children={<IsBetter value={Boolean(recommendation.is_better)} />} />
               )}
-              {"ids" in recommendation && (
-                <div className="flex flex-row gap-2">
-                  {recommendation.ids.map((id) => <ArtifactSetBadge artifactSetId={id} key={id} />)}
-                </div>
-              )}
-            </TableCell>
-            {hasPercent && (
-              <TableCell
-                children={recommendation.percent !== undefined ? numberFormatPercent(recommendation.percent, 2) : ""}
-                className={cn(recommendation.percent !== undefined && {
-                  "text-green-500": recommendation.percent >= (minPercent + (diffPercent * 2)),
-                  "text-yellow-500": recommendation.percent >= (minPercent + diffPercent) && recommendation.percent < (minPercent + (diffPercent * 2)),
-                  "text-red-500": recommendation.percent < (minPercent + diffPercent),
-                })}
-              />
-            )}
-            {hasDescription && (
-              <TableCell children={recommendation.description} className="text-pretty whitespace-normal" />
-            )}
-            {hasNotes && (
               <TableCell className="text-pretty whitespace-normal">
-                {recommendation.notes !== undefined && (
-                  <ul className="ml-4 list-outside list-disc">
-                    {recommendation.notes.map((note, index) => (
-                      <li dangerouslySetInnerHTML={{ __html: note }} key={index} />
+                {artifactSet && (
+                  <ArtifactSetBadge
+                    artifactSetId={artifactSet.id}
+                    artifactSetImageSrc={artifactSet.imageSrc}
+                    artifactSetName={artifactSet.name}
+                    artifactSetRarities={artifactSet.rarities}
+                  />
+                )}
+                {artifactSets && (
+                  <div className="flex flex-row gap-2">
+                    {artifactSets.map((artifactSet) => (
+                      <ArtifactSetBadge
+                        artifactSetId={artifactSet.id}
+                        artifactSetImageSrc={artifactSet.imageSrc}
+                        artifactSetName={artifactSet.name}
+                        artifactSetRarities={artifactSet.rarities}
+                        key={artifactSet.id}
+                      />
                     ))}
-                  </ul>
+                  </div>
                 )}
               </TableCell>
-            )}
-          </TableRow>
-        ))}
+              {hasPercent && (
+                <TableCell
+                  children={recommendation.percent !== undefined ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
+                  className={cn(recommendation.percent !== undefined && {
+                    "text-green-500": recommendation.percent >= (minPercent + (diffPercent * 2)),
+                    "text-yellow-500": recommendation.percent >= (minPercent + diffPercent) && recommendation.percent < (minPercent + (diffPercent * 2)),
+                    "text-red-500": recommendation.percent < (minPercent + diffPercent),
+                  })}
+                />
+              )}
+              {hasDescription && (
+                <TableCell children={recommendation.description} className="text-pretty whitespace-normal" />
+              )}
+              {hasNotes && (
+                <TableCell className="text-pretty whitespace-normal">
+                  {recommendation.notes !== undefined && (
+                    <ul className="ml-4 list-outside list-disc">
+                      {recommendation.notes.map((note, index) => (
+                        <li dangerouslySetInnerHTML={{ __html: note }} key={index} />
+                      ))}
+                    </ul>
+                  )}
+                </TableCell>
+              )}
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

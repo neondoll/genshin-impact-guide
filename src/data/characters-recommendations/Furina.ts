@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -9,39 +9,39 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Furina)
   .setArtifacts(CharacterArtifactRecommendations.init([
-    [new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GoldenTroupe)],
+    [new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GOLDEN_TROUPE)],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.HydroDmgBonus),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setNotes([
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.HYDRO_DMG_BONUS),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setNotes([
           "Лучше в подавляющем числе ситуаций",
         ]),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes([
           "В отрядах без доп. подкачки - 200% - 220% ВЭ",
           "В отрядах с доп. подкачкой - 160% - 180% ВЭ",
           "В отрядах с Е Лань или Син Цю - 130% - 140% ВЭ",
           "В отрядах с 3 Гидро и более - 100% ВЭ",
         ]),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
     },
   ]))

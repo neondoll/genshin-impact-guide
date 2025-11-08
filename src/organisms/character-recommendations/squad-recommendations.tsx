@@ -9,14 +9,27 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/u
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CharacterBadge from "../badges/character-badge";
 import ElementCharacterBadge from "@/features/elements/element-character-badge";
+import { selectCharacterById } from "@/features/characters/selectors.ts";
+import { selectElementById } from "@/features/elements/selectors.ts";
 
 function SquadRecommendationsItem({ item }: { item: TypeItem }) {
   switch (item.type) {
     case "character": {
-      return <CharacterBadge characterId={item.id} />;
+      const character = selectCharacterById(item.id);
+
+      return character && (
+        <CharacterBadge
+          characterId={character.id}
+          characterImageSrc={character.image_src}
+          characterRarity={character.rarity}
+          characterTitle={character.title}
+        />
+      );
     }
     case "element": {
-      return <ElementCharacterBadge elementId={item.id} />;
+      const element = selectElementById(item.id);
+
+      return element && <ElementCharacterBadge elementIconSrc={element.iconSrc} elementName={element.name} />;
     }
     case "other": {
       return (
@@ -98,7 +111,7 @@ export default function SquadRecommendations({ recommendations }: SquadRecommend
   const recommendationsEntries = Object.entries(recommendations);
 
   return (
-    <Tabs defaultValue={recommendationsEntries[0][0]}>
+    <Tabs defaultValue={recommendationsEntries[0]?.[0]}>
       <TabsList className="flex flex-wrap w-full h-auto min-h-9">
         {recommendationsEntries.map(([key]) => (
           <TabsTrigger dangerouslySetInnerHTML={{ __html: key }} key={key} value={key} />

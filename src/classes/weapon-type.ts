@@ -5,8 +5,8 @@ export class WeaponType implements Type {
   readonly id: Type["id"];
   readonly name: Type["name"];
   readonly abbr: Type["abbr"];
-  readonly image_src: Type["image_src"];
-  readonly icon_src: Type["icon_src"];
+  readonly imageSrc: Type["imageSrc"];
+  readonly iconSrc: Type["iconSrc"];
 
   static PATH = "weapon-types";
 
@@ -14,8 +14,8 @@ export class WeaponType implements Type {
     this.id = id;
     this.name = name;
     this.abbr = abbr;
-    this.image_src = publicImageSrc(`${WeaponType.PATH}/${id}-128x128.png`);
-    this.icon_src = publicImageSrc(`${WeaponType.PATH}/${id}-icon-20x20.png`);
+    this.imageSrc = publicImageSrc(`${WeaponType.PATH}/${id}-128x128.png`);
+    this.iconSrc = publicImageSrc(`${WeaponType.PATH}/${id}-icon-20x20.png`);
   }
 
   static init(params: ConstructorParameters<typeof WeaponType>) {

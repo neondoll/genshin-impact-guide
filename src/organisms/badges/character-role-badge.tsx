@@ -1,18 +1,25 @@
-import type { CharacterRoleId } from "@/types/character-role";
+import type { CharacterRole } from "@/types/character-role";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { selectCharacterRoleById } from "@/features/character-roles/selectors";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
-export default function CharacterRoleBadge({ characterRoleId }: { characterRoleId: CharacterRoleId }) {
-  const characterRole = selectCharacterRoleById(characterRoleId);
-
+export default function CharacterRoleBadge({
+  characterRoleDescription,
+  characterRoleId,
+  characterRoleImgSrc,
+  characterRoleName,
+}: {
+  characterRoleDescription: CharacterRole["description"];
+  characterRoleId: CharacterRole["id"];
+  characterRoleImgSrc: CharacterRole["imageSrc"];
+  characterRoleName: CharacterRole["name"];
+}) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <Badge className="rounded-full" variant="secondary">
-          <img alt={characterRoleId} className="shrink-0 size-5" src={characterRole.img_src} />
-          <span children={characterRole.name} />
+          <img alt={characterRoleId} className="shrink-0 size-5" src={characterRoleImgSrc} />
+          <span children={characterRoleName} />
         </Badge>
       </TooltipTrigger>
       <TooltipContent
@@ -25,7 +32,7 @@ export default function CharacterRoleBadge({ characterRoleId }: { characterRoleI
           "2xl:[--container-width:var(--breakpoint-2xl)]",
         )}
       >
-        <p dangerouslySetInnerHTML={{ __html: characterRole.description }} />
+        <p dangerouslySetInnerHTML={{ __html: characterRoleDescription }} />
       </TooltipContent>
     </Tooltip>
   );

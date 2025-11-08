@@ -1,163 +1,26 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type {
-  Resource as ResourceType,
-  ResourceFood,
-  ResourceRecipe,
-  ResourceRecipeIngredient,
-} from "@/types/resource";
+import type { Resource, ResourceRecipeIngredient } from "@/types/resource";
+import type { ResourceLoaderReturn } from "./loader";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { resourcesAdapter } from "@/features/resources/slice";
-import { ResourceTypeIds } from "@/enums/resource-type";
-import { selectCharacterById } from "@/features/characters/selectors";
-import { selectFoodTypeById } from "@/features/food-types/selectors";
-import {
-  selectResourceById, selectResourceFoodsByIds, selectResourceFoodsByRecipeId, selectResourceRecipeById,
-} from "@/features/resources/selectors";
-import { selectResourceTypeById } from "@/features/resource-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import CharacterBadge from "@/organisms/badges/character-badge";
 import Paths from "@/constants/paths";
 import ResourceBadge from "@/organisms/badges/resource-badge";
 
-function ResourceRecipeIngredientBadge({ resourceCount, resourceId, resourceImageSrc, resourceName, resourceRarity }: {
-  resourceCount?: ResourceRecipeIngredient["count"];
-  resourceId: ResourceType["id"];
-  resourceImageSrc: ResourceType["image_src"];
-  resourceName: ResourceType["name"];
-  resourceRarity?: ResourceType["rarity"];
-}) {
-  return (
-    <Badge asChild className="flex-col p-0 w-16.5" variant="secondary">
-      <Link to={Paths.Resource.to(resourceId)}>
-        <span className="relative shrink-0 size-16">
-          <img
-            alt={resourceId}
-            className={cn(
-              "size-full rounded-md rounded-br-2xl rounded-bl-none",
-              resourceRarity ? backgroundClassByRarity(resourceRarity) : "bg-linear-to-b from-[#323947] to-[#4a5366]",
-            )}
-            src={resourceImageSrc}
-          />
-          {(resourceCount && resourceCount > 1) && (
-            <span
-              children={resourceCount}
-              className="absolute top-0 right-0 p-1 text-[0.625rem] text-white bg-black/65 rounded-tr-md rounded-bl-md"
-            />
-          )}
-        </span>
-        <span children={resourceName} className="p-0.5 w-full text-center truncate" />
-      </Link>
-    </Badge>
-  );
-}
-
-/* eslint-disable-next-line react-refresh/only-export-components */
-export function loader({ params }: { params: Record<string, string | undefined> }) {
-  const resource = selectResourceById(params.resourceId as ResourceType["id"]);
-  const resourceType = selectResourceTypeById(resource.type_id);
-
-  let foodType = undefined;
-  let propertyBaseDishes = undefined;
-  let propertyCharacter = undefined;
-  let propertyDishes = undefined;
-  let propertyIngredients = undefined;
-  let propertyRecipe = undefined;
-  let propertyRelatedDishes = undefined;
-  let propertyRelatedItems = undefined;
-  let propertySpecialDish = undefined;
-
-  switch (resource.type_id) {
-    case ResourceTypeIds.Food: {
-      const food = resource as ResourceFood;
-
-      foodType = selectFoodTypeById(food.food_type_id);
-
-      if (food.character_id) {
-        propertyCharacter = selectCharacterById(food.character_id);
-      }
-
-      if (food.recipe_id) {
-        const foodRelatedDishes = selectResourceFoodsByRecipeId(food.recipe_id).filter((dish) => dish.id !== food.id);
-
-        propertyRecipe = selectResourceRecipeById(food.recipe_id);
-        propertyIngredients = propertyRecipe.ingredients
-          .map((ingredient) => {
-            return { ...ingredient, item: selectResourceById(ingredient.id) };
-          })
-          .sort((a, b) => {
-            return resourcesAdapter.sortComparer ? resourcesAdapter.sortComparer(a.item, b.item) : 0;
-          });
-
-        if (food.character_id) {
-          propertyBaseDishes = foodRelatedDishes;
-        }
-        else {
-          propertyRelatedDishes = foodRelatedDishes;
-
-          const propertySpecialDishIndex = propertyRelatedDishes.findIndex((dish) => Boolean(dish.character_id));
-
-          if (propertySpecialDishIndex >= 0) {
-            propertySpecialDish = propertyRelatedDishes.splice(propertySpecialDishIndex, 1)[0];
-          }
-        }
-      }
-
-      if (food.related_item_ids) {
-        propertyRelatedItems = selectResourceFoodsByIds(food.related_item_ids);
-      }
-
-      break;
-    }
-    case ResourceTypeIds.Recipe: {
-      const recipe = resource as ResourceRecipe;
-
-      propertyDishes = selectResourceFoodsByRecipeId(recipe.id);
-      propertyIngredients = recipe.ingredients
-        .map((ingredient) => {
-          return { ...ingredient, item: selectResourceById(ingredient.id) };
-        })
-        .sort((a, b) => {
-          return resourcesAdapter.sortComparer ? resourcesAdapter.sortComparer(a.item, b.item) : 0;
-        });
-
-      const propertySpecialDishIndex = propertyDishes.findIndex((dish) => Boolean(dish.character_id));
-
-      if (propertySpecialDishIndex >= 0) {
-        propertySpecialDish = propertyDishes.splice(propertySpecialDishIndex, 1)[0];
-      }
-
-      break;
-    }
-  }
-
-  if (resource.rarity) {
-    window.document.documentElement.classList.add(`rarity-${resource.rarity}`);
-  }
-
-  return {
-    foodType,
-    propertyBaseDishes,
-    propertyCharacter,
-    propertyDishes,
-    propertyIngredients,
-    propertyRecipe,
-    propertyRelatedDishes,
-    propertyRelatedItems,
-    propertySpecialDish,
-    resource,
-    resourceType,
-  };
-}
-
-export default function Resource() {
+export default function ResourcePage() {
   const {
     foodType,
     propertyBaseDishes,
@@ -170,13 +33,13 @@ export default function Resource() {
     propertySpecialDish,
     resource,
     resourceType,
-  } = useLoaderData<ReturnType<typeof loader>>();
+  } = useLoaderData<ResourceLoaderReturn>();
   const showProperties = Boolean(propertyBaseDishes) || Boolean(propertyCharacter) || Boolean(propertyDishes)
     || Boolean(propertyIngredients) || Boolean(propertyRecipe) || Boolean(propertyRelatedDishes)
-    || Boolean(propertyRelatedItems) || Boolean(propertySpecialDish) || "dish_effects" in resource
-    || "proficiency" in resource;
+    || Boolean(propertyRelatedItems) || Boolean(propertySpecialDish)
+    || (resource && ("dish_effects" in resource || "proficiency" in resource));
 
-  return (
+  return resource && (
     <Container className="flex flex-col gap-2 md:gap-4">
       <Breadcrumb>
         <BreadcrumbList className="gap-1 text-xs sm:gap-2">
@@ -209,10 +72,8 @@ export default function Resource() {
         <div className="space-y-1">
           <h1 children={Paths.Resource.title(resource)} className="text-3xl" />
           <div className="flex flex-wrap gap-x-1 gap-y-2">
-            <Badge children={resourceType.name} />
-            {foodType && (
-              <Badge children={foodType.name} />
-            )}
+            {resourceType && <Badge children={resourceType.name} />}
+            {foodType && <Badge children={foodType.name} />}
           </div>
         </div>
       </div>
@@ -227,13 +88,15 @@ export default function Resource() {
                 <TableHead children="Имя:" className="p-2 text-right" />
                 <TableCell children={resource.name} className="p-2 text-pretty whitespace-normal" />
               </TableRow>
-              <TableRow className="hover:bg-inherit">
-                <TableHead children="Тип:" className="p-2 text-right" />
-                <TableCell className="p-2 text-pretty whitespace-normal">
-                  <p children={resourceType.name} />
-                  {foodType && <p children={foodType.name} />}
-                </TableCell>
-              </TableRow>
+              {(foodType || resourceType) && (
+                <TableRow className="hover:bg-inherit">
+                  <TableHead children="Тип:" className="p-2 text-right" />
+                  <TableCell className="p-2 text-pretty whitespace-normal">
+                    {resourceType && <p children={resourceType.name} />}
+                    {foodType && <p children={foodType.name} />}
+                  </TableCell>
+                </TableRow>
+              )}
               {"utility" in resource && (
                 <TableRow className="hover:bg-inherit">
                   <TableHead children="Назначение:" className="p-2 text-right" />
@@ -305,7 +168,7 @@ export default function Resource() {
                     <TableCell className="p-2 text-pretty whitespace-normal">
                       <ul className="flex flex-wrap gap-2">
                         {propertyIngredients.map((ingredient) => {
-                          return (
+                          return ingredient.item && (
                             <li key={ingredient.id}>
                               <ResourceRecipeIngredientBadge
                                 resourceCount={ingredient.count}
@@ -395,7 +258,12 @@ export default function Resource() {
                   <TableRow className="hover:bg-inherit">
                     <TableHead children="Персонаж:" className="p-2 text-right" />
                     <TableCell className="p-2 text-pretty whitespace-normal">
-                      <CharacterBadge characterId={propertyCharacter.id} />
+                      <CharacterBadge
+                        characterId={propertyCharacter.id}
+                        characterImageSrc={propertyCharacter.image_src}
+                        characterRarity={propertyCharacter.rarity}
+                        characterTitle={propertyCharacter.title}
+                      />
                     </TableCell>
                   </TableRow>
                 )}
@@ -424,5 +292,37 @@ export default function Resource() {
         </Card>
       )}
     </Container>
+  );
+}
+
+function ResourceRecipeIngredientBadge({ resourceCount, resourceId, resourceImageSrc, resourceName, resourceRarity }: {
+  resourceCount?: ResourceRecipeIngredient["count"];
+  resourceId: Resource["id"];
+  resourceImageSrc: Resource["image_src"];
+  resourceName: Resource["name"];
+  resourceRarity?: Resource["rarity"];
+}) {
+  return (
+    <Badge asChild className="flex-col p-0 w-16.5" variant="secondary">
+      <Link to={Paths.Resource.to(resourceId)}>
+        <span className="relative shrink-0 size-16">
+          <img
+            alt={resourceId}
+            className={cn(
+              "size-full rounded-md rounded-br-2xl rounded-bl-none",
+              resourceRarity ? backgroundClassByRarity(resourceRarity) : "bg-linear-to-b from-[#323947] to-[#4a5366]",
+            )}
+            src={resourceImageSrc}
+          />
+          {(resourceCount && resourceCount > 1) && (
+            <span
+              children={resourceCount}
+              className="absolute top-0 right-0 p-1 text-[0.625rem] text-white bg-black/65 rounded-tr-md rounded-bl-md"
+            />
+          )}
+        </span>
+        <span children={resourceName} className="p-0.5 w-full text-center truncate" />
+      </Link>
+    </Badge>
   );
 }

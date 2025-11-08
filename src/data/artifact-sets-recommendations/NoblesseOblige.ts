@@ -1,12 +1,12 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
 import { VideoSourceIds } from "@/enums/video-source";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.NoblesseOblige)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.NOBLESSE_OBLIGE)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.Bennett).setIsBetter(),
     new ArtifactSetCharacterRecommendation(CharacterIds.Charlotte).setIsBetter(),
@@ -21,11 +21,11 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.NoblesseOblige)
     new ArtifactSetCharacterRecommendation(CharacterIds.Zhongli).setIsBetter(),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.EnergyRecharge, StatIds.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage, StatIds.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatIds.HpPercentage],
+    [ARTIFACT_SLOTS.SANDS]: [STATS.ATK_PERCENTAGE, STATS.ENERGY_RECHARGE, STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.GOBLET]: [...StatsElementDamageBonus, STATS.ATK_PERCENTAGE, STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.CIRCLET]: [...StatsCrit, STATS.HP_PERCENTAGE],
     additional: [
-      ...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage
+      ...StatsCrit, STATS.ATK_PERCENTAGE, STATS.ELEMENTAL_MASTERY, STATS.ENERGY_RECHARGE, STATS.HP_PERCENTAGE,
     ],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

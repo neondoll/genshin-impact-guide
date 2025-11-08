@@ -1,7 +1,7 @@
 import type { CharacterRecommendations as Type } from "@/types/character-recommendations";
 import type { ElementId } from "@/types/element";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations as ClassArtifacts,
   CharacterArtifactSetRecommendationWithId as ClassArtifactSetWithId,
@@ -11,8 +11,8 @@ import {
   CharacterWeaponRecommendation as ClassWeapon,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { ElementIds } from "@/enums/element";
-import { StatIds } from "@/enums/stat";
+import { ELEMENTS } from "@/constants/elements";
+import { STATS } from "@/constants/stats";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
@@ -26,47 +26,47 @@ const TravelerADEGHRecommendationsWeapons = [
 ];
 
 export default {
-  [ElementIds.Anemo]: new Class(CharacterIds.TravelerAnemo)
+  [ELEMENTS.ANEMO]: new Class(CharacterIds.TravelerAnemo)
     .setVideoSourceIds(TravelerADEGHRecommendationsVideoSourceIds)
     .setWeapons(TravelerADEGHRecommendationsWeapons),
-  [ElementIds.Dendro]: new Class(CharacterIds.TravelerDendro)
+  [ELEMENTS.DENDRO]: new Class(CharacterIds.TravelerDendro)
     .setRequiredLevel("90/90")
     .setVideoSourceIds([...TravelerADEGHRecommendationsVideoSourceIds, VideoSourceIds.WhoNeedsLevelingPart1])
     .setWeapons(TravelerADEGHRecommendationsWeapons),
-  [ElementIds.Electro]: new Class(CharacterIds.TravelerElectro)
+  [ELEMENTS.ELECTRO]: new Class(CharacterIds.TravelerElectro)
     .setVideoSourceIds(TravelerADEGHRecommendationsVideoSourceIds)
     .setWeapons(TravelerADEGHRecommendationsWeapons),
-  [ElementIds.Geo]: new Class(CharacterIds.TravelerGeo)
+  [ELEMENTS.GEO]: new Class(CharacterIds.TravelerGeo)
     .setVideoSourceIds(TravelerADEGHRecommendationsVideoSourceIds)
     .setWeapons(TravelerADEGHRecommendationsWeapons),
-  [ElementIds.Hydro]: new Class(CharacterIds.TravelerHydro)
+  [ELEMENTS.HYDRO]: new Class(CharacterIds.TravelerHydro)
     .setVideoSourceIds(TravelerADEGHRecommendationsVideoSourceIds)
     .setWeapons(TravelerADEGHRecommendationsWeapons),
-  [ElementIds.Pyro]: new Class(CharacterIds.TravelerPyro)
+  [ELEMENTS.PYRO]: new Class(CharacterIds.TravelerPyro)
     .setArtifacts(ClassArtifacts.init([
       [
-        new ClassArtifactSetWithId(ArtifactSetIds.ScrollOfTheHeroOfCinderCity).setDescription("для игры из кармана"),
-        new ClassArtifactSetWithId(ArtifactSetIds.TenacityOfTheMillelith).setDescription("для игры из кармана"),
-        new ClassArtifactSetWithId(ArtifactSetIds.Instructor).setDescription("для игры из кармана"),
-        new ClassArtifactSetWithId(ArtifactSetIds.ObsidianCodex).setDescription("для игры на поле").setPercent(1.000),
-        new ClassArtifactSetWithId(ArtifactSetIds.GildedDreams).setDescription("для игры на поле").setPercent(0.884),
-        new ClassArtifactSetWithIds([ArtifactSetIds.GladiatorsFinale, ArtifactSetIds.ShimenawasReminiscence]).setDescription("для игры на поле").setPercent(0.839),
-        new ClassArtifactSetWithIds([ArtifactSetIds.GladiatorsFinale, ArtifactSetIds.CrimsonWitchOfFlames]).setDescription("для игры на поле").setPercent(0.827),
-        new ClassArtifactSetWithIds([ArtifactSetIds.ObsidianCodex, ArtifactSetIds.CrimsonWitchOfFlames]).setDescription("для игры на поле").setPercent(0.819),
+        new ClassArtifactSetWithId(ARTIFACT_SETS.SCROLL_OF_THE_HERO_OF_CINDER_CITY).setDescription("для игры из кармана"),
+        new ClassArtifactSetWithId(ARTIFACT_SETS.TENACITY_OF_THE_MILLELITH).setDescription("для игры из кармана"),
+        new ClassArtifactSetWithId(ARTIFACT_SETS.INSTRUCTOR).setDescription("для игры из кармана"),
+        new ClassArtifactSetWithId(ARTIFACT_SETS.OBSIDIAN_CODEX).setDescription("для игры на поле").setPercent(1.000),
+        new ClassArtifactSetWithId(ARTIFACT_SETS.GILDED_DREAMS).setDescription("для игры на поле").setPercent(0.884),
+        new ClassArtifactSetWithIds([ARTIFACT_SETS.GLADIATORS_FINALE, ARTIFACT_SETS.SHIMENAWAS_REMINISCENCE]).setDescription("для игры на поле").setPercent(0.839),
+        new ClassArtifactSetWithIds([ARTIFACT_SETS.GLADIATORS_FINALE, ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES]).setDescription("для игры на поле").setPercent(0.827),
+        new ClassArtifactSetWithIds([ARTIFACT_SETS.OBSIDIAN_CODEX, ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES]).setDescription("для игры на поле").setPercent(0.819),
       ],
       {
-        [ArtifactSlotIds.Sands]: [new ClassArtifactStat(StatIds.AtkPercentage)],
-        [ArtifactSlotIds.Goblet]: [
-          new ClassArtifactStat(StatIds.PyroDmgBonus),
-          new ClassArtifactStat(StatIds.AtkPercentage),
+        [ARTIFACT_SLOTS.SANDS]: [new ClassArtifactStat(STATS.ATK_PERCENTAGE)],
+        [ARTIFACT_SLOTS.GOBLET]: [
+          new ClassArtifactStat(STATS.PYRO_DMG_BONUS),
+          new ClassArtifactStat(STATS.ATK_PERCENTAGE),
         ],
-        [ArtifactSlotIds.Circlet]: [new ClassArtifactStat(StatIds.CritRate), new ClassArtifactStat(StatIds.CritDMG)],
+        [ARTIFACT_SLOTS.CIRCLET]: [new ClassArtifactStat(STATS.CRIT_RATE), new ClassArtifactStat(STATS.CRIT_DMG)],
         additional: [
-          new ClassArtifactStat(StatIds.CritDMG),
-          new ClassArtifactStat(StatIds.CritRate),
-          new ClassArtifactStat(StatIds.AtkPercentage),
-          new ClassArtifactStat(StatIds.EnergyRecharge).setNotes(["Намеренно собирать не нужно"]),
-          new ClassArtifactStat(StatIds.Atk),
+          new ClassArtifactStat(STATS.CRIT_DMG),
+          new ClassArtifactStat(STATS.CRIT_RATE),
+          new ClassArtifactStat(STATS.ATK_PERCENTAGE),
+          new ClassArtifactStat(STATS.ENERGY_RECHARGE).setNotes(["Намеренно собирать не нужно"]),
+          new ClassArtifactStat(STATS.ATK),
         ],
       },
     ]))
@@ -92,4 +92,4 @@ export default {
         new ClassWeapon(WeaponIds.IronSting).setPercent(0.938).setRefinement(1),
       ],
     }),
-} as Record<Exclude<ElementId, typeof ElementIds.Cryo>, Type>;
+} as Record<Exclude<ElementId, typeof ELEMENTS.CRYO>, Type>;

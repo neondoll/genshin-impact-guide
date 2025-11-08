@@ -49,7 +49,7 @@ export class ResourceCookingIngredient extends ResourceAbstract implements TypeC
   declare readonly rarity: TypeCookingIngredient["rarity"];
   declare readonly source: TypeCookingIngredient["source"];
 
-  static PATH = "cooking-ingredients";
+  static override PATH = "cooking-ingredients";
 
   constructor(
     id: TypeCookingIngredient["id"],
@@ -77,7 +77,7 @@ export class ResourceFood extends ResourceAbstract implements TypeFood {
   protected _recipe_id: TypeFood["recipe_id"];
   protected _character_id: TypeFood["character_id"];
 
-  static PATH = "foods";
+  static override PATH = "foods";
 
   constructor(
     id: TypeFood["id"],
@@ -136,7 +136,7 @@ export class ResourceLocalSpecialtyFontaine extends ResourceAbstract implements 
   declare readonly rarity: TypeLocalSpecialtyFontaine["rarity"];
   declare readonly source: TypeLocalSpecialtyFontaine["source"];
 
-  static PATH = "local-specialties-fontaine";
+  static override PATH = "local-specialties-fontaine";
 
   constructor(
     id: TypeLocalSpecialtyFontaine["id"],
@@ -159,7 +159,7 @@ export class ResourceLocalSpecialtyInazuma extends ResourceAbstract implements T
   declare readonly rarity: TypeLocalSpecialtyInazuma["rarity"];
   declare readonly source: TypeLocalSpecialtyInazuma["source"];
 
-  static PATH = "local-specialties-inazuma";
+  static override PATH = "local-specialties-inazuma";
 
   constructor(
     id: TypeLocalSpecialtyInazuma["id"],
@@ -182,7 +182,7 @@ export class ResourceLocalSpecialtyLiyue extends ResourceAbstract implements Typ
   declare readonly rarity: TypeLocalSpecialtyLiyue["rarity"];
   declare readonly source: TypeLocalSpecialtyLiyue["source"];
 
-  static PATH = "local-specialties-liyue";
+  static override PATH = "local-specialties-liyue";
 
   constructor(
     id: TypeLocalSpecialtyLiyue["id"],
@@ -205,7 +205,7 @@ export class ResourceLocalSpecialtyMondstadt extends ResourceAbstract implements
   declare readonly rarity: TypeLocalSpecialtyMondstadt["rarity"];
   declare readonly source: TypeLocalSpecialtyMondstadt["source"];
 
-  static PATH = "local-specialties-mondstadt";
+  static override PATH = "local-specialties-mondstadt";
 
   constructor(
     id: TypeLocalSpecialtyMondstadt["id"],
@@ -228,7 +228,7 @@ export class ResourceLocalSpecialtyNatlan extends ResourceAbstract implements Ty
   declare readonly rarity: TypeLocalSpecialtyNatlan["rarity"];
   declare readonly source: TypeLocalSpecialtyNatlan["source"];
 
-  static PATH = "local-specialties-natlan";
+  static override PATH = "local-specialties-natlan";
 
   constructor(
     id: TypeLocalSpecialtyNatlan["id"],
@@ -251,7 +251,7 @@ export class ResourceMaterial extends ResourceAbstract implements TypeMaterial {
   declare readonly rarity: TypeMaterial["rarity"];
   declare readonly source: TypeMaterial["source"];
 
-  static PATH = "materials";
+  static override PATH = "materials";
 
   constructor(id: TypeMaterial["id"], name: TypeMaterial["name"], source: TypeMaterial["source"]) {
     super(id, `${ResourceMaterial.PATH}/${id}.webp`, name, ResourceTypeIds.Material, undefined, source);

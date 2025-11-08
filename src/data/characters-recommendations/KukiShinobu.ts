@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -11,7 +11,7 @@ import {
 import { CharacterIds } from "@/enums/character";
 import { elementalReactionById } from "@/features/elemental-reactions/help";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -19,41 +19,41 @@ import { WeaponIds } from "@/enums/weapon";
 export default new CharacterRecommendations(CharacterIds.KukiShinobu)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.TenacityOfTheMillelith).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.TENACITY_OF_THE_MILLELITH).setNotes([
         "Набор увеличивает лечение Синобу благодаря бонусу HP и увеличивает силу атаки и прочность щита всего отряда, так как элементальный навык Синобу срабатывает каждые 1.5 секунды.",
         "Набор хорошо показывает себя в любом отряде",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.MaidenBeloved).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.MAIDEN_BELOVED).setNotes([
         "Набор хорошо работает, если Синобу используется исключительно для лечения команды.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.FlowerOfParadiseLost).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.FLOWER_OF_PARADISE_LOST).setNotes([
         "Набор хорошо работает только в команде с Дендро и Гидро персонажами. Бонус мастерства стихий увеличивает лечение Синобу и урон от реакций.",
         `Так как элементальный навык Синобу срабатывает каждый 1.5 секунды, он активирует реакцию ${elementalReactionById(ElementalReactionIds.Hyperbloom)} и увеличивает урон реакции.`,
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GildedDreams).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GILDED_DREAMS).setNotes([
         "Бонус мастерства стихий увеличивает лечение Синобу и урон от реакций.",
         "Отлично подходит для отрядов, которые вызывают реакции с Дендро.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setUsePercent(0.894),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.073),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setUsePercent(0.016),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setUsePercent(0.894),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.073),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setUsePercent(0.016),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setUsePercent(0.810),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.114),
-        new CharacterArtifactStatRecommendation(StatIds.ElectroDmgBonus).setUsePercent(0.044),
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setUsePercent(0.810),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.114),
+        new CharacterArtifactStatRecommendation(STATS.ELECTRO_DMG_BONUS).setUsePercent(0.044),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setUsePercent(0.807),
-        new CharacterArtifactStatRecommendation(StatIds.Heal).setUsePercent(0.071),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.056),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setUsePercent(0.807),
+        new CharacterArtifactStatRecommendation(STATS.HEALING_BONUS).setUsePercent(0.071),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.056),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["Приоритетно", "от 700"]),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setNotes(["от 30000"]),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes(["Приоритетно", "от 700"]),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setNotes(["от 30000"]),
       ],
     },
   ]))

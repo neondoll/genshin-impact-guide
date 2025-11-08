@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -12,8 +12,8 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { ElementIds } from "@/enums/element";
-import { StatIds } from "@/enums/stat";
+import { ELEMENTS } from "@/constants/elements";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -35,44 +35,44 @@ const gameVariants: Record<GameVariantkey, string> = {
 export default new CharacterRecommendations(CharacterIds.Skirk)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.MarechausseeHunter).setDescription("Лучше при игре от обычных атак").setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.MARECHAUSSEE_HUNTER).setDescription("Лучше при игре от обычных атак").setNotes([
         "Если в команде с Скирк есть персонажи, периодически изменяющие HP отряда (например, Фурина), она сможет использовать бонус 4 предметов.",
         "Увеличивает урон обычной атаки и повышает шанс крит. попадания в сумме на 36%, позволяя сконцентрироваться на крит. уроне и силе атаки в артефактах.",
         "Не рекомендуется использовать оружие на шанс крит. попадания, так как он может выйти за 100%.",
         "Подойдёт при игре через обычные атаки.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.FinaleOfTheDeepGalleries).setDescription("Лучше при игре от взрыва стихии").setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.FINALE_OF_THE_DEEP_GALLERIES).setDescription("Лучше при игре от взрыва стихии").setNotes([
         "Лучший комплект для Скирк, так как повышает Крио урон, а также урон обычных атаки и взрыва стихии.",
         "Поскольку у Скирк нет энергии, а при её различных стилях игры она не наносит урон взрывом стихии и обычной атакой одновременно, все условия выполняются.",
         "Подойдёт как при игре через обычные атаки, так и через взрыв стихии.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [new CharacterArtifactStatRecommendation(StatIds.AtkPercentage)],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CryoDmgBonus).setNotes(["Лучше"]),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes([
+      [ARTIFACT_SLOTS.SANDS]: [new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE)],
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRYO_DMG_BONUS).setNotes(["Лучше"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes([
           "Можно поставить, если в отряде Фурина",
         ]),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes([
           "В обычной ситуации от 65% до 85%",
           "При использовании полного комплекта Охотник Сумеречного двора не должно быть больше 64%, но так как Скирк играет минимум с 2 крио персонажами, то не должно быть больше 39%",
         ]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["от 160%"]),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes(["от 2000"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["от 160%"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes(["от 2000"]),
       ],
     },
   ]))
   .setFirstConstellationOrSignatureWeapon("Сигна > C1,\nC2 > Сигна")
   .setKeyConstellations([1, 2, 5, 6])
   .setReferencePoint({
-    [`${artifactSets[ArtifactSetIds.MarechausseeHunter].name}\n+\n${weapons[WeaponIds.FinaleOfTheDeep].title}`]: [
+    [`${artifactSets[ARTIFACT_SETS.MARECHAUSSEE_HUNTER].name}\n+\n${weapons[WeaponIds.FinaleOfTheDeep].title}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -81,7 +81,7 @@ export default new CharacterRecommendations(CharacterIds.Skirk)
       ["Крит. урон", "216.8%"],
       ["Восст. энергии", "111.0%"],
     ],
-    [`${artifactSets[ArtifactSetIds.FinaleOfTheDeepGalleries].name}\n+\n${weapons[WeaponIds.CalamityOfEshu].title}`]: [
+    [`${artifactSets[ARTIFACT_SETS.FINALE_OF_THE_DEEP_GALLERIES].name}\n+\n${weapons[WeaponIds.CalamityOfEshu].title}`]: [
       ["Макс. HP", "22 041"],
       ["Сила атаки", "2 136"],
       ["Защита", "946"],
@@ -99,11 +99,11 @@ export default new CharacterRecommendations(CharacterIds.Skirk)
   .setSquads(CharacterSquadRecommendations.init([
     [
       new CharacterSquadCharacterRecommendation(CharacterIds.Skirk),
-      new CharacterSquadElementRecommendation(ElementIds.Hydro),
-      new CharacterSquadElementRecommendation(ElementIds.Cryo),
+      new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
+      new CharacterSquadElementRecommendation(ELEMENTS.CRYO),
       [
-        new CharacterSquadElementRecommendation(ElementIds.Cryo),
-        new CharacterSquadElementRecommendation(ElementIds.Hydro),
+        new CharacterSquadElementRecommendation(ELEMENTS.CRYO),
+        new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
       ],
     ],
     [

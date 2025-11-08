@@ -14,7 +14,7 @@ export function artifactSetById(id: ArtifactSetId) {
       class="${cn(badgeVariants({ variant: "secondary" }), "pl-1 py-0 text-sm/none")}"
       href="${publicSrc(`#${Paths.ArtifactSet.to(artifactSet.id)}`)}"
     >
-      <img alt="" class="size-4.5" src="${artifactSet.image_src}" />
+      <img alt="" class="size-4.5" src="${artifactSet.imageSrc}" />
       <span>${Paths.ArtifactSet.title(artifactSet)}</span>
     </a>
   `;

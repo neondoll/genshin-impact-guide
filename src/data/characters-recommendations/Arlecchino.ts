@@ -1,6 +1,6 @@
 import { artifactSetById } from "./_help";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -13,7 +13,7 @@ import {
 import { CharacterIds } from "@/enums/character";
 import { elementalReactionLink } from "@/features/elemental-reactions/help";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -62,86 +62,86 @@ export default new CharacterRecommendations(CharacterIds.Arlecchino)
   .setArtifacts(CharacterArtifactRecommendations.init([
     {
       [`Прожарка | ${elementalReactionLink(ElementalReactionIds.Overloaded, "Перегрузка")}`]: [
-        new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.FragmentOfHarmonicWhimsy).setIsBetter().setNotes([
+        new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.FRAGMENT_OF_HARMONIC_WHIMSY).setIsBetter().setNotes([
           "Лучший вариант для Арлекино, так как повышает важную силу атаки и наносимый урон.",
           "Арлекино сама способна накладывать Долг жизни, поэтому условие 4 предметов выполняется.",
         ]).setPercent(1.051),
-        new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GladiatorsFinale).setNotes([
+        new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GLADIATORS_FINALE).setNotes([
           "Арлекино использует древковое оружие и наносит урон преимущественно обычными атаками, поэтому ей подходит бонус 4 предметов.",
         ]).setPercent(1.000),
-        new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.DesertPavilionChronicle).setPercent(0.973),
-        new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.EchoesOfAnOffering).setNotes([
+        new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.DESERT_PAVILION_CHRONICLE).setPercent(0.973),
+        new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.ECHOES_OF_AN_OFFERING).setNotes([
           "Увеличивает силу атаки и урон обычной атаки, которые использует Арлекино.",
           "Для лучшей реализации бонуса 4 предметов стоит иметь достаточно хорошее соединение с сервером игры.",
         ]).setPercent(0.971),
         new CharacterArtifactSetRecommendationWithIds([
-          ArtifactSetIds.CrimsonWitchOfFlames,
-          ArtifactSetIds.MarechausseeHunter
+          ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES,
+          ARTIFACT_SETS.MARECHAUSSEE_HUNTER,
         ]).setNotes([
           "Увеличивает как Пиро урон, так и урон обычных и заряженных атак, которые использует Арлекино.",
         ]).setPercent(0.952),
         new CharacterArtifactSetRecommendationWithIds([
-          ArtifactSetIds.CrimsonWitchOfFlames,
-          ArtifactSetIds.GladiatorsFinale
+          ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES,
+          ARTIFACT_SETS.GLADIATORS_FINALE,
         ]).setNotes([
           "Увеличивает как Пиро урон, так и силу атаки, позволяя сконцентрироваться на других характеристиках в артефактах.",
-          `Набор ${artifactSetById(ArtifactSetIds.GladiatorsFinale)} может быть заменён ${artifactSetById(ArtifactSetIds.ShimenawasReminiscence)} или другими с аналогичными бонусами.`,
+          `Набор ${artifactSetById(ARTIFACT_SETS.GLADIATORS_FINALE)} может быть заменён ${artifactSetById(ARTIFACT_SETS.SHIMENAWAS_REMINISCENCE)} или другими с аналогичными бонусами.`,
         ]).setPercent(0.946),
         new CharacterArtifactSetRecommendationWithIds([
-          ArtifactSetIds.ShimenawasReminiscence,
-          ArtifactSetIds.GladiatorsFinale
+          ARTIFACT_SETS.SHIMENAWAS_REMINISCENCE,
+          ARTIFACT_SETS.GLADIATORS_FINALE,
         ]).setPercent(0.933),
       ],
       [`${elementalReactionLink(ElementalReactionIds.Vaporize, "Пар")} | ${elementalReactionLink(ElementalReactionIds.Melt, "Таяние")}`]: [
-        new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.FragmentOfHarmonicWhimsy).setIsBetter().setNotes([
+        new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.FRAGMENT_OF_HARMONIC_WHIMSY).setIsBetter().setNotes([
           "Лучший вариант для Арлекино, так как повышает важную силу атаки и наносимый урон.",
           "Арлекино сама способна накладывать Долг жизни, поэтому условие 4 предметов выполняется.",
         ]).setPercent(1.042),
-        new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GladiatorsFinale).setNotes([
+        new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GLADIATORS_FINALE).setNotes([
           "Арлекино использует древковое оружие и наносит урон преимущественно обычными атаками, поэтому ей подходит бонус 4 предметов.",
         ]).setPercent(1.000),
-        new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GildedDreams).setPercent(0.983),
-        new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.DesertPavilionChronicle).setPercent(0.968),
-        new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.EchoesOfAnOffering).setNotes([
+        new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GILDED_DREAMS).setPercent(0.983),
+        new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.DESERT_PAVILION_CHRONICLE).setPercent(0.968),
+        new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.ECHOES_OF_AN_OFFERING).setNotes([
           "Увеличивает силу атаки и урон обычной атаки, которые использует Арлекино.",
           "Для лучшей реализации бонуса 4 предметов стоит иметь достаточно хорошее соединение с сервером игры.",
         ]).setPercent(0.956),
         new CharacterArtifactSetRecommendationWithIds([
-          ArtifactSetIds.WanderersTroupe,
-          ArtifactSetIds.GildedDreams
+          ARTIFACT_SETS.WANDERERS_TROUPE,
+          ARTIFACT_SETS.GILDED_DREAMS,
         ]).setPercent(0.953),
         new CharacterArtifactSetRecommendationWithIds([
-          ArtifactSetIds.CrimsonWitchOfFlames,
-          ArtifactSetIds.GildedDreams
+          ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES,
+          ARTIFACT_SETS.GILDED_DREAMS,
         ]).setPercent(0.952),
         new CharacterArtifactSetRecommendationWithIds([
-          ArtifactSetIds.GladiatorsFinale,
-          ArtifactSetIds.GildedDreams
+          ARTIFACT_SETS.GLADIATORS_FINALE,
+          ARTIFACT_SETS.GILDED_DREAMS,
         ]).setPercent(0.949),
         new CharacterArtifactSetRecommendationWithIds([
-          ArtifactSetIds.CrimsonWitchOfFlames,
-          ArtifactSetIds.MarechausseeHunter
+          ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES,
+          ARTIFACT_SETS.MARECHAUSSEE_HUNTER,
         ]).setNotes([
           "Увеличивает как Пиро урон, так и урон обычных и заряженных атак, которые использует Арлекино.",
         ]).setPercent(0.945),
       ],
     },
     {
-      [ArtifactSlotIds.Sands]: [new CharacterArtifactStatRecommendation(StatIds.AtkPercentage)],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.PyroDmgBonus).setNotes(["Лучше"]),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage),
+      [ARTIFACT_SLOTS.SANDS]: [new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE)],
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.PYRO_DMG_BONUS).setNotes(["Лучше"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes(["Приоритетно", "от 65%"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["Приоритетно", "от 150%"]),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes(["от 2000"]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["от 150 (если Арлекино активирует реакции)"]),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["Специально не собирать"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes(["Приоритетно", "от 65%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["Приоритетно", "от 150%"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes(["от 2000"]),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes(["от 150 (если Арлекино активирует реакции)"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes(["Специально не собирать"]),
       ],
     },
   ]))

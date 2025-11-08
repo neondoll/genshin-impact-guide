@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
 import {
   CharacterArtifactRecommendations,
@@ -13,8 +13,8 @@ import {
   CharacterTalentLevelingRecommendation,
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
-import { ElementIds } from "@/enums/element";
-import { StatIds } from "@/enums/stat";
+import { ELEMENTS } from "@/constants/elements";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -37,44 +37,44 @@ const weaponDeathmatch = new CharacterWeaponRecommendation(WeaponIds.Deathmatch)
 export default new CharacterRecommendations(CharacterIds.Ineffa)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GildedDreams).setIsBetter().setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GILDED_DREAMS).setIsBetter().setNotes([
         "Урон навыков Инеффы и реакции Лунный заряд зависит и от силы атаки, и от мастерства стихий, поэтому данный комплект будет одним из лучших вариантов.",
       ]).setPercent(1.000),
       new CharacterArtifactSetRecommendationWithIds([
-        ArtifactSetIds.WanderersTroupe,
-        ArtifactSetIds.GladiatorsFinale
+        ARTIFACT_SETS.WANDERERS_TROUPE,
+        ARTIFACT_SETS.GLADIATORS_FINALE,
       ]).setPercent(0.9573),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.WanderersTroupe).setPercent(0.9567),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.WANDERERS_TROUPE).setPercent(0.9567),
       new CharacterArtifactSetRecommendationWithIds([
-        ArtifactSetIds.ShimenawasReminiscence,
-        ArtifactSetIds.GladiatorsFinale
+        ARTIFACT_SETS.SHIMENAWAS_REMINISCENCE,
+        ARTIFACT_SETS.GLADIATORS_FINALE,
       ]).setPercent(0.9516),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ThunderingFury).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.THUNDERING_FURY).setNotes([
         "Уменьшение времени отката элементального навыка позволяет использовать его чаще и наносить больше урона.",
         "Так как Инеффа играет через реакцию Лунный заряд, ей подойдёт бонус от 4 предметов.",
       ]).setPercent(0.9245),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.TenacityOfTheMillelith).setPercent(0.9051),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GoldenTroupe).setPercent(0.8997),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.EmblemOfSeveredFate).setPercent(0.8785),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.TENACITY_OF_THE_MILLELITH).setPercent(0.9051),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GOLDEN_TROUPE).setPercent(0.8997),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.EMBLEM_OF_SEVERED_FATE).setPercent(0.8785),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage),
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes(["от 60%"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["от 120%"]),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes(["от 2000"]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["от 150"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes(["от 60%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["от 120%"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes(["от 2000"]),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes(["от 150"]),
       ],
     },
   ]))
@@ -84,7 +84,7 @@ export default new CharacterRecommendations(CharacterIds.Ineffa)
   .setSquads(CharacterSquadRecommendations.init([
     [
       new CharacterSquadCharacterRecommendation(CharacterIds.Ineffa),
-      new CharacterSquadElementRecommendation(ElementIds.Hydro),
+      new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
     ],
     [],
   ]))

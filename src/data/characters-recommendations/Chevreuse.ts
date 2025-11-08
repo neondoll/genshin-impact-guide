@@ -1,6 +1,6 @@
 import { artifactSetById } from "./_help";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -10,7 +10,7 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -19,21 +19,21 @@ import weapons from "../weapons";
 export default new CharacterRecommendations(CharacterIds.Chevreuse)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.NoblesseOblige),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.SongOfDaysPast).setDescription("Не рекомендуется, слишком нестабильна и требует овер хил"),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ScrollOfTheHeroOfCinderCity).setDescription(`Если ${artifactSetById(ArtifactSetIds.NoblesseOblige)} занята`),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.EmblemOfSeveredFate).setDescription(`Если ${artifactSetById(ArtifactSetIds.NoblesseOblige)} и ${artifactSetById(ArtifactSetIds.ScrollOfTheHeroOfCinderCity)} заняты`),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.NOBLESSE_OBLIGE),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.SONG_OF_DAYS_PAST).setDescription("Не рекомендуется, слишком нестабильна и требует овер хил"),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.SCROLL_OF_THE_HERO_OF_CINDER_CITY).setDescription(`Если ${artifactSetById(ARTIFACT_SETS.NOBLESSE_OBLIGE)} занята`),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.EMBLEM_OF_SEVERED_FATE).setDescription(`Если ${artifactSetById(ARTIFACT_SETS.NOBLESSE_OBLIGE)} и ${artifactSetById(ARTIFACT_SETS.SCROLL_OF_THE_HERO_OF_CINDER_CITY)} заняты`),
     ],
     {
-      [ArtifactSlotIds.Sands]: [new CharacterArtifactStatRecommendation(StatIds.HpPercentage)],
-      [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendation(StatIds.HpPercentage)],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setDescription(`Если в руках ${weapons[WeaponIds.FavoniusLance].title}`),
+      [ARTIFACT_SLOTS.SANDS]: [new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE)],
+      [ARTIFACT_SLOTS.GOBLET]: [new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE)],
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setDescription(`Если в руках ${weapons[WeaponIds.FavoniusLance].title}`),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE),
       ],
     },
   ]))

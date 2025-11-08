@@ -1,11 +1,8 @@
-import type { StatId } from "@/types/stat";
+import type { Stat } from "@/types/stat";
 import { Badge } from "@/components/ui/badge";
-import { selectStatById } from "@/features/stats/selectors";
 
-export default function StatBadge({ statId }: { statId: StatId }) {
-  const stat = selectStatById(statId);
-
+export default function StatBadge({ statName }: { statName: Stat["name"] }) {
   return (
-    <Badge children={stat.name} className="text-center text-pretty whitespace-normal" variant="secondary" />
+    <Badge children={statName} className="text-center text-pretty whitespace-normal" variant="secondary" />
   );
 }

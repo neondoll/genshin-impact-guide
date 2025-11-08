@@ -1,12 +1,12 @@
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { StatsCrit } from "./_help";
 import { VideoSourceIds } from "@/enums/video-source";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.ArchaicPetra)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.ARCHAIC_PETRA)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.Albedo),
     new ArtifactSetCharacterRecommendation(CharacterIds.Ningguang).setIsBetter(),
@@ -15,9 +15,9 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.ArchaicPetra)
     new ArtifactSetCharacterRecommendation(CharacterIds.Zhongli).setIsBetter(),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.DefPercentage, StatIds.EnergyRecharge, StatIds.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [StatIds.DefPercentage, StatIds.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [...StatsCrit, StatIds.HpPercentage],
-    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.ElementalMastery, StatIds.EnergyRecharge],
+    [ARTIFACT_SLOTS.SANDS]: [STATS.DEF_PERCENTAGE, STATS.ENERGY_RECHARGE, STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.GOBLET]: [STATS.DEF_PERCENTAGE, STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.CIRCLET]: [...StatsCrit, STATS.HP_PERCENTAGE],
+    additional: [...StatsCrit, STATS.ATK_PERCENTAGE, STATS.ELEMENTAL_MASTERY, STATS.ENERGY_RECHARGE],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

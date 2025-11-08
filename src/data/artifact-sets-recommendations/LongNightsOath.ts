@@ -1,8 +1,8 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
 import { CharacterIds } from "@/enums/character";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.LongNightsOath)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.LONG_NIGHTS_OATH)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.Varesa).setNotes([
       "Варесе будет очень полезно увеличение урона атак в падении, которые она использует. Поскольку она часто "

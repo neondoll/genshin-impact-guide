@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
 import {
   CharacterArtifactRecommendations, CharacterArtifactSetRecommendationWithId, CharacterArtifactStatRecommendation,
@@ -7,8 +7,8 @@ import {
   CharacterSquadOtherRecommendation, CharacterSquadRecommendations, CharacterTalentLevelingRecommendation,
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
-import { ElementIds } from "@/enums/element";
-import { StatIds } from "@/enums/stat";
+import { ELEMENTS } from "@/constants/elements";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -16,22 +16,22 @@ import { WeaponIds } from "@/enums/weapon";
 export default new CharacterRecommendations(CharacterIds.Nefer)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.NightOfTheSkysUnveiling).setIsBetter(),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.MarechausseeHunter),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GildedDreams),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.FlowerOfParadiseLost),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.NIGHT_OF_THE_SKYS_UNVEILING).setIsBetter(),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.MARECHAUSSEE_HUNTER),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GILDED_DREAMS),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.FLOWER_OF_PARADISE_LOST),
     ],
     {
-      [ArtifactSlotIds.Sands]: [new CharacterArtifactStatRecommendation(StatIds.ElementalMastery)],
-      [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendation(StatIds.ElementalMastery)],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+      [ARTIFACT_SLOTS.SANDS]: [new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY)],
+      [ARTIFACT_SLOTS.GOBLET]: [new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY)],
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes(["Приоритетно"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["Приоритетно"]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes(["Приоритетно"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["Приоритетно"]),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY),
       ],
     },
   ]))
@@ -48,8 +48,8 @@ export default new CharacterRecommendations(CharacterIds.Nefer)
   .setSquads(CharacterSquadRecommendations.init([
     [
       new CharacterSquadCharacterRecommendation(CharacterIds.Nefer),
-      new CharacterSquadElementRecommendation(ElementIds.Dendro),
-      new CharacterSquadElementRecommendation(ElementIds.Hydro),
+      new CharacterSquadElementRecommendation(ELEMENTS.DENDRO),
+      new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
       new CharacterSquadOtherRecommendation("Саппорт"),
     ],
     [

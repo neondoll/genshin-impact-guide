@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
 import type { ArtifactStatRecommendationsProps } from "./types";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
-import { cn, numberFormatPercent } from "@/lib/utils";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
+import { cn, formatPercent } from "@/lib/utils";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatBadge from "../badges/stat-badge";
+import { selectStatById } from "@/features/stats/selectors.ts";
 
 export default function ArtifactStatRecommendations({ recommendations }: ArtifactStatRecommendationsProps) {
   const [hasDescription, setHasDescription] = useState(false);
@@ -55,58 +56,62 @@ export default function ArtifactStatRecommendations({ recommendations }: Artifac
       </TableHeader>
       <TableBody>
         {recommendationsKeys.map((recommendationsKey) => {
-          return recommendations[recommendationsKey].map((recommendation, index) => (
-            <TableRow className="hover:bg-inherit" key={`${recommendationsKey}-${recommendation.id}`}>
-              {index === 0 && (
-                <TableHead className="p-2 text-center" rowSpan={recommendations[recommendationsKey].length}>
-                  {recommendationsKey === ArtifactSlotIds.Sands && "Часы"}
-                  {recommendationsKey === ArtifactSlotIds.Goblet && "Кубок"}
-                  {recommendationsKey === ArtifactSlotIds.Circlet && "Корона"}
-                  {recommendationsKey === "additional" && "Доп."}
-                </TableHead>
-              )}
-              <TableCell className="text-pretty whitespace-normal">
-                <StatBadge statId={recommendation.id} />
-              </TableCell>
-              {hasPercent && (
-                <TableCell
-                  children={recommendation.percent !== undefined ? numberFormatPercent(recommendation.percent, 1) : ""}
-                  className={cn(recommendation.percent !== undefined && {
-                    "text-green-500": recommendation.percent >= 0.5,
-                    "text-yellow-500": recommendation.percent >= 0.25 && recommendation.percent < 0.5,
-                    "text-red-500": recommendation.percent < 0.25,
-                  })}
-                />
-              )}
-              {hasUsePercent && (
-                <TableCell
-                  children={recommendation.use_percent !== undefined ? numberFormatPercent(recommendation.use_percent, 1) : ""}
-                  className={cn(
-                    "text-center",
-                    recommendation.use_percent !== undefined && {
-                      "text-green-500": recommendation.use_percent >= 0.5,
-                      "text-yellow-500": recommendation.use_percent >= 0.25 && recommendation.use_percent < 0.5,
-                      "text-red-500": recommendation.use_percent < 0.25,
-                    },
-                  )}
-                />
-              )}
-              {hasDescription && (
-                <TableCell children={recommendation.description} className="text-pretty whitespace-normal" />
-              )}
-              {hasNotes && (
+          return recommendations[recommendationsKey].map((recommendation, index) => {
+            const stat = selectStatById(recommendation.id);
+
+            return (
+              <TableRow className="hover:bg-inherit" key={`${recommendationsKey}-${recommendation.id}`}>
+                {index === 0 && (
+                  <TableHead className="p-2 text-center" rowSpan={recommendations[recommendationsKey].length}>
+                    {recommendationsKey === ARTIFACT_SLOTS.SANDS && "Часы"}
+                    {recommendationsKey === ARTIFACT_SLOTS.GOBLET && "Кубок"}
+                    {recommendationsKey === ARTIFACT_SLOTS.CIRCLET && "Корона"}
+                    {recommendationsKey === "additional" && "Доп."}
+                  </TableHead>
+                )}
                 <TableCell className="text-pretty whitespace-normal">
-                  {recommendation.notes !== undefined && (
-                    <ul className="ml-4 list-outside list-disc">
-                      {recommendation.notes.map((note, index) => (
-                        <li dangerouslySetInnerHTML={{ __html: note }} key={index} />
-                      ))}
-                    </ul>
-                  )}
+                  {stat && <StatBadge statName={stat.name} />}
                 </TableCell>
-              )}
-            </TableRow>
-          ));
+                {hasPercent && (
+                  <TableCell
+                    children={recommendation.percent !== undefined ? formatPercent(recommendation.percent, { minimumFractionDigits: 1 }) : ""}
+                    className={cn(recommendation.percent !== undefined && {
+                      "text-green-500": recommendation.percent >= 0.5,
+                      "text-yellow-500": recommendation.percent >= 0.25 && recommendation.percent < 0.5,
+                      "text-red-500": recommendation.percent < 0.25,
+                    })}
+                  />
+                )}
+                {hasUsePercent && (
+                  <TableCell
+                    children={recommendation.use_percent !== undefined ? formatPercent(recommendation.use_percent, { minimumFractionDigits: 1 }) : ""}
+                    className={cn(
+                      "text-center",
+                      recommendation.use_percent !== undefined && {
+                        "text-green-500": recommendation.use_percent >= 0.5,
+                        "text-yellow-500": recommendation.use_percent >= 0.25 && recommendation.use_percent < 0.5,
+                        "text-red-500": recommendation.use_percent < 0.25,
+                      },
+                    )}
+                  />
+                )}
+                {hasDescription && (
+                  <TableCell children={recommendation.description} className="text-pretty whitespace-normal" />
+                )}
+                {hasNotes && (
+                  <TableCell className="text-pretty whitespace-normal">
+                    {recommendation.notes !== undefined && (
+                      <ul className="ml-4 list-outside list-disc">
+                        {recommendation.notes.map((note, index) => (
+                          <li dangerouslySetInnerHTML={{ __html: note }} key={index} />
+                        ))}
+                      </ul>
+                    )}
+                  </TableCell>
+                )}
+              </TableRow>
+            );
+          });
         })}
       </TableBody>
     </Table>

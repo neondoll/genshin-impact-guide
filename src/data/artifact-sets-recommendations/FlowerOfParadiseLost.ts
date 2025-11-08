@@ -1,20 +1,20 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { VideoSourceIds } from "@/enums/video-source";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.FlowerOfParadiseLost)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.FLOWER_OF_PARADISE_LOST)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.KukiShinobu).setIsBetter(),
     new ArtifactSetCharacterRecommendation(CharacterIds.Nilou).setIsBetter(),
     new ArtifactSetCharacterRecommendation(CharacterIds.RaidenShogun).setIsBetter(),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.ElementalMastery, StatIds.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [StatIds.ElementalMastery, StatIds.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [StatIds.ElementalMastery, StatIds.HpPercentage],
-    additional: [StatIds.ElementalMastery, StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ARTIFACT_SLOTS.SANDS]: [STATS.ELEMENTAL_MASTERY, STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.GOBLET]: [STATS.ELEMENTAL_MASTERY, STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.CIRCLET]: [STATS.ELEMENTAL_MASTERY, STATS.HP_PERCENTAGE],
+    additional: [STATS.ELEMENTAL_MASTERY, STATS.ENERGY_RECHARGE, STATS.HP_PERCENTAGE],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

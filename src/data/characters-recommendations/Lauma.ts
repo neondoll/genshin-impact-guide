@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -15,8 +15,8 @@ import {
 import { CharacterIds } from "@/enums/character";
 import { elementalReactionById } from "@/features/elemental-reactions/help";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";
-import { ElementIds } from "@/enums/element";
-import { StatIds } from "@/enums/stat";
+import { ELEMENTS } from "@/constants/elements";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -26,29 +26,29 @@ import talents from "../talents";
 export default new CharacterRecommendations(CharacterIds.Lauma)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GildedDreams),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.DeepwoodMemories),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.SilkenMoonsSerenade),
-      new CharacterArtifactSetRecommendationWithIds([ArtifactSetIds.GildedDreams, ArtifactSetIds.WanderersTroupe]),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GILDED_DREAMS),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.DEEPWOOD_MEMORIES),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.SILKEN_MOONS_SERENADE),
+      new CharacterArtifactSetRecommendationWithIds([ARTIFACT_SETS.GILDED_DREAMS, ARTIFACT_SETS.WANDERERS_TROUPE]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery),
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["Лучше"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes(["Лучше"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["~ 1100"]),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["~ 160%-200%"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes(["~ 1100"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes(["~ 160%-200%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
     },
   ]))
@@ -57,18 +57,18 @@ export default new CharacterRecommendations(CharacterIds.Lauma)
   .setSquads({
     [elementalReactionById(ElementalReactionIds.Bloom)]: CharacterSquadRecommendations.init([
       [
-        new CharacterSquadElementRecommendation(ElementIds.Hydro),
+        new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
         new CharacterSquadCharacterRecommendation(CharacterIds.Nilou),
         new CharacterSquadCharacterRecommendation(CharacterIds.Lauma),
-        new CharacterSquadElementRecommendation(ElementIds.Dendro),
+        new CharacterSquadElementRecommendation(ELEMENTS.DENDRO),
       ],
       {
-        [`${elements[ElementIds.Hydro].name} герой`]: [
+        [`${elements[ELEMENTS.HYDRO].name} герой`]: [
           new CharacterSquadCharacterRecommendation(CharacterIds.Barbara),
           new CharacterSquadCharacterRecommendation(CharacterIds.SangonomiyaKokomi),
           new CharacterSquadCharacterRecommendation(CharacterIds.Xingqiu),
         ],
-        [`${elements[ElementIds.Dendro].name} герой`]: [
+        [`${elements[ELEMENTS.DENDRO].name} герой`]: [
           new CharacterSquadCharacterRecommendation(CharacterIds.Baizhu),
           new CharacterSquadCharacterRecommendation(CharacterIds.Nahida),
           new CharacterSquadCharacterRecommendation(CharacterIds.Yaoyao),
@@ -78,12 +78,12 @@ export default new CharacterRecommendations(CharacterIds.Lauma)
     [elementalReactionById(ElementalReactionIds.Burgeon)]: CharacterSquadRecommendations.init([
       [
         new CharacterSquadCharacterRecommendation(CharacterIds.Lauma),
-        new CharacterSquadElementRecommendation(ElementIds.Hydro),
-        new CharacterSquadElementRecommendation(ElementIds.Pyro),
+        new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
+        new CharacterSquadElementRecommendation(ELEMENTS.PYRO),
         [
-          new CharacterSquadElementRecommendation(ElementIds.Dendro),
-          new CharacterSquadElementRecommendation(ElementIds.Hydro),
-          new CharacterSquadElementRecommendation(ElementIds.Pyro),
+          new CharacterSquadElementRecommendation(ELEMENTS.DENDRO),
+          new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
+          new CharacterSquadElementRecommendation(ELEMENTS.PYRO),
         ],
       ],
       [],
@@ -91,12 +91,12 @@ export default new CharacterRecommendations(CharacterIds.Lauma)
     [elementalReactionById(ElementalReactionIds.Hyperbloom)]: CharacterSquadRecommendations.init([
       [
         new CharacterSquadCharacterRecommendation(CharacterIds.Lauma),
-        new CharacterSquadElementRecommendation(ElementIds.Hydro),
-        new CharacterSquadElementRecommendation(ElementIds.Electro),
+        new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
+        new CharacterSquadElementRecommendation(ELEMENTS.ELECTRO),
         [
-          new CharacterSquadElementRecommendation(ElementIds.Dendro),
-          new CharacterSquadElementRecommendation(ElementIds.Hydro),
-          new CharacterSquadElementRecommendation(ElementIds.Electro),
+          new CharacterSquadElementRecommendation(ELEMENTS.DENDRO),
+          new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
+          new CharacterSquadElementRecommendation(ELEMENTS.ELECTRO),
         ],
       ],
       [],

@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -9,7 +9,7 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -17,30 +17,30 @@ import { WeaponIds } from "@/enums/weapon";
 export default new CharacterRecommendations(CharacterIds.Neuvillette)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.MarechausseeHunter).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.MARECHAUSSEE_HUNTER).setNotes([
         "Лучший комплект для Нёвиллета, так как увеличивает урон заряженной атаки и повышает шанс крит. попадания в сумме на 36%.",
         "Так как Нёвиллет при заряженной атаке теряет HP, он выполняет условие 4 предметов.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [new CharacterArtifactStatRecommendation(StatIds.HpPercentage)],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setNotes(["Если в команде Фурина"]),
-        new CharacterArtifactStatRecommendation(StatIds.HydroDmgBonus),
+      [ARTIFACT_SLOTS.SANDS]: [new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE)],
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setNotes(["Если в команде Фурина"]),
+        new CharacterArtifactStatRecommendation(STATS.HYDRO_DMG_BONUS),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["Чаще всего"]),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setNotes(["Иногда, особенно с Сигной"]),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["Чаще всего"]),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setNotes(["Иногда, особенно с Сигной"]),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setNotes(["от 30000"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setNotes(["от 30000"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes([
           "от 65% в обычной ситуации",
           "от 35% при использовании полного комплекта Охотник Сумеречного двора и стремимся к 64%",
         ]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["от 160%"]),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["от 160%"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes([
           "Специально не охотиться",
           "от 120%",
         ]),

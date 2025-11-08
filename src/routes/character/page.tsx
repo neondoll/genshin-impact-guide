@@ -1,53 +1,37 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { CharacterId } from "@/types/character";
+import type { CharacterLoaderReturn } from "./loader";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import { Badge } from "@/components/ui/badge";
 import {
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectCharacterById } from "@/features/characters/selectors";
-import { selectCharacterRecommendationsById } from "@/features/characters-recommendations/selectors";
-import { selectElementById } from "@/features/elements/selectors";
-import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import CharacterRecommendations from "@/organisms/character-recommendations";
 import CharacterRoleBadge from "@/organisms/badges/character-role-badge";
 import Paths from "@/constants/paths";
 import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
-import { selectWeaponById } from "@/features/weapons/selectors.ts";
-import WeaponBadge from "@/organisms/badges/weapon-badge.tsx";
+import WeaponBadge from "@/organisms/badges/weapon-badge";
+import { selectCharacterRoleById } from "@/features/character-roles/selectors.ts";
 
-/* eslint-disable-next-line react-refresh/only-export-components */
-export function loader({ params }: { params: Record<string, string | undefined> }) {
-  const character = selectCharacterById(params.characterId as CharacterId);
-  const characterElement = selectElementById(character.element_id);
-  const characterRecommendations = selectCharacterRecommendationsById(character.id);
-  const characterSignatureWeapon = character.signature_weapon_id
-    ? selectWeaponById(character.signature_weapon_id)
-    : undefined;
-  const characterWeaponType = character.weapon_type_id ? selectWeaponTypeById(character.weapon_type_id) : undefined;
-
-  if (character.rarity) {
-    window.document.documentElement.classList.add(`rarity-${character.rarity}`);
-  }
-
-  return { character, characterElement, characterRecommendations, characterSignatureWeapon, characterWeaponType };
-}
-
-export default function Character() {
+export default function CharacterPage() {
   const {
     character,
     characterElement,
     characterRecommendations,
     characterSignatureWeapon,
     characterWeaponType,
-  } = useLoaderData<ReturnType<typeof loader>>();
+  } = useLoaderData<CharacterLoaderReturn>();
 
-  return (
+  return character && (
     <Container className="flex flex-col gap-2 md:gap-4">
       <Breadcrumb>
         <BreadcrumbList className="gap-1 text-xs sm:gap-2">
@@ -80,17 +64,15 @@ export default function Character() {
         <div>
           <div className="flex gap-x-1 items-center mb-1 text-[2rem]/10.5">
             <h1 children={Paths.Character.title(character)} />
-            <img alt="element" className="shrink-0 size-7" src={characterElement.icon_src} />
+            {characterElement && <img alt="element" className="shrink-0 size-7" src={characterElement.iconSrc} />}
           </div>
-          {character.rarity !== undefined && <RarityStarsImg rarity={character.rarity} />}
+          {character.rarity && <RarityStarsImg rarity={character.rarity} />}
           <div className="flex flex-wrap gap-x-1 gap-y-2 mt-5">
-            {character.rarity !== undefined && (
-              <Badge children={`${character.rarity}★`} className="text-xs/5" variant="secondary" />
-            )}
-            {characterWeaponType !== undefined && (
+            {character.rarity && <Badge children={`${character.rarity}★`} className="text-xs/5" variant="secondary" />}
+            {characterWeaponType && (
               <Badge children={characterWeaponType.abbr} className="text-xs/5" variant="secondary" />
             )}
-            <Badge children={characterElement.name} className="text-xs/5" variant="secondary" />
+            {characterElement && <Badge children={characterElement.name} className="text-xs/5" variant="secondary" />}
           </div>
         </div>
       </div>
@@ -101,17 +83,19 @@ export default function Character() {
               <TableHead children="Имя:" className="p-2 text-right" />
               <TableCell children={character.name} className="p-2" />
             </TableRow>
-            <TableRow className="hover:bg-inherit">
-              <TableHead children="Элемент:" className="p-2 text-right" />
-              <TableCell children={characterElement.name} className="p-2" />
-            </TableRow>
-            {characterWeaponType !== undefined && (
+            {characterElement && (
+              <TableRow className="hover:bg-inherit">
+                <TableHead children="Элемент:" className="p-2 text-right" />
+                <TableCell children={characterElement.name} className="p-2" />
+              </TableRow>
+            )}
+            {characterWeaponType && (
               <TableRow className="hover:bg-inherit">
                 <TableHead children="Оружие:" className="p-2 text-right" />
                 <TableCell children={characterWeaponType.abbr} className="p-2" />
               </TableRow>
             )}
-            {characterSignatureWeapon !== undefined && (
+            {characterSignatureWeapon && (
               <TableRow className="hover:bg-inherit">
                 <TableHead children="Сигнатурное оружие:" className="p-2 text-right" />
                 <TableCell className="p-2">
@@ -124,14 +108,24 @@ export default function Character() {
                 </TableCell>
               </TableRow>
             )}
-            {character.role_ids !== undefined && (
+            {character.role_ids && (
               <TableRow className="hover:bg-inherit">
                 <TableHead children="Роли:" className="p-2 text-right" />
                 <TableCell className="p-2">
                   <div className="flex flex-wrap gap-2">
-                    {character.role_ids.map((characterRoleId) => (
-                      <CharacterRoleBadge characterRoleId={characterRoleId} key={characterRoleId} />
-                    ))}
+                    {character.role_ids.map((characterRoleId) => {
+                      const characterRole = selectCharacterRoleById(characterRoleId);
+
+                      return characterRole && (
+                        <CharacterRoleBadge
+                          characterRoleDescription={characterRole.description}
+                          characterRoleId={characterRoleId}
+                          characterRoleImgSrc={characterRole.imageSrc}
+                          characterRoleName={characterRole.name}
+                          key={characterRoleId}
+                        />
+                      );
+                    })}
                   </div>
                 </TableCell>
               </TableRow>
@@ -139,9 +133,7 @@ export default function Character() {
           </TableBody>
         </Table>
       </Card>
-      {characterRecommendations !== undefined && (
-        <CharacterRecommendations recommendations={characterRecommendations} />
-      )}
+      {characterRecommendations && <CharacterRecommendations recommendations={characterRecommendations} />}
     </Container>
   );
 }

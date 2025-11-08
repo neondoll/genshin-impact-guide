@@ -1,11 +1,11 @@
-import type { ArtifactSlot as Type } from "@/types/artifact-slot";
+import type { ArtifactSlot as Type } from "@/types/artifact";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { ArtifactSlot as Class } from "@/classes/artifact-slot";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
 
 export default {
-  [ArtifactSlotIds.Circlet]: new Class(ArtifactSlotIds.Circlet, "Корона разума", 5),
-  [ArtifactSlotIds.Flower]: new Class(ArtifactSlotIds.Flower, "Цветок жизни", 1),
-  [ArtifactSlotIds.Goblet]: new Class(ArtifactSlotIds.Goblet, "Кубок пространства", 4),
-  [ArtifactSlotIds.Plume]: new Class(ArtifactSlotIds.Plume, "Перо смерти", 2),
-  [ArtifactSlotIds.Sands]: new Class(ArtifactSlotIds.Sands, "Пески времени", 3),
+  [ARTIFACT_SLOTS.CIRCLET]: new Class(ARTIFACT_SLOTS.CIRCLET, "Корона разума", 5),
+  [ARTIFACT_SLOTS.FLOWER]: new Class(ARTIFACT_SLOTS.FLOWER, "Цветок жизни", 1),
+  [ARTIFACT_SLOTS.GOBLET]: new Class(ARTIFACT_SLOTS.GOBLET, "Кубок пространства", 4),
+  [ARTIFACT_SLOTS.PLUME]: new Class(ARTIFACT_SLOTS.PLUME, "Перо смерти", 2),
+  [ARTIFACT_SLOTS.SANDS]: new Class(ARTIFACT_SLOTS.SANDS, "Пески времени", 3),
 } as Record<Type["id"], Type>;

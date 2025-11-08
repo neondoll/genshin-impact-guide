@@ -1,10 +1,10 @@
 import { Link, Outlet, useLocation, useNavigation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { AppSidebar, AppSidebarProvider, AppSidebarTrigger } from "../components/app-sidebar";
-import { cn } from "../lib/utils";
-import { ModeToggle } from "../components/mode-toggle";
-import Paths from "../constants/paths";
+import { AppSidebar, AppSidebarProvider, AppSidebarTrigger } from "@/components/app-sidebar";
+import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/components/mode-toggle";
+import Paths from "@/constants/paths";
 
 export default function Root() {
   const location = useLocation();

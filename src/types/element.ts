@@ -1,11 +1,19 @@
-import { type ElementIds } from "@/enums/element";
+import type { ELEMENTS } from "@/constants/elements";
+
+export type ElementId = typeof ELEMENTS[keyof typeof ELEMENTS];
 
 export interface Element {
   id: ElementId;
   name: string;
-  img_src: string;
-  icon_src: string;
-  icon_white_src: string;
+  imageSrc: string; // camelCase вместо snake_case
+  iconSrc: string; // camelCase вместо snake_case
+  iconWhiteSrc: string; // camelCase вместо snake_case
 }
 
-export type ElementId = typeof ElementIds[keyof typeof ElementIds];
+// Вспомогательные типы
+export interface ElementWithMetadata extends Element {
+  color: string;
+  description?: string;
+}
+
+export type ElementMap = Record<ElementId, Element>;

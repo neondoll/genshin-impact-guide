@@ -1,5 +1,6 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
+import { CHARACTER_ROLES } from "@/constants/character-roles";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -11,10 +12,9 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { CharacterRoleIds } from "@/enums/character-role";
 import { elementalReactionById } from "@/features/elemental-reactions/help";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -22,7 +22,7 @@ import characters from "../characters";
 
 type GameVariantkey = typeof GameVariantEnum[keyof typeof GameVariantEnum];
 
-const GameVariantEnum = { Dps: CharacterRoleIds.Dps, Support: CharacterRoleIds.Support } as const;
+const GameVariantEnum = { Dps: CHARACTER_ROLES.DPS, Support: CHARACTER_ROLES.SUPPORT } as const;
 
 const gameVariants: Record<GameVariantkey, string> = {
   [GameVariantEnum.Dps]: "Основной урон",
@@ -32,38 +32,38 @@ const gameVariants: Record<GameVariantkey, string> = {
 export default new CharacterRecommendations(CharacterIds.Mavuika)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ObsidianCodex).setIsBetter().setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.OBSIDIAN_CODEX).setIsBetter().setNotes([
         "Лучший комплект для Мавуики, поскольку увеличивает её урон и повышает шанс крит. попадания в сумме до 40%, позволяя сосредоточиться на крит. уроне в артефактах.",
         "Так как Мавуика обладает Благословением Ночного духа, она полностью реализует условия комплекта.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ScrollOfTheHeroOfCinderCity).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.SCROLL_OF_THE_HERO_OF_CINDER_CITY).setNotes([
         "Бонус 2 предметов является неважным для Мавуики, но бонус 4 предметов значительно повысит бонус элементального урона всему отряду.",
         "Стоит учитывать, что лучше всего комплект работает в команде с персонажами из Натлана.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes([
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes([
           `Гиперкерри | ${elementalReactionById(ElementalReactionIds.Overloaded)} - Всегда`,
           `${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)} - Лучше, если в отряде есть инструктор и отсутствует ${characters[CharacterIds.Bennett].name} или ${characters[CharacterIds.Iansan].name}`,
           `${gameVariants[GameVariantEnum.Support]} - Всегда`,
         ]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes([
           `${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)} - Всегда, если есть в команде ${characters[CharacterIds.Bennett].name} или ${characters[CharacterIds.Iansan].name} и мало МС в доп. статах`,
         ]),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.PyroDmgBonus).setNotes(["Всегда"]),
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.PYRO_DMG_BONUS).setNotes(["Всегда"]),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes([`Если играем в ${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes([`Если играем в ${elementalReactionById(ElementalReactionIds.Vaporize)} | ${elementalReactionById(ElementalReactionIds.Melt)}`]),
       ],
     },
   ]))

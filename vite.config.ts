@@ -12,26 +12,39 @@ export default defineConfig(({ mode }) => {
   return {
     base: "/genshin-impact-guide/",
     build: {
-      chunkSizeWarningLimit: 800,
-      minify: isProduction ? "terser" : "esbuild",
+      emptyOutDir: true,
+      manifest: true,
+      minify: isProduction ? "terser" : false,
       rollupOptions: {
         output: {
           assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
           chunkFileNames: "assets/js/[name]-[hash].js",
           entryFileNames: "assets/js/[name]-[hash].js",
-          manualChunks: { vendor: ["react", "react-dom"], ui: ["lucide-react"] },
+          manualChunks: {
+            "vendor-react": ["react", "react-dom"],
+            "vendor-state": ["@reduxjs/toolkit", "react-redux"],
+            "vendor-radix": [
+              "@radix-ui/react-accordion",
+              "@radix-ui/react-collapsible",
+              "@radix-ui/react-dialog",
+              "@radix-ui/react-dropdown-menu",
+              "@radix-ui/react-separator",
+              "@radix-ui/react-slot",
+              "@radix-ui/react-tabs",
+              "@radix-ui/react-tooltip",
+            ],
+          },
         },
       },
+      sourcemap: isAnalyze,
+      target: "es2022",
       terserOptions: isProduction ? { compress: { drop_console: true, drop_debugger: true } } : undefined,
     },
     plugins: [
       react(),
       tailwindcss(),
-      isAnalyze && visualizer({ brotliSize: true, filename: "dist/bundle-analysis.html", gzipSize: true, open: true }),
+      isAnalyze && visualizer({ filename: "dist/bundle-analysis.html", open: true }),
     ].filter(Boolean),
     resolve: { alias: { "@": path.resolve(__dirname, "./src") } },
-    // Оптимизации для dev сервера
-    server: { open: true, port: 3000 },
-    preview: { port: 4173 },
   };
 });

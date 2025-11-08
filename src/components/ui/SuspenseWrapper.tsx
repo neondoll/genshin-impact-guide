@@ -7,7 +7,7 @@ interface SuspenseWrapperProps {
 
 export function SuspenseWrapper({
   children,
-  fallback = <div className="animate-pulse">Loading...</div>
+  fallback = <div className="animate-pulse">Loading...</div>,
 }: SuspenseWrapperProps) {
   return <Suspense fallback={fallback}>{children}</Suspense>;
 }

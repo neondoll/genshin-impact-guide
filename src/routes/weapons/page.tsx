@@ -3,31 +3,25 @@ import { useEffect, useState } from "react";
 
 import type { Rarity } from "@/types/rarity";
 import type { WeaponTypeId } from "@/types/weapon-type";
+import type { WeaponsLoaderReturn } from "./loader";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
 import { Filter, FilterCheckbox, FilterGroup } from "@/organisms/filter";
-import { selectRaritiesByIds } from "@/features/rarities/selectors";
-import { selectWeaponsAll } from "@/features/weapons/selectors";
-import { selectWeaponTypesAll } from "@/features/weapon-types/selectors";
 import Paths from "@/constants/paths";
 import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 
-/* eslint-disable-next-line react-refresh/only-export-components */
-export function loader() {
-  const weapons = selectWeaponsAll();
-  const rarities = selectRaritiesByIds(weapons.map((weapon) => weapon.rarity));
-  const weaponTypes = selectWeaponTypesAll();
-
-  return { rarities, weapons, weaponTypes };
-}
-
-export default function Weapons() {
-  const { rarities, weapons, weaponTypes } = useLoaderData<ReturnType<typeof loader>>();
+export default function WeaponsPage() {
+  const { rarities, weapons, weaponTypes } = useLoaderData<WeaponsLoaderReturn>();
   const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
   const [filterWeaponTypeIds, setFilterWeaponTypeIds] = useState<WeaponTypeId[]>([]);
   const [filteredWeapons, setFilteredWeapons] = useState<typeof weapons>([]);
@@ -93,7 +87,7 @@ export default function Weapons() {
                 }}
                 value={weaponType.id}
               >
-                <img alt={weaponType.name} src={weaponType.image_src} />
+                <img alt={weaponType.name} src={weaponType.imageSrc} />
               </FilterCheckbox>
             ))}
           </div>

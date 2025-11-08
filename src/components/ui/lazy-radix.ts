@@ -4,19 +4,19 @@ import { lazy } from "react";
 export const LazyAccordion = lazy(() =>
   import("@radix-ui/react-accordion").then((module) => ({
     default: module.Accordion,
-  }))
+  })),
 );
 
 export const LazyDialog = lazy(() =>
   import("@radix-ui/react-dialog").then((module) => ({
     default: module.Dialog,
-  }))
+  })),
 );
 
 export const LazyTabs = lazy(() =>
   import("@radix-ui/react-tabs").then((module) => ({
     default: module.Tabs,
-  }))
+  })),
 );
 
 // Re-export остальных компонентов

@@ -1,6 +1,6 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
 import { CharacterIds } from "@/enums/character";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.ObsidianCodex)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.OBSIDIAN_CODEX)
   .setCharacters([new ArtifactSetCharacterRecommendation(CharacterIds.Varesa)]);

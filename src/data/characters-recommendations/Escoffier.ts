@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -9,7 +9,7 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { WeaponIds } from "@/enums/weapon";
 import artifactSets from "../artifact-sets";
@@ -18,36 +18,36 @@ import weapons from "../weapons";
 export default new CharacterRecommendations(CharacterIds.Escoffier)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GoldenTroupe).setIsBetter().setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GOLDEN_TROUPE).setIsBetter().setNotes([
         "Значительно увеличит урон элементального навыка Эскофье, особенно когда она не на поле.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.BlizzardStrayer).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.BLIZZARD_STRAYER).setNotes([
         "Комплект увеличит Крио урон и шанс крит. попадания Эскофье.",
         "Поскольку Эскофье играет в отрядах с Крио и Гидро персонажами, она выполняет условие комплекта.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes([
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes([
           "Личный урон важнее, чем ульта по откату",
         ]),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes([
           "В меньшинстве случаев, когда есть Фурина, лечение нужно и лечить больше некому",
         ]),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CryoDmgBonus).setNotes(["В 99% случаев"]),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes(["В 1% случаев"]),
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRYO_DMG_BONUS).setNotes(["В 99% случаев"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes(["В 1% случаев"]),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["Почти всегда"]),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["Почти всегда"]),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes(["Приоритетно"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["Приоритетно"]),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes(["Приоритетно"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["Приоритетно"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE),
       ],
     },
   ]))
@@ -58,7 +58,7 @@ export default new CharacterRecommendations(CharacterIds.Escoffier)
     ["Восст. энергии", "110% - 115%"],
     ["Крит. шанс", "80%"],
     ["Крит. урон", "175%"],
-    ["Артефакты", artifactSets[ArtifactSetIds.GoldenTroupe].name],
+    ["Артефакты", artifactSets[ARTIFACT_SETS.GOLDEN_TROUPE].name],
   ])
   .setRequiredLevel(90)
   .setTalentLeveling([

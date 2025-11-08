@@ -1,36 +1,27 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { WeaponId } from "@/types/weapon";
+import type { WeaponLoaderReturn } from "./loader";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectWeaponById } from "@/features/weapons/selectors";
-import { selectWeaponTypeById } from "@/features/weapon-types/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import Paths from "@/constants/paths";
 import RarityStarsImg from "@/organisms/imgs/rarity-stars-img";
 import StatBadge from "@/organisms/badges/stat-badge";
 
-/* eslint-disable-next-line react-refresh/only-export-components */
-export function loader({ params }: { params: Record<string, string | undefined> }) {
-  const weapon = selectWeaponById(params.weaponId as WeaponId);
-  const weaponType = selectWeaponTypeById(weapon.type_id);
+export default function WeaponPage() {
+  const { weapon, weaponSecondaryStats, weaponType } = useLoaderData<WeaponLoaderReturn>();
 
-  if (weapon.rarity) {
-    window.document.documentElement.classList.add(`rarity-${weapon.rarity}`);
-  }
-
-  return { weapon, weaponType };
-}
-
-export default function Weapon() {
-  const { weapon, weaponType } = useLoaderData<ReturnType<typeof loader>>();
-
-  return (
+  return weapon && (
     <Container className="flex flex-col gap-2 md:gap-4">
       <Breadcrumb>
         <BreadcrumbList className="gap-1 text-xs sm:gap-2">
@@ -83,10 +74,12 @@ export default function Weapon() {
                   : weapon.source}
               </TableCell>
             </TableRow>
-            <TableRow className="hover:bg-inherit">
-              <TableHead children="Тип:" className="p-2 text-right whitespace-normal" />
-              <TableCell children={weaponType.abbr} className="p-2 whitespace-normal" />
-            </TableRow>
+            {weaponType && (
+              <TableRow className="hover:bg-inherit">
+                <TableHead children="Тип:" className="p-2 text-right whitespace-normal" />
+                <TableCell children={weaponType.abbr} className="p-2 whitespace-normal" />
+              </TableRow>
+            )}
             <TableRow className="hover:bg-inherit">
               <TableHead children="Базовая атака:" className="p-2 text-right whitespace-normal" />
               <TableCell
@@ -101,7 +94,7 @@ export default function Weapon() {
                 rowSpan={2}
               />
               <TableCell
-                children={<StatBadge statId={weapon.secondary_stats_id} />}
+                children={weaponSecondaryStats && <StatBadge statName={weaponSecondaryStats.name} />}
                 className="p-2 whitespace-normal"
               />
             </TableRow>

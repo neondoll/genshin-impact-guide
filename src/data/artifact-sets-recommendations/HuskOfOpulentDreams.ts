@@ -1,12 +1,12 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { StatsCrit } from "./_help";
 import { VideoSourceIds } from "@/enums/video-source";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.HuskOfOpulentDreams)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.HUSK_OF_OPULENT_DREAMS)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.Albedo),
     new ArtifactSetCharacterRecommendation(CharacterIds.AratakiItto).setIsBetter(),
@@ -14,9 +14,9 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.HuskOfOpulentDreams
     new ArtifactSetCharacterRecommendation(CharacterIds.YunJin),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.DefPercentage],
-    [ArtifactSlotIds.Goblet]: [StatIds.DefPercentage, StatIds.GeoDmgBonus],
-    [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatIds.DefPercentage, StatIds.EnergyRecharge],
+    [ARTIFACT_SLOTS.SANDS]: [STATS.DEF_PERCENTAGE],
+    [ARTIFACT_SLOTS.GOBLET]: [STATS.DEF_PERCENTAGE, STATS.GEO_DMG_BONUS],
+    [ARTIFACT_SLOTS.CIRCLET]: StatsCrit,
+    additional: [...StatsCrit, STATS.DEF_PERCENTAGE, STATS.ENERGY_RECHARGE],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

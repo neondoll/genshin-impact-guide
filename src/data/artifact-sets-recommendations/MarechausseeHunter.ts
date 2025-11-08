@@ -1,12 +1,12 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { StatsCrit, StatsElementDamageBonus } from "./_help";
 import { VideoSourceIds } from "@/enums/video-source";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.MarechausseeHunter)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.MARECHAUSSEE_HUNTER)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.Lyney).setIsBetter(),
     new ArtifactSetCharacterRecommendation(CharacterIds.Neuvillette).setIsBetter(),
@@ -14,9 +14,9 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.MarechausseeHunter)
     new ArtifactSetCharacterRecommendation(CharacterIds.Wriothesley).setIsBetter(),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage, StatIds.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [...StatsElementDamageBonus, StatIds.AtkPercentage],
-    [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ARTIFACT_SLOTS.SANDS]: [STATS.ATK_PERCENTAGE, STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.GOBLET]: [...StatsElementDamageBonus, STATS.ATK_PERCENTAGE],
+    [ARTIFACT_SLOTS.CIRCLET]: StatsCrit,
+    additional: [...StatsCrit, STATS.ATK_PERCENTAGE, STATS.ENERGY_RECHARGE, STATS.HP_PERCENTAGE],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

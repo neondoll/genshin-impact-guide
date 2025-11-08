@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -12,7 +12,7 @@ import {
 import { CharacterIds } from "@/enums/character";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";
 import { elementalReactionLink } from "@/features/elemental-reactions/help";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -23,7 +23,7 @@ export default new CharacterRecommendations(CharacterIds.Xiangling)
       {
         [elementalReactionLink(ElementalReactionIds.Vaporize, "Пар")]: [
           new CharacterArtifactSetRecommendationWithId(
-            ArtifactSetIds.EmblemOfSeveredFate
+            ARTIFACT_SETS.EMBLEM_OF_SEVERED_FATE,
           )
             .setIsBetter()
             .setNotes([
@@ -32,22 +32,22 @@ export default new CharacterRecommendations(CharacterIds.Xiangling)
             ])
             .setPercent(1.0),
           new CharacterArtifactSetRecommendationWithId(
-            ArtifactSetIds.CrimsonWitchOfFlames
+            ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES,
           ).setNotes([
             "Если Сян Лин вызывает реакции (например, Пар), ей будет "
             + "полезен бонус 4 предметов.",
             "Лучше всего работает с Гидро и/или Крио персонажами в отряде.",
           ]).setPercent(0.9954),
           new CharacterArtifactSetRecommendationWithIds([
-            ArtifactSetIds.CrimsonWitchOfFlames,
-            ArtifactSetIds.EmblemOfSeveredFate,
+            ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES,
+            ARTIFACT_SETS.EMBLEM_OF_SEVERED_FATE,
           ]).setNotes([
             "Увеличивает Пиро урон и скорость накопления взрыва стихии.",
           ]).setPercent(0.9277),
         ],
         [elementalReactionLink(ElementalReactionIds.Overloaded, "Перегрузка")]: [
           new CharacterArtifactSetRecommendationWithId(
-            ArtifactSetIds.EmblemOfSeveredFate
+            ARTIFACT_SETS.EMBLEM_OF_SEVERED_FATE,
           )
             .setIsBetter()
             .setNotes([
@@ -56,57 +56,57 @@ export default new CharacterRecommendations(CharacterIds.Xiangling)
             ])
             .setPercent(1.0),
           new CharacterArtifactSetRecommendationWithId(
-            ArtifactSetIds.CrimsonWitchOfFlames
+            ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES,
           ).setNotes([
             "Если Сян Лин вызывает реакции (например, Пар), ей будет "
             + "полезен бонус 4 предметов.",
             "Лучше всего работает с Гидро и/или Крио персонажами в отряде.",
           ]).setPercent(0.9595),
           new CharacterArtifactSetRecommendationWithIds([
-            ArtifactSetIds.CrimsonWitchOfFlames,
-            ArtifactSetIds.EmblemOfSeveredFate,
+            ARTIFACT_SETS.CRIMSON_WITCH_OF_FLAMES,
+            ARTIFACT_SETS.EMBLEM_OF_SEVERED_FATE,
           ]).setNotes([
             "Увеличивает Пиро урон и скорость накопления взрыва стихии.",
           ]).setPercent(0.9408),
         ],
       },
       {
-        [ArtifactSlotIds.Sands]: [
-          new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes([
+        [ARTIFACT_SLOTS.SANDS]: [
+          new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes([
             "Ставим если без этого показателя в часах мы не закрываем требования",
           ]),
-          new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes([
+          new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes([
             `Ставим если без ВЭ в часах мы закрываем требования для отрядов `
             + `без ${elementalReactionLink(ElementalReactionIds.Vaporize, "Пара")}`,
           ]),
-          new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes([
+          new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes([
             `Ставим если без ВЭ в часах мы закрываем требования для отрядов `
             + `с ${elementalReactionLink(ElementalReactionIds.Vaporize, "Паром")}`,
           ]),
         ],
-        [ArtifactSlotIds.Goblet]: [
-          new CharacterArtifactStatRecommendation(StatIds.PyroDmgBonus),
+        [ARTIFACT_SLOTS.GOBLET]: [
+          new CharacterArtifactStatRecommendation(STATS.PYRO_DMG_BONUS),
         ],
-        [ArtifactSlotIds.Circlet]: [
-          new CharacterArtifactStatRecommendation(StatIds.CritRate),
-          new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+        [ARTIFACT_SLOTS.CIRCLET]: [
+          new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+          new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
         ],
         additional: [
-          new CharacterArtifactStatRecommendation(StatIds.CritRate),
-          new CharacterArtifactStatRecommendation(StatIds.CritDMG),
-          new CharacterArtifactStatRecommendation(StatIds.AtkPercentage),
-          new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes([
+          new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+          new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
+          new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE),
+          new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes([
             "Приоритетно",
           ]),
-          new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes([
+          new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes([
             `Если играем в ${elementalReactionLink(
               ElementalReactionIds.Vaporize,
-              "Паре"
+              "Паре",
             )}`,
           ]),
         ],
       },
-    ])
+    ]),
   )
   .setKeyConstellations([3, 4])
   .setRequiredLevel("80/90")

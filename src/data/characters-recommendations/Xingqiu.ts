@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -9,7 +9,7 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -17,35 +17,35 @@ import { WeaponIds } from "@/enums/weapon";
 export default new CharacterRecommendations(CharacterIds.Xingqiu)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.EmblemOfSeveredFate).setIsBetter().setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.EMBLEM_OF_SEVERED_FATE).setIsBetter().setNotes([
         "Лучший комплект для Син Цю, так как повысит очень важное восстановление энергии и увеличит урон от взрыва стихии, который является основным талантом Син Цю.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.NoblesseOblige).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.NOBLESSE_OBLIGE).setNotes([
         "Увеличивает как урон Син Цю от взрыва стихии, так и силу атаки всего отряда.",
         "Рекомендуется, только если никто другой в команде не носит данный комплект артефактов.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setUsePercent(0.525),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setUsePercent(0.410),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.030),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setUsePercent(0.525),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setUsePercent(0.410),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.030),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.HydroDmgBonus).setUsePercent(0.844),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setUsePercent(0.108),
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.025),
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.HYDRO_DMG_BONUS).setUsePercent(0.844),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setUsePercent(0.108),
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.025),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setUsePercent(0.650),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setUsePercent(0.258),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setUsePercent(0.055),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setUsePercent(0.650),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setUsePercent(0.258),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setUsePercent(0.055),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes(["Приоритетно", "от 60%"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["Приоритетно", "от 120%"]),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes(["от 1400"]),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["от 220%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes(["Приоритетно", "от 60%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["Приоритетно", "от 120%"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes(["от 1400"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes(["от 220%"]),
       ],
     },
   ]))

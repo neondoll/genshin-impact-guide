@@ -30,7 +30,7 @@ export default function ReferencePointRecommendations({ recommendations }: Refer
   const recommendationsEntries = Object.entries(recommendations);
 
   return (
-    <Tabs defaultValue={recommendationsEntries[0][0]}>
+    <Tabs defaultValue={recommendationsEntries[0]?.[0]}>
       <TabsList className="flex flex-wrap w-full h-auto min-h-9">
         {recommendationsEntries.map(([key]) => (
           <TabsTrigger className="whitespace-pre" dangerouslySetInnerHTML={{ __html: key }} key={key} value={key} />

@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -9,7 +9,7 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -17,41 +17,41 @@ import { WeaponIds } from "@/enums/weapon";
 export default new CharacterRecommendations(CharacterIds.Layla)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.TenacityOfTheMillelith).setIsBetter().setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.TENACITY_OF_THE_MILLELITH).setIsBetter().setNotes([
         "Лучший комплект, так как бонус к HP повысит прочность щита и урон Лайлы.",
         "Лайла будет повышать атаку остальных членов отряда, что отлично подходит ей как персонажу поддержки.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.NoblesseOblige).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.NOBLESSE_OBLIGE).setNotes([
         "Увеличивает урон от взрыва стихии Лайлы и увеличивает силу атаки другим членам отряда.",
         "Рекомендуется, если никто другой в отряде не носит данный комплект.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.BlizzardStrayer).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.BLIZZARD_STRAYER).setNotes([
         "Рекомендуется, только если хочется получить больше урона от Лайлы.",
         "Рекомендуется иметь в отряде Гидро и других Крио персонажей для поддержания Заморозки.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.907),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setUsePercent(0.051),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setUsePercent(0.025),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.907),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setUsePercent(0.051),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setUsePercent(0.025),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.902),
-        new CharacterArtifactStatRecommendation(StatIds.CryoDmgBonus).setUsePercent(0.058),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setUsePercent(0.015),
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.902),
+        new CharacterArtifactStatRecommendation(STATS.CRYO_DMG_BONUS).setUsePercent(0.058),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setUsePercent(0.015),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setUsePercent(0.860),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setUsePercent(0.080),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setUsePercent(0.035),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setUsePercent(0.860),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setUsePercent(0.080),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setUsePercent(0.035),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.HpPercentage).setNotes(["Приоритетно", "от 25000"]),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["от 120%"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes(["от 50%"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["от 120%"]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.HP_PERCENTAGE).setNotes(["Приоритетно", "от 25000"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes(["от 120%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes(["от 50%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["от 120%"]),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes([
           "от 250 (только при игре через реакции)",
         ]),
       ],

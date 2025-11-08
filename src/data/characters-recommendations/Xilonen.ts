@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -9,28 +9,28 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Xilonen)
   .setArtifacts(CharacterArtifactRecommendations.init([
-    [new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ScrollOfTheHeroOfCinderCity)],
+    [new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.SCROLL_OF_THE_HERO_OF_CINDER_CITY)],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.DefPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.DEF_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE),
       ],
-      [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendation(StatIds.DefPercentage)],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.DefPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.Heal),
+      [ARTIFACT_SLOTS.GOBLET]: [new CharacterArtifactStatRecommendation(STATS.DEF_PERCENTAGE)],
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.DEF_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.HEALING_BONUS),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.DefPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setDescription("~160% ВЭ для стабильной ульты"),
+        new CharacterArtifactStatRecommendation(STATS.DEF_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setDescription("~160% ВЭ для стабильной ульты"),
       ],
     },
   ]))

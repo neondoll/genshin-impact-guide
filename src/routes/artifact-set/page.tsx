@@ -1,42 +1,36 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { useMemo } from "react";
 
-import type { ArtifactSetId } from "@/types/artifact-set";
+import type { ArtifactSetLoaderReturn } from "./loader";
 import { backgroundClassByRarity } from "@/lib/rarity";
 import {
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectArtifactSetById } from "@/features/artifact-sets/selectors";
-import { selectArtifactSetRecommendationsById } from "@/features/artifact-sets-recommendations/selectors";
 import { selectArtifactSlotById } from "@/features/artifact-slots/selectors";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import ArtifactSetRecommendations from "@/organisms/artifact-set-recommendations";
 import Paths from "@/constants/paths";
-import { useEffect, useState } from "react";
 
-/* eslint-disable-next-line react-refresh/only-export-components */
-export function loader({ params }: { params: Record<string, string | undefined> }) {
-  const artifactSet = selectArtifactSetById(params.artifactSetId as ArtifactSetId);
-  const artifactSetRecommendations = selectArtifactSetRecommendationsById(artifactSet.id);
+export default function ArtifactSetPage() {
+  const { artifactSet, artifactSetRecommendations } = useLoaderData<ArtifactSetLoaderReturn>();
 
-  if (artifactSet.rarities.length > 0) {
-    window.document.documentElement.classList.add(`rarity-${Math.max(...artifactSet.rarities)}`);
-  }
+  const backgroundClass = useMemo(() => {
+    if (!artifactSet) {
+      return undefined;
+    }
 
-  return { artifactSet, artifactSetRecommendations };
-}
-
-export default function ArtifactSet() {
-  const { artifactSet, artifactSetRecommendations } = useLoaderData<ReturnType<typeof loader>>();
-  const [backgroundClass, setBackgroundClass] = useState<string | undefined>();
-
-  useEffect(() => {
-    setBackgroundClass(backgroundClassByRarity(...artifactSet.rarities));
+    return backgroundClassByRarity(...artifactSet.rarities);
   }, [artifactSet]);
 
-  return (
+  return artifactSet && (
     <Container className="flex flex-col gap-2 md:gap-4">
       <Breadcrumb>
         <BreadcrumbList className="gap-1 text-xs sm:gap-2">
@@ -61,7 +55,7 @@ export default function ArtifactSet() {
         <img
           alt={artifactSet.name}
           className={cn("shrink-0 size-16 rounded-md rounded-br-2xl", backgroundClass)}
-          src={artifactSet.image_src}
+          src={artifactSet.imageSrc}
         />
         <div className="space-y-1">
           <div className="flex gap-x-1 items-center">
@@ -90,7 +84,7 @@ export default function ArtifactSet() {
                   </ul>
                 </TableCell>
               </TableRow>
-              {Object.entries(artifactSet.item_bonuses).map(([itemCount, itemBonus]) => (
+              {Object.entries(artifactSet.itemBonuses).map(([itemCount, itemBonus]) => (
                 <TableRow className="hover:bg-inherit" key={itemCount}>
                   <TableHead children={`${itemCount} предмет(а)`} className="p-2" />
                   <TableCell
@@ -115,17 +109,17 @@ export default function ArtifactSet() {
                   const artifactSlot = selectArtifactSlotById(artifactSetSlot.id);
 
                   return (
-                    <TableRow className="hover:bg-inherit" key={artifactSlot.id}>
+                    <TableRow className="hover:bg-inherit" key={artifactSetSlot.id}>
                       <TableCell className="p-2 w-16 text-pretty whitespace-normal">
                         <img
                           alt={artifactSetSlot.name}
                           className={cn("size-12 bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl", backgroundClass)}
-                          src={artifactSetSlot.image_src}
+                          src={artifactSetSlot.imageSrc}
                         />
                       </TableCell>
                       <TableCell className="p-2 text-pretty whitespace-normal">
                         <p children={artifactSetSlot.name} className="text-sm" />
-                        <p children={artifactSlot.name} className="text-xs opacity-50" />
+                        <p children={artifactSlot?.name || "NONE"} className="text-xs opacity-50" />
                       </TableCell>
                     </TableRow>
                   );
@@ -133,38 +127,11 @@ export default function ArtifactSet() {
 
                 return undefined;
               })}
-              {/* Object.values(artifactSet.slots).map((artifactSetSlot) => {
-                if (artifactSetSlot !== undefined) {
-                  const artifactSlot = selectArtifactSlotById(artifactSetSlot.id);
-
-                  return (
-                    <TableRow className="hover:bg-inherit" key={artifactSlot.id}>
-                      <TableHead children={artifactSlot.name} className="p-2 text-pretty whitespace-normal" />
-                      <TableCell className="p-2 text-pretty whitespace-normal">
-                        <div className="flex gap-2.5 items-center">
-                          <img
-                            alt={artifactSetSlot.name}
-                            className={cn(
-                              "shrink-0 size-12 bg-linear-to-b from-[#323947] to-[#4a5366] rounded-md rounded-br-2xl",
-                            )}
-                            src={artifactSetSlot.image_src}
-                          />
-                          <span children={artifactSetSlot.name} />
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  );
-                }
-
-                return undefined;
-              }) */}
             </TableBody>
           </Table>
         </CardContent>
       </Card>
-      {artifactSetRecommendations !== undefined && (
-        <ArtifactSetRecommendations recommendations={artifactSetRecommendations} />
-      )}
+      {artifactSetRecommendations && <ArtifactSetRecommendations recommendations={artifactSetRecommendations} />}
     </Container>
   );
 }

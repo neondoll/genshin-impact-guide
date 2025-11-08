@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
 import {
   CharacterArtifactRecommendations,
@@ -9,7 +9,7 @@ import {
   CharacterTalentLevelingRecommendation,
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -17,31 +17,31 @@ import { WeaponIds } from "@/enums/weapon";
 export default new CharacterRecommendations(CharacterIds.Aino)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.SilkenMoonsSerenade).setIsBetter().setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.SILKEN_MOONS_SERENADE).setIsBetter().setNotes([
         "Набор увеличит скорость <span class='text-info'>восст. энергии</span> Айно и повысит <span class='text-info'>мастерство стихий</span> всего отряда.",
         "Рекомендуется для отрядов с Лунным знамением - Высшее сияния, где персонаж, наносящий основной урон, вызывает Лунные реакции.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.NoblesseOblige).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.NOBLESSE_OBLIGE).setNotes([
         "Увеличивает урон от <span class='text-info'>взрыва стихии</span> Айно и увеличивает <span class='text-info'>силу атаки</span> другим членам отряда.",
         "Рекомендуется, если никто другой в отряде не носит данный комплект.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.Instructor).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.INSTRUCTOR).setNotes([
         "Хоть данный комплект не бывает 5★, он повышает <span class='text-info'>мастерство стихий</span> как самой Айно, так и всем членам отряда.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GildedDreams).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GILDED_DREAMS).setNotes([
         "Увеличивает <span class='text-info'>мастерство стихий</span> и <span class='text-info'>силу атаки</span>, от которых зависит урон Айно.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY),
       ],
-      [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendation(StatIds.ElementalMastery)],
-      [ArtifactSlotIds.Circlet]: [new CharacterArtifactStatRecommendation(StatIds.ElementalMastery)],
+      [ARTIFACT_SLOTS.GOBLET]: [new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY)],
+      [ARTIFACT_SLOTS.CIRCLET]: [new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY)],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["от 160%", "~200%"]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["от 500"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes(["от 160%", "~200%"]),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes(["от 500"]),
       ],
     },
   ]))

@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
 import {
   CharacterArtifactRecommendations,
@@ -13,8 +13,8 @@ import {
   CharacterTalentLevelingRecommendation,
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
-import { ElementIds } from "@/enums/element";
-import { StatIds } from "@/enums/stat";
+import { ELEMENTS } from "@/constants/elements";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -22,40 +22,40 @@ import { WeaponIds } from "@/enums/weapon";
 export default new CharacterRecommendations(CharacterIds.KyryllChudomirovichFlins)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.NightOfTheSkysUnveiling).setIsBetter().setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.NIGHT_OF_THE_SKYS_UNVEILING).setIsBetter().setNotes([
         "Увеличивает мастерство стихий, от которого зависит урон Лунного заряда, шанс крит. попадания в сумме до 30%, "
         + "а также урон Лунного заряда.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.MarechausseeHunter),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ThunderingFury).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.MARECHAUSSEE_HUNTER),
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.THUNDERING_FURY).setNotes([
         "Уменьшение времени отката элементального навыка позволяет использовать его чаще и наносить больше урона.",
         "Так как Флинс играет через реакцию Лунный заряд, ему подойдёт бонус от 4 предметов.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.GildedDreams).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.GILDED_DREAMS).setNotes([
         "Урон навыков Флинса и реакции Лунный заряд зависит и от силы атаки, и от мастерства стихий, поэтому данный "
         + "комплект будет ему очень полезен.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE),
       ],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery),
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes(["от 2000"]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["от 150"]),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes(["Приоритетно", "от 60%"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["Приоритетно", "от 120%"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes(["от 2000"]),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes(["от 150"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes(["Приоритетно", "от 60%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["Приоритетно", "от 120%"]),
       ],
     },
   ]))
@@ -71,8 +71,8 @@ export default new CharacterRecommendations(CharacterIds.KyryllChudomirovichFlin
   .setSquads(CharacterSquadRecommendations.init([
     [
       new CharacterSquadOtherRecommendation("Персонаж Нод-Края"),
-      new CharacterSquadElementRecommendation(ElementIds.Electro),
-      new CharacterSquadElementRecommendation(ElementIds.Hydro),
+      new CharacterSquadElementRecommendation(ELEMENTS.ELECTRO),
+      new CharacterSquadElementRecommendation(ELEMENTS.HYDRO),
     ],
     [
       new CharacterSquadCharacterRecommendation(CharacterIds.Aino),

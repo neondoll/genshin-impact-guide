@@ -25,7 +25,9 @@ export default function CharacterRecommendations(props: CharacterRecommendations
           return { character: selectCharacterById(recommendation.id), recommendation };
         })
         .sort((a, b) => {
-          return charactersAdapter.sortComparer ? charactersAdapter.sortComparer(a.character, b.character) : 0;
+          if (!charactersAdapter.sortComparer || !a.character || !b.character) return 0;
+
+          return charactersAdapter.sortComparer(a.character, b.character);
         })
         .map((model) => model.recommendation),
     );
@@ -41,41 +43,52 @@ export default function CharacterRecommendations(props: CharacterRecommendations
         </TableRow>
       </TableHeader>
       <TableBody>
-        {recommendations.map((recommendation) => (
-          <TableRow className="hover:bg-inherit" key={recommendation.id}>
-            {hasIsBetter && (
-              <TableCell className="w-16">
-                {recommendation.is_better && (
-                  <img
-                    alt="Является лучшим выбором"
-                    className="size-12 rounded-full"
-                    src={publicImageSrc("better-logo-128x128.png")}
+        {recommendations.map((recommendation) => {
+          const character = selectCharacterById(recommendation.id);
+
+          return (
+            <TableRow className="hover:bg-inherit" key={recommendation.id}>
+              {hasIsBetter && (
+                <TableCell className="w-16">
+                  {recommendation.is_better && (
+                    <img
+                      alt="Является лучшим выбором"
+                      className="size-12 rounded-full"
+                      src={publicImageSrc("better-logo-128x128.png")}
+                    />
+                  )}
+                </TableCell>
+              )}
+              <TableCell className="text-pretty whitespace-normal sm:min-w-[166px]">
+                {character && (
+                  <CharacterBadge
+                    characterId={character.id}
+                    characterImageSrc={character.image_src}
+                    characterRarity={character.rarity}
+                    characterTitle={character.title}
                   />
                 )}
               </TableCell>
-            )}
-            <TableCell className="text-pretty whitespace-normal sm:min-w-[166px]">
-              <CharacterBadge characterId={recommendation.id} />
-            </TableCell>
-            {hasNotes && (
-              <TableCell className="text-pretty whitespace-pre-line">
-                {recommendation.notes !== undefined && (
-                  Array.isArray(recommendation.notes)
-                    ? (
-                        <ul className="ml-4 list-outside list-disc">
-                          {recommendation.notes.map((note, index) => (
-                            <li dangerouslySetInnerHTML={{ __html: note }} key={index + 1} />
-                          ))}
-                        </ul>
-                      )
-                    : (
-                        <span dangerouslySetInnerHTML={{ __html: recommendation.notes }} />
-                      )
-                )}
-              </TableCell>
-            )}
-          </TableRow>
-        ))}
+              {hasNotes && (
+                <TableCell className="text-pretty whitespace-pre-line">
+                  {recommendation.notes !== undefined && (
+                    Array.isArray(recommendation.notes)
+                      ? (
+                          <ul className="ml-4 list-outside list-disc">
+                            {recommendation.notes.map((note, index) => (
+                              <li dangerouslySetInnerHTML={{ __html: note }} key={index + 1} />
+                            ))}
+                          </ul>
+                        )
+                      : (
+                          <span dangerouslySetInnerHTML={{ __html: recommendation.notes }} />
+                        )
+                  )}
+                </TableCell>
+              )}
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

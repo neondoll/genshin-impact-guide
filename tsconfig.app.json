@@ -15,10 +15,20 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* ✅ Оптимизации для производительности */
+    "incremental": true,           // Быстрая пересборка
+    "isolatedModules": true,       // Совместимость с Vite
+    "allowSyntheticDefaultImports": true, // Импорт CommonJS модулей
+    "esModuleInterop": true,       // Совместимость модулей
+    "forceConsistentCasingInFileNames": true, // Предотвращает ошибки в Windows
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true, // Безопасный доступ к индексам
+    "noImplicitReturns": true,     // Все пути должны возвращать значение
+    "noImplicitOverride": true,    // Явное указание override
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
@@ -28,5 +38,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"]
+  "exclude": ["dist", "node_modules", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
+  "include": ["src", "src/**/*.json", "src/**/*.ts", "src/**/*.tsx"]
 }

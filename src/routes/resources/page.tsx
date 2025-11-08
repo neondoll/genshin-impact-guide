@@ -1,23 +1,21 @@
 import { Link, useLoaderData } from "react-router-dom";
 
+import type { ResourcesLoaderReturn } from "./loader";
+import { backgroundClassByRarity } from "@/lib/rarity";
 import {
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import { selectResourcesAll } from "@/features/resources/selectors";
 import Paths from "@/constants/paths";
-import { backgroundClassByRarity } from "@/lib/rarity.ts";
 
-/* eslint-disable-next-line react-refresh/only-export-components */
-export function loader() {
-  const resources = selectResourcesAll();
-
-  return { resources };
-}
-
-export default function Resources() {
-  const { resources } = useLoaderData<ReturnType<typeof loader>>();
+export default function ResourcesPage() {
+  const { resources } = useLoaderData<ResourcesLoaderReturn>();
 
   return (
     <Container className="flex flex-col gap-2 md:gap-4">

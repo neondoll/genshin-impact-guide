@@ -4,7 +4,7 @@ import { artifactSetsRecommendationsAdapter } from "./slice";
 import { store } from "@/app/store";
 
 const selectors = artifactSetsRecommendationsAdapter.getSelectors<RootState>(
-  (state) => state.artifactSetsRecommendations
+  (state) => state.artifactSetsRecommendations,
 );
 
 export function selectArtifactSetRecommendationsById(id: ArtifactSetId) {

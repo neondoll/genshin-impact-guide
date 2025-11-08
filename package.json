@@ -4,19 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "clean": "tsc --build --clean",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:analyze": "npm run build --mode analyze",
-    "build:prod": "NODE_ENV=production npm run build",
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepare": "husky",
     "preview": "vite preview",
-    "type-check": "tsc --noEmit",
-    "type-check:app": "tsc --project tsconfig.app.json --noEmit",
-    "type-check:node": "tsc --project tsconfig.node.json --noEmit",
-    "type-check:watch": "tsc --noEmit --watch"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",

@@ -177,7 +177,7 @@ export default function CharacterRecommendations({
                     <AccordionContent className="px-6">
                       <VideoSources
                         items={selectVideoSourcesByIds(
-                          recommendations.video_source_ids
+                          recommendations.video_source_ids,
                         )}
                       />
                     </AccordionContent>

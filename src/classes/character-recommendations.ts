@@ -70,7 +70,7 @@ export class CharacterArtifactRecommendations implements TypeArtifacts {
   }
 
   static init(
-    params: ConstructorParameters<typeof CharacterArtifactRecommendations>
+    params: ConstructorParameters<typeof CharacterArtifactRecommendations>,
   ) {
     return new CharacterArtifactRecommendations(...params);
   }
@@ -204,7 +204,7 @@ export class CharacterRecommendations implements Type {
   }
 
   setFirstConstellationOrSignatureWeapon(
-    val: NonNullable<Type["first_constellation_or_signature_weapon"]>
+    val: NonNullable<Type["first_constellation_or_signature_weapon"]>,
   ) {
     this._first_constellation_or_signature_weapon = val;
 
@@ -296,14 +296,14 @@ export class CharacterSquadRecommendations implements TypeSquads {
 
   constructor(
     generalTemplate: TypeSquads["general_template"],
-    bestTeammates: TypeSquads["best_teammates"]
+    bestTeammates: TypeSquads["best_teammates"],
   ) {
     this.general_template = generalTemplate;
     this.best_teammates = bestTeammates;
   }
 
   static init(
-    params: ConstructorParameters<typeof CharacterSquadRecommendations>
+    params: ConstructorParameters<typeof CharacterSquadRecommendations>,
   ) {
     return new CharacterSquadRecommendations(...params);
   }
@@ -318,7 +318,7 @@ implements TypeTalentLeveling {
   constructor(
     id: TypeTalentLeveling["id"],
     priority: TypeTalentLeveling["priority"],
-    referenceLevel: TypeTalentLeveling["reference_level"] = undefined
+    referenceLevel: TypeTalentLeveling["reference_level"] = undefined,
   ) {
     this.id = id;
     this.priority = priority;
@@ -326,7 +326,7 @@ implements TypeTalentLeveling {
   }
 
   static init(
-    params: ConstructorParameters<typeof CharacterTalentLevelingRecommendation>
+    params: ConstructorParameters<typeof CharacterTalentLevelingRecommendation>,
   ) {
     return new CharacterTalentLevelingRecommendation(...params);
   }

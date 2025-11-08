@@ -1,13 +1,13 @@
 import type { Element as Type } from "@/types/element";
 import { Element as Class } from "@/classes/element";
-import { ElementIds } from "@/enums/element";
+import { ELEMENTS } from "@/constants/elements";
 
 export default {
-  [ElementIds.Anemo]: new Class(ElementIds.Anemo, "Анемо"),
-  [ElementIds.Cryo]: new Class(ElementIds.Cryo, "Крио"),
-  [ElementIds.Dendro]: new Class(ElementIds.Dendro, "Дендро"),
-  [ElementIds.Electro]: new Class(ElementIds.Electro, "Электро"),
-  [ElementIds.Geo]: new Class(ElementIds.Geo, "Гео"),
-  [ElementIds.Hydro]: new Class(ElementIds.Hydro, "Гидро"),
-  [ElementIds.Pyro]: new Class(ElementIds.Pyro, "Пиро"),
+  [ELEMENTS.ANEMO]: new Class(ELEMENTS.ANEMO, "Анемо"),
+  [ELEMENTS.CRYO]: new Class(ELEMENTS.CRYO, "Крио"),
+  [ELEMENTS.DENDRO]: new Class(ELEMENTS.DENDRO, "Дендро"),
+  [ELEMENTS.ELECTRO]: new Class(ELEMENTS.ELECTRO, "Электро"),
+  [ELEMENTS.GEO]: new Class(ELEMENTS.GEO, "Гео"),
+  [ELEMENTS.HYDRO]: new Class(ELEMENTS.HYDRO, "Гидро"),
+  [ELEMENTS.PYRO]: new Class(ELEMENTS.PYRO, "Пиро"),
 } as Record<Type["id"], Type>;

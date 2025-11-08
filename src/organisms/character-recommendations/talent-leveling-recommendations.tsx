@@ -13,7 +13,7 @@ function TalentLevelingRecommendationsTable({ recommendations }: {
         {recommendations.map((recommendation) => {
           const talent = selectTalentById(recommendation.id);
 
-          return (
+          return talent && (
             <TableRow className="hover:bg-inherit" key={talent.id}>
               <TableHead children={talent.name} className="p-2 whitespace-normal" />
               <TableCell children={recommendation.priority} className="p-2 text-center whitespace-normal" />
@@ -36,7 +36,7 @@ export default function TalentLevelingRecommendations({ recommendations }: Talen
   const recommendationsEntries = Object.entries(recommendations);
 
   return (
-    <Tabs defaultValue={recommendationsEntries[0][0]}>
+    <Tabs defaultValue={recommendationsEntries[0]?.[0]}>
       <TabsList className="flex flex-wrap w-full h-auto min-h-9">
         {recommendationsEntries.map(([key]) => (
           <TabsTrigger children={key} key={key} value={key} />

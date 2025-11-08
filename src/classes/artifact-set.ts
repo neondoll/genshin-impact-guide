@@ -1,85 +1,94 @@
-import type { ArtifactSet as Type, ArtifactSetSlot as TypeSlot } from "@/types/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import type { ArtifactSet as ArtifactSetType, ArtifactSetSlot as ArtifactSetSlotType } from "@/types/artifact-set";
+import type { ArtifactSlotId } from "@/types/artifact";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { publicImageSrc } from "@/lib/utils";
 
-export class ArtifactSet implements Type {
-  readonly id: Type["id"];
-  readonly name: Type["name"];
-  readonly rarities: Type["rarities"];
-  readonly sources: Type["sources"];
-  readonly item_bonuses: Type["item_bonuses"];
-  readonly slots: Type["slots"];
+export class ArtifactSet implements ArtifactSetType {
+  readonly id: ArtifactSetType["id"];
+  readonly name: ArtifactSetType["name"];
+  readonly rarities: ArtifactSetType["rarities"];
+  readonly sources: ArtifactSetType["sources"];
+  readonly itemBonuses: ArtifactSetType["itemBonuses"];
+  readonly slots: ArtifactSetType["slots"];
 
-  static PATH = "artifact-sets";
+  static readonly PATH = "artifact-sets";
 
   constructor(
-    id: Type["id"],
-    name: Type["name"],
-    rarities: Type["rarities"],
-    sources: Type["sources"],
-    itemBonuses: Type["item_bonuses"],
-    slots: Record<TypeSlot["id"], TypeSlot["name"] | undefined>,
+    id: ArtifactSetType["id"],
+    name: ArtifactSetType["name"],
+    rarities: ArtifactSetType["rarities"],
+    sources: ArtifactSetType["sources"],
+    itemBonuses: ArtifactSetType["itemBonuses"],
+    slots: Partial<Record<ArtifactSlotId, string>>, // Более точный тип
   ) {
     this.id = id;
     this.name = name;
     this.rarities = rarities;
     this.sources = sources;
-    this.item_bonuses = itemBonuses;
-    this.slots = {
-      [ArtifactSlotIds.Flower]: undefined,
-      [ArtifactSlotIds.Plume]: undefined,
-      [ArtifactSlotIds.Sands]: undefined,
-      [ArtifactSlotIds.Goblet]: undefined,
-      [ArtifactSlotIds.Circlet]: undefined,
+    this.itemBonuses = itemBonuses;
+
+    // Инициализация слотов с правильной типизацией
+    this.slots = this.initializeSlots(slots);
+  }
+
+  private initializeSlots(slotNames: Partial<Record<ArtifactSlotId, string>>): ArtifactSetType["slots"] {
+    const slots: ArtifactSetType["slots"] = {
+      [ARTIFACT_SLOTS.FLOWER]: undefined,
+      [ARTIFACT_SLOTS.PLUME]: undefined,
+      [ARTIFACT_SLOTS.SANDS]: undefined,
+      [ARTIFACT_SLOTS.GOBLET]: undefined,
+      [ARTIFACT_SLOTS.CIRCLET]: undefined,
     };
 
-    (
-      Object.entries(slots) as [
-        keyof typeof slots,
-        (typeof slots)[keyof typeof slots]
-      ][]
-    ).forEach(([slotId, slotName]) => {
+    (Object.entries(slotNames) as [ArtifactSlotId, string][]).forEach(([slotId, slotName]) => {
       if (slotName) {
-        this.slots[slotId] = ArtifactSetSlot.init([
+        slots[slotId] = ArtifactSetSlot.create(
           slotId,
           slotName,
-          publicImageSrc(`${ArtifactSet.PATH}/${id}/${slotId}_icon.webp`),
-        ]);
+          publicImageSrc(`${ArtifactSet.PATH}/${this.id}/${slotId}_icon.webp`),
+        );
       }
     });
+
+    return slots;
   }
 
-  get image_src() {
-    return (
-      this.slots[ArtifactSlotIds.Flower]?.image_src
-      || this.slots[ArtifactSlotIds.Plume]?.image_src
-      || this.slots[ArtifactSlotIds.Sands]?.image_src
-      || this.slots[ArtifactSlotIds.Goblet]?.image_src
-      || this.slots[ArtifactSlotIds.Circlet]?.image_src
-    );
+  get imageSrc(): string | undefined {
+    // Поиск первого доступного изображения слота
+    const availableSlots = Object.values(this.slots).filter(Boolean) as ArtifactSetSlot[];
+
+    return availableSlots[0]?.imageSrc;
   }
 
-  static init(params: ConstructorParameters<typeof ArtifactSet>) {
+  getSlot(slotId: ArtifactSlotId): ArtifactSetSlot | undefined {
+    return this.slots[slotId] ?? undefined;
+  }
+
+  hasSlot(slotId: ArtifactSlotId): boolean {
+    return this.slots[slotId] !== undefined;
+  }
+
+  getAvailableSlots(): ArtifactSetSlot[] {
+    return Object.values(this.slots).filter(Boolean) as ArtifactSetSlot[];
+  }
+
+  static create(...params: ConstructorParameters<typeof ArtifactSet>): ArtifactSet {
     return new ArtifactSet(...params);
   }
 }
 
-export class ArtifactSetSlot implements TypeSlot {
-  readonly id: TypeSlot["id"];
-  readonly name: TypeSlot["name"];
-  readonly image_src: TypeSlot["image_src"];
+export class ArtifactSetSlot implements ArtifactSetSlotType {
+  readonly id: ArtifactSetSlotType["id"];
+  readonly name: ArtifactSetSlotType["name"];
+  readonly imageSrc: ArtifactSetSlotType["imageSrc"];
 
-  constructor(
-    id: TypeSlot["id"],
-    name: TypeSlot["name"],
-    imageSrc: TypeSlot["image_src"]
-  ) {
+  constructor(id: ArtifactSetSlotType["id"], name: ArtifactSetSlotType["name"], imageSrc: ArtifactSetSlotType["imageSrc"]) {
     this.id = id;
     this.name = name;
-    this.image_src = imageSrc;
+    this.imageSrc = imageSrc;
   }
 
-  static init(params: ConstructorParameters<typeof ArtifactSetSlot>) {
-    return new ArtifactSetSlot(...params);
+  static create(id: ArtifactSlotId, name: string, imageSrc: string): ArtifactSetSlot {
+    return new ArtifactSetSlot(id, name, imageSrc);
   }
 }

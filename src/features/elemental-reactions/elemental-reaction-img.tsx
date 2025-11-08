@@ -12,12 +12,9 @@ function Image({ className, elementId }: {
   elementId: ElementalReactionElementId;
 }) {
   if (Object.values<string>(ElementalReactionIds).includes(elementId as string)) {
-    return (
-      <ElementalReactionImg
-        className={className}
-        item={selectElementalReactionById(elementId as ElementalReaction["id"])}
-      />
-    );
+    const elementalReaction = selectElementalReactionById(elementId as ElementalReaction["id"]);
+
+    return elementalReaction && <ElementalReactionImg className={className} item={elementalReaction} />;
   }
 
   if (Array.isArray(elementId)) {
@@ -32,8 +29,8 @@ function Image({ className, elementId }: {
 
   const element = selectElementById(elementId as ElementId);
 
-  return (
-    <img alt={element.id} className={cn("aspect-square", className)} src={element.img_src} />
+  return element && (
+    <img alt={element.id} className={cn("aspect-square", className)} src={element.imageSrc} />
   );
 }
 

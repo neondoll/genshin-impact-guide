@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-import type { ArtifactSlot } from "@/types/artifact-slot";
+import type { ArtifactSlot } from "@/types/artifact";
 
 export const artifactSlotsAdapter = createEntityAdapter({
   selectId: (model: ArtifactSlot) => model.id,
-  sortComparer: (a: ArtifactSlot, b: ArtifactSlot) => a.sort_by - b.sort_by,
+  sortComparer: (a: ArtifactSlot, b: ArtifactSlot) => a.sortOrder - b.sortOrder,
 });
 
 const initialState = artifactSlotsAdapter.getInitialState({}, (await import("@/data/artifact-slots")).default);

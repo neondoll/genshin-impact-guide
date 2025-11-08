@@ -1,25 +1,22 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import type { ElementalReactionId } from "@/types/elemental-reaction";
+import type { ElementalReactionLoaderReturn } from "./loader";
 import {
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Container } from "@/components/container";
-import { selectElementalReactionById } from "@/features/elemental-reactions/selectors";
 import ElementalReactionImg from "@/features/elemental-reactions/elemental-reaction-img";
 import Paths from "@/constants/paths";
 
-/* eslint-disable-next-line react-refresh/only-export-components */
-export function loader({ params }: { params: Record<string, string | undefined> }) {
-  const elementalReaction = selectElementalReactionById(params.elementalReactionId as ElementalReactionId);
+export default function ElementalReactionPage() {
+  const { elementalReaction } = useLoaderData<ElementalReactionLoaderReturn>();
 
-  return { elementalReaction };
-}
-
-export default function ElementalReaction() {
-  const { elementalReaction } = useLoaderData<ReturnType<typeof loader>>();
-
-  return (
+  return elementalReaction && (
     <Container className="flex flex-col gap-2 md:gap-4">
       <Breadcrumb>
         <BreadcrumbList className="gap-1 text-xs sm:gap-2">

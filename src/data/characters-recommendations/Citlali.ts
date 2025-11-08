@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -9,7 +9,7 @@ import {
   CharacterWeaponRecommendation,
 } from "@/classes/character-recommendations";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { VideoSourceIds } from "@/enums/video-source";
 import { WeaponIds } from "@/enums/weapon";
@@ -20,40 +20,40 @@ import weapons from "../weapons";
 export default new CharacterRecommendations(CharacterIds.Citlali)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ScrollOfTheHeroOfCinderCity).setIsBetter().setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.SCROLL_OF_THE_HERO_OF_CINDER_CITY).setIsBetter().setNotes([
         "Лучший набор для Ситлали, так как восстановит ей энергию и увеличит элементальный урон основного персонажа.",
         "Стоит учитывать, что лучше всего комплект работает в команде с персонажами из Натлана.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.TenacityOfTheMillelith).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.TENACITY_OF_THE_MILLELITH).setNotes([
         "Бонус 2 предметов не важен Ситлали, но бонус 4 предметов увеличит прочность щита и атаку других персонажей в отряде.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.NoblesseOblige).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.NOBLESSE_OBLIGE).setNotes([
         "Увеличивает урон от взрыва стихии Ситлали и увеличивает силу атаки другим членам отряда.",
         "Рекомендуется, если никто другой в отряде не носит данный комплект.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.Instructor).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.INSTRUCTOR).setNotes([
         "Хоть данный комплект не бывает 5★, он повышает мастерство стихий как самой Ситлали, так и всем членам отряда.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ArchaicPetra).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.ARCHAIC_PETRA).setNotes([
         `Если в отряде есть ${characters[CharacterIds.Xilonen].name}`,
         "Носитель должен подбирать осколок",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["в 99% случаев"]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery),
+      [ARTIFACT_SLOTS.SANDS]: [
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes(["в 99% случаев"]),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY),
       ],
-      [ArtifactSlotIds.Goblet]: [new CharacterArtifactStatRecommendation(StatIds.ElementalMastery)],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["всегда"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes([
+      [ARTIFACT_SLOTS.GOBLET]: [new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY)],
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes(["всегда"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes([
           `можно рассмотреть, если в руках ${weapons[WeaponIds.FavoniusCodex].title}`,
         ]),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes(["Приоритетно", "от 170%"]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes(["от 800"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes(["Приоритетно", "от 170%"]),
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes(["от 800"]),
       ],
     },
   ]))
@@ -68,7 +68,7 @@ export default new CharacterRecommendations(CharacterIds.Citlali)
     ["Крит. шанс", "59.2%"],
     ["Крит. урон", "122.8%"],
     ["Оружие", weapons[WeaponIds.ThrillingTalesOfDragonSlayers].title],
-    ["Набор артефактов", artifactSets[ArtifactSetIds.ScrollOfTheHeroOfCinderCity].name],
+    ["Набор артефактов", artifactSets[ARTIFACT_SETS.SCROLL_OF_THE_HERO_OF_CINDER_CITY].name],
   ])
   .setRequiredLevel("80/80")
   .setRotation("E > Q > можно сделать 1 удар, чтобы точно наложить Крио статус")

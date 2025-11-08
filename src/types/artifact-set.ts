@@ -1,22 +1,33 @@
-import type { ArtifactSlotId } from "./artifact-slot";
+import type { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import type { ArtifactSlotId } from "./artifact";
 import type { Rarity } from "./rarity";
-import { type ArtifactSetIds } from "@/enums/artifact-set";
+
+export type ArtifactSetId = typeof ARTIFACT_SETS[keyof typeof ARTIFACT_SETS];
+
+export interface ArtifactSetSlot {
+  id: ArtifactSlotId;
+  name: string;
+  imageSrc: string; // camelCase вместо snake_case
+}
 
 export interface ArtifactSet {
   id: ArtifactSetId;
   name: string;
   rarities: Rarity[];
   sources: string[];
-  item_bonuses: Record<2 | 4, string>;
-  slots: Record<ArtifactSetSlot["id"], ArtifactSetSlot | undefined>;
+  itemBonuses: { // camelCase вместо snake_case
+    2: string;
+    4: string;
+  };
+  slots: Partial<Record<ArtifactSlotId, ArtifactSetSlot>>; // Более точный тип
 
-  image_src?: ArtifactSetSlot["image_src"];
+  // Опциональные поля
+  imageSrc?: string; // Общее изображение набора
 }
 
-export interface ArtifactSetSlot {
-  id: ArtifactSlotId;
-  name: string;
-  image_src: string;
-}
+// Вспомогательные типы
+export type ArtifactSetBonus = keyof ArtifactSet["itemBonuses"]; // 2 | 4
 
-export type ArtifactSetId = typeof ArtifactSetIds[keyof typeof ArtifactSetIds];
+export interface ArtifactSetWithSlots extends ArtifactSet {
+  slots: Record<ArtifactSlotId, ArtifactSetSlot>; // Все слоты обязательны
+}

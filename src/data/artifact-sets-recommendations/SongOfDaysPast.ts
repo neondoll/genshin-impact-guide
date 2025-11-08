@@ -1,19 +1,19 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { VideoSourceIds } from "@/enums/video-source";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.SongOfDaysPast)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.SONG_OF_DAYS_PAST)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.Barbara).setIsBetter(),
     new ArtifactSetCharacterRecommendation(CharacterIds.SangonomiyaKokomi).setIsBetter(),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [StatIds.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [StatIds.Heal, StatIds.HpPercentage],
-    additional: [StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ARTIFACT_SLOTS.SANDS]: [STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.GOBLET]: [STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.CIRCLET]: [STATS.HEALING_BONUS, STATS.HP_PERCENTAGE],
+    additional: [STATS.ENERGY_RECHARGE, STATS.HP_PERCENTAGE],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

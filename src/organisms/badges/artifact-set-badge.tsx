@@ -1,18 +1,20 @@
-import type { ArtifactSetId } from "@/types/artifact-set";
-import { selectArtifactSetById } from "@/features/artifact-sets/selectors";
+import type { ArtifactSet } from "@/types/artifact-set";
 import AbstractBadge from "./abstract-badge";
 import Paths from "@/constants/paths";
 
-export default function ArtifactSetBadge({ artifactSetId }: { artifactSetId: ArtifactSetId }) {
-  const artifactSet = selectArtifactSetById(artifactSetId);
-
+export default function ArtifactSetBadge({ artifactSetId, artifactSetImageSrc, artifactSetName, artifactSetRarities }: {
+  artifactSetId: ArtifactSet["id"];
+  artifactSetImageSrc: ArtifactSet["imageSrc"];
+  artifactSetName: ArtifactSet["name"];
+  artifactSetRarities: ArtifactSet["rarities"];
+}) {
   return (
     <AbstractBadge
       imgAlt={artifactSetId}
-      imgSrc={artifactSet.image_src}
+      imgSrc={artifactSetImageSrc}
       linkTo={Paths.ArtifactSet.to(artifactSetId)}
-      rarities={artifactSet.rarities}
-      title={artifactSet.name}
+      rarities={artifactSetRarities}
+      title={artifactSetName}
     />
   );
 }

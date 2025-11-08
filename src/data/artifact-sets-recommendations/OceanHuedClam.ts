@@ -1,11 +1,11 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { VideoSourceIds } from "@/enums/video-source";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.OceanHuedClam)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.OCEAN_HUED_CLAM)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.Baizhu),
     new ArtifactSetCharacterRecommendation(CharacterIds.Barbara).setIsBetter(),
@@ -13,9 +13,9 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.OceanHuedClam)
     new ArtifactSetCharacterRecommendation(CharacterIds.SangonomiyaKokomi).setIsBetter(),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.EnergyRecharge, StatIds.HpPercentage],
-    [ArtifactSlotIds.Goblet]: [StatIds.EnergyRecharge, StatIds.HpPercentage],
-    [ArtifactSlotIds.Circlet]: [StatIds.Heal, StatIds.HpPercentage],
-    additional: [StatIds.EnergyRecharge, StatIds.HpPercentage],
+    [ARTIFACT_SLOTS.SANDS]: [STATS.ENERGY_RECHARGE, STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.GOBLET]: [STATS.ENERGY_RECHARGE, STATS.HP_PERCENTAGE],
+    [ARTIFACT_SLOTS.CIRCLET]: [STATS.HEALING_BONUS, STATS.HP_PERCENTAGE],
+    additional: [STATS.ENERGY_RECHARGE, STATS.HP_PERCENTAGE],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

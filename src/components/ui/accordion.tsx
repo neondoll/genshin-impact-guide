@@ -37,7 +37,7 @@ export function AccordionItem({ className, ...props }: AccordionItemProps) {
     <Primitive.Item
       className={cn(
         "border-b border-border last:border-b-0",
-        className
+        className,
       )}
       data-slot="accordion-item"
       {...props}
@@ -62,7 +62,7 @@ export function AccordionTrigger({ className, children, ...props }: ComponentPro
           "disabled:opacity-50 disabled:pointer-events-none",
           // Animation
           "[&[data-state=open]>svg]:rotate-180",
-          className
+          className,
         )}
         data-slot="accordion-trigger"
         {...props}
@@ -72,7 +72,7 @@ export function AccordionTrigger({ className, children, ...props }: ComponentPro
           className={cn(
             "shrink-0 size-4 text-muted-foreground",
             "transition-transform duration-200 translate-y-0.5",
-            "pointer-events-none"
+            "pointer-events-none",
           )}
         />
       </Primitive.Trigger>

@@ -1,12 +1,12 @@
 import { ArtifactSetCharacterRecommendation, ArtifactSetRecommendations } from "@/classes/artifact-set-recommendations";
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import { CharacterIds } from "@/enums/character";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { StatsCrit } from "./_help";
 import { VideoSourceIds } from "@/enums/video-source";
 
-export default new ArtifactSetRecommendations(ArtifactSetIds.NighttimeWhispersInTheEchoingWoods)
+export default new ArtifactSetRecommendations(ARTIFACT_SETS.NIGHTTIME_WHISPERS_IN_THE_ECHOING_WOODS)
   .setCharacters([
     new ArtifactSetCharacterRecommendation(CharacterIds.Navia).setIsBetter().setNotes([
       "Является одним из лучших комплектов для Навии, так как увеличивает силу атаки и бонус Гео урона в сумме до 50% "
@@ -15,9 +15,9 @@ export default new ArtifactSetRecommendations(ArtifactSetIds.NighttimeWhispersIn
     ]),
   ])
   .setPreferredStats({
-    [ArtifactSlotIds.Sands]: [StatIds.AtkPercentage],
-    [ArtifactSlotIds.Goblet]: [StatIds.AtkPercentage, StatIds.GeoDmgBonus],
-    [ArtifactSlotIds.Circlet]: StatsCrit,
-    additional: [...StatsCrit, StatIds.AtkPercentage, StatIds.EnergyRecharge],
+    [ARTIFACT_SLOTS.SANDS]: [STATS.ATK_PERCENTAGE],
+    [ARTIFACT_SLOTS.GOBLET]: [STATS.ATK_PERCENTAGE, STATS.GEO_DMG_BONUS],
+    [ARTIFACT_SLOTS.CIRCLET]: StatsCrit,
+    additional: [...StatsCrit, STATS.ATK_PERCENTAGE, STATS.ENERGY_RECHARGE],
   })
   .setVideoSourceIds([VideoSourceIds.AllAboutAllArtifactSets]);

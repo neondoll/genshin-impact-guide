@@ -1,8 +1,8 @@
+import type { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import type { ArtifactSetId } from "./artifact-set";
 import type { CharacterId } from "./character";
 import type { StatId } from "./stat";
 import type { VideoSourceId } from "./video-source";
-import { type ArtifactSlotIds } from "@/enums/artifact-slot";
 
 export interface ArtifactSetCharacterRecommendation {
   id: CharacterId;
@@ -13,6 +13,6 @@ export interface ArtifactSetCharacterRecommendation {
 export interface ArtifactSetRecommendations {
   artifact_set_id: ArtifactSetId;
   characters?: ArtifactSetCharacterRecommendation[];
-  preferred_stats?: Record<typeof ArtifactSlotIds["Sands" | "Goblet" | "Circlet"] | "additional", StatId[]>;
+  preferred_stats?: Record<typeof ARTIFACT_SLOTS["SANDS" | "GOBLET" | "CIRCLET"] | "additional", StatId[]>;
   video_source_ids?: VideoSourceId[];
 }

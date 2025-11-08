@@ -2,7 +2,7 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2022",
-    "lib": ["ES2023"],
+    "lib": ["ES2022"],
     "module": "ESNext",
     "skipLibCheck": true,
 
@@ -13,17 +13,21 @@
     "moduleDetection": "force",
     "noEmit": true,
 
+    /* ✅ Оптимизации для конфигурационных файлов */
+    "resolveJsonModule": true, // Импорт package.json и других JSON
+    "allowSyntheticDefaultImports": true, // Импорт CommonJS модулей
+    "esModuleInterop": true, // Совместимость модулей
+    "forceConsistentCasingInFileNames": true, // Предотвращает ошибки в Windows
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicitReturns": true, // Все пути должны возвращать значение
+    "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": [
-    "vite.config.ts",
-    "eslint.config.js",
-    "package.json"
-  ],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["dist", "node_modules", "src"],
+  "include": ["eslint.config.js", "package.json", "vite.config.ts", "**/*.d.ts"]
 }

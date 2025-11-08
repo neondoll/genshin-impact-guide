@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import type { CharacterWeaponRecommendation } from "@/types/character-recommendations";
 import type { WeaponRecommendationsProps } from "./types";
-import { cn, numberFormatPercent } from "@/lib/utils";
+import { cn, formatPercent } from "@/lib/utils";
 import { selectStatById } from "@/features/stats/selectors";
 import { selectWeaponById } from "@/features/weapons/selectors";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -20,7 +20,7 @@ export default function WeaponRecommendations({ recommendations }: WeaponRecomme
   const recommendationsEntries = Object.entries(recommendations);
 
   return (
-    <Tabs defaultValue={recommendationsEntries[0][0]}>
+    <Tabs defaultValue={recommendationsEntries[0]?.[0]}>
       <TabsList className="flex flex-wrap w-full h-auto min-h-9">
         {recommendationsEntries.map(([key]) => (
           <TabsTrigger dangerouslySetInnerHTML={{ __html: key }} key={key} value={key} />
@@ -97,7 +97,7 @@ function WeaponRecommendationsTable({ recommendations }: { recommendations: Char
         {recommendations.map((recommendation) => {
           const weapon = selectWeaponById(recommendation.id);
 
-          return (
+          return weapon && (
             <TableRow
               className="hover:bg-inherit"
               key={
@@ -125,7 +125,7 @@ function WeaponRecommendationsTable({ recommendations }: { recommendations: Char
               )}
               {hasPercent && (
                 <TableCell
-                  children={recommendation.percent !== undefined ? numberFormatPercent(recommendation.percent, 2) : ""}
+                  children={recommendation.percent !== undefined ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
                   className={cn("text-center", recommendation.percent !== undefined && {
                     "text-green-500": recommendation.percent >= (minPercent + (diffPercent * 2)),
                     "text-yellow-500": recommendation.percent >= (minPercent + diffPercent) && recommendation.percent < (minPercent + (diffPercent * 2)),
@@ -135,7 +135,7 @@ function WeaponRecommendationsTable({ recommendations }: { recommendations: Char
               )}
               <TableCell className="text-pretty whitespace-normal">
                 <ul className="ml-4 list-outside list-disc">
-                  <li dangerouslySetInnerHTML={{ __html: `Дополнительная характеристика: <span class="text-info">${selectStatById(weapon.secondary_stats_id).name}</span>` }} />
+                  <li dangerouslySetInnerHTML={{ __html: `Дополнительная характеристика: <span class="text-info">${selectStatById(weapon.secondary_stats_id)?.name || "NONE"}</span>` }} />
                   {weapon.passive_ability && (
                     <li dangerouslySetInnerHTML={{ __html: `Пассивная способность (${weapon.passive_ability.name}): ${weapon.passive_ability.description}` }} />
                   )}

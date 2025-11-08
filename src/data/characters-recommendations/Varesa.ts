@@ -1,5 +1,5 @@
-import { ArtifactSetIds } from "@/enums/artifact-set";
-import { ArtifactSlotIds } from "@/enums/artifact-slot";
+import { ARTIFACT_SETS } from "@/constants/artifact-sets";
+import { ARTIFACT_SLOTS } from "@/constants/artifact-slots";
 import {
   CharacterArtifactRecommendations,
   CharacterArtifactSetRecommendationWithId,
@@ -11,41 +11,41 @@ import {
 import { CharacterIds } from "@/enums/character";
 import { elementalReactionById } from "@/features/elemental-reactions/help";
 import { ElementalReactionIds } from "@/enums/elemental-reaction";
-import { StatIds } from "@/enums/stat";
+import { STATS } from "@/constants/stats";
 import { TalentIds } from "@/enums/talent";
 import { WeaponIds } from "@/enums/weapon";
 
 export default new CharacterRecommendations(CharacterIds.Varesa)
   .setArtifacts(CharacterArtifactRecommendations.init([
     [
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.LongNightsOath).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.LONG_NIGHTS_OATH).setNotes([
         "Лучший набор для Варесы, поскольку значительно увеличивает её урон от атак в падении.",
       ]),
-      new CharacterArtifactSetRecommendationWithId(ArtifactSetIds.ObsidianCodex).setNotes([
+      new CharacterArtifactSetRecommendationWithId(ARTIFACT_SETS.OBSIDIAN_CODEX).setNotes([
         "Комплект увеличивает урон Варесы и повышает шанс крит. попадания в сумме до 40%, позволяя сосредоточиться на крит. уроне в артефактах.",
         "Так как Вареса обладает Благословением Ночного духа, она полностью реализует условия комплекта.",
       ]),
     ],
     {
-      [ArtifactSlotIds.Sands]: [new CharacterArtifactStatRecommendation(StatIds.AtkPercentage)],
-      [ArtifactSlotIds.Goblet]: [
-        new CharacterArtifactStatRecommendation(StatIds.ElectroDmgBonus).setNotes(["Лучше с Цаплей всегда"]),
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes([
+      [ARTIFACT_SLOTS.SANDS]: [new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE)],
+      [ARTIFACT_SLOTS.GOBLET]: [
+        new CharacterArtifactStatRecommendation(STATS.ELECTRO_DMG_BONUS).setNotes(["Лучше с Цаплей всегда"]),
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes([
           "Лучше с Фуриной или в сете на планжи",
         ]),
       ],
-      [ArtifactSlotIds.Circlet]: [
-        new CharacterArtifactStatRecommendation(StatIds.CritRate),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG),
+      [ARTIFACT_SLOTS.CIRCLET]: [
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG),
       ],
       additional: [
-        new CharacterArtifactStatRecommendation(StatIds.AtkPercentage).setNotes(["от 1800"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritRate).setNotes(["от 60%"]),
-        new CharacterArtifactStatRecommendation(StatIds.CritDMG).setNotes(["от 180%"]),
-        new CharacterArtifactStatRecommendation(StatIds.EnergyRecharge).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.ATK_PERCENTAGE).setNotes(["от 1800"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_RATE).setNotes(["от 60%"]),
+        new CharacterArtifactStatRecommendation(STATS.CRIT_DMG).setNotes(["от 180%"]),
+        new CharacterArtifactStatRecommendation(STATS.ENERGY_RECHARGE).setNotes([
           "115% - 135% для Взрыва стихии",
         ]),
-        new CharacterArtifactStatRecommendation(StatIds.ElementalMastery).setNotes([
+        new CharacterArtifactStatRecommendation(STATS.ELEMENTAL_MASTERY).setNotes([
           `от 150 (при игре через реакцию ${elementalReactionById(ElementalReactionIds.Hyperbloom)})`,
         ]),
       ],
